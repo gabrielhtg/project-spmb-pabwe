@@ -3,94 +3,24 @@
 @section('isi-halaman')
 <main class="mx-auto">
     <section id="hero" class="container">
-        <div id="carouselExampleCaptions" class="carousel slide">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-                        aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-                        aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-                        aria-label="Slide 3"></button>
-            </div>
+        <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="{{ asset("/assets/img/hero-compressed.jpg") }}" class="d-block w-100"
-                         alt="beasiswa-tolikara">
-                    <div class="carousel-caption d-none d-md-block">
-                        <div class="ukuran-div-beasiswa p-5">
-                            <div class="text-start">
-                                <span class="text-white fs-4"><i>Telah Dibuka</i></span>
-                                <br>
-                                <span class="text-white mt-5 fs-3 ms-4"><strong>Beasiswa Tolikara 1</strong></span>
-                            </div>
-
-                            <div class="text-start align-self-end mt-5">
-                                <span>Pendaftaran : </span>
-                                <br>
-                                <span>dd/mm/yyyy s/d dd/yy/mmmm</span>
-                            </div>
-                        </div>
-
-                        <div class="mb-4 mt-5 text-end">
-                            <button class="tombol-kita text-oyen"><strong>Daftar Sekarang</strong></button>
-                        </div>
-                    </div>
+                    <img src="{{ asset("/assets/img/gambar-hero-1.jpg") }}" class="d-block w-100" alt="gambar-1">
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ asset("/assets/img/beasiswa-tolikara.jpeg") }}" class="d-block w-100"
-                         alt="beasiswa-tolikara">
-                    <div class="carousel-caption d-none d-md-block">
-                        <div class="ukuran-div-beasiswa p-5">
-                            <div class="text-start">
-                                <span class="text-white fs-4"><i>Telah Dibuka</i></span>
-                                <br>
-                                <span class="text-white mt-5 fs-3 ms-4"><strong>Beasiswa Tolikara 2</strong></span>
-                            </div>
-
-                            <div class="text-start align-self-end mt-5">
-                                <span>Pendaftaran : </span>
-                                <br>
-                                <span>dd/mm/yyyy s/d dd/yy/mmmm</span>
-                            </div>
-                        </div>
-
-                        <div class="mb-4 mt-5 text-end">
-                            <button class="btn bg-white text-oyen"><strong>Daftar Sekarang</strong></button>
-                        </div>
-                    </div>
+                    <img src="{{ asset("/assets/img/gambar-hero-2.jpg") }}" class="d-block w-100" alt="gambar-2">
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ asset("/assets/img/beasiswa-tolikara.jpeg") }}" class="d-block w-100"
-                         alt="beasiswa-tolikara">
-                    <div class="carousel-caption d-none d-md-block">
-                        <div class="ukuran-div-beasiswa p-5">
-                            <div class="text-start">
-                                <span class="text-white fs-4"><i>Telah Dibuka</i></span>
-                                <br>
-                                <span class="text-white mt-5 fs-3 ms-4"><strong>Beasiswa Tolikara 3</strong></span>
-                            </div>
-
-                            <div class="text-start align-self-end mt-5">
-                                <span>Pendaftaran : </span>
-                                <br>
-                                <span>dd/mm/yyyy s/d dd/yy/mmmm</span>
-                            </div>
-                        </div>
-
-                        <div class="mb-4 mt-5 text-end">
-                            <button class="tombol-kita text-oyen"><strong>Daftar Sekarang</strong></button>
-                        </div>
-                    </div>
+                    <img src="{{ asset("/assets/img/gambar-hero-3.jpg") }}" class="d-block w-100" alt="gambar-3">
                 </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
-                    data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+{{--                <span class="carousel-control-prev-icon" aria-hidden="true"></span>--}}
                 <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
-                    data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+{{--                <span class="carousel-control-next-icon" aria-hidden="true"></span>--}}
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
