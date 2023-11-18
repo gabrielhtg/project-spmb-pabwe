@@ -145,10 +145,10 @@
 
 <section id="informasi-umum" class="bg-informasi-umum container text-center">
     <div class="p-5">
-        <h2><strong>Informasi Umum</strong></h2>
+        <h1><strong>Informasi Umum</strong></h1>
 
         <div class="d-flex justify-content-center mt-5 flex-wrap gap-5" id="tampilan-data-informasi-umum">
-            <div class="w-25">
+            <div style="width: 18rem">
                 <div class="mt-4">
                     <i class="fa-solid fa-chalkboard-user card-img-top" style="font-size: 80px"></i>
                 </div>
@@ -159,9 +159,9 @@
                 </div>
             </div>
 
-            <div class="vertical-line"></div>
+            <div class="d-none d-md-inline vertical-line"></div>
 
-            <div class="w-25">
+            <div style="width: 18rem">
                 <div class="mt-4">
                     <i class="fa-solid fa-child-reaching card-img-top" style="font-size: 80px"></i>
                 </div>
@@ -172,9 +172,9 @@
                 </div>
             </div>
 
-            <div class="vertical-line"></div>
+            <div class="d-none d-md-inline vertical-line"></div>
 
-            <div class="w-25">
+            <div style="width: 18rem">
                 <div class="mt-4">
                     <i class="fa-solid fa-user-graduate" style="font-size: 80px"></i>
                 </div>
@@ -188,8 +188,11 @@
     </div>
 </section>
 
-<section id="mitra-kampus">
+<section id="mitra-kampus" class="container">
+    <div class="p-5">
+        <h1 class="text-center fw-bold">Mitra Kampus</h1>
 
+    </div>
 </section>
 
 @endsection
