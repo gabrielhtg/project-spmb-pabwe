@@ -1,0 +1,64 @@
+.fs-7 {
+    font-size: 0.9rem;
+}
+
+.fs-8 {
+    font-size: 0.8rem;
+}
+
+.fs-9 {
+    font-size: 0.7rem;
+}
+
+.bg-informasi-umum {
+    background-color: #D8DFEB;
+}
+
+.ukuran-div-beasiswa {
+    width: 500px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px); /* Adjust the blur value as needed */
+    background-color: rgba(255, 255, 255, 0.2); /* Adjust the background color and opacity as needed */
+    display: flex;
+    flex-direction: column;
+}
+
+.text-oyen {
+    color: #820D0D;
+}
+
+.tombol-kita {
+    padding: 7px 10px;
+    border-radius: 8px;
+    border-style: none;
+}
+
+.text-oyen:hover {
+    color: #820D0D;
+    background-color: #c2c2c2;
+}
+
+.section-footer {
+    width: 300px;
+}
+
+.logo-footer-1 {
+    width: 80px;
+}
+
+.logo-footer-2 {
+    width: 70px;
+}
+
+.logo-footer-1-kecil {
+    width: 60px;
+}
+
+.logo-footer-2-kecil {
+    width: 50px;
+}
+
+.border-logo {
+    border-style: solid;
+    border-radius: 50%;
+}

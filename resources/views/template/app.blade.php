@@ -6,7 +6,8 @@
     <title>Dashboard</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset("/assets/css/global.css") }}">
-    <link rel="stylesheet" href="{{ asset("/assets/css/welcome.css") }}">
+    <link rel="stylesheet" href="{{ asset("/assets/css/kel1.css") }}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="{{ asset("/assets/css/admisi.css") }}">
 </head>
 <body>
@@ -94,61 +95,131 @@
 
 {{--    foooter--}}
     <div class="container">
-        <footer class="py-5">
-            <div class="row">
-                <div class="col-6 col-md-2 mb-3">
-                    <h5>Section</h5>
+        <footer class="pt-5">
+            <div class="d-flex justify-content-evenly flex-wrap gap-3">
+
+{{--                tampilan phone--}}
+
+                <div class="section-footer d-md-none">
+                    <h5 class="fw-bold">About Us</h5>
                     <ul class="nav flex-column">
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+                        <li class="nav-item mb-2 text-muted">Institut Teknologi Del</li>
+
+                        <li class="nav-item mb-2 text-muted">
+                            Jl. Sisingamangaraja, Sitoluama Laguboti, Toba Sumatera Utara, Indonesia
+                        </li>
                     </ul>
                 </div>
 
-                <div class="col-6 col-md-2 mb-3">
-                    <h5>Section</h5>
+                <div class="section-footer d-md-none">
+                    <h5 class="fw-bold">Contact Us</h5>
                     <ul class="nav flex-column">
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+                        <li class="nav-item mb-2 ">
+                            <span class="text-muted">Website : </span>
+                            <a href="http://www.del.ac.id">http://www.del.ac.id</a>
+                        </li>
+
+                        <li class="nav-item mb-2 ">
+                            <span class="text-muted">Email : </span>
+                            <a href="mailto:info@del.ac.id">info@del.ac.id</a>
+                        </li>
+
+                        <li class="nav-item mb-2 ">
+                            <span class="text-muted">Email : </span>
+                            <a href="mailto:karir@del.ac.id">karir@del.ac.id</a>
+                        </li>
                     </ul>
                 </div>
 
-                <div class="col-6 col-md-2 mb-3">
-                    <h5>Section</h5>
+                <div class="section-footer d-md-none">
+                    <h5 class="fw-bold">Find Us On</h5>
                     <ul class="nav flex-column">
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+                        <li class="nav-item mb-2">
+                            <a href="https://www.instagram.com/it.del/?hl=id" class="nav-link p-0 text-muted">
+                                <i class='bx bxl-instagram'></i> Instagram
+                            </a>
+                        </li>
+
+                        <li class="nav-item mb-2">
+                            <a href="https://www.facebook.com/Institut.Teknologi.Del" class="nav-link p-0 text-muted">
+                                <i class='bx bxl-facebook'></i> Facebook
+                            </a>
+                        </li>
                     </ul>
                 </div>
 
-                <div class="col-md-5 offset-md-1 mb-3">
-                    <form>
-                        <h5>Subscribe to our newsletter</h5>
-                        <p>Monthly digest of what's new and exciting from us.</p>
-                        <div class="d-flex flex-column flex-sm-row w-100 gap-2">
-                            <label for="newsletter1" class="visually-hidden">Email address</label>
-                            <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
-                            <button class="btn btn-primary" type="button">Subscribe</button>
-                        </div>
-                    </form>
+                <div class="section-footer d-flex justify-content-center mt-3 d-md-none">
+                    <div class="d-flex gap-3">
+                        <img class="logo-footer-1-kecil" src="{{ asset("/assets/img/logo-yayasan-del.png") }}" alt="Logo Yayasan Del">
+                        <img class="logo-footer-2-kecil" src="{{ asset("/assets/img/Logo Institut Teknologi Del.png") }}" alt="Logo Yayasan Del">
+                    </div>
                 </div>
+
+{{--                tampilan phone end--}}
+
+{{--                tampilan desktop--}}
+
+                <div class="d-none d-md-inline w-25">
+                    <h5 class="fw-bold">About Us</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2 text-muted">Institut Teknologi Del</li>
+
+                        <li class="nav-item mb-2 text-muted">
+                            Jl. Sisingamangaraja, Sitoluama Laguboti, Toba Sumatera Utara, Indonesia
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="d-none d-md-inline w-25">
+                    <h5 class="fw-bold">Contact Us</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2 ">
+                            <span class="text-muted">Website : </span>
+                            <a href="http://www.del.ac.id">http://www.del.ac.id</a>
+                        </li>
+
+                        <li class="nav-item mb-2 ">
+                            <span class="text-muted">Email : </span>
+                            <a href="mailto:info@del.ac.id">info@del.ac.id</a>
+                        </li>
+
+                        <li class="nav-item mb-2 ">
+                            <span class="text-muted">Email : </span>
+                            <a href="mailto:karir@del.ac.id">karir@del.ac.id</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="d-none d-md-inline">
+                    <h5 class="fw-bold">Find Us On</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2">
+                            <a href="https://www.instagram.com/it.del/?hl=id" class="nav-link p-0">
+                                <span><i class='bx bxl-instagram'></i></span> Instagram
+                            </a>
+                        </li>
+
+                        <li class="nav-item mb-2">
+                            <a href="https://www.facebook.com/Institut.Teknologi.Del" class="nav-link p-0">
+                                <i class='bx bxl-facebook'></i> Facebook
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="d-none d-md-inline d-flex align-items-center">
+                    <div class="d-flex gap-3">
+                        <img class="logo-footer-1-kecil" src="{{ asset("/assets/img/logo-yayasan-del.png") }}" alt="Logo Yayasan Del">
+                        <img class="logo-footer-2-kecil" src="{{ asset("/assets/img/Logo Institut Teknologi Del.png") }}" alt="Logo Yayasan Del">
+                    </div>
+                </div>
+{{--                tampilan desktop end--}}
             </div>
 
-            <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
-                <p>© 2022 Company, Inc. All rights reserved.</p>
-                <ul class="list-unstyled d-flex">
-                    <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"></use></svg></a></li>
-                    <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"></use></svg></a></li>
-                    <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
-                </ul>
+            <hr>
+
+            <div class="d-flex justify-content-center">
+                <p>&copy; SPMB Institut Teknologi Del</p>
             </div>
         </footer>
     </div>
