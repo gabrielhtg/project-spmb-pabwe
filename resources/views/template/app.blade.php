@@ -90,8 +90,9 @@
         </div>
     </nav>
 {{--    navbar end--}}
-
-    @yield('isi-halaman')
+    <main>
+        @yield('isi-halaman')
+    </main>
 
 {{--    foooter--}}
     <div class="container">
