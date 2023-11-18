@@ -62,3 +62,16 @@
     border-style: solid;
     border-radius: 50%;
 }
+
+.margin-hero-title {
+    margin-bottom: 180px;
+}
+
+.blur-image {
+    filter: blur(2px);
+}
+
+.vertical-line {
+    width: 1px;
+    background-color: black;
+}
