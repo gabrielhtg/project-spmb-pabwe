@@ -28,10 +28,7 @@
 }
 
 .tombol-kita {
-    padding-right: 10px;
-    padding-left: 10px;
-    padding-top: 7px;
-    padding-bottom: 7px;
+    padding: 7px 10px;
     border-radius: 8px;
     border-style: none;
 }
@@ -41,3 +38,27 @@
     background-color: #c2c2c2;
 }
 
+.section-footer {
+    width: 300px;
+}
+
+.logo-footer-1 {
+    width: 80px;
+}
+
+.logo-footer-2 {
+    width: 70px;
+}
+
+.logo-footer-1-kecil {
+    width: 60px;
+}
+
+.logo-footer-2-kecil {
+    width: 50px;
+}
+
+.border-logo {
+    border-style: solid;
+    border-radius: 50%;
+}
