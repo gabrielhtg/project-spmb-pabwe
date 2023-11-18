@@ -146,6 +146,9 @@
 <section id="informasi-umum" class="bg-informasi-umum container text-center">
     <div class="p-5">
         <h1><strong>Informasi Umum</strong></h1>
+        <div class="d-flex justify-content-center mb-4">
+            <div id="underline-line-informasi-umum" class=" bg-primary"></div>
+        </div>
 
         <div class="d-flex justify-content-center mt-5 flex-wrap gap-5" id="tampilan-data-informasi-umum">
             <div style="width: 18rem">
@@ -153,7 +156,7 @@
                     <i class="fa-solid fa-chalkboard-user card-img-top" style="font-size: 80px"></i>
                 </div>
                 <div class="card-body">
-                    <span id="jumlah-dosen" class="fs-2 text-primary">9999+</span>
+                    <span id="jumlah-dosen" class="fs-2 text-primary fw-bold">9999+</span>
                     <br>
                     <span class="fs-5"><strong>Dosen</strong></span>
                 </div>
@@ -166,7 +169,7 @@
                     <i class="fa-solid fa-child-reaching card-img-top" style="font-size: 80px"></i>
                 </div>
                 <div class="card-body">
-                    <span id="jumlah-mahasiswa" class="fs-2 text-primary">9999+</span>
+                    <span id="jumlah-mahasiswa" class="fs-2 text-primary fw-bold">9999+</span>
                     <br>
                     <span class="fs-5"><strong>Mahasiswa</strong></span>
                 </div>
@@ -179,7 +182,7 @@
                     <i class="fa-solid fa-user-graduate" style="font-size: 80px"></i>
                 </div>
                 <div class="card-body">
-                    <span id="jumlah-dosen" class="fs-2 text-primary">9999+</span>
+                    <span id="jumlah-dosen" class="fs-2 text-primary fw-bold">9999+</span>
                     <br>
                     <span class="fs-5"><strong>Alumni</strong></span>
                 </div>
@@ -191,7 +194,36 @@
 <section id="mitra-kampus" class="container">
     <div class="p-5">
         <h1 class="text-center fw-bold">Mitra Kampus</h1>
+        <div class="d-flex justify-content-center mb-4">
+            <div id="underline-line-mitra" class="bg-primary"></div>
+        </div>
 
+        <div class="d-flex justify-content-center flex-wrap gap-4 align-items-center">
+            <div style="width: 18rem;">
+                    <img src="{{ asset("/assets/img/logo-huawei.png") }}" class="card-img-top" alt="logo-huawei">
+            </div>
+
+            <div style="width: 18rem;">
+                    <img src="{{ asset("/assets/img/logo-apple.png") }}" class="card-img-top" alt="logo-huawei">
+            </div>
+
+            <div style="width: 18rem;">
+                    <img src="{{ asset("/assets/img/logo-samsung.png") }}" class="card-img-top" alt="logo-huawei">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="testimoni" class="container d-flex justify-content-center flex-wrap bg-informasi-umum">
+    <div class="card" style="width: 18rem;">
+        <div class="image-container">
+            <img src="{{ asset("/assets/img/profil.jpg") }}" class="cropped-image" alt="foto-profil">
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
     </div>
 </section>
 
