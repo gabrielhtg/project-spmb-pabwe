@@ -1,0 +1,19 @@
+.mt-6 {
+    margin-top: 300px;
+}
+
+.pt-6 {
+    padding-top: 150px;
+}
+
+.gambar {
+    background-color: #47A5D4;
+    width: 532px;
+    height: 276px;
+}
+
+.tombol-admisi {
+    padding: 0 30px;
+    background-color: #47A5D4;
+    border-style: none;
+}
