@@ -14,7 +14,7 @@
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="{{ asset("/assets/img/hero-compressed.jpeg") }}" class="d-block w-100"
+                    <img src="{{ asset("/assets/img/hero-compressed.jpg") }}" class="d-block w-100"
                          alt="beasiswa-tolikara">
                     <div class="carousel-caption d-none d-md-block">
                         <div class="ukuran-div-beasiswa p-5">
