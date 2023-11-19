@@ -214,17 +214,88 @@
     </div>
 </section>
 
-<section id="testimoni" class="container d-flex justify-content-center flex-wrap bg-informasi-umum">
-    <div class="card" style="width: 18rem;">
-        <div class="image-container">
-            <img src="{{ asset("/assets/img/profil.jpg") }}" class="cropped-image" alt="foto-profil">
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-    </div>
+<section id="testimoni" class="container bg-informasi-umum p-5">
+    <h1 class="text-center fw-bold mb-5">Testimoni</h1>
+
+   <div class="d-flex justify-content-center flex-wrap  gap-5">
+       <div class="card" style="width: 18rem;">
+           <div class="bg-primary bg-image-container card-img-top"></div>
+           <div class="d-flex justify-content-center">
+               <div class="image-container">
+                   <img src="{{ asset("/assets/img/profil.jpg") }}" class="cropped-image" alt="foto-profil">
+               </div>
+           </div>
+           <div class="card-body">
+               <h5 class="card-title fw-bold   ">Gabriel Hutagalung</h5>
+               <div id="tempat-pill" class="d-flex gap-1 mb-4">
+                   <div class="pill d-inline text-muted">
+                       Alumni
+                   </div>
+
+                   <div class="pill d-inline text-muted">
+                       2021
+                   </div>
+
+                   <div class="pill d-inline text-muted">
+                       S1 Informatika
+                   </div>
+               </div>
+               <p class="card-text fs-7">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium architecto atque eligendi enim fugiat iure quia, quo sunt tempora tempore.</p>
+           </div>
+       </div>
+
+       <div class="card" style="width: 18rem;" >
+           <div class="bg-primary bg-image-container card-img-top"></div>
+           <div class="d-flex justify-content-center">
+               <div class="image-container">
+                   <img src="{{ asset("/assets/img/profil.jpg") }}" class="cropped-image" alt="foto-profil">
+               </div>
+           </div>
+           <div class="card-body">
+               <h5 class="card-title fw-bold   ">Gabriel Hutagalung</h5>
+               <div id="tempat-pill" class="d-flex gap-1 mb-4">
+                   <div class="pill d-inline text-muted">
+                       Alumni
+                   </div>
+
+                   <div class="pill d-inline text-muted">
+                       2021
+                   </div>
+
+                   <div class="pill d-inline text-muted">
+                       S1 Informatika
+                   </div>
+               </div>
+               <p class="card-text fs-7">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium architecto atque eligendi enim fugiat iure quia, quo sunt tempora tempore.</p>
+           </div>
+       </div>
+
+       <div class="card" style="width: 18rem;" >
+           <div class="bg-primary bg-image-container card-img-top"></div>
+           <div class="d-flex justify-content-center">
+               <div class="image-container">
+                   <img src="{{ asset("/assets/img/profil.jpg") }}" class="cropped-image" alt="foto-profil">
+               </div>
+           </div>
+           <div class="card-body">
+               <h5 class="card-title fw-bold   ">Gabriel Hutagalung</h5>
+               <div id="tempat-pill" class="d-flex gap-1 mb-4">
+                   <div class="pill d-inline text-muted">
+                       Alumni
+                   </div>
+
+                   <div class="pill d-inline text-muted">
+                       2021
+                   </div>
+
+                   <div class="pill d-inline text-muted">
+                       S1 Informatika
+                   </div>
+               </div>
+               <p class="card-text fs-7">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium architecto atque eligendi enim fugiat iure quia, quo sunt tempora tempore.</p>
+           </div>
+       </div>
+   </div>
 </section>
 
 @endsection
