@@ -25,9 +25,23 @@
     transition: all 0.3s ease;
 }
 
+.persyaratan-khusus-line-mobile {
+    background-color: black;
+    height: 1px;
+    width: 160px;
+    transition: all 0.3s ease;
+}
+
 .biaya-studi-line {
     background-color: black;
     height: 1px;
     width: 140px;
+    transition: all 0.3s ease;
+}
+
+.biaya-studi-line-mobile {
+    background-color: black;
+    height: 1px;
+    width: 100px;
     transition: all 0.3s ease;
 }

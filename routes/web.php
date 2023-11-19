@@ -25,4 +25,12 @@ Route::get('/admisi/sarjana', function () {
     return view('admisi.sarjana');
 });
 
+Route::get('/admisi/diploma', function () {
+    return view('admisi.diploma');
+});
+
+Route::get('/admisi/sarjanaterapan', function () {
+    return view('admisi.sarjanaTerapan');
+});
+
 

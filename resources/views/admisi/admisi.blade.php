@@ -44,7 +44,7 @@
                     <div class="w-50">
                         <h1>Sarjana Terapan</h1>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis corporis dicta dolore dolores eveniet exercitationem illo iste laborum nobis non nostrum, optio, porro quas sit tempore unde veniam veritatis vero. Aliquam architecto dolorum laboriosam, molestiae natus obcaecati quaerat quam totam?</p>
-                        <a href="#">Lihat Selengkapnya...</a>
+                        <a href="/admisi/sarjanaterapan">Lihat Selengkapnya...</a>
                     </div>
                 </div>
 
@@ -52,7 +52,7 @@
                     <div class="w-50">
                         <h1>Diploma 3</h1>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis corporis dicta dolore dolores eveniet exercitationem illo iste laborum nobis non nostrum, optio, porro quas sit tempore unde veniam veritatis vero. Aliquam architecto dolorum laboriosam, molestiae natus obcaecati quaerat quam totam?</p>
-                        <a href="#">Lihat Selengkapnya...</a>
+                        <a href="/admisi/diploma">Lihat Selengkapnya...</a>
                     </div>
                     <div class="w-50 d-flex justify-content-end">
                         <div class="gambar d-flex justify-content-center align-items-center" >
