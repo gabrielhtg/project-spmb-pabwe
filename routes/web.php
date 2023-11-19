@@ -21,4 +21,8 @@ Route::get('/admisi', function () {
     return view('admisi.admisi');
 });
 
+Route::get('/admisi/sarjana', function () {
+    return view('admisi.sarjana');
+});
+
 

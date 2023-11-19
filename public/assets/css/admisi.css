@@ -17,3 +17,17 @@
     background-color: #47A5D4;
     border-style: none;
 }
+
+.persyaratan-khusus-line {
+    background-color: black;
+    height: 1px;
+    width: 230px;
+    transition: all 0.3s ease;
+}
+
+.biaya-studi-line {
+    background-color: black;
+    height: 1px;
+    width: 140px;
+    transition: all 0.3s ease;
+}
