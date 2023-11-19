@@ -54,7 +54,8 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" aria-current="page" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Admisi</a>
                             <ul class="dropdown-menu">
-                                <li><a href="#" class="dropdown-item">Test</a></li>
+                                <li><a href="/admisi" class="dropdown-item">Jenjang Pendidikan</a></li>
+                                <li><a href="#" class="dropdown-item">Jalur Pendaftaran</a></li>
                             </ul>
                         </li>
 
@@ -228,5 +229,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/965a381e3a.js" crossorigin="anonymous"></script>
+    <script src="{{ asset("/assets/js/kel4.js") }}"></script>
 </body>
 </html>
