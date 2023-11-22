@@ -6,14 +6,12 @@
     padding-top: 150px;
 }
 
-.gambar {
-    background-color: #47A5D4;
-    width: 532px;
-    height: 276px;
+.card-admisi {
+    width: 900px;
 }
 
 .tombol-admisi {
-    padding: 0 30px;
+    padding: 5px 30px;
     background-color: #47A5D4;
     border-style: none;
 }
@@ -45,3 +43,16 @@
     width: 100px;
     transition: all 0.3s ease;
 }
+
+.gambar {
+    width: 500px;
+    height: 280px;
+    background-color: #148ce4;
+}
+
+.garis-biaya {
+    width: 70px;
+    height: 1px;
+    background-color: #47A5D4;
+}
+
