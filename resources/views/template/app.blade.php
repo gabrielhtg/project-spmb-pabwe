@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ asset("/assets/css/global.css") }}">
     <link rel="stylesheet" href="{{ asset("/assets/css/welcome.css") }}">
     <link rel="stylesheet" href="{{ asset("/assets/css/admisi.css") }}">
+    <link rel="stylesheet" href="{{ asset("/assets/css/fasilitas.css") }}">
 </head>
 <body>
 {{--    navbar start --}}
@@ -75,6 +76,10 @@
 
                         <li class="nav-item">
                             <a class="nav-link" href="#">FAQ</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ Route('fasilitas.asrama')}}">Fasilitas</a>
                         </li>
                     </ul>
                 </div>
