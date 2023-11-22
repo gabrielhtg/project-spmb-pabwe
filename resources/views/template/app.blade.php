@@ -97,6 +97,8 @@
 
 {{--    foooter--}}
     <div class="container">
+        <hr>
+
         <footer class="pt-5">
             <div class="d-flex justify-content-evenly flex-wrap gap-3">
 
