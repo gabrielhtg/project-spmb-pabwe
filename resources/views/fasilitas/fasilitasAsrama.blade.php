@@ -19,7 +19,7 @@
         <div class="container pt-5" id="asrama-pniel">
             <div class="row">
                 <div class="col-md-6">
-                <img src="{{ asset('/assets/img/asrama-pniel.jpeg') }}" class="img-fluid custom-image" alt="asrama-pniel">
+                <img src="{{ asset('/assets/img/fasilitas/asrama-pniel.jpeg') }}" class="img-fluid custom-image" alt="asrama-pniel">
                 </div>
 
                 <div class="col-md-6 mx-auto d-flex flex-column my-auto">
@@ -45,7 +45,7 @@
         <div class="container pt-5" id="asrama-jati">
             <div class="row">
                 <div class="col-md-6">
-                <img src="{{ asset('/assets/img/asrama-jati.jpeg') }}" class="img-fluid" alt="asrama-jati">
+                <img src="{{ asset('/assets/img/fasilitas/asrama-jati.jpeg') }}" class="img-fluid" alt="asrama-jati">
                 </div>
 
                 <div class="col-md-6 mx-auto d-flex flex-column my-auto">
@@ -75,7 +75,7 @@
         <div class="container pt-5" id="rusun-2">
             <div class="row">
                 <div class="col-md-6">
-                    <img src="{{ asset('/assets/img/rusun-2.jpeg') }}" class="img-fluid" alt="rusun-2">
+                    <img src="{{ asset('/assets/img/fasilitas/rusun-2.jpeg') }}" class="img-fluid" alt="rusun-2">
                 </div>
 
                 <div class="col-md-6 mx-auto d-flex flex-column my-auto">
