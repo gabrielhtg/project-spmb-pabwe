@@ -252,7 +252,7 @@
                </div>
            </div>
            <div class="card-body">
-               <h5 class="card-title fw-bold   ">Gabriel Hutagalung</h5>
+               <h5 class="card-title fw-bold">Gabriel Hutagalung</h5>
                <div id="tempat-pill" class="d-flex gap-1 mb-4">
                    <div class="pill d-inline text-muted">
                        Alumni
