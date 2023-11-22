@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset("/assets/css/kel1.css") }}">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="{{ asset("/assets/css/admisi.css") }}">
+    <link rel="stylesheet" href="{{ asset("/assets/css/fasilitas.css") }}">
 </head>
 <body>
 {{--    navbar start --}}
@@ -77,6 +78,10 @@
 
                         <li class="nav-item">
                             <a class="nav-link" href="#">FAQ</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ Route('fasilitas.asrama')}}">Fasilitas</a>
                         </li>
                     </ul>
                 </div>
