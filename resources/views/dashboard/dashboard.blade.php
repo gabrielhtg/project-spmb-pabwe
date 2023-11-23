@@ -46,7 +46,16 @@
             </div>
         </div>
     </div>
+</section>
 
+<section class="container p-5 text-center" id="section_akreditasi">
+    <h1 class="text-center fw-bold">Akreditasi Kampus</h1>
+
+    <div class="text-center pt-4">
+        <span id="akreditasi" class="fw-bold d-block lh-1" style="font-size: 10rem">B</span>
+        <span id="akreditasi_lengkap" class="d-block lh-1" style="font-size: 3rem">BAIK</span>
+        <span id="lembaga_akreditasi" class="d-block lh-1">BAN-PT</span>
+    </div>
 </section>
 
 <section class="container">
@@ -191,27 +200,37 @@
     </div>
 </section>
 
-<section id="mitra-kampus" class="container">
-    <div class="p-5">
+<section id="mitra-kampus" class="p-5 container d-flex justify-content-center flex-column align-items-center">
+    <div>
         <h1 class="text-center fw-bold">Mitra Kampus</h1>
         <div class="d-flex justify-content-center mb-4">
             <div id="underline-line-mitra" class="bg-primary"></div>
         </div>
 
-        <div class="d-flex justify-content-center flex-wrap gap-4 align-items-center">
-            <div style="width: 18rem;">
+        <div class="d-flex flex-wrap justify-content-center w-100 gap-4">
+            <div class="card border-0 p-2 d-flex align-items-center justify-content-center" style="width: 12rem;">
                     <img src="{{ asset("/assets/img/logo-huawei.png") }}" class="card-img-top" alt="logo-huawei">
             </div>
 
-            <div style="width: 18rem;">
+            <div class="card border-0 p-2 d-flex align-items-center justify-content-center" style="width: 12rem;">
                     <img src="{{ asset("/assets/img/logo-apple.png") }}" class="card-img-top" alt="logo-huawei">
             </div>
 
-            <div style="width: 18rem;">
+            <div class="card border-0 p-2 d-flex align-items-center justify-content-center" style="width: 12rem;">
                     <img src="{{ asset("/assets/img/logo-samsung.png") }}" class="card-img-top" alt="logo-huawei">
+            </div>
+
+            <div class="card border-0 p-2 d-flex align-items-center justify-content-center" style="width: 12rem;">
+                <img src="{{ asset("/assets/img/bank_jenius.png") }}" class="card-img-top" alt="logo-huawei">
+            </div>
+
+            <div class="card border-0 p-2 d-flex align-items-center justify-content-center" style="width: 12rem;">
+                <img src="{{ asset("/assets/img/bank_mandiri.png") }}" class="card-img-top" alt="logo-huawei">
             </div>
         </div>
     </div>
+
+    <button class="btn btn-primary mt-5">See More</button>
 </section>
 
 <section id="testimoni" class="container bg-informasi-umum p-5">
@@ -278,7 +297,7 @@
                </div>
            </div>
            <div class="card-body">
-               <h5 class="card-title fw-bold   ">Gabriel Hutagalung</h5>
+               <h5 class="card-title fw-bold">Gabriel Hutagalung</h5>
                <div id="tempat-pill" class="d-flex gap-1 mb-4">
                    <div class="pill d-inline text-muted">
                        Alumni

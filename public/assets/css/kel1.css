@@ -128,3 +128,8 @@
     border-radius: 10px;
     font-size: 12px;
 }
+
+.splide__slide img {
+    width: 100%;
+    height: auto;
+}
