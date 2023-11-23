@@ -2,7 +2,7 @@
 
 <main class="mx-auto">
     <section>
-        <img src="{{ asset('/assets/img/fasilitas/header-fasilitas.jpeg') }}" class="img-fluid d-block w-100" alt="header-fasilitas">
+        <img src="{{ asset('/assets/img/fasilitas/header-fasilitas.jpeg') }}" class="img-fluid d-block w-60" alt="header-fasilitas">
     </section>
 
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
