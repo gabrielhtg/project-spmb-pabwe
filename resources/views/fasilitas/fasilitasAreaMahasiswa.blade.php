@@ -20,15 +20,72 @@
         <h3>Ruangan Kelas</h3>
         <div class="lh-base text-break text-justify custom-justified-text align-items-center">
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, nemo. Dignissimos libero, neque porro illum dolore mollitia veniam nisi ipsum, cumque impedit doloribus. Velit facere maxime totam, iusto corporis sapiente.
-            Nemo hic id at nulla rerum modi sunt consequatur! Saepe mollitia perspiciatis fugit quae pariatur quia in sit, voluptatibus rem enim vitae nihil error similique debitis reiciendis officia blanditiis culpa.
-            Aliquam eligendi in natus id asperiores deserunt modi odit veniam dolores. Tempora quod dolorum quidem tenetur blanditiis, perspiciatis aliquam harum, officiis, quaerat minus commodi cumque? Cupiditate aliquid velit accusantium dolore.
-            Numquam, quod dignissimos. Eos rerum molestias distinctio, iure, nemo saepe impedit mollitia expedita quibusdam accusantium, ipsum sunt qui harum recusandae id. Doloremque perferendis quibusdam doloribus earum reprehenderit corrupti rerum! Omnis!
-            Ea ullam at ratione veniam dolore esse neque reiciendis, adipisci ut repellendus amet, perspiciatis quas? Quas et accusantium, itaque at rem possimus quod non nisi saepe, repudiandae eligendi. Libero, ipsum.
+          Institut Teknologi Del menyediakan ruangan kelas sebagai sarana utama belajar bagi mahasiswa.
+          IT Del menyediakan smart classroom untuk mendukung kegiatan belajar mengajar mahasiswa.
+          Ruang Kelas juga disediakan Idea Hub dan proyektor sebagai alat pendukung pembelajaran.
           </p>
         </div>
       </div>
     </div>
   </div>
+
+  <div class="container pt-5" id="perpustakaan">
+    <div class="row">
+      <div class="col-md-6">
+        <img src="{{ asset('/assets/img/fasilitas/asrama-jati.jpeg') }}" class="img-fluid custom-image" alt="lapangan-hijau">
+      </div>
+
+      <div class="com-md-6 mx-auto d-flex flex-coloumn my-auto">
+        <h3>Ruangan Kelas</h3>
+        <div class="lh-base text-break text-justify custom-justified-text align-items-center">
+          <p>
+          Kampus juga menyediakan perpustakaan bagi mahasiswa. Buku yang tersedia di perpustakaan sudah hampir berjumlah +/- 2000 buah.
+          Perpustakaan dapat digunakan oleh mahasiswa maupun staff IT Del sebagai sarana belajar maupun berdiskusi.
+          Perpustakaan menyediakan tempat belajar, BI Corner, ruang diskusi, dan ruang audiovisual.
+          Perpustakaan dibuka mulai pukul 08:00 - 18:00 WIB.
+          Anda dapat mengakses perpustakaan online (OLIS) melalui <a href="https://sipp.del.ac.id/">tautan ini.</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container pt-5" id="opentheater">
+    <div class="row">
+      <div class="col-md-6">
+        <img src="{{ asset('/assets/img/fasilitas/asrama-jati.jpeg') }}" class="img-fluid custom-image" alt="open-theater">
+      </div>
+
+      <div class="com-md-6 mx-auto d-flex flex-coloumn my-auto">
+        <h3>Open Theater</h3>
+        <div class="lh-base text-break text-justify custom-justified-text align-items-center">
+          <p>
+          Open Theater atau biasa disingkat dengan OT merupakan fasilitas yang disediakan untuk seluruh civitas IT Del untuk berkumpul bersama. 
+          OT biasa digunakan bersama untuk hari hari besar seperti saat wisuda, perayaan paskah, ataupun kegiatan lainnya. 
+          Di hari biasa, OT dapat digunakan oleh mahasiswa untuk sarana berdiskusi dan berkumpul. Dari OT, kita bisa melihat pemandangan Danau Toba.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container pt-5" id="auditorium">
+    <div class="row">
+      <div class="col-md-6">
+        <img src="{{ asset('/assets/img/fasilitas/asrama-jati.jpeg') }}" class="img-fluid custom-image" alt="open-theater">
+      </div>
+
+      <div class="com-md-6 mx-auto d-flex flex-coloumn my-auto">
+        <h3>Open Theater</h3>
+        <div class="lh-base text-break text-justify custom-justified-text align-items-center">
+          <p>
+          Auditorium merupakan bangunan yang dirancang untuk pertemuan seperti kuliah umum, kuliah bersama, ataupun seminar.
+          Auditorium juga bisa dipakai untuk acara-acara fakultas maupun prodi, tempat ibadah, dan tempat acara lainnya.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </section>
 @endsection
