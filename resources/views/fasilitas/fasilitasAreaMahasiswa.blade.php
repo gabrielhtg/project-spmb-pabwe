@@ -26,7 +26,45 @@
                     </div>
                 </div>
             </div>
-        </div>
+          </div>
+        
+          <div class="container pt-5" id="perpustakaan">
+            <div class="row">
+                <div class="col-md-6">
+                <img src="{{ asset('/assets/img/fasilitas/asrama-pniel.jpeg') }}" class="img-fluid custom-image" alt="asrama-pniel">
+                </div>
+
+                <div class="col-md-6 mx-auto d-flex flex-column my-auto">
+                    <h3>Perpustakaan</h3>
+                    <div class="lh-base text-break text-justify custom-justified-text align-items-center">
+                        <p>
+                        IKampus juga menyediakan perpustakaan bagi mahasiswa. Buku yang tersedia di perpustakaan sudah hampir berjumlah +/- 2000 buah.  Perpustakaan dapat digunakan oleh mahasiswa maupun staff IT Del sebagai sarana belajar maupun berdiskusi.
+                        Perpustakaan menyediakan tempat belajar, BI Corner, ruang diskusi, dan ruang audiovisual.
+                        Perpustakaan dibuka mulai pukul 08:00 - 18:00 WIB. Anda dapat mengakses perpustakaan online (OLIS) melalui <a href="https://sipp.del.ac.id/">tautan ini.</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+          </div>  
+          
+          <div class="container pt-5" id="opentheater">
+            <div class="row">
+                <div class="col-md-6">
+                <img src="{{ asset('/assets/img/fasilitas/asrama-pniel.jpeg') }}" class="img-fluid custom-image" alt="asrama-pniel">
+                </div>
+
+                <div class="col-md-6 mx-auto d-flex flex-column my-auto">
+                    <h3>Open Theater</h3>
+                    <div class="lh-base text-break text-justify custom-justified-text align-items-center">
+                        <p>
+                        Open Theater atau biasa disingkat dengan OT merupakan fasilitas yang disediakan untuk seluruh civitas IT Del untuk berkumpul bersama. 
+                        OT biasa digunakan bersama untuk hari hari besar seperti saat wisuda, perayaan paskah, ataupun kegiatan lainnya. 
+                        Di hari biasa, OT dapat digunakan oleh mahasiswa untuk sarana berdiskusi dan berkumpul. Dari OT, kita bisa melihat pemandangan Danau Toba.
+                        </p>
+                    </div>
+                </div>
+            </div>
+          </div>
 
 </section>
 @endsection
