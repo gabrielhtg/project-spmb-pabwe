@@ -8,11 +8,9 @@
         </div>
         <div class="custom-justified-text align-items-center pt-3">
           <p>
-            Kampus IT Del memiliki fasilitas dibagian olahraga dan kesehatan. Fasilitas dibagian olahraga terdapat beberapa lapangan yang dipakai 
+            Kampus IT Del memiliki fasilitas dibagian olahraga dan kesehatan. Fasilitas dibagian olahraga terdapat beberapa lapangan yang dipakai untuk melakukan acara formal maupun non formal. Mahasiwa juga menggunakan lapangan untuk acara himpunan seperti temu ramah dan welcoming party.
+            Untuk fasilitas kesehatan terdapat klinik yang juga memiliki tenaga kerja dokter serta perawat yang profesional. 
           </p>
-            <p>Sejak didirikan tahun 2001, IT Del sudah mengharuskan mahasiswanya untuk tinggal diasrama tanpa terkecuali.  
-            Tujuannya adalah agar menunjang keberhasilan pencapaian tujuan pendidikan mahasiswanya. Asrama di IT Del juga merupakan sarana pendidikan dalam pembentukan karakter mahasiswanya.
-            IT Del selalu berusaha menciptakan manusia yang tidak hanya pintar tapi juga yang MarTuhan, Maroha dan Marbisuk (Berketuhanan, Berperasaan dan Bijaksana).</p>
         </div>
         
         <div class="container pt-5" id="lapangan hijau">
