@@ -33,10 +33,10 @@
             </div>
         </div>
 
-        <div class="container pt-5" id="lab-mr">
+        <div class="container pt-5" id="lab-fti">
             <div class="row">
                 <div class="col-md-6">
-                <img src="{{ asset('/assets/img/fasilitas/lab-mr.jpg') }}" class="img-fluid" alt="lab-mr">
+                <img src="{{ asset('/assets/img/fasilitas/lab-fti.jpg') }}" class="img-fluid" alt="lab-fti">
                 </div>
 
                 <div class="col-md-6 mx-auto d-flex flex-column my-auto">
@@ -52,26 +52,19 @@
             </div>
         </div>
 
-        <div class="container pt-5" id="rusun-2">
+        <div class="container pt-5" id="lab-fb">
             <div class="row">
                 <div class="col-md-6">
-                    <img src="{{ asset('/assets/img/fasilitas/rusun-2.jpeg') }}" class="img-fluid" alt="rusun-2">
+                    <img src="{{ asset('/assets/img/fasilitas/lab-fb.jpg') }}" class="img-fluid" alt="lab-fb">
                 </div>
 
                 <div class="col-md-6 mx-auto d-flex flex-column my-auto">
-                    <h3>Rusun 2</h3>
+                    <h3>Laboratorium FB</h3>
                     <div class="lh-base text-break text-justify custom-justified-text align-items-center">
                         <p>
-                        is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
-                        </p>
-                        <p>
-                            <span class="fw-bold">Lokasi:</span> Institut Teknologi Del, Jl. Sisingamangaraja, Sitoluama, Laguboti, Toba Samosir, Sumatera Utara, Indonesia
-                        </p>
-                        <p>Pembina Asrama:
-                            <ol>
-                                <li>Irianto</li>
-                                <li>Herman</li>
-                            </ol>
+                          Laboratorium FB menyediakan peralatan berupa alat-alat dan bahan-bahan yang akan membantu mahasiswa/i 
+                          FB dalam melakukan experimen yang dibutuhkan dalam proses perkuliahan. Dengan laboratorium ini juga, 
+                          mahasiswa dapat melakukan pelatihan mandiri untuk mengerjakan proyek yang memerlukan experimen pada laboratorium.
                         </p>
                     </div>
                 </div>
