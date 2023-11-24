@@ -85,8 +85,9 @@
                         </li>
                     </ul>
                 </div>
-                <a class="d-none d-xl-inline">
-                    <button class="btn btn-primary">Pengumuman SPMB</button>
+                <a class="d-none d-xl-inline" href="{{ route('pengumuman') }}">
+                    <button class="btn btn-primary"
+                            >Pengumuman SPMB</button>
                 </a>
                 <a class="d-xl-none text-primary text-decoration-none">
                     <span><strong>Pengumuman SPMB</strong></span>
