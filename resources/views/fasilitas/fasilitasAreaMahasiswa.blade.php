@@ -50,7 +50,7 @@
           <div class="container pt-5" id="opentheater">
             <div class="row">
                 <div class="col-md-6">
-                <img src="{{ asset('/assets/img/fasilitas/asrama-pniel.jpeg') }}" class="img-fluid custom-image" alt="asrama-pniel">
+                <img src="{{ asset('/assets/img/fasilitas/opentheater.jpeg') }}" class="img-fluid custom-image" alt="asrama-pniel">
                 </div>
 
                 <div class="col-md-6 mx-auto d-flex flex-column my-auto">
@@ -60,6 +60,60 @@
                         Open Theater atau biasa disingkat dengan OT merupakan fasilitas yang disediakan untuk seluruh civitas IT Del untuk berkumpul bersama. 
                         OT biasa digunakan bersama untuk hari hari besar seperti saat wisuda, perayaan paskah, ataupun kegiatan lainnya. 
                         Di hari biasa, OT dapat digunakan oleh mahasiswa untuk sarana berdiskusi dan berkumpul. Dari OT, kita bisa melihat pemandangan Danau Toba.
+                        </p>
+                    </div>
+                </div>
+            </div>
+          </div>
+
+          <div class="container pt-5" id="auditorium">
+            <div class="row">
+                <div class="col-md-6">
+                <img src="{{ asset('/assets/img/fasilitas/auditorium.jpeg') }}" class="img-fluid custom-image" alt="asrama-pniel">
+                </div>
+
+                <div class="col-md-6 mx-auto d-flex flex-column my-auto">
+                    <h3>Auditorium</h3>
+                    <div class="lh-base text-break text-justify custom-justified-text align-items-center">
+                        <p>
+                        Auditorium merupakan bangunan yang dirancang untuk pertemuan seperti kuliah umum, kuliah bersama, ataupun seminar.
+                        Auditorium juga bisa dipakai untuk acara-acara fakultas maupun prodi, tempat ibadah, dan tempat acara lainnya.
+                        </p>
+                    </div>
+                </div>
+            </div>
+          </div>
+
+          <div class="container pt-5" id="saung">
+            <div class="row">
+                <div class="col-md-6">
+                <img src="{{ asset('/assets/img/fasilitas/saung.jpeg') }}" class="img-fluid custom-image" alt="asrama-pniel">
+                </div>
+
+                <div class="col-md-6 mx-auto d-flex flex-column my-auto">
+                    <h3>Saung</h3>
+                    <div class="lh-base text-break text-justify custom-justified-text align-items-center">
+                        <p>
+                        Saung merupakan fasilitas yang disediakan oleh kampus bagi mahasiswa . Saung dapat digunakan  oleh mahasiswa pada jam akademik mulai dari jam 08:00 - 17:00 WIB.
+                        Saung dapat digunakan oleh mahasiswa di luar jam akademik sebagai tempat belajar mandiri ataupun kerja kelompok dengan mahasiswa lainnya.
+                        </p>
+                    </div>
+                </div>
+            </div>
+          </div>
+
+          <div class="container pt-5" id="container">
+            <div class="row">
+                <div class="col-md-6">
+                <img src="{{ asset('/assets/img/fasilitas/container.jpeg') }}" class="img-fluid custom-image" alt="asrama-pniel">
+                </div>
+
+                <div class="col-md-6 mx-auto d-flex flex-column my-auto">
+                    <h3>Container</h3>
+                    <div class="lh-base text-break text-justify custom-justified-text align-items-center">
+                        <p>
+                        Container berada pada luar kampus. Container disediakan untuk digunakan oleh mahasiswa sebagai pendukung kegiatan UKM (Unit Kreativitas Mahasiswa).
+                        Container dilengkapi dengan Air Conditioner (AC) dan karpet sebagai fasilitas pendukung.
                         </p>
                     </div>
                 </div>
