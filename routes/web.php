@@ -32,5 +32,3 @@ Route::get('/admisi/diploma', function () {
 Route::get('/admisi/sarjanaterapan', function () {
     return view('admisi.sarjanaTerapan');
 });
-
-
