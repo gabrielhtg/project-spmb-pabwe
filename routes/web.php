@@ -27,4 +27,12 @@ Route::get('/program', function () {
     return view('program.program');
 });
 
+Route::get('/fakultas', function () {
+    return view('program.fakultas');
+});
+
+Route::get('/prodi', function () {
+    return view('program.prodi');
+});
+
 // End of ROUTE PROGRAM STUDI [TEAM 02]
