@@ -33,4 +33,6 @@ Route::get('/admisi/sarjanaterapan', function () {
     return view('admisi.sarjanaTerapan');
 });
 
-
+Route::get('/admin', function () {
+    return view('admin.dashboard');
+});
