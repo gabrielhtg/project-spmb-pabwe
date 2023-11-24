@@ -11,7 +11,7 @@
     <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi quae quibusdam nemo a corrupti, amet maxime earum esse sint animi? Minus accusantium magnam deleniti reprehenderit, iure voluptates quod commodi vitae.</p>
   </div>
 
-  <div class="container pt-5" id="asrama-pniel">
+  <div class="container pt-5" id="ruangkelas">
             <div class="row">
                 <div class="col-md-6">
                 <img src="{{ asset('/assets/img/fasilitas/asrama-pniel.jpeg') }}" class="img-fluid custom-image" alt="asrama-pniel">
@@ -50,7 +50,7 @@
           <div class="container pt-5" id="opentheater">
             <div class="row">
                 <div class="col-md-6">
-                <img src="{{ asset('/assets/img/fasilitas/opentheater.jpeg') }}" class="img-fluid custom-image" alt="asrama-pniel">
+                <img src="{{ asset('/assets/img/fasilitas/opentheater.jpg') }}" class="img-fluid custom-image" alt="asrama-pniel">
                 </div>
 
                 <div class="col-md-6 mx-auto d-flex flex-column my-auto">
@@ -69,7 +69,7 @@
           <div class="container pt-5" id="auditorium">
             <div class="row">
                 <div class="col-md-6">
-                <img src="{{ asset('/assets/img/fasilitas/auditorium.jpeg') }}" class="img-fluid custom-image" alt="asrama-pniel">
+                <img src="{{ asset('/assets/img/fasilitas/auditorium.jpg') }}" class="img-fluid custom-image" alt="asrama-pniel">
                 </div>
 
                 <div class="col-md-6 mx-auto d-flex flex-column my-auto">
@@ -87,7 +87,7 @@
           <div class="container pt-5" id="saung">
             <div class="row">
                 <div class="col-md-6">
-                <img src="{{ asset('/assets/img/fasilitas/saung.jpeg') }}" class="img-fluid custom-image" alt="asrama-pniel">
+                <img src="{{ asset('/assets/img/fasilitas/saung.jpg') }}" class="img-fluid custom-image" alt="asrama-pniel">
                 </div>
 
                 <div class="col-md-6 mx-auto d-flex flex-column my-auto">
@@ -105,7 +105,7 @@
           <div class="container pt-5" id="container">
             <div class="row">
                 <div class="col-md-6">
-                <img src="{{ asset('/assets/img/fasilitas/container.jpeg') }}" class="img-fluid custom-image" alt="asrama-pniel">
+                <img src="{{ asset('/assets/img/fasilitas/container.jpg') }}" class="img-fluid custom-image" alt="asrama-pniel">
                 </div>
 
                 <div class="col-md-6 mx-auto d-flex flex-column my-auto">
