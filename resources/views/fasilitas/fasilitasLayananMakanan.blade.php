@@ -17,7 +17,7 @@
         <div class="container pt-5" id="asrama-pniel">
             <div class="row">
                 <div class="col-md-6">
-                    <img src="{{ asset('/assets/img/fasilitas/layanan-kantin.jpg') }}" class="img-fluid custom-image"
+                    <img src="{{ asset('/assets/img/fasilitas/layanan-kantin .jpg') }}" class="img-fluid custom-image"
                         alt="layanan-kantin">
                 </div>
 
@@ -25,7 +25,7 @@
                     <h3>Kantin</h3>
                     <div class="lh-base text-break text-justify custom-justified-text align-items-center">
                         <p>
-                            Institut Teknologi Del memiliki beberapa kanti, diantaranya adalah:
+                            Institut Teknologi Del memiliki beberapa kantin, diantaranya adalah:
                         <ol>
                             <li>Kantin Baru</li>
                             <ul>
@@ -51,7 +51,7 @@
         <div class="container pt-5" id="layanan-koperasi">
             <div class="row">
                 <div class="col-md-6">
-                    <img src="{{ asset('/assets/img/fasilitas/layanan-koperasi.jpg') }}" class="img-fluid"
+                    <img src="{{ asset('/assets/img/fasilitas/layanan-koperasi .jpg') }}" class="img-fluid"
                         alt="layanan-koperasi">
                 </div>
 
@@ -71,7 +71,7 @@
         <div class="container pt-5" id="layanan-cafetaria">
             <div class="row">
                 <div class="col-md-6">
-                    <img src="{{ asset('/assets/img/fasilitas/layanan-cafetaria.jpg') }}" class="img-fluid"
+                    <img src="{{ asset('/assets/img/fasilitas/layanan-cafetaria .jpg') }}" class="img-fluid"
                         alt="layanan-cafetaria">
                 </div>
 
