@@ -21,4 +21,10 @@ Route::get('/admisi', function () {
     return view('admisi.admisi');
 });
 
+// ROUTE PROGRAM STUDI [TEAM 02]
 
+Route::get('/program', function () {
+    return view('program.program');
+});
+
+// End of ROUTE PROGRAM STUDI [TEAM 02]
