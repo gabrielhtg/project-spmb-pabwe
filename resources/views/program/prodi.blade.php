@@ -56,13 +56,13 @@
     <div class="d-flex justify-content-center">
         <ul class="nav nav-underline d-flex gap-5">
             <li class="nav-item">
-                <a id="overview-hyperlink" class="py-3 nav-link active" aria-current="page" onclick="showOverviewSubPage()">Overview</a>
+                <a href="#" id="overview-hyperlink" class="py-3 nav-link active" aria-current="page" onclick="showOverviewSubPage()">Overview</a>
             </li>
             <li class="nav-item">
-                <a id="dosen-hyperlink" class="py-3 nav-link" onclick="showDosenSubPage()">Dosen/Staff</a>
+                <a href="#" id="dosen-hyperlink" class="py-3 nav-link" onclick="showDosenSubPage()">Dosen/Staff</a>
             </li>
             <li class="nav-item">
-                <a id="kurikulum-hyperlink" class="py-3 nav-link" onclick="showKurikulumSubPage()">Kurikulum</a>
+                <a href="#" id="kurikulum-hyperlink" class="py-3 nav-link" onclick="showKurikulumSubPage()">Kurikulum</a>
             </li>
         </ul>
     </div>
@@ -297,6 +297,40 @@
         <div class="mt-5 mb-3">
             <h1 class="fw-bold">Kurikulum</h1>
         </div>
+
+        <div class="">
+            <div class="">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th rowspan="3">Semester 1</th>
+                        </tr>
+                        <tr>
+                            <th>Kode MK</th>
+                            <th>Nama Mata Kuliah</th>
+                            <th>SKS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>11S</td>
+                            <td>John Doe</td>
+                            <td>john@example.com</td>
+                            <td rowspan="2">Address</td>
+                            <td rowspan="2">123 Main St</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Jane Doe</td>
+                            <td>jane@example.com</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class=""></div>
+        </div>
+
     </section>
 
     <script>
@@ -332,11 +366,11 @@
 
         function showKurikulumSubPage() {
             overview.classList.add("d-none");
-            overview.classList.remove("active");
+            overviewLink.classList.remove("active");
             dosen.classList.add("d-none");
-            dosen.classList.remove("active");
+            dosenLink.classList.remove("active");
             kurikulum.classList.remove("d-none");
-            kurikulum.classList.add("active");
+            kurikulumLink.classList.add("active");
 
             kurikulum.setAttribute("aria-current", "page");
         };
