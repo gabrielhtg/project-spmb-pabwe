@@ -1,7 +1,6 @@
-/* CSS */
 .hero-pengumuman {
     position: relative;
-    height: 300px; /* Sesuaikan tinggi div sesuai kebutuhan Anda */
+    height: 300px;
     overflow: hidden;
     background-image: url("{{ asset('/assets/img/pengumuman/hero-pengumuman.jpg') }}");
 }
@@ -14,21 +13,41 @@
     font-weight: bold;
     color: #0477bf;
     text-align: center;
-    font-size: 2em; /* Sesuaikan ukuran font sesuai kebutuhan Anda */
 }
 
-/* Optional: Menambahkan overlay transparan */
-.hero-pengumuman::before {
-    content: "";
+.hero-pengumuman p {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 75%;
+    left: 50%;
+    width: 900px;
+    transform: translate(-50%, -50%);
+    background-color: cornflowerblue;
+    color: white;
+    text-align: center;
+}
+
+.table-pengumuman table {
+    border-collapse: collapse;
     width: 100%;
-    height: 100%;
-    background: rgba(
-        0,
-        0,
-        0,
-        0.5
-    ); /* Ubah nilai alpha untuk menyesuaikan tingkat transparansi */
+}
+
+.button-search {
+    border-radius: 6px;
+    border: none;
+    box-shadow: 0 3px 0 0 lightgrey;
+}
+
+.table-pengumuman th,
+.table-pengumuman td {
+    border: 1px solid #ddd; /* Warna dan ketebalan garis dapat disesuaikan */
+    padding: 8px;
+    text-align: left;
+}
+
+.list-judul {
+    text-align: left;
+}
+
+.table-pengumuman th {
+    background-color: #f2f2f2; /* Warna latar belakang header */
 }
