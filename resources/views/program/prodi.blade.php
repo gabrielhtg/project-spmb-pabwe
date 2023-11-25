@@ -108,50 +108,50 @@
                 <div class="card">
                     <div class="">
                         <div class="card-header fw-bold">
-                            Dekan
+                          Ketua Prodi
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Indra Hartanto Tambunan, Ph.D</li>
+                            <li class="list-group-item">Arie Satia Dharma, S.T, M.Kom.</li>
                         </ul>
                     </div>
                     <div class="">
                         <div class="card-header fw-bold">
-                            Dekan
+                            Akreditasi
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Indra Hartanto Tambunan, Ph.D</li>
+                            <li class="list-group-item">C</li>
                         </ul>
                     </div>
                     <div class="">
                         <div class="card-header fw-bold">
-                            Dekan
+                            Gelar
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Indra Hartanto Tambunan, Ph.D</li>
+                            <li class="list-group-item">S.Kom</li>
                         </ul>
                     </div>
                     <div class="">
                         <div class="card-header fw-bold">
-                            Dekan
+                            Lama Studi
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Indra Hartanto Tambunan, Ph.D</li>
+                            <li class="list-group-item">$ Tahun</li>
                         </ul>
                     </div>
                     <div class="">
                         <div class="card-header fw-bold">
-                            Dekan
+                            Biaya Kuliah
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Indra Hartanto Tambunan, Ph.D</li>
+                            <li class="list-group-item">Rp.6.500.000/Semester</li>
                         </ul>
                     </div>
                     <div class="">
                         <div class="card-header fw-bold">
-                            Dekan
+                            Lokasi
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Indra Hartanto Tambunan, Ph.D</li>
+                            <li class="list-group-item">Sitoluama, kecamatan Laguboti, Kabupaten Toba, Sumatera Utara</li>
                         </ul>
                     </div>
                 </div>
@@ -159,8 +159,185 @@
         </div>
     </div>
 
-    
+
+
+    <div class="container">
+        <div class="mt-5 mb-3">
+            <h1 class="fw-bold">Dosen</h1>
+        </div>
+
+    <div class="container px-4 text-center">
+        <div class="row gx-5">
+            <div class="col-md-3">
+                <div class="p-3">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ asset('img/program/carousel-example.jpg')}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Dedi Andre Martua Raja Panggabean, S.Kom, M.InfoTech</h5>
+                            <p class="card-text">S3 Ternak Lele</p>
+                             <div class="role-text fw-bold fs-5">Role</div>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="p-3">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ asset('img/program/carousel-example.jpg')}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Dedi Andre Martua Raja Panggabean, S.Kom, M.InfoTech</h5>
+                            <p class="card-text">S3 Ternak Lele</p>
+                             <div class="role-text fw-bold fs-5">Role</div>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="p-3">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ asset('img/program/carousel-example.jpg')}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Dedi Andre Martua Raja Panggabean, S.Kom, M.InfoTech</h5>
+                            <p class="card-text">S3 Ternak Lele</p>
+                             <div class="role-text fw-bold fs-5">Role</div>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="p-3">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ asset('img/program/carousel-example.jpg')}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Dedi Andre Martua Raja Panggabean, S.Kom, M.InfoTech</h5>
+                            <p class="card-text">S3 Ternak Lele</p>
+                             <div class="role-text fw-bold fs-5">Role</div>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="p-3">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ asset('img/program/carousel-example.jpg')}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Dedi Andre Martua Raja Panggabean, S.Kom, M.InfoTech</h5>
+                            <p class="card-text">S3 Ternak Lele</p>
+                             <div class="role-text fw-bold fs-5">Role</div>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="p-3">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ asset('img/program/carousel-example.jpg')}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Dedi Andre Martua Raja Panggabean, S.Kom, M.InfoTech</h5>
+                            <p class="card-text">S3 Ternak Lele</p>
+                             <div class="role-text fw-bold fs-5">Role</div>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="p-3">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ asset('img/program/carousel-example.jpg')}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Dedi Andre Martua Raja Panggabean, S.Kom, M.InfoTech</h5>
+                            <p class="card-text">S3 Ternak Lele</p>
+                             <div class="role-text fw-bold fs-5">Role</div>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="p-3">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ asset('img/program/carousel-example.jpg')}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Dedi Andre Martua Raja Panggabean, S.Kom, M.InfoTech</h5>
+                            <p class="card-text">S3 Ternak Lele</p>
+                             <div class="role-text fw-bold fs-5">Role</div>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="p-3">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ asset('img/program/carousel-example.jpg')}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Dedi Andre Martua Raja Panggabean, S.Kom, M.InfoTech</h5>
+                            <p class="card-text">S3 Ternak Lele</p>
+                             <div class="role-text fw-bold fs-5">Role</div>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="p-3">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ asset('img/program/carousel-example.jpg')}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Dedi Andre Martua Raja Panggabean, S.Kom, M.InfoTech</h5>
+                            <p class="card-text">S3 Ternak Lele</p>
+                             <div class="role-text fw-bold fs-5">Role</div>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="p-3">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ asset('img/program/carousel-example.jpg')}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Dedi Andre Martua Raja Panggabean, S.Kom, M.InfoTech</h5>
+                            <p class="card-text">S3 Ternak Lele</p>
+                             <div class="role-text fw-bold fs-5">Role</div>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="p-3">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ asset('img/program/carousel-example.jpg')}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Dedi Andre Martua Raja Panggabean, S.Kom, M.InfoTech</h5>
+                            <p class="card-text">S3 Ternak Lele</p>
+                             <div class="role-text fw-bold fs-5">Role</div>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            
+
+        </div>
     </div>
+</div>
+
+
+    
+    
+
 
 </main>
 
