@@ -77,7 +77,23 @@
                 </p>
                 
                 <h2 class="fw-bold fs-4">Program Studi</h2>
-                
+                <div class="d-flex d-flex-row gap-3">
+                    <div class="card col-sm-4">
+                        <div class="card-body d-flex justify-content-center">
+                            <a href="/prodi" class="fw-semibold text-dark text-decoration-none text-center py-5">S1 Informatika</a>           
+                        </div>
+                    </div>
+                    <div class="card col-sm-4">
+                        <div class="card-body d-flex justify-content-center">
+                            <a href="/prodi" class="fw-semibold text-dark text-decoration-none text-center py-5">S1 Sistem Informasi</a>
+                        </div>
+                    </div>
+                    <div class="card col-sm-4">
+                        <div class="card-body d-flex justify-content-center">
+                            <a href="/prodi" class="fw-semibold text-dark text-decoration-none text-center py-5">S1 Teknik Elektro</a>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="col-4">

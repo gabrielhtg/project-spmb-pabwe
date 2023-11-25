@@ -89,27 +89,75 @@
                     </ol>
                 </p>
                 
-                <h2 class="fw-bold fs-4">Program Studi</h2>
+                <h2 class="fw-bold fs-4">Prospek Kerja</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius dolore velit doloremque, temporibus debitis saepe autem cum ipsa expedita, dicta doloribus reprehenderit laudantium et nihil, voluptas quos est quia quaerat commodi tempora nobis sequi nulla necessitatibus? Alias suscipit eum perferendis voluptate, voluptatum labore, facilis at eveniet neque reprehenderit assumenda obcaecati! Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor minima quo exercitationem omnis optio debitis ut ipsa dolores deleniti nesciunt.</p>
                 
+                <h2 class="fw-bold fs-4">Pendaftaran</h2>
+                <p>Syarat Pendaftaran:</p>
+                <ol>
+                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi eum magnam nisi veniam delectus sunt voluptas dignissimos eligendi libero maxime?</li>
+                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi eum magnam nisi veniam delectus sunt voluptas dignissimos eligendi libero maxime?</li>
+                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi eum magnam nisi veniam delectus sunt voluptas dignissimos eligendi libero maxime?</li>
+                </ol>
+
+                <button type="button" class="btn btn-primary gap-3">Halaman Pendaftaran</button>
+
             </div>
 
             <div class="col-4">
                 <div class="card">
-                    <div class="card-header fw-bold">
-                        Dekan
+                    <div class="">
+                        <div class="card-header fw-bold">
+                            Dekan
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Indra Hartanto Tambunan, Ph.D</li>
+                        </ul>
                     </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Indra Hartanto Tambunan, Ph.D</li>
-                    </ul>
-                    <div class="card-header fw-bold">
-                        Lokasi
+                    <div class="">
+                        <div class="card-header fw-bold">
+                            Dekan
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Indra Hartanto Tambunan, Ph.D</li>
+                        </ul>
                     </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Laguboti, Toba, Sumatera Utara</li>
-                    </ul>
+                    <div class="">
+                        <div class="card-header fw-bold">
+                            Dekan
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Indra Hartanto Tambunan, Ph.D</li>
+                        </ul>
+                    </div>
+                    <div class="">
+                        <div class="card-header fw-bold">
+                            Dekan
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Indra Hartanto Tambunan, Ph.D</li>
+                        </ul>
+                    </div>
+                    <div class="">
+                        <div class="card-header fw-bold">
+                            Dekan
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Indra Hartanto Tambunan, Ph.D</li>
+                        </ul>
+                    </div>
+                    <div class="">
+                        <div class="card-header fw-bold">
+                            Dekan
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Indra Hartanto Tambunan, Ph.D</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
 
     
     </div>
