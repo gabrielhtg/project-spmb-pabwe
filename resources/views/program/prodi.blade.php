@@ -301,12 +301,12 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="container px-2 text-center">
-                     <div class="container text-center">
-                         <h2 class="fw-bold fs-4">Semester 1</h2>
-                         <table class="table">
+                    <div class="container text-center">
+                        <h2 class="fw-bold fs-4">Semester 1</h2>
+                        <table class="table">
                         <thead>
                             <tr>
-                               
+                                
                                 <th scope="col">Kode MK</th>
                                 <th scope="col">Nama Mata Kuliah</th>
                                 <th scope="col">SKS</th>
@@ -338,12 +338,11 @@
             
             <div class="col-md-6">
                 <div class="container px-2 text-center">
-                     <div class="container text-center">
-                         <h2 class="fw-bold fs-4">Semester 1</h2>
-                         <table class="table">
+                    <div class="container text-center">
+                        <h2 class="fw-bold fs-4">Semester 1</h2>
+                        <table class="table">
                         <thead>
-                            <tr>
-                               
+                            <tr>          
                                 <th scope="col">Kode MK</th>
                                 <th scope="col">Nama Mata Kuliah</th>
                                 <th scope="col">SKS</th>
