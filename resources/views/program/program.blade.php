@@ -2,7 +2,7 @@
 
 @section('isi-halaman')
 
-<main class="mx-auto pt-5 mt-5">
+<main class="mx-auto pt-4 mt-5">
 
     {{-- HERO SECTION --}}
     <section id="hero-section">
@@ -11,26 +11,34 @@
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active bg-dark-subtle">
-                    <img src="..." class="d-block w-100" alt="...">
+                    <img src="{{ asset('img/program/carousel-example.jpg')}}" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
-                        <h5>First slide label</h5>
+                        <h5>Fakultas Informatika dan Teknik Elektro</h5>
                         <p>Some representative placeholder content for the first slide.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="..." class="d-block w-100" alt="...">
+                    <img src="{{ asset('img/program/carousel-example.jpg')}}" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
-                        <h5>Second slide label</h5>
+                        <h5>Fakultas Teknologi Industri</h5>
                         <p>Some representative placeholder content for the second slide.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="..." class="d-block w-100" alt="...">
+                    <img src="{{ asset('img/program/carousel-example.jpg')}}" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
-                        <h5>Third slide label</h5>
+                        <h5>Fakultas Bioteknologi</h5>
+                        <p>Some representative placeholder content for the third slide.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="{{ asset('img/program/carousel-example.jpg')}}" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Fakultas Vokasi</h5>
                         <p>Some representative placeholder content for the third slide.</p>
                     </div>
                 </div>
@@ -46,15 +54,51 @@
         </div>
     </section>
 
+    
     <div class="container">
 
-        <h1 class="fw-bold">Daftar Fakultas</h1>
+        <div class="mt-5 mb-3">
+            <h1 class="fw-bold">Daftar Fakultas</h1>
+        </div>
 
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam quibusdam dolor suscipit corrupti aperiam amet delectus maxime nihil laudantium vero debitis, eos distinctio mollitia blanditiis alias possimus dignissimos tempora cupiditate pariatur consectetur corporis? Adipisci illo at ipsa doloremque, corrupti alias sapiente tempore ea unde libero explicabo quibusdam, delectus voluptatum ullam quo exercitationem cum modi laborum perspiciatis similique inventore, vel porro dolorum! Sint adipisci nostrum quam reiciendis autem, suscipit assumenda, architecto dolorem officiis velit, quaerat tempora voluptatum unde. Animi, obcaecati voluptatibus dolores commodi maiores necessitatibus repellat non quibusdam minima rerum. Quasi tenetur facere aut corporis modi vel labore dolorum architecto dolores.</p>
     
-        <div class="card">
-            <div class="card-body d-flex justify-content-center align-items-center">
-                <p class="justify-center">Fakultas Informatika dan Teknik Elektro</p>
+        <div class="d-flex flex-column row-gap-3">
+
+            <div class="card bg-subtle h-100 mb-">
+                <div class="card-body">
+                    <div class="d-flex justify-content-center">
+                        <a href="/fakultas" class="fs-5 text-dark text-decoration-none py-5 fw-semibold">Fakultas Informatika dan Teknik Elektro</a>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="card bg-subtle h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-center">
+                        <a href="/fakultas" class="fs-5 text-dark text-decoration-none py-5 fw-semibold">Fakultas Teknologi Industri</a>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="card bg-subtle h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-center">
+                        <a href="/fakultas" class="fs-5 text-dark text-decoration-none py-5 fw-semibold">Fakultas Bioteknologi</a>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="card bg-subtle h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-center">
+                        <a href="/fakultas" class="fs-5 text-dark text-decoration-none py-5 fw-semibold">Fakultas Vokasi</a>
+                    </div>
+                    
+                </div>
             </div>
         </div>
     </div>
