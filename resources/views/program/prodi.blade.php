@@ -296,6 +296,297 @@
     <section id="kurikulum-subpage" class="container d-none">
         <div class="mt-5 mb-3">
             <h1 class="fw-bold">Kurikulum</h1>
+            
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="container px-2 text-center">
+                     <div class="container text-center">
+                         <h2 class="fw-bold fs-4">Semester 1</h2>
+                         <table class="table">
+                        <thead>
+                            <tr>
+                               
+                                <th scope="col">Kode MK</th>
+                                <th scope="col">Nama Mata Kuliah</th>
+                                <th scope="col">SKS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>11S3109 </td>
+                                <td>Pengembangan Aplikasi Berbasis Web</td>
+                                <td>4</td>
+                            </tr>
+                            <tr>
+                                <td>10S3109</td>
+                                <td>Kecerdasan Buatan</td>
+                                <td>3</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Total SKS</td>
+                                <td>7</td>
+                            </tr>
+                        </tbody>
+                    </table>
+    
+
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="col-md-6">
+                <div class="container px-2 text-center">
+                     <div class="container text-center">
+                         <h2 class="fw-bold fs-4">Semester 1</h2>
+                         <table class="table">
+                        <thead>
+                            <tr>
+                               
+                                <th scope="col">Kode MK</th>
+                                <th scope="col">Nama Mata Kuliah</th>
+                                <th scope="col">SKS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>11S3109 </td>
+                                <td>Pengembangan Aplikasi Berbasis Web</td>
+                                <td>4</td>
+                            </tr>
+                            <tr>
+                                <td>10S3109</td>
+                                <td>Kecerdasan Buatan</td>
+                                <td>3</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Total SKS</td>
+                                <td>7</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="container px-2 text-center">
+                     <div class="container text-center">
+                         <h2 class="fw-bold fs-4">Semester 1</h2>
+                         <table class="table">
+                        <thead>
+                            <tr>
+                               
+                                <th scope="col">Kode MK</th>
+                                <th scope="col">Nama Mata Kuliah</th>
+                                <th scope="col">SKS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>11S3109 </td>
+                                <td>Pengembangan Aplikasi Berbasis Web</td>
+                                <td>4</td>
+                            </tr>
+                            <tr>
+                                <td>10S3109</td>
+                                <td>Kecerdasan Buatan</td>
+                                <td>3</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Total SKS</td>
+                                <td>7</td>
+                            </tr>
+                        </tbody>
+                    </table>
+    
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="container px-2 text-center">
+                     <div class="container text-center">
+                         <h2 class="fw-bold fs-4">Semester 1</h2>
+                         <table class="table">
+                        <thead>
+                            <tr>
+                               
+                                <th scope="col">Kode MK</th>
+                                <th scope="col">Nama Mata Kuliah</th>
+                                <th scope="col">SKS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>11S3109 </td>
+                                <td>Pengembangan Aplikasi Berbasis Web</td>
+                                <td>4</td>
+                            </tr>
+                            <tr>
+                                <td>10S3109</td>
+                                <td>Kecerdasan Buatan</td>
+                                <td>3</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Total SKS</td>
+                                <td>7</td>
+                            </tr>
+                        </tbody>
+                    </table>
+    
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="container px-2 text-center">
+                     <div class="container text-center">
+                         <h2 class="fw-bold fs-4">Semester 1</h2>
+                         <table class="table">
+                        <thead>
+                            <tr>
+                               
+                                <th scope="col">Kode MK</th>
+                                <th scope="col">Nama Mata Kuliah</th>
+                                <th scope="col">SKS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>11S3109 </td>
+                                <td>Pengembangan Aplikasi Berbasis Web</td>
+                                <td>4</td>
+                            </tr>
+                            <tr>
+                                <td>10S3109</td>
+                                <td>Kecerdasan Buatan</td>
+                                <td>3</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Total SKS</td>
+                                <td>7</td>
+                            </tr>
+                        </tbody>
+                    </table>
+    
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="container px-2 text-center">
+                     <div class="container text-center">
+                         <h2 class="fw-bold fs-4">Semester 1</h2>
+                         <table class="table">
+                        <thead>
+                            <tr>
+                               
+                                <th scope="col">Kode MK</th>
+                                <th scope="col">Nama Mata Kuliah</th>
+                                <th scope="col">SKS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>11S3109 </td>
+                                <td>Pengembangan Aplikasi Berbasis Web</td>
+                                <td>4</td>
+                            </tr>
+                            <tr>
+                                <td>10S3109</td>
+                                <td>Kecerdasan Buatan</td>
+                                <td>3</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Total SKS</td>
+                                <td>7</td>
+                            </tr>
+                        </tbody>
+                    </table>
+    
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="container px-2 text-center">
+                     <div class="container text-center">
+                         <h2 class="fw-bold fs-4">Semester 1</h2>
+                         <table class="table">
+                        <thead>
+                            <tr>
+                               
+                                <th scope="col">Kode MK</th>
+                                <th scope="col">Nama Mata Kuliah</th>
+                                <th scope="col">SKS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>11S3109 </td>
+                                <td>Pengembangan Aplikasi Berbasis Web</td>
+                                <td>4</td>
+                            </tr>
+                            <tr>
+                                <td>10S3109</td>
+                                <td>Kecerdasan Buatan</td>
+                                <td>3</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Total SKS</td>
+                                <td>7</td>
+                            </tr>
+                        </tbody>
+                    </table>
+    
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="container px-2 text-center">
+                     <div class="container text-center">
+                         <h2 class="fw-bold fs-4">Semester 1</h2>
+                         <table class="table">
+                        <thead>
+                            <tr>
+                               
+                                <th scope="col">Kode MK</th>
+                                <th scope="col">Nama Mata Kuliah</th>
+                                <th scope="col">SKS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>11S3109 </td>
+                                <td>Pengembangan Aplikasi Berbasis Web</td>
+                                <td>4</td>
+                            </tr>
+                            <tr>
+                                <td>10S3109</td>
+                                <td>Kecerdasan Buatan</td>
+                                <td>3</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Total SKS</td>
+                                <td>7</td>
+                            </tr>
+                        </tbody>
+                    </table>
+    
+
+                    </div>
+                </div>
+            </div>
+
+
         </div>
     </section>
 
