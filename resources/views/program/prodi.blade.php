@@ -2,7 +2,7 @@
 
 @section('isi-halaman')
 
-<main class="pt-5 mt-5">
+<main class="pt-5 mt-3">
 
     {{-- HERO SECTION --}}
     <section id="hero-section">
@@ -54,21 +54,20 @@
     </section>
 
     <div class="d-flex justify-content-center">
-        <ul class="nav nav-underline">
+        <ul class="nav nav-underline d-flex gap-5">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Overview</a>
+                <a id="overview-hyperlink" class="py-3 nav-link active" aria-current="page" onclick="showOverviewSubPage()">Overview</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Dosen/Staff</a>
+                <a id="dosen-hyperlink" class="py-3 nav-link" onclick="showDosenSubPage()">Dosen/Staff</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Kurikulum</a>
+                <a id="kurikulum-hyperlink" class="py-3 nav-link" onclick="showKurikulumSubPage()">Kurikulum</a>
             </li>
         </ul>
     </div>
 
-    <div class="container">
-
+    <section id="overview-subpage" class="container">
         <div class="mt-5 mb-3">
             <h1 class="fw-bold">S1 Informatika</h1>
         </div>
@@ -105,63 +104,27 @@
             </div>
 
             <div class="col-4">
-                <div class="card">
-                    <div class="">
-                        <div class="card-header fw-bold">
-                          Ketua Prodi
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Arie Satia Dharma, S.T, M.Kom.</li>
-                        </ul>
-                    </div>
-                    <div class="">
-                        <div class="card-header fw-bold">
-                            Akreditasi
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">C</li>
-                        </ul>
-                    </div>
-                    <div class="">
-                        <div class="card-header fw-bold">
-                            Gelar
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">S.Kom</li>
-                        </ul>
-                    </div>
-                    <div class="">
-                        <div class="card-header fw-bold">
-                            Lama Studi
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">$ Tahun</li>
-                        </ul>
-                    </div>
-                    <div class="">
-                        <div class="card-header fw-bold">
-                            Biaya Kuliah
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Rp.6.500.000/Semester</li>
-                        </ul>
-                    </div>
-                    <div class="">
-                        <div class="card-header fw-bold">
-                            Lokasi
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Sitoluama, kecamatan Laguboti, Kabupaten Toba, Sumatera Utara</li>
-                        </ul>
-                    </div>
+                <div class="card"">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item fw-bold">Ketua Program Studi</li>
+                        <li class="list-group-item">Arie Satia Dharma, S.T, M.Kom.</li>
+                        <li class="list-group-item fw-bold">Akreditasi</li>
+                        <li class="list-group-item">Baik (C)</li>
+                        <li class="list-group-item fw-bold">Gelar</li>
+                        <li class="list-group-item">S.Kom</li>
+                        <li class="list-group-item fw-bold">Lama Studi</li>
+                        <li class="list-group-item">4 Tahun</li>
+                        <li class="list-group-item fw-bold">Biaya Kuliah</li>
+                        <li class="list-group-item">Rp. 6.500.000/semester</li>
+                        <li class="list-group-item fw-bold">Lokasi</li>
+                        <li class="list-group-item">Laguboti, Toba, Sumatera Utara</li>
+                    </ul>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-
-
-    <div class="container">
+    <section id="dosen-subpage" class="container d-none">
         <div class="mt-5 mb-3">
             <h1 class="fw-bold">Dosen</h1>
         </div>
@@ -326,15 +289,59 @@
                         </div>
                     </div>
                 </div>
-
-
-                
-
             </div>
         </div>
-    </div>
+    </section>
 
+    <section id="kurikulum-subpage" class="container d-none">
+        <div class="mt-5 mb-3">
+            <h1 class="fw-bold">Kurikulum</h1>
+        </div>
+    </section>
 
+    <script>
+        var overview = document.getElementById("overview-subpage");
+        var dosen = document.getElementById("dosen-subpage");
+        var kurikulum = document.getElementById("kurikulum-subpage");
+        
+        var overviewLink = document.getElementById("overview-hyperlink");
+        var dosenLink = document.getElementById("dosen-hyperlink");
+        var kurikulumLink = document.getElementById("kurikulum-hyperlink");
+        
+        function showOverviewSubPage() {
+            overview.classList.remove("d-none");
+            overviewLink.classList.add("active");
+            dosen.classList.add("d-none");
+            dosenLink.classList.remove("active");
+            kurikulum.classList.add("d-none");
+            kurikulumLink.classList.remove("active");
+
+            overview.setAttribute("aria-current", "page");
+        };
+
+        function showDosenSubPage() {
+            overview.classList.add("d-none");
+            overviewLink.classList.remove("active");
+            dosen.classList.remove("d-none");
+            dosenLink.classList.add("active");
+            kurikulum.classList.add("d-none");
+            kurikulumLink.classList.remove("active");
+            
+            dosen.setAttribute("aria-current", "page");
+        };
+
+        function showKurikulumSubPage() {
+            overview.classList.add("d-none");
+            overview.classList.remove("active");
+            dosen.classList.add("d-none");
+            dosen.classList.remove("active");
+            kurikulum.classList.remove("d-none");
+            kurikulum.classList.add("active");
+
+            kurikulum.setAttribute("aria-current", "page");
+        };
+
+    </script>
     
     
 
