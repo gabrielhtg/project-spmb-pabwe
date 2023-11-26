@@ -21,14 +21,6 @@ Route::get('/admisi', function () {
     return view('admisi.admisi');
 });
 
-Route::get('/admisi/sarjana', function () {
-    return view('admisi.sarjana');
-});
-
-Route::get('/admisi/diploma', function () {
-    return view('admisi.diploma');
-});
-
-Route::get('/admisi/sarjanaterapan', function () {
-    return view('admisi.sarjanaTerapan');
+Route::prefix('auth')->group(function () {
+    Route::get('login', [\App\Http\Controllers\AuthController::class, 'getLogin'])->name('login');
 });
