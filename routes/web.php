@@ -43,6 +43,5 @@ Route::get('/fasilitas-Area-Mahasiswa', [FasilitasController::class, "getviewAre
 Route::get('/fasilitas-Laboratorium', [FasilitasController::class, "getviewLaboratorium"])->name("fasilitas.laboratorium");
 Route::get('/fasilitas-Layanan-Makanan', [FasilitasController::class, "getviewLayananMakanan"])->name("fasilitas.layananmakanan");
 Route::get('/pengumuman', [PengumumanController::class, 'getviewPengumuman'])->name("pengumuman");
-// >>>>>>> 7e272ebdb70972483ef0cea8437196f00fd3bfff
 
 

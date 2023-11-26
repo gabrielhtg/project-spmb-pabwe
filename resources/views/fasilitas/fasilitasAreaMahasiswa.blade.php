@@ -3,7 +3,6 @@
 @section('isi-halaman')
 
 <section class="container" id="areamahasiswa">
-  
   <div class="text-center fw bolder">
     <h1>Area Mahasiswa</h1>
   </div>
