@@ -21,3 +21,6 @@ Route::get('/admisi', function () {
     return view('admisi.admisi');
 });
 
+Route::prefix('auth')->group(function () {
+    Route::get('login', [\App\Http\Controllers\AuthController::class, 'getLogin'])->name('login');
+});
