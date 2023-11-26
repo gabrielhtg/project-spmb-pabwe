@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AdminPanelController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +23,11 @@ Route::get('/admisi', function () {
     return view('admisi.admisi');
 });
 
-Route::prefix('auth')->group(function () {
-    Route::get('login', [\App\Http\Controllers\AuthController::class, 'getLogin'])->name('login');
+Route::get('/login', [AuthController::class, 'getLogin'])->name('login');
+Route::post('/login', [AuthController::class, 'postLogin'])->name('post.login');
+
+Route::prefix('/admin-panel')->group(function () {
+    Route::get('/', [AdminPanelController::class, 'getAdminPanel'])->name('admin-panel');
 });
+
+
