@@ -4,7 +4,7 @@
 
 <section class="container" id="areamahasiswa">
   <div class="text-center fw bolder">
-    <h1>Area Mahasiswa</h1>
+  <h1 class="display-5 fw-bold">Area Mahasiswa</h1>
   </div>
   <div class="costum-justified-text align items-center pt-3">
     <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi quae quibusdam nemo a corrupti, amet maxime earum esse sint animi? Minus accusantium magnam deleniti reprehenderit, iure voluptates quod commodi vitae.</p>
@@ -39,7 +39,7 @@
                         <p>
                         IKampus juga menyediakan perpustakaan bagi mahasiswa. Buku yang tersedia di perpustakaan sudah hampir berjumlah +/- 2000 buah.  Perpustakaan dapat digunakan oleh mahasiswa maupun staff IT Del sebagai sarana belajar maupun berdiskusi.
                         Perpustakaan menyediakan tempat belajar, BI Corner, ruang diskusi, dan ruang audiovisual.
-                        Perpustakaan dibuka mulai pukul 08:00 - 18:00 WIB. Anda dapat mengakses perpustakaan online (OLIS) melalui <a href="https://sipp.del.ac.id/">tautan ini.</a>
+                        Perpustakaan dibuka mulai pukul 08:00 - 18:00 WIB. Anda dapat mengakses perpustakaan online (OLIS) melalui <a target="_blank" href="https://sipp.del.ac.id/">tautan ini.</a>
                         </p>
                     </div>
                 </div>

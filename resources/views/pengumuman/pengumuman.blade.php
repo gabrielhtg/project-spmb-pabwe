@@ -30,8 +30,8 @@
                         <tr>
                             <td></td>
                             <td></td>
-                            <td><textarea rows="1" cols="50" style="width: 100%;"></textarea></td>
-                            <td style="text-align:center;"><button class="button-search">Search</button></td>
+                            <td><input rows="1" cols="50" placeholder="cari di sini" style="width: 100%;"></input></td>
+                            <td style="text-align:center;"><button class="button-search">Cari</button></td>
                         </tr>
                         <tr>
                             <td style="text-align:center;">1.</td>

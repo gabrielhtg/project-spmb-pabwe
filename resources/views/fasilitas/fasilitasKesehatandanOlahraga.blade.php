@@ -4,7 +4,7 @@
 
     <section class="container" id="Olahraga dan Kesehatan">
         <div class="text-center fw-bolder">
-            <h1>Olahraga & Kesehatan</h1>
+        <h1 class="display-5 fw-bold">Olahraga & Kesehatan</h1>
         </div>
         <div class="custom-justified-text align-items-center pt-3">
           <p>

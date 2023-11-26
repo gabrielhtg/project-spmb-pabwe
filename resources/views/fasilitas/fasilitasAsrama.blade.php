@@ -4,7 +4,7 @@
 
     <section class="container" id="Asrama">
         <div class="text-center fw-bolder">
-            <h1>Asrama</h1>
+        <h1 class="display-5 fw-bold">Asrama</h1>
         </div>
         <div class="custom-justified-text align-items-center pt-3">
             <p>Sejak didirikan tahun 2001, IT Del sudah mengharuskan mahasiswanya untuk tinggal diasrama tanpa terkecuali.  

@@ -3,7 +3,7 @@
 @section('isi-halaman')
     <section class="container" id="LayananMakanan">
         <div class="text-center fw-bolder">
-            <h1>Layanan Makanan</h1>
+        <h1 class="display-5 fw-bold">Layanan Makanan</h1>
         </div>
         <div class="custom-justified-text align-items-center pt-3">
             <p>Penyedia layanan makanan di kampus menyediakan beragam makanan dan minuman untuk mahasiswa dan staf kampus.

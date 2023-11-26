@@ -3,7 +3,7 @@
 @section('isi-halaman')
     <section class="container" id="Laboratorium">
         <div class="text-center fw-bolder">
-            <h1>Laboratorium</h1>
+        <h1 class="display-5 fw-bold">Laboratorium</h1>
         </div>
         <div class="custom-justified-text align-items-center pt-3">
             <p>
