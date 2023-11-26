@@ -230,16 +230,16 @@
                         </ol>
                     </div>
 
-                    <div class="accordion pt-5 w-100" id="accordionExample">
+                    <div class="accordion pt-5 w-100" id="accordionpmdk">
                         <div class="accordion-item">
                             <h2 class="accordion-header">
-                                <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                                     Hal-hal yang harus diperhatikan peserta ketika Tes Wawancara Daring
                                 </button>
                             </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse show"
-                                 data-bs-parent="#accordionExample">
+                            <div id="collapseOne" class="accordion-collapse collapse"
+                                 data-bs-parent="#accordionpmdk">
                                 <div class="accordion-body">
                                     <ol>
                                         <li>Lulus seleksi administrasi berkas dan memiliki Kartu Ujian;</li>
@@ -277,7 +277,7 @@
                                 </button>
                             </h2>
                             <div id="collapseTwo" class="accordion-collapse collapse"
-                                 data-bs-parent="#accordionExample">
+                                 data-bs-parent="#accordionpmdk">
                                 <div class="accordion-body">
                                     <ol>
                                         <li>
@@ -319,7 +319,7 @@
                                 </button>
                             </h2>
                             <div id="collapseThree" class="accordion-collapse collapse"
-                                 data-bs-parent="#accordionExample">
+                                 data-bs-parent="#accordionpmdk">
                                 <div class="accordion-body">
                                     <ol>
                                         <li>Telah lulus dari Tes Wawancara bagi Jalur PMDK, Tes Akademik bagi Jalur USM
@@ -346,13 +346,13 @@
                             <h2 class="accordion-header">
                                 <button class="accordion-button collapsed fw-semibold" type="button"
                                         data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false"
-                                        aria-controls="collapseThree">
+                                        aria-controls="collapseFour">
                                     Hal-hal yang harus diperhatikan peserta saat melakukan Daftar Ulang Onsite, bagi
                                     yang mendaftar secara luring akan disampaikan bersamaan pengumuman kelulusan
                                 </button>
                             </h2>
                             <div id="collapseFour" class="accordion-collapse collapse"
-                                 data-bs-parent="#accordionExample">
+                                 data-bs-parent="#accordionpmdk">
                                 <div class="accordion-body">
                                     <p><u><strong>TAHAP 1</strong></u></p>
 
@@ -482,12 +482,12 @@
                             <h2 class="accordion-header">
                                 <button class="accordion-button collapsed fw-semibold" type="button"
                                         data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false"
-                                        aria-controls="collapseThree">
+                                        aria-controls="collapseFive">
                                     Daftar Sekolah Penerimaan jalur PMDK
                                 </button>
                             </h2>
                             <div id="collapseFive" class="accordion-collapse collapse"
-                                 data-bs-parent="#accordionExample">
+                                 data-bs-parent="#accordionpmdk">
                                 <div class="accordion-body">
 
                                     <ol>
@@ -663,16 +663,16 @@
                         </ol>
                     </div>
 
-                    <div class="accordion pt-5 w-100" id="accordionExample">
+                    <div class="accordion pt-5 w-100" id="accordionusm">
                         <div class="accordion-item">
                             <h2 class="accordion-header">
-                                <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseOneUsm" aria-expanded="false" aria-controls="collapseOneUsm">
                                     Hal-hal yang harus diperhatikan peserta sebelum melakukan Tes Akademik Daring
                                 </button>
                             </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse show"
-                                 data-bs-parent="#accordionExample">
+                            <div id="collapseOneUsm" class="accordion-collapse collapse"
+                                 data-bs-parent="#accordionusm">
                                 <div class="accordion-body">
                                     <ol>
                                         <li>
@@ -721,13 +721,13 @@
                         <div class="accordion-item">
                             <h2 class="accordion-header">
                                 <button class="accordion-button collapsed fw-semibold" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
-                                        aria-controls="collapseTwo">
+                                        data-bs-toggle="collapse" data-bs-target="#collapseTwoUsm" aria-expanded="false"
+                                        aria-controls="collapseTwoUsm">
                                     Hal-hal yang harus diperhatikan peserta saat melakukan tes akademik daring.
                                 </button>
                             </h2>
-                            <div id="collapseTwo" class="accordion-collapse collapse"
-                                 data-bs-parent="#accordionExample">
+                            <div id="collapseTwoUsm" class="accordion-collapse collapse"
+                                 data-bs-parent="#accordionusm">
                                 <div class="accordion-body">
                                     <ol>
                                         <li>
@@ -764,13 +764,13 @@
                         <div class="accordion-item">
                             <h2 class="accordion-header">
                                 <button class="accordion-button collapsed fw-semibold" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
-                                        aria-controls="collapseThree">
+                                        data-bs-toggle="collapse" data-bs-target="#collapseThreeUsm" aria-expanded="false"
+                                        aria-controls="collapseThreeUsm">
                                     Aturan Pelaksanaan Tes Akademik Daring
                                 </button>
                             </h2>
-                            <div id="collapseThree" class="accordion-collapse collapse"
-                                 data-bs-parent="#accordionExample">
+                            <div id="collapseThreeUsm" class="accordion-collapse collapse"
+                                 data-bs-parent="#accordionusm">
                                 <div class="accordion-body">
                                     <ol>
                                         <li>
@@ -799,13 +799,13 @@
                         <div class="accordion-item">
                             <h2 class="accordion-header">
                                 <button class="accordion-button collapsed fw-semibold" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false"
-                                        aria-controls="collapseThree">
+                                        data-bs-toggle="collapse" data-bs-target="#collapseFourUsm" aria-expanded="false"
+                                        aria-controls="collapseFourUsm">
                                     Hal-hal yang harus diperhatikan peserta sebelum melakukan Tes Psikotes Onsite
                                 </button>
                             </h2>
-                            <div id="collapseFour" class="accordion-collapse collapse"
-                                 data-bs-parent="#accordionExample">
+                            <div id="collapseFourUsm" class="accordion-collapse collapse"
+                                 data-bs-parent="#accordionusm">
                                 <div class="accordion-body">
                                     <ol>
                                         <li>Telah lulus dari Tes Wawancara bagi Jalur PMDK, Tes Akademik bagi Jalur USM dan Penilaian UTBK untuk jalur UTBK.</li>
@@ -822,13 +822,13 @@
                         <div class="accordion-item">
                             <h2 class="accordion-header">
                                 <button class="accordion-button collapsed fw-semibold" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false"
-                                        aria-controls="collapseThree">
+                                        data-bs-toggle="collapse" data-bs-target="#collapseFiveUsm" aria-expanded="false"
+                                        aria-controls="collapseFiveUsm">
                                     Hal-hal yang harus diperhatikan peserta saat&nbsp;melakukan Tes Psikotes Onsite&nbsp;
                                 </button>
                             </h2>
-                            <div id="collapseFive" class="accordion-collapse collapse"
-                                 data-bs-parent="#accordionExample">
+                            <div id="collapseFiveUsm" class="accordion-collapse collapse"
+                                 data-bs-parent="#accordionusm">
                                 <div class="accordion-body">
                                     <ol>
                                         <li>Peserta harus hadir pukul 08.00 wib di kompleks Institut Teknologi Del</li>
@@ -863,13 +863,13 @@
                         <div class="accordion-item">
                             <h2 class="accordion-header">
                                 <button class="accordion-button collapsed fw-semibold" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false"
-                                        aria-controls="collapseThree">
+                                        data-bs-toggle="collapse" data-bs-target="#collapseSixUsm" aria-expanded="false"
+                                        aria-controls="collapseSixUsm">
                                     Hal-hal yang harus dipersiapkan peserta sebelum melakukan Daftar Ulang Daring
                                 </button>
                             </h2>
-                            <div id="collapseSix" class="accordion-collapse collapse"
-                                 data-bs-parent="#accordionExample">
+                            <div id="collapseSixUsm" class="accordion-collapse collapse"
+                                 data-bs-parent="#accordionusm">
                                 <div class="accordion-body">
                                     <ol>
                                         <li>
@@ -901,13 +901,13 @@
                         <div class="accordion-item">
                             <h2 class="accordion-header">
                                 <button class="accordion-button collapsed fw-semibold" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false"
-                                        aria-controls="collapseThree">
+                                        data-bs-toggle="collapse" data-bs-target="#collapseSevenUsm" aria-expanded="false"
+                                        aria-controls="collapseSevenUsm">
                                     Hal-hal yang harus diperhatikan peserta saat melakukan Daftar Ulang Daring, bagi yang mendaftar secara luring akan disampaikan bersamaan pengumuman kelulusan
                                 </button>
                             </h2>
-                            <div id="collapseSeven" class="accordion-collapse collapse"
-                                 data-bs-parent="#accordionExample">
+                            <div id="collapseSevenUsm" class="accordion-collapse collapse"
+                                 data-bs-parent="#accordionusm">
                                 <div class="accordion-body">
                                     <ol>
                                         <li>
@@ -1044,16 +1044,16 @@
                         </ol>
                     </div>
 
-                    <div class="accordion pt-5 w-100" id="accordionExample">
+                    <div class="accordion pt-5 w-100" id="accordionutbk">
                         <div class="accordion-item">
                             <h2 class="accordion-header">
-                                <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseOneUtbk" aria-expanded="true" aria-controls="collapseOneUtbk">
                                     Kelengkapan Berkas Pendaftaran
                                 </button>
                             </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse show"
-                                 data-bs-parent="#accordionExample">
+                            <div id="collapseOneUtbk" class="accordion-collapse collapse"
+                                 data-bs-parent="#accordionutbk">
                                 <div class="accordion-body">
                                     Data yang harus dilengkapi pada formulir pendafataran daring:
 
@@ -1103,13 +1103,13 @@
                         <div class="accordion-item">
                             <h2 class="accordion-header">
                                 <button class="accordion-button collapsed fw-semibold" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
-                                        aria-controls="collapseTwo">
+                                        data-bs-toggle="collapse" data-bs-target="#collapseTwoUtbk" aria-expanded="false"
+                                        aria-controls="collapseTwoUtbk">
                                     Hal-hal yang harus diperhatikan peserta sebelum melakukan Tes Psikotes Onsite
                                 </button>
                             </h2>
-                            <div id="collapseTwo" class="accordion-collapse collapse"
-                                 data-bs-parent="#accordionExample">
+                            <div id="collapseTwoUtbk" class="accordion-collapse collapse"
+                                 data-bs-parent="#accordionutbk">
                                 <div class="accordion-body">
                                     <ol>
                                         <li><span style="font-size:14px">Telah lulus dari Tes Wawancara bagi Jalur PMDK, Tes Akademik bagi Jalur USM dan Penilaian UTBK untuk jalur UTBK;</span></li>
@@ -1126,13 +1126,13 @@
                         <div class="accordion-item">
                             <h2 class="accordion-header">
                                 <button class="accordion-button collapsed fw-semibold" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
-                                        aria-controls="collapseThree">
+                                        data-bs-toggle="collapse" data-bs-target="#collapseThreeUtbk" aria-expanded="false"
+                                        aria-controls="collapseThreeUtbk">
                                     Hal-hal yang harus diperhatikan peserta saat&nbsp;melakukan Tes Psikotes Onsite&nbsp;
                                 </button>
                             </h2>
-                            <div id="collapseThree" class="accordion-collapse collapse"
-                                 data-bs-parent="#accordionExample">
+                            <div id="collapseThreeUtbk" class="accordion-collapse collapse"
+                                 data-bs-parent="#accordionutbk">
                                 <div class="accordion-body">
                                     <ol>
                                         <li>Peserta harus hadir pukul 08.00 wib di kompleks Institut Teknologi Del</li>
@@ -1169,13 +1169,13 @@
                         <div class="accordion-item">
                             <h2 class="accordion-header">
                                 <button class="accordion-button collapsed fw-semibold" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false"
-                                        aria-controls="collapseThree">
+                                        data-bs-toggle="collapse" data-bs-target="#collapseFourUtbk" aria-expanded="false"
+                                        aria-controls="collapseFourUtbk">
                                     Hal-hal yang harus dipersiapkan peserta sebelum melakukan Daftar Ulang Daring
                                 </button>
                             </h2>
-                            <div id="collapseFour" class="accordion-collapse collapse"
-                                 data-bs-parent="#accordionExample">
+                            <div id="collapseFourUtbk" class="accordion-collapse collapse"
+                                 data-bs-parent="#accordionutbk">
                                 <div class="accordion-body">
                                     <ol>
                                         <li>Mempersiapkan scan Ijazah/bukti tanda lulus&nbsp;SMA/SMK;</li>
@@ -1194,13 +1194,13 @@
                         <div class="accordion-item">
                             <h2 class="accordion-header">
                                 <button class="accordion-button collapsed fw-semibold" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false"
-                                        aria-controls="collapseThree">
+                                        data-bs-toggle="collapse" data-bs-target="#collapseFiveUtbk" aria-expanded="false"
+                                        aria-controls="collapseFiveUtbk">
                                     Hal-hal yang harus diperhatikan peserta saat melakukan Daftar Ulang Daring, bagi yang mendaftar secara luring akan disampaikan bersamaan pengumuman kelulusan
                                 </button>
                             </h2>
-                            <div id="collapseFive" class="accordion-collapse collapse"
-                                 data-bs-parent="#accordionExample">
+                            <div id="collapseFiveUtbk" class="accordion-collapse collapse"
+                                 data-bs-parent="#accordionutbk">
                                 <div class="accordion-body">
                                     <ol>
                                         <li>Peserta silakan mengakses&nbsp;&nbsp;<a
