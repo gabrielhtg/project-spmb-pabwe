@@ -37,12 +37,12 @@ Route::get('/admisi/sarjanaterapan', function () {
     return view('admisi.sarjanaTerapan');
 });
 // =======
-Route::get('/fasilitas-Asrama', [FasilitasController::class, "viewAsrama"])->name("fasilitas.asrama");
-Route::get('/fasilitas-Kesehatan-dan-Olahraga', [FasilitasController::class, "viewKesehatandanOlahraga"])->name("fasilitas.kesehatandanolahraga");
-Route::get('/fasilitas-Area-Mahasiswa', [FasilitasController::class, "viewAreaMahasiswa"])->name("fasilitas.areamahasiswa");
-Route::get('/fasilitas-Laboratorium', [FasilitasController::class, "viewLaboratorium"])->name("fasilitas.laboratorium");
-Route::get('/fasilitas-Layanan-Makanan', [FasilitasController::class, "viewLayananMakanan"])->name("fasilitas.layananmakanan");
-Route::get('/pengumuman', [PengumumanController::class, 'viewPengumuman'])->name("pengumuman");
+Route::get('/fasilitas-Asrama', [FasilitasController::class, "getviewAsrama"])->name("fasilitas.asrama");
+Route::get('/fasilitas-Kesehatan-dan-Olahraga', [FasilitasController::class, "getviewKesehatandanOlahraga"])->name("fasilitas.kesehatandanolahraga");
+Route::get('/fasilitas-Area-Mahasiswa', [FasilitasController::class, "getviewAreaMahasiswa"])->name("fasilitas.areamahasiswa");
+Route::get('/fasilitas-Laboratorium', [FasilitasController::class, "getviewLaboratorium"])->name("fasilitas.laboratorium");
+Route::get('/fasilitas-Layanan-Makanan', [FasilitasController::class, "getviewLayananMakanan"])->name("fasilitas.layananmakanan");
+Route::get('/pengumuman', [PengumumanController::class, 'getviewPengumuman'])->name("pengumuman");
 // >>>>>>> 7e272ebdb70972483ef0cea8437196f00fd3bfff
 
 

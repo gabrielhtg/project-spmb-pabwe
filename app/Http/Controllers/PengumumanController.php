@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class PengumumanController extends Controller
 {
-    public function viewPengumuman()
+    public function getviewPengumuman()
     {
         return view("pengumuman.pengumuman");
     }

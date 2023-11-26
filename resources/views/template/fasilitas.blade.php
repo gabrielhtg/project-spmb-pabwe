@@ -2,7 +2,17 @@
 
 <main class="mx-auto">
     <section>
-        <img src="{{ asset('/assets/img/fasilitas/header-fasilitas.jpg') }}" class="img-fluid d-block w-60" alt="header-fasilitas">
+        <div id="carouselExample" class="carousel slide">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{{ asset('/assets/img/fasilitas/header-fasilitas.jpg') }}" class="img-fluid d-block w-60" alt="header-fasilitas">
+                    <div class="carousel-caption d-none d-md-block text-start"
+                         style="text-shadow: 6px 6px 10px rgba(0, 0, 0, 0.5);">
+                        <h2>Discover Our Campus Facilities:<br> Elevate Your Campus Experience!</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
