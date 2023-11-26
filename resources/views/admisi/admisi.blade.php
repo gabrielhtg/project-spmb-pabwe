@@ -86,21 +86,21 @@
     <section id="jalur-pendaftaran" class="container pt-5">
         <h3 class="pb-3 fw-semibold">Jalur Pendaftaran</h3>
 
-        <ul class="nav nav-fill nav-pills" id="jalur-pendaftaran-Tab" role="tablist">
+        <ul class="nav nav-fill nav-pills " id="jalur-pendaftaran-Tab" role="tablist">
             <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="pmdk-tab" data-bs-toggle="tab" data-bs-target="#pmdk-tab-pane"
+                <button class="nav-link custom-btn " id="pmdk-tab" data-bs-toggle="tab" data-bs-target="#pmdk-tab-pane"
                         type="button" role="tab" aria-controls="utbk-tab-pane" aria-selected="true">
                     PMDK
                 </button>
             </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="usm-tab" data-bs-toggle="tab" data-bs-target="#usm-tab-pane" type="button"
+            <li class="nav-item" role="presentation" style="margin: 0px 20px">
+                <button class="nav-link custom-btn" id="usm-tab" data-bs-toggle="tab" data-bs-target="#usm-tab-pane" type="button"
                         role="tab" aria-controls="usm-tab-pane" aria-selected="false">
                     USM
                 </button>
             </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="utbk-tab" data-bs-toggle="tab" data-bs-target="#utbk-tab-pane"
+            <li class="nav-item " role="presentation">
+                <button class="nav-link custom-btn  " id="utbk-tab" data-bs-toggle="tab" data-bs-target="#utbk-tab-pane"
                         type="button" role="tab" aria-controls="utbk-tab-pane" aria-selected="false">
                     UTBK
                 </button>
@@ -114,8 +114,8 @@
                     <img style="width: 50rem" class="border border-1"
                          src="{{ asset("/assets/img/flow-pendaftaran.jpg") }}" alt="flow-pendaftaran">
                     <div style="width: 50rem" class="justify-content-center d-flex gap-5 mt-5 mb-5">
-                        <button class="btn btn-primary">Pedoman Pendaftaran</button>
-                        <button class="btn btn-primary">Pedoman Upload Dokumen</button>
+                        <button class="btn  custom-btn">Pedoman Pendaftaran</button>
+                        <button class="btn  custom-btn">Pedoman Upload Dokumen</button>
                     </div>
 
                     <div class="w-100">
@@ -239,7 +239,7 @@
                                 </button>
                             </h2>
                             <div id="collapseOne" class="accordion-collapse collapse show"
-                                 data-bs-parent="#accordionExample">
+                                 data-bs-parent="#accordionExample"  style="background-color: rgba(89, 84, 84, 0.155)">
                                 <div class="accordion-body">
                                     <ol>
                                         <li>Lulus seleksi administrasi berkas dan memiliki Kartu Ujian;</li>
@@ -277,7 +277,7 @@
                                 </button>
                             </h2>
                             <div id="collapseTwo" class="accordion-collapse collapse"
-                                 data-bs-parent="#accordionExample">
+                                 data-bs-parent="#accordionExample"  style="background-color: rgba(89, 84, 84, 0.155)">
                                 <div class="accordion-body">
                                     <ol>
                                         <li>
@@ -319,7 +319,7 @@
                                 </button>
                             </h2>
                             <div id="collapseThree" class="accordion-collapse collapse"
-                                 data-bs-parent="#accordionExample">
+                                 data-bs-parent="#accordionExample"  style="background-color: rgba(89, 84, 84, 0.155)">
                                 <div class="accordion-body">
                                     <ol>
                                         <li>Telah lulus dari Tes Wawancara bagi Jalur PMDK, Tes Akademik bagi Jalur USM
@@ -352,7 +352,7 @@
                                 </button>
                             </h2>
                             <div id="collapseFour" class="accordion-collapse collapse"
-                                 data-bs-parent="#accordionExample">
+                                 data-bs-parent="#accordionExample"  style="background-color: rgba(89, 84, 84, 0.155)">
                                 <div class="accordion-body">
                                     <p><u><strong>TAHAP 1</strong></u></p>
 
@@ -487,7 +487,7 @@
                                 </button>
                             </h2>
                             <div id="collapseFive" class="accordion-collapse collapse"
-                                 data-bs-parent="#accordionExample">
+                                 data-bs-parent="#accordionExample"  style="background-color: rgba(89, 84, 84, 0.155)">
                                 <div class="accordion-body">
 
                                     <ol>
@@ -667,12 +667,12 @@
                         <div class="accordion-item">
                             <h2 class="accordion-header">
                                 <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" >
                                     Hal-hal yang harus diperhatikan peserta sebelum melakukan Tes Akademik Daring
                                 </button>
                             </h2>
                             <div id="collapseOne" class="accordion-collapse collapse show"
-                                 data-bs-parent="#accordionExample">
+                                 data-bs-parent="#accordionExample" style="background-color: rgba(89, 84, 84, 0.155)">
                                 <div class="accordion-body">
                                     <ol>
                                         <li>
@@ -727,7 +727,7 @@
                                 </button>
                             </h2>
                             <div id="collapseTwo" class="accordion-collapse collapse"
-                                 data-bs-parent="#accordionExample">
+                                 data-bs-parent="#accordionExample"  style="background-color: rgba(89, 84, 84, 0.155)" >
                                 <div class="accordion-body">
                                     <ol>
                                         <li>
@@ -765,12 +765,12 @@
                             <h2 class="accordion-header">
                                 <button class="accordion-button collapsed fw-semibold" type="button"
                                         data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
-                                        aria-controls="collapseThree">
+                                        aria-controls="collapseThree" >
                                     Aturan Pelaksanaan Tes Akademik Daring
                                 </button>
                             </h2>
                             <div id="collapseThree" class="accordion-collapse collapse"
-                                 data-bs-parent="#accordionExample">
+                                 data-bs-parent="#accordionExample"  style="background-color: rgba(89, 84, 84, 0.155)">
                                 <div class="accordion-body">
                                     <ol>
                                         <li>
@@ -805,7 +805,7 @@
                                 </button>
                             </h2>
                             <div id="collapseFour" class="accordion-collapse collapse"
-                                 data-bs-parent="#accordionExample">
+                                 data-bs-parent="#accordionExample" style="background-color: rgba(89, 84, 84, 0.155)">
                                 <div class="accordion-body">
                                     <ol>
                                         <li>Telah lulus dari Tes Wawancara bagi Jalur PMDK, Tes Akademik bagi Jalur USM dan Penilaian UTBK untuk jalur UTBK.</li>
@@ -828,7 +828,7 @@
                                 </button>
                             </h2>
                             <div id="collapseFive" class="accordion-collapse collapse"
-                                 data-bs-parent="#accordionExample">
+                                 data-bs-parent="#accordionExample" style="background-color: rgba(89, 84, 84, 0.155)">
                                 <div class="accordion-body">
                                     <ol>
                                         <li>Peserta harus hadir pukul 08.00 wib di kompleks Institut Teknologi Del</li>
@@ -864,12 +864,12 @@
                             <h2 class="accordion-header">
                                 <button class="accordion-button collapsed fw-semibold" type="button"
                                         data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false"
-                                        aria-controls="collapseThree">
+                                        aria-controls="collapseThree" >
                                     Hal-hal yang harus dipersiapkan peserta sebelum melakukan Daftar Ulang Daring
                                 </button>
                             </h2>
                             <div id="collapseSix" class="accordion-collapse collapse"
-                                 data-bs-parent="#accordionExample">
+                                 data-bs-parent="#accordionExample" style="background-color: rgba(89, 84, 84, 0.155)">
                                 <div class="accordion-body">
                                     <ol>
                                         <li>
@@ -902,12 +902,12 @@
                             <h2 class="accordion-header">
                                 <button class="accordion-button collapsed fw-semibold" type="button"
                                         data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false"
-                                        aria-controls="collapseThree">
+                                        aria-controls="collapseThree" >
                                     Hal-hal yang harus diperhatikan peserta saat melakukan Daftar Ulang Daring, bagi yang mendaftar secara luring akan disampaikan bersamaan pengumuman kelulusan
                                 </button>
                             </h2>
                             <div id="collapseSeven" class="accordion-collapse collapse"
-                                 data-bs-parent="#accordionExample">
+                                 data-bs-parent="#accordionExample" style="background-color: rgba(89, 84, 84, 0.155)">
                                 <div class="accordion-body">
                                     <ol>
                                         <li>
@@ -1053,7 +1053,7 @@
                                 </button>
                             </h2>
                             <div id="collapseOne" class="accordion-collapse collapse show"
-                                 data-bs-parent="#accordionExample">
+                                 data-bs-parent="#accordionExample"  style="background-color: rgba(89, 84, 84, 0.155)">
                                 <div class="accordion-body">
                                     Data yang harus dilengkapi pada formulir pendafataran daring:
 
@@ -1104,12 +1104,12 @@
                             <h2 class="accordion-header">
                                 <button class="accordion-button collapsed fw-semibold" type="button"
                                         data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
-                                        aria-controls="collapseTwo">
+                                        aria-controls="collapseTwo" >
                                     Hal-hal yang harus diperhatikan peserta sebelum melakukan Tes Psikotes Onsite
                                 </button>
                             </h2>
                             <div id="collapseTwo" class="accordion-collapse collapse"
-                                 data-bs-parent="#accordionExample">
+                                 data-bs-parent="#accordionExample"  style="background-color: rgba(89, 84, 84, 0.155)">
                                 <div class="accordion-body">
                                     <ol>
                                         <li><span style="font-size:14px">Telah lulus dari Tes Wawancara bagi Jalur PMDK, Tes Akademik bagi Jalur USM dan Penilaian UTBK untuk jalur UTBK;</span></li>
@@ -1133,7 +1133,7 @@
                             </h2>
                             <div id="collapseThree" class="accordion-collapse collapse"
                                  data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
+                                <div class="accordion-body"  style="background-color: rgba(89, 84, 84, 0.155)">
                                     <ol>
                                         <li>Peserta harus hadir pukul 08.00 wib di kompleks Institut Teknologi Del</li>
                                         <li>Peserta akan diarahkan satpam menuju lokasi ujian;</li>
@@ -1175,7 +1175,7 @@
                                 </button>
                             </h2>
                             <div id="collapseFour" class="accordion-collapse collapse"
-                                 data-bs-parent="#accordionExample">
+                                 data-bs-parent="#accordionExample"  style="background-color: rgba(89, 84, 84, 0.155)">
                                 <div class="accordion-body">
                                     <ol>
                                         <li>Mempersiapkan scan Ijazah/bukti tanda lulus&nbsp;SMA/SMK;</li>
@@ -1200,7 +1200,7 @@
                                 </button>
                             </h2>
                             <div id="collapseFive" class="accordion-collapse collapse"
-                                 data-bs-parent="#accordionExample">
+                                 data-bs-parent="#accordionExample"  style="background-color: rgba(89, 84, 84, 0.155)">
                                 <div class="accordion-body">
                                     <ol>
                                         <li>Peserta silakan mengakses&nbsp;&nbsp;<a
@@ -1250,16 +1250,16 @@
     <section class="container w-100 pt-5 pb-3">
         <h3 class="fw-semibold pb-3">Program Studi</h3>
 
-        <div class="container d-flex justify-content-center flex-wrap row-gap-4 column-gap-5">
-            <div type="button" class="bg-white border-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                <div class="border-1 border d-flex rounded-5" style="width: 18rem">
+        <div class="container d-flex justify-content-center flex-wrap row-gap-4 column-gap-5 ">
+            <div type="button" class="bg-white border-0 " data-bs-toggle="modal" data-bs-target="#exampleModal ">
+                <div class="border-1 border d-flex rounded-5 custom-btn-1" style="width: 18rem">
                     <div class="bg-body-tertiary rounded-start-5" style="width: 6rem"></div>
                     <div class="d-flex justify-content-center align-items-center w-100 flex-wrap pt-2 pb-2 gap-1">
                         <div class="w-100 d-flex justify-content-start ms-3">
                             <img src="{{ asset("/assets/img/three-dot.jpeg") }}" alt="three-dot" style="width: 6px">
                         </div>
 
-                        <div class="w-100 fw-bold text-center">
+                        <div class="w-100 fw-bold text-center ">
                             Informatika
                         </div>
 
@@ -1299,8 +1299,8 @@
             </div>
 
             <div type="button" class="bg-white border-0" data-bs-toggle="modal" data-bs-target="#modalsi">
-                <div class="border-1 border d-flex  rounded-5" style="width: 18rem">
-                    <div class="bg-body-tertiary rounded-start-5" style="width: 6rem"></div>
+                <div class="border-1 border d-flex  rounded-5  custom-btn-1" style="width: 18rem">
+                    <div class="bg-body-tertiary rounded-start-5 " style="width: 6rem"></div>
                     <div class="d-flex justify-content-center align-items-center w-100 flex-wrap pt-2 pb-2 gap-1">
                         <div class="w-100 d-flex justify-content-start ms-3">
                             <img src="{{ asset("/assets/img/three-dot.jpeg") }}" alt="three-dot" style="width: 6px">
@@ -1345,7 +1345,7 @@
             </div>
 
             <div type="button" class="bg-white border-0" data-bs-toggle="modal" data-bs-target="#modalTE">
-                <div class="border-1 border d-flex  rounded-5" style="width: 18rem">
+                <div class="border-1 border d-flex  rounded-5  custom-btn-1" style="width: 18rem">
                     <div class="bg-body-tertiary rounded-start-5" style="width: 6rem"></div>
                     <div class="d-flex justify-content-center align-items-center w-100 flex-wrap pt-2 pb-2 gap-1">
                         <div class="w-100 d-flex justify-content-start ms-3">
@@ -1391,7 +1391,7 @@
             </div>
 
             <div type="button" class="bg-white border-0" data-bs-toggle="modal" data-bs-target="#modalMR">
-                <div class="border-1 border d-flex  rounded-5" style="width: 18rem">
+                <div class="border-1 border d-flex  rounded-5  custom-btn-1" style="width: 18rem">
                     <div class="bg-body-tertiary rounded-start-5" style="width: 6rem"></div>
                     <div class="d-flex justify-content-center align-items-center w-100 flex-wrap pt-2 pb-2 gap-1">
                         <div class="w-100 d-flex justify-content-start ms-3">
@@ -1437,7 +1437,7 @@
             </div>
 
             <div type="button" class="bg-white border-0" data-bs-toggle="modal" data-bs-target="#modalTB">
-                <div class="border-1 border d-flex  rounded-5" style="width: 18rem">
+                <div class="border-1 border d-flex  rounded-5  custom-btn-1" style="width: 18rem">
                     <div class="bg-body-tertiary rounded-start-5" style="width: 6rem"></div>
                     <div class="d-flex justify-content-center align-items-center w-100 flex-wrap pt-2 pb-2 gap-1">
                         <div class="w-100 d-flex justify-content-start ms-3">
@@ -1483,7 +1483,7 @@
             </div>
 
             <div type="button" class="bg-white border-0" data-bs-toggle="modal" data-bs-target="#modalTM">
-                <div class="border-1 border d-flex  rounded-5" style="width: 18rem">
+                <div class="border-1 border d-flex  rounded-5  custom-btn-1" style="width: 18rem">
                     <div class="bg-body-tertiary rounded-start-5" style="width: 6rem"></div>
                     <div class="d-flex justify-content-center align-items-center w-100 flex-wrap pt-2 pb-2 gap-1">
                         <div class="w-100 d-flex justify-content-start ms-3">
@@ -1528,7 +1528,7 @@
             </div>
 
             <div type="button" class="bg-white border-0" data-bs-toggle="modal" data-bs-target="#modalTM">
-                <div class="border-1 border d-flex  rounded-5" style="width: 18rem">
+                <div class="border-1 border d-flex  rounded-5  custom-btn-1" style="width: 18rem">
                     <div class="bg-body-tertiary rounded-start-5" style="width: 6rem"></div>
                     <div class="d-flex justify-content-center align-items-center w-100 flex-wrap pt-2 pb-2 gap-1">
                         <div class="w-100 d-flex justify-content-start ms-3">
@@ -1573,7 +1573,7 @@
             </div>
 
             <div type="button" class="bg-white border-0" data-bs-toggle="modal" data-bs-target="#modalTM">
-                <div class="border-1 border d-flex  rounded-5" style="width: 18rem">
+                <div class="border-1 border d-flex  rounded-5  custom-btn-1" style="width: 18rem">
                     <div class="bg-body-tertiary rounded-start-5" style="width: 6rem"></div>
                     <div class="d-flex justify-content-center align-items-center w-100 flex-wrap pt-2 pb-2 gap-1">
                         <div class="w-100 d-flex justify-content-start ms-3">
@@ -1618,7 +1618,7 @@
             </div>
 
             <div type="button" class="bg-white border-0" data-bs-toggle="modal" data-bs-target="#modalTM">
-                <div class="border-1 border d-flex rounded-5" style="width: 18rem">
+                <div class="border-1 border d-flex rounded-5  custom-btn-1" style="width: 18rem">
                     <div class="bg-body-tertiary rounded-start-5" style="width: 6rem"></div>
                     <div class="d-flex justify-content-center align-items-center w-100 flex-wrap pt-2 pb-2 gap-1">
                         <div class="w-100 d-flex justify-content-start ms-3">
@@ -1854,7 +1854,7 @@
 
         <div class="d-flex justify-content-center flex-column pt-5">
             <div class="d-flex align-items-center pb-3 justify-content-center">
-                <button class="btn btn-primary ms-3">Unduh di sini</button>
+                <button class="btn btn-primary ms-3 custom-btn">Unduh di sini</button>
             </div>
         </div>
     </section>
