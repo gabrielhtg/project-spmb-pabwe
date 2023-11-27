@@ -7,49 +7,31 @@
     {{-- HERO SECTION --}}
     <section id="hero-section">
         <div id="carouselExampleCaptions" class="carousel slide">
-            <div class="carousel-indicators">
+            {{-- <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
-            </div>
+            </div> --}}
             <div class="carousel-inner">
                 <div class="carousel-item active bg-dark-subtle">
                     <img src="{{ asset('img/program/carousel-example.jpg')}}" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>S1 Informatika</h5>
-                        <p>Some representative placeholder content for the first slide.</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="{{ asset('img/program/carousel-example.jpg')}}" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                    <h5>S1 Informatika</h5>
-                        <p>Some representative placeholder content for the first slide.</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="{{ asset('img/program/carousel-example.jpg')}}" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                    <h5>S1 Informatika</h5>
-                        <p>Some representative placeholder content for the first slide.</p>
-                </div>
-                <div class="carousel-item">
-                    <img src="{{ asset('img/program/carousel-example.jpg')}}" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                    <h5>S1 Informatika</h5>
-                        <p>Some representative placeholder content for the first slide.</p>
-                    </div>
                 </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <div class="card-img-overlay d-flex align-items-center pt-5">
+                <div class="d-flex flex-column container pt-5">
+                    <h1 class="fw-bold text-light pt-5">S1 Informatika</h1>
+                    <p><a href="/fakultas" class="fs-5 text-decoration-none text-light">Fakultas Informatika dan Teknik Elektro</a></p>
+                </div>
+            </div>
+            {{-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
-            </button>
+            </button> --}}
         </div>
     </section>
 
@@ -68,9 +50,10 @@
     </div>
 
     {{-- OVERVIEW SUBPAGE --}}
-    <section id="overview-subpage" class="container d-none">
+    <section id="overview-subpage" class="container">
+
         <div class="mt-5 mb-3">
-            <h1 class="fw-bold">S1 Informatika</h1>
+            <h1 class="fw-bold">Overview</h1>
         </div>
 
         <div class="d-flex row">
@@ -107,17 +90,17 @@
             <div class="col-4">
                 <div class="card"">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item fw-bold">Ketua Program Studi</li>
+                        <li class="list-group-item fw-bold list-group-item-secondary">Ketua Program Studi</li>
                         <li class="list-group-item">Arie Satia Dharma, S.T, M.Kom.</li>
-                        <li class="list-group-item fw-bold">Akreditasi</li>
+                        <li class="list-group-item fw-bold list-group-item-secondary">Akreditasi</li>
                         <li class="list-group-item">Baik (C)</li>
-                        <li class="list-group-item fw-bold">Gelar</li>
+                        <li class="list-group-item fw-bold list-group-item-secondary">Gelar</li>
                         <li class="list-group-item">S.Kom</li>
-                        <li class="list-group-item fw-bold">Lama Studi</li>
+                        <li class="list-group-item fw-bold list-group-item-secondary">Lama Studi</li>
                         <li class="list-group-item">4 Tahun</li>
-                        <li class="list-group-item fw-bold">Biaya Kuliah</li>
+                        <li class="list-group-item fw-bold list-group-item-secondary">Biaya Kuliah</li>
                         <li class="list-group-item">Rp. 6.500.000/semester</li>
-                        <li class="list-group-item fw-bold">Lokasi</li>
+                        <li class="list-group-item fw-bold list-group-item-secondary">Lokasi</li>
                         <li class="list-group-item">Laguboti, Toba, Sumatera Utara</li>
                     </ul>
                 </div>
@@ -126,12 +109,11 @@
     </section>
 
     {{-- DOSEN SUBPAGE --}}
-    <section id="dosen-subpage" class="container">
+    <section id="dosen-subpage" class="container d-none">
         <div class="mt-5 mb-3">
             <h1 class="fw-bold">Dosen</h1>
         </div>
 
-   
         <div class="d-flex gy-4 row justify-content-center text-center">
             
             {{--  --}}
@@ -151,7 +133,7 @@
                         </div>
                     </div>
 
-                    <div id="overlay-{{ $i }}" class="card-img-overlay bg-dark" style="--bs-bg-opacity: .5; opacity: 0; transition: opacity 0.2s ease;">
+                    <div id="overlay-{{ $i }}" class="card-img-overlay bg-dark" style="--bs-bg-opacity: .8; opacity: 0; transition: opacity 0.2s ease;">
                         <div class="card-img-overlay d-flex row justify-content-center align-content-center align-items-center">
                             <div class="badge bg-primary text-wrap w-auto fw-medium fs-6 small mb-3">
                                 <small>Dosen</small>
@@ -159,7 +141,7 @@
                             <h5 class="card-title fw-semibold fs-6">Dedi Andre Martua Raja Panggabean</h5>
                             <p class="card-text fs-6 small">S3 Ternak Lele</p>
                             {{-- <div class="badge rounded-pill bg-light text-wrap w-auto fw-medium fs-6 small mb-3"> --}}
-                                <small><small class="text-dark text-decoration-none"><a href="https://www.del.ac.id/" class="text-light">See More...</a></small></small>
+                                <small><small class="text-dark"><a href="https://www.del.ac.id/" class="text-light text-decoration-none fst-italic">See More...</a></small></small>
                             {{-- </div> --}}
                         </div>
                     </div>
