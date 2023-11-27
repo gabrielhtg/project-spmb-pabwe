@@ -67,7 +67,8 @@
         </ul>
     </div>
 
-    <section id="overview-subpage" class="container">
+    {{-- OVERVIEW SUBPAGE --}}
+    <section id="overview-subpage" class="container d-none">
         <div class="mt-5 mb-3">
             <h1 class="fw-bold">S1 Informatika</h1>
         </div>
@@ -124,172 +125,86 @@
         </div>
     </section>
 
-    <section id="dosen-subpage" class="container d-none">
+    {{-- DOSEN SUBPAGE --}}
+    <section id="dosen-subpage" class="container">
         <div class="mt-5 mb-3">
             <h1 class="fw-bold">Dosen</h1>
         </div>
 
         <div class="container px-4 text-center">
             <div class="row gx-5">
-                <div class="col-md-3">
-                    <div class="p-3">
-                        <div class="card" style="width: 18rem;">
-                            <img src="{{ asset('img/program/carousel-example.jpg')}}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Dedi Andre Martua Raja Panggabean, S.Kom, M.InfoTech</h5>
-                                <p class="card-text">S3 Ternak Lele</p>
-                                <div class="role-text fw-bold fs-5">Role</div>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                @for ($i = 0; $i < 12; $i++)       
+                    <div class="col-md-3">
+                        <div class="p-3">
+                            <div class="card" style="width: 18rem;">
+                                <img src="{{ asset('img/program/carousel-example.jpg')}}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Dedi Andre Martua Raja Panggabean, S.Kom, M.InfoTech</h5>
+                                    <p class="card-text">S3 Ternak Lele</p>
+                                    <div class="role-text fw-bold fs-5">Role</div>
+                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endfor
+            </div>
+        </div>
 
-                <div class="col-md-3">
-                    <div class="p-3">
-                        <div class="card" style="width: 18rem;">
-                            <img src="{{ asset('img/program/carousel-example.jpg')}}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Dedi Andre Martua Raja Panggabean, S.Kom, M.InfoTech</h5>
-                                <p class="card-text">S3 Ternak Lele</p>
-                                <div class="role-text fw-bold fs-5">Role</div>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div class="d-flex gy-4 row justify-content-center text-center">
+            
+            {{--  --}}
+            @for ($i = 0; $i < 8; $i++)
+            <div class="col-3">
+                <div class="card text-bg-dark" onmouseover="showOverlay({{ $i }})" onmouseout="hideOverlay({{ $i }})">
+                    <img src="{{ asset('img/program/dosen-profile-test.jpg') }}" class="card-img" alt="">
 
-                <div class="col-md-3">
-                    <div class="p-3">
-                        <div class="card" style="width: 18rem;">
-                            <img src="{{ asset('img/program/carousel-example.jpg')}}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Dedi Andre Martua Raja Panggabean, S.Kom, M.InfoTech</h5>
-                                <p class="card-text">S3 Ternak Lele</p>
-                                <div class="role-text fw-bold fs-5">Role</div>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <div id="backOverlay-{{ $i }}" class="card-img-overlay" style="opacity: 1; transition: opacity 0.2s ease;">
+                        <div class="d-flex justify-content-start">
+                            <div class=" badge bg-primary text-wrap fw-medium fs-6 small mb-3">
+                                <small>Dosen</small>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="p-3">
-                        <div class="card" style="width: 18rem;">
-                            <img src="{{ asset('img/program/carousel-example.jpg')}}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Dedi Andre Martua Raja Panggabean, S.Kom, M.InfoTech</h5>
-                                <p class="card-text">S3 Ternak Lele</p>
-                                <div class="role-text fw-bold fs-5">Role</div>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
+                        <div class="d-flex card-img-overlay align-items-end">
+                            <h5 class="card-title fw-semibold fs-6">Dedi Andre Martua Raja Panggabean</h5>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="p-3">
-                        <div class="card" style="width: 18rem;">
-                            <img src="{{ asset('img/program/carousel-example.jpg')}}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Dedi Andre Martua Raja Panggabean, S.Kom, M.InfoTech</h5>
-                                <p class="card-text">S3 Ternak Lele</p>
-                                <div class="role-text fw-bold fs-5">Role</div>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+
+                    <div id="overlay-{{ $i }}" class="card-img-overlay bg-dark" style="--bs-bg-opacity: .5; opacity: 0; transition: opacity 0.2s ease;">
+                        <div class="card-img-overlay d-flex row justify-content-center align-content-center align-items-center">
+                            <div class="badge bg-primary text-wrap w-auto fw-medium fs-6 small mb-3">
+                                <small>Dosen</small>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="p-3">
-                        <div class="card" style="width: 18rem;">
-                            <img src="{{ asset('img/program/carousel-example.jpg')}}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Dedi Andre Martua Raja Panggabean, S.Kom, M.InfoTech</h5>
-                                <p class="card-text">S3 Ternak Lele</p>
-                                <div class="role-text fw-bold fs-5">Role</div>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="p-3">
-                        <div class="card" style="width: 18rem;">
-                            <img src="{{ asset('img/program/carousel-example.jpg')}}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Dedi Andre Martua Raja Panggabean, S.Kom, M.InfoTech</h5>
-                                <p class="card-text">S3 Ternak Lele</p>
-                                <div class="role-text fw-bold fs-5">Role</div>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="p-3">
-                        <div class="card" style="width: 18rem;">
-                            <img src="{{ asset('img/program/carousel-example.jpg')}}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Dedi Andre Martua Raja Panggabean, S.Kom, M.InfoTech</h5>
-                                <p class="card-text">S3 Ternak Lele</p>
-                                <div class="role-text fw-bold fs-5">Role</div>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="p-3">
-                        <div class="card" style="width: 18rem;">
-                            <img src="{{ asset('img/program/carousel-example.jpg')}}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Dedi Andre Martua Raja Panggabean, S.Kom, M.InfoTech</h5>
-                                <p class="card-text">S3 Ternak Lele</p>
-                                <div class="role-text fw-bold fs-5">Role</div>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="p-3">
-                        <div class="card" style="width: 18rem;">
-                            <img src="{{ asset('img/program/carousel-example.jpg')}}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Dedi Andre Martua Raja Panggabean, S.Kom, M.InfoTech</h5>
-                                <p class="card-text">S3 Ternak Lele</p>
-                                <div class="role-text fw-bold fs-5">Role</div>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="p-3">
-                        <div class="card" style="width: 18rem;">
-                            <img src="{{ asset('img/program/carousel-example.jpg')}}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Dedi Andre Martua Raja Panggabean, S.Kom, M.InfoTech</h5>
-                                <p class="card-text">S3 Ternak Lele</p>
-                                <div class="role-text fw-bold fs-5">Role</div>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="p-3">
-                        <div class="card" style="width: 18rem;">
-                            <img src="{{ asset('img/program/carousel-example.jpg')}}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Dedi Andre Martua Raja Panggabean, S.Kom, M.InfoTech</h5>
-                                <p class="card-text">S3 Ternak Lele</p>
-                                <div class="role-text fw-bold fs-5">Role</div>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <h5 class="card-title fw-semibold fs-6">Dedi Andre Martua Raja Panggabean</h5>
+                            <p class="card-text fs-6 small">S3 Ternak Lele</p>
+                            <div class="badge rounded-pill bg-light text-wrap w-auto fw-medium fs-6 small mb-3">
+                                <small><small class="text-dark"><a href="https://www.del.ac.id/">See More...</a></small></small>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <script>
+                function showOverlay(id) {
+                    var overlay = document.getElementById("overlay-" + id);
+                    var backOverlay = document.getElementById("backOverlay-" + id);
+                    // overlay.classList.remove("d-none");
+                    overlay.style.opacity = "1";
+                    backOverlay.style.opacity = "0";
+                }
+
+                function hideOverlay(id) {
+                    var overlay = document.getElementById("overlay-" + id);
+                    var backOverlay = document.getElementById("backOverlay-" + id);
+
+                    // overlay.classList.add("d-none");
+                    overlay.style.opacity = "0";
+                    backOverlay.style.opacity = "1";
+                }
+            </script>
+            @endfor
+            
         </div>
     </section>
 
