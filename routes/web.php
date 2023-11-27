@@ -35,8 +35,4 @@ Route::get('/prodi', function () {
     return view('program.prodi');
 });
 
-Route::get('/test', function () {
-    return view('program.test');
-});
-
 // End of ROUTE PROGRAM STUDI [TEAM 02]

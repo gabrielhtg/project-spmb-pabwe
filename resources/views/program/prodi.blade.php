@@ -177,9 +177,9 @@
                             </div>
                             <h5 class="card-title fw-semibold fs-6">Dedi Andre Martua Raja Panggabean</h5>
                             <p class="card-text fs-6 small">S3 Ternak Lele</p>
-                            <div class="badge rounded-pill bg-light text-wrap w-auto fw-medium fs-6 small mb-3">
-                                <small><small class="text-dark"><a href="https://www.del.ac.id/">See More...</a></small></small>
-                            </div>
+                            {{-- <div class="badge rounded-pill bg-light text-wrap w-auto fw-medium fs-6 small mb-3"> --}}
+                                <small><small class="text-dark text-decoration-none"><a href="https://www.del.ac.id/" class="text-light">See More...</a></small></small>
+                            {{-- </div> --}}
                         </div>
                     </div>
                 </div>
