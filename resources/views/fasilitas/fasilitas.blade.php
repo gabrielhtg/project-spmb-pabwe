@@ -40,31 +40,31 @@
     <section id="asrama-subpage" class="container">
         <div class="mt-3 mb-3">
         </div>
-            @include('fasilitas.fasilitasAsrama')
+            @include('fasilitas.sub-fasilitas.fasilitasAsrama')
     </section>
     
     <section id="kesehatan-subpage" class="container">
         <div class="mt-3 mb-3">
         </div>
-            @include('fasilitas.fasilitasKesehatandanOlahraga')
+            @include('fasilitas.sub-fasilitas.fasilitasKesehatandanOlahraga')
     </section>
     
     <section id="areamhs-subpage" class="container">
         <div class="mt-3 mb-3">
         </div>
-            @include('fasilitas.fasilitasAreaMahasiswa')
+            @include('fasilitas.sub-fasilitas.fasilitasAreaMahasiswa')
     </section>
         
     <section id="laboratorium-subpage" class="container">
         <div class="mt-3 mb-3">
         </div>
-            @include('fasilitas.fasilitasLaboratorium')
+            @include('fasilitas.sub-fasilitas.fasilitasLaboratorium')
     </section>
     
     <section id="layanan-subpage" class="container">
         <div class="mt-3 mb-3">
         </div>
-            @include('fasilitas.fasilitasLayananMakanan')
+            @include('fasilitas.sub-fasilitas.fasilitasLayananMakanan')
     </section>
     
 

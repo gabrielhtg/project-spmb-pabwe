@@ -8,7 +8,7 @@ class FasilitasController extends Controller
 {
     public function getviewFasilitas()
     {
-        return view('template.fasilitas');
+        return view('fasilitas.fasilitas');
     }
 
 }
