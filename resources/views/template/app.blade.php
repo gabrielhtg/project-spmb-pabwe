@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>SPMB IT Del</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset("/assets/css/global.css") }}">
     <link rel="stylesheet" href="{{ asset("/assets/css/kel1.css") }}">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="{{ asset("/assets/css/admisi.css") }}">
+    <link rel="stylesheet" href="{{ asset("/assets/css/fasilitas.css") }}">
+    <link rel="stylesheet" href="{{ asset("/assets/css/pengumuman.css") }}">
     <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
 </head>
 <body>
@@ -79,10 +81,15 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#">FAQ</a>
                         </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ Route('fasilitas.asrama')}}">Fasilitas</a>
+                        </li>
                     </ul>
                 </div>
-                <a class="d-none d-xl-inline">
-                    <button class="btn btn-primary">Pengumuman SPMB</button>
+                <a class="d-none d-xl-inline" href="{{ route('pengumuman') }}">
+                    <button class="btn btn-primary"
+                            >Pengumuman SPMB</button>
                 </a>
                 <a class="d-xl-none text-primary text-decoration-none">
                     <span><strong>Pengumuman SPMB</strong></span>
@@ -230,6 +237,7 @@
     </div>
 {{--footer end--}}
 
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/965a381e3a.js" crossorigin="anonymous"></script>
     <script src="{{ asset("/assets/js/kel4.js") }}"></script>

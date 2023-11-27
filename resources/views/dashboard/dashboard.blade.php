@@ -249,7 +249,7 @@
     </div>
 
     <div class="d-flex w-100 justify-content-center">
-        <button class="btn btn-primary mt-5">See More</button>
+        <a href="{{ route('mitra.mitra') }}" class="btn btn-primary mt-5">See More</a>
     </div>
 </section>
 
