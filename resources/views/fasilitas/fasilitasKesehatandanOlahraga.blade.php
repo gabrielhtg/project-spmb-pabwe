@@ -67,7 +67,7 @@
                 </div>
 
                 <div class="col-md-6 mx-auto d-flex flex-column my-auto">
-                    <h3>klinik IT Del</h3>
+                    <h3>Klinik IT Del</h3>
                     <div class="lh-base text-break text-justify custom-justified-text align-items-center">
                         <p>
                         Klinik adalah fasilitas kesehatan yang dimiliki oleh IT Del. Klinik IT Del dilengkapi dengan obat-obat yang lengkap, ruangan yang diperlukan jika ada mahasiswa yang perlu diinfus, dokter dan juga perawat.  Selain itu juga tersedianya mobil kesehatan yang digunakan untuk menjemput mahasiswa sakit yang berada dikampus.
