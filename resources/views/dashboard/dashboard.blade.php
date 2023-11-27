@@ -15,7 +15,7 @@
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img src="{{ asset("/assets/img/hero-compressed.jpeg") }}" class="d-block w-100"
-                         alt="beasiswa-tolikara">
+                        alt="beasiswa-tolikara">
                     <div class="carousel-caption d-none d-md-block">
                         <div class="ukuran-div-beasiswa p-5">
                             <div class="text-start">
@@ -38,7 +38,7 @@
                 </div>
                 <div class="carousel-item">
                     <img src="{{ asset("/assets/img/beasiswa-tolikara.jpeg") }}" class="d-block w-100"
-                         alt="beasiswa-tolikara">
+                        alt="beasiswa-tolikara">
                     <div class="carousel-caption d-none d-md-block">
                         <div class="ukuran-div-beasiswa p-5">
                             <div class="text-start">

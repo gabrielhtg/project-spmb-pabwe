@@ -131,26 +131,7 @@
             <h1 class="fw-bold">Dosen</h1>
         </div>
 
-        <div class="container px-4 text-center">
-            <div class="row gx-5">
-                @for ($i = 0; $i < 12; $i++)       
-                    <div class="col-md-3">
-                        <div class="p-3">
-                            <div class="card" style="width: 18rem;">
-                                <img src="{{ asset('img/program/carousel-example.jpg')}}" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Dedi Andre Martua Raja Panggabean, S.Kom, M.InfoTech</h5>
-                                    <p class="card-text">S3 Ternak Lele</p>
-                                    <div class="role-text fw-bold fs-5">Role</div>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @endfor
-            </div>
-        </div>
-
+   
         <div class="d-flex gy-4 row justify-content-center text-center">
             
             {{--  --}}
