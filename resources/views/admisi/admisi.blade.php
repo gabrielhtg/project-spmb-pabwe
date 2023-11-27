@@ -114,8 +114,8 @@
                     <img style="width: 50rem" class="border border-1"
                          src="{{ asset("/assets/img/flow-pendaftaran.jpg") }}" alt="flow-pendaftaran">
                     <div style="width: 50rem" class="justify-content-center d-flex gap-5 mt-5 mb-5">
-                        <button class="btn  custom-btn">Pedoman Pendaftaran</button>
-                        <button class="btn  custom-btn">Pedoman Upload Dokumen</button>
+                        <button class="btn ">Pedoman Pendaftaran</button>
+                        <button class="btn ">Pedoman Upload Dokumen</button>
                     </div>
 
                     <div class="w-100">
@@ -1273,13 +1273,13 @@
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                  aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
+                <div class="modal-dialog modal-dialog-centered modal-lg " >
+                    <div class="modal-content"style="width: 800px; height:600px" >
                         <div class="modal-header">
                             <h1 class="modal-title fs-5" id="exampleModalLabel">Informatika</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body d-flex align-items-center text-center" style="padding:0px 80px;">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. A assumenda beatae cum ea magnam
                             nobis praesentium reiciendis similique voluptatem voluptatibus. Accusantium atque
                             consectetur corporis cum est et facere facilis fuga fugiat hic, id illum in incidunt ipsam,
@@ -1319,13 +1319,13 @@
 
             <!-- Modal -->
             <div class="modal fade" id="modalsi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
+                <div class="modal-dialog modal-dialog-centered modal-lg " >
+                    <div class="modal-content"style="width: 800px; height:600px" >
                         <div class="modal-header">
                             <h1 class="modal-title fs-5" id="exampleModalLabel">Sistem Informasi</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body d-flex align-items-center text-center" style="padding:0px 80px;">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. A assumenda beatae cum ea magnam
                             nobis praesentium reiciendis similique voluptatem voluptatibus. Accusantium atque
                             consectetur corporis cum est et facere facilis fuga fugiat hic, id illum in incidunt ipsam,
@@ -1365,13 +1365,13 @@
 
             <!-- Modal -->
             <div class="modal fade" id="modalTE" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
+                <div class="modal-dialog modal-dialog-centered modal-lg " >
+                    <div class="modal-content"style="width: 800px; height:600px" >
                         <div class="modal-header">
                             <h1 class="modal-title fs-5" id="exampleModalLabel">Teknik Elektro</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body d-flex align-items-center text-center" style="padding:0px 80px;">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. A assumenda beatae cum ea magnam
                             nobis praesentium reiciendis similique voluptatem voluptatibus. Accusantium atque
                             consectetur corporis cum est et facere facilis fuga fugiat hic, id illum in incidunt ipsam,
@@ -1411,13 +1411,13 @@
 
             <!-- Modal -->
             <div class="modal fade" id="modalMR" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
+                <div class="modal-dialog modal-dialog-centered modal-lg " >
+                    <div class="modal-content"style="width: 800px; height:600px" >
                         <div class="modal-header">
                             <h1 class="modal-title fs-5" id="exampleModalLabel">Managemen Rekayasa</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body d-flex align-items-center text-center" style="padding:0px 80px;">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. A assumenda beatae cum ea magnam
                             nobis praesentium reiciendis similique voluptatem voluptatibus. Accusantium atque
                             consectetur corporis cum est et facere facilis fuga fugiat hic, id illum in incidunt ipsam,
@@ -1457,13 +1457,13 @@
 
             <!-- Modal -->
             <div class="modal fade" id="modalTB" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
+                <div class="modal-dialog modal-dialog-centered modal-lg " >
+                    <div class="modal-content"style="width: 800px; height:600px" >
                         <div class="modal-header">
                             <h1 class="modal-title fs-5" id="exampleModalLabel">Teknik Bioproses</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body d-flex align-items-center text-center" style="padding:0px 80px;">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. A assumenda beatae cum ea magnam
                             nobis praesentium reiciendis similique voluptatem voluptatibus. Accusantium atque
                             consectetur corporis cum est et facere facilis fuga fugiat hic, id illum in incidunt ipsam,
@@ -1503,13 +1503,13 @@
 
             <!-- Modal -->
             <div class="modal fade" id="modalTM" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
+                <div class="modal-dialog modal-dialog-centered modal-lg " >
+                    <div class="modal-content"style="width: 800px; height:600px" >
                         <div class="modal-header">
                             <h1 class="modal-title fs-5" id="exampleModalLabel">Teknik Metalurgi</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body d-flex align-items-center text-center" style="padding:0px 80px;">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. A assumenda beatae cum ea magnam
                             nobis praesentium reiciendis similique voluptatem voluptatibus. Accusantium atque
                             consectetur corporis cum est et facere facilis fuga fugiat hic, id illum in incidunt ipsam,
@@ -1548,13 +1548,13 @@
 
             <!-- Modal -->
             <div class="modal fade" id="modalTM" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
+                <div class="modal-dialog modal-dialog-centered modal-lg " >
+                    <div class="modal-content"style="width: 800px; height:600px" >
                         <div class="modal-header">
                             <h1 class="modal-title fs-5" id="exampleModalLabel">Teknik Metalurgi</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body d-flex align-items-center text-center" style="padding:0px 80px;">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. A assumenda beatae cum ea magnam
                             nobis praesentium reiciendis similique voluptatem voluptatibus. Accusantium atque
                             consectetur corporis cum est et facere facilis fuga fugiat hic, id illum in incidunt ipsam,
@@ -1593,13 +1593,13 @@
 
             <!-- Modal -->
             <div class="modal fade" id="modalTM" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
+                <div class="modal-dialog modal-dialog-centered modal-lg " >
+                    <div class="modal-content"style="width: 800px; height:600px" >
                         <div class="modal-header">
                             <h1 class="modal-title fs-5" id="exampleModalLabel">Teknik Metalurgi</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body d-flex align-items-center text-center" style="padding:0px 80px;">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. A assumenda beatae cum ea magnam
                             nobis praesentium reiciendis similique voluptatem voluptatibus. Accusantium atque
                             consectetur corporis cum est et facere facilis fuga fugiat hic, id illum in incidunt ipsam,
@@ -1638,13 +1638,13 @@
 
             <!-- Modal -->
             <div class="modal fade" id="modalTM" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
+                <div class="modal-dialog modal-dialog-centered modal-lg " >
+                    <div class="modal-content"style="width: 800px; height:600px" >
                         <div class="modal-header">
                             <h1 class="modal-title fs-5" id="exampleModalLabel">Teknik Metalurgi</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body d-flex align-items-center text-center" style="padding:0px 80px;">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. A assumenda beatae cum ea magnam
                             nobis praesentium reiciendis similique voluptatem voluptatibus. Accusantium atque
                             consectetur corporis cum est et facere facilis fuga fugiat hic, id illum in incidunt ipsam,
