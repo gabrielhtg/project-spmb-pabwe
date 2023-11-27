@@ -28,7 +28,7 @@ Route::get('/admisi', function () {
     return view('admisi.admisi');
 });
 
-Route::get('/faq', function () {
+Route::get('/faqs', function () {
     return view('faq.faq');
 });
 

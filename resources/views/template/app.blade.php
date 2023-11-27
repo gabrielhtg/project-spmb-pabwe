@@ -79,7 +79,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="/faq">FAQ</a>
+                            <a class="nav-link" href="/faqs">FAQ</a>
                         </li>
 
                         <li class="nav-item">
