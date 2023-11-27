@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FasilitasController;
 use App\Http\Controllers\PengumumanController;
 
+use App\Http\Controllers\MitraController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,4 +38,5 @@ Route::prefix('/admin-panel')->group(function () {
 Route::get('/fasilitas', [FasilitasController::class, "getviewFasilitas"])->name("fasilitas.fasilitas");
 Route::get('/pengumuman', [PengumumanController::class, 'getviewPengumuman'])->name("pengumuman");
 
-
+//----
+Route::get('/mitra/mitra', [MitraController::class, 'mitra'])->name('mitra.mitra');
