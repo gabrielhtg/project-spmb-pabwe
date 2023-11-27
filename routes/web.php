@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FasilitasController;
 use App\Http\Controllers\PengumumanController;
 
+use App\Http\Controllers\MitraController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,4 +42,5 @@ Route::get('/fasilitas-Laboratorium', [FasilitasController::class, "getviewLabor
 Route::get('/fasilitas-Layanan-Makanan', [FasilitasController::class, "getviewLayananMakanan"])->name("fasilitas.layananmakanan");
 Route::get('/pengumuman', [PengumumanController::class, 'getviewPengumuman'])->name("pengumuman");
 
-
+//----
+Route::get('/mitra/mitra', [MitraController::class, 'mitra'])->name('mitra.mitra');
