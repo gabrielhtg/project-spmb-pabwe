@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="{{ asset("/assets/css/kel1.css") }}">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="{{ asset("/assets/css/admisi.css") }}">
-    <title>Admin Panel</title>
     <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
+    <title>Admin Panel</title>
 </head>
 <body>
 {{--    Disini adalah bagian dari navbar--}}
@@ -30,10 +30,10 @@
 
 
 
-    <div class="d-flex">
-        <div style="min-height: 100vh;">
+    <div class="d-flex vh-100">
+        <div>
             <div class="collapse collapse-horizontal" id="collapseWidthExample">
-                <div class="card card-body border border-start-0 border-top-0 border-bottom-0 border-end-1 rounded-0" style="width: 300px;">
+                <div class="card card-body border border-start-0 border-top-0 border-bottom-0 border-end-1 round" style="width: 300px;">
                     This is some placeholder content for a horizontal collapse. It's hidden by default and shown when triggered.
                 </div>
             </div>

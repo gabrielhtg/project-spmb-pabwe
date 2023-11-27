@@ -19,18 +19,22 @@ class AuthController extends Controller
             'input_password' => 'required'
         ]);
 
-        $admin = admin::where('username', $request->input_username)->first();
+        try {
+            $admin = admin::where('username', $request->input_username)->first();
 
-        if (Hash::check($request->input_password, $admin->password)) {
+            if (Hash::check($request->input_password, $admin->password)) {
 
-            Auth::attempt([
-                'username' => $request->input_username,
-                'password' => $request->input_password
-            ]);
+                Auth::attempt([
+                    'username' => $request->input_username,
+                    'password' => $request->input_password
+                ]);
 
-            return redirect()->route('admin-panel');
+                return redirect()->route('admin-panel');
+            }
+
+            return redirect()->route('login')->with('error', 'Kredensial tidak tepat!');
+        } catch (\ErrorException $e) {
+            return redirect()->route('login')->with('error', 'Kredensial tidak tepat!');
         }
-
-        return redirect()->route('login')->with('error', 'Kredensial tidak tepat!');
     }
 }
