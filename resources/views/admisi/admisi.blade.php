@@ -138,15 +138,14 @@
             </div>
 
             <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                 aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Informatika</h1>
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg " >
+                    <div class="modal-content"style="width: 800px; height:600px" >
+                        <div class="modal-header" style="background-color: rgb(241, 241, 241)">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel" style="font-weight:900;">Informatika</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body d-flex align-items-center text-center" style="padding:0px 80px;">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. A assumenda beatae cum ea magnam
                             nobis praesentium reiciendis similique voluptatem voluptatibus. Accusantium atque
                             consectetur corporis cum est et facere facilis fuga fugiat hic, id illum in incidunt ipsam,
@@ -186,13 +185,13 @@
 
             <!-- Modal -->
             <div class="modal fade" id="modalsi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Sistem Informasi</h1>
+                <div class="modal-dialog modal-dialog-centered modal-lg " >
+                    <div class="modal-content"style="width: 800px; height:600px" >
+                        <div class="modal-header" style="background-color: rgb(241, 241, 241)">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel" style="font-weight:900;">Sistem Informasi</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body d-flex align-items-center text-center" style="padding:0px 80px;">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. A assumenda beatae cum ea magnam
                             nobis praesentium reiciendis similique voluptatem voluptatibus. Accusantium atque
                             consectetur corporis cum est et facere facilis fuga fugiat hic, id illum in incidunt ipsam,
@@ -232,13 +231,13 @@
 
             <!-- Modal -->
             <div class="modal fade" id="modalTE" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Teknik Elektro</h1>
+                <div class="modal-dialog modal-dialog-centered modal-lg " >
+                    <div class="modal-content"style="width: 800px; height:600px" >
+                        <div class="modal-header" style="background-color: rgb(241, 241, 241)">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel" style="font-weight:900;">Teknik Elektro</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body d-flex align-items-center text-center" style="padding:0px 80px;">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. A assumenda beatae cum ea magnam
                             nobis praesentium reiciendis similique voluptatem voluptatibus. Accusantium atque
                             consectetur corporis cum est et facere facilis fuga fugiat hic, id illum in incidunt ipsam,
@@ -278,13 +277,13 @@
 
             <!-- Modal -->
             <div class="modal fade" id="modalMR" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Managemen Rekayasa</h1>
+                <div class="modal-dialog modal-dialog-centered modal-lg " >
+                    <div class="modal-content"style="width: 800px; height:600px" >
+                        <div class="modal-header" style="background-color: rgb(241, 241, 241)">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel" style="font-weight:900;">Managemen Rekayasa</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body d-flex align-items-center text-center" style="padding:0px 80px;">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. A assumenda beatae cum ea magnam
                             nobis praesentium reiciendis similique voluptatem voluptatibus. Accusantium atque
                             consectetur corporis cum est et facere facilis fuga fugiat hic, id illum in incidunt ipsam,
@@ -324,13 +323,13 @@
 
             <!-- Modal -->
             <div class="modal fade" id="modalTB" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Teknik Bioproses</h1>
+                <div class="modal-dialog modal-dialog-centered modal-lg " >
+                    <div class="modal-content"style="width: 800px; height:600px" >
+                        <div class="modal-header" style="background-color: rgb(241, 241, 241)">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel" style="font-weight:900;">Teknik Bioproses</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body d-flex align-items-center text-center" style="padding:0px 80px;">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. A assumenda beatae cum ea magnam
                             nobis praesentium reiciendis similique voluptatem voluptatibus. Accusantium atque
                             consectetur corporis cum est et facere facilis fuga fugiat hic, id illum in incidunt ipsam,
@@ -370,13 +369,13 @@
 
             <!-- Modal -->
             <div class="modal fade" id="modalTM" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Teknik Metalurgi</h1>
+                <div class="modal-dialog modal-dialog-centered modal-lg " >
+                    <div class="modal-content"style="width: 800px; height:600px" >
+                        <div class="modal-header" style="background-color: rgb(241, 241, 241)">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel" style="font-weight:900;">Teknik Metalurgi</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body d-flex align-items-center text-center" style="padding:0px 80px;">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. A assumenda beatae cum ea magnam
                             nobis praesentium reiciendis similique voluptatem voluptatibus. Accusantium atque
                             consectetur corporis cum est et facere facilis fuga fugiat hic, id illum in incidunt ipsam,
@@ -415,13 +414,13 @@
 
             <!-- Modal -->
             <div class="modal fade" id="modalTM" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Teknik Metalurgi</h1>
+                <div class="modal-dialog modal-dialog-centered modal-lg " >
+                    <div class="modal-content"style="width: 800px; height:600px" >
+                        <div class="modal-header" style="background-color: rgb(241, 241, 241)">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel" style="font-weight:900;">Teknologi Rekayasa Perangkat Lunak</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body d-flex align-items-center text-center" style="padding:0px 80px;">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. A assumenda beatae cum ea magnam
                             nobis praesentium reiciendis similique voluptatem voluptatibus. Accusantium atque
                             consectetur corporis cum est et facere facilis fuga fugiat hic, id illum in incidunt ipsam,
@@ -460,13 +459,13 @@
 
             <!-- Modal -->
             <div class="modal fade" id="modalTM" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Teknik Metalurgi</h1>
+                <div class="modal-dialog modal-dialog-centered modal-lg " >
+                    <div class="modal-content"style="width: 800px; height:600px" >
+                        <div class="modal-header" style="background-color: rgb(241, 241, 241)">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel" style="font-weight:900;">Teknologi Informasi</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body d-flex align-items-center text-center" style="padding:0px 80px;">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. A assumenda beatae cum ea magnam
                             nobis praesentium reiciendis similique voluptatem voluptatibus. Accusantium atque
                             consectetur corporis cum est et facere facilis fuga fugiat hic, id illum in incidunt ipsam,
@@ -505,13 +504,13 @@
 
             <!-- Modal -->
             <div class="modal fade" id="modalTM" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Teknik Metalurgi</h1>
+                <div class="modal-dialog modal-dialog-centered modal-lg " >
+                    <div class="modal-content"style="width: 800px; height:600px" >
+                        <div class="modal-header" style="background-color: rgb(241, 241, 241)">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel" style="font-weight:900;">Teknologi Komputer</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body d-flex align-items-center text-center" style="padding:0px 80px;">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. A assumenda beatae cum ea magnam
                             nobis praesentium reiciendis similique voluptatem voluptatibus. Accusantium atque
                             consectetur corporis cum est et facere facilis fuga fugiat hic, id illum in incidunt ipsam,
