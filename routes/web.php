@@ -44,3 +44,7 @@ Route::get('/pengumuman', [PengumumanController::class, 'getviewPengumuman'])->n
 
 //----
 Route::get('/mitra/mitra', [MitraController::class, 'mitra'])->name('mitra.mitra');
+
+Route::get('/form', function () {
+    return view('chatbot.form');
+})->name('form');
