@@ -28,6 +28,10 @@ Route::get('/admisi', function () {
     return view('admisi.admisi');
 });
 
+Route::get('/faq', function () {
+    return view('faq.faq');
+});
+
 Route::get('/login', [AuthController::class, 'getLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'postLogin'])->name('post.login');
 
