@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="{{ asset("/assets/css/kel1.css") }}">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="{{ asset("/assets/css/admisi.css") }}">
+    <link rel="stylesheet" href="{{ asset("/assets/css/fasilitas.css") }}">
+    <link rel="stylesheet" href="{{ asset("/assets/css/pengumuman.css") }}">
     <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
 </head>
 <body>
@@ -79,10 +81,15 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#">FAQ</a>
                         </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ Route('fasilitas.asrama')}}">Fasilitas</a>
+                        </li>
                     </ul>
                 </div>
-                <a class="d-none d-xl-inline">
-                    <button class="btn btn-primary">Pengumuman SPMB</button>
+                <a class="d-none d-xl-inline" href="{{ route('pengumuman') }}">
+                    <button class="btn btn-primary"
+                            >Pengumuman SPMB</button>
                 </a>
                 <a class="d-xl-none text-primary text-decoration-none">
                     <span><strong>Pengumuman SPMB</strong></span>
