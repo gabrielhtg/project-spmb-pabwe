@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AdminPanelController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\FasilitasController;
@@ -24,17 +26,11 @@ Route::get('/admisi', function () {
     return view('admisi.admisi');
 });
 
-// HEAD
-Route::get('/admisi/sarjana', function () {
-    return view('admisi.sarjana');
-});
+Route::get('/login', [AuthController::class, 'getLogin'])->name('login');
+Route::post('/login', [AuthController::class, 'postLogin'])->name('post.login');
 
-Route::get('/admisi/diploma', function () {
-    return view('admisi.diploma');
-});
-
-Route::get('/admisi/sarjanaterapan', function () {
-    return view('admisi.sarjanaTerapan');
+Route::prefix('/admin-panel')->group(function () {
+    Route::get('/', [AdminPanelController::class, 'getAdminPanel'])->name('admin-panel');
 });
 // =======
 Route::get('/fasilitas-Asrama', [FasilitasController::class, "getviewAsrama"])->name("fasilitas.asrama");
