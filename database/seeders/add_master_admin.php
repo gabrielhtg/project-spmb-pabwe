@@ -14,9 +14,9 @@ class add_master_admin extends Seeder
      */
     public function run(): void
     {
-        DB::table('admin-panel')->insert([
-            'username' => 'admin-panel',
-            'password' => Hash::make('admin-panel'),
+        DB::table('admin')->insert([
+            'username' => 'admin',
+            'password' => Hash::make('admin'),
             'firstname' => 'Master',
             'lastname' => 'Admin',
             'created_at' => now(),
