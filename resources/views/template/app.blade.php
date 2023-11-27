@@ -89,10 +89,10 @@
                 </div>
                 <a class="d-none d-xl-inline" href="{{ route('pengumuman') }}">
                     <button class="btn btn-primary"
-                            >Pengumuman SPMB</button>
+                            >Daftar Sekarang</button>
                 </a>
                 <a class="d-xl-none text-primary text-decoration-none">
-                    <span><strong>Pengumuman SPMB</strong></span>
+                    <span><strong>Daftar Sekarang</strong></span>
                 </a>
             </div>
 
