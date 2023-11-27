@@ -1,7 +1,3 @@
-@extends('template.fasilitas')
-
-@section('isi-halaman')
-
     <section class="container" id="Olahraga dan Kesehatan">
         <div class="text-center fw-bolder">
         <h1 class="display-5 fw-bold">Olahraga & Kesehatan</h1>
@@ -80,4 +76,4 @@
                 </div>
             </div>
         </div>
-@endsection
+    </section>

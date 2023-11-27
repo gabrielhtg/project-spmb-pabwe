@@ -6,28 +6,9 @@ use Illuminate\Http\Request;
 
 class FasilitasController extends Controller
 {
-    public function getviewAsrama()
+    public function getviewFasilitas()
     {
-        return view('fasilitas.fasilitasAsrama');
+        return view('template.fasilitas');
     }
 
-    public function getviewKesehatandanOlahraga()
-    {
-        return view('fasilitas.fasilitasKesehatandanOlahraga');
-    }
-
-    public function getviewAreaMahasiswa()
-    {
-        return view('fasilitas.fasilitasAreaMahasiswa');
-    }
-
-    public function getviewLaboratorium()
-    {
-        return view('fasilitas.fasilitasLaboratorium');
-    }
-
-    public function getviewLayananMakanan()
-    {
-        return view('fasilitas.fasilitasLayananMakanan');
-    }
 }

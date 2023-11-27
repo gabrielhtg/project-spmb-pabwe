@@ -1,7 +1,3 @@
-@extends('template.fasilitas')
-
-@section('isi-halaman')
-
     <section class="container" id="Asrama">
         <div class="text-center fw-bolder">
         <h1 class="display-5 fw-bold">Asrama</h1>
@@ -100,5 +96,3 @@
 
     </section>
 </main>
-
-@endsection

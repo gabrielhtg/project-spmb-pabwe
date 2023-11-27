@@ -32,7 +32,7 @@
                 <div class="ms-2 lh-1">
                     <span class="fs-6"><strong>SPMB Institut Teknologi Del</strong></span>
                     <br>
-                    <span class="fs-8"><i>MarTuhan, MarRoha, MarBisuk</i></span>
+                    <span class="fs-8"><i>MARTUHAN, MARROHA, MARBISUK</i></span>
                 </div>
             </a>
 {{--            tampilan desktop end--}}
@@ -83,7 +83,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ Route('fasilitas.asrama')}}">Fasilitas</a>
+                            <a class="nav-link" href="{{ route('fasilitas.fasilitas')}}">Fasilitas</a>
                         </li>
                     </ul>
                 </div>

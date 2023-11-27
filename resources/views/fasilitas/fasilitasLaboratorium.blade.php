@@ -1,6 +1,3 @@
-@extends('template.fasilitas')
-
-@section('isi-halaman')
     <section class="container" id="Laboratorium">
         <div class="text-center fw-bolder">
         <h1 class="display-5 fw-bold">Laboratorium</h1>
@@ -79,4 +76,3 @@
         </div>
 
     </section>
-@endsection
