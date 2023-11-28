@@ -63,7 +63,7 @@
                         <ul class="dropdown-menu mt-3 dropdown-menu-end">
                             <li><a class="dropdown-item" href="#"> <i class="fa-solid fa-user me-2"></i>Edit Profile</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#"><i class="fa-solid fa-arrow-right-from-bracket fa-flip-horizontal me-2"></i> Logout</a></li>
+                            <li><a class="dropdown-item" href="{{ route('logout') }}"><i class="fa-solid fa-arrow-right-from-bracket fa-flip-horizontal me-2"></i> Logout</a></li>
                         </ul>
                     </div>
                 </div>
