@@ -15,28 +15,28 @@
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active bg-dark-subtle">
-                    <img src="{{ asset('img/program/carousel-example.jpg')}}" class="d-block w-100 " alt="...">
+                    <img src="{{ asset('img/program/home/fite-carousel.jpg')}}" class="d-block w-100 " alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Fakultas Informatika dan Teknik Elektro</h5>
                         <p>Some representative placeholder content for the first slide.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ asset('img/program/carousel-example.jpg')}}" class="d-block w-100 " alt="...">
+                    <img src="{{ asset('img/program/home/fti-carousel.jpg')}}" class="d-block w-100 " alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Fakultas Teknologi Industri</h5>
                         <p>Some representative placeholder content for the second slide.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ asset('img/program/carousel-example.jpg')}}" class="d-block w-100 " alt="...">
+                    <img src="{{ asset('img/program/home/fb-carousel.jpg')}}" class="d-block w-100 " alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Fakultas Bioteknologi</h5>
                         <p>Some representative placeholder content for the third slide.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ asset('img/program/carousel-example.jpg')}}" class="d-block w-100 " alt="...">
+                    <img src="{{ asset('img/program/home/fv-carousel.jpg')}}" class="d-block w-100 " alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Fakultas Vokasi</h5>
                         <p>Some representative placeholder content for the third slide.</p>
@@ -65,37 +65,38 @@
     
         <div class="d-flex flex-column row-gap-3">
 
-            <div class="card bg-subtle h-100 mb-">
-                <div class="card-body">
-                    <div class="d-flex justify-content-center">
-                        <a href="/fakultas" class="fs-5 text-dark text-decoration-none py-5 fw-semibold">Fakultas Informatika dan Teknik Elektro</a>
+            <div class="card text-bg-dark">
+                <img src="{{ asset('img/program/home/fite-button.jpg') }}" class="card-img" alt="" style="height: 200px;">
+                <div class="card-img-overlay">
+                    <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                        <a href="/fakultas" class="fs-5 text-light text-decoration-none fw-semibold">Fakultas Informatika dan Teknik Elektro</a>
                     </div>
                     
                 </div>
             </div>
-            
-            <div class="card bg-subtle h-100">
-                <div class="card-body">
-                    <div class="d-flex justify-content-center">
-                        <a href="/fakultas" class="fs-5 text-dark text-decoration-none py-5 fw-semibold">Fakultas Teknologi Industri</a>
+            <div class="card text-bg-dark">
+                <img src="{{ asset('img/program/home/fti-button.jpg') }}" class="card-img" alt="" style="height: 200px;">
+                <div class="card-img-overlay">
+                    <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                        <a href="/fakultas" class="fs-5 text-light text-decoration-none fw-semibold">Fakultas Teknologi Industri</a>
                     </div>
                     
                 </div>
             </div>
-            
-            <div class="card bg-subtle h-100">
-                <div class="card-body">
-                    <div class="d-flex justify-content-center">
-                        <a href="/fakultas" class="fs-5 text-dark text-decoration-none py-5 fw-semibold">Fakultas Bioteknologi</a>
+            <div class="card text-bg-dark">
+                <img src="{{ asset('img/program/home/fb-button.jpg') }}" class="card-img" alt="" style="height: 200px;">
+                <div class="card-img-overlay">
+                    <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                        <a href="/fakultas" class="fs-5 text-light text-decoration-none fw-semibold">Fakultas Bioteknologi</a>
                     </div>
                     
                 </div>
             </div>
-            
-            <div class="card bg-subtle h-100">
-                <div class="card-body">
-                    <div class="d-flex justify-content-center">
-                        <a href="/fakultas" class="fs-5 text-dark text-decoration-none py-5 fw-semibold">Fakultas Vokasi</a>
+            <div class="card text-bg-dark">
+                <img src="{{ asset('img/program/home/fv-button.jpg') }}" class="card-img" alt="" style="height: 200px;">
+                <div class="card-img-overlay">
+                    <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                        <a href="/fakultas" class="fs-5 text-light text-decoration-none fw-semibold">Fakultas Vokasi</a>
                     </div>
                     
                 </div>

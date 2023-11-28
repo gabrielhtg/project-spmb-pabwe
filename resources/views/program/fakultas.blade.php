@@ -98,13 +98,13 @@
 
             <div class="col-4">
                 <div class="card">
-                    <div class="card-header fw-bold">
+                    <div class="card-header fw-bold list-group-item-secondary">
                         Dekan
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">Indra Hartanto Tambunan, Ph.D</li>
                     </ul>
-                    <div class="card-header fw-bold">
+                    <div class="card-header fw-bold list-group-item-secondary">
                         Lokasi
                     </div>
                     <ul class="list-group list-group-flush">
