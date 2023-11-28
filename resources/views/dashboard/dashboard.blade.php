@@ -48,6 +48,7 @@
             </div>
         </div>
     </div>
+{{--    tampilan hp end--}}
 </section>
 
 <section class="container p-5 text-center" id="section_akreditasi">

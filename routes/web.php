@@ -33,6 +33,8 @@ Route::post('/login', [AuthController::class, 'postLogin'])->name('post.login');
 
 Route::prefix('/admin-panel')->group(function () {
     Route::get('/', [AdminPanelController::class, 'getAdminPanel'])->name('admin-panel');
+    Route::get('/', [AdminPanelController::class, 'getAdminPanel'])->name('admin-panel.akreditasi');
+    Route::get('/', [AdminPanelController::class, 'getAdminPanel'])->name('admin-panel.dashboard');
 });
 // =======
 Route::get('/fasilitas-Asrama', [FasilitasController::class, "getviewAsrama"])->name("fasilitas.asrama");
