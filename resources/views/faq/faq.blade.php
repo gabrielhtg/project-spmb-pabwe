@@ -3,7 +3,7 @@
 @section('isi-halaman')
 
 <section>
-    <div class="masthead" style="background-size: cover; min-height: 100vh; position: relative; color: #ffff; text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2); background-image: url('{{ asset('faq/assets/img/gambarfaq.png') }}');">
+    <div class="masthead" style="background-image: url('{{ asset('faq/assets/img/gambarfaq.png') }}');">
         <div class="color-overlay d-flex justify-content-center align-items-center">
           <h2 class="faq-text" style="height: 500px">FAQ</h2>
         </div>
@@ -42,7 +42,7 @@
                   <h2 class="accordion-header">
                     <button class="accordion-button collapsed fw-bold text-white" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne"
                         style="background-color: #0477BF;">
-                      <i class="fas fa-plus "></i> Bagaimana cara melakukan pembayaran biaya pendaftaran SPMB IT del?
+                      <i class=" "></i> Bagaimana cara melakukan pembayaran biaya pendaftaran SPMB IT del?
                     </button>
                   </h2>
                   <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
@@ -53,7 +53,7 @@
                   <h2 class="accordion-header">
                     <button class="accordion-button collapsed fw-bold text-white" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo"
                         style="background-color: #0477BF;">
-                      <i class="fas fa-plus"></i>Berapa biaya pendidikan di IT Del?
+                      <i class=""></i>Berapa biaya pendidikan di IT Del?
                     </button>
                   </h2>
                   <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
@@ -64,7 +64,7 @@
                   <h2 class="accordion-header">
                     <button class="accordion-button collapsed fw-bold text-white" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree"
                         style="background-color: #0477BF;">
-                      <i class="fas fa-plus"></i> Bagaimana cara mendaftar sebagai mahasiswa baru Institut Teknologi Del?
+                      <i class=""></i> Bagaimana cara mendaftar sebagai mahasiswa baru Institut Teknologi Del?
                     </button>
                   </h2>
                   <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
@@ -81,7 +81,7 @@
                 <h2 class="accordion-header">
                   <button class="accordion-button collapsed fw-bold text-white" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne"
                       style="background-color: #0477BF;">
-                    <i class="fas fa-plus "></i> Bagaimana cara melakukan pembayaran biaya pendaftaran SPMB IT del?
+                    <i class=" "></i> Bagaimana cara melakukan pembayaran biaya pendaftaran SPMB IT del?
                   </button>
                 </h2>
                 <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
@@ -92,7 +92,7 @@
                 <h2 class="accordion-header">
                   <button class="accordion-button collapsed fw-bold text-white" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo"
                       style="background-color: #0477BF;">
-                    <i class="fas fa-plus"></i>Berapa biaya pendidikan di IT Del?
+                    <i class=""></i>Berapa biaya pendidikan di IT Del?
                   </button>
                 </h2>
                 <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
@@ -103,7 +103,7 @@
                 <h2 class="accordion-header">
                   <button class="accordion-button collapsed fw-bold text-white" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree"
                       style="background-color: #0477BF;">
-                    <i class="fas fa-plus"></i> Bagaimana cara mendaftar sebagai mahasiswa baru Institut Teknologi Del?
+                    <i class=""></i> Bagaimana cara mendaftar sebagai mahasiswa baru Institut Teknologi Del?
                   </button>
                 </h2>
                 <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
@@ -121,7 +121,7 @@
                 <h2 class="accordion-header">
                   <button class="accordion-button collapsed fw-bold text-white" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne"
                       style="background-color: #0477BF;">
-                    <i class="fas fa-plus "></i> Bagaimana cara melakukan pembayaran biaya pendaftaran SPMB IT del?
+                    <i class=" "></i> Bagaimana cara melakukan pembayaran biaya pendaftaran SPMB IT del?
                   </button>
                 </h2>
                 <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
@@ -132,7 +132,7 @@
                 <h2 class="accordion-header">
                   <button class="accordion-button collapsed fw-bold text-white" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo"
                       style="background-color: #0477BF;">
-                    <i class="fas fa-plus"></i>Berapa biaya pendidikan di IT Del?
+                    <i class=""></i>Berapa biaya pendidikan di IT Del?
                   </button>
                 </h2>
                 <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
@@ -143,7 +143,7 @@
                 <h2 class="accordion-header">
                   <button class="accordion-button collapsed fw-bold text-white" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree"
                       style="background-color: #0477BF;">
-                    <i class="fas fa-plus"></i> Bagaimana cara mendaftar sebagai mahasiswa baru Institut Teknologi Del?
+                    <i class=""></i> Bagaimana cara mendaftar sebagai mahasiswa baru Institut Teknologi Del?
                   </button>
                 </h2>
                 <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
