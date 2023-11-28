@@ -4,6 +4,7 @@ const sidebarKecil = document.querySelector("#sidebar_kecil");
 const logoSidebar = document.querySelector("#logo_sidebar");
 const dnone = "d-none";
 
+
 function tampilkanSidebar () {
     if (sidebarBesar.classList.contains("d-none")) {
         sidebarBesar.classList.remove(dnone);
@@ -19,3 +20,4 @@ function tampilkanSidebar () {
         logoSidebar.classList.remove("fa-xmark");
     }
 }
+

@@ -8,22 +8,22 @@
 
                 <div class="card">
                     <div class="card-header bg-primary text-white">
-                        <span class="fs-3">Data Institusi</span>
+                        <span class="fs-3">Navbar</span>
                     </div>
 
                     <form>
                         <div class="card-body">
                             <div class="mb-3">
-                                <label for="input_alamat">Alamat Institusi</label>
-                                <input type="text" class="form-control" id="input_alamat">
+                                <label for="input_judul_navbar">Judul Navbar</label>
+                                <input type="text" class="form-control" id="input_judul_navbar" name="input_judul_navbar">
                             </div>
                             <div class="mb-3">
-                                <label for="input_akreditasi">Akreditasi Institusi</label>
-                                <input type="text" class="form-control" id="input_akreditasi">
+                                <label for="input_jargon_navbar">Jargon Navbar</label>
+                                <input type="text" class="form-control" id="input_jargon_navbar" name="input_jargon_navbar">
                             </div>
                             <div class="mb-3">
-                                <label for="input_akreditasi">Website Institusi</label>
-                                <input type="text" class="form-control" id="input_akreditasi">
+                                <label for="input_link_pendaftaran">Link Pendaftaran</label>
+                                <input type="text" class="form-control" id="input_link_pendaftaran" name="input_link_pendaftaran">
                             </div>
                             <div class="">
                                 <label for="input_file_akreditasi" class="form-label">Sertifikat Akreditasi Institusi (JPG, JPEG, PNG)</label>

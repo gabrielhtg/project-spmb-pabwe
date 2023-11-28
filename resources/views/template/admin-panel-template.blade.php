@@ -26,9 +26,14 @@
             </div>
 
             <div class="d-flex flex-column gap-2 w-100">
-                <button class="btn btn-outline-light w-100 ">Dashboard</button>
-                <button class="btn bg-white w-100">Akreditasi</button>
-                <button class="btn bg-white w-100">Dashboard Panel</button>
+                <a href="{{ route("admin-panel") }}">
+                    <button id="btn_dashboard" class="btn_sidebar w-100 btn_sidebar_active">Dashboard</button>
+                </a>
+                <button id="btn_akreditasi" class="btn_sidebar w-100">Akreditasi</button>
+                <a href="{{ route("admin-panel.spmb_dashboard") }}">
+                    <button id="btn_dashboard_panel" class="btn_sidebar w-100">Dashboard Panel</button>
+                </a>
+
             </div>
         </div>
     {{--        ini adalah sidebar besar selesai--}}
@@ -50,25 +55,17 @@
                     </button>
 
                     <div class="btn-group">
-                        <button type="button" class="border-0 bg-light p-0">
+                        <button type="button" style="border-style: none;" class="ps-1 bg-light dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
                             <span class="me-3">Haloo Admin!!</span>
-                            <img src="{{ asset('assets/img/admin/default.png') }}" alt="foto_profil" style="width: 40px; border-radius: 50%">
-                        </button>
-                        <button type="button" class="btn ps-1 dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img class="border border-1" src="{{ asset($profilePict) }}" alt="foto_profil" style="width: 40px; border-radius: 50%">
                             <span class="visually-hidden">Toggle Dropdown</span>
                         </button>
                         <ul class="dropdown-menu mt-3 dropdown-menu-end">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            <li><a class="dropdown-item" href="#"> <i class="fa-solid fa-user me-2"></i>Edit Profile</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Separated link</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fa-solid fa-arrow-right-from-bracket fa-flip-horizontal me-2"></i> Logout</a></li>
                         </ul>
                     </div>
-
-{{--                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">--}}
-{{--                        <span class="navbar-toggler-icon"></span>--}}
-{{--                    </button>--}}
                 </div>
             </nav>
 
@@ -77,6 +74,15 @@
     </div>
 
 
+    <script>
+        const buttonSidebar = document.querySelectorAll(".btn_sidebar");
+
+        for (let i = 0; i < buttonSidebar.length; i++) {
+            buttonSidebar[i].classList.remove("btn_sidebar_active");
+        }
+
+        buttonSidebar[{{ $indexActive }}].classList.add("btn_sidebar_active");
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/965a381e3a.js" crossorigin="anonymous"></script>
