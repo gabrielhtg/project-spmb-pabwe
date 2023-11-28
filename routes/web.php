@@ -37,7 +37,8 @@ Route::middleware('auth')->group(function () {
     Route::prefix('/admin-panel')->group(function () {
         Route::get('/', [AdminPanelController::class, 'getAdminPanel'])->name('admin-panel');
 //    Route::get('/', [AdminPanelController::class, 'getAdminPanel'])->name('admin-panel.akreditasi');
-        Route::get('/spmb-dashboard', [AdminPanelController::class, 'getDashboardPanel'])->name('admin-panel.spmb_dashboard');
+        Route::get('/spmb-dashboard', [AdminPanelController::class, 'getDashboardPanel'])->name('spmb-dashboard');
+        Route::get('/edit-profile', [AdminPanelController::class, 'getEditProfile'])->name('edit-profile');
     });
 });
 

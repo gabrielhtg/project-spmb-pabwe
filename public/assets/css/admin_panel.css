@@ -20,15 +20,26 @@
     }
 }
 
-#sidebar_besar {
-    animation: slideIn 0.3s ease;
-}
-
 .btn_sidebar {
     background-color: white;
     border-radius: 5px;
-    padding: 10px 0;
+    padding: 10px 10px;
     border-style: none;
+}
+
+.btn_sidebar_kecil {
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    border-style: none;
+    width: 45px;
+    height: 45px;
+}
+
+.btn_sidebar_kecil:hover {
+    background-color: #b0c8fd;
+    color: black;
+    font-weight: normal;
 }
 
 .btn_sidebar:hover {
