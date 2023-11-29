@@ -15,28 +15,28 @@
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active bg-dark-subtle">
-                    <img src="{{ asset('img/program/home/fite-carousel.jpg')}}" class="d-block w-100 " alt="...">
+                    <img src="{{ asset('img/program/home/fite-carousel.jpg')}}" class="d-block w-100 img-fluid " alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Fakultas Informatika dan Teknik Elektro</h5>
                         <p>Some representative placeholder content for the first slide.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ asset('img/program/home/fti-carousel.jpg')}}" class="d-block w-100 " alt="...">
+                    <img src="{{ asset('img/program/home/fti-carousel.jpg')}}" class="d-block w-100 img-fluid " alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Fakultas Teknologi Industri</h5>
                         <p>Some representative placeholder content for the second slide.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ asset('img/program/home/fb-carousel.jpg')}}" class="d-block w-100 " alt="...">
+                    <img src="{{ asset('img/program/home/fb-carousel.jpg')}}" class="d-block w-100 img-fluid " alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Fakultas Bioteknologi</h5>
                         <p>Some representative placeholder content for the third slide.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ asset('img/program/home/fv-carousel.jpg')}}" class="d-block w-100 " alt="...">
+                    <img src="{{ asset('img/program/home/fv-carousel.jpg')}}" class="d-block w-100 img-fluid " alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Fakultas Vokasi</h5>
                         <p>Some representative placeholder content for the third slide.</p>
