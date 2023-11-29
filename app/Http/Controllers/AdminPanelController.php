@@ -41,4 +41,14 @@ class AdminPanelController extends Controller
         ];
         return view('admin-panel.fasilitaspanel', $data);
     }
+
+    public function getPengumumanPanel()
+    {
+        $admin = Auth::user();
+        $data = [
+            'indexActive' => 2,
+            'admin' => $admin
+        ];
+        return view('admin-panel.pengumumanpanel', $data);
+    }
 }
