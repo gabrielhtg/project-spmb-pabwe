@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\FasilitasController;
 use App\Http\Controllers\PengumumanController;
+use App\Http\Controllers\BeasiswaController;
 
 use App\Http\Controllers\MitraController;
 
@@ -32,6 +33,8 @@ Route::get('/faqs', function () {
     return view('faq.faq');
 });
 
+Route::get('/beasiswa', [BeasiswaController::class, 'index'])->name('beasiswa.index');
+
 Route::get('/login', [AuthController::class, 'getLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'postLogin'])->name('post.login');
 Route::get('/logout', [AuthController::class, 'getLogout'])->name('logout');
@@ -54,7 +57,7 @@ Route::get('/fasilitas-Laboratorium', [FasilitasController::class, "getviewLabor
 Route::get('/fasilitas-Layanan-Makanan', [FasilitasController::class, "getviewLayananMakanan"])->name("fasilitas.layananmakanan");
 Route::get('/pengumuman', [PengumumanController::class, 'getviewPengumuman'])->name("pengumuman");
 
-//----
+//======
 Route::get('/mitra/mitra', [MitraController::class, 'mitra'])->name('mitra.mitra');
 
 Route::get('/form', function () {
