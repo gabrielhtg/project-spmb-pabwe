@@ -3,6 +3,7 @@
 @section('isi-halaman')
 
 <section id="hero" class="container">
+    <h1>Makan kue</h1>
     <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
