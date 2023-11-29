@@ -66,24 +66,9 @@
             <div class="col-md-6">
                 <div class="card card-success">
                     <div class="card-header bg-primary text-white">
-                        <span class="fs-3">Hero Section</span>
+                        <span class="fs-3">Data Pembiayaan MBKM Kompetisi</span>
 
                     </div>
-                    <div class="card-body">
-                        <form action="">
-                            <div class="mb-3">
-                                <label for="input_judul_header" class="form-label">Header Hero</label>
-                                <input type="text" class="form-control" id="input_judul_header" name="input_judul_header">
-                            </div>
-                            <div class="mb-3">
-                                <label for="input_deskripsi_header" class="form-label">Example textarea</label>
-                                <textarea class="form-control" id="input_deskripsi_header" name="input_deskripsi_header" rows="10"></textarea>
-                            </div>
-                        </form>
-
-                        
-                    </div>
-
 
                     <div class="card-body">
                     @include('admin-panel.sub_admin_panel.tambah_tombol_hero_section')
@@ -92,8 +77,8 @@
                                 <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Nama Button</th>
-                                    <th scope="col">Link Button</th>
+                                    <th scope="col">Jumlah SKS</th>
+                                    <th scope="col">Potongan SPP (%)</th>
                                     <th scope="col">Action</th>
                                 </tr>
                                 </thead>
