@@ -10,7 +10,11 @@ use Illuminate\Support\Facades\Hash;
 class AuthController extends Controller
 {
     public function getLogin () {
-        return view('auth.login');
+        if (Auth::user()) {
+            return redirect()->route("admin-panel");
+        }
+
+        return view("auth.login");
     }
 
     public function postLogin (Request $request) {
@@ -36,5 +40,10 @@ class AuthController extends Controller
         } catch (\ErrorException $e) {
             return redirect()->route('login')->with('error', 'Kredensial tidak tepat!');
         }
+    }
+
+    public function getLogout () {
+        Auth::logout();
+        return redirect()->route("login");
     }
 }
