@@ -29,7 +29,7 @@
         <div class="container pt-5" id="lapangan basket">
             <div class="row">
                 <div class="col-md-6">
-                <img src="{{ asset('/assets/img/fasilitas/lapangan basket1.jpeg') }}" class="img-fluid custom-image" alt="lapangan-basket">
+                <img src="{{ asset('/assets/img/fasilitas/lapangan basket1.jpg') }}" class="img-fluid custom-image" alt="lapangan-basket">
                 </div>
 
                 <div class="col-md-6 mx-auto d-flex flex-column my-auto">
