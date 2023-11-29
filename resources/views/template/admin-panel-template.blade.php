@@ -46,24 +46,13 @@
                 </a>
                 <a href="#">
                     <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start">
-<<<<<<< HEAD
-                        <i class="fa-regular fa-handshake"></i>
-=======
                         <i class="bi bi-house me-2"></i>
->>>>>>> 2341e68f4501becd46753fd0c36419ec81f74a94
                         Mitra
                     </button>
                 </a>
                 <a href="#">
-                    <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start">
-<<<<<<< HEAD
-                        <i class="bi bi-question-square"></i>
-                       FAQ
-=======
-                        <i class="bi bi-house me-2"></i>
-                        FAQ
->>>>>>> 2341e68f4501becd46753fd0c36419ec81f74a94
-                    </button>
+                    <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start"><i class="bi bi-house me-2"></i>
+                        FAQ</button>
                 </a>
 
             </div>
