@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,7 +13,7 @@ class AdminPanelController extends Controller
 
         $data = [
             'indexActive' => 0,
-            'profilePict' => $admin->profile_pict
+            'admin' => $admin,
         ];
         return view ('admin-panel.adminpanel', $data);
     }
@@ -21,8 +22,12 @@ class AdminPanelController extends Controller
         $admin = Auth::user();
         $data = [
             'indexActive' => 2,
-            'profilePict' => $admin->profile_pict
+            'admin' => $admin
         ];
         return view('admin-panel.dashboard_panel', $data);
+    }
+
+    public function getEditProfile () {
+        return view ('admin-panel.edit_profile');
     }
 }

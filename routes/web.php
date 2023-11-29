@@ -28,14 +28,24 @@ Route::get('/admisi', function () {
     return view('admisi.admisi');
 });
 
+Route::get('/faqs', function () {
+    return view('faq.faq');
+});
+
 Route::get('/login', [AuthController::class, 'getLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'postLogin'])->name('post.login');
+Route::get('/logout', [AuthController::class, 'getLogout'])->name('logout');
 
-Route::prefix('/admin-panel')->group(function () {
-    Route::get('/', [AdminPanelController::class, 'getAdminPanel'])->name('admin-panel');
+
+Route::middleware('auth')->group(function () {
+    Route::prefix('/admin-panel')->group(function () {
+        Route::get('/', [AdminPanelController::class, 'getAdminPanel'])->name('admin-panel');
 //    Route::get('/', [AdminPanelController::class, 'getAdminPanel'])->name('admin-panel.akreditasi');
-    Route::get('/spmb-dashboard', [AdminPanelController::class, 'getDashboardPanel'])->name('admin-panel.spmb_dashboard');
+        Route::get('/spmb-dashboard', [AdminPanelController::class, 'getDashboardPanel'])->name('spmb-dashboard');
+        Route::get('/edit-profile', [AdminPanelController::class, 'getEditProfile'])->name('edit-profile');
+    });
 });
+
 // =======
 Route::get('/fasilitas-Asrama', [FasilitasController::class, "getviewAsrama"])->name("fasilitas.asrama");
 Route::get('/fasilitas-Kesehatan-dan-Olahraga', [FasilitasController::class, "getviewKesehatandanOlahraga"])->name("fasilitas.kesehatandanolahraga");
@@ -46,3 +56,7 @@ Route::get('/pengumuman', [PengumumanController::class, 'getviewPengumuman'])->n
 
 //----
 Route::get('/mitra/mitra', [MitraController::class, 'mitra'])->name('mitra.mitra');
+
+Route::get('/form', function () {
+    return view('chatbot.form');
+})->name('form');
