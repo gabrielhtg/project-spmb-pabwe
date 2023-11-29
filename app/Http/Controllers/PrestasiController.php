@@ -10,4 +10,9 @@ class PrestasiController extends Controller
     {
         return view("prestasi.prestasiOverview");
     }
+
+    public function getviewPrestasiInstitut()
+    {
+        return view("prestasi.prestasiInstitut");
+    }
 }

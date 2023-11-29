@@ -47,3 +47,4 @@ Route::get('/mitra/mitra', [MitraController::class, 'mitra'])->name('mitra.mitra
 
 //----
 Route::get('/prestasi', [PrestasiController::class, 'getviewPrestasi'])->name('prestasi.prestasiOverview');
+Route::get('/prestasiInstitut', [PrestasiController::class, 'getviewPrestasiInstitut'])->name('prestasi.prestasiInstitut');

@@ -124,6 +124,7 @@
             /* Adjust the color to your preference */
         }
     </style>
+
     <section class="container">
         <div class="cat-prestasi">
             <div class="d-flex justify-content-between align-items-center">
@@ -135,7 +136,7 @@
 
             <div class="row">
                 <div class="col">
-                    <div class="card" style="width: 15rem">
+                    <div class="card">
                         <img src="{{ asset('assets/img/prestasi/cta.jpg') }}" class="card-img-top" alt="pict1" />
                         <div class="card-body">
                             <h5 class="card-title">Card title</h5>
@@ -181,7 +182,7 @@
                 </div>
 
                 <div class="col">
-                    <div class="card" style="width: 15rem">
+                    <div class="card">
                         <img src="{{ asset('assets/img/prestasi/cta.jpg') }}" class="card-img-top" alt="pict1" />
                         <div class="card-body">
                             <h5 class="card-title">Card title</h5>
@@ -224,7 +225,7 @@
                 </div>
 
                 <div class="col">
-                    <div class="card" style="width: 15rem">
+                    <div class="card">
                         <img src="{{ asset('assets/img/prestasi/cta.jpg') }}" class="card-img-top" alt="pict1" />
                         <div class="card-body">
                             <h5 class="card-title">Card title</h5>
@@ -266,7 +267,7 @@
                 </div>
 
                 <div class="col">
-                    <div class="card" style="width: 15rem">
+                    <div class="card">
                         <img src="{{ asset('assets/img/prestasi/cta.jpg') }}" class="card-img-top" alt="pict1" />
                         <div class="card-body">
                             <h5 class="card-title">Card title</h5>
@@ -309,15 +310,15 @@
 
                 <div class="cat-prestasi">
                     <div class="d-flex justify-content-between align-items-center">
-                        <h2>Prestasi Dosen/Staff</h2>
+                        <h2>Prestasi Dosen dan Staff</h2>
                         <div class="button-all">
                             <a href="#" class="btn btn-outline-primary">See All</a>
                         </div>
                     </div>
-        
+
                     <div class="row">
                         <div class="col">
-                            <div class="card" style="width: 15rem">
+                            <div class="card">
                                 <img src="{{ asset('assets/img/prestasi/cta.jpg') }}" class="card-img-top" alt="pict1" />
                                 <div class="card-body">
                                     <h5 class="card-title">Card title</h5>
@@ -329,13 +330,13 @@
                                         <p style="font-size: 14px; margin: 0;">25 Nov 2023</p>
                                         <a href="#" class="btn btn-primary open-popup" data-popup="#popup5">See more</a>
                                     </div>
-        
+
                                     <div class="popup" id="popup5">
                                         <div class="overlay"></div>
                                         <div class="popup-content">
                                             <img src="{{ asset('assets/img/prestasi/cta.jpg') }}" class="card-img-top"
                                                 alt="pict1" />
-        
+
                                             <div class="content-text">
                                                 <h5 class="card-title">Card title</h5>
                                                 <p class="card-text">
@@ -361,9 +362,9 @@
                                 </div>
                             </div>
                         </div>
-        
+
                         <div class="col">
-                            <div class="card" style="width: 15rem">
+                            <div class="card">
                                 <img src="{{ asset('assets/img/prestasi/cta.jpg') }}" class="card-img-top" alt="pict1" />
                                 <div class="card-body">
                                     <h5 class="card-title">Card title</h5>
@@ -375,13 +376,13 @@
                                         <p style="font-size: 14px; margin: 0;">25 Nov 2023</p>
                                         <a href="#" class="btn btn-primary open-popup" data-popup="#popup6">See more</a>
                                     </div>
-        
+
                                     <div class="popup" id="popup6">
                                         <div class="overlay"></div>
                                         <div class="popup-content">
                                             <img src="{{ asset('assets/img/prestasi/cta.jpg') }}" class="card-img-top"
                                                 alt="pict1" />
-        
+
                                             <div class="content-text">
                                                 <h5 class="card-title">Card title</h5>
                                                 <p class="card-text">
@@ -404,9 +405,9 @@
                                 </div>
                             </div>
                         </div>
-        
+
                         <div class="col">
-                            <div class="card" style="width: 15rem">
+                            <div class="card">
                                 <img src="{{ asset('assets/img/prestasi/cta.jpg') }}" class="card-img-top" alt="pict1" />
                                 <div class="card-body">
                                     <h5 class="card-title">Card title</h5>
@@ -418,7 +419,7 @@
                                         <p style="font-size: 14px; margin: 0;">25 Nov 2023</p>
                                         <a href="#" class="btn btn-primary open-popup" data-popup="#popup7">See more</a>
                                     </div>
-        
+
                                     <div class="popup" id="popup7">
                                         <div class="overlay"></div>
                                         <div class="popup-content">
@@ -446,9 +447,9 @@
                                 </div>
                             </div>
                         </div>
-        
+
                         <div class="col">
-                            <div class="card" style="width: 15rem">
+                            <div class="card">
                                 <img src="{{ asset('assets/img/prestasi/cta.jpg') }}" class="card-img-top" alt="pict1" />
                                 <div class="card-body">
                                     <h5 class="card-title">Card title</h5>
@@ -460,7 +461,7 @@
                                         <p style="font-size: 14px; margin: 0;">25 Nov 2023</p>
                                         <a href="#" class="btn btn-primary open-popup" data-popup="#popup8">See more</a>
                                     </div>
-        
+
                                     <div class="popup" id="popup8">
                                         <div class="overlay"></div>
                                         <div class="popup-content">
@@ -496,7 +497,7 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            <div class="card" style="width: 15rem">
+                            <div class="card">
                                 <img src="{{ asset('assets/img/prestasi/cta.jpg') }}" class="card-img-top"
                                     alt="..." />
                                 <div class="card-body">
@@ -544,7 +545,7 @@
                         </div>
 
                         <div class="col">
-                            <div class="card" style="width: 15rem">
+                            <div class="card">
                                 <img src="{{ asset('assets/img/prestasi/cta.jpg') }}" class="card-img-top"
                                     alt="..." />
                                 <div class="card-body">
@@ -592,7 +593,7 @@
                         </div>
 
                         <div class="col">
-                            <div class="card" style="width: 15rem">
+                            <div class="card">
                                 <img src="{{ asset('assets/img/prestasi/cta.jpg') }}" class="card-img-top"
                                     alt="..." />
                                 <div class="card-body">
@@ -640,7 +641,7 @@
                         </div>
 
                         <div class="col">
-                            <div class="card" style="width: 15rem">
+                            <div class="card">
                                 <img src="{{ asset('assets/img/prestasi/cta.jpg') }}" class="card-img-top"
                                     alt="..." />
                                 <div class="card-body">
@@ -663,7 +664,7 @@
 
                                             <div class="content-text">
                                                 <h5 class="card-title">Card title</h5>
-                                                <p class="card-text">
+                                                <p class="card-text">`
                                                     Some quick example text to build on the card title and
                                                     make up the bulk of the card's content. Some quick
                                                     example text to build on the card title and make up the
@@ -688,8 +689,6 @@
                         </div>
                     </div>
                 </div>
-
-                
     </section>
 
     <script>
