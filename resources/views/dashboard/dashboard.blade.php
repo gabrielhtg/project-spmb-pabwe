@@ -34,6 +34,7 @@
         </button>
     </div>
 
+    {{-- ini untuk hempon --}}
     <div class="d-flex d-md-none flex-column justify-content-center text-start pb-5 pt-5" >
         <h1 class="display-5 fw-bold">Institut Teknologi Del</h1>
         <div class="mt-4">
@@ -47,6 +48,7 @@
             </div>
         </div>
     </div>
+{{--    tampilan hp end--}}
 </section>
 
 <section class="container p-5 text-center" id="section_akreditasi">
