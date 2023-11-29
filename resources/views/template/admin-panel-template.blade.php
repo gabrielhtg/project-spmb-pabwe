@@ -44,13 +44,13 @@
                         Dashboard Panel
                     </button>
                 </a>
-                <a href="{{ route("") }}">
+                <a href="#">
                     <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start">
                         <i class="bi bi-house me-2"></i>
                         Mitra
                     </button>
                 </a>
-                <a href="{{ route("") }}">
+                <a href="#">
                     <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start">
                         <i class="bi bi-house me-2"></i>
                         FAQ
