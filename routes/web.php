@@ -28,6 +28,10 @@ Route::get('/admisi', function () {
     return view('admisi.admisi');
 });
 
+Route::get('/faqs', function () {
+    return view('faq.faq');
+});
+
 Route::get('/login', [AuthController::class, 'getLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'postLogin'])->name('post.login');
 Route::get('/logout', [AuthController::class, 'getLogout'])->name('logout');
@@ -52,3 +56,7 @@ Route::get('/pengumuman', [PengumumanController::class, 'getviewPengumuman'])->n
 
 //----
 Route::get('/mitra/mitra', [MitraController::class, 'mitra'])->name('mitra.mitra');
+
+Route::get('/form', function () {
+    return view('chatbot.form');
+})->name('form');
