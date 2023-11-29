@@ -71,7 +71,17 @@
                     </div>
 
                     <div class="card-body">
-                    @include('admin-panel.sub_admin_panel.tambah_tombol_hero_section')
+                        <form action="">
+                            <div class="mb-3">
+                                <label for="inputnoKomJumlahSKS" class="form-label">Jumlah SKS</label>
+                                <input type="text" class="form-control" id="inputnoKomJumlahSKS" name="inputnoKomJumlahSKS">
+                            </div>
+                            <div class="mb-3">
+                                <label for="inputnoKomPotongan" class="form-label">Potongan SPP(%)</label>
+                                <input type="text" class="form-control" id="inputnoKomPotongan" name="inputnoKomPotongan">
+                            </div>
+                        </form>
+                        @include('admin-panel.sub_admin_panel.tambah_tombol_hero_section')
                         <form action="">
                             <table class="table table-striped">
                                 <thead>
@@ -88,8 +98,8 @@
                                     <td>Test</td>
                                     <td>Test</td>
                                     <td>
-                                        <button type="button" class="btn btn-danger">Danger</button>
-                                        <button type="button" class="btn btn-warning">Warning</button>
+                                        <button type="button" class="btn btn-warning">Ubah</button>
+                                        <button type="button" class="btn btn-danger">Hapus</button>
                                     </td>
                                 </tr>
                                 </tbody>
