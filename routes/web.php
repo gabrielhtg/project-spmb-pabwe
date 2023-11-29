@@ -34,6 +34,7 @@ Route::post('/login', [AuthController::class, 'postLogin'])->name('post.login');
 Route::prefix('/admin-panel')->group(function () {
     Route::get('/', [AdminPanelController::class, 'getAdminPanel'])->name('admin-panel');
 });
+Route::get('/fasilitas-admin', [AdminPanelController::class, 'getFasilitasPanel'])->name('fasilitas-panel');
 
 Route::get('/fasilitas', [FasilitasController::class, "getviewFasilitas"])->name("fasilitas.fasilitas");
 Route::get('/pengumuman', [PengumumanController::class, 'getviewPengumuman'])->name("pengumuman");

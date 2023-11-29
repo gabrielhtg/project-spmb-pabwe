@@ -83,7 +83,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('fasilitas.fasilitas')}}" >Fasilitas</a>
+                            <a class="nav-link" href="/fasilitas" onclick="showAsramaSubPage()">Fasilitas</a>
                         </li>
                     </ul>
                 </div>

@@ -29,6 +29,9 @@
                 <button class="btn btn-outline-light w-100 ">Dashboard</button>
                 <button class="btn bg-white w-100">Akreditasi</button>
                 <button class="btn bg-white w-100">Dashboard Panel</button>
+                <a href="{{ route('fasilitas-panel') }}">
+                    <button class="btn bg-white w-100">Fasilitas</button>
+                </a>
             </div>
         </div>
     {{--        ini adalah sidebar besar selesai--}}
