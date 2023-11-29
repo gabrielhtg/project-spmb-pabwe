@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\FasilitasController;
 use App\Http\Controllers\PengumumanController;
-
+use App\Http\Controllers\PrestasiController;
 use App\Http\Controllers\MitraController;
 
 /*
@@ -26,6 +26,10 @@ Route::get('/', function () {
 
 Route::get('/admisi', function () {
     return view('admisi.admisi');
+});
+
+Route::get('/faqs', function () {
+    return view('faq.faq');
 });
 
 Route::get('/login', [AuthController::class, 'getLogin'])->name('login');
@@ -52,3 +56,11 @@ Route::get('/pengumuman', [PengumumanController::class, 'getviewPengumuman'])->n
 
 //----
 Route::get('/mitra/mitra', [MitraController::class, 'mitra'])->name('mitra.mitra');
+
+Route::get('/form', function () {
+    return view('chatbot.form');
+})->name('form');
+
+//----
+Route::get('/prestasi', [PrestasiController::class, 'getviewPrestasi'])->name('prestasi.prestasiOverview');
+Route::get('/prestasiInstitut', [PrestasiController::class, 'getviewPrestasiInstitut'])->name('prestasi.prestasiInstitut');
