@@ -16,7 +16,7 @@
 <body>
 {{--    navbar start --}}
     <nav class="navbar fixed-top bg-body-tertiary navbar-expand-xl">
-        <div class="container-fluid">
+        <div class="container">
 {{--            tampilan hp--}}
             <a class="d-flex d-sm-none align-items-center navbar-brand" href="/">
                 <img src="{{ asset("/assets/img/Logo Institut Teknologi Del.png") }}" alt="Logo" width="35" height="35" class="d-inline-block align-text-top">
