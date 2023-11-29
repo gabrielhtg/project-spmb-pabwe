@@ -21,8 +21,8 @@
             <div class="card-img-overlay d-flex align-items-center pt-5">
                 <div class="d-flex flex-column container pt-5 text-center text-white">
                     <h1 class="fw-bold display-4 ">S1 Informatika</h1>
-                    <p class="fs-5 px-3 px-md-0">
-                        <a href="/fakultas" class="text-decoration-none text-white">
+                    <p class="fs-5 px-3 px-md-0 text-truncate ">
+                        <a href="/fakultas" class="text-decoration-none text-white d-inline-block">
                             Fakultas Informatika dan Teknik Elektro
                         </a>
                     </p>
@@ -181,7 +181,7 @@
                         Tahun ke-{{ $i + 1 }}
                     </button>
                 </h2>
-                <div id="collapse{{ $i }}" class="accordion-collapse collapse" data-bs-parent="#accordionExample{{ $i }}">
+                <div id="collapse{{ $i }}" class="accordion-collapse collapse " data-bs-parent="#accordionExample{{ $i }}">
                     <div class="accordion-body">
                         <div class="row">
                             @for ($j = 1; $j <= 2; $j++)
