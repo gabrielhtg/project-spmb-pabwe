@@ -44,32 +44,12 @@
                         Dashboard Panel
                     </button>
                 </a>
-                
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <button id="btn_dashboard_panel" class="btn_sidebar w-100">Admisi Panel <i class="right fas fa-angle-left"></i></button>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="bi bi-circle"></i>
-                                <p>PMDK </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="bi bi-circle"></i>
-                                <p>USM </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="bi bi-circle"></i>
-                                <p>UTBK </p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+                <a href="{{ route("spmb-dashboard") }}">
+                    <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start">
+                        <i class="fa-regular fa-note-sticky"></i>
+                        Admisi
+                    </button>
+                </a>
 
 
                 <a href="#">
@@ -104,11 +84,15 @@
                         <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="bi bi-house"></i></button>
                     </a>
                     <a href="{{ route("spmb-dashboard") }}">
+                        <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="fa-regular fa-note-sticky"></i></button>
+                    </a>
+                    <a href="{{ route("spmb-dashboard") }}">
                         <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="fa-regular fa-handshake"></i></button>
                     </a>
                     <a href="{{ route("spmb-dashboard") }}">
                         <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="bi bi-question-square"></i></button>
                     </a>
+                   
                 </div>
             </div>
         </div>
