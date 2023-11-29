@@ -73,7 +73,7 @@
                 </div>
 
                 <div class="col-md-6 mx-auto d-flex flex-column my-auto">
-                    <h3>Cafetaria</h3>
+                    <h3>Kafetaria</h3>
                     <div class="lh-base text-break text-justify custom-justified-text align-items-center">
                         <p>
                             Kafetaria (atau dalam bahasa Inggris "cafeteria") adalah jenis restoran atau tempat makan yang

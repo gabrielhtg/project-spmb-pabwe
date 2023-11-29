@@ -41,8 +41,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/edit-profile', [AdminPanelController::class, 'getEditProfile'])->name('edit-profile');
     });
 });
-
+Route::get('/fasilitas-admin', [AdminPanelController::class, 'getFasilitasPanel'])->name('fasilitas-panel');
 Route::get('/fasilitas', [FasilitasController::class, "getviewFasilitas"])->name("fasilitas.fasilitas");
+
 Route::get('/pengumuman', [PengumumanController::class, 'getviewPengumuman'])->name("pengumuman");
 
 Route::get('/mitra/mitra', [MitraController::class, 'mitra'])->name('mitra.mitra');

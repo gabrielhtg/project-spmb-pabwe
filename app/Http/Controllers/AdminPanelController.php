@@ -29,5 +29,13 @@ class AdminPanelController extends Controller
 
     public function getEditProfile () {
         return view ('admin-panel.edit_profile');
+<<<<<<< HEAD
+=======
+    }
+
+    public function getFasilitasPanel()
+    {
+        return view('admin-panel.fasilitaspanel');
+>>>>>>> 47b85f1b0507952cc336e9fd0b917e7d9ac8b49b
     }
 }
