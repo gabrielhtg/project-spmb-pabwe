@@ -2,7 +2,6 @@
 
 @section('isi-halaman')
 
-<main class="pt-5 mt-3">
 
     {{-- BAGIAN HERO --}}
     <section id="hero-section">
@@ -117,7 +116,7 @@
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">Indra Hartanto Tambunan, Ph.D</li>
                     </ul>
-                    <div class="card-header fw-bold list-group-item-secondary mt-3">
+                    <div class="card-header fw-bold list-group-item-secondary">
                         Lokasi
                     </div>
                     <ul class="list-group list-group-flush">
@@ -130,6 +129,6 @@
     
     </div>
 
-</main>
+
 
 @endsection

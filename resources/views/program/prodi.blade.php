@@ -2,7 +2,7 @@
 
 @section('isi-halaman')
 
-<main class="pt-5 mt-3">
+
 
     {{-- HERO SECTION --}}
     <section id="hero-section">
@@ -125,14 +125,14 @@
                 <div class="card text-bg-dark" onmouseover="showOverlay({{ $i }})" onmouseout="hideOverlay({{ $i }})">
                     <img src="{{ asset('img/program/dosen-profile-test.jpg') }}" class="card-img img-fluid" alt="">
 
-                    <div id="backOverlay-{{ $i }}" class="card-img-overlay" style="opacity: 1; transition: opacity 0.2s ease;">
+                    <div id="backOverlay-{{ $i }}" class="card-img-overlay " style="opacity: 1; transition: opacity 0.2s ease;">
                         <div class="d-flex justify-content-start">
                             <div class=" badge bg-primary text-wrap fw-medium fs-6 small mb-3">
                                 <small>Dosen</small>
                             </div>
                         </div>
                         <div class="d-flex card-img-overlay align-items-end">
-                            <h5 class="card-title fw-semibold fs-6">Dedi Andre Martua Raja Panggabean</h5>
+                            <h5 class="card-title fw-semibold fs-6">Dedi Andre Martua Raja Panggabean,P.Hd,M.Infotech</h5>
                         </div>
                     </div>
 
@@ -181,7 +181,7 @@
                         Tahun ke-{{ $i + 1 }}
                     </button>
                 </h2>
-                <div id="collapse{{ $i }}" class="accordion-collapse collapse show" data-bs-parent="#accordionExample{{ $i }}">
+                <div id="collapse{{ $i }}" class="accordion-collapse collapse" data-bs-parent="#accordionExample{{ $i }}">
                     <div class="accordion-body">
                         <div class="row">
                             @for ($j = 1; $j <= 2; $j++)
@@ -298,6 +298,6 @@
     
 
 
-</main>
+
 
 @endsection

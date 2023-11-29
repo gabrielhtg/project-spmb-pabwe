@@ -2,7 +2,7 @@
 
 @section('isi-halaman')
 
-<main class="mx-auto pt-4 mt-5">
+
 
     {{-- HERO SECTION --}}
     <section id="hero-section">
@@ -104,5 +104,5 @@
         </div>
     </div>
 
-</main>
+
 @endsection
