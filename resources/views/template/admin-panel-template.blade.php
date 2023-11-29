@@ -44,7 +44,7 @@
                         Dashboard Panel
                     </button>
                 </a>
-                <a href="{{ route("spmb-dashboard") }}">
+                <a href="{{ route("admin-panel") }}">
                     <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start">
                         <i class="fa-regular fa-note-sticky"></i>
                         Admisi
@@ -83,7 +83,7 @@
                     <a href="{{ route("spmb-dashboard") }}">
                         <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="bi bi-house"></i></button>
                     </a>
-                    <a href="{{ route("spmb-dashboard") }}">
+                    <a href="{{ route("admin-panel") }}">
                         <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="fa-regular fa-note-sticky"></i></button>
                     </a>
                     <a href="{{ route("spmb-dashboard") }}">
