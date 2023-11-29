@@ -44,13 +44,10 @@
                         Dashboard Panel
                     </button>
                 </a>
-<<<<<<< HEAD
 
-=======
                 <a href="{{ route('fasilitas-panel') }}">
                     <button class="btn bg-white w-100">Fasilitas</button>
                 </a>
->>>>>>> 47b85f1b0507952cc336e9fd0b917e7d9ac8b49b
             </div>
         </div>
         <div id="geser_besar" style="width: 18rem; min-width: 18rem; height: 100vh"></div>
