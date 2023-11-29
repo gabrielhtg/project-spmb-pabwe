@@ -54,13 +54,21 @@
 
                 <a href="#">
                     <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start">
-                        <i class="bi bi-house me-2"></i>
-                        Mitra
+                        <i class="bi bi-mortarboard"></i>
+                        Beasiswa
                     </button>
                 </a>
                 <a href="#">
-                    <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start"><i class="bi bi-house me-2"></i>
+                    <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start"><i class="fa-regular fa-comment-dots"></i>
+                        Form</button>
+                </a>
+                <a href="#">
+                    <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start"><i class="bi bi-question-square"></i>
                         FAQ</button>
+                </a>
+                <a href="#">
+                    <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start"><i class="fa-regular fa-handshake"></i>
+                        Kemitraan</button>
                 </a>
 
             </div>
@@ -87,12 +95,17 @@
                         <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="fa-regular fa-note-sticky"></i></button>
                     </a>
                     <a href="{{ route("spmb-dashboard") }}">
-                        <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="fa-regular fa-handshake"></i></button>
+                        <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="bi bi-mortarboard"></i></button>
+                    </a>
+                    <a href="{{ route("spmb-dashboard") }}">
+                        <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="fa-regular fa-comment-dots"></i></button>
                     </a>
                     <a href="{{ route("spmb-dashboard") }}">
                         <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="bi bi-question-square"></i></button>
                     </a>
-                   
+                    <a href="{{ route("spmb-dashboard") }}">
+                        <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="fa-regular fa-handshake"></i></button>
+                    </a>
                 </div>
             </div>
         </div>
