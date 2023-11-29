@@ -54,7 +54,7 @@ Route::get('/fasilitas-Laboratorium', [FasilitasController::class, "getviewLabor
 Route::get('/fasilitas-Layanan-Makanan', [FasilitasController::class, "getviewLayananMakanan"])->name("fasilitas.layananmakanan");
 Route::get('/pengumuman', [PengumumanController::class, 'getviewPengumuman'])->name("pengumuman");
 
-//----
+//======
 Route::get('/mitra/mitra', [MitraController::class, 'mitra'])->name('mitra.mitra');
 
 Route::get('/form', function () {

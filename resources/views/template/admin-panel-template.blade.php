@@ -133,6 +133,7 @@
                         Dashboard Panel
                     </button>
                 </a>
+                
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <button id="btn_dashboard_panel" class="btn_sidebar w-100">Admisi Panel <i class="right fas fa-angle-left"></i></button>
@@ -159,6 +160,17 @@
                     </ul>
                 </li>
 
+                <a href="#">
+                    <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start">
+                        <i class="bi bi-house me-2"></i>
+                        Mitra
+                    </button>
+                </a>
+                <a href="#">
+                    <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start"><i class="bi bi-house me-2"></i>
+                        FAQ</button>
+                </a>
+
             </div>
         </div>
         <div id="geser_besar" style="width: 18rem; min-width: 18rem; height: 100vh"></div>
@@ -178,6 +190,12 @@
                     <button id="btn_akreditasi" class="btn_sidebar_kecil">A</button>
                     <a href="{{ route("spmb-dashboard") }}">
                         <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="bi bi-house"></i></button>
+                    </a>
+                    <a href="{{ route("spmb-dashboard") }}">
+                        <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="fa-regular fa-handshake"></i></button>
+                    </a>
+                    <a href="{{ route("spmb-dashboard") }}">
+                        <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="bi bi-question-square"></i></button>
                     </a>
                 </div>
             </div>
