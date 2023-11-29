@@ -72,7 +72,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Beasiswa</a>
+                            <a class="nav-link" href="/beasiswa">Beasiswa</a>
                         </li>
 
                         <li class="nav-item">

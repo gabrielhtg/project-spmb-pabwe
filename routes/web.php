@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\FasilitasController;
 use App\Http\Controllers\PengumumanController;
+use App\Http\Controllers\BeasiswaController;
 
 use App\Http\Controllers\MitraController;
 
@@ -31,6 +32,8 @@ Route::get('/admisi', function () {
 Route::get('/faqs', function () {
     return view('faq.faq');
 });
+
+Route::get('/beasiswa', [BeasiswaController::class, 'index'])->name('beasiswa.index');
 
 Route::get('/login', [AuthController::class, 'getLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'postLogin'])->name('post.login');
