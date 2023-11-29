@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/beasiswa.css') }}" />
     <div class="masthead" style="background-size: cover; min-height: 75vh; position: relative; color: #ffff; text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2); background-image: url('{{ asset('assets/img/beasiswa/beasiswa-wp.jpg') }}');">
         <div class="color-overlay d-flex justify-content-center align-items-center">
-          <h2 class="beasiswa-text" style="height: 90px">Beasiswa IT Del</h2>
+          <h2 class="beasiswa-text" style="height: 90px">Beasiswa</h2>
         </div>
     </div>
 </section>
