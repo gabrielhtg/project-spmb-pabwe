@@ -15,14 +15,18 @@
             </div> --}}
             <div class="carousel-inner">
                 <div class="carousel-item active bg-dark-subtle">
-                    <img src="{{ asset('img/program/carousel-example.jpg')}}" class="d-block w-100" alt="...">
+                    <img src="{{ asset('img/program/carousel-example.jpg')}}" class="d-block w-100 img-fluid" alt="...">
                 </div>
             </div>
             <div class="card-img-overlay d-flex align-items-center pt-5">
-                <div class="d-flex flex-column container pt-5">
-                    <h1 class="fw-bold text-light pt-5">S1 Informatika</h1>
-                    <p><a href="/fakultas" class="fs-5 text-decoration-none text-light">Fakultas Informatika dan Teknik Elektro</a></p>
-                </div>
+                <div class="d-flex flex-column container pt-5 text-center text-white">
+                    <h1 class="fw-bold display-4 ">S1 Informatika</h1>
+                    <p class="fs-5 px-3 px-md-0">
+                        <a href="/fakultas" class="text-decoration-none text-white">
+                            Fakultas Informatika dan Teknik Elektro
+                        </a>
+                    </p>
+        </div>
             </div>
             {{-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -56,10 +60,11 @@
             <h1 class="fw-bold">Overview</h1>
         </div>
 
-        <div class="d-flex row">
-            <div class="col-8">
+        <div class="d-flex flex-column-reverse flex-md-row">
+            <div class="col-md-8">
+                <!-- Konten Utama -->
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam quibusdam dolor suscipit corrupti aperiam amet delectus maxime nihil laudantium vero debitis, eos distinctio mollitia blanditiis alias possimus dignissimos tempora cupiditate pariatur consectetur corporis? Adipisci illo at ipsa doloremque, corrupti alias sapiente tempore ea unde libero explicabo quibusdam, delectus voluptatum ullam quo exercitationem cum modi laborum perspiciatis similique inventore, vel porro dolorum! Sint adipisci nostrum quam reiciendis autem, suscipit assumenda, architecto dolorem officiis velit, quaerat tempora voluptatum unde. Animi, obcaecati voluptatibus dolores commodi maiores necessitatibus repellat non quibusdam minima rerum. Quasi tenetur facere aut corporis modi vel labore dolorum architecto dolores.</p>
-            
+                
                 <h2 class="fw-bold fs-4">Visi</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis illum magnam, praesentium fugit, veniam voluptatibus tenetur impedit cupiditate, iure rerum ipsam tempore? Magnam aut nulla quisquam odit illo illum quos quidem quo. Eaque unde aut expedita ratione quia rerum sed ea nesciunt minima. Tempore, vero quae odio alias dolores aliquid.</p>
                 
@@ -84,11 +89,11 @@
                 </ol>
 
                 <button type="button" class="btn btn-primary gap-3">Halaman Pendaftaran</button>
-
             </div>
 
-            <div class="col-4">
-                <div class="card"">
+            <div class="col-md-4 order-md-last mt-4 mt-md-0">
+                <!-- Card -->
+                <div class="card">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item fw-bold list-group-item-secondary">Ketua Program Studi</li>
                         <li class="list-group-item">Arie Satia Dharma, S.T, M.Kom.</li>
@@ -115,12 +120,10 @@
         </div>
 
         <div class="d-flex gy-4 row justify-content-center text-center">
-            
-            {{--  --}}
             @for ($i = 0; $i < 8; $i++)
-            <div class="col-3">
+            <div class="col-md-3 col-12">
                 <div class="card text-bg-dark" onmouseover="showOverlay({{ $i }})" onmouseout="hideOverlay({{ $i }})">
-                    <img src="{{ asset('img/program/dosen-profile-test.jpg') }}" class="card-img" alt="">
+                    <img src="{{ asset('img/program/dosen-profile-test.jpg') }}" class="card-img img-fluid" alt="">
 
                     <div id="backOverlay-{{ $i }}" class="card-img-overlay" style="opacity: 1; transition: opacity 0.2s ease;">
                         <div class="d-flex justify-content-start">
@@ -140,9 +143,7 @@
                             </div>
                             <h5 class="card-title fw-semibold fs-6">Dedi Andre Martua Raja Panggabean</h5>
                             <p class="card-text fs-6 small">S3 Ternak Lele</p>
-                            {{-- <div class="badge rounded-pill bg-light text-wrap w-auto fw-medium fs-6 small mb-3"> --}}
-                                <small><small class="text-dark"><a href="https://www.del.ac.id/?page_id=48" class="text-light text-decoration-none fst-italic">See More...</a></small></small>
-                            {{-- </div> --}}
+                            <small><small class="text-dark"><a href="https://www.del.ac.id/?page_id=48" class="text-light text-decoration-none fst-italic">See More...</a></small></small>
                         </div>
                     </div>
                 </div>
@@ -152,7 +153,6 @@
                 function showOverlay(id) {
                     var overlay = document.getElementById("overlay-" + id);
                     var backOverlay = document.getElementById("backOverlay-" + id);
-                    // overlay.classList.remove("d-none");
                     overlay.style.opacity = "1";
                     backOverlay.style.opacity = "0";
                 }
@@ -160,16 +160,13 @@
                 function hideOverlay(id) {
                     var overlay = document.getElementById("overlay-" + id);
                     var backOverlay = document.getElementById("backOverlay-" + id);
-
-                    // overlay.classList.add("d-none");
                     overlay.style.opacity = "0";
                     backOverlay.style.opacity = "1";
                 }
             </script>
             @endfor
-            
         </div>
-    </section>
+</section>
 
     <section id="kurikulum-subpage" class="container d-none">
         <div class="mt-5 mb-3">
