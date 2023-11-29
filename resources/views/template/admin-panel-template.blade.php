@@ -44,6 +44,24 @@
                         Dashboard Panel
                     </button>
                 </a>
+                <a href="{{ route("admisi-panel") }}">
+                    <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start">
+                        <i class="fa-regular fa-note-sticky"></i>
+                        Admisi
+                    </button>
+                </a>
+
+
+                <a href="#">
+                    <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start">
+                        <i class="bi bi-house me-2"></i>
+                        Mitra
+                    </button>
+                </a>
+                <a href="#">
+                    <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start"><i class="bi bi-house me-2"></i>
+                        FAQ</button>
+                </a>
 
             </div>
         </div>
@@ -65,6 +83,16 @@
                     <a href="{{ route("spmb-dashboard") }}">
                         <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="bi bi-house"></i></button>
                     </a>
+                    <a href="{{ route("admisi-panel") }}">
+                        <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="fa-regular fa-note-sticky"></i></button>
+                    </a>
+                    <a href="{{ route("spmb-dashboard") }}">
+                        <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="fa-regular fa-handshake"></i></button>
+                    </a>
+                    <a href="{{ route("spmb-dashboard") }}">
+                        <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="bi bi-question-square"></i></button>
+                    </a>
+                   
                 </div>
             </div>
         </div>
