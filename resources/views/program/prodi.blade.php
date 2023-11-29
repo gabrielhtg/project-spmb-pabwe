@@ -173,66 +173,83 @@
             <h1 class="fw-bold">Kurikulum</h1>
             
         </div>
-        <div class="row">
-            @for ($i = 0; $i < 8; $i++)  
-                <div class="col-md-6 mb-5">
-                    <div class="container px-2 text-center">
+        @for ($i = 0; $i < 4; $i++)
+        <div class="accordion" id="accordionExample{{ $i }}">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ $i }}" aria-expanded="true" aria-controls="collapse{{ $i }}">
+                        Tahun ke-{{ $i + 1 }}
+                    </button>
+                </h2>
+                <div id="collapse{{ $i }}" class="accordion-collapse collapse show" data-bs-parent="#accordionExample{{ $i }}">
+                    <div class="accordion-body">
+                        <div class="row">
+                            @for ($j = 1; $j <= 2; $j++)
+                            <div class="col-md-6 mb-5">
+                                <div class="container px-2 text-center">
+                                    <div class="container text-center">
+                                        <h2 class="fw-bold fs-5">Semester {{ $i * 2 + $j }}</h2>
+                                            <table class="table table-bordered">
+                                                <thead class="table-primary">
+                                                <tr>
+                                                    
+                                                    <th scope="col" class="fw-semibold">Kode MK</th>
+                                                    <th scope="col" class="fw-semibold">Nama Mata Kuliah</th>
+                                                    <th scope="col" class="fw-semibold">SKS</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>11S3109 </td>
+                                                        <td>Pengembangan Aplikasi Berbasis Web</td>
+                                                        <td>4</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>10S3109</td>
+                                                        <td>Kecerdasan Buatan</td>
+                                                        <td>3</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>11S3109 </td>
+                                                        <td>Pengembangan Aplikasi Berbasis Web</td>
+                                                        <td>4</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>10S3109</td>
+                                                        <td>Kecerdasan Buatan</td>
+                                                        <td>3</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>11S3109 </td>
+                                                        <td>Pengembangan Aplikasi Berbasis Web</td>
+                                                        <td>4</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>10S3109</td>
+                                                        <td>Kecerdasan Buatan</td>
+                                                        <td>3</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2" class="fw-semibold">Total SKS</td>
+                                                        <td>7</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                    </div>
+                                </div>
+                            </div>
+                            @endfor
+                        </div>
                         <div class="container text-center">
-                            <h2 class="fw-bold fs-5">Semester {{ $i + 1 }}</h2>
-                            <table class="table">
-                                <thead>
-                                <tr>
-                                    
-                                    <th scope="col" class="fw-semibold">Kode MK</th>
-                                    <th scope="col" class="fw-semibold">Nama Mata Kuliah</th>
-                                    <th scope="col" class="fw-semibold">SKS</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                    <tr>
-                                        <td>11S3109 </td>
-                                        <td>Pengembangan Aplikasi Berbasis Web</td>
-                                        <td>4</td>
-                                    </tr>
-                                    <tr>
-                                        <td>10S3109</td>
-                                        <td>Kecerdasan Buatan</td>
-                                        <td>3</td>
-                                    </tr>
-                                    <tr>
-                                        <td>11S3109 </td>
-                                        <td>Pengembangan Aplikasi Berbasis Web</td>
-                                        <td>4</td>
-                                    </tr>
-                                    <tr>
-                                        <td>10S3109</td>
-                                        <td>Kecerdasan Buatan</td>
-                                        <td>3</td>
-                                    </tr>
-                                    <tr>
-                                        <td>11S3109 </td>
-                                        <td>Pengembangan Aplikasi Berbasis Web</td>
-                                        <td>4</td>
-                                    </tr>
-                                    <tr>
-                                        <td>10S3109</td>
-                                        <td>Kecerdasan Buatan</td>
-                                        <td>3</td>
-                                    </tr>
-                                <tr>
-                                    <td colspan="2" class="fw-semibold">Total SKS</td>
-                                    <td>7</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        </div>  
                     </div>
                 </div>
-            @endfor
-
+            </div>
         </div>
+        @endfor
 
     </section>
+
+    
 
     <script>
         var overview = document.getElementById("overview-subpage");
