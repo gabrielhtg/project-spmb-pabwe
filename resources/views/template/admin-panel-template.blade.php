@@ -44,8 +44,6 @@
                         Dashboard Panel
                     </button>
                 </a>
-<<<<<<< HEAD
-=======
                 
                 <li class="nav-item">
                     <a href="#" class="nav-link">
@@ -72,7 +70,7 @@
                         </li>
                     </ul>
                 </li>
->>>>>>> e58fe62d0fcc7875ef6244fc002d0ed63e5b4ac6
+
 
                 <a href="#">
                     <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start">
