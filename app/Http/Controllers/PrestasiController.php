@@ -15,4 +15,14 @@ class PrestasiController extends Controller
     {
         return view("prestasi.prestasiInstitut");
     }
+
+    public function getviewPrestasiDosenStaff()
+    {
+        return view("prestasi.prestasiDosenStaff");
+    }
+
+    public function getviewPrestasiMahasiswa()
+    {
+        return view("prestasi.prestasiMahasiswa");
+    }
 }
