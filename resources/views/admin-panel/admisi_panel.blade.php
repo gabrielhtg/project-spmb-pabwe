@@ -87,7 +87,10 @@
                                     <td>1</td>
                                     <td>Test</td>
                                     <td>Test</td>
-                                    <td>Test</td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger">Danger</button>
+                                        <button type="button" class="btn btn-warning">Warning</button>
+                                    </td>
                                 </tr>
                                 </tbody>
                             </table>
