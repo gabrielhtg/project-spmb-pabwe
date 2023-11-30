@@ -4,9 +4,6 @@
 
     <div class="container">
       <form>
-        <div class="mb-3">
-          <button type="button" id="create-pengumuman" class="btn btn-primary">Create Pengumuman</button>
-        </div>
 
         <label for="inputtag" class="form-label">Pilih Tag Pengumuman</label>
         <select class="form-select" name="selectOption" id="selectOption">
@@ -35,7 +32,9 @@
           <input type="file" class="form-control" id="inputfile">
         </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="mb-3">
+          <button type="button" id="create-pengumuman" class="btn btn-primary">Submit</button>
+        </div>
 
       </form>
     </div>
