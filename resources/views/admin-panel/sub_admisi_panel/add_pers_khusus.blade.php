@@ -1,10 +1,10 @@
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary mt-3 mb-2" data-bs-toggle="modal" data-bs-target="#tambah_tombol_hero_section_modal">
+<button type="button" class="btn btn-primary mt-3 mb-2" data-bs-toggle="modal" data-bs-target="#add_pers_khusus">
     Tambah Tombol (Max 3)
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="tambah_tombol_hero_section_modal" tabindex="-1" aria-labelledby="tambah_tombol_hero_section_modal" aria-hidden="true">
+<div class="modal fade" id="add_pers_khusus" tabindex="-1" aria-labelledby="add_pers_khusus" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
