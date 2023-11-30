@@ -20,7 +20,7 @@
             </div>
             <div class="card-img-overlay d-flex align-items-center pt-5">
                 <div class="d-flex flex-column container pt-5 text-center text-white">
-                    <h1 class="fw-bold display-4 ">S1 Informatika</h1>
+                    <h1 class="fw-bold display-4" style="@media screen and (min-width: 600px) { background-color: lightcoral; padding: 20px; }">S1 Informatika</h1>
                     <p class="fs-5 px-3 px-md-0">
                         <a href="/fakultas" class="text-decoration-none text-white">
                             Fakultas Informatika dan Teknik Elektro
