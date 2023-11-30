@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FasilitasController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\BeasiswaController;
-
+use App\Http\Controllers\PrestasiController;
 use App\Http\Controllers\MitraController;
 
 /*
@@ -63,3 +63,7 @@ Route::get('/mitra/mitra', [MitraController::class, 'mitra'])->name('mitra.mitra
 Route::get('/form', function () {
     return view('chatbot.form');
 })->name('form');
+
+//----
+Route::get('/prestasi', [PrestasiController::class, 'getviewPrestasi'])->name('prestasi.prestasiOverview');
+Route::get('/prestasiInstitut', [PrestasiController::class, 'getviewPrestasiInstitut'])->name('prestasi.prestasiInstitut');
