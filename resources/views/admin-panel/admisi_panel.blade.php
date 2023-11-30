@@ -98,9 +98,7 @@
                     </div>                    
                 </div>
             </div>
-        </div>
-
-        <div class="col-md-6">
+            <div class="col-md-6">
                 <div class="card card-success">
                     <div class="card-header bg-primary text-white">
                         <span class="fs-3">Data Persyaratan Khusus Prodi</span>
@@ -135,6 +133,10 @@
                     </div>                    
                 </div>
             </div>
+
+        </div>
+
+        
     </div>
 
 @endsection
