@@ -8,6 +8,37 @@
             <span class="fs-3">Data Fasilitas</span>
         </div>
         <div class="p-3">
+            
+            <div class="pt-3">
+            <table class="table table-striped table-bordered">
+                <thead class="text-center">
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Nama Kategori</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @php
+                        $counter = 1;
+                        $displayedCategories = []; // Variabel untuk melacak kategori yang sudah ditampilkan
+                    @endphp
+
+                    @foreach ($fasilitas as $item)
+                        @if (!in_array($item->kategori, $displayedCategories))
+                            <tr>
+                                <th>{{ $counter++ }}</th>
+                                <th>{{ $item->kategori }}</th>
+                            </tr>
+                            @php
+                                $displayedCategories[] = $item->kategori; // Tambahkan kategori ke array yang sudah ditampilkan
+                            @endphp
+                        @endif
+                    @endforeach
+                </tbody>
+
+            </table>
+        </div>
+        
         <div style="display: flex; justify-content: space-between; align-items: center;">
             <a href="{{ route('get.add-fasilitas') }}">
                 <button class="btn btn-primary">Tambah Fasilitas</button>
@@ -52,7 +83,7 @@
                                 <td>{{ date('d F Y - H:i', strtotime($item->created_at)) }}</td>
                                 <td>
                                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                        <button class="btn btn-warning">Edit</button>
+                                        <button class="btn btn-warning btn-sm">Edit</button>
                                         <form action="{{ route('post.destroy', $item->id) }}" method="post">
                                             @csrf
                                             @method('DELETE')

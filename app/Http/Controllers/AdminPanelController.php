@@ -49,7 +49,17 @@ class AdminPanelController extends Controller
         ];
         return view('admin-panel.sub_admin_panel.fasilitasAddpanel', $data);
     }
-
+    
+    public function getFasilitasPanel()
+    {
+        $admin = Auth::user();
+        $data = [
+            'indexActive' => 2,
+            'admin' => $admin
+        ];
+        return view('admin-panel.fasilitaspanel', $data);
+    }
+    
     public function postFasilitas(Request $request)
     {
         $request->validate([
@@ -110,15 +120,6 @@ class AdminPanelController extends Controller
 
     }
 
-    public function getFasilitasPanel()
-    {
-        $admin = Auth::user();
-        $data = [
-            'indexActive' => 2,
-            'admin' => $admin
-        ];
-        return view('admin-panel.fasilitaspanel', $data);
-    }
 
     public function getPengumumanPanel()
     {
