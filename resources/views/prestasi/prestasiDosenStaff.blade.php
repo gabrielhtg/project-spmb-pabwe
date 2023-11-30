@@ -128,7 +128,7 @@
     <section class="container">
         <div class="cat-prestasi">
         <div class="d-flex justify-content-between align-items-center">
-            <h2>Prestasi Institut</h2>
+            <h2>Prestasi Dosen dan Staff</h2>
         </div>
 
         <div class="row">
