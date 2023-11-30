@@ -15,7 +15,7 @@
                         <form action="">
                             <div class="mb-3">
                                 <label for="inputprodi" class="form-label">Program Studi</label>
-                                <input type="text" class="form-control" id="input_judul_header" name="input_judul_header">
+                                <input type="text" class="form-control" id="inputprodi" name="inputprodi">
                             </div>
                             <div class="mb-3">
                                 <label for="inputdeskPersKhusus" class="form-label">Deskripsi Persyaratan</label>
