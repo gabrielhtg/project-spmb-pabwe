@@ -46,6 +46,14 @@ Route::middleware('auth')->group(function () {
         Route::get('/spmb-dashboard', [AdminPanelController::class, 'getDashboardPanel'])->name('spmb-dashboard');
         Route::get('/admisi-panel', [AdminPanelController::class, 'getAdmisiPanel'])->name('admisi-panel');
         Route::get('/edit-profile', [AdminPanelController::class, 'getEditProfile'])->name('edit-profile');
+
+        /* Routing Kelompok 3 -  (Prestasi, Testimoni)*/
+        /* Bagian Prestasi */
+        Route::get('/prestasi', [AdminPanelController::class, 'getPrestasiPage'])->name('getPrestasi');
+
+        /* Bagian Testimoni */
+        Route::get('/testimoni', [AdminPanelController::class, 'getTestimoniPage'])->name('getTestimoni');
+
     });
 });
 

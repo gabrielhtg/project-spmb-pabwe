@@ -71,6 +71,16 @@
                         Kemitraan</button>
                 </a>
 
+                <a href="#">
+                    <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start"><i class="fas fa-trophy"></i>
+                        Prestasi</button>
+                </a>
+
+                <a href="#">
+                    <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start"><i class="fas fa-comment-dots"></i>
+                        Testimoni</button>
+                </a>
+
             </div>
         </div>
         <div id="geser_besar" style="width: 18rem; min-width: 18rem; height: 100vh"></div>
