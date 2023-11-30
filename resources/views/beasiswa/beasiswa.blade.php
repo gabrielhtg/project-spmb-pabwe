@@ -2,7 +2,7 @@
 
 @section('isi-halaman')
 
-<section id="hero" class="container">
+<!-- <section id="hero" class="container">
     <div id="carouselExample" class="carousel slide">
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -10,7 +10,15 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
+
+<section>
+    <div class="masthead" style="background-size: cover; min-height: 75vh; position: relative; color: #ffff; text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2); background-image: url('{{ asset('assets/img/beasiswa/beasiswa-wp.jpg') }}');">
+        <div class="color-overlay d-flex justify-content-center align-items-center">
+        <link rel="stylesheet" href="{{ asset('assets/css/kel5.css') }}" />
+          <h2 class="beasiswa-text" style="height: 90px">Beasiswa</h2>
+        </div>
+    </div>
 
 <div class="container mt-3">
     <div class="card mb-3">
