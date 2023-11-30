@@ -17,7 +17,7 @@
 <body>
 {{--    navbar start --}}
     <nav class="navbar fixed-top bg-body-tertiary navbar-expand-xl">
-        <div class="container-fluid">
+        <div class="container">
 {{--            tampilan hp--}}
             <a class="d-flex d-sm-none align-items-center navbar-brand" href="/">
                 <img src="{{ asset("/assets/img/Logo Institut Teknologi Del.png") }}" alt="Logo" width="35" height="35" class="d-inline-block align-text-top">
@@ -44,15 +44,11 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <div class="mx-auto">
                     <ul class="navbar-nav ms-auto me-3">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/program">
                                 Program
                             </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
+
                         </li>
 
                         <li class="nav-item dropdown">
@@ -68,11 +64,11 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Prestasi</a>
+                            <a class="nav-link" href="/prestasi">Prestasi</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Beasiswa</a>
+                            <a class="nav-link" href="/beasiswa">Beasiswa</a>
                         </li>
 
                         <li class="nav-item">
