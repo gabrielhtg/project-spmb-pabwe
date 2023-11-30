@@ -47,6 +47,8 @@ Route::middleware('auth')->group(function () {
 });
 Route::get('/fasilitas', [FasilitasController::class, "getviewFasilitas"])->name("fasilitas.fasilitas");
 
+Route::get('/pengumuman-admin', [AdminPanelController::class, 'getPengumumanPanel'])->name('pengumuman-panel');
 Route::get('/pengumuman', [PengumumanController::class, 'getviewPengumuman'])->name("pengumuman");
 
 Route::get('/mitra/mitra', [MitraController::class, 'mitra'])->name('mitra.mitra');
+ 

@@ -49,6 +49,11 @@
                         Fasilitas
                     </button>
                 </a>
+
+                <a href="{{ route('pengumuman-panel') }}">
+                    <button class="btn bg-white w-100">Pengumuman</button>
+                </a>
+
             </div>
         </div>
         <div id="geser_besar" style="width: 18rem; min-width: 18rem; height: 100vh"></div>
