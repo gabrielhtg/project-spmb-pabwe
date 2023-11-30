@@ -68,7 +68,7 @@
                 </div>
             </div>
         </div>
-        <div id="geser_kecil" style="width: 4rem; height: 100vh"></div>
+        <div id="geser_kecil" style="min-width: 4rem; width: 4rem; height: 100vh"></div>
         {{--        ini adalah sidebar kecil selesai--}}
 
         <div class="w-100">
