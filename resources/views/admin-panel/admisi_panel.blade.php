@@ -4,6 +4,7 @@
 
     <div class="container-fluid p-3">           
 
+                <div class="mt-6">
                 <div class="card">
                     <div class="card-header bg-primary text-white">
                         <span class="fs-3">Data Pembiayaan MBKM Non-Kompetisi</span>
@@ -25,7 +26,9 @@
                         </div>
                     </form>
                 </div>
+                </div>
 
+                <div class="mt-6">
                 <div class="card card-success">
                     <div class="card-header bg-primary text-white">
                         <span class="fs-3">Data Pembiayaan MBKM Kompetisi</span>
@@ -59,8 +62,10 @@
                         </form>
                     </div>                    
                 </div>
+                </div>
 
-                <div class="card card-success">
+               <div class="mt-6">
+               <div class="card card-success">
                     <div class="card-header bg-primary text-white">
                         <span class="fs-3">Data Persyaratan Khusus Prodi</span>
 
@@ -93,6 +98,9 @@
                         </form>
                     </div>                    
                 </div>
+               </div>
+
+                <div class="mt-6">
                 <div class="card">
                     <div class="card-header bg-primary text-white">
                         <span class="fs-3">Data Biaya Umum</span>
@@ -127,6 +135,7 @@
                     </form>
                 </div>
 
+                </div>
 
         
     </div>
