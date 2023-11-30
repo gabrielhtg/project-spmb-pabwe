@@ -13,10 +13,9 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-           add_master_admin::class,
+            add_master_admin::class,
             add_profile_pict_admin::class,
-            'created_at' => now(),
-            'updated_at' => now()
+            update_admin_name::class
         ]);
     }
 }

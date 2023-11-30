@@ -129,4 +129,13 @@ class AdminPanelController extends Controller
         ];
         return view('admin-panel.pengumumanpanel', $data);
     }
+
+    public function getAdmisiPanel () {
+        $admin = Auth::user();
+        $data = [
+            'indexActive' => 2,
+            'admin' => $admin
+        ];
+        return view('admin-panel.admisi_panel', $data);
+    }
 }
