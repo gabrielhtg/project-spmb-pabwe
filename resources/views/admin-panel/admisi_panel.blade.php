@@ -3,7 +3,7 @@
 @section('isi-admin-panel')
 
     <div class="container-fluid p-3">
-        <div class="row row-gap-3">
+        <div class="row">
             
             <div class="col-md-6">
                 <div class="card">
