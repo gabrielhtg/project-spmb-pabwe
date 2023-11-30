@@ -4,41 +4,7 @@
 
     <div class="container-fluid p-3">
         <div class="row row-gap-3">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header bg-primary text-white">
-                        <span class="fs-3">Data Biaya Umum</span>
-                    </div>
-
-                    <form>
-                        <div class="card-body">
-                            <div class="mb-3">
-                                <label for="input_jumlah_sks_kegiatan" class="form-label">Biaya Asrama dan Kemahasiswaan (Rp)</label>
-                                <input type="text" class="form-control" id="input_jumlah_sks_kegiatan" name="input_jumlah_sks_kegiatan">
-                            </div>
-                            <div class="mb-3">
-                                <label for="input_potongan_spp" class="form-label">Biaya Makan /hari (Rp)</label>
-                                <input type="text" class="form-control" id="input_potongan_spp" name="input_potongan_spp">
-                            </div>
-                            <div class="mb-3">
-                                <label for="input_potongan_spp" class="form-label">Biaya Wisuda (Rp)</label>
-                                <input type="text" class="form-control" id="input_potongan_spp" name="input_potongan_spp">
-                            </div>
-                            <div class="mb-3">
-                                <label for="input_potongan_spp" class="form-label">Biaya Deposit Toga (Rp)</label>
-                                <input type="text" class="form-control" id="input_potongan_spp" name="input_potongan_spp">
-                            </div>
-                            <div class="mb-3">
-                                <label for="input_potongan_spp" class="form-label">Biaya Khusus Mahasiswa Tingkat Akhir (Rp)</label>
-                                <input type="text" class="form-control" id="input_potongan_spp" name="input_potongan_spp">
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+            
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header bg-primary text-white">
@@ -133,7 +99,41 @@
                     </div>                    
                 </div>
             </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <span class="fs-3">Data Biaya Umum</span>
+                    </div>
 
+                    <form>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label for="input_jumlah_sks_kegiatan" class="form-label">Biaya Asrama dan Kemahasiswaan (Rp)</label>
+                                <input type="text" class="form-control" id="input_jumlah_sks_kegiatan" name="input_jumlah_sks_kegiatan">
+                            </div>
+                            <div class="mb-3">
+                                <label for="input_potongan_spp" class="form-label">Biaya Makan /hari (Rp)</label>
+                                <input type="text" class="form-control" id="input_potongan_spp" name="input_potongan_spp">
+                            </div>
+                            <div class="mb-3">
+                                <label for="input_potongan_spp" class="form-label">Biaya Wisuda (Rp)</label>
+                                <input type="text" class="form-control" id="input_potongan_spp" name="input_potongan_spp">
+                            </div>
+                            <div class="mb-3">
+                                <label for="input_potongan_spp" class="form-label">Biaya Deposit Toga (Rp)</label>
+                                <input type="text" class="form-control" id="input_potongan_spp" name="input_potongan_spp">
+                            </div>
+                            <div class="mb-3">
+                                <label for="input_potongan_spp" class="form-label">Biaya Khusus Mahasiswa Tingkat Akhir (Rp)</label>
+                                <input type="text" class="form-control" id="input_potongan_spp" name="input_potongan_spp">
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
 
         
