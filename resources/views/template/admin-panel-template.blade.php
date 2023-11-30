@@ -67,7 +67,7 @@
                 </a>
 
                 <a href="{{ route("fasilitas-admin") }}">
-                    <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start"><i class="fa-regular fa-handshake"></i>
+                    <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start"><i class="fas fa-university"></i>
                         Fasilitas</button>
                 </a>
 
