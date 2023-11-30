@@ -71,17 +71,7 @@
                     </div>
 
                     <div class="card-body">
-                        <form action="">
-                            <div class="mb-3">
-                                <label for="inputnoKomJumlahSKS" class="form-label">Jumlah SKS</label>
-                                <input type="text" class="form-control" id="inputnoKomJumlahSKS" name="inputnoKomJumlahSKS">
-                            </div>
-                            <div class="mb-3">
-                                <label for="inputnoKomPotongan" class="form-label">Potongan SPP(%)</label>
-                                <input type="text" class="form-control" id="inputnoKomPotongan" name="inputnoKomPotongan">
-                            </div>
-                        </form>
-                        @include('admin-panel.sub_admin_panel.tambah_tombol_hero_section')
+                        @include('admin-panel.sub_admisi_panel.add_mbkm')
                         <form action="">
                             <table class="table table-striped">
                                 <thead>
@@ -105,10 +95,46 @@
                                 </tbody>
                             </table>
                         </form>
-                    </div>
+                    </div>                    
                 </div>
             </div>
         </div>
+
+        <div class="col-md-6">
+                <div class="card card-success">
+                    <div class="card-header bg-primary text-white">
+                        <span class="fs-3">Data Persyaratan Khusus Prodi</span>
+
+                    </div>
+
+                    <div class="card-body">
+                        @include('admin-panel.sub_admisi_panel.add_pers_khusus')
+                        <form action="">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Program Studi</th>
+                                    <th scope="col">Deskripsi Persyaratan</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Test</td>
+                                    <td>Test</td>
+                                    <td>
+                                        <button type="button" class="btn btn-warning">Ubah</button>
+                                        <button type="button" class="btn btn-danger">Hapus</button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </form>
+                    </div>                    
+                </div>
+            </div>
     </div>
 
 @endsection
