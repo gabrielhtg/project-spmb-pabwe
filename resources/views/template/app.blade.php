@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset("/assets/css/kel1.css") }}">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="{{ asset("/assets/css/admisi.css") }}">
+    <link rel="stylesheet" href="{{ asset("/assets/css/kel5.css") }}">
     <link rel="stylesheet" href="{{ asset("/assets/css/fasilitas.css") }}">
     <link rel="stylesheet" href="{{ asset("/assets/css/pengumuman.css") }}">
     <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
@@ -67,11 +68,11 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Prestasi</a>
+                            <a class="nav-link" href="/prestasi">Prestasi</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Beasiswa</a>
+                            <a class="nav-link" href="/beasiswa">Beasiswa</a>
                         </li>
 
                         <li class="nav-item">
@@ -79,7 +80,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">FAQ</a>
+                            <a class="nav-link" href="/faqs">FAQ</a>
                         </li>
 
                         <li class="nav-item">
