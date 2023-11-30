@@ -43,6 +43,7 @@ Route::middleware('auth')->group(function () {
 //    Route::get('/', [AdminPanelController::class, 'getAdminPanel'])->name('admin-panel.akreditasi');
         Route::get('/spmb-dashboard', [AdminPanelController::class, 'getDashboardPanel'])->name('spmb-dashboard');
         Route::get('/edit-profile', [AdminPanelController::class, 'getEditProfile'])->name('edit-profile');
+        Route::get('/program', [AdminPanelController::class, 'getEditProfile'])->name('program-panel');
     });
 });
 
