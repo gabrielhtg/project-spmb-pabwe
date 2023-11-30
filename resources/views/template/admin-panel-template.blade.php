@@ -60,7 +60,7 @@
                 </a>
 
 
-                <a href="#">
+                {{-- <a href="#">
                     <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start">
                         <i class="bi bi-mortarboard"></i>
                         Beasiswa
@@ -77,7 +77,7 @@
                 <a href="#">
                     <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start"><i class="fa-regular fa-handshake"></i>
                         Kemitraan</button>
-                </a>
+                </a> --}}
 
             </div>
         </div>
