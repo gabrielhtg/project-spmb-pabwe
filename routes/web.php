@@ -6,7 +6,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\FasilitasController;
 use App\Http\Controllers\PengumumanController;
-
+use App\Http\Controllers\BeasiswaController;
+use App\Http\Controllers\PrestasiController;
 use App\Http\Controllers\MitraController;
 
 /*
@@ -28,6 +29,12 @@ Route::get('/admisi', function () {
     return view('admisi.admisi');
 });
 
+Route::get('/faqs', function () {
+    return view('faq.faq');
+});
+
+Route::get('/beasiswa', [BeasiswaController::class, 'index'])->name('beasiswa.index');
+
 Route::get('/login', [AuthController::class, 'getLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'postLogin'])->name('post.login');
 Route::get('/logout', [AuthController::class, 'getLogout'])->name('logout');
@@ -38,6 +45,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/', [AdminPanelController::class, 'getAdminPanel'])->name('admin-panel');
 //    Route::get('/', [AdminPanelController::class, 'getAdminPanel'])->name('admin-panel.akreditasi');
         Route::get('/spmb-dashboard', [AdminPanelController::class, 'getDashboardPanel'])->name('spmb-dashboard');
+        Route::get('/admisi-panel', [AdminPanelController::class, 'getAdmisiPanel'])->name('admisi-panel');
         Route::get('/edit-profile', [AdminPanelController::class, 'getEditProfile'])->name('edit-profile');
     });
 });
@@ -50,5 +58,32 @@ Route::get('/fasilitas-Laboratorium', [FasilitasController::class, "getviewLabor
 Route::get('/fasilitas-Layanan-Makanan', [FasilitasController::class, "getviewLayananMakanan"])->name("fasilitas.layananmakanan");
 Route::get('/pengumuman', [PengumumanController::class, 'getviewPengumuman'])->name("pengumuman");
 
-//----
+//======
 Route::get('/mitra/mitra', [MitraController::class, 'mitra'])->name('mitra.mitra');
+
+Route::get('/form', function () {
+    return view('chatbot.form');
+})->name('form');
+
+// ROUTE PROGRAM STUDI [TEAM 02]
+
+Route::get('/program', function () {
+    return view('program.program');
+});
+
+Route::get('/fakultas', function () {
+    return view('program.fakultas');
+});
+
+Route::get('/prodi', function () {
+    return view('program.prodi');
+});
+
+// End of ROUTE PROGRAM STUDI [TEAM 02]
+
+//----
+Route::get('/prestasi', [PrestasiController::class, 'getviewPrestasi'])->name('prestasi.prestasiOverview');
+Route::get('/prestasiInstitut', [PrestasiController::class, 'getviewPrestasiInstitut'])->name('prestasi.prestasiInstitut');
+Route::get('/prestasiDosenStaff', [PrestasiController::class, 'getviewPrestasiDosenStaff'])->name('prestasi.prestasiDosenStaff');
+Route::get('/prestasiMahasiswa', [PrestasiController::class, 'getviewPrestasiMahasiswa'])->name('prestasi.prestasiMahasiswa');
+
