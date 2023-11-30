@@ -39,9 +39,12 @@ Route::middleware('auth')->group(function () {
 //    Route::get('/', [AdminPanelController::class, 'getAdminPanel'])->name('admin-panel.akreditasi');
         Route::get('/spmb-dashboard', [AdminPanelController::class, 'getDashboardPanel'])->name('spmb-dashboard');
         Route::get('/edit-profile', [AdminPanelController::class, 'getEditProfile'])->name('edit-profile');
+        Route::get('/fasilitas-admin', [AdminPanelController::class, 'getFasilitasAdmin'])->name('fasilitas-admin');
+        Route::get('/fasilitas-admin-get', [AdminPanelController::class, 'getAddFasilitas'])->name('get.add-fasilitas');
+        Route::post('/', [AdminPanelController::class, 'postFasilitas'])->name('post.fasilitas');
+        Route::delete('post/{id}', [AdminPanelController::class, 'destroy'])->name('post.destroy');
     });
 });
-Route::get('/fasilitas-admin', [AdminPanelController::class, 'getFasilitasPanel'])->name('fasilitas-panel');
 Route::get('/fasilitas', [FasilitasController::class, "getviewFasilitas"])->name("fasilitas.fasilitas");
 
 Route::get('/pengumuman', [PengumumanController::class, 'getviewPengumuman'])->name("pengumuman");

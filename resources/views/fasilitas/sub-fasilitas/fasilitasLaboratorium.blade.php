@@ -10,6 +10,28 @@
             </p>
         </div>
 
+        @foreach($fasilitas as $item)
+            @if($item->kategori === 'Laboratorium')
+                <div class="container pt-5" id="lab-fite">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="{{ asset('/assets/img/fasilitas/' . $item->file_gambar) }}" class="img-fluid custom-image"
+                                alt="{{ $item->nama_file }}">
+                        </div>
+                        <div class="col-md-6 mx-auto d-flex flex-column my-auto">
+                            <h3>{{ $item->nama_fasilitas }}</h3>
+                            <div class="lh-base text-break text-justify custom-justified-text align-items-center">
+                                <p>
+                                    {{  $item->deskripsi_fasilitas }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
+        @endforeach
+
+
         <div class="container pt-5" id="lab-fite">
             <div class="row">
                 <div class="col-md-6">
@@ -22,6 +44,7 @@
                     <div class="lh-base text-break text-justify custom-justified-text align-items-center">
                         <p>
                             Laboratorium FITE menyediakan laboratorium komputer sebagai tempat untuk mendukung proses
+
                             belajar
                             mahasiswa/i FITE. Tersedia kelengkapan berupa komputer dengan komponen-komponennya baik itu
                             mouse, CPU,

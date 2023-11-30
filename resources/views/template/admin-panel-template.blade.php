@@ -44,8 +44,10 @@
                         Dashboard Panel
                     </button>
                 </a>
-                <a href="{{ route('fasilitas-panel') }}">
-                    <button class="btn bg-white w-100">Fasilitas</button>
+                <a href="{{ route("fasilitas-admin") }}">
+                    <button class="btn bg-white w-100 ">
+                        Fasilitas
+                    </button>
                 </a>
             </div>
         </div>
