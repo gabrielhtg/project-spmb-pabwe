@@ -71,6 +71,11 @@
                         Fasilitas</button>
                 </a>
 
+                <a href="{{ route("pengumuman-panel") }}">
+                    <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start"><i class="fa-regular fa-handshake"></i>
+                        Pengumuman</button>
+                </a>
+
                 <a href="#">
                     <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start"><i class="fa-regular fa-comment-dots"></i>
                         Form</button>
