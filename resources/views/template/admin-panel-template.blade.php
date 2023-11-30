@@ -45,7 +45,7 @@
                     </button>
                 </a>
                 
-                <a href="{{ route("program-panel") }}">
+                <a href="#">
                     <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start">
                         <i class="bi bi-house me-2"></i>
                         Program
@@ -59,21 +59,28 @@
                     </button>
                 </a>
 
-
                 <a href="#">
                     <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start">
                         <i class="bi bi-mortarboard"></i>
                         Beasiswa
                     </button>
                 </a>
+
+                <a href="{{ route("fasilitas-admin") }}">
+                    <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start"><i class="fa-regular fa-handshake"></i>
+                        Fasilitas</button>
+                </a>
+
                 <a href="#">
                     <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start"><i class="fa-regular fa-comment-dots"></i>
                         Form</button>
                 </a>
+
                 <a href="#">
                     <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start"><i class="bi bi-question-square"></i>
                         FAQ</button>
                 </a>
+
                 <a href="#">
                     <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start"><i class="fa-regular fa-handshake"></i>
                         Kemitraan</button>

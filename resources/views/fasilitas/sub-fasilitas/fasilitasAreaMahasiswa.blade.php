@@ -1,7 +1,3 @@
-@extends('template.fasilitas')
-
-@section('isi-halaman')
-
 <section class="container" id="areamahasiswa">
   <div class="text-center fw bolder">
   <h1 class="display-5 fw-bold">Area Mahasiswa</h1>
@@ -141,4 +137,3 @@
 
 
 <script src="{{ asset("/assets/js/chatbot.js") }}"></script>
-@endsection
