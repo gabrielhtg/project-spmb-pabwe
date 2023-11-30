@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
+            $table->string('prodi');
+            $table->foreign('prodi')->references('kode_prodi')->on('majors');
+            $table->string('nama');
+            $table->string('kode_mk');
+            $table->string('sks');
             $table->timestamps();
         });
     }

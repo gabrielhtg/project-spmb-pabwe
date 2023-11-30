@@ -12,7 +12,23 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('majors', function (Blueprint $table) {
-            $table->id();
+            $table->id('kode_prodi');
+            $table->string('nama');
+            $table->string('fakultas');
+            $table->foreign('fakultas')->references('kode_fakultas')->on('faculties');
+            $table->string('kaprodi');
+            $table->foreign('kaprodi')->references('id')->on('employees');
+            $table->text('deskripsi');
+            $table->string('gambar');
+            $table->text('visi');
+            $table->text('misi');
+            $table->string('prospek');
+            $table->string('gelar');
+            $table->string('lama');
+            $table->string('biaya');
+            $table->text('syarat');
+            $table->text('lokasi');
+            $table->string('akreditasi');
             $table->timestamps();
         });
     }
