@@ -5,45 +5,65 @@
     <div class="container-fluid p-3">
         <div class="d-flex w-100">
             <div class="w-100">
-                <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-smooth-scroll="true" class="scrollspy-example-2 d-flex gap-3 flex-column justify-content-center" tabindex="0">
+                <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-smooth-scroll="true"
+                     class="scrollspy-example-2 d-flex gap-3 flex-column justify-content-center" tabindex="0">
                     <div id="item-1" class="card">
                         <div class="card-header bg-primary text-white">
                             <span class="fs-5">Data Institut</span>
                         </div>
 
-                        <form>
+                        <form action="{{ url("/admin-panel") }}" method="post">
+                            @csrf
                             <div class="card-body">
                                 <div class="mb-3">
                                     <label for="input_nama_institusi" class="form-label">Nama Institusi</label>
-                                    <input type="text" class="form-control" id="input_nama_institusi" name="input_nama_institusi">
+                                    <input type="text" class="form-control" id="input_nama_institusi"
+                                           name="input_nama_institusi" value="{{ $dataInstitusi->nama_institusi }}">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="input_akreditasi_institusi_singkat" class="form-label">Akreditasi Insitusi (Singkat)</label>
-                                    <input type="text" class="form-control" id="input_akreditasi_institusi_singkat" name="input_akreditasi_institusi_singkat">
+                                    <label for="input_singkatan_nama_institusi" class="form-label">Singkatan Nama Institusi</label>
+                                    <input type="text" class="form-control" id="input_singkatan_nama_institusi"
+                                           name="input_singkatan_nama_institusi" value="{{ $dataInstitusi->singkatan_nama_institusi }}">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="input_akreditasi_institusi_lengkap" class="form-label">Akreditasi Insitusi (Lengkap)</label>
-                                    <input type="text" class="form-control" id="input_akreditasi_institusi_lengkap" name="input_akreditasi_institusi_lengkap">
+                                    <label for="input_akreditasi_institusi_singkat" class="form-label">Akreditasi
+                                        Insitusi (Singkat)</label>
+                                    <input type="text" class="form-control" id="input_akreditasi_institusi_singkat"
+                                           name="input_akreditasi_institusi_singkat" value="{{ $dataInstitusi->akreditasi_singkat  }}">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="input_link_pendaftaran" class="form-label">Jargon Institusi</label>
-                                    <input type="text" class="form-control" id="input_link_pendaftaran" name="input_link_pendaftaran">
+                                    <label for="input_akreditasi_institusi_lengkap" class="form-label">Akreditasi
+                                        Insitusi (Lengkap)</label>
+                                    <input type="text" class="form-control" id="input_akreditasi_institusi_lengkap"
+                                           name="input_akreditasi_institusi_lengkap" value="{{ $dataInstitusi->akreditasi_lengkap }}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="input_jargon_institusi" class="form-label">Jargon Institusi</label>
+                                    <input type="text" class="form-control" id="input_jargon_institusi"
+                                           name="input_jargon_institusi" value="{{ $dataInstitusi->jargon }}">
                                 </div>
                                 <div class="mb-3">
                                     <label for="input_jumlah_dosen" class="form-label">Jumlah Dosen</label>
-                                    <input type="text" class="form-control" id="input_jumlah_dosen" name="input_jumlah_dosen">
+                                    <input type="number" min="0" class="form-control" id="input_jumlah_dosen"
+                                           name="input_jumlah_dosen" value="{{ $dataInstitusi->jumlah_dosen }}">
                                 </div>
                                 <div class="mb-3">
                                     <label for="input_jumlah_mahasiswa" class="form-label">Jumlah Mahasiswa</label>
-                                    <input type="text" class="form-control" id="input_jumlah_mahasiswa" name="input_jumlah_mahasiswa">
+                                    <input type="number" min="0" class="form-control" id="input_jumlah_mahasiswa"
+                                           name="input_jumlah_mahasiswa" value="{{ $dataInstitusi->jumlah_mahasiswa }}">
                                 </div>
                                 <div class="mb-3">
                                     <label for="input_jumlah_alumni" class="form-label">Jumlah Alumni</label>
-                                    <input type="text" class="form-control" id="input_jumlah_alumni" name="input_jumlah_alumni">
+                                    <input type="number" min="0" class="form-control" id="input_jumlah_alumni"
+                                           name="input_jumlah_alumni" value="{{ $dataInstitusi->jumlah_alumni }}">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="formFile" class="form-label">Logo Institusi</label>
-                                    <input class="form-control" type="file" id="formFile">
+                                    <label for="input_sertifikat_akreditasi" class="form-label">Sertifikat Akreditasi</label>
+                                    <input class="form-control" type="file" id="input_sertifikat_akreditasi" name="input_sertifikat_akreditasi">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="input_logo_institusi" class="form-label">Logo Institusi</label>
+                                    <input class="form-control" type="file" id="input_logo_institusi" name="input_logo_institusi">
                                 </div>
                             </div>
                             <div class="card-footer">
@@ -96,11 +116,13 @@
                             <form action="">
                                 <div class="mb-3">
                                     <label for="input_judul_header" class="form-label">Header Hero</label>
-                                    <input type="text" class="form-control" id="input_judul_header" name="input_judul_header">
+                                    <input type="text" class="form-control" id="input_judul_header"
+                                           name="input_judul_header">
                                 </div>
                                 <div class="mb-3">
                                     <label for="input_deskripsi_header" class="form-label">Example textarea</label>
-                                    <textarea class="form-control" id="input_deskripsi_header" name="input_deskripsi_header" rows="10"></textarea>
+                                    <textarea class="form-control" id="input_deskripsi_header"
+                                              name="input_deskripsi_header" rows="10"></textarea>
                                 </div>
                             </form>
 
