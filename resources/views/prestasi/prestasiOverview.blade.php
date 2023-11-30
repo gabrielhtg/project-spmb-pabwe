@@ -14,6 +14,7 @@
 
         h2 {
             padding-bottom: 5px;
+            text-align: center;
         }
 
         .card {
@@ -125,14 +126,15 @@
         }
     </style>
 
-    <section class="container">
-        <div class="cat-prestasi">
-            <div class="d-flex justify-content-between align-items-center">
+<section class="container">
+    <div class="cat-prestasi text-center">
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="mx-auto">
                 <h2>Prestasi Institut</h2>
-                <div class="button-all">
-                    <a href="/prestasiInstitut" class="btn btn-outline-primary">See All</a>
-                </div>
             </div>
+            <div class="button-all"></div>
+        </div>
+    </div>
 
             <div class="row">
                 <div class="col">
@@ -308,18 +310,19 @@
                     </div>
                 </div>
 
-                <div class="cat-prestasi">
+                <div class="cat-prestasi text-center">
                     <div class="d-flex justify-content-between align-items-center">
-                        <h2>Prestasi Dosen dan Staff</h2>
-                        <div class="button-all">
-                            <a href="/prestasiMahasiswa" class="btn btn-outline-primary">See All</a>
+                        <div class="mx-auto">
+                            <h2>Prestasi Dosen dan Staff</h2>
                         </div>
+                        <div class="button-all"></div>
                     </div>
+                </div>
 
                     <div class="row">
                         <div class="col">
                             <div class="card">
-                                <img src="{{ asset('assets/img/prestasi/dosenstaff.png') }}" class="card-img-top" alt="pict1" />
+                                <img src="{{ asset('assets/img/prestasi/dosenstaff.jpg') }}" class="card-img-top" alt="pict1" />
                                 <div class="card-body">
                                     <h5 class="card-title">Card title</h5>
                                     <p class="card-text">
@@ -334,7 +337,7 @@
                                     <div class="popup" id="popup5">
                                         <div class="overlay"></div>
                                         <div class="popup-content">
-                                            <img src="{{ asset('assets/img/prestasi/dosenstaff.png') }}" class="card-img-top"
+                                            <img src="{{ asset('assets/img/prestasi/dosenstaff.jpg') }}" class="card-img-top"
                                                 alt="pict1" />
 
                                             <div class="content-text">
@@ -365,7 +368,7 @@
 
                         <div class="col">
                             <div class="card">
-                                <img src="{{ asset('assets/img/prestasi/dosenstaff.png') }}" class="card-img-top" alt="pict1" />
+                                <img src="{{ asset('assets/img/prestasi/dosenstaff.jpg') }}" class="card-img-top" alt="pict1" />
                                 <div class="card-body">
                                     <h5 class="card-title">Card title</h5>
                                     <p class="card-text">
@@ -380,7 +383,7 @@
                                     <div class="popup" id="popup6">
                                         <div class="overlay"></div>
                                         <div class="popup-content">
-                                            <img src="{{ asset('assets/img/prestasi/dosenstaff.png') }}" class="card-img-top"
+                                            <img src="{{ asset('assets/img/prestasi/dosenstaff.jpg') }}" class="card-img-top"
                                                 alt="pict1" />
 
                                             <div class="content-text">
@@ -408,7 +411,7 @@
 
                         <div class="col">
                             <div class="card">
-                                <img src="{{ asset('assets/img/prestasi/dosenstaff.png') }}" class="card-img-top" alt="pict1" />
+                                <img src="{{ asset('assets/img/prestasi/dosenstaff.jpg') }}" class="card-img-top" alt="pict1" />
                                 <div class="card-body">
                                     <h5 class="card-title">Card title</h5>
                                     <p class="card-text">
@@ -423,7 +426,7 @@
                                     <div class="popup" id="popup7">
                                         <div class="overlay"></div>
                                         <div class="popup-content">
-                                            <img src="{{ asset('assets/img/prestasi/dosenstaff.png') }}" class="card-img-top"
+                                            <img src="{{ asset('assets/img/prestasi/dosenstaff.jpg') }}" class="card-img-top"
                                                 alt="pict1" />
                                             <div class="content-text">
                                                 <h5 class="card-title">Card title</h5>
@@ -450,7 +453,7 @@
 
                         <div class="col">
                             <div class="card">
-                                <img src="{{ asset('assets/img/prestasi/dosenstaff.png') }}" class="card-img-top" alt="pict1" />
+                                <img src="{{ asset('assets/img/prestasi/dosenstaff.jpg') }}" class="card-img-top" alt="pict1" />
                                 <div class="card-body">
                                     <h5 class="card-title">Card title</h5>
                                     <p class="card-text">
@@ -465,7 +468,7 @@
                                     <div class="popup" id="popup8">
                                         <div class="overlay"></div>
                                         <div class="popup-content">
-                                            <img src="{{ asset('assets/img/prestasi/dosenstaff.png') }}" class="card-img-top"
+                                            <img src="{{ asset('assets/img/prestasi/dosenstaff.jpg') }}" class="card-img-top"
                                                 alt="pict1" />
                                             <div class="content-text">
                                                 <h5 class="card-title">Card title</h5>
@@ -490,11 +493,13 @@
                             </div>
                         </div>
 
-                <div class="cat-prestasi">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <h2>Prestasi Mahasiswa</h2>
-                        <a href="/prestasiDosenStaff" class="btn btn-outline-primary">See All</a>
-                    </div>
+                        <div class="cat-prestasi text-center">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="mx-auto">
+                                    <h2>Prestasi Mahasiswa</h2>
+                                </div>
+                            </div>
+                        </div>
                     <div class="row">
                         <div class="col">
                             <div class="card">
