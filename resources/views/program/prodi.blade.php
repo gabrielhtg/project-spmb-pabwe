@@ -131,8 +131,8 @@
                                 <small>Dosen</small>
                             </div>
                         </div>
-                        <div class="d-flex card-img-overlay align-items-end">
-                            <h5 class="card-title fw-semibold fs-6">Dedi Andre Martua Raja Panggabean,P.Hd,M.Infotech</h5>
+                        <div class="d-flex card-img-overlay align-items-end ">
+                            <h5 class="card-title fw-semibold fs-6 ">Dedi Andre Martua Raja Panggabean</h5>
                         </div>
                     </div>
 
@@ -177,7 +177,7 @@
         <div class="accordion" id="accordionExample{{ $i }}">
             <div class="accordion-item">
                 <h2 class="accordion-header">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ $i }}" aria-expanded="true" aria-controls="collapse{{ $i }}">
+                    <button class="accordion-button fs-5 text-light text-decoration-none fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ $i }}" aria-expanded="true" aria-controls="collapse{{ $i }}" style="background-color: #0477BF;">
                         Tahun ke-{{ $i + 1 }}
                     </button>
                 </h2>
