@@ -47,7 +47,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/spmb-dashboard', [AdminPanelController::class, 'getDashboardPanel'])->name('spmb-dashboard');
         Route::get('/admisi-panel', [AdminPanelController::class, 'getAdmisiPanel'])->name('admisi-panel');
         Route::get('/edit-profile', [AdminPanelController::class, 'getEditProfile'])->name('edit-profile');
-        Route::get('/program', [AdminPanelController::class, 'getEditProfile'])->name('program-panel');
+        Route::get('/program', [AdminPanelController::class, 'getProgramPanel'])->name('program-panel');
     });
 });
 

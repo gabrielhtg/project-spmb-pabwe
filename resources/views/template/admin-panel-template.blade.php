@@ -44,6 +44,12 @@
                         Dashboard Panel
                     </button>
                 </a>
+                <a href="{{ route("program-panel") }}">
+                    <button id="btn_program" class="btn_sidebar w-100 text-start">
+                        <i class="bi bi-house me-2"></i>
+                        Program
+                    </button>
+                </a>
 
             </div>
         </div>
@@ -64,6 +70,9 @@
                     <button id="btn_akreditasi" class="btn_sidebar_kecil">A</button>
                     <a href="{{ route("spmb-dashboard") }}">
                         <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="bi bi-house"></i></button>
+                    </a>
+                    <a href="{{ route("program-panel") }}">
+                        <button id="btn_program" class="btn_sidebar_kecil">P</button>
                     </a>
                 </div>
             </div>

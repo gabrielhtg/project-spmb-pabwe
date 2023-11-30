@@ -39,4 +39,13 @@ class AdminPanelController extends Controller
         ];
         return view('admin-panel.admisi_panel', $data);
     }
+
+    public function getProgramPanel () {
+        $admin = Auth::user();
+        $data = [
+            'indexActive' => 3,
+            'admin' => $admin
+        ];
+        return view('admin-panel.program_panel', $data);
+    }
 }
