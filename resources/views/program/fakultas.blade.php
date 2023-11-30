@@ -87,21 +87,21 @@
                     <div class="col">
                         <div class="card">
                             <div class="card-body d-flex justify-content-center">
-                                <a href="/prodi" class="fw-semibold text-dark text-decoration-none text-center py-5">S1 Informatika</a>           
+                                <a href="{{ route('prodi')}}" class="fw-semibold text-dark text-decoration-none text-center py-5">S1 Informatika</a>           
                             </div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="card">
                             <div class="card-body d-flex justify-content-center">
-                                <a href="/prodi" class="fw-semibold text-dark text-decoration-none text-center py-5">S1 Sistem Informasi</a>
+                                <a href="{{ route('prodi')}}" class="fw-semibold text-dark text-decoration-none text-center py-5">S1 Sistem Informasi</a>
                             </div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="card">
                             <div class="card-body d-flex justify-content-center">
-                                <a href="/prodi" class="fw-semibold text-dark text-decoration-none text-center py-5">S1 Teknik Elektro</a>
+                                <a href="{{ route('prodi')}}" class="fw-semibold text-dark text-decoration-none text-center py-5">S1 Teknik Elektro</a>
                             </div>
                         </div>
                     </div>

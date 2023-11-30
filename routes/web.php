@@ -8,8 +8,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FasilitasController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\BeasiswaController;
+use App\Http\Controllers\FacultyController;
+use App\Http\Controllers\MajorController;
 use App\Http\Controllers\PrestasiController;
 use App\Http\Controllers\MitraController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -67,17 +70,10 @@ Route::get('/form', function () {
 
 // ROUTE PROGRAM STUDI [TEAM 02]
 
-Route::get('/program', function () {
-    return view('program.program');
-});
+Route::get('/program', [FacultyController::class,'getProgram'])->name('program');
+Route::get('/fakultas', [FacultyController::class,'getFakultas'])->name('fakultas');
+Route::get('/prodi', [MajorController::class,'getProdi'])->name('prodi');
 
-Route::get('/fakultas', function () {
-    return view('program.fakultas');
-});
-
-Route::get('/prodi', function () {
-    return view('program.prodi');
-});
 
 // End of ROUTE PROGRAM STUDI [TEAM 02]
 

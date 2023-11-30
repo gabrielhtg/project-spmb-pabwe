@@ -68,7 +68,7 @@
                 <img src="{{ asset('img/program/home/fite-button.jpg') }}" class="card-img" alt="" style="height: 200px;">
                 <div class="card-img-overlay">
                     <div class="card-img-overlay d-flex justify-content-center align-items-center">
-                        <a href="/fakultas" class="fs-5 text-light text-decoration-none fw-semibold">Fakultas Informatika dan Teknik Elektro</a>
+                        <a href="{{ route('fakultas')}}" class="fs-5 text-light text-decoration-none fw-semibold">Fakultas Informatika dan Teknik Elektro</a>
                     </div>
                     
                 </div>
@@ -77,7 +77,7 @@
                 <img src="{{ asset('img/program/home/fti-button.jpg') }}" class="card-img" alt="" style="height: 200px;">
                 <div class="card-img-overlay">
                     <div class="card-img-overlay d-flex justify-content-center align-items-center">
-                        <a href="/fakultas" class="fs-5 text-light text-decoration-none fw-semibold">Fakultas Teknologi Industri</a>
+                        <a href="{{ route('fakultas')}}" class="fs-5 text-light text-decoration-none fw-semibold">Fakultas Teknologi Industri</a>
                     </div>
                     
                 </div>
@@ -86,7 +86,7 @@
                 <img src="{{ asset('img/program/home/fb-button.jpg') }}" class="card-img" alt="" style="height: 200px;">
                 <div class="card-img-overlay">
                     <div class="card-img-overlay d-flex justify-content-center align-items-center">
-                        <a href="/fakultas" class="fs-5 text-light text-decoration-none fw-semibold">Fakultas Bioteknologi</a>
+                        <a href="{{ route('fakultas')}}" class="fs-5 text-light text-decoration-none fw-semibold">Fakultas Bioteknologi</a>
                     </div>
                     
                 </div>
@@ -95,7 +95,7 @@
                 <img src="{{ asset('img/program/home/fv-button.jpg') }}" class="card-img" alt="" style="height: 200px;">
                 <div class="card-img-overlay">
                     <div class="card-img-overlay d-flex justify-content-center align-items-center">
-                        <a href="/fakultas" class="fs-5 text-light text-decoration-none fw-semibold">Fakultas Vokasi</a>
+                        <a href="{{ route('fakultas')}}" class="fs-5 text-light text-decoration-none fw-semibold">Fakultas Vokasi</a>
                     </div>
                     
                 </div>

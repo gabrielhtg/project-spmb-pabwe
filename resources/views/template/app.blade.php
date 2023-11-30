@@ -45,7 +45,7 @@
                 <div class="mx-auto">
                     <ul class="navbar-nav ms-auto me-3">
                         <li class="nav-item">
-                            <a class="nav-link" href="/program">
+                            <a class="nav-link" href="{{ route('program')}}">
                                 Program
                             </a>
 
