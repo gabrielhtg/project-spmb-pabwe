@@ -68,7 +68,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Prestasi</a>
+                            <a class="nav-link" href="/prestasi">Prestasi</a>
                         </li>
 
                         <li class="nav-item">

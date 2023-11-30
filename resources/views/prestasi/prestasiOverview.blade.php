@@ -1,4 +1,4 @@
-@extends('template.app')
+@extends('template.prestasi')
 
 @section('isi-halaman')
     <style>
@@ -130,7 +130,7 @@
             <div class="d-flex justify-content-between align-items-center">
                 <h2>Prestasi Institut</h2>
                 <div class="button-all">
-                    <a href="#" class="btn btn-outline-primary">See All</a>
+                    <a href="/prestasiInstitut" class="btn btn-outline-primary">See All</a>
                 </div>
             </div>
 
@@ -312,7 +312,7 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <h2>Prestasi Dosen dan Staff</h2>
                         <div class="button-all">
-                            <a href="#" class="btn btn-outline-primary">See All</a>
+                            <a href="/prestasiMahasiswa" class="btn btn-outline-primary">See All</a>
                         </div>
                     </div>
 
@@ -493,7 +493,7 @@
                 <div class="cat-prestasi">
                     <div class="d-flex justify-content-between align-items-center">
                         <h2>Prestasi Mahasiswa</h2>
-                        <a href="#" class="btn btn-outline-primary">See All</a>
+                        <a href="/prestasiDosenStaff" class="btn btn-outline-primary">See All</a>
                     </div>
                     <div class="row">
                         <div class="col">

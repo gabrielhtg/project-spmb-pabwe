@@ -1,4 +1,4 @@
-@extends('template.app')
+@extends('template.prestasi')
 
 @section('isi-halaman')
     <style>
