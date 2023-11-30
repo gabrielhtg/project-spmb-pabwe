@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset("/assets/css/kel1.css") }}">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="{{ asset("/assets/css/admisi.css") }}">
+    <link rel="stylesheet" href="{{ asset("/assets/css/kel5.css") }}">
     <link rel="stylesheet" href="{{ asset("/assets/css/fasilitas.css") }}">
     <link rel="stylesheet" href="{{ asset("/assets/css/pengumuman.css") }}">
     <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
@@ -16,7 +17,7 @@
 <body>
 {{--    navbar start --}}
     <nav class="navbar fixed-top bg-body-tertiary navbar-expand-xl">
-        <div class="container-fluid">
+        <div class="container">
 {{--            tampilan hp--}}
             <a class="d-flex d-sm-none align-items-center navbar-brand" href="/">
                 <img src="{{ asset("/assets/img/Logo Institut Teknologi Del.png") }}" alt="Logo" width="35" height="35" class="d-inline-block align-text-top">
@@ -75,7 +76,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">FAQ</a>
+                            <a class="nav-link" href="/faqs">FAQ</a>
                         </li>
 
                         <li class="nav-item">

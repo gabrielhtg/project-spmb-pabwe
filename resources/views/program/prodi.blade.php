@@ -2,7 +2,6 @@
 
 @section('isi-halaman')
 
-<section>
 
     {{-- HERO SECTION --}}
     <section id="hero-section">
@@ -20,9 +19,9 @@
             </div>
             <div class="card-img-overlay d-flex align-items-center pt-5">
                 <div class="d-flex flex-column container pt-5 text-center text-white">
-                    <h1 class="fw-bold display-4" style="@media screen and (min-width: 600px) { background-color: lightcoral; padding: 20px; }">S1 Informatika</h1>
-                    <p class="fs-5 px-3 px-md-0">
-                        <a href="/fakultas" class="text-decoration-none text-white">
+                    <h1 class="fw-bold display-4 ">S1 Informatika</h1>
+                    <p class="fs-5 px-3 px-md-0 text-truncate ">
+                        <a href="/fakultas" class="text-decoration-none text-white d-inline-block">
                             Fakultas Informatika dan Teknik Elektro
                         </a>
                     </p>
@@ -125,14 +124,14 @@
                 <div class="card text-bg-dark" onmouseover="showOverlay({{ $i }})" onmouseout="hideOverlay({{ $i }})">
                     <img src="{{ asset('img/program/dosen-profile-test.jpg') }}" class="card-img img-fluid" alt="">
 
-                    <div id="backOverlay-{{ $i }}" class="card-img-overlay" style="opacity: 1; transition: opacity 0.2s ease;">
+                    <div id="backOverlay-{{ $i }}" class="card-img-overlay " style="opacity: 1; transition: opacity 0.2s ease;">
                         <div class="d-flex justify-content-start">
                             <div class=" badge bg-primary text-wrap fw-medium fs-6 small mb-3">
                                 <small>Dosen</small>
                             </div>
                         </div>
-                        <div class="d-flex card-img-overlay align-items-end">
-                            <h5 class="card-title fw-semibold fs-6">Dedi Andre Martua Raja Panggabean</h5>
+                        <div class="d-flex card-img-overlay align-items-end ">
+                            <h5 class="card-title fw-semibold fs-6 ">Dedi Andre Martua Raja Panggabean</h5>
                         </div>
                     </div>
 
@@ -173,66 +172,83 @@
             <h1 class="fw-bold">Kurikulum</h1>
             
         </div>
-        <div class="row">
-            @for ($i = 0; $i < 8; $i++)  
-                <div class="col-md-6 mb-5">
-                    <div class="container px-2 text-center">
+        @for ($i = 0; $i < 4; $i++)
+        <div class="accordion" id="accordionExample{{ $i }}">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button fs-5 text-light text-decoration-none fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ $i }}" aria-expanded="true" aria-controls="collapse{{ $i }}" style="background-color: #0477BF;">
+                        Tahun ke-{{ $i + 1 }}
+                    </button>
+                </h2>
+                <div id="collapse{{ $i }}" class="accordion-collapse collapse " data-bs-parent="#accordionExample{{ $i }}">
+                    <div class="accordion-body">
+                        <div class="row">
+                            @for ($j = 1; $j <= 2; $j++)
+                            <div class="col-md-6 mb-5">
+                                <div class="container px-2 text-center">
+                                    <div class="container text-center">
+                                        <h2 class="fw-bold fs-5">Semester {{ $i * 2 + $j }}</h2>
+                                            <table class="table table-bordered">
+                                                <thead class="table-primary">
+                                                <tr>
+                                                    
+                                                    <th scope="col" class="fw-semibold">Kode MK</th>
+                                                    <th scope="col" class="fw-semibold">Nama Mata Kuliah</th>
+                                                    <th scope="col" class="fw-semibold">SKS</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>11S3109 </td>
+                                                        <td>Pengembangan Aplikasi Berbasis Web</td>
+                                                        <td>4</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>10S3109</td>
+                                                        <td>Kecerdasan Buatan</td>
+                                                        <td>3</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>11S3109 </td>
+                                                        <td>Pengembangan Aplikasi Berbasis Web</td>
+                                                        <td>4</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>10S3109</td>
+                                                        <td>Kecerdasan Buatan</td>
+                                                        <td>3</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>11S3109 </td>
+                                                        <td>Pengembangan Aplikasi Berbasis Web</td>
+                                                        <td>4</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>10S3109</td>
+                                                        <td>Kecerdasan Buatan</td>
+                                                        <td>3</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2" class="fw-semibold">Total SKS</td>
+                                                        <td>7</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                    </div>
+                                </div>
+                            </div>
+                            @endfor
+                        </div>
                         <div class="container text-center">
-                            <h2 class="fw-bold fs-5">Semester {{ $i + 1 }}</h2>
-                            <table class="table">
-                                <thead>
-                                <tr>
-                                    
-                                    <th scope="col" class="fw-semibold">Kode MK</th>
-                                    <th scope="col" class="fw-semibold">Nama Mata Kuliah</th>
-                                    <th scope="col" class="fw-semibold">SKS</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                    <tr>
-                                        <td>11S3109 </td>
-                                        <td>Pengembangan Aplikasi Berbasis Web</td>
-                                        <td>4</td>
-                                    </tr>
-                                    <tr>
-                                        <td>10S3109</td>
-                                        <td>Kecerdasan Buatan</td>
-                                        <td>3</td>
-                                    </tr>
-                                    <tr>
-                                        <td>11S3109 </td>
-                                        <td>Pengembangan Aplikasi Berbasis Web</td>
-                                        <td>4</td>
-                                    </tr>
-                                    <tr>
-                                        <td>10S3109</td>
-                                        <td>Kecerdasan Buatan</td>
-                                        <td>3</td>
-                                    </tr>
-                                    <tr>
-                                        <td>11S3109 </td>
-                                        <td>Pengembangan Aplikasi Berbasis Web</td>
-                                        <td>4</td>
-                                    </tr>
-                                    <tr>
-                                        <td>10S3109</td>
-                                        <td>Kecerdasan Buatan</td>
-                                        <td>3</td>
-                                    </tr>
-                                <tr>
-                                    <td colspan="2" class="fw-semibold">Total SKS</td>
-                                    <td>7</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        </div>  
                     </div>
                 </div>
-            @endfor
-
+            </div>
         </div>
+        @endfor
 
     </section>
+
+    
 
     <script>
         var overview = document.getElementById("overview-subpage");
@@ -281,6 +297,6 @@
     
 
 
-</main>
+
 
 @endsection
