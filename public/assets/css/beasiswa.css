@@ -121,3 +121,10 @@ a:hover {
 .beasiswa-details a {
     align-self: flex-end;
 }
+
+/* File: public/assets/css/beasiswa.css */
+
+/* Gaya untuk header card */
+.card-header-custom {
+    background-color: #d9d9d9;
+}
