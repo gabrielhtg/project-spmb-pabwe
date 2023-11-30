@@ -13,11 +13,12 @@ return new class extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
-            $table->string('prodi');
-            $table->foreign('prodi')->references('kode_prodi')->on('majors');
-            $table->string('nama');
+            $table->string('kode_prodi')->unique();
+            $table->foreign('kode_prodi')->references('kode_prodi')->on('majors');
             $table->string('kode_mk');
+            $table->string('nama');
             $table->string('sks');
+            $table->integer('semester');
             $table->timestamps();
         });
     }

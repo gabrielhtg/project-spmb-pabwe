@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
-            $table->string('prodi');
-            $table->foreign('prodi')->references('kode_prodi')->on('majors');
+            $table->string('kode_prodi');
+            $table->foreign('kode_prodi')->references('kode_prodi')->on('majors');
+            $table->string('fakultas'); 
+            $table->foreign('fakultas')->references('kode_fakultas')->on('faculties');
             $table->string('nama');
             $table->string('nidn');
             $table->string('jabatan');
