@@ -52,7 +52,7 @@
                     </button>
                 </a>
                 
-                <a href="{{ route("admisi-panel") }}">
+                <!-- <a href="{{ route("admisi-panel") }}">
                     <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start">
                         <i class="fa-regular fa-note-sticky"></i>
                         Admisi
@@ -77,7 +77,7 @@
                 <a href="#">
                     <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start"><i class="fa-regular fa-handshake"></i>
                         Kemitraan</button>
-                </a>
+                </a> -->
 
             </div>
         </div>
