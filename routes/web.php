@@ -65,8 +65,25 @@ Route::get('/form', function () {
     return view('chatbot.form');
 })->name('form');
 
+// ROUTE PROGRAM STUDI [TEAM 02]
+
+Route::get('/program', function () {
+    return view('program.program');
+});
+
+Route::get('/fakultas', function () {
+    return view('program.fakultas');
+});
+
+Route::get('/prodi', function () {
+    return view('program.prodi');
+});
+
+// End of ROUTE PROGRAM STUDI [TEAM 02]
+
 //----
 Route::get('/prestasi', [PrestasiController::class, 'getviewPrestasi'])->name('prestasi.prestasiOverview');
 Route::get('/prestasiInstitut', [PrestasiController::class, 'getviewPrestasiInstitut'])->name('prestasi.prestasiInstitut');
 Route::get('/prestasiDosenStaff', [PrestasiController::class, 'getviewPrestasiDosenStaff'])->name('prestasi.prestasiDosenStaff');
 Route::get('/prestasiMahasiswa', [PrestasiController::class, 'getviewPrestasiMahasiswa'])->name('prestasi.prestasiMahasiswa');
+
