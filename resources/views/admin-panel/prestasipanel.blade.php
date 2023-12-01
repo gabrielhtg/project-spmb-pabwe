@@ -4,19 +4,13 @@
 
     <div class="container-fluid p-3">
         <div class="row row-gap-3">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header bg-primary text-white">
                         <span class="fs-3">Data Biaya Umum</span>
                     </div>
-
-
-
-                    </div>
-
-
                     <div class="card-body">
-                    @include('admin-panel.sub_admin_panel.tambah_tombol_hero_section')
+                        @include('admin-panel.sub_admin_panel.tambah_tombol_hero_section')
                         <form action="">
                             <table class="table table-striped">
                                 <thead>
@@ -39,8 +33,8 @@
                         </form>
                     </div>
                 </div>
+                </div>
             </div>
         </div>
-    </div>
 
 @endsection
