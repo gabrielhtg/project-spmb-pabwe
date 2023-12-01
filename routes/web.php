@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminPanelController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\FasilitasController;
@@ -21,9 +22,7 @@ use App\Http\Controllers\MitraController;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard.dashboard');
-});
+Route::get('/', [DashboardController::class, 'getDashboard'])->name('dashboard');
 
 Route::get('/admisi', function () {
     return view('admisi.admisi');
@@ -42,11 +41,19 @@ Route::get('/logout', [AuthController::class, 'getLogout'])->name('logout');
 
 Route::middleware('auth')->group(function () {
     Route::prefix('/admin-panel')->group(function () {
+//        Route::post('/', [AdminPanelController::class, 'postAdminPanel'])->name('post.adminModel-panel-dashboard');
         Route::get('/', [AdminPanelController::class, 'getAdminPanel'])->name('admin-panel');
-//    Route::get('/', [AdminPanelController::class, 'getAdminPanel'])->name('admin-panel.akreditasi');
         Route::get('/spmb-dashboard', [AdminPanelController::class, 'getDashboardPanel'])->name('spmb-dashboard');
         Route::get('/admisi-panel', [AdminPanelController::class, 'getAdmisiPanel'])->name('admisi-panel');
         Route::get('/edit-profile', [AdminPanelController::class, 'getEditProfile'])->name('edit-profile');
+
+        /* Routing Kelompok 3 -  (Prestasi, Testimoni)*/
+        /* Bagian Prestasi */
+        Route::get('/prestasipanel', [AdminPanelController::class, 'getPrestasiPanel'])->name('prestasipanel');
+
+        /* Bagian Testimoni */
+        Route::get('/testimonipanel', [AdminPanelController::class, 'getTestimoniPanel'])->name('testimonipanel');
+
     });
 });
 

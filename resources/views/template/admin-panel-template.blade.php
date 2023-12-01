@@ -79,6 +79,16 @@
                         Kemitraan</button>
                 </a>
 
+                <a href="{{ route("prestasipanel") }}">
+                    <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start"><i class="fas fa-trophy"></i>
+                        Prestasi</button>
+                </a>
+
+                <a href="{{ route("testimonipanel") }}">
+                    <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start"><i class="fas fa-comment-dots"></i>
+                        Testimoni</button>
+                </a>
+
             </div>
         </div>
         <div id="geser_besar" style="width: 18rem; min-width: 18rem; height: 100vh"></div>
@@ -117,7 +127,7 @@
                 </div>
             </div>
         </div>
-        <div id="geser_kecil" style="width: 4rem; height: 100vh"></div>
+        <div id="geser_kecil" style="min-width: 4rem; width: 4rem; height: 100vh"></div>
         {{--        ini adalah sidebar kecil selesai--}}
 
         <div class="w-100">
@@ -141,9 +151,10 @@
                             <span class="visually-hidden">Toggle Dropdown</span>
                         </button>
                         <ul class="dropdown-menu mt-3 dropdown-menu-end">
-                            <li><a class="dropdown-item" href="{{ route('edit-profile') }}"> <i class="fa-solid fa-user me-2"></i>Edit Profile</a></li>
+                            <li><a class="dropdown-item" href="{{ route('edit-profile') }}"><i class="bi bi-person me-2"></i>Edit Profile</a></li>
+                            <li><a class="dropdown-item" href="{{ route('dashboard') }}" target="_blank"><i class="bi bi-house me-2 me-2"></i>SPMB Dashboard</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="{{ route('logout') }}"><i class="fa-solid fa-arrow-right-from-bracket fa-flip-horizontal me-2"></i> Logout</a></li>
+                            <li><a class="dropdown-item" href="{{ route('logout') }}"><i class="bi bi-box-arrow-left me-2"></i> Logout</a></li>
                         </ul>
                     </div>
                 </div>
@@ -155,10 +166,12 @@
         </div>
     </div>
 
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script>
         const buttonSidebar = document.querySelectorAll(".btn_sidebar");
         const buttonSidebarKecil = document.querySelectorAll(".btn_sidebar_kecil");
+        // const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        // const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 
         for (let i = 0; i < buttonSidebar.length; i++) {
             buttonSidebar[i].classList.remove("btn_sidebar_active");
@@ -168,8 +181,8 @@
         buttonSidebar[{{ $indexActive }}].classList.add("btn_sidebar_active");
         buttonSidebarKecil[{{ $indexActive }}].classList.add("btn_sidebar_active");
     </script>
+{{--    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>--}}
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/965a381e3a.js" crossorigin="anonymous"></script>
     <script src="{{ asset("/assets/js/kel4.js") }}"></script>
     <script src="{{ asset("/assets/js/admin-panel.js") }}"></script>
