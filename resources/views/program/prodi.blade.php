@@ -4,6 +4,7 @@
 
 
     {{-- HERO SECTION --}}
+    <div style="margin: -10px;"></div>
     <section id="hero-section">
         <div id="carouselExampleCaptions" class="carousel slide">
             {{-- <div class="carousel-indicators">
@@ -14,14 +15,14 @@
             </div> --}}
             <div class="carousel-inner">
                 <div class="carousel-item active bg-dark-subtle">
-                    <img src="{{ asset('img/program/carousel-example.jpg')}}" class="d-block w-100 img-fluid" alt="...">
+                    <img src="{{ asset('img/program/carousel-example.jpg')}}" class="d-block w-100 img-fluid object-fit-cover" alt="..." style="height:500px;" media="(max-width: 600px) { height: 400px; }">
                 </div>
             </div>
             <div class="card-img-overlay d-flex align-items-center pt-5">
-                <div class="d-flex flex-column container pt-5 text-center text-white">
-                    <h1 class="fw-bold display-4 ">S1 Informatika</h1>
-                    <p class="fs-5 px-3 px-md-0 text-truncate ">
-                        <a href="/fakultas" class="text-decoration-none text-white d-inline-block">
+                <div class="d-flex flex-column container pt-5 text-white">
+                    <h1 class="fw-bold align-items-end text-wrap ">Sarjana Terapan Teknologi Rekayasa Perangkat Lunak</h1>
+                    <p class="fs-5 px-md-0 text-truncate ">
+                        <a href="/fakultas" class="text-wrap text-decoration-none text-white d-inline-block text-start ">
                             Fakultas Informatika dan Teknik Elektro
                         </a>
                     </p>
@@ -37,6 +38,7 @@
             </button> --}}
         </div>
     </section>
+    {{-- End of HERO SECTION --}}
 
     <div class="d-flex justify-content-center">
         <ul class="nav nav-underline d-flex gap-5">
