@@ -59,14 +59,7 @@ class AdminPanelController extends Controller
         $dataInstitusi->update();
         $dataSocialMedia = SocalMediaModel::all();
 
-        $data = [
-            'indexActive' => 0,
-            'admin' => $admin,
-            'dataInstitusi' => $dataInstitusi,
-            'socialMedia' => $dataSocialMedia,
-            'dataHeroSection' => $dataHeroSection
-        ];
-        return redirect('admin-panel')->with('data', $data);
+        return redirect('admin-panel');
     }
 
     public function getDashboardPanel()
@@ -90,44 +83,20 @@ class AdminPanelController extends Controller
             'input_nama_institusi' => 'required|exists:data_institusi',
         ]);
 
-        $admin = Auth::user();
-        $dataInstitusi = data_institusi::where('id', 1)->first();
-
         SocalMediaModel::create([
             'nama' => $request->input_nama_social_media,
             'link' => $request->input_link_social_media,
             'icon' => $request->input_logo_social_media
         ]);
 
-        $dataSocialMedia = SocalMediaModel::all();
-
-        $data = [
-            'indexActive' => 0,
-            'admin' => $admin,
-            'dataInstitusi' => $dataInstitusi,
-            'socialMedia' => $dataSocialMedia,
-        ];
-
-        return redirect('admin-panel')->with('data', $data);
+        return redirect('admin-panel');
     }
 
     public function removeSocialMedia(Request $request)
     {
-        $admin = Auth::user();
-        $dataInstitusi = data_institusi::where('id', 1)->first();
-
         SocalMediaModel::where('id', $request->id)->first()->delete();
 
-        $dataSocialMedia = SocalMediaModel::all();
-
-        $data = [
-            'indexActive' => 0,
-            'admin' => $admin,
-            'dataInstitusi' => $dataInstitusi,
-            'socialMedia' => $dataSocialMedia,
-        ];
-
-        return redirect('admin-panel')->with('data', $data);
+        return redirect('admin-panel');
     }
 
     public function saveHeroSection (Request $request) {
