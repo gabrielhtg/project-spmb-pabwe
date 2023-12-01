@@ -13,8 +13,8 @@ class add_profile_pict_admin extends Seeder
      */
     public function run(): void
     {
-        DB::table('adminModel')->update([
-            'profile_pict' => 'assets/img/adminModel/adminModel.jpeg'
+        DB::table('admin')->update([
+            'profile_pict' => 'assets/img/admin/admin.jpeg'
         ]);
     }
 }
