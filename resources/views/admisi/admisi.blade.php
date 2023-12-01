@@ -69,9 +69,46 @@
                             </table>
                         </div>
                         <div class="tab-pane fade" id="jadwal-ujian-tab-pane" role="tabpanel"
-                             aria-labelledby="profile-tab" tabindex="0">...
+                             aria-labelledby="profile-tab" tabindex="0">
+                             <ul class="nav nav-pills nav-fill" id="tab-tabeltanggalpenting" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="jadwalujianpmdk-tab" data-bs-toggle="tab"
+                                        data-bs-target="#jadwalujianpmdk-tab-pane" type="button" role="tab"
+                                        aria-controls="home-tab-pane" aria-selected="true">
+                                        PMDK
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="jadwalujianusm1-tab" data-bs-toggle="tab"
+                                        data-bs-target="#jadwalujianusm1-tab-pane" type="button" role="tab"
+                                        aria-controls="profile-tab-pane" aria-selected="false">
+                                        USM 1
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="jadwalujianusm2-tab" data-bs-toggle="tab"
+                                        data-bs-target="#jadwalujianusm2-tab-pane" type="button" role="tab"
+                                        aria-controls="contact-tab-pane" aria-selected="false">
+                                        USM 2
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="jadwalujianusm3-tab" data-bs-toggle="tab"
+                                        data-bs-target="#jadwalujianusm3-tab-pane" type="button" role="tab"
+                                        aria-controls="disabled-tab-pane" aria-selected="false">
+                                        USM 3
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="jadwalujianutbk-tab" data-bs-toggle="tab"
+                                        data-bs-target="#jadwalujianutbk-tab-pane" type="button" role="tab"
+                                        aria-controls="disabled-tab-pane" aria-selected="false">
+                                        UTBK
+                                    </button>
+                                </li>
+                            </ul>
                         </div>
-                        <div class="tab-pane ps-5 pe-5 fade show active" id="jenis-test-tab-pane" role="tabpanel"
+                        <div class="tab-pane ps-5 pe-5 fade show" id="jenis-test-tab-pane" role="tabpanel"
                              aria-labelledby="jenis-test-tab" tabindex="0">
                              <table class="table mt-5">
                                 <tbody>
@@ -98,7 +135,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="tab-pane ps-5 pe-5 fade show active" id="lokasi-tab-pane" role="tabpanel" aria-labelledby="lokasi-tab"
+                        <div class="tab-pane ps-5 pe-5 fade show" id="lokasi-tab-pane" role="tabpanel" aria-labelledby="lokasi-tab"
                              tabindex="0">
                              <table class="table mt-5">
                                 <tbody>
