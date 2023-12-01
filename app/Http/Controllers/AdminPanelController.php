@@ -2,32 +2,41 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\admin;
 use App\Models\data_institusi;
+use App\Models\HeroSectionModel;
+use App\Models\SocalMediaModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class AdminPanelController extends Controller
 {
-    public function getAdminPanel () {
+    public function getAdminPanel()
+    {
         $admin = Auth::user();
         $dataInstitusi = data_institusi::where('id', 1)->first();
+        $dataSocialMedia = SocalMediaModel::all();
+        $dataHeroSection = HeroSectionModel::where('id', 1)->first();
 
         $data = [
             'indexActive' => 0,
             'admin' => $admin,
-            'dataInstitusi' => $dataInstitusi
+            'dataInstitusi' => $dataInstitusi,
+            'socialMedia' => $dataSocialMedia,
+            'dataHeroSection' => $dataHeroSection
         ];
-        return view ('admin-panel.adminpanel', $data);
+
+        return view('admin-panel.adminpanel', $data);
     }
 
-    public function postAdminPanel (Request $request) {
+    public function postAdminPanel(Request $request)
+    {
         $validator = Validator::make($request->all(), [
             'input_nama_institusi' => 'required|exists:data_institusi',
         ]);
 
         $admin = Auth::user();
+        $dataHeroSection = HeroSectionModel::where('id', 1)->first();
         $dataInstitusi = data_institusi::where('id', 1)->first();
 
         $dataInstitusi->nama_institusi = $request->input_nama_institusi;
@@ -48,16 +57,20 @@ class AdminPanelController extends Controller
 //        }
 
         $dataInstitusi->update();
+        $dataSocialMedia = SocalMediaModel::all();
 
         $data = [
             'indexActive' => 0,
             'admin' => $admin,
-            'dataInstitusi' => $dataInstitusi
+            'dataInstitusi' => $dataInstitusi,
+            'socialMedia' => $dataSocialMedia,
+            'dataHeroSection' => $dataHeroSection
         ];
-        return view ('admin-panel.adminpanel', $data);
+        return redirect('admin-panel')->with('data', $data);
     }
 
-    public function getDashboardPanel () {
+    public function getDashboardPanel()
+    {
         $admin = Auth::user();
         $data = [
             'indexActive' => 2,
@@ -66,8 +79,59 @@ class AdminPanelController extends Controller
         return view('admin-panel.dashboard_panel', $data);
     }
 
-    public function getEditProfile () {
-        return view ('admin-panel.edit_profile');
+    public function getEditProfile()
+    {
+        return view('admin-panel.edit_profile');
+    }
+
+    public function addSocialMedia(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'input_nama_institusi' => 'required|exists:data_institusi',
+        ]);
+
+        $admin = Auth::user();
+        $dataInstitusi = data_institusi::where('id', 1)->first();
+
+        SocalMediaModel::create([
+            'nama' => $request->input_nama_social_media,
+            'link' => $request->input_link_social_media,
+            'icon' => $request->input_logo_social_media
+        ]);
+
+        $dataSocialMedia = SocalMediaModel::all();
+
+        $data = [
+            'indexActive' => 0,
+            'admin' => $admin,
+            'dataInstitusi' => $dataInstitusi,
+            'socialMedia' => $dataSocialMedia,
+        ];
+
+        return redirect('admin-panel')->with('data', $data);
+    }
+
+    public function removeSocialMedia(Request $request)
+    {
+        $admin = Auth::user();
+        $dataInstitusi = data_institusi::where('id', 1)->first();
+
+        SocalMediaModel::where('id', $request->id)->first()->delete();
+
+        $dataSocialMedia = SocalMediaModel::all();
+
+        $data = [
+            'indexActive' => 0,
+            'admin' => $admin,
+            'dataInstitusi' => $dataInstitusi,
+            'socialMedia' => $dataSocialMedia,
+        ];
+
+        return redirect('admin-panel')->with('data', $data);
+    }
+
+    public function saveHeroSection (Request $request) {
+
     }
 
     public function getAdmisiPanel () {

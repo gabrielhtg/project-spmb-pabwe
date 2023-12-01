@@ -41,8 +41,8 @@ Route::get('/logout', [AuthController::class, 'getLogout'])->name('logout');
 
 Route::middleware('auth')->group(function () {
     Route::prefix('/admin-panel')->group(function () {
+//        Route::post('/', [AdminPanelController::class, 'postAdminPanel'])->name('post.adminModel-panel-dashboard');
         Route::get('/', [AdminPanelController::class, 'getAdminPanel'])->name('admin-panel');
-        Route::post('/', [AdminPanelController::class, 'postAdminPanel'])->name('post.admin-panel-dashboard');
         Route::get('/spmb-dashboard', [AdminPanelController::class, 'getDashboardPanel'])->name('spmb-dashboard');
         Route::get('/admisi-panel', [AdminPanelController::class, 'getAdmisiPanel'])->name('admisi-panel');
         Route::get('/edit-profile', [AdminPanelController::class, 'getEditProfile'])->name('edit-profile');

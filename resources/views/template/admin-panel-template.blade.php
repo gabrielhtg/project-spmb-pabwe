@@ -158,10 +158,12 @@
         </div>
     </div>
 
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script>
         const buttonSidebar = document.querySelectorAll(".btn_sidebar");
         const buttonSidebarKecil = document.querySelectorAll(".btn_sidebar_kecil");
+        // const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        // const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 
         for (let i = 0; i < buttonSidebar.length; i++) {
             buttonSidebar[i].classList.remove("btn_sidebar_active");
@@ -171,8 +173,8 @@
         buttonSidebar[{{ $indexActive }}].classList.add("btn_sidebar_active");
         buttonSidebarKecil[{{ $indexActive }}].classList.add("btn_sidebar_active");
     </script>
+{{--    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>--}}
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/965a381e3a.js" crossorigin="anonymous"></script>
     <script src="{{ asset("/assets/js/kel4.js") }}"></script>
     <script src="{{ asset("/assets/js/admin-panel.js") }}"></script>
