@@ -1,6 +1,6 @@
 @extends('template.admin-panel-template')
 
-@section('isi-admin-panel')
+@section('isi-adminModel-panel')
 
 
 

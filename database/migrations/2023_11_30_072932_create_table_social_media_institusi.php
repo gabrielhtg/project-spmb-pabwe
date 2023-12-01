@@ -11,14 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('adminModel', function (Blueprint $table) {
+        Schema::create('social_media_institusi', function (Blueprint $table) {
             $table->id();
-            $table->string('username', 20)->unique();
-            $table->string('password', 80);
-            $table->string('firstname', 25);
-            $table->string('lastname', 25);
-            $table->integer('created_by')->nullable(true);
-            $table->string('profile_pict', 100)->nullable(true);
+            $table->string('nama', 50);
+            $table->string('link', 150);
+            $table->string('icon', 100);
             $table->timestamps();
         });
     }
@@ -28,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('adminModel');
+        Schema::dropIfExists('social_media_institusi');
     }
 };

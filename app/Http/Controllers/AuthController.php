@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\admin;
+use App\Models\AdminModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -24,7 +24,7 @@ class AuthController extends Controller
         ]);
 
         try {
-            $admin = admin::where('username', $request->input_username)->first();
+            $admin = AdminModel::where('username', $request->input_username)->first();
 
             if (Hash::check($request->input_password, $admin->password)) {
 

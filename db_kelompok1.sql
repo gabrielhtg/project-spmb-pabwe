@@ -6,7 +6,7 @@ CREATE DATABASE proyek_pabwe;
 
 # GRANT ALL PRIVILEGES ON proyek_pabwe.* TO 'userpabwe'@localhost;
 
-# Membuat tabel admin-panel
+# Membuat tabel adminModel-panel
 
 CREATE TABLE admin (
     username varchar(20) primary key ,
