@@ -13,6 +13,7 @@ class HeroSectionModel extends Model
 
     protected $fillable = [
         'header',
-        'paragraph'
+        'paragraph',
+        'bg_image'
     ];
 }

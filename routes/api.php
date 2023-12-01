@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 //    return $request->user();
 //});
 
-Route::middleware('auth:sanctum')->group(function () {
+Route::middleware('auth')->group(function () {
     Route::post('/data-institut', [AdminPanelController::class, 'postAdminPanel'])->name('post.adminModel-panel-dashboard');
     Route::post('/add-social-media', [AdminPanelController::class, 'addSocialMedia'])->name('addSocialMedia');
     Route::post('/save-hero-section', [AdminPanelController::class, 'saveHeroSection'])->name('saveHeroSection');
