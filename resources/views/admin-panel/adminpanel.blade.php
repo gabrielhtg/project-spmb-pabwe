@@ -2,17 +2,17 @@
 
 @section('isi-admin-panel')
 
-    <div class="container-fluid p-3">
+    <div class="container-fluid bg-light p-3">
         <div class="d-flex w-100">
             <div class="w-100">
-                <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-smooth-scroll="true"
+                <div data-bs-spy="scroll" data-bs-target="#sidebar-kanan" data-bs-smooth-scroll="true"
                      class="scrollspy-example-2 d-flex gap-3 flex-column justify-content-center" tabindex="0">
-                    <div id="item-1" class="card">
+                    <div id="item-1" class="card shadow-sm">
                         <div class="card-header bg-primary text-white">
                             <span class="fs-5">Data Institut</span>
                         </div>
 
-                        <form action="{{ url("/admin-panel") }}" method="post">
+                        <form action="{{ url('/api/data-institut') }}" method="post">
                             @csrf
                             <div class="card-body">
                                 <div class="mb-3">
@@ -21,21 +21,25 @@
                                            name="input_nama_institusi" value="{{ $dataInstitusi->nama_institusi }}">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="input_singkatan_nama_institusi" class="form-label">Singkatan Nama Institusi</label>
+                                    <label for="input_singkatan_nama_institusi" class="form-label">Singkatan Nama
+                                        Institusi</label>
                                     <input type="text" class="form-control" id="input_singkatan_nama_institusi"
-                                           name="input_singkatan_nama_institusi" value="{{ $dataInstitusi->singkatan_nama_institusi }}">
+                                           name="input_singkatan_nama_institusi"
+                                           value="{{ $dataInstitusi->singkatan_nama_institusi }}">
                                 </div>
                                 <div class="mb-3">
                                     <label for="input_akreditasi_institusi_singkat" class="form-label">Akreditasi
                                         Insitusi (Singkat)</label>
                                     <input type="text" class="form-control" id="input_akreditasi_institusi_singkat"
-                                           name="input_akreditasi_institusi_singkat" value="{{ $dataInstitusi->akreditasi_singkat  }}">
+                                           name="input_akreditasi_institusi_singkat"
+                                           value="{{ $dataInstitusi->akreditasi_singkat  }}">
                                 </div>
                                 <div class="mb-3">
                                     <label for="input_akreditasi_institusi_lengkap" class="form-label">Akreditasi
                                         Insitusi (Lengkap)</label>
                                     <input type="text" class="form-control" id="input_akreditasi_institusi_lengkap"
-                                           name="input_akreditasi_institusi_lengkap" value="{{ $dataInstitusi->akreditasi_lengkap }}">
+                                           name="input_akreditasi_institusi_lengkap"
+                                           value="{{ $dataInstitusi->akreditasi_lengkap }}">
                                 </div>
                                 <div class="mb-3">
                                     <label for="input_jargon_institusi" class="form-label">Jargon Institusi</label>
@@ -58,33 +62,108 @@
                                            name="input_jumlah_alumni" value="{{ $dataInstitusi->jumlah_alumni }}">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="input_sertifikat_akreditasi" class="form-label">Sertifikat Akreditasi</label>
-                                    <input class="form-control" type="file" id="input_sertifikat_akreditasi" name="input_sertifikat_akreditasi">
+                                    <label for="input_sertifikat_akreditasi" class="form-label">Sertifikat
+                                        Akreditasi</label>
+                                    <input class="form-control" type="file" id="input_sertifikat_akreditasi"
+                                           name="input_sertifikat_akreditasi">
                                 </div>
                                 <div class="mb-3">
                                     <label for="input_logo_institusi" class="form-label">Logo Institusi</label>
-                                    <input class="form-control" type="file" id="input_logo_institusi" name="input_logo_institusi">
+                                    <br>
+                                    <div class="w-100 border border-1 mb-2 p-3 d-flex justify-content-center rounded-2">
+                                        <img src="{{ asset($dataInstitusi->logo_institusi) }}" alt="logo institusi"
+                                             style="width: 60px">
+                                    </div>
+                                    <input class="form-control" type="file" id="input_logo_institusi"
+                                           name="input_logo_institusi">
                                 </div>
                             </div>
-                            <div class="card-footer">
+                            <div class="card-footer bg-white">
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                         </form>
                     </div>
 
-                    <div id="item-2" class="card">
+                    <div id="item-2" class="card shadow-sm">
                         <div class="card-header bg-primary text-white">
                             <span class="fs-5">Social Media Institusi</span>
                         </div>
                         <div class="card-body d-flex flex-column">
                             @include('admin-panel.sub_admin_panel.tambah_social_media_hero_section')
-                            <form action="">
-                                <table class="table text-center align-middle table-striped table-bordered">
+                            <div class="overflow-x-auto">
+                                <table
+                                    class="table text-center align-middle table-striped table-bordered overflow-x-auto">
                                     <thead class="align-middle">
                                     <tr>
                                         <th scope="col">#</th>
-                                        <th scope="col">Nama Button</th>
-                                        <th scope="col">Link Button</th>
+                                        <th scope="col">Nama</th>
+                                        <th scope="col">Link</th>
+                                        <th scope="col">Icon Social Media</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @php
+                                        $i = 1;
+                                    @endphp
+                                    @foreach($socialMedia as $e)
+                                        <tr>
+                                            <td>{{ $i++ }}</td>
+                                            <td>{{ $e->nama }}</td>
+                                            <td><a href="{{ $e->link }}">Klik Disini</a></td>
+                                            <td>{{ $e->icon }}</td>
+                                            <td style="min-width: 120px; width: 120px">
+                                                <button class="btn btn-success">
+                                                    <i class="bi bi-pen"></i>
+                                                </button>
+                                                <form action="{{ route('removeSocialMedia') }}" method="post" class="d-inline">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <input type="hidden" name="id" value="{{ $e->id }}">
+                                                    <button class="btn btn-danger">
+                                                        <i class="bi bi-trash"></i>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="item-3" class="card shadow-sm">
+                        <div class="card-header bg-primary text-white">
+                            <span class="fs-5">Hero Section</span>
+                        </div>
+                        <div class="card-body">
+                            <form action="">
+                                <div class="mb-3">
+                                    <label for="input_judul_header" class="form-label">Header Hero</label>
+                                    <input type="text" class="form-control" id="input_judul_header"
+                                           name="input_judul_header" value="{{ $dataHeroSection->header }}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="input_deskripsi_header" class="form-label">Example textarea</label>
+                                    <textarea class="form-control" id="input_deskripsi_header"
+                                              name="input_deskripsi_header" rows="5">{{ $dataHeroSection->paragraph }}</textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <button class="btn btn-primary">Save</button>
+                                </div>
+                            </form>
+
+                            <hr>
+
+                            @include('admin-panel.sub_admin_panel.tambah_tombol_hero_section')
+                            <form action="">
+                                <table class="table table-striped table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Nama</th>
+                                        <th scope="col">Link</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                     </thead>
@@ -108,32 +187,20 @@
                         </div>
                     </div>
 
-                    <div id="item-3" class="card">
+                    <div id="item-4" class="card shadow-sm">
                         <div class="card-header bg-primary text-white">
-                            <span class="fs-5">Hero Section</span>
+                            <span class="fs-5">Alamat Institusi</span>
                         </div>
                         <div class="card-body">
-                            <form action="">
-                                <div class="mb-3">
-                                    <label for="input_judul_header" class="form-label">Header Hero</label>
-                                    <input type="text" class="form-control" id="input_judul_header"
-                                           name="input_judul_header">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="input_deskripsi_header" class="form-label">Example textarea</label>
-                                    <textarea class="form-control" id="input_deskripsi_header"
-                                              name="input_deskripsi_header" rows="10"></textarea>
-                                </div>
-                            </form>
-
                             @include('admin-panel.sub_admin_panel.tambah_tombol_hero_section')
                             <form action="">
                                 <table class="table table-striped table-bordered">
                                     <thead>
                                     <tr>
                                         <th scope="col">#</th>
-                                        <th scope="col">Nama Button</th>
-                                        <th scope="col">Link Button</th>
+                                        <th scope="col">Nama</th>
+                                        <th scope="col">Alamat</th>
+                                        <th scope="col"></th>
                                         <th scope="col">Action</th>
                                     </tr>
                                     </thead>
@@ -162,11 +229,12 @@
             <div class="d-none d-md-inline" style="width: 18rem; min-width: 18rem"></div>
 
             <div class="d-none d-md-inline position-fixed end-0" style="width: 18rem; min-width: 18rem">
-                <nav id="navbar-example3" class="h-100 flex-column align-items-stretch pe-4 border-start">
+                <nav id="sidebar-kanan" class="h-100 flex-column align-items-stretch pe-4 border-start">
                     <nav class="nav nav-pills flex-column ps-3">
-                        <a class="nav-link" href="#item-1">Data Institut</a>
-                        <a class="nav-link" href="#item-2">Social Media</a>
-                        <a class="nav-link" href="#item-3">Hero Section</a>
+                        <a class="nav-link" href="#item-1"><i class="bi bi-database me-2"></i> Data Institut</a>
+                        <a class="nav-link" href="#item-2"><i class="bi bi-people me-2"></i> Social Media</a>
+                        <a class="nav-link" href="#item-3"><i class="bi bi-card-image me-2"></i> Hero Section</a>
+                        <a class="nav-link" href="#item-4"><i class="bi bi-geo-alt me-2"></i> Alamat Institusi</a>
                     </nav>
                 </nav>
             </div>
