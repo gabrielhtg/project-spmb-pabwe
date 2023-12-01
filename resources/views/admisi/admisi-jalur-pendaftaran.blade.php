@@ -18,23 +18,21 @@
 
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container">
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav mx-auto">
-                    <li class="nav-item mx-3 d-flex flex-column align-items-center">
-                        <a href="{{ route('admisi') }}" class="nav-link">Tanggal Penting</a>
-                    </li>
-                    <li class="nav-item mx-3 d-flex flex-column align-items-center">
-                        <a href="{{ route('jalur-pendaftaran') }}" class="nav-link">Jalur Pendaftaran</a>
-                        <div style="width: 150px; height: 1px; background-color: black"></div>
-                    </li>
-                    <li class="nav-item mx-3">
-                        <a href="{{ route('biaya-studi') }}" class="nav-link">Biaya Studi</a>
-                    </li>
-                    <li class="nav-item mx-3">
-                        <a href="{{ route('persyaratan-khusus') }}" class="nav-link">Persyaratan Khusus</a>
-                    </li>
-                </ul>
-            </div>
+            <ul class="navbar-nav mx-auto text-center">
+                <li class="nav-item mx-3 d-flex flex-column align-items-center">
+                    <a href="{{ route('admisi') }}" class="nav-link">Tanggal Penting</a>
+                </li>
+                <li class="nav-item mx-3 d-flex flex-column align-items-center">
+                    <a href="{{ route('jalur-pendaftaran') }}" class="nav-link">Jalur Pendaftaran</a>
+                    <div style="width: 150px; height: 1px; background-color: black"></div>
+                </li>
+                <li class="nav-item mx-3">
+                    <a href="{{ route('biaya-studi') }}" class="nav-link">Biaya Studi</a>
+                </li>
+                <li class="nav-item mx-3">
+                    <a href="{{ route('persyaratan-khusus') }}" class="nav-link">Persyaratan Khusus</a>
+                </li>
+            </ul>
         </div>
     </nav>
 

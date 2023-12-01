@@ -18,28 +18,26 @@
 
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container">
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav mx-auto">
-                    <li class="nav-item mx-3 d-flex flex-column align-items-center">
-                        <a href="{{ route('admisi') }}" class="nav-link">Tanggal Penting</a>
-                    </li>
-                    <li class="nav-item mx-3">
-                        <a href="{{ route('jalur-pendaftaran') }}" class="nav-link">Jalur Pendaftaran</a>
-                    </li>
-                    <li class="nav-item mx-3 d-flex flex-column align-items-center">
-                        <a href="{{ route('biaya-studi') }}" class="nav-link">Biaya Studi</a>
-                        <div style="width: 100px; height: 1px; background-color: black"></div>
-                    </li>
-                    <li class="nav-item mx-3">
-                        <a href="{{ route('persyaratan-khusus') }}" class="nav-link">Persyaratan Khusus</a>
-                    </li>
-                </ul>
-            </div>
+            <ul class="navbar-nav mx-auto text-center">
+                <li class="nav-item mx-3 d-flex flex-column align-items-center">
+                    <a href="{{ route('admisi') }}" class="nav-link">Tanggal Penting</a>
+                </li>
+                <li class="nav-item mx-3">
+                    <a href="{{ route('jalur-pendaftaran') }}" class="nav-link">Jalur Pendaftaran</a>
+                </li>
+                <li class="nav-item mx-3 d-flex flex-column align-items-center">
+                    <a href="{{ route('biaya-studi') }}" class="nav-link">Biaya Studi</a>
+                    <div style="width: 100px; height: 1px; background-color: black"></div>
+                </li>
+                <li class="nav-item mx-3">
+                    <a href="{{ route('persyaratan-khusus') }}" class="nav-link">Persyaratan Khusus</a>
+                </li>
+            </ul>
         </div>
     </nav>
 
     <section class="container text-center mt-5" id="bagianBiaya">
-        <div class="d-flex justify-content-center flex-column pt-3">
+        <div class="d-flex justify-content-center flex-column pt-3 overflow-x-auto w-100">
 
             <table class="table align-middle">
                 <thead>

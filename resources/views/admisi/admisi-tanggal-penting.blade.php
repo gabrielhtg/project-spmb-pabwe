@@ -18,23 +18,21 @@
 
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container">
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav mx-auto">
-                    <li class="nav-item mx-3 d-flex flex-column align-items-center">
-                        <a href="{{ route('admisi') }}" class="nav-link">Tanggal Penting</a>
-                        <div style="width: 150px; height: 1px; background-color: black"></div>
-                    </li>
-                    <li class="nav-item mx-3">
-                        <a href="{{ route('jalur-pendaftaran') }}" class="nav-link">Jalur Pendaftaran</a>
-                    </li>
-                    <li class="nav-item mx-3">
-                        <a href="{{ route('biaya-studi') }}" class="nav-link">Biaya Studi</a>
-                    </li>
-                    <li class="nav-item mx-3">
-                        <a href="{{ route('persyaratan-khusus') }}" class="nav-link">Persyaratan Khusus</a>
-                    </li>
-                </ul>
-            </div>
+            <ul class="navbar-nav mx-auto text-center">
+                <li class="nav-item mx-3 d-flex flex-column align-items-center">
+                    <a href="{{ route('admisi') }}" class="nav-link">Tanggal Penting</a>
+                    <div style="width: 150px; height: 1px; background-color: black"></div>
+                </li>
+                <li class="nav-item mx-3">
+                    <a href="{{ route('jalur-pendaftaran') }}" class="nav-link">Jalur Pendaftaran</a>
+                </li>
+                <li class="nav-item mx-3">
+                    <a href="{{ route('biaya-studi') }}" class="nav-link">Biaya Studi</a>
+                </li>
+                <li class="nav-item mx-3">
+                    <a href="{{ route('persyaratan-khusus') }}" class="nav-link">Persyaratan Khusus</a>
+                </li>
+            </ul>
         </div>
     </nav>
 
@@ -73,16 +71,17 @@
                         </li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane ps-5 pe-5 fade show active" id="jadwalpendaftaran-tab-pane" role="tabpanel"
+                        <hr>
+                        <div class="tab-pane ps-3 pe-3 fade show active" id="jadwalpendaftaran-tab-pane" role="tabpanel"
                              aria-labelledby="jadwalpendaftaran-tab" tabindex="0">
-                            <table class="table mt-5">
+                            <table class="table table-striped table-bordered mt-5">
                                 <tbody>
                                 <tr>
                                     <td>PMDK</td>
                                     <td>05 DESEMBER 2022 - 15 JANUARI 2023</td>
                                 </tr>
                                 <tr>
-                                    <td>USM 1</td>
+                                    <td style="min-width: 80px">USM 1</td>
                                     <td>16 JANUARI 2023 - 12 FEBRUARI 2023</td>
                                 </tr>
                                 <tr>
