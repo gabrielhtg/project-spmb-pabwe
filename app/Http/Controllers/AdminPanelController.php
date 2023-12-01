@@ -69,4 +69,31 @@ class AdminPanelController extends Controller
     public function getEditProfile () {
         return view ('admin-panel.edit_profile');
     }
+
+    public function getAdmisiPanel () {
+        $admin = Auth::user();
+        $data = [
+            'indexActive' => 2,
+            'admin' => $admin
+        ];
+        return view('admin-panel.admisi_panel', $data);
+    }
+
+    public function getPrestasiPanel () {
+        $admin = Auth::user();
+        $data = [
+            'indexActive' => 2,
+            'admin' => $admin
+        ];
+        return view('admin-panel.prestasipanel', $data);
+    }
+
+    public function getTestimoniPanel () {
+        $admin = Auth::user();
+        $data = [
+            'indexActive' => 2,
+            'admin' => $admin
+        ];
+        return view('admin-panel.testimonipanel', $data);
+    }
 }
