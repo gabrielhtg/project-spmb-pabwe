@@ -24,9 +24,11 @@ use App\Http\Controllers\MitraController;
 
 Route::get('/', [DashboardController::class, 'getDashboard'])->name('dashboard');
 
-Route::get('/admisi', function () {
-    return view('admisi.admisi');
-});
+Route::get('/admisi', [DashboardController::class, 'getAdmisi'])->name('admisi');
+Route::get('/admisi/jalur-pendaftaran', [DashboardController::class, 'getJalurPendaftaran'])->name('jalur-pendaftaran');
+Route::get('/admisi/biaya-studi', [DashboardController::class, 'getBiayaStudi'])->name('biaya-studi');
+Route::get('/admisi/persyaratan-khusus', [DashboardController::class, 'getPersyaratanKhusus'])->name('persyaratan-khusus');
+
 
 Route::get('/faqs', function () {
     return view('faq.faq');
@@ -93,4 +95,5 @@ Route::get('/prestasi', [PrestasiController::class, 'getviewPrestasi'])->name('p
 Route::get('/prestasiInstitut', [PrestasiController::class, 'getviewPrestasiInstitut'])->name('prestasi.prestasiInstitut');
 Route::get('/prestasiDosenStaff', [PrestasiController::class, 'getviewPrestasiDosenStaff'])->name('prestasi.prestasiDosenStaff');
 Route::get('/prestasiMahasiswa', [PrestasiController::class, 'getviewPrestasiMahasiswa'])->name('prestasi.prestasiMahasiswa');
+
 

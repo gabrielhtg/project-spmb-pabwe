@@ -20,4 +20,53 @@ class DashboardController extends Controller
 
         return view('dashboard/dashboard', $data);
     }
+
+    public function getAdmisi () {
+        $dataInstitusi = data_institusi::where('id', 1)->first();
+//        $dataHero = HeroSectionModel::where('id', 1)->first();
+
+        $data = [
+            'dataInstitusi' => $dataInstitusi,
+//            'dataHero' => $dataHero
+        ];
+
+        return view('admisi.admisi-tanggal-penting', $data);
+    }
+
+    public function getJalurPendaftaran () {
+        $dataInstitusi = data_institusi::where('id', 1)->first();
+//        $dataHero = HeroSectionModel::where('id', 1)->first();
+
+        $data = [
+            'dataInstitusi' => $dataInstitusi,
+//            'dataHero' => $dataHero
+        ];
+
+        return view('admisi.admisi-jalur-pendaftaran', $data);
+    }
+
+    public function getBiayaStudi () {
+        $dataInstitusi = data_institusi::where('id', 1)->first();
+//        $dataHero = HeroSectionModel::where('id', 1)->first();
+
+        $data = [
+            'dataInstitusi' => $dataInstitusi,
+//            'dataHero' => $dataHero
+        ];
+
+        return view('admisi.admisi-biaya-studi', $data);
+    }
+
+    public function getPersyaratanKhusus () {
+        $dataInstitusi = data_institusi::where('id', 1)->first();
+//        $dataHero = HeroSectionModel::where('id', 1)->first();
+
+        $data = [
+            'dataInstitusi' => $dataInstitusi,
+//            'dataHero' => $dataHero
+        ];
+
+        return view('admisi.admisi-persyaratan-khusus', $data);
+    }
+
 }
