@@ -2,6 +2,6 @@
 
 @section('isi-admin-panel')
 
-    
+
 
 @endsection

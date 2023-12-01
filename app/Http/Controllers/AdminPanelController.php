@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\admin;
 use App\Models\data_institusi;
+use App\Models\Prestasi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -79,12 +80,23 @@ class AdminPanelController extends Controller
         return view('admin-panel.admisi_panel', $data);
     }
 
+
+    public function getPrestasiPage()
+    {
+        return view('admin-panel.prestasiPanel', ['prestasiData' => Prestasi::all(), 'admin' => Auth::user()]);
+    }
+
+    public function getTestimoniPage()
+    {
+//        return;
+    }
     public function getPrestasiPanel () {
         $admin = Auth::user();
         $data = [
             'indexActive' => 2,
             'admin' => $admin
         ];
+
         return view('admin-panel.prestasipanel', $data);
     }
 

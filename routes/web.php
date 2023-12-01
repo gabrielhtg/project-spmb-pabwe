@@ -49,10 +49,10 @@ Route::middleware('auth')->group(function () {
 
         /* Routing Kelompok 3 -  (Prestasi, Testimoni)*/
         /* Bagian Prestasi */
-        Route::get('/prestasipanel', [AdminPanelController::class, 'getPrestasiPanel'])->name('prestasipanel');
+        Route::get('/prestasi', [AdminPanelController::class, 'getPrestasiPanel'])->name('prestasipanel');
 
         /* Bagian Testimoni */
-        Route::get('/testimonipanel', [AdminPanelController::class, 'getTestimoniPanel'])->name('testimonipanel');
+        Route::get('/testimoni', [AdminPanelController::class, 'getTestimoniPanel'])->name('testimonipanel');
 
     });
 });
