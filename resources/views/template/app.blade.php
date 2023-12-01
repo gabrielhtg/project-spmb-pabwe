@@ -72,7 +72,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="/beasiswa">Beasiswa</a>
+                            <a class="nav-link" href="{{ route('beasiswa.beasiswa') }}">Beasiswa</a>
                         </li>
 
                         <li class="nav-item">
@@ -80,7 +80,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="/faqs">FAQ</a>
+                            <a class="nav-link" href="{{ route('faq.faq') }}">FAQ</a>
                         </li>
 
                         <li class="nav-item">

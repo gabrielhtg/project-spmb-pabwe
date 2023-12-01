@@ -9,6 +9,8 @@ use App\Http\Controllers\FasilitasController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\PrestasiController;
 use App\Http\Controllers\MitraController;
+use App\Http\Controllers\FaqController;
+use App\Http\Controllers\BeasiswaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,17 +29,16 @@ Route::get('/admisi', function () {
     return view('admisi.admisi');
 });
 
-Route::get('/faqs', function () {
-    return view('faq.faq');
-});
+// Route::get('/faqs', function () {
+//     return view('faq.faq');
+// });
 
-Route::get('/faqs', function () {
-    return view('faq.faq');
-});
+Route::get('/faq', [FaqController::class, 'getviewFaq'])->name('faq.faq');
+Route::get('/beasiswa', [BeasiswaController::class, 'getviewBeasiswa'])->name('beasiswa.beasiswa');
 
-Route::get('/beasiswa', function () {
-    return view('beasiswa.beasiswa');
-});
+// Route::get('/beasiswa', function () {
+//     return view('beasiswa.beasiswa');
+// });
 
 
 Route::get('/login', [AuthController::class, 'getLogin'])->name('login');

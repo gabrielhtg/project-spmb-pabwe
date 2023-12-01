@@ -5,9 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Faq;
+use App\Models\data_institusi;
 
 class FaqController extends Controller
 {
+    public function getviewFaq()
+    {
+        $dataInstitusi = data_institusi::where('id', 1)->first();
+        $data = ['dataInstitusi'=> $dataInstitusi];
+        return view("faq.faq", $data);
+    }
+
     public function getAddFaq(){
         $data = [
             "auth" => Auth::user()
