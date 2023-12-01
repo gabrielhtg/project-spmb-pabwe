@@ -21,8 +21,6 @@ return new class extends Migration
             $table->integer('jumlah_dosen')->nullable(true);
             $table->integer('jumlah_mahasiswa')->nullable(true);
             $table->integer('jumlah_alumni')->nullable(true);
-            $table->string('sertifikat_akreditasi', 100)->nullable(true);
-            $table->string('gambar_sertifikat_akreditasi', 100)->nullable(true);
             $table->string('logo_institusi', 100)->nullable(true);
             $table->timestamps();
         });

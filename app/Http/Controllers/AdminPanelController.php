@@ -29,13 +29,34 @@ class AdminPanelController extends Controller
         return view('admin-panel.adminpanel', $data);
     }
 
-    public function postAdminPanel(Request $request)
+    public function ubahDataInstitut(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'input_nama_institusi' => 'required|exists:data_institusi',
-        ]);
-
         $dataInstitusi = data_institusi::where('id', 1)->first();
+
+        if ($request->input_logo_institusi) {
+            $request->validate([
+                'input_logo_institusi' => 'required|image|mimes:jpeg,png,jpg|max:1024',
+            ]);
+
+            // Mengambil file yang sudah divalidasi dari request
+            $photo = $request->file('input_logo_institusi');
+
+            // Membuat nama unik untuk file yang diunggah
+            $filename = time() . '_logo_institusi.' . $photo->getClientOriginalExtension();
+
+            // Menentukan direktori tempat penyimpanan file di dalam direktori 'public'
+            $directory = public_path('assets/img/dashboard/');
+
+            //Pindahkan file ke direktori yang diinginkan
+            $photo->move($directory, $filename);
+
+            // Menghapus photo lama jika ada
+            if ($dataInstitusi->logo_institusi && file_exists($dataInstitusi->logo_institusi)) {
+                unlink($dataInstitusi->logo_institusi);
+            }
+
+            $dataInstitusi->logo_institusi = 'assets/img/dashboard/' . $filename;
+        }
 
         $dataInstitusi->nama_institusi = $request->input_nama_institusi;
         $dataInstitusi->singkatan_nama_institusi = $request->input_singkatan_nama_institusi;
@@ -46,9 +67,6 @@ class AdminPanelController extends Controller
         $dataInstitusi->jumlah_mahasiswa = $request->input_jumlah_mahasiswa;
         $dataInstitusi->jumlah_alumni = $request->input_jumlah_alumni;
 
-//        if ($request->input_logo_institusi) {
-//            $dataInstitusi->logo_institusi = $request->input_logo_institusi;
-//        }
 //
 //        if ($request->input_sertifikat_akreditasi) {
 //            $dataInstitusi->gambar_sertifikat_akreditasi = $request->input_sertifikat_akreditasi;
@@ -59,19 +77,15 @@ class AdminPanelController extends Controller
         return redirect()->route('admin-panel');
     }
 
-    public function getDashboardPanel()
-    {
-        $admin = Auth::user();
-        $data = [
-            'indexActive' => 2,
-            'admin' => $admin
-        ];
-        return view('admin-panel.dashboard_panel', $data);
-    }
-
     public function getEditProfile()
     {
-        return view('admin-panel.edit_profile');
+        $admin = Auth::user();
+
+        $data = [
+            'admin' => $admin,
+        ];
+
+        return view('admin-panel.edit_profile', $data);
     }
 
     public function addSocialMedia(Request $request)
@@ -91,10 +105,54 @@ class AdminPanelController extends Controller
     public function removeSocialMedia(Request $request)
     {
         SocalMediaModel::where('id', $request->id)->first()->delete();
-        return redirect()->route('admin-panel');
+    return redirect()->back();
     }
 
-    public function saveHeroSection (Request $request) {
+    public function updateHeroSection(Request $request)
+    {
+        $dataHero = HeroSectionModel::where('id', 1)->first();
 
+        $dataHero->header = $request->input_judul_header;
+        $dataHero->paragraph = $request->input_deskripsi_header;
+
+        if ($request->input_bg_hero) {
+            $request->validate([
+                'input_bg_hero' => 'image|mimes:jpeg,png,jpg|max:1024',
+            ]);
+
+            // Mengambil file yang sudah divalidasi dari request
+            $photo = $request->file('input_bg_hero');
+
+            // Membuat nama unik untuk file yang diunggah
+            $filename = time() . '_hero.' . $photo->getClientOriginalExtension();
+
+            // Menentukan direktori tempat penyimpanan file di dalam direktori 'public'
+            $directory = public_path('assets/img/dashboard/');
+
+            //Pindahkan file ke direktori yang diinginkan
+            $photo->move($directory, $filename);
+
+            // Menghapus photo lama jika ada
+            if ($dataHero->bg_image && file_exists($dataHero->bg_image)) {
+                unlink($dataHero->bg_image);
+            }
+
+            $dataHero->bg_image = 'assets/img/dashboard/' . $filename;
+        }
+
+        $dataHero->update();
+
+        return redirect()->back();
+
+    }
+
+    public function getAddAdminView() {
+        $admin = Auth::user();
+
+        $data = [
+            'admin' => $admin,
+        ];
+
+        return view('admin-panel.add_admin', $data);
     }
 }
