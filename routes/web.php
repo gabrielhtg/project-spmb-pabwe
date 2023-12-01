@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminPanelController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\FasilitasController;
@@ -21,9 +22,7 @@ use App\Http\Controllers\MitraController;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard.dashboard');
-});
+Route::get('/', [DashboardController::class, 'getDashboard'])->name('dashboard');
 
 Route::get('/admisi', function () {
     return view('admisi.admisi');
@@ -43,13 +42,15 @@ Route::get('/logout', [AuthController::class, 'getLogout'])->name('logout');
 Route::middleware('auth')->group(function () {
     Route::prefix('/admin-panel')->group(function () {
         Route::get('/', [AdminPanelController::class, 'getAdminPanel'])->name('admin-panel');
-//    Route::get('/', [AdminPanelController::class, 'getAdminPanel'])->name('admin-panel.akreditasi');
+        Route::post('/', [AdminPanelController::class, 'postAdminPanel'])->name('post.admin-panel-dashboard');
         Route::get('/spmb-dashboard', [AdminPanelController::class, 'getDashboardPanel'])->name('spmb-dashboard');
         Route::get('/admisi-panel', [AdminPanelController::class, 'getAdmisiPanel'])->name('admisi-panel');
         Route::get('/edit-profile', [AdminPanelController::class, 'getEditProfile'])->name('edit-profile');
         Route::get('/fasilitas-admin', [AdminPanelController::class, 'getFasilitasAdmin'])->name('fasilitas-admin');
         Route::get('/fasilitas-admin-get', [AdminPanelController::class, 'getAddFasilitas'])->name('get.add-fasilitas');
+        Route::post('/fasilitas/edit', [AdminPanelController::class, 'postEdit'])->name('post.fasilitas.edit');
         Route::get('/pengumuman-admin', [AdminPanelController::class, 'getPengumumanPanel'])->name('pengumuman-panel');
+        Route::get('/pengumuman-admin-get', [AdminPanelController::class, 'getAddPengumuman'])->name('get.add-pengumuman');
         Route::post('/', [AdminPanelController::class, 'postFasilitas'])->name('post.fasilitas');
         Route::delete('post/{id}', [AdminPanelController::class, 'destroy'])->name('post.destroy');
     });

@@ -72,7 +72,7 @@
                 </a>
 
                 <a href="{{ route("pengumuman-panel") }}">
-                    <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start"><i class="fa-regular fa-handshake"></i>
+                    <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start"><i class="fas fa-bullhorn"></i>
                         Pengumuman</button>
                 </a>
 
@@ -129,7 +129,7 @@
                 </div>
             </div>
         </div>
-        <div id="geser_kecil" style="width: 4rem; height: 100vh"></div>
+        <div id="geser_kecil" style="min-width: 4rem; width: 4rem; height: 100vh"></div>
         {{--        ini adalah sidebar kecil selesai--}}
 
         <div class="w-100">
@@ -153,9 +153,10 @@
                             <span class="visually-hidden">Toggle Dropdown</span>
                         </button>
                         <ul class="dropdown-menu mt-3 dropdown-menu-end">
-                            <li><a class="dropdown-item" href="{{ route('edit-profile') }}"> <i class="fa-solid fa-user me-2"></i>Edit Profile</a></li>
+                            <li><a class="dropdown-item" href="{{ route('edit-profile') }}"><i class="bi bi-person me-2"></i>Edit Profile</a></li>
+                            <li><a class="dropdown-item" href="{{ route('dashboard') }}" target="_blank"><i class="bi bi-house me-2 me-2"></i>SPMB Dashboard</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="{{ route('logout') }}"><i class="fa-solid fa-arrow-right-from-bracket fa-flip-horizontal me-2"></i> Logout</a></li>
+                            <li><a class="dropdown-item" href="{{ route('logout') }}"><i class="bi bi-box-arrow-left me-2"></i> Logout</a></li>
                         </ul>
                     </div>
                 </div>
@@ -185,5 +186,6 @@
     <script src="https://kit.fontawesome.com/965a381e3a.js" crossorigin="anonymous"></script>
     <script src="{{ asset("/assets/js/kel4.js") }}"></script>
     <script src="{{ asset("/assets/js/admin-panel.js") }}"></script>
+    @yield('other-js')
 </body>
 </html>
