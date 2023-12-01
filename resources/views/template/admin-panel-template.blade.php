@@ -20,7 +20,7 @@
     <div class="d-flex w-100">
 
     {{--        Ini adalah sidebar besar mulai--}}
-        <div class="d-none ps-3 pe-3 fixed-top bg-sidebar d-flex flex-column align-items-center" id="sidebar_besar" style="width: 18rem; height: 100vh">
+        <div class="d-none ps-3 pe-3 fixed-top bg-sidebar d-flex flex-column align-items-center" id="sidebar_besar" style="width: 18rem; height: 300vh">
             <div class="d-flex justify-content-center align-items-center mb-3 w-100" style="height: 60px; border: 0 solid white;border-bottom-width: 1px;">
                 <span class="text-white fw-semibold fs-4" style="font-size: 1rem">SPMB Admin</span>
             </div>
@@ -96,7 +96,7 @@
     {{--        ini adalah sidebar besar selesai--}}
 
         {{--        Ini adalah sidebar kecil mulai--}}
-        <div class="bg-sidebar fixed-top d-flex flex-wrap justify-content-center" id="sidebar_kecil" style="width: 4rem; height: 100vh">
+        <div class="bg-sidebar fixed-top d-flex flex-wrap justify-content-center" id="sidebar_kecil" style="width: 4rem; height: 300vh">
             <div class="d-flex align-items-center flex-column" style="height: 56px">
                 <div style="margin-top: 60px" class="mb-3">
                 </div>
