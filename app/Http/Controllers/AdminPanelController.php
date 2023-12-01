@@ -131,6 +131,28 @@ class AdminPanelController extends Controller
         return view('admin-panel.pengumumanpanel', $data);
     }
 
+    public function getPengumumanAdmin()
+    {
+        $admin = Auth::user();
+        $pengumuman = Pengumuman::orderBy('created_at', 'desc')->get();
+        $data = [
+            'indexActive' => 2,
+            'admin' => $admin,
+            'pengumuman' => $pengumuman,
+        ];
+        return view('admin-panel.view_pengumuman_lists', $data);
+    }
+
+    public function getAddPengumuman()
+    {
+        $admin = Auth::user();
+        $data = [
+            'indexActive' => 2,
+            'admin' => $admin
+        ];
+        return view('admin-panel.sub_admin_panel.pengumumanAddpanel', $data);
+    }
+
     public function getAdmisiPanel () {
         $admin = Auth::user();
         $data = [

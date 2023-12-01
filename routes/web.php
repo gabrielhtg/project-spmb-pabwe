@@ -50,6 +50,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/fasilitas-admin', [AdminPanelController::class, 'getFasilitasAdmin'])->name('fasilitas-admin');
         Route::get('/fasilitas-admin-get', [AdminPanelController::class, 'getAddFasilitas'])->name('get.add-fasilitas');
         Route::get('/pengumuman-admin', [AdminPanelController::class, 'getPengumumanPanel'])->name('pengumuman-panel');
+        Route::get('/pengumuman-admin-get', [AdminPanelController::class, 'getAddPengumuman'])->name('get.add-pengumuman');
         Route::post('/', [AdminPanelController::class, 'postFasilitas'])->name('post.fasilitas');
         Route::delete('post/{id}', [AdminPanelController::class, 'destroy'])->name('post.destroy');
     });

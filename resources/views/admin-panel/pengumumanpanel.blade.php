@@ -2,41 +2,45 @@
 
 @section('isi-admin-panel')
 
-    <div class="container">
-      <form>
+<div class="container-fluid p-3">
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <span class="fs-3">Data pengumuman</span>
+        </div>
+        <div class="p-3">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <a href="{{ route('get.add-pengumuman') }}">
+                <button class="btn btn-primary">Tambah pengumuman</button>
+            </a>
 
-        <label for="inputtag" class="form-label">Pilih Tag Pengumuman</label>
-        <select class="form-select" name="selectOption" id="selectOption">
-          <option value="option1">PMDK</option>
-          <option value="option2">USM 1</option>
-          <option value="option3">USM 2</option>
-          <option value="option4">USM 3</option>
-          <option value="option5">USM 4</option>
-          <option value="option6">UTBK</option>
-        </select>
-
-        <div class="mb-3">
-          <label for="inputjudul" class="form-label">Judul Pengumuman</label>
-          <input type="text" class="form-control" id="inputjudul">
+            <div class="input-group mb-3" style="width: 300px;">
+                <input type="text" class="form-control" placeholder="cari pengumuman" aria-label="cari pengumuman" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button">Cari</button>
+                </div>
+            </div>
         </div>
 
-        <div class="fw-bold">Tambah File Pengumuman</div>
 
-        <div class="mb-3">
-          <label for="inputfile" class="form-label">Nama File</label>
-          <input type="text" class="form-control" id="inputfile">
-        </div>
-
-        <div class="mb-3">
-          <label for="inputfile" class="form-label">File</label>
-          <input type="file" class="form-control" id="inputfile">
-        </div>
-
-        <div class="mb-3">
-          <button type="button" id="create-pengumuman" class="btn btn-primary">Submit</button>
-        </div>
-
-      </form>
+        <div class="pt-3">
+                <table class="table table-striped table-bordered">
+                    <thead class="text-center">
+                        <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Tag</th>
+                        <th scope="col">Judul Pengumuman</th>
+                        <th scope="col">File</th>
+                        <th scope="col">Created by</th>
+                        <th scope="col">Created at</th>
+                        <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+          </div>
     </div>
+    
+
+
+</div> 
 
 @endsection

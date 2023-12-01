@@ -71,11 +71,51 @@
                         <div class="tab-pane fade" id="jadwal-ujian-tab-pane" role="tabpanel"
                              aria-labelledby="profile-tab" tabindex="0">...
                         </div>
-                        <div class="tab-pane fade" id="jenis-test-tab-pane" role="tabpanel"
-                             aria-labelledby="jenis-test-tab" tabindex="0">...
+                        <div class="tab-pane ps-5 pe-5 fade show active" id="jenis-test-tab-pane" role="tabpanel"
+                             aria-labelledby="jenis-test-tab" tabindex="0">
+                             <table class="table mt-5">
+                                <tbody>
+                                <tr>
+                                    <td>PMDK</td>
+                                    <td>Nilai Rapor + Wawancara + Psikotes</td>
+                                </tr>
+                                <tr>
+                                    <td>USM 1</td>
+                                    <td>Tes Akademik + Psikotes</td>
+                                </tr>
+                                <tr>
+                                    <td>USM 2</td>
+                                    <td>Tes Akademik + Psikotes</td>
+                                </tr>
+                                <tr>
+                                    <td>USM 3</td>
+                                    <td>Tes Akademik + Psikotes</td>
+                                </tr>
+                                <tr>
+                                    <td>UTBK</td>
+                                    <td>Nilai UTBK + Psikotes</td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
-                        <div class="tab-pane fade" id="lokasi-tab-pane" role="tabpanel" aria-labelledby="lokasi-tab"
-                             tabindex="0">...
+                        <div class="tab-pane ps-5 pe-5 fade show active" id="lokasi-tab-pane" role="tabpanel" aria-labelledby="lokasi-tab"
+                             tabindex="0">
+                             <table class="table mt-5">
+                                <tbody>
+                                <tr>
+                                    <td>Kampus IT Del</td>
+                                    <td>Jl. Sisingmangaraja, Sitoluama Laguboti, Toba Samosir Sumatera Utara</td>
+                                </tr>
+                                <tr>
+                                    <td>Medan</td>
+                                    <td>Kampus Universitas HKBP Nommensen (Medan) Jl. Perintis Kemerdekaan No.23, Perintis, Medan</td>
+                                </tr>
+                                <tr>
+                                    <td>Jakarta</td>
+                                    <td>Sopo Del Office Towers & Lifestyle Tower A Lt. 9 Jl. Mega Kuningan Barat III Lot 10.1-6 Jakarta Selatan 12950 No. tlp : 021 - 5080 6565</td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
