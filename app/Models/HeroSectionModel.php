@@ -16,4 +16,6 @@ class HeroSectionModel extends Model
         'paragraph',
         'bg_image'
     ];
+
+    public $timestamps = true;
 }

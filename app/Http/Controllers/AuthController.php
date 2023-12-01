@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AdminModel;
+use ErrorException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -37,7 +38,7 @@ class AuthController extends Controller
             }
 
             return redirect()->route('login')->with('error', 'Kredensial tidak tepat!');
-        } catch (\ErrorException $e) {
+        } catch (ErrorException $e) {
             return redirect()->route('login')->with('error', 'Kredensial tidak tepat!');
         }
     }
