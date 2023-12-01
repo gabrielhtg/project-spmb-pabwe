@@ -20,20 +20,20 @@
         <div class="container-fluid">
 {{--            tampilan hp--}}
             <a class="d-flex d-sm-none align-items-center navbar-brand" href="/">
-                <img src="{{ asset("/assets/img/Logo Institut Teknologi Del.png") }}" alt="Logo" width="35" height="35" class="d-inline-block align-text-top">
+                <img src="{{ asset($dataInstitusi->logo_institusi) }}" alt="Logo" width="35" height="35" class="d-inline-block align-text-top">
                 <div class="ms-3 lh-1">
-                    <span class="fs-3"><strong>SPMB IT Del</strong></span>
+                    <span class="fs-3"><strong>SPMB {{ $dataInstitusi->singkatan_nama_institusi }}</strong></span>
                 </div>
             </a>
 {{--            tampilan hp end--}}
 
 {{--            tampilan desktop--}}
             <a class="d-none d-sm-flex align-items-center navbar-brand" href="/">
-                <img src="{{ asset("/assets/img/Logo Institut Teknologi Del.png") }}" alt="Logo" width="40" height="40" class="d-inline-block align-text-top">
+                <img src="{{ asset($dataInstitusi->logo_institusi) }}" alt="Logo" width="40" height="40" class="d-inline-block align-text-top">
                 <div class="ms-2 lh-1">
-                    <span class="fs-6"><strong>SPMB Institut Teknologi Del</strong></span>
+                    <span class="fs-6"><strong>SPMB {{ $dataInstitusi->nama_institusi }}</strong></span>
                     <br>
-                    <span class="fs-8"><i>MarTuhan, MarRoha, MarBisuk</i></span>
+                    <span class="fs-8"><i>{{ $dataInstitusi->jargon }}</i></span>
                 </div>
             </a>
 {{--            tampilan desktop end--}}
@@ -68,7 +68,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Prestasi</a>
+                            <a class="nav-link" href="/prestasi">Prestasi</a>
                         </li>
 
                         <li class="nav-item">
@@ -116,7 +116,7 @@
                 <div class="section-footer d-md-none">
                     <h5 class="fw-bold">About Us</h5>
                     <ul class="nav flex-column">
-                        <li class="nav-item mb-2 text-muted">Institut Teknologi Del</li>
+                        <li class="nav-item mb-2 text-muted">{{ $dataInstitusi->nama_institusi }}</li>
 
                         <li class="nav-item mb-2 text-muted">
                             Jl. Sisingamangaraja, Sitoluama Laguboti, Toba Sumatera Utara, Indonesia
