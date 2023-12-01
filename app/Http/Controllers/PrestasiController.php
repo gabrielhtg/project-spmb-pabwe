@@ -16,16 +16,22 @@ class PrestasiController extends Controller
 
     public function getviewPrestasiInstitut()
     {
-        return view("prestasi.prestasiInstitut");
+        $dataInstitusi = data_institusi::where('id', 1)->first();
+        $data = ['dataInstitusi'=> $dataInstitusi];
+        return view("prestasi.prestasiInstitut", $data);
     }
 
     public function getviewPrestasiDosenStaff()
     {
-        return view("prestasi.prestasiDosenStaff");
+        $dataInstitusi = data_institusi::where('id', 1)->first();
+        $data = ['dataInstitusi'=> $dataInstitusi];
+        return view("prestasi.prestasiDosenStaff", $data);
     }
 
     public function getviewPrestasiMahasiswa()
     {
-        return view("prestasi.prestasiMahasiswa");
+        $dataInstitusi = data_institusi::where('id', 1)->first();
+        $data = ['dataInstitusi'=> $dataInstitusi];
+        return view("prestasi.prestasiMahasiswa", $data);
     }
 }

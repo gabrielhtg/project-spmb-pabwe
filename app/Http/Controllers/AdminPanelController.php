@@ -80,6 +80,7 @@ class AdminPanelController extends Controller
         return view('admin-panel.admisi_panel', $data);
     }
 
+
     public function getPrestasiPage()
     {
         return view('admin-panel.prestasiPanel', ['prestasiData' => Prestasi::all(), 'admin' => Auth::user()]);
@@ -88,5 +89,23 @@ class AdminPanelController extends Controller
     public function getTestimoniPage()
     {
 //        return;
+    }
+    public function getPrestasiPanel () {
+        $admin = Auth::user();
+        $data = [
+            'indexActive' => 2,
+            'admin' => $admin
+        ];
+
+        return view('admin-panel.prestasipanel', $data);
+    }
+
+    public function getTestimoniPanel () {
+        $admin = Auth::user();
+        $data = [
+            'indexActive' => 2,
+            'admin' => $admin
+        ];
+        return view('admin-panel.testimonipanel', $data);
     }
 }

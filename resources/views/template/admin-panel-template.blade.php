@@ -71,12 +71,12 @@
                         Kemitraan</button>
                 </a>
 
-                <a href="#">
+                <a href="{{ route("prestasipanel") }}">
                     <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start"><i class="fas fa-trophy"></i>
                         Prestasi</button>
                 </a>
 
-                <a href="#">
+                <a href="{{ route("testimonipanel") }}">
                     <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start"><i class="fas fa-comment-dots"></i>
                         Testimoni</button>
                 </a>
