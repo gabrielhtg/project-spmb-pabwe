@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\admin;
 use App\Models\data_institusi;
+use App\Models\Fasilitas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -133,6 +134,49 @@ class AdminPanelController extends Controller
     // Redirect atau berikan respons sesuai kebutuhan
     return redirect()->route('fasilitas-admin');
     }
+
+    public function postEdit(Request $request)
+{
+    $request->validate([
+        'kategori' => 'required',
+        'nama_fasilitas' => 'required',
+        'deskripsi_fasilitas' => 'required',
+        'nama_file' => 'required',
+        'file_gambar' => 'nullable|image|mimes:jpeg,jpg,png|max:2048'
+    ]);
+
+    // Mendapatkan user yang sedang login
+    $auth = Auth::user();
+
+    // Mengambil data fasilitas berdasarkan ID
+    $fasilitas = Fasilitas::find($request->id);
+
+    if (!$fasilitas) {
+        // Handle jika fasilitas tidak ditemukan
+        return redirect()->route('fasilitas-admin')->with('error', 'Fasilitas tidak ditemukan.');
+    }
+
+    // Mengupdate data fasilitas
+    $fasilitas->kategori = $request->kategori;
+    $fasilitas->nama_fasilitas = $request->nama_fasilitas;
+    $fasilitas->deskripsi_fasilitas = $request->deskripsi_fasilitas;
+    $fasilitas->nama_file = $request->nama_file;
+
+    // Mengupload gambar baru jika ada
+    if ($request->hasFile('file_gambar')) {
+        $gambar = $request->file('file_gambar');
+        $fileExtension = $request->file_gambar->extension();
+        $nama_gambar = $request->nama_file . '.' . $fileExtension;;
+        $gambar->move(public_path('path_ke_folder_upload'), $nama_gambar);
+        $fasilitas->file_gambar = $nama_gambar;
+    }
+
+    // Menyimpan perubahan
+    $fasilitas->save();
+
+    // Redirect dengan pesan sukses
+    return redirect()->route('fasilitas-admin')->with('success', 'Fasilitas berhasil diperbarui.');
+}
 
     public function destroy($id)
     {
