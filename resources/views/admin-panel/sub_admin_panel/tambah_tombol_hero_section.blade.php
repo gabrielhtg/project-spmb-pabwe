@@ -1,7 +1,10 @@
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary mt-3 mb-2 align-self-end" data-bs-toggle="modal" data-bs-target="#tambah_tombol_hero_section_modal">
-    Tambah Tombol (Max 3)
-</button>
+<div class="d-flex justify-content-end w-100">
+    <button type="button" class="btn btn-primary mb-2 align-self-end" data-bs-toggle="modal" data-bs-target="#tambah_tombol_hero_section_modal">
+        Tambah Tombol (Max 3)
+    </button>
+</div>
+
 
 <!-- Modal -->
 <div class="modal fade" id="tambah_tombol_hero_section_modal" tabindex="-1" aria-labelledby="tambah_tombol_hero_section_modal" aria-hidden="true">
