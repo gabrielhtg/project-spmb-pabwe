@@ -15,8 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama_institusi', 30)->nullable(true);
             $table->string('singkatan_nama_institusi', 10)->nullable(true);
-            $table->string('akreditasi_singkat', 1)->nullable(true);
-            $table->string('akreditasi_lengkap', 10)->nullable(true);
+            $table->string('akreditasi', 1)->nullable(true);
             $table->string('jargon', 50)->nullable(true);
             $table->integer('jumlah_dosen')->nullable(true);
             $table->integer('jumlah_mahasiswa')->nullable(true);

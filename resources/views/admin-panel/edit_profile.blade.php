@@ -94,9 +94,11 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <label for="input-password-hapus-profil">Apakah kamu yakin untuk menghapus akunmu? Kalau ya, masukkan passwordmu disini untuk
+                            <label for="input-password-hapus-profil">Apakah kamu yakin untuk menghapus akunmu? Kalau ya,
+                                masukkan passwordmu disini untuk
                                 mengonfirmasi ini adalah kamu.</label>
-                            <input class="form-control" id="input-password-hapus-profil" type="text" name="verifikasi-password" placeholder="Password Kamu">
+                            <input class="form-control" id="input-password-hapus-profil" type="text"
+                                   name="verifikasi-password" placeholder="Password Kamu">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -106,7 +108,6 @@
                 </div>
             </div>
         </div>
-
     </section>
 @endsection
 

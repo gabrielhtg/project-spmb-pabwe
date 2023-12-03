@@ -11,43 +11,8 @@
                     @include('admin-panel.sub_admin_panel.data_institut')
                     @include('admin-panel.sub_admin_panel.social_media')
                     @include('admin-panel.sub_admin_panel.hero_section')
+                    @include('admin-panel.sub_admin_panel.alamat_institusi')
 
-                    <div id="item-4" class="card shadow-sm">
-                        <div class="card-header bg-primary text-white">
-                            <span class="fs-5">Alamat Institusi</span>
-                        </div>
-                        <div class="card-body">
-{{--                            @include('admin-panel.sub_admin_panel.tambah_tombol_hero_section')--}}
-                            <form action="">
-                                <table class="table table-striped table-bordered">
-                                    <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Nama</th>
-                                        <th scope="col">Alamat</th>
-                                        <th scope="col"></th>
-                                        <th scope="col">Action</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Test</td>
-                                        <td>Test</td>
-                                        <td style="min-width: 120px; width: 120px">
-                                            <button class="btn btn-success">
-                                                <i class="bi bi-pen"></i>
-                                            </button>
-                                            <button class="btn btn-danger">
-                                                <i class="bi bi-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </form>
-                        </div>
-                    </div>
                 </div>
             </div>
 
