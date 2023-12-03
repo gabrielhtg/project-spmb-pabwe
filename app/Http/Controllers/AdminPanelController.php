@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AlamatInstitusiModel;
 use App\Models\data_institusi;
 use App\Models\HeroSectionModel;
 use App\Models\SocalMediaModel;
@@ -17,13 +18,15 @@ class AdminPanelController extends Controller
         $dataInstitusi = data_institusi::where('id', 1)->first();
         $dataSocialMedia = SocalMediaModel::all();
         $dataHeroSection = HeroSectionModel::where('id', 1)->first();
+        $dataAlamat = AlamatInstitusiModel::all();
 
         $data = [
             'indexActive' => 0,
             'admin' => $admin,
             'dataInstitusi' => $dataInstitusi,
             'socialMedia' => $dataSocialMedia,
-            'dataHeroSection' => $dataHeroSection
+            'dataHeroSection' => $dataHeroSection,
+            'dataAlamat' => $dataAlamat
         ];
 
         return view('admin-panel.adminpanel', $data);
@@ -60,8 +63,7 @@ class AdminPanelController extends Controller
 
         $dataInstitusi->nama_institusi = $request->input_nama_institusi;
         $dataInstitusi->singkatan_nama_institusi = $request->input_singkatan_nama_institusi;
-        $dataInstitusi->akreditasi_singkat = $request->input_akreditasi_institusi_singkat;
-        $dataInstitusi->akreditasi_lengkap = $request->input_akreditasi_institusi_lengkap;
+        $dataInstitusi->akreditasi = $request->input_akreditasi;
         $dataInstitusi->jargon = $request->input_jargon_institusi;
         $dataInstitusi->jumlah_dosen = $request->input_jumlah_dosen;
         $dataInstitusi->jumlah_mahasiswa = $request->input_jumlah_mahasiswa;
@@ -155,4 +157,20 @@ class AdminPanelController extends Controller
 
         return view('admin-panel.add_admin', $data);
     }
+
+    public function addAlamat (Request $request) {
+        AlamatInstitusiModel::create([
+            'nama' => $request->input_nama_alamat,
+            'alamat' => $request->input_alamat
+        ]);
+
+        return redirect()->route('admin-panel');
+    }
+
+    public function removeAlamat(Request $request)
+    {
+        AlamatInstitusiModel::where('id', $request->id)->first()->delete();
+        return redirect()->back();
+    }
+
 }

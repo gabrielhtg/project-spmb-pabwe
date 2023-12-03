@@ -26,11 +26,11 @@
                         <td>{{ $e->nama }}</td>
                         <td><a href="{{ $e->link }}">Klik Disini</a></td>
                         <td>{{ $e->icon }}</td>
-                        <td style="min-width: 120px; width: 120px">
+                        <td class="" style="min-width: 120px; width: 120px">
                             <button class="btn btn-success">
                                 <i class="bi bi-pen"></i>
                             </button>
-                            <form action="{{ route('removeSocialMedia') }}" method="post" class="d-inline">
+                            <form action="{{ route('removeSocialMedia') }}" class="d-inline" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <input type="hidden" name="id" value="{{ $e->id }}">

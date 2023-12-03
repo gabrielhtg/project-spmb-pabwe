@@ -16,8 +16,7 @@ class insert_data_institusi extends Seeder
         DB::table('data_institusi')->insert([
             'nama_institusi' => 'Institut Teknologi Del',
             'singkatan_nama_institusi' => 'IT Del',
-            'akreditasi_singkat' => 'B',
-            'akreditasi_lengkap' => 'BAIK',
+            'akreditasi' => 'B',
             'jargon' => 'MarTuhan, MarRoha, MarBisuk',
             'jumlah_dosen' => 300,
             'jumlah_mahasiswa' => 3500,

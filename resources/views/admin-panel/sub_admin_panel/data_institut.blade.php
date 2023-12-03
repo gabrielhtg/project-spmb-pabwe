@@ -22,9 +22,9 @@
             <div class="mb-3">
                 <label for="input_akreditasi" class="form-label fw-semibold">Akreditasi</label>
                 <select id="input_akreditasi" name="input_akreditasi" class="form-control">
-                    <option value="A">Unggul (A)</option>
-                    <option value="B">Baik Sekali (B)</option>
-                    <option value="C">Baik (C)</option>
+                    <option value="A" <?php echo ($dataInstitusi->akreditasi === 'A') ? 'selected' : ''; ?>>A</option>
+                    <option value="B" <?php echo ($dataInstitusi->akreditasi === 'B') ? 'selected' : ''; ?>>B</option>
+                    <option value="C" <?php echo ($dataInstitusi->akreditasi === 'C') ? 'selected' : ''; ?>>C</option>
                 </select>
             </div>
 

@@ -25,4 +25,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/save-hero-section', [AdminPanelController::class, 'saveHeroSection'])->name('saveHeroSection');
     Route::post('/updateHeroSection', [AdminPanelController::class, 'updateHeroSection'])->name('updateHeroSection');
     Route::delete('/remove-social-media', [AdminPanelController::class, 'removeSocialMedia'])->name('removeSocialMedia');
+    Route::post('/add-alamat', [AdminPanelController::class, 'addAlamat'])->name('addAlamat');
+    Route::delete('/remove-alamat', [AdminPanelController::class, 'removeAlamat'])->name('removeAlamat');
 });
