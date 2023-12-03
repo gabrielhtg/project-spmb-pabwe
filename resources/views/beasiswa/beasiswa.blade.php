@@ -29,10 +29,14 @@
             </div>
             <div class="col-md-8">
                 <div class="card-body">
-                    <p class="card-text"> Beasiswa IPS diberikan kepada mahasiswa dalam bentuk potongan SPP dengan aturan sebagai berikut: <br>
-                        a. Beasiswa Prestasi Per Semester (IPS) diberikan bagi semua mahasiswa pada tingkat 1, tingkat 2, tingkat 3, dan tingkat 4 kecuali mahasiswa pada semester terakhir masa studinya (semester 6 pada prodi DIII dan semester 8 pada prodi DIV dan S1)<br>
-                        b. Mahasiswa penerima Beasiswa Prestasi harus memiliki perilaku terpuji dan dibuktikan dengan Nilai Perilaku minimal AB.
-                    </p>
+                    <div class="card-text" style="text-align:justify; padding-right:20px"> Beasiswa IPS diberikan kepada mahasiswa dalam bentuk potongan SPP dengan aturan sebagai berikut: <br><br>
+                        <ol type="a">
+                        <li> Beasiswa Prestasi Per Semester (IPS) diberikan bagi semua mahasiswa pada tingkat 1, tingkat 2, tingkat 3, dan tingkat 4 kecuali mahasiswa pada semester terakhir masa studinya (semester 6 pada prodi DIII dan semester 8 pada prodi DIV dan S1)</li>
+                        <li>
+                            Mahasiswa penerima Beasiswa Prestasi harus memiliki perilaku terpuji dan dibuktikan dengan Nilai Perilaku minimal AB.
+                        </li>
+                        </ol>
+                    </div>
 
                     <a href="{{ asset('assets/pdf/beasiswa.pdf') }}" class="btn btn-primary" style="position: absolute; bottom: 10px; right: 10px;" download>Download PDF</a>
                 </div>
@@ -51,15 +55,19 @@
 
             <div class="col-md-8">
                 <div class="card-body">
-                    <p class="card-text"> a. Penghargaan “Best Performance” adalah penghargaan yang diberikan kepada
-                                            mahasiswa dengan kenaikan IPS paling tinggi antara IP semester ganjil dan IP
-                                            semester genap pada tiap tahun ajaran<br>
-                                            b. Penghargaan “Best Performance” diberikan kepada satu orang mahasiswa pada
-                                            setiap angkatan (tingkat).<br>
-                                            c. Penghargaan “Best Performance” diberikan pada Semester Ganjil tahun ajaran baru
+                    <div class="card-text" style="text-align:justify"> Penghargaan “Best Performance” adalah penghargaan yang diberikan kepada
+                        mahasiswa dengan kenaikan IPS paling tinggi antara IP semester ganjil dan IP
+                        semester genap pada tiap tahun ajaran <br><br>
+                        <ol type="a">
+                        <li> Penghargaan “Best Performance” diberikan kepada satu orang mahasiswa pada
+                            setiap angkatan (tingkat)</li>
+                        <li>
+                            Penghargaan “Best Performance” diberikan pada Semester Ganjil tahun ajaran baru
                                             bagi mahasiswa yang memperoleh anugerah “Best Performance” pada Perayaan
                                             Inaugurasi, Dies Natalis dan Wisuda IT Del.
-                    </p>
+                        </li>
+                        </ol>
+                    </div>
 
                     <a href="{{ asset('assets/pdf/beasiswa.pdf') }}" class="btn btn-primary" style="position: absolute; bottom: 10px; right: 10px;" download>Download PDF</a>
                 </div>

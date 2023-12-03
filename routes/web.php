@@ -11,6 +11,7 @@ use App\Http\Controllers\PrestasiController;
 use App\Http\Controllers\MitraController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\BeasiswaController;
+use App\Http\Controllers\FormPanelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,8 @@ Route::get('/admisi', function () {
 
 Route::get('/faq', [FaqController::class, 'getviewFaq'])->name('faq.faq');
 Route::get('/beasiswa', [BeasiswaController::class, 'getviewBeasiswa'])->name('beasiswa.beasiswa');
+Route::get('/form', [FormPanelController::class, 'getviewformpanel'])->name('chatbot.form');
+// Route::get('/form', function () {return view('chatbot.form');})->name('form');
 
 // Route::get('/beasiswa', function () {
 //     return view('beasiswa.beasiswa');
