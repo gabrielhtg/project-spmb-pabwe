@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset("/assets/css/global.css") }}">
     <link rel="stylesheet" href="{{ asset("/assets/css/kel1.css") }}">
+    <link rel="stylesheet" href="{{ asset("/assets/css/kel5.css") }}">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="{{ asset("/assets/css/admisi.css") }}">
-    <link rel="stylesheet" href="{{ asset("/assets/css/kel5.css") }}">
     <link rel="stylesheet" href="{{ asset("/assets/css/fasilitas.css") }}">
     <link rel="stylesheet" href="{{ asset("/assets/css/pengumuman.css") }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
@@ -17,87 +17,6 @@
 </head>
 <body>
 {{--    navbar start --}}
-<<<<<<< HEAD
-    <nav class="navbar fixed-top bg-body-tertiary navbar-expand-xl">
-        <div class="container-fluid">
-{{--            tampilan hp--}}
-            <a class="d-flex d-sm-none align-items-center navbar-brand" href="/">
-                <img src="{{ asset($dataInstitusi->logo_institusi) }}" alt="Logo" width="35" height="35" class="d-inline-block align-text-top">
-                <div class="ms-3 lh-1">
-                    <span class="fs-3"><strong>SPMB {{ $dataInstitusi->singkatan_nama_institusi }}</strong></span>
-                </div>
-            </a>
-{{--            tampilan hp end--}}
-
-{{--            tampilan desktop--}}
-            <a class="d-none d-sm-flex align-items-center navbar-brand" href="/">
-                <img src="{{ asset($dataInstitusi->logo_institusi) }}" alt="Logo" width="40" height="40" class="d-inline-block align-text-top">
-                <div class="ms-2 lh-1">
-                    <span class="fs-6"><strong>SPMB {{ $dataInstitusi->nama_institusi }}</strong></span>
-                    <br>
-                    <span class="fs-8"><i>{{ $dataInstitusi->jargon }}</i></span>
-                </div>
-            </a>
-{{--            tampilan desktop end--}}
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <div class="mx-auto">
-                    <ul class="navbar-nav ms-auto me-3">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Program
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="nav-item dropdown">
-                            <a class="nav-link" href="/admisi">Admisi</a>
-{{--                            <ul class="dropdown-menu">--}}
-{{--                                <li><a href="/admisi" class="dropdown-item">Jenjang Pendidikan</a></li>--}}
-{{--                                <li><a href="#" class="dropdown-item">Jalur Pendaftaran</a></li>--}}
-{{--                            </ul>--}}
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Kontak</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="/prestasi">Prestasi</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('beasiswa.beasiswa') }}">Beasiswa</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Akreditasi</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('faq.faq') }}">FAQ</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ Route('fasilitas.asrama')}}">Fasilitas</a>
-                        </li>
-                    </ul>
-                </div>
-                <a class="d-none d-xl-inline" href="{{ route('pengumuman') }}">
-                    <button class="btn btn-primary"
-                            >Daftar Sekarang</button>
-                </a>
-                <a class="d-xl-none text-primary text-decoration-none">
-                    <span><strong>Daftar Sekarang</strong></span>
-                </a>
-=======
 <nav class="navbar fixed-top bg-body-tertiary navbar-expand-xl">
     <div class="container-fluid">
         {{--            tampilan hp--}}
@@ -106,7 +25,6 @@
                  class="d-inline-block align-text-top">
             <div class="ms-3 lh-1">
                 <span class="fs-3"><strong>SPMB {{ $dataInstitusi->singkatan_nama_institusi }}</strong></span>
->>>>>>> dev
             </div>
         </a>
         {{--            tampilan hp end--}}
@@ -155,7 +73,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Beasiswa</a>
+                        <a class="nav-link" href="{{ route('beasiswa.beasiswa') }}">Beasiswa</a>
                     </li>
 
                     <li class="nav-item">
@@ -163,7 +81,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">FAQ</a>
+                        <a class="nav-link" href="{{ route('faq.faq') }}">FAQ</a>
                     </li>
 
                     <li class="nav-item">

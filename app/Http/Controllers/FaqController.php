@@ -6,13 +6,22 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Faq;
 use App\Models\data_institusi;
+use App\Models\SocalMediaModel;
+use App\Models\HeroSectionModel;
 
 class FaqController extends Controller
 {
     public function getviewFaq()
     {
         $dataInstitusi = data_institusi::where('id', 1)->first();
-        $data = ['dataInstitusi'=> $dataInstitusi];
+        $dataHeroSection = HeroSectionModel::where('id', 1)->first();
+        $dataSosmed = SocalMediaModel::all();
+
+        $data = [
+            'dataInstitusi' => $dataInstitusi,
+            'dataHeroSection' => $dataHeroSection,
+            'dataSosmed' => $dataSosmed
+        ];
         return view("faq.faq", $data);
     }
 

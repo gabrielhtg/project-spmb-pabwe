@@ -55,7 +55,7 @@
 
             <div class="col-md-8">
                 <div class="card-body">
-                    <div class="card-text" style="text-align:justify"> Penghargaan “Best Performance” adalah penghargaan yang diberikan kepada
+                    <div class="card-text" style="text-align:justify; padding-right:20px"> Penghargaan “Best Performance” adalah penghargaan yang diberikan kepada
                         mahasiswa dengan kenaikan IPS paling tinggi antara IP semester ganjil dan IP
                         semester genap pada tiap tahun ajaran <br><br>
                         <ol type="a">
@@ -67,7 +67,7 @@
                                             Inaugurasi, Dies Natalis dan Wisuda IT Del.
                         </li>
                         </ol>
-                    </div>
+                    </div><br>
 
                     <a href="{{ asset('assets/pdf/beasiswa.pdf') }}" class="btn btn-primary" style="position: absolute; bottom: 10px; right: 10px;" download>Download PDF</a>
                 </div>
@@ -82,7 +82,7 @@
     <img src="{{ asset("/assets/img/icon2.png") }}" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; transition: transform 0.5s ease-in-out;" class="d-block w-100" alt="gambar-1">
   </div>
   <div id="chat-form" style="display: none; position: fixed; bottom: 20px; right: 80px; z-index: 1000; max-width: 300px; transition: all 0.5s ease-in-out;">
-    <div id="additional-buttons" style="display: flex; justify-content: space-between; margin-top: 10px;">
+    <div id="additional-buttons" style1="display: flex; justify-content: space-between; margin-top: 10px;">
       <div class="additional-button d-flex justify-content-center align-items-center" style="width: 70px; height: 65px; border-radius: 50%; background-color: rgb(11,94,215); color: #fff; text-align: center; line-height: 50px; cursor: pointer; margin-right: 25px; font-size: 25px;" onclick="openWhatsApp()" onmouseover="this.style.backgroundColor='#0056b3'" onmouseout="this.style.backgroundColor='rgb(11,94,215)'">
         <i class="fab fa-whatsapp"></i>
       </div>

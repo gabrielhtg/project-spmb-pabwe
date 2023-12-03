@@ -1,0 +1,57 @@
+.mt-6 {
+  margin-top: 300px;
+}
+
+.pt-6 {
+  padding-top: 150px;
+}
+
+.card-admisi {
+  width: 900px;
+}
+
+.tombol-admisi {
+  padding: 5px 30px;
+  background-color: #47A5D4;
+  border-style: none;
+}
+
+.persyaratan-khusus-line {
+  background-color: black;
+  height: 1px;
+  width: 230px;
+  transition: all 0.3s ease;
+}
+
+.persyaratan-khusus-line-mobile {
+  background-color: black;
+  height: 1px;
+  width: 160px;
+  transition: all 0.3s ease;
+}
+
+.biaya-studi-line {
+  background-color: black;
+  height: 1px;
+  width: 140px;
+  transition: all 0.3s ease;
+}
+
+.biaya-studi-line-mobile {
+  background-color: black;
+  height: 1px;
+  width: 100px;
+  transition: all 0.3s ease;
+}
+
+.gambar {
+  width: 500px;
+  height: 280px;
+  background-color: #148ce4;
+}
+
+.garis-biaya {
+  width: 70px;
+  height: 1px;
+  background-color: #47A5D4;
+}

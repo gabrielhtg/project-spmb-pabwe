@@ -7,11 +7,9 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\FasilitasController;
 use App\Http\Controllers\PengumumanController;
-use App\Http\Controllers\PrestasiController;
-use App\Http\Controllers\MitraController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\BeasiswaController;
-use App\Http\Controllers\FormPanelController;
+use App\Http\Controllers\MitraController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,20 +28,6 @@ Route::get('/admisi', function () {
     return view('admisi.admisi');
 });
 
-// Route::get('/faqs', function () {
-//     return view('faq.faq');
-// });
-
-Route::get('/faq', [FaqController::class, 'getviewFaq'])->name('faq.faq');
-Route::get('/beasiswa', [BeasiswaController::class, 'getviewBeasiswa'])->name('beasiswa.beasiswa');
-Route::get('/form', [FormPanelController::class, 'getviewformpanel'])->name('chatbot.form');
-// Route::get('/form', function () {return view('chatbot.form');})->name('form');
-
-// Route::get('/beasiswa', function () {
-//     return view('beasiswa.beasiswa');
-// });
-
-
 Route::get('/login', [AuthController::class, 'getLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'postLogin'])->name('post.login');
 Route::get('/logout', [AuthController::class, 'getLogout'])->name('logout');
@@ -52,16 +36,6 @@ Route::get('/logout', [AuthController::class, 'getLogout'])->name('logout');
 Route::middleware('auth')->group(function () {
     Route::prefix('/admin-panel')->group(function () {
         Route::get('/', [AdminPanelController::class, 'getAdminPanel'])->name('admin-panel');
-        Route::get('/spmb-dashboard', [AdminPanelController::class, 'getDashboardPanel'])->name('spmb-dashboard');
-        Route::get('/admisi-panel', [AdminPanelController::class, 'getAdmisiPanel'])->name('admisi-panel');
-        Route::get('/edit-profile', [AdminPanelController::class, 'getEditProfile'])->name('edit-profile');
-
-        /* Routing Kelompok 3 -  (Prestasi, Testimoni)*/
-        /* Bagian Prestasi */
-        Route::get('/prestasipanel', [AdminPanelController::class, 'getPrestasiPanel'])->name('prestasipanel');
-
-        /* Bagian Testimoni */
-        Route::get('/testimonipanel', [AdminPanelController::class, 'getTestimoniPanel'])->name('testimonipanel');
         Route::get('/edit-profile', [AdminPanelController::class, 'getEditProfile'])->name('edit-profile');
         Route::get('/add-admin', [AdminPanelController::class, 'getAddAdminView'])->name('add-admin');
     });
@@ -74,16 +48,8 @@ Route::get('/fasilitas-Area-Mahasiswa', [FasilitasController::class, "getviewAre
 Route::get('/fasilitas-Laboratorium', [FasilitasController::class, "getviewLaboratorium"])->name("fasilitas.laboratorium");
 Route::get('/fasilitas-Layanan-Makanan', [FasilitasController::class, "getviewLayananMakanan"])->name("fasilitas.layananmakanan");
 Route::get('/pengumuman', [PengumumanController::class, 'getviewPengumuman'])->name("pengumuman");
-
-//======
-Route::get('/mitra/mitra', [MitraController::class, 'mitra'])->name('mitra.mitra');
-
-Route::get('/form', function () {
-    return view('chatbot.form');
-})->name('form');
+Route::get('/faq', [FaqController::class, 'getviewFaq'])->name("faq.faq");
+Route::get('/beasiswa', [BeasiswaController::class, 'getviewBeasiswa'])->name("beasiswa.beasiswa");
 
 //----
-Route::get('/prestasi', [PrestasiController::class, 'getviewPrestasi'])->name('prestasi.prestasiOverview');
-Route::get('/prestasiInstitut', [PrestasiController::class, 'getviewPrestasiInstitut'])->name('prestasi.prestasiInstitut');
-Route::get('/prestasiDosenStaff', [PrestasiController::class, 'getviewPrestasiDosenStaff'])->name('prestasi.prestasiDosenStaff');
-Route::get('/prestasiMahasiswa', [PrestasiController::class, 'getviewPrestasiMahasiswa'])->name('prestasi.prestasiMahasiswa');
+Route::get('/mitra/mitra', [MitraController::class, 'mitra'])->name('mitra.mitra');
