@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\admin;
 use App\Models\data_institusi;
 use App\Models\Fasilitas;
+use App\Models\Pengumuman;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -135,48 +136,47 @@ class AdminPanelController extends Controller
     return redirect()->route('fasilitas-admin');
     }
 
-    public function postEdit(Request $request)
-{
-    $request->validate([
-        'kategori' => 'required',
-        'nama_fasilitas' => 'required',
-        'deskripsi_fasilitas' => 'required',
-        'nama_file' => 'required',
-        'file_gambar' => 'nullable|image|mimes:jpeg,jpg,png|max:2048'
-    ]);
+    public function postEditFasilitas(Request $request)
+    {
+        // Mendapatkan user yang sedang login
+        $admin = Auth::user();
 
-    // Mendapatkan user yang sedang login
-    $auth = Auth::user();
+        $request->validate([
+            'id' => 'required|exists:fasilitas',
+            'kategori' => 'required',
+            'nama_fasilitas' => 'required',
+            'deskripsi_fasilitas' => 'required',
+            'nama_file' => 'required',
+            'file_gambar' => 'nullable|image|mimes:jpeg,jpg,png|max:2048'
+        ]);
 
-    // Mengambil data fasilitas berdasarkan ID
-    $fasilitas = Fasilitas::find($request->id);
+        // Mengambil data fasilitas berdasarkan ID
+        $fasilitas = Fasilitas::where("id", $request->id)->first();
 
-    if (!$fasilitas) {
-        // Handle jika fasilitas tidak ditemukan
-        return redirect()->route('fasilitas-admin')->with('error', 'Fasilitas tidak ditemukan.');
+        if ($fasilitas) {
+            // Mengupdate data fasilitas
+            $fasilitas->kategori = $request->kategori;
+            $fasilitas->nama_fasilitas = $request->nama_fasilitas;
+            $fasilitas->deskripsi_fasilitas = $request->deskripsi_fasilitas;
+            $fasilitas->nama_file = $request->nama_file;
+            // Mengupload gambar baru jika ada
+            if ($request->hasFile('file_gambar')) {
+                $gambar = $request->file('file_gambar');
+                $fileExtension = $request->file_gambar->extension();
+                $nama_gambar = $request->nama_file . '.' . $fileExtension;
+                $gambar->move(public_path('path_ke_folder_upload'), $nama_gambar);
+        
+                // Update both nama_file and file_gambar
+                $fasilitas->nama_file = $request->nama_file;
+                $fasilitas->file_gambar = $nama_gambar;
+            }
+        
+            // Menyimpan perubahan
+            $fasilitas->save();
     }
-
-    // Mengupdate data fasilitas
-    $fasilitas->kategori = $request->kategori;
-    $fasilitas->nama_fasilitas = $request->nama_fasilitas;
-    $fasilitas->deskripsi_fasilitas = $request->deskripsi_fasilitas;
-    $fasilitas->nama_file = $request->nama_file;
-
-    // Mengupload gambar baru jika ada
-    if ($request->hasFile('file_gambar')) {
-        $gambar = $request->file('file_gambar');
-        $fileExtension = $request->file_gambar->extension();
-        $nama_gambar = $request->nama_file . '.' . $fileExtension;;
-        $gambar->move(public_path('path_ke_folder_upload'), $nama_gambar);
-        $fasilitas->file_gambar = $nama_gambar;
-    }
-
-    // Menyimpan perubahan
-    $fasilitas->save();
-
     // Redirect dengan pesan sukses
     return redirect()->route('fasilitas-admin')->with('success', 'Fasilitas berhasil diperbarui.');
-}
+    }
 
     public function destroy($id)
     {
@@ -206,9 +206,11 @@ class AdminPanelController extends Controller
     public function getPengumumanPanel()
     {
         $admin = Auth::user();
+        $pengumuman = Pengumuman::orderBy('created_at', 'desc')->get();
         $data = [
             'indexActive' => 2,
-            'admin' => $admin
+            'admin' => $admin,
+            'pengumuman' => $pengumuman,
         ];
         return view('admin-panel.pengumumanpanel', $data);
     }
@@ -234,6 +236,42 @@ class AdminPanelController extends Controller
         ];
         return view('admin-panel.sub_admin_panel.pengumumanAddpanel', $data);
     }
+
+    public function postEditPengumuman(Request $request)
+    {
+        $admin = Auth::user();
+
+        $request->validate([
+            'id' =>'required|exists:pengumuman',
+            'kategoriPengumuman' => 'required',
+            'judulPengumuman' => 'required',
+            'filePengumuman' => 'required|mimes:pdf',
+            'tanggalPengumuman' => 'required|date_format:d F Y',
+        ]);
+        
+
+        $pengumuman = Pengumuman::where("id", $request->id)->first();
+
+        if ($pengumuman){
+            $pengumuman->kategoriPengumuman = $request->kategoriPengumuman;
+            $pengumuman->judulPengumuman = $request->judulPengumuman;
+            $pengumuman->tanggalPengumuman = $request->tanggalPengumuman;
+
+            if($request->hasFile('filePengumuman')){
+                $file = $request->file('filePengumuman');
+                $fileExtension = $request->filePengumuman->extension();
+                $namaFile = $request->judulPengumuman . '.' . $fileExtension;
+                $file->move(public_path('assets/file_Pengumuman'), $namaFile);
+
+                $pengumuman->filePengumuman = $namaFile;
+            }
+
+            $pengumuman->save();
+        }
+
+        return redirect()->route('pengumuman-panel');
+    }
+    
 
     public function getAdmisiPanel () {
         $admin = Auth::user();

@@ -117,6 +117,12 @@
                     <a href="{{ route("spmb-dashboard") }}">
                         <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="bi bi-mortarboard"></i></button>
                     </a>
+                    <a href="{{ route("fasilitas-admin") }}">
+                        <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="fas fa-university"></i></button>
+                    </a>
+                    <a href="{{ route("pengumuman-panel") }}">
+                        <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="fas fa-bullhorn"></i></button>
+                    </a>
                     <a href="{{ route("spmb-dashboard") }}">
                         <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="fa-regular fa-comment-dots"></i></button>
                     </a>

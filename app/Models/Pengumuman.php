@@ -10,6 +10,8 @@ class Pengumuman extends Model
     use HasFactory;
 
     protected $table = 'pengumuman';
-    protected $primaryKey = 'idPengumuman';
-    protected $fillable = ['judulPengumuman', 'kategoriPengumuman', 'tanggalPengumuman'];
+    protected $fillable = [ 'kategoriPengumuman', 'judulPengumuman', 'filePengumuman', 'tanggalPengumuman'];
+    protected $casts = [
+        'tanggalPengumuman' => 'datetime',
+    ];
 }

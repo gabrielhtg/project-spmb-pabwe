@@ -81,26 +81,25 @@
                                 <td>{{ $item->file_gambar}}</td>
                                 <td>{{ $admin->firstname}}</td>
                                 <td>{{ date('d F Y - H:i', strtotime($item->created_at)) }}</td>
-                                <td>
+                                <td style="min-width: 120px; width: 120px">
                                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                    <button class="btn btn-warning btn-sm"
-                                            onclick="showModalEdit('{{ $item->kategori }}', '{{ $item->nama_fasilitas }}', '{{ $item->deskripsi_fasilitas }}', '{{ $item->nama_file }}', '{{ $item->file_gambar }}')">
-                                        Edit
-                                    </button>
-
+                                        <button class="btn btn-success"
+                                                onclick="showModalEdit({{$item->id}},'{{ $item->kategori }}', '{{ $item->nama_fasilitas }}', '{{ $item->deskripsi_fasilitas }}', '{{ $item->nama_file }}', '{{ $item->file_gambar }}')">
+                                            <i class="bi bi-pen"></i>
+                                        </button>
                                         <form action="{{ route('post.destroy', $item->id) }}" method="post">
                                             @csrf
                                             @method('DELETE')
-                                            <button class="btn btn-danger btn-sm">Hapus</button>
+                                            <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
                                         </form>
                                     </div>
                                     </td>
                                 </tr>
                             @endforeach
-                            @else
-                                <tr>
-                                    <td colspan="8" class="text-center text-muted">Belum ada data tersedia!</td>
-                                </tr>
+                        @else
+                            <tr>
+                                <td colspan="8" class="text-center text-muted">Belum ada data tersedia!</td>
+                            </tr>
                         @endif
                     </tbody>
                 </table>
@@ -109,7 +108,7 @@
                 <div class="modal fade" id="editFasilitas" tabindex="-1" aria-labelledby="editFasilitasLabel" aria-hidder="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <div class="model-header">
+                            <div class="modal-header">
                                 <h5 class="modal-title" id="editFasilitasLabel">Ubah Data Fasilitas</h5>
                                 <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
@@ -126,7 +125,7 @@
                                             <option value="Area Mahasiswa">Area Mahasiswa</option>
                                             <option value="Laboratorium">Laboratorium</option>
                                             <option value="Layanan Makanan">Layanan Makanan</option>
-                                        </select>
+                                        </select> 
                                     </div>
 
                                     <div class="mb-3">
@@ -142,13 +141,13 @@
                                     <p class="fw-bold">Edit Gambar Fasilitas</p>
 
                                     <div class="mb-3">
-                                        <label for="inputNamaFasilitas" class="form-label">Nama File</label>
-                                        <input type="text" class="form-control" id="inputNamaFasilitas" name="nama_file">
+                                        <label for="inputNamaFile" class="form-label">Nama File</label>
+                                        <input type="text" class="form-control" id="inputNamaFile" name="nama_file">
                                     </div>
 
                                     <div class="mb-3">
                                         <label for="inputFileGambar" class="form-label">Tambahkan File (JPG, JPEG, PNG)</label>
-                                        <input type="file" class="form-control" id="inputFileGambar" name="file_gambar">
+                                        <input type="file" class="form-control" id="inputFileGambar" name="file_gambar" accept="image/jpeg, image/png">
                                     </div>
                                 </div>
 
@@ -160,18 +159,16 @@
                         </div>
                     </div>
                 </div>
+                <!-- AKHIR MODAL EDIT -->
             </div>
         </div>
     </div>
 </div>
-@endsection
-
-<!-- TAMBAHKAN JAVASCRIPTNYA DI SINI -->
-@section('other-js')
     <script>
-        function showModalEdit(kategori, nama_fasilitas, deskripsi_fasilitas, nama_file, file_gambar)
+        function showModalEdit(id, kategori, nama_fasilitas, deskripsi_fasilitas, nama_file, file_gambar)
         {
             const modalEditFasilitas = document.getElementById("editFasilitas");
+            const inputId = document.getElementById("inputEditFasilitas");
             const inputKategori = document.getElementById("inputEditKategori")
             const inputNamaFasilitas = document.getElementById("inputNamaFasilitas");
             const inputDeskripsiFasilitas = document.getElementById("inputDeskripsiFasilitas");                                          
@@ -179,6 +176,7 @@
             const inputFileGambar = document.getElementById("inputFileGambar");
 
             inputKategori.value = kategori;
+            inputId.value = id;
             inputNamaFasilitas.value = nama_fasilitas;
             inputDeskripsiFasilitas.value = deskripsi_fasilitas;
             inputNamaFile.value = nama_file;
@@ -189,3 +187,4 @@
         }
     </script>
 @endsection
+

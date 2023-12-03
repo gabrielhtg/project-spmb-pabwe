@@ -9,9 +9,10 @@ class CreatePengumumanTable extends Migration
     public function up()
     {
         Schema::create('pengumuman', function (Blueprint $table) {
-            $table->id('idPengumuman');
-            $table->string('judulPengumuman');
+            $table->id();
             $table->string('kategoriPengumuman');
+            $table->string('judulPengumuman');
+            $table->string('filePengumuman');
             $table->date('tanggalPengumuman');
             $table->timestamps();
         });
