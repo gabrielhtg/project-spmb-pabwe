@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('prestasi', function (Blueprint $table) {
             $table->id();
-            $table->table('jenis_prestasi', ['Institut', 'Dosen', 'Mahasiswa']);
+            $table->enum('jenis_prestasi', ['Institut', 'Dosen', 'Mahasiswa']);
             $table->string('photo');
             $table->text('deskripsi');
             $table->string('judul_prestasi');
