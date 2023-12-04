@@ -10,6 +10,4 @@ class data_institusi extends Model
     use HasFactory;
 
     protected $table = 'data_institusi';
-
-    public $timestamps = true;
 }
