@@ -178,11 +178,13 @@
             <div class="d-none d-md-inline w-25">
                 <h5 class="fw-bold">About Us</h5>
                 <ul class="nav flex-column">
-                    <li class="nav-item mb-2 text-muted">Institut Teknologi Del</li>
+                    @foreach($dataAlamat as $e)
+                        <li class="nav-item mb-2 text-muted fw-semibold">{{ $e->nama }}</li>
 
-                    <li class="nav-item mb-2 text-muted">
-                        Jl. Sisingamangaraja, Sitoluama Laguboti, Toba Sumatera Utara, Indonesia
-                    </li>
+                        <li class="nav-item mb-2 text-muted">
+                            {{ $e->alamat }}
+                        </li>
+                    @endforeach
                 </ul>
             </div>
 

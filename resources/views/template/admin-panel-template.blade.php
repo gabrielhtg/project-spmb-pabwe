@@ -46,7 +46,7 @@
 
                 <div class="d-flex flex-column row-gap-3 w-100">
                     <a href="{{ route("admin-panel") }}">
-                        <button id="btn_dashboard" class="btn_sidebar_kecil btn_sidebar_active"><i class="bi bi-speedometer"></i></button>
+                        <button id="btn_dashboard-kecil" class="btn_sidebar_kecil btn_sidebar_active"><i class="bi bi-speedometer"></i> </button>
                     </a>
                 </div>
             </div>

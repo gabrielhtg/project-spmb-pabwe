@@ -8,15 +8,14 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5 fw-semibold">Tambah Alamat Media</h1>
+                <h1 class="modal-title fs-5 fw-semibold">Tambah Alamat</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="{{ route('addAlamat') }}" method="post">
                 @csrf
                 <div class="modal-body">
-
                     <div class="mb-3">
-                        <label for="input_nama_alamat" class="form-label">Nama</label>
+                        <label for="input_nama_alamat" class="form-label text-start">Nama</label>
                         <input type="text" class="form-control" id="input_nama_alamat" name="input_nama_alamat">
                     </div>
                     <div class="mb-3">
