@@ -52,7 +52,7 @@
                                 <td style="min-width: 120px; width: 120px">
                                     <div class="d-grid gap-2 d-md-flex align-middle text-center col-md-6">
                                         <button class="btn btn-success"
-                                                onclick="showModalEdit({{$item->id}},'{{$item->kategoriPengumuman}}','{{$item->judulPengumuman}}','{{$item->filePengumuman}}','{{$item->tanggalPengumuman}}')">
+                                                onclick="showModalEdit({{$item->id}},'{{$item->kategoriPengumuman}}','{{$item->judulPengumuman}}','{{$item->filePengumuman}}','{{date('Y-m-d', strtotime($item->tanggalPengumuman))}}')">
                                                 <i class="bi bi-pen"></i>
                                         </button>
                                         <form action="{{ route('post.destroy.pengumuman',  ['id' => $item->id]) }}" method="post">
@@ -131,22 +131,25 @@
 </div> 
     <script>
         function showModalEdit(id, kategoriPengumuman, judulPengumuman, filePengumuman, tanggalPengumuman) {
-        const modalEditPengumuman = document.getElementById("editPengumuman");
-        const inputId = document.getElementById("inputEditPengumuman");
-        const inputKategori = document.getElementById("inputEditKategori");
-        const inputJudulPengumuman = document.getElementById("inputjudulPengumuman");
-        const inputFilePengumuman = document.getElementById("inputfilePengumuman");
-        const inputTanggalPengumuman = document.getElementById("inputtanggalPengumuman");
+    const modalEditPengumuman = document.getElementById("editPengumuman");
+    const inputId = document.getElementById("inputEditPengumuman");
+    const inputKategori = document.getElementById("inputEditKategori");
+    const inputJudulPengumuman = document.getElementById("inputjudulPengumuman");
+    const inputFilePengumuman = document.getElementById("inputfilePengumuman");
+    const inputTanggalPengumuman = document.getElementById("inputtanggalPengumuman");
 
-        inputId.value = id;
-        inputKategori.value = kategoriPengumuman;
-        inputJudulPengumuman.value = judulPengumuman;
-        inputFilePengumuman.value = '';
-        inputTanggalPengumuman.value = tanggalPengumuman;
+    inputId.value = id;
+    inputKategori.value = kategoriPengumuman;
+    inputJudulPengumuman.value = judulPengumuman;
+    inputFilePengumuman.value = '';
+    
+    // Set nilai awal pada elemen input tanggal
+    inputTanggalPengumuman.value = tanggalPengumuman;
 
-        var myModal = new bootstrap.Modal(modalEditPengumuman);
-        myModal.show();
-    }
+    var myModal = new bootstrap.Modal(modalEditPengumuman);
+    myModal.show();
+}
+
 
     </script>
 @endsection

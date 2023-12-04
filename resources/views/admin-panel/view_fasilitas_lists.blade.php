@@ -82,17 +82,33 @@
                                 <td>{{ $admin->firstname}}</td>
                                 <td>{{ date('d F Y - H:i', strtotime($item->created_at)) }}</td>
                                 <td style="min-width: 120px; width: 120px">
-                                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                                         <button class="btn btn-success"
                                                 onclick="showModalEdit({{$item->id}},'{{ $item->kategori }}', '{{ $item->nama_fasilitas }}', '{{ $item->deskripsi_fasilitas }}', '{{ $item->nama_file }}', '{{ $item->file_gambar }}')">
                                             <i class="bi bi-pen"></i>
                                         </button>
-                                        <form action="{{ route('post.destroy', $item->id) }}" method="post">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
-                                        </form>
-                                    </div>
+                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="bi bi-trash"></i></button>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Hapus fasilitas!</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Apakah anda yakin ingin menghapus {{ $item->nama_fasilitas }}?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                        <form action="{{ route('post.destroy', $item->id) }}" method="post">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-danger">Hapus</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach

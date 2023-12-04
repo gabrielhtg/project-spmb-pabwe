@@ -35,8 +35,11 @@ class PengumumanController extends Controller
         // Ambil ekstensi file gambar
         $fileExtension = $request->filePengumuman->extension();
 
+        // Ubah spasi dalam judulPengumuman menjadi _
+        $judulPengumumanTanpaSpasi = str_replace(' ', '_', $request->judulPengumuman);
+
         // Nama file gabungan dengan ekstensi
-        $namaFile = $request->judulPengumuman . '.' . $fileExtension;
+        $namaFile = $judulPengumumanTanpaSpasi . '.' . $fileExtension;
 
         // Pindahkan file gambar ke direktori yang ditentukan
         $request->filePengumuman->move(public_path('assets/file_Pengumuman'), $namaFile);

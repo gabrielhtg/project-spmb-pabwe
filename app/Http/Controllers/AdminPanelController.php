@@ -113,8 +113,10 @@ class AdminPanelController extends Controller
         // Ambil ekstensi file gambar
     $fileExtension = $request->file_gambar->extension();
 
+    $judulFasilitasTanpaSpasi = str_replace(' ', '_', $request->nama_file);
+
     // Nama file gabungan dengan ekstensi
-    $namaGambar = $request->nama_file . '.' . $fileExtension;
+    $namaGambar = $judulFasilitasTanpaSpasi . '.' . $fileExtension;
 
     // Pindahkan file gambar ke direktori yang ditentukan
     $request->file_gambar->move(public_path('assets/img/fasilitas'), $namaGambar);

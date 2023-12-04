@@ -51,7 +51,7 @@
                             <td style="text-align:center;">{{$counter++}}</td>
                             <td style="text-align:center;"><button type="button" class="btn btn-light" disabled>{{$item->kategoriPengumuman}}</button>
                             </td>
-                            <td><a href="#">{{$item->judulPengumuman}}</a></td>
+                            <td><a href="{{ asset('assets/file_Pengumuman/' . $item->filePengumuman) }}" target="_blank">{{$item->judulPengumuman}}</a></td>
                             <td style="text-align:center;">{{ date('d F Y', strtotime($item->tanggalPengumuman)) }}</td>
                         </tr>
                         @endforeach
