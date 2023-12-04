@@ -103,8 +103,8 @@
             buttonSidebarKecil[i].classList.remove("btn_sidebar_active");
         }
 
-        buttonSidebar[{{ $indexActive }}].classList.add("btn_sidebar_active");
-        buttonSidebarKecil[{{ $indexActive }}].classList.add("btn_sidebar_active");
+        buttonSidebar[{{ $indexActive = $indexActive ?? -1 }}].classList.add("btn_sidebar_active");
+        buttonSidebarKecil[{{ $indexActive = $indexActive ?? -1 }}].classList.add("btn_sidebar_active");
     </script>
 {{--    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>--}}
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>

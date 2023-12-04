@@ -28,11 +28,13 @@ class DashboardController extends Controller
 
     public function getAdmisi () {
         $dataInstitusi = data_institusi::where('id', 1)->first();
-//        $dataHero = HeroSectionModel::where('id', 1)->first();
+        $dataAlamat = AlamatInstitusiModel::all();
+        $dataSosmed = SocalMediaModel::all();
 
         $data = [
             'dataInstitusi' => $dataInstitusi,
-//            'dataHero' => $dataHero
+            'dataSosmed' => $dataSosmed,
+            'dataAlamat' => $dataAlamat
         ];
 
         return view('admisi.admisi-tanggal-penting', $data);
