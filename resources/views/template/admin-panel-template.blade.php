@@ -32,6 +32,12 @@
                         Dashboard
                     </button>
                 </a>
+                <a href="{{ route("admisi-panel") }}">
+                    <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start">
+                        <i class="fa-regular fa-note-sticky"></i>
+                        Admisi
+                    </button>
+                </a>
             </div>
         </div>
         <div id="geser_besar" style="width: 18rem; min-width: 18rem; height: 100vh"></div>
@@ -47,6 +53,9 @@
                 <div class="d-flex flex-column row-gap-3 w-100">
                     <a href="{{ route("admin-panel") }}">
                         <button id="btn_dashboard-kecil" class="btn_sidebar_kecil btn_sidebar_active"><i class="bi bi-speedometer"></i> </button>
+                    </a>
+                    <a href="{{ route("admisi-panel") }}">
+                        <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="fa-regular fa-note-sticky"></i></button>
                     </a>
                 </div>
             </div>

@@ -197,4 +197,13 @@ class AdminPanelController extends Controller
         return redirect()->back();
     }
 
+    public function getAdmisiPanel () {
+        $admin = Auth::user();
+        $data = [
+            'indexActive' => 1,
+            'admin' => $admin
+        ];
+        return view('admin-panel.admisi_panel', $data);
+    }
+
 }
