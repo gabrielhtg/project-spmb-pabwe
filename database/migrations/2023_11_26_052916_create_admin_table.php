@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('lastname', 25);
             $table->integer('created_by')->nullable(true);
             $table->string('profile_pict', 100)->nullable(true);
-            $table->rememberToken();
             $table->timestamps();
         });
     }

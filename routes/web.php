@@ -24,11 +24,9 @@ use App\Http\Controllers\MitraController;
 
 Route::get('/', [DashboardController::class, 'getDashboard'])->name('dashboard');
 
-Route::get('/admisi', [DashboardController::class, 'getAdmisi'])->name('admisi');
-Route::get('/admisi/jalur-pendaftaran', [DashboardController::class, 'getJalurPendaftaran'])->name('jalur-pendaftaran');
-Route::get('/admisi/biaya-studi', [DashboardController::class, 'getBiayaStudi'])->name('biaya-studi');
-Route::get('/admisi/persyaratan-khusus', [DashboardController::class, 'getPersyaratanKhusus'])->name('persyaratan-khusus');
-
+Route::get('/admisi', function () {
+    return view('admisi.admisi');
+});
 
 Route::get('/faqs', function () {
     return view('faq.faq');
@@ -44,17 +42,17 @@ Route::get('/logout', [AuthController::class, 'getLogout'])->name('logout');
 Route::middleware('auth')->group(function () {
     Route::prefix('/admin-panel')->group(function () {
         Route::get('/', [AdminPanelController::class, 'getAdminPanel'])->name('admin-panel');
+        Route::post('/', [AdminPanelController::class, 'postAdminPanel'])->name('post.admin-panel-dashboard');
         Route::get('/spmb-dashboard', [AdminPanelController::class, 'getDashboardPanel'])->name('spmb-dashboard');
         Route::get('/admisi-panel', [AdminPanelController::class, 'getAdmisiPanel'])->name('admisi-panel');
         Route::get('/edit-profile', [AdminPanelController::class, 'getEditProfile'])->name('edit-profile');
-        Route::get('/add-admin', [AdminPanelController::class, 'getAddAdminView'])->name('add-admin');
 
         /* Routing Kelompok 3 -  (Prestasi, Testimoni)*/
         /* Bagian Prestasi */
-        Route::get('/prestasipanel', [AdminPanelController::class, 'getPrestasiPanel'])->name('prestasipanel');
+        Route::get('/prestasi', [AdminPanelController::class, 'getPrestasiPanel'])->name('prestasipanel');
 
         /* Bagian Testimoni */
-        Route::get('/testimonipanel', [AdminPanelController::class, 'getTestimoniPanel'])->name('testimonipanel');
+        Route::get('/testimoni', [AdminPanelController::class, 'getTestimoniPanel'])->name('testimonipanel');
 
     });
 });
@@ -67,33 +65,15 @@ Route::get('/fasilitas-Laboratorium', [FasilitasController::class, "getviewLabor
 Route::get('/fasilitas-Layanan-Makanan', [FasilitasController::class, "getviewLayananMakanan"])->name("fasilitas.layananmakanan");
 Route::get('/pengumuman', [PengumumanController::class, 'getviewPengumuman'])->name("pengumuman");
 
-//----
+//======
 Route::get('/mitra/mitra', [MitraController::class, 'mitra'])->name('mitra.mitra');
 
 Route::get('/form', function () {
     return view('chatbot.form');
 })->name('form');
 
-// ROUTE PROGRAM STUDI [TEAM 02]
-
-Route::get('/program', function () {
-    return view('program.program');
-});
-
-Route::get('/fakultas', function () {
-    return view('program.fakultas');
-});
-
-Route::get('/prodi', function () {
-    return view('program.prodi');
-});
-
-// End of ROUTE PROGRAM STUDI [TEAM 02]
-
 //----
 Route::get('/prestasi', [PrestasiController::class, 'getviewPrestasi'])->name('prestasi.prestasiOverview');
 Route::get('/prestasiInstitut', [PrestasiController::class, 'getviewPrestasiInstitut'])->name('prestasi.prestasiInstitut');
 Route::get('/prestasiDosenStaff', [PrestasiController::class, 'getviewPrestasiDosenStaff'])->name('prestasi.prestasiDosenStaff');
 Route::get('/prestasiMahasiswa', [PrestasiController::class, 'getviewPrestasiMahasiswa'])->name('prestasi.prestasiMahasiswa');
-
-
