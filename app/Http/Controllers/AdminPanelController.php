@@ -92,8 +92,10 @@ class AdminPanelController extends Controller
     }
     public function getPrestasiPanel () {
         $admin = Auth::user();
+
         $data = [
             'indexActive' => 2,
+            'dataPrestasi' => Prestasi::all(),
             'admin' => $admin
         ];
 

@@ -24,22 +24,32 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Judul Prestasi</td>
-                                <td>Deskripsi</td>
-                                <td>Foto</td>
-                                <td>Jenis Prestasi</td>
-                                <td>Created at</td>
-                                <td style="min-width: 120px; width: 120px">
-                                    <button class="btn btn-success">
-                                        <i class="bi bi-pen"></i>
-                                    </button>
-                                    <button class="btn btn-danger">
-                                        <i class="bi bi-trash"></i>
-                                    </button>
-                                </td>
-                            </tr>
+                            @if(isset($dataPrestasi) && sizeof($dataPrestasi) > 0)
+                                @php $counterNumber = 1; @endphp
+
+                                @foreach($dataPrestasi as $item)
+                                    <tr>
+                                        <td>{{$counterNumber++}}</td>
+                                        <td>{{$item->judul_prestasi}}</td>
+                                        <td>{{$item->deskripsi}}</td>
+                                        <td><img src="{{asset($item->photo)}}" alt="" width="50" height="50"></td>
+                                        <td><span class="badge bg-success">{{$item->jenis_prestasi}}</span></td>
+                                        <td>{{$item->created_at}}</td>
+                                        <td style="min-width: 120px; width: 120px">
+                                            <button class="btn btn-success">
+                                                <i class="bi bi-pen"></i>
+                                            </button>
+                                            <button class="btn btn-danger">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @else
+                                <tr>
+                                    <td colspan="7" class="text-center text-muted">Belum ada data tersedia!</td>
+                                </tr>
+                            @endif
                             </tbody>
                         </table>
                     </form>
