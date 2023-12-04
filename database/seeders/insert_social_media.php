@@ -35,3 +35,4 @@ class insert_social_media extends Seeder
         ]);
     }
 }
+
