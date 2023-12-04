@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset("/assets/css/global.css") }}">
@@ -32,63 +32,6 @@
                         Dashboard
                     </button>
                 </a>
-                <a href="">
-                    <button id="btn_akreditasi" class="btn_sidebar w-100 text-start">
-                        <span class="me-2">&nbsp;A</span>
-                        Akreditasi
-                    </button>
-                </a>
-                <a href="{{ route("spmb-dashboard") }}">
-                    <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start">
-                        <i class="bi bi-house me-2"></i>
-                        Dashboard Panel
-                    </button>
-                </a>
-                
-                <a href="#">
-                    <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start">
-                        <i class="bi bi-house me-2"></i>
-                        Program
-                    </button>
-                </a>
-                
-                <a href="{{ route("admisi-panel") }}">
-                    <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start">
-                        <i class="fa-regular fa-note-sticky"></i>
-                        Admisi
-                    </button>
-                </a>
-
-
-                <a href="#">
-                    <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start">
-                        <i class="bi bi-mortarboard"></i>
-                        Beasiswa
-                    </button>
-                </a>
-                <a href="#">
-                    <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start"><i class="fa-regular fa-comment-dots"></i>
-                        Form</button>
-                </a>
-                <a href="#">
-                    <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start"><i class="bi bi-question-square"></i>
-                        FAQ</button>
-                </a>
-                <a href="#">
-                    <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start"><i class="fa-regular fa-handshake"></i>
-                        Kemitraan</button>
-                </a>
-
-                <a href="{{ route("prestasipanel") }}">
-                    <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start"><i class="fas fa-trophy"></i>
-                        Prestasi</button>
-                </a>
-
-                <a href="{{ route("testimonipanel") }}">
-                    <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start"><i class="fas fa-comment-dots"></i>
-                        Testimoni</button>
-                </a>
-
             </div>
         </div>
         <div id="geser_besar" style="width: 18rem; min-width: 18rem; height: 100vh"></div>
@@ -103,26 +46,7 @@
 
                 <div class="d-flex flex-column row-gap-3 w-100">
                     <a href="{{ route("admin-panel") }}">
-                        <button id="btn_dashboard" class="btn_sidebar_kecil btn_sidebar_active"><i class="bi bi-speedometer"></i></button>
-                    </a>
-                    <button id="btn_akreditasi" class="btn_sidebar_kecil">A</button>
-                    <a href="{{ route("spmb-dashboard") }}">
-                        <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="bi bi-house"></i></button>
-                    </a>
-                    <a href="{{ route("admisi-panel") }}">
-                        <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="fa-regular fa-note-sticky"></i></button>
-                    </a>
-                    <a href="{{ route("spmb-dashboard") }}">
-                        <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="bi bi-mortarboard"></i></button>
-                    </a>
-                    <a href="{{ route("spmb-dashboard") }}">
-                        <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="fa-regular fa-comment-dots"></i></button>
-                    </a>
-                    <a href="{{ route("spmb-dashboard") }}">
-                        <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="bi bi-question-square"></i></button>
-                    </a>
-                    <a href="{{ route("spmb-dashboard") }}">
-                        <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="fa-regular fa-handshake"></i></button>
+                        <button id="btn_dashboard-kecil" class="btn_sidebar_kecil btn_sidebar_active"><i class="bi bi-speedometer"></i> </button>
                     </a>
                 </div>
             </div>
@@ -147,14 +71,15 @@
                     <div class="btn-group">
                         <button type="button" style="border-style: none;" class="ps-1 bg-light dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
                             <span class="me-3">Haloo {{ $admin->firstname }}</span>
-                            <img class="border border-1 border-primary" src="{{ asset($admin->profile_pict) }}" alt="foto_profil" style="width: 40px; border-radius: 50%">
+                            <img class="border border-1 border-primary" src="{{ $admin->profile_pict ? asset($admin->profile_pict) : asset("assets/img/admin/default.png") }}" alt="foto_profil" style="width: 40px; border-radius: 50%">
                             <span class="visually-hidden">Toggle Dropdown</span>
                         </button>
                         <ul class="dropdown-menu mt-3 dropdown-menu-end">
                             <li><a class="dropdown-item" href="{{ route('edit-profile') }}"><i class="bi bi-person me-2"></i>Edit Profile</a></li>
-                            <li><a class="dropdown-item" href="{{ route('dashboard') }}" target="_blank"><i class="bi bi-house me-2 me-2"></i>SPMB Dashboard</a></li>
+                            <li><a class="dropdown-item" href="{{ route('add-admin') }}"><i class="bi bi-person-add me-2"></i>Tambah Admin</a></li>
+                            <li><a class="dropdown-item" href="{{ route('dashboard') }}" target="_blank"><i class="bi bi-house me-2"></i>SPMB Dashboard</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="{{ route('logout') }}"><i class="bi bi-box-arrow-left me-2"></i> Logout</a></li>
+                            <li><a class="dropdown-item text-danger" href="{{ route('logout') }}"><i class="bi bi-box-arrow-left me-2"></i> Logout</a></li>
                         </ul>
                     </div>
                 </div>

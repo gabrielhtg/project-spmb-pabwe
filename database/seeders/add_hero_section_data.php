@@ -14,11 +14,9 @@ class add_hero_section_data extends Seeder
     public function run(): void
     {
         DB::table('hero_section')->insert([
-            [
-                'header' => 'Institut Teknologi Del',
-                'paragraph' => 'Menjadi lembaga selangkah lebih depan dalam pengembangan talenta manusia yang memberikan kontribusi berarti pada inovasi teknologi dan keberlanjutan sosial',
-                'bg_image' => '/assets/img/gambar-hero-2.jpg'
-            ]
+            'header' => 'Institut Teknologi Del',
+            'paragraph' => 'Menjadi lembaga selangkah lebih depan dalam pengembangan talenta manusia yang memberikan kontribusi berarti pada inovasi teknologi dan keberlanjutan sosial',
+            'bg_image' => '/assets/img/gambar-hero-2.jpg'
         ]);
     }
 }

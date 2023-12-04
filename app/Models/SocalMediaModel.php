@@ -16,4 +16,6 @@ class SocalMediaModel extends Model
         'link',
         'icon'
     ];
+
+    public $timestamps = true;
 }
