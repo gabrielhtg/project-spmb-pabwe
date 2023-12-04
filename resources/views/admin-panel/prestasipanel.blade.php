@@ -6,21 +6,19 @@
         <div class="card">
             <div id="item-2" class="card">
                 <div class="card-header bg-primary text-white">
-                    <span class="fs-5">Testimoni</span>
+                    <span class="fs-5">Prestasi</span>
                 </div>
                 <div class="card-body d-flex flex-column">
-                    @include('admin-panel.sub_admin_panel.tambah_testimoni')
+                    @include('admin-panel.sub_admin_panel.tambah_prestasi')
                     <form action="">
                         <table class="table text-center align-middle table-striped table-bordered">
                             <thead class="align-middle">
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Nama</th>
-                                <th scope="col">Prodi</th>
-                                <th scope="col">Foto</th>
-                                <th scope="col">Angkatan</th>
+                                <th scope="col">Judul Prestasi</th>
                                 <th scope="col">Deskripsi</th>
-                                <th scope="col">Jenis Testimoni</th>
+                                <th scope="col">Foto</th>
+                                <th scope="col">Jenis Prestasi</th>
                                 <th scope="col">Created at</th>
                                 <th scope="col">Action</th>
                             </tr>
@@ -28,12 +26,10 @@
                             <tbody>
                             <tr>
                                 <td>1</td>
-                                <td>Nama</td>
-                                <td>Prodi</td>
-                                <td>Foto</td>
-                                <td>Angkatan</td>
+                                <td>Judul Prestasi</td>
                                 <td>Deskripsi</td>
-                                <td>Jenis Testimoni</td>
+                                <td>Foto</td>
+                                <td>Jenis Prestasi</td>
                                 <td>Created at</td>
                                 <td style="min-width: 120px; width: 120px">
                                     <button class="btn btn-success">
