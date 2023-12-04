@@ -116,6 +116,12 @@
                     <a href="{{ route("spmb-dashboard") }}">
                         <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="fa-regular fa-handshake"></i></button>
                     </a>
+                    <a href="{{ route("spmb-dashboard") }}">
+                        <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="fas fa-trophy"></i></button>
+                    </a>
+                    <a href="{{ route("spmb-dashboard") }}">
+                        <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="fas fa-comment-dots"></i></button>
+                    </a>
                 </div>
             </div>
         </div>
