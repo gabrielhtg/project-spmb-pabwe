@@ -10,6 +10,7 @@ use App\Http\Controllers\BeasiswaController;
 
 use App\Http\Controllers\MitraController;
 
+use App\Http\Controllers\FormPanelController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -63,3 +64,8 @@ Route::get('/mitra/mitra', [MitraController::class, 'mitra'])->name('mitra.mitra
 Route::get('/form', function () {
     return view('chatbot.form');
 })->name('form');
+
+Route::prefix('admin')->group(function () {
+    Route::get('/formpanel', [FormPanelController::class, 'getviewformpanel'])->name('admin.formpanel');
+});
+

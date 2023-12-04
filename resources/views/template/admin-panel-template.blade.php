@@ -50,7 +50,7 @@
                         Beasiswa
                     </button>
                 </a>
-                <a href="#">
+                <a href="{{ route('admin.formpanel') }}">
                     <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start"><i class="fa-regular fa-comment-dots"></i>
                         Form</button>
                 </a>
