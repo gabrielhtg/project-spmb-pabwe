@@ -7,8 +7,10 @@ use App\Models\data_institusi;
 use App\Models\HeroSectionModel;
 use App\Models\SocalMediaModel;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 
 class AdminPanelController extends Controller
 {
@@ -161,10 +163,32 @@ class AdminPanelController extends Controller
     public function addAlamat (Request $request) {
         AlamatInstitusiModel::create([
             'nama' => $request->input_nama_alamat,
-            'alamat' => $request->input_alamat
+            'alamat' => $request->input_alamat,
+            'created_by' => Auth::user()->username
         ]);
 
         return redirect()->route('admin-panel');
+    }
+
+    public function editAlamat (Request $request) {
+        $username = Auth::user()->username;
+        $alamat = AlamatInstitusiModel::where('id', $request->id)->first();
+
+        $alamat-> nama = $request->input_nama_alamat;
+        $alamat-> alamat = $request->input_alamat;
+        $alamat->updated_at = now();
+        $alamat->updated_by = $username;
+
+        dump([
+            $alamat-> nama,
+            $alamat-> alamat,
+            $alamat->updated_at,
+            $alamat->updated_by,
+        ]);
+
+        $alamat->update();
+
+        return redirect(null, 200)->back();
     }
 
     public function removeAlamat(Request $request)

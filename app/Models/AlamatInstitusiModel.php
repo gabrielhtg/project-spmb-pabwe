@@ -13,6 +13,7 @@ class AlamatInstitusiModel extends Model
 
     protected $fillable = [
         'nama',
-        'alamat'
+        'alamat',
+        'created_by'
     ];
 }

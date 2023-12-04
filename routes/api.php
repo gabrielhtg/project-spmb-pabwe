@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 //    return $request->user();
 //});
 
+
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/data-institut', [AdminPanelController::class, 'ubahDataInstitut'])->name('ubahDataInstitut');
     Route::post('/add-social-media', [AdminPanelController::class, 'addSocialMedia'])->name('addSocialMedia');
@@ -26,5 +27,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/updateHeroSection', [AdminPanelController::class, 'updateHeroSection'])->name('updateHeroSection');
     Route::delete('/remove-social-media', [AdminPanelController::class, 'removeSocialMedia'])->name('removeSocialMedia');
     Route::post('/add-alamat', [AdminPanelController::class, 'addAlamat'])->name('addAlamat');
+    Route::post('/edit-alamat', [AdminPanelController::class, 'editAlamat'])->name('editAlamat');
     Route::delete('/remove-alamat', [AdminPanelController::class, 'removeAlamat'])->name('removeAlamat');
 });

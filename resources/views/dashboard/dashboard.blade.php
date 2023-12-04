@@ -149,7 +149,7 @@
                         <i class="fa-solid fa-chalkboard-user card-img-top" style="font-size: 80px"></i>
                     </div>
                     <div class="card-body">
-                        <span id="jumlah-dosen" class="fs-2 text-primary fw-bold">9999+</span>
+                        <span id="jumlah-dosen" class="fs-2 text-primary fw-bold">0</span>
                         <br>
                         <span class="fs-5"><strong>Dosen</strong></span>
                     </div>
@@ -162,7 +162,7 @@
                         <i class="fa-solid fa-child-reaching card-img-top" style="font-size: 80px"></i>
                     </div>
                     <div class="card-body">
-                        <span id="jumlah-mahasiswa" class="fs-2 text-primary fw-bold">9999+</span>
+                        <span id="jumlah-mahasiswa" class="fs-2 text-primary fw-bold">0</span>
                         <br>
                         <span class="fs-5"><strong>Mahasiswa</strong></span>
                     </div>
@@ -175,7 +175,7 @@
                         <i class="fa-solid fa-user-graduate" style="font-size: 80px"></i>
                     </div>
                     <div class="card-body">
-                        <span id="jumlah-dosen" class="fs-2 text-primary fw-bold">9999+</span>
+                        <span id="jumlah-alumni" class="fs-2 text-primary fw-bold">0</span>
                         <br>
                         <span class="fs-5"><strong>Alumni</strong></span>
                     </div>
@@ -183,6 +183,29 @@
             </div>
         </div>
     </section>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        // Fungsi untuk membuat animasi iterasi angka
+        function animateCount(elementId, startValue, endValue, duration) {
+            let currentVal = startValue;
+            const increment = (endValue - startValue) / duration;
+
+            const interval = setInterval(function () {
+                currentVal += increment;
+                document.getElementById(elementId).innerText = Math.round(currentVal);
+
+                if (currentVal >= endValue) {
+                    clearInterval(interval);
+                }
+            }, 10);
+        }
+
+        // Panggil fungsi untuk masing-masing kategori (dosen, mahasiswa, alumni)
+        animateCount('jumlah-dosen', 0, {{ $dataInstitusi->jumlah_dosen }}, 100);
+        animateCount('jumlah-mahasiswa', 0, {{ $dataInstitusi->jumlah_mahasiswa }}, 100);
+        animateCount('jumlah-alumni', 0, {{ $dataInstitusi->jumlah_alumni }}, 100);
+    </script>
 
     @php
         $lebarCardMitra = 'width: 10rem;'

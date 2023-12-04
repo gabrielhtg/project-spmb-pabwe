@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('nama', 50);
             $table->string('link', 150);
             $table->string('icon', 100);
+            $table->string('created_by', 50);
+            $table->string('updated_by', 50);
             $table->timestamps();
         });
     }
