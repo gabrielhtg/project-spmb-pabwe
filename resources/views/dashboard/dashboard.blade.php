@@ -32,15 +32,32 @@
         {{--    tampilan hp end--}}
     </section>
 
-    <section class="container p-5 text-center" id="section_akreditasi">
-        <h1 class="text-center fw-bold">Akreditasi Kampus</h1>
-
-        <div class="text-center pt-4">
-            <span id="akreditasi" class="fw-bold d-block lh-1" style="font-size: 10rem">B</span>
-            <span id="akreditasi_lengkap" class="d-block lh-1" style="font-size: 3rem">BAIK</span>
-            <span id="lembaga_akreditasi" class="d-block lh-1">BAN-PT</span>
+    <div class="container col-xxl-8 px-4 py-5">
+        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+            <div class="col-10 col-sm-8 col-lg-6">
+                <img src="{{ asset($dataInstitusi->sertifikat_akreditasi ? $dataInstitusi->sertifikat_akreditasi : 'assets/img/default.jpg') }}" class="d-block n shadow-lg mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+            </div>
+            <div class="col-lg-6">
+                <h1 class=" fw-bold lh-1 mb-3">{{ $akreditasiDashboard->header }}</h1>
+                <p class="lead">
+                    {{ $akreditasiDashboard->description }}
+                </p>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                    <a href="{{ asset($dataInstitusi->sertifikat_akreditasi ? $dataInstitusi->sertifikat_akreditasi : 'assets/img/default.jpg') }}" class="btn btn-primary btn-lg px-4 me-md-2">Download Sertifikat</a>
+                </div>
+            </div>
         </div>
-    </section>
+    </div>
+
+{{--    <section class="container p-5 text-center" id="section_akreditasi">--}}
+{{--        <h1 class="text-center fw-bold">Akreditasi Kampus</h1>--}}
+
+{{--        <div class="text-center pt-4">--}}
+{{--            <span id="akreditasi" class="fw-bold d-block lh-1" style="font-size: 10rem">B</span>--}}
+{{--            <span id="akreditasi_lengkap" class="d-block lh-1" style="font-size: 3rem">BAIK</span>--}}
+{{--            <span id="lembaga_akreditasi" class="d-block lh-1">BAN-PT</span>--}}
+{{--        </div>--}}
+{{--    </section>--}}
 
     <section class="container">
         <div id="carouselExampleCaptions" class="carousel slide">

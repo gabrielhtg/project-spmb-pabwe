@@ -53,11 +53,24 @@
                 <label for="input_logo_institusi" class="form-label fw-semibold">Logo Institusi</label>
                 <br>
                 <div class="w-100 border border-1 mb-2 p-3 d-flex justify-content-center rounded-2">
-                    <img src="{{ asset($dataInstitusi->logo_institusi) }}" alt="logo institusi"
-                         style="width: 60px">
+                    <img src="{{ asset($dataInstitusi->logo_institusi ? $dataInstitusi->logo_institusi : 'assets/img/default.jpg') }}" alt="logo institusi"
+                         style="width: 300px">
                 </div>
                 <input class="form-control" type="file" id="input_logo_institusi"
                        name="input_logo_institusi">
+            </div>
+
+            <div class="mb-3">
+                <label for="input_sertifikat_institusi" class="form-label fw-semibold">Sertifikat Akreditasi</label>
+                <br>
+                <div class="w-100 border border-1 mb-2 p-3 d-flex justify-content-center rounded-2">
+                    <img
+                        src="{{ asset($dataInstitusi->sertifikat_akreditasi ? $dataInstitusi->sertifikat_akreditasi : 'assets/img/default.jpg') }}"
+                        alt="sertifikat akreditasi"
+                        style="width: 500px">
+                </div>
+                <input class="form-control" type="file" id="input_sertifikat_institusi"
+                       name="input_sertifikat_institusi">
             </div>
         </div>
         <div class="card-footer bg-white">

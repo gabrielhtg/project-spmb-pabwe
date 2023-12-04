@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AkreditasiSectionModel;
 use App\Models\AlamatInstitusiModel;
 use App\Models\data_institusi;
 use App\Models\HeroSectionModel;
@@ -15,12 +16,14 @@ class DashboardController extends Controller
         $dataHeroSection = HeroSectionModel::where('id', 1)->first();
         $dataSosmed = SocalMediaModel::all();
         $dataAlamat = AlamatInstitusiModel::all();
+        $akreditasiDashboard = AkreditasiSectionModel::where('id', 1)->first();
 
         $data = [
             'dataInstitusi' => $dataInstitusi,
             'dataHeroSection' => $dataHeroSection,
             'dataSosmed' => $dataSosmed,
-            'dataAlamat' => $dataAlamat
+            'dataAlamat' => $dataAlamat,
+            'akreditasiDashboard' => $akreditasiDashboard
         ];
 
         return view('dashboard/dashboard', $data);
