@@ -13,7 +13,7 @@ class update_admin_name extends Seeder
      */
     public function run(): void
     {
-        DB::table('adminModel')->update([
+        DB::table('admin')->update([
             'lastname' => 'Admin'
         ]);
     }
