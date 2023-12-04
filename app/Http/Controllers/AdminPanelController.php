@@ -245,11 +245,11 @@ class AdminPanelController extends Controller
             'id' =>'required|exists:pengumuman',
             'kategoriPengumuman' => 'required',
             'judulPengumuman' => 'required',
-            'filePengumuman' => 'required|mimes:pdf',
-            'tanggalPengumuman' => 'required|date_format:d F Y',
+            'filePengumuman' => 'nullable|mimes:pdf',
+            'tanggalPengumuman' => 'required',
         ]);
         
-
+        
         $pengumuman = Pengumuman::where("id", $request->id)->first();
 
         if ($pengumuman){

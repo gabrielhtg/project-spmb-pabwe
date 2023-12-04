@@ -114,6 +114,7 @@
                                         <label for="inputtanggalPengumuman" class="form-label">Tanggal Pengumuman</label>
                                         <input type="date" class="form-control" name="tanggalPengumuman" id="inputtanggalPengumuman">
                                     </div>
+
                                 </div>
 
                                 <div class="modal-footer">
@@ -128,15 +129,13 @@
         </div>
     </div>
 </div> 
-
-<script>
-    function showModalEdit(id, kategoriPengumuman, judulPengumuman, filePengumuman, tanggalPengumuman)
-    {
+    <script>
+        function showModalEdit(id, kategoriPengumuman, judulPengumuman, filePengumuman, tanggalPengumuman) {
         const modalEditPengumuman = document.getElementById("editPengumuman");
         const inputId = document.getElementById("inputEditPengumuman");
-        const inputKategori = document.getElementById("inputEditKategori")
+        const inputKategori = document.getElementById("inputEditKategori");
         const inputJudulPengumuman = document.getElementById("inputjudulPengumuman");
-        const inputFilePengumuman = document.getElementById("inputfilePengumuman");                                          
+        const inputFilePengumuman = document.getElementById("inputfilePengumuman");
         const inputTanggalPengumuman = document.getElementById("inputtanggalPengumuman");
 
         inputId.value = id;
@@ -145,9 +144,9 @@
         inputFilePengumuman.value = '';
         inputTanggalPengumuman.value = tanggalPengumuman;
 
-        var myModal = new bootstrap.Modal(modalEditPengumuman)
+        var myModal = new bootstrap.Modal(modalEditPengumuman);
         myModal.show();
     }
-</script>
 
+    </script>
 @endsection

@@ -57,7 +57,7 @@ class PengumumanController extends Controller
         return redirect()->route('pengumuman-panel');
     }
 
-    public function destroy($idPengumuman)
+    public function destroy($id)
     {
         $admin = Auth::user();
         $pengumuman = Pengumuman::find($id);
