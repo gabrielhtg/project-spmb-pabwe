@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\Validator;
 
 class AdminPanelController extends Controller
 {
-    public function getAdminPanel () {
+    public function getAdminPanel()
+    {
         $admin = Auth::user();
         $dataInstitusi = data_institusi::where('id', 1)->first();
 
@@ -20,10 +21,11 @@ class AdminPanelController extends Controller
             'admin' => $admin,
             'dataInstitusi' => $dataInstitusi
         ];
-        return view ('admin-panel.adminpanel', $data);
+        return view('admin-panel.adminpanel', $data);
     }
 
-    public function postAdminPanel (Request $request) {
+    public function postAdminPanel(Request $request)
+    {
         $validator = Validator::make($request->all(), [
             'input_nama_institusi' => 'required|exists:data_institusi',
         ]);
@@ -55,10 +57,11 @@ class AdminPanelController extends Controller
             'admin' => $admin,
             'dataInstitusi' => $dataInstitusi
         ];
-        return view ('admin-panel.adminpanel', $data);
+        return view('admin-panel.adminpanel', $data);
     }
 
-    public function getDashboardPanel () {
+    public function getDashboardPanel()
+    {
         $admin = Auth::user();
         $data = [
             'indexActive' => 2,
@@ -67,11 +70,13 @@ class AdminPanelController extends Controller
         return view('admin-panel.dashboard_panel', $data);
     }
 
-    public function getEditProfile () {
-        return view ('admin-panel.edit_profile');
+    public function getEditProfile()
+    {
+        return view('admin-panel.edit_profile');
     }
 
-    public function getAdmisiPanel () {
+    public function getAdmisiPanel()
+    {
         $admin = Auth::user();
         $data = [
             'indexActive' => 2,
@@ -90,7 +95,9 @@ class AdminPanelController extends Controller
     {
 //        return;
     }
-    public function getPrestasiPanel () {
+
+    public function getPrestasiPanel()
+    {
         $admin = Auth::user();
 
         $data = [
@@ -102,7 +109,8 @@ class AdminPanelController extends Controller
         return view('admin-panel.prestasipanel', $data);
     }
 
-    public function getTestimoniPanel () {
+    public function getTestimoniPanel()
+    {
         $admin = Auth::user();
         $data = [
             'indexActive' => 2,

@@ -150,7 +150,8 @@
                                 </p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <p style="font-size: 14px; margin: 0;">{{$item->created_at}}</p>
-                                    <a href="#" class="btn btn-primary open-popup" data-popup="#popup{{$item->id}}">See more</a>
+                                    <a href="#" class="btn btn-primary open-popup" data-popup="#popup{{$item->id}}">See
+                                        more</a>
                                 </div>
 
                                 <div class="popup" id="popup{{$item->id}}">
@@ -201,7 +202,8 @@
                                 </p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <p style="font-size: 14px; margin: 0;">{{$item->created_at}}</p>
-                                    <a href="#" class="btn btn-primary open-popup" data-popup="#popup{{$item->id}}">See more</a>
+                                    <a href="#" class="btn btn-primary open-popup" data-popup="#popup{{$item->id}}">See
+                                        more</a>
                                 </div>
 
                                 <div class="popup" id="popup{{$item->id}}">
@@ -250,7 +252,8 @@
                                 </p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <p style="font-size: 14px; margin: 0;">{{$item->created_at}}</p>
-                                    <a href="#" class="btn btn-primary open-popup" data-popup="#popup{{$item->id}}">See more</a>
+                                    <a href="#" class="btn btn-primary open-popup" data-popup="#popup{{$item->id}}">See
+                                        more</a>
                                 </div>
 
                                 <div class="popup" id="popup{{$item->id}}">

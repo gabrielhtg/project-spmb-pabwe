@@ -8,45 +8,52 @@ use App\Models\data_institusi;
 
 class PrestasiController extends Controller
 {
-    private function getPrestasiOverview($jenisPrestasi)
+    private function getDataInstitusi()
+    {
+        return data_institusi::find(1);
+    }
+
+    private function getPrestasiByType($jenisPrestasi)
     {
         return Prestasi::where('jenis_prestasi', $jenisPrestasi)
             ->orderBy('created_at', 'desc')
-            ->limit(4)
-            ->get();
+            ->paginate(12);
+    }
+
+    private function getViewData($viewName, $jenisPrestasi)
+    {
+        $dataInstitusi = $this->getDataInstitusi();
+        $data = [
+            'dataInstitusi' => $dataInstitusi,
+            'dataPrestasi' => $this->getPrestasiByType($jenisPrestasi),
+        ];
+        return view("prestasi.$viewName", $data);
     }
 
     public function getviewPrestasi()
     {
-        $dataInstitusi = data_institusi::where('id', 1)->first();
-
         $data = [
-            'dataInstitusi'=> $dataInstitusi,
-            'dataPrestasiInstitutOverview' => $this->getPrestasiOverview('Institut'),
-            'dataPrestasiDosenOverview' => $this->getPrestasiOverview('Dosen'),
-            'dataPrestasiMahasiswaOverview' => $this->getPrestasiOverview('Mahasiswa')
+            'dataInstitusi' => $this->getDataInstitusi(),
+            'dataPrestasiInstitutOverview' => $this->getPrestasiByType('Institut'),
+            'dataPrestasiDosenOverview' => $this->getPrestasiByType('Dosen'),
+            'dataPrestasiMahasiswaOverview' => $this->getPrestasiByType('Mahasiswa'),
         ];
+
         return view("prestasi.prestasiOverview", $data);
     }
 
     public function getviewPrestasiInstitut()
     {
-        $dataInstitusi = data_institusi::where('id', 1)->first();
-        $data = ['dataInstitusi'=> $dataInstitusi];
-        return view("prestasi.prestasiInstitut", $data);
+        return $this->getViewData('prestasiInstitut', 'Institut');
     }
 
     public function getviewPrestasiDosenStaff()
     {
-        $dataInstitusi = data_institusi::where('id', 1)->first();
-        $data = ['dataInstitusi'=> $dataInstitusi];
-        return view("prestasi.prestasiDosenStaff", $data);
+        return $this->getViewData('prestasiDosenStaff', 'Dosen');
     }
 
     public function getviewPrestasiMahasiswa()
     {
-        $dataInstitusi = data_institusi::where('id', 1)->first();
-        $data = ['dataInstitusi'=> $dataInstitusi];
-        return view("prestasi.prestasiMahasiswa", $data);
+        return $this->getViewData('prestasiMahasiswa', 'Mahasiswa');
     }
 }
