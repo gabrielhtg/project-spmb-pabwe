@@ -5,7 +5,8 @@
         <div id="carouselExample" class="carousel slide">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="{{ asset('/assets/img/prestasi/prestasi-header.jpg') }}" class="img-fluid d-block w-60" alt="header-fasilitas">
+                    <img src="{{ asset($dataHeaderAdmisi->letak_foto ?  : 'assets/img/default.jpg') }}"
+                         class="img-fluid d-block w-100" alt="header-fasilitas">
                     <div class="carousel-caption d-none d-md-block text-center"> <!-- Center the text -->
                         <div class="d-flex flex-column text-center h-100 pb-3"> <!-- Center the content vertically -->
                             <h2 class="fw-bold text-uppercase">ADMISI</h2>
@@ -58,11 +59,13 @@
             </div>
 
             <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-lg " >
-                    <div class="modal-content" style="width: 800px; height:600px" >
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg ">
+                    <div class="modal-content" style="width: 800px; height:600px">
                         <div class="modal-header" style="background-color: rgb(241, 241, 241)">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel" style="font-weight:900;">Informatika</h1>
+                            <h1 class="modal-title fs-5" id="exampleModalLabel" style="font-weight:900;">
+                                Informatika</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body d-flex align-items-center text-center" style="padding:0 80px;">
@@ -105,10 +108,11 @@
 
             <!-- Modal -->
             <div class="modal fade" id="modalsi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-lg " >
-                    <div class="modal-content" style="width: 800px; height:600px" >
+                <div class="modal-dialog modal-dialog-centered modal-lg ">
+                    <div class="modal-content" style="width: 800px; height:600px">
                         <div class="modal-header" style="background-color: rgb(241, 241, 241)">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel" style="font-weight:900;">Sistem Informasi</h1>
+                            <h1 class="modal-title fs-5" id="exampleModalLabel" style="font-weight:900;">Sistem
+                                Informasi</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body d-flex align-items-center text-center" style="padding:0 80px;">
@@ -151,10 +155,11 @@
 
             <!-- Modal -->
             <div class="modal fade" id="modalTE" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-lg " >
-                    <div class="modal-content" style="width: 800px; height:600px" >
+                <div class="modal-dialog modal-dialog-centered modal-lg ">
+                    <div class="modal-content" style="width: 800px; height:600px">
                         <div class="modal-header" style="background-color: rgb(241, 241, 241)">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel" style="font-weight:900;">Teknik Elektro</h1>
+                            <h1 class="modal-title fs-5" id="exampleModalLabel" style="font-weight:900;">Teknik
+                                Elektro</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body d-flex align-items-center text-center" style="padding:0 80px;">
@@ -197,10 +202,11 @@
 
             <!-- Modal -->
             <div class="modal fade" id="modalMR" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-lg " >
-                    <div class="modal-content" style="width: 800px; height:600px" >
+                <div class="modal-dialog modal-dialog-centered modal-lg ">
+                    <div class="modal-content" style="width: 800px; height:600px">
                         <div class="modal-header" style="background-color: rgb(241, 241, 241)">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel" style="font-weight:900;">Managemen Rekayasa</h1>
+                            <h1 class="modal-title fs-5" id="exampleModalLabel" style="font-weight:900;">Managemen
+                                Rekayasa</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body d-flex align-items-center text-center" style="padding:0 80px;">
@@ -243,10 +249,11 @@
 
             <!-- Modal -->
             <div class="modal fade" id="modalTB" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-lg " >
-                    <div class="modal-content" style="width: 800px; height:600px" >
+                <div class="modal-dialog modal-dialog-centered modal-lg ">
+                    <div class="modal-content" style="width: 800px; height:600px">
                         <div class="modal-header" style="background-color: rgb(241, 241, 241)">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel" style="font-weight:900;">Teknik Bioproses</h1>
+                            <h1 class="modal-title fs-5" id="exampleModalLabel" style="font-weight:900;">Teknik
+                                Bioproses</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body d-flex align-items-center text-center" style="padding:0 80px;">
@@ -289,10 +296,11 @@
 
             <!-- Modal -->
             <div class="modal fade" id="modalTM" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-lg " >
-                    <div class="modal-content" style="width: 800px; height:600px" >
+                <div class="modal-dialog modal-dialog-centered modal-lg ">
+                    <div class="modal-content" style="width: 800px; height:600px">
                         <div class="modal-header" style="background-color: rgb(241, 241, 241)">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel" style="font-weight:900;">Teknik Metalurgi</h1>
+                            <h1 class="modal-title fs-5" id="exampleModalLabel" style="font-weight:900;">Teknik
+                                Metalurgi</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body d-flex align-items-center text-center" style="padding:0 80px;">
@@ -334,10 +342,11 @@
 
             <!-- Modal -->
             <div class="modal fade" id="modalTM" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-lg " >
-                    <div class="modal-content" style="width: 800px; height:600px" >
+                <div class="modal-dialog modal-dialog-centered modal-lg ">
+                    <div class="modal-content" style="width: 800px; height:600px">
                         <div class="modal-header" style="background-color: rgb(241, 241, 241)">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel" style="font-weight:900;">Teknologi Rekayasa Perangkat Lunak</h1>
+                            <h1 class="modal-title fs-5" id="exampleModalLabel" style="font-weight:900;">Teknologi
+                                Rekayasa Perangkat Lunak</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body d-flex align-items-center text-center" style="padding:0 80px;">
@@ -379,10 +388,11 @@
 
             <!-- Modal -->
             <div class="modal fade" id="modalTM" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-lg " >
-                    <div class="modal-content" style="width: 800px; height:600px" >
+                <div class="modal-dialog modal-dialog-centered modal-lg ">
+                    <div class="modal-content" style="width: 800px; height:600px">
                         <div class="modal-header" style="background-color: rgb(241, 241, 241)">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel" style="font-weight:900;">Teknologi Informasi</h1>
+                            <h1 class="modal-title fs-5" id="exampleModalLabel" style="font-weight:900;">Teknologi
+                                Informasi</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body d-flex align-items-center text-center" style="padding:0 80px;">
@@ -424,10 +434,11 @@
 
             <!-- Modal -->
             <div class="modal fade" id="modalTM" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-lg " >
-                    <div class="modal-content" style="width: 800px; height:600px" >
+                <div class="modal-dialog modal-dialog-centered modal-lg ">
+                    <div class="modal-content" style="width: 800px; height:600px">
                         <div class="modal-header" style="background-color: rgb(241, 241, 241)">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel" style="font-weight:900;">Teknologi Komputer</h1>
+                            <h1 class="modal-title fs-5" id="exampleModalLabel" style="font-weight:900;">Teknologi
+                                Komputer</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body d-flex align-items-center text-center" style="padding:0 80px;">
@@ -451,24 +462,39 @@
     </section>
 
     <div id="chat-container" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
-  <div id="chat-button" style="width: 100px; height: 105px; border-radius: 0; color: #fff; text-align: center; line-height: 70px; cursor: pointer; position: relative; overflow: hidden; transition: transform 0.5s ease-in-out;" onclick="toggleChatForm()" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
-    <img src="{{ asset("/assets/img/icon2.png") }}" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; transition: transform 0.5s ease-in-out;" class="d-block w-100" alt="gambar-1">
-  </div>
-  <div id="chat-form" style="display: none; position: fixed; bottom: 20px; right: 80px; z-index: 1000; max-width: 300px; transition: all 0.5s ease-in-out;">
-    <div id="additional-buttons" style="display: flex; justify-content: space-between; margin-top: 10px;">
-      <div class="additional-button d-flex justify-content-center align-items-center" style="width: 70px; height: 65px; border-radius: 50%; background-color: rgb(11,94,215); color: #fff; text-align: center; line-height: 50px; cursor: pointer; margin-right: 25px; font-size: 25px;" onclick="openWhatsApp()" onmouseover="this.style.backgroundColor='#0056b3'" onmouseout="this.style.backgroundColor='rgb(11,94,215)'">
-        <i class="fab fa-whatsapp"></i>
-      </div>
-      <div class="additional-button d-flex justify-content-center align-items-center" style="width: 70px; height: 65px; border-radius: 50%; background-color: rgb(11,94,215); color: #fff; text-align: center; line-height: 50px; cursor: pointer; margin-right: 25px; font-size: 25px;" onclick="openTelegram()" onmouseover="this.style.backgroundColor='#0056b3'" onmouseout="this.style.backgroundColor='rgb(11,94,215)'">
-        <i class="fab fa-telegram"></i>
-      </div>
-      <div class="additional-button d-flex justify-content-center align-items-center" style="width: 70px; height: 65px; border-radius: 50%; background-color: rgb(11,94,215); color: #fff; text-align: center; line-height: 50px; cursor: pointer; margin-right: 55px; font-size: 25px;" onclick="openFormQuestion()" onmouseover="this.style.backgroundColor='#0056b3'" onmouseout="this.style.backgroundColor='rgb(11,94,215)'">
-        <i class="fa-regular fa-comment-dots"></i>
-      </div>
+        <div id="chat-button"
+             style="width: 100px; height: 105px; border-radius: 0; color: #fff; text-align: center; line-height: 70px; cursor: pointer; position: relative; overflow: hidden; transition: transform 0.5s ease-in-out;"
+             onclick="toggleChatForm()" onmouseover="this.style.transform='scale(1.1)'"
+             onmouseout="this.style.transform='scale(1)'">
+            <img src="{{ asset("/assets/img/icon2.png") }}"
+                 style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; transition: transform 0.5s ease-in-out;"
+                 class="d-block w-100" alt="gambar-1">
+        </div>
+        <div id="chat-form"
+             style="display: none; position: fixed; bottom: 20px; right: 80px; z-index: 1000; max-width: 300px; transition: all 0.5s ease-in-out;">
+            <div id="additional-buttons" style="display: flex; justify-content: space-between; margin-top: 10px;">
+                <div class="additional-button d-flex justify-content-center align-items-center"
+                     style="width: 70px; height: 65px; border-radius: 50%; background-color: rgb(11,94,215); color: #fff; text-align: center; line-height: 50px; cursor: pointer; margin-right: 25px; font-size: 25px;"
+                     onclick="openWhatsApp()" onmouseover="this.style.backgroundColor='#0056b3'"
+                     onmouseout="this.style.backgroundColor='rgb(11,94,215)'">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <div class="additional-button d-flex justify-content-center align-items-center"
+                     style="width: 70px; height: 65px; border-radius: 50%; background-color: rgb(11,94,215); color: #fff; text-align: center; line-height: 50px; cursor: pointer; margin-right: 25px; font-size: 25px;"
+                     onclick="openTelegram()" onmouseover="this.style.backgroundColor='#0056b3'"
+                     onmouseout="this.style.backgroundColor='rgb(11,94,215)'">
+                    <i class="fab fa-telegram"></i>
+                </div>
+                <div class="additional-button d-flex justify-content-center align-items-center"
+                     style="width: 70px; height: 65px; border-radius: 50%; background-color: rgb(11,94,215); color: #fff; text-align: center; line-height: 50px; cursor: pointer; margin-right: 55px; font-size: 25px;"
+                     onclick="openFormQuestion()" onmouseover="this.style.backgroundColor='#0056b3'"
+                     onmouseout="this.style.backgroundColor='rgb(11,94,215)'">
+                    <i class="fa-regular fa-comment-dots"></i>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
 
 
-<script src="{{ asset("/assets/js/chatbot.js") }}"></script>
+    <script src="{{ asset("/assets/js/chatbot.js") }}"></script>
 @endsection
