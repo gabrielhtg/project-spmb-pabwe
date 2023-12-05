@@ -15,7 +15,7 @@
                         <div class="w-100 border border-1 mb-2 p-3 d-flex justify-content-center rounded-2">
                             <img
                                 src="{{ asset($dataHeaderAdmisi->letak_foto ? $dataHeaderAdmisi->letak_foto : 'assets/img/default.jpg') }}"
-                                alt="sertifikat akreditasi"
+                                alt="gambar-header-admisi"
                                 style="width: 500px">
                         </div>
                     </div>
