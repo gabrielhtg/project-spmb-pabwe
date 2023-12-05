@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{ asset("/assets/css/admisi.css") }}">
     <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+
     <title>Admin Panel</title>
 </head>
 <body>
@@ -180,6 +181,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/965a381e3a.js" crossorigin="anonymous"></script>
+
     <script src="{{ asset("/assets/js/kel4.js") }}"></script>
     <script src="{{ asset("/assets/js/admin-panel.js") }}"></script>
 </body>

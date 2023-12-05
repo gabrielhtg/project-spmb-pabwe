@@ -50,7 +50,7 @@ Route::middleware('auth')->group(function () {
         /* Routing Kelompok 3 -  (Prestasi, Testimoni)*/
         /* Bagian Prestasi */
         Route::get('/prestasi', [AdminPanelController::class, 'getPrestasiPanel'])->name('prestasipanel');
-
+    
         /* Bagian Testimoni */
         Route::get('/testimoni', [AdminPanelController::class, 'getTestimoniPanel'])->name('testimonipanel');
 
