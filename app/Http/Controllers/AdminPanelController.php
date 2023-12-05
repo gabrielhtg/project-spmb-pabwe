@@ -81,6 +81,7 @@ class AdminPanelController extends Controller
 
     public function getProgramPanel () {
         $admin = Auth::user();
+
         $data = [
             'indexActive' => 3,
             'admin' => $admin
