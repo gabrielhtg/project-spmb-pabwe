@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AkreditasiSectionModel;
 use App\Models\AlamatInstitusiModel;
 use App\Models\data_institusi;
 use App\Models\HeroSectionModel;
@@ -21,6 +22,7 @@ class AdminPanelController extends Controller
         $dataSocialMedia = SocalMediaModel::all();
         $dataHeroSection = HeroSectionModel::where('id', 1)->first();
         $dataAlamat = AlamatInstitusiModel::all();
+        $dataAkreditasiDashboard = AkreditasiSectionModel::where('id', 1)->first();
 
         $data = [
             'indexActive' => 0,
@@ -28,7 +30,8 @@ class AdminPanelController extends Controller
             'dataInstitusi' => $dataInstitusi,
             'socialMedia' => $dataSocialMedia,
             'dataHeroSection' => $dataHeroSection,
-            'dataAlamat' => $dataAlamat
+            'dataAlamat' => $dataAlamat,
+            'dataAkreditasiDashboard' => $dataAkreditasiDashboard
         ];
 
         return view('admin-panel.adminpanel', $data);
@@ -63,6 +66,32 @@ class AdminPanelController extends Controller
             $dataInstitusi->logo_institusi = 'assets/img/dashboard/' . $filename;
         }
 
+        if ($request->input_sertifikat_institusi) {
+            $request->validate([
+                'input_sertifikat_institusi' => 'required|image|mimes:jpeg,png,jpg|max:1024',
+            ]);
+
+            // Mengambil file yang sudah divalidasi dari request
+            $photo = $request->file('input_sertifikat_institusi');
+
+            // Membuat nama unik untuk file yang diunggah
+            $filename = time() . '_sertifikat_institusi.' . $photo->getClientOriginalExtension();
+
+            // Menentukan direktori tempat penyimpanan file di dalam direktori 'public'
+            $directory = public_path('assets/img/dashboard/');
+
+            //Pindahkan file ke direktori yang diinginkan
+            $photo->move($directory, $filename);
+
+            // Menghapus photo lama jika ada
+            if ($dataInstitusi->sertifikat_akreditasi && file_exists($dataInstitusi->sertifikat_akreditasi)) {
+                unlink($dataInstitusi->sertifikat_akreditasi);
+            }
+
+            $dataInstitusi->sertifikat_akreditasi = 'assets/img/dashboard/' . $filename;
+        }
+
+
         $dataInstitusi->nama_institusi = $request->input_nama_institusi;
         $dataInstitusi->singkatan_nama_institusi = $request->input_singkatan_nama_institusi;
         $dataInstitusi->akreditasi = $request->input_akreditasi;
@@ -70,11 +99,6 @@ class AdminPanelController extends Controller
         $dataInstitusi->jumlah_dosen = $request->input_jumlah_dosen;
         $dataInstitusi->jumlah_mahasiswa = $request->input_jumlah_mahasiswa;
         $dataInstitusi->jumlah_alumni = $request->input_jumlah_alumni;
-
-//
-//        if ($request->input_sertifikat_akreditasi) {
-//            $dataInstitusi->gambar_sertifikat_akreditasi = $request->input_sertifikat_akreditasi;
-//        }
 
         $dataInstitusi->update();
 
