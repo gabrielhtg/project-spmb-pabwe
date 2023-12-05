@@ -85,7 +85,7 @@
                         </button>
                         <ul class="dropdown-menu mt-3 dropdown-menu-end">
                             <li><a class="dropdown-item" href="{{ route('edit-profile') }}"><i class="bi bi-person me-2"></i>Edit Profile</a></li>
-                            <li><a class="dropdown-item" href="{{ route('add-admin') }}"><i class="bi bi-person-add me-2"></i>Tambah Admin</a></li>
+                            <li><a class="dropdown-item" href="{{ route('admins') }}"><i class="bi bi-person-add me-2"></i>Tambah Admin</a></li>
                             <li><a class="dropdown-item" href="{{ route('dashboard') }}" target="_blank"><i class="bi bi-house me-2"></i>SPMB Dashboard</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item text-danger" href="{{ route('logout') }}"><i class="bi bi-box-arrow-left me-2"></i> Logout</a></li>

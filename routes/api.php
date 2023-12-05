@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminPanelController;
 use App\Http\Controllers\AdmisiController;
 use Illuminate\Http\Request;
@@ -32,4 +33,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/edit-alamat', [AdminPanelController::class, 'editAlamat'])->name('editAlamat');
     Route::post('/set-header-admisi', [AdmisiController::class, 'setHeader'])->name('set-header-admisi');
     Route::delete('/remove-alamat', [AdminPanelController::class, 'removeAlamat'])->name('removeAlamat');
+    Route::post('/add-admin', [AdminController::class, 'addAdmin'])->name('add-admin');
+    Route::post('/edit-admin', [AdminController::class, 'editAdmin'])->name('edit-admin');
+    Route::delete('/remove-admin', [AdminController::class, 'removeAdmin'])->name('remove-admin');
 });
