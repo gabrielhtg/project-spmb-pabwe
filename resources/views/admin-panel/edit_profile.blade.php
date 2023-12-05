@@ -32,10 +32,60 @@
         </div>
 
         <div class="d-flex justify-content-center gap-3 mt-4">
-            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
-                    data-bs-target="#edit-profile-modal">
-                Edit Profil
+            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editProfileModal">
+                Edit Profile
             </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5 fw-semibold"> Edit Admin</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                        </div>
+                        <form action="{{ route('edit-admin') }}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            <div class="modal-body text-start">
+                                <div class="mb-3">
+                                    <label class="form-label w-100">
+                                        Username
+                                        <input type="text" class="form-control"
+                                               value="{{ $admin->username }}" name="username">
+                                    </label>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label w-100">
+                                        Firstname
+                                        <input type="text" class="form-control"
+                                               value="{{ $admin->firstname }}" name="firstname">
+                                    </label>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label w-100">
+                                        Lastname
+                                        <input type="text" class="form-control"
+                                               value="{{ $admin->lastname }}" name="lastname">
+                                    </label>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label w-100">
+                                        Foto Profil
+                                        <input type="file" class="form-control" name="profile_pict">
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                    Close
+                                </button>
+                                <button type="submit" class="btn btn-primary">Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
 
             <div class="modal fade" id="edit-profile-modal" tabindex="-1" aria-labelledby="editProfileLabel"
                  aria-hidden="true">
