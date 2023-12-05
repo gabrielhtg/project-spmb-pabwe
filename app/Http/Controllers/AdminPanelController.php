@@ -6,6 +6,7 @@ use App\Models\AkreditasiSectionModel;
 use App\Models\AlamatInstitusiModel;
 use App\Models\data_institusi;
 use App\Models\HeroSectionModel;
+use App\Models\ModelHeaderAdmisi;
 use App\Models\SocalMediaModel;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -46,19 +47,14 @@ class AdminPanelController extends Controller
                 'input_logo_institusi' => 'required|image|mimes:jpeg,png,jpg|max:1024',
             ]);
 
-            // Mengambil file yang sudah divalidasi dari request
             $photo = $request->file('input_logo_institusi');
 
-            // Membuat nama unik untuk file yang diunggah
             $filename = time() . '_logo_institusi.' . $photo->getClientOriginalExtension();
 
-            // Menentukan direktori tempat penyimpanan file di dalam direktori 'public'
             $directory = public_path('assets/img/dashboard/');
 
-            //Pindahkan file ke direktori yang diinginkan
             $photo->move($directory, $filename);
 
-            // Menghapus photo lama jika ada
             if ($dataInstitusi->logo_institusi && file_exists($dataInstitusi->logo_institusi)) {
                 unlink($dataInstitusi->logo_institusi);
             }
@@ -99,6 +95,7 @@ class AdminPanelController extends Controller
         $dataInstitusi->jumlah_dosen = $request->input_jumlah_dosen;
         $dataInstitusi->jumlah_mahasiswa = $request->input_jumlah_mahasiswa;
         $dataInstitusi->jumlah_alumni = $request->input_jumlah_alumni;
+
 
         $dataInstitusi->update();
 
@@ -219,6 +216,18 @@ class AdminPanelController extends Controller
     {
         AlamatInstitusiModel::where('id', $request->id)->first()->delete();
         return redirect()->back();
+    }
+
+    public function getAdmisiPanel () {
+        $admin = Auth::user();
+        $dataHeaderAdmisi = ModelHeaderAdmisi::where('id', 1)->first();
+
+        $data = [
+            'indexActive' => 1,
+            'admin' => $admin,
+            'dataHeaderAdmisi' => $dataHeaderAdmisi,
+        ];
+        return view('admin-panel.admisi_panel', $data);
     }
 
 }

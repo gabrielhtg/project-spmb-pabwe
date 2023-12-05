@@ -19,7 +19,9 @@ class DatabaseSeeder extends Seeder
             insert_social_media::class,
             add_hero_section_data::class,
             add_data_alamat_institusi::class,
-            insert_data_akreditasi_dashboard::class
+            insert_data_akreditasi_dashboard::class,
+            add_data_alamat_institusi::class,
+            input_image_header_admisi::class
         ]);
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminPanelController;
+use App\Http\Controllers\AdmisiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -29,5 +30,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('/remove-social-media', [AdminPanelController::class, 'removeSocialMedia'])->name('removeSocialMedia');
     Route::post('/add-alamat', [AdminPanelController::class, 'addAlamat'])->name('addAlamat');
     Route::post('/edit-alamat', [AdminPanelController::class, 'editAlamat'])->name('editAlamat');
+    Route::post('/set-header-admisi', [AdmisiController::class, 'setHeader'])->name('set-header-admisi');
     Route::delete('/remove-alamat', [AdminPanelController::class, 'removeAlamat'])->name('removeAlamat');
 });
