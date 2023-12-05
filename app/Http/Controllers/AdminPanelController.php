@@ -85,17 +85,6 @@ class AdminPanelController extends Controller
         return view('admin-panel.admisi_panel', $data);
     }
 
-
-    public function getPrestasiPage()
-    {
-        return view('admin-panel.prestasiPanel', ['prestasiData' => Prestasi::all(), 'admin' => Auth::user()]);
-    }
-
-    public function getTestimoniPage()
-    {
-//        return;
-    }
-
     public function getPrestasiPanel()
     {
         $admin = Auth::user();

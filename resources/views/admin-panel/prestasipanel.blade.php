@@ -1,6 +1,8 @@
 @extends('template.admin-panel-template')
 
 @section('isi-admin-panel')
+{{--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">--}}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
 
     <div class="container-fluid p-3">
         <div class="card">
@@ -10,8 +12,9 @@
                 </div>
                 <div class="card-body d-flex flex-column">
                     @include('admin-panel.sub_admin_panel.tambah_prestasi')
+                    
                     <form action="">
-                        <table class="table text-center align-middle table-striped table-bordered">
+                        <table id="example" class="table text-center align-middle table-striped table-bordered">
                             <thead class="align-middle">
                             <tr>
                                 <th scope="col">#</th>
@@ -24,32 +27,40 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @if(isset($dataPrestasi) && sizeof($dataPrestasi) > 0)
-                                @php $counterNumber = 1; @endphp
-
-                                @foreach($dataPrestasi as $item)
-                                    <tr>
-                                        <td>{{$counterNumber++}}</td>
-                                        <td>{{$item->judul_prestasi}}</td>
-                                        <td>{{$item->deskripsi}}</td>
-                                        <td><img src="{{asset($item->photo)}}" alt="" width="50" height="50"></td>
-                                        <td><span class="badge bg-success">{{$item->jenis_prestasi}}</span></td>
-                                        <td>{{$item->created_at}}</td>
-                                        <td style="min-width: 120px; width: 120px">
-                                            <button class="btn btn-success">
-                                                <i class="bi bi-pen"></i>
-                                            </button>
-                                            <button class="btn btn-danger">
-                                                <i class="bi bi-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            @else
+                            @forelse($dataPrestasi as $item)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $item->judul_prestasi }}</td>
+                                    <td>{{ $item->deskripsi }}</td>
+                                    <td><img src="{{ asset($item->photo) }}" alt="" width="50" height="50"></td>
+                                    <td>
+                                        @switch($item->jenis_prestasi)
+                                            @case('Institut')
+                                                <span class="badge bg-success">{{ $item->jenis_prestasi }}</span>
+                                                @break
+                                            @case('Dosen')
+                                                <span class="badge bg-warning">{{ $item->jenis_prestasi }}</span>
+                                                @break
+                                            @case('Mahasiswa')
+                                                <span class="badge bg-danger">{{ $item->jenis_prestasi }}</span>
+                                                @break
+                                        @endswitch
+                                    </td>
+                                    <td>{{ $item->created_at }}</td>
+                                    <td style="min-width: 120px; width: 120px">
+                                        <button class="btn btn-success">
+                                            <i class="bi bi-pen"></i>
+                                        </button>
+                                        <button class="btn btn-danger">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            @empty
                                 <tr>
                                     <td colspan="7" class="text-center text-muted">Belum ada data tersedia!</td>
                                 </tr>
-                            @endif
+                            @endforelse
                             </tbody>
                         </table>
                     </form>
@@ -58,4 +69,13 @@
         </div>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        })
+    </script>
 @endsection
