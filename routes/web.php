@@ -73,6 +73,9 @@ Route::get('/form', function () {
 Route::get('/program', [FacultyController::class,'getProgram'])->name('program');
 Route::get('/fakultas', [FacultyController::class,'getFakultas'])->name('fakultas');
 Route::get('/prodi', [MajorController::class,'getProdi'])->name('prodi');
+Route::post('/faculties/store', [FacultyController::class, 'store'])->name('faculties.store');
+Route::delete('/admin-panel/program_panel/{id}', [FacultyController::class, 'destroy'])->name('admin.program.panel.destroy');
+
 
 
 // End of ROUTE PROGRAM STUDI [TEAM 02]

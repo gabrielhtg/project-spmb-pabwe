@@ -1,9 +1,10 @@
 @extends('template.admin-panel-template')
 
 @section('isi-admin-panel')
+<script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>
 
 
-
+        
   <div class="d-flex justify-content-center">
       <ul class="nav nav-underline d-flex gap-5">
           <li class="nav-item">
@@ -33,97 +34,114 @@
 
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal Tambah Fakultas</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="card-body">
-                        <form action="" method="post">
-                            @csrf
-                            <div class="mb-3">
-                                <label for="input_nama_fakultas" class="form-label">Nama Fakultas</label>
-                                <input type="text" class="form-control" id="input_nama_fakultas" name="input_nama_fakultas">
-                            </div>
-                            <div class="mb-3">
-                                <label for="input_deskripsi_fakultas" class="form-label">Deskripsi Fakultas</label>
-                                <input type="text" class="form-control" id="input_deskripsi_fakultas" name="input_deskripsi_fakultas">
-                            </div>
-                            <div class="mb-3">
-                                <label for="input_lokasi_fakultas" class="form-label">Lokasi Fakultas</label>
-                                <input type="text" class="form-control" id="input_lokasi_fakultas" name="input_lokasi_fakultas">
-                            </div>
-                            <div class="mb-3">
-                                <label for="input_visi_fakultas" class="form-label">Visi Fakultas</label>
-                                <input type="text" class="form-control" id="input_visi_fakultas" name="input_visi_fakultas">
-                            </div>
-                            <div class="mb-3">
-                                <label for="input_misi_fakultas" class="form-label">Misi Fakultas</label>
-                                <input type="text" class="form-control" id="input_misi_fakultas" name="input_misi_fakultas">
-                            </div>
-                            <div class="mb-3">
-                                <label for="input_sertifikat_akreditasi" class="form-label">Gambar Fakultas</label>
-                                <input class="form-control" type="file" id="input_sertifikat_akreditasi" name="input_sertifikat_akreditasi">
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                    <button type="button" class="btn btn-primary">Simpan Data</button>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal Tambah Fakultas</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="card-body">
+                    <form action="{{ route('faculties.store') }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <div class="mb-3">
+                            <label for="input_nama_fakultas" class="form-label">Nama Fakultas</label>
+                            <input type="text" class="form-control" id="input_nama_fakultas" name="nama">
+                        </div>
+                        <div class="mb-3">
+                            <label for="input_kode_fakultas" class="form-label">Kode Fakultas</label>
+                            <input type="text" class="form-control" id="input_kode_fakultas" name="kode_fakultas">
+                        </div>
+                        <div class="mb-3">
+                            <label for="input_deskripsi_fakultas" class="form-label">Deskripsi Fakultas</label>
+                            <textarea class="form-control" id="deskripsi_fakultas" name="deskripsi"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="input_lokasi_fakultas" class="form-label">Lokasi Fakultas</label>
+                            <input type="text" class="form-control" id="input_lokasi_fakultas" name="lokasi">
+                        </div>
+                        <div class="mb-3">
+                            <label for="input_visi_fakultas" class="form-label">Visi Fakultas</label>
+                            <textarea class="form-control" id="visi_fakultas" name="visi"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="input_misi_fakultas" class="form-label">Misi Fakultas</label>
+                            <textarea class="form-control" id="misi_fakultas" name="misi"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="input_gambar_fakultas" class="form-label">Gambar Fakultas</label>
+                            <input class="form-control" type="file" id="input_gambar_fakultas" name="gambar" accept="image/*" multiple>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                            <button type="submit" class="btn btn-primary">Simpan Data</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <div id="item-2" class="card">
-        <div class="card-header bg-primary text-white">
-            <span class="fs-5">Data Fakultas</span>
-        </div>
-        <div class="card-body d-flex flex-column">
-            <form action="">
-                <table class="table text-center align-middle table-striped table-bordered">
-                    <thead class="align-middle">
-                    <tr>
-                        <th scope="col">No</th>
-                        <th scope="col">Nama Fakultas</th>
-                        <th scope="col">Lokasi Fakultas</th>
-                        <th scope="col">Visi Fakultas</th>
-                        <th scope="col">Misi Fakultas</th>
-                        <th scope="col">Gambar Fakultas</th>
-                        <th scope="col">Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Test</td>
-                        <td>Test</td>
-                        <td>Test</td>
-                        <td>Test</td>
-                        <td>Test</td>
-                        <td style="min-width: 120px; width: 120px">
-                            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#myEdit">
-                                <i class="bi bi-pen"></i>
-                            </button>
-                            <button class="btn btn-danger">
-                                <i class="bi bi-trash"></i>
-                            </button>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </form>
-        </div>
+
+<div id="item-2" class="card">
+    <div class="card-header bg-primary text-white">
+        <span class="fs-5">Data Fakultas</span>
     </div>
+    <div class="card-body d-flex flex-column">
+        <table class="table text-center align-middle table-striped table-bordered">
+            <thead class="align-middle">
+                <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Nama Fakultas</th>
+                    <th scope="col">Kode Fakultas</th>
+                    <th scope="col">Deskripsi Fakultas</th>
+                    <th scope="col">Lokasi Fakultas</th>
+                    <th scope="col">Visi Fakultas</th>
+                    <th scope="col">Misi Fakultas</th>
+                    <th scope="col">Gambar Fakultas</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($faculties as $faculty)
+            <tr>
+                <td>{{ $loop->iteration }}</td>
+                <td>{{ $faculty->nama }}</td>
+                <td>{{ $faculty->kode_fakultas }}</td>
+                <td>{{ $faculty->deskripsi }}</td>
+                <td>{{ $faculty->lokasi }}</td>
+                <td>{{ $faculty->visi }}</td>
+                <td>{{ $faculty->misi }}</td>
+                <td>
+                    <img src="{{ asset('storage/' . $faculty->gambar) }}" alt="Gambar Fakultas" style="max-width: 100px;">
+                </td>
+                <td style="min-width: 120px; width: 120px">
+                    
+                    <form action="{{ route('admin.program.panel.destroy', $faculty->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#myModaleditfakultas" >
+                        <i class="bi bi-pen"></i>
+                    </button>
+                        <button type="submit" class="btn btn-danger" onclick="deleteFaculty({{ $faculty->id }})">
+                                        <i class="bi bi-trash"></i>
+                    </button>
+                    </form>
+                </td>
+            </tr>
+            @endforeach
+            </tbody>
+        </table>
+    </div>
+</div>
+
     <!-- Modal Edit -->
-    <div class="modal fade" id="myEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="myModaleditfakultas" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Fakultas</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Data Fakultas</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -135,8 +153,13 @@
                                 <input type="text" class="form-control" id="input_nama_fakultas" name="input_nama_fakultas">
                             </div>
                             <div class="mb-3">
+                                <label for="input_nama_fakultas" class="form-label">Kode Fakultas</label>
+                                <input type="text" class="form-control" id="input_nama_fakultas" name="input_nama_fakultas">
+                            </div>
+                            <div class="mb-3">
                                 <label for="input_deskripsi_fakultas" class="form-label">Deskripsi Fakultas</label>
-                                <input type="text" class="form-control" id="input_deskripsi_fakultas" name="input_deskripsi_fakultas">
+                                <div id="edit_deskripsi_fakultas"></div>
+
                             </div>
                             <div class="mb-3">
                                 <label for="input_lokasi_fakultas" class="form-label">Lokasi Fakultas</label>
@@ -144,15 +167,15 @@
                             </div>
                             <div class="mb-3">
                                 <label for="input_visi_fakultas" class="form-label">Visi Fakultas</label>
-                                <input type="text" class="form-control" id="input_visi_fakultas" name="input_visi_fakultas">
+                                <div id="edit_visi_fakultas"></div>
                             </div>
                             <div class="mb-3">
                                 <label for="input_misi_fakultas" class="form-label">Misi Fakultas</label>
-                                <input type="text" class="form-control" id="input_misi_fakultas" name="input_misi_fakultas">
+                                <div id="edit_misi_fakultas"></div>
                             </div>
                             <div class="mb-3">
                                 <label for="input_sertifikat_akreditasi" class="form-label">Gambar Fakultas</label>
-                                <input class="form-control" type="file" id="input_sertifikat_akreditasi" name="input_sertifikat_akreditasi">
+                                <input class="form-control" type="file" id="input_sertifikat_akreditasi" name="input_sertifikat_akreditasi" multiple>
                             </div>
                         </form>
                     </div>
@@ -534,20 +557,28 @@
                                 <input type="text" class="form-control" id="input_nama_fakultas" name="input_nama_fakultas">
                             </div>
                             <div class="mb-3">
+                                <label for="input_misi_fakultas" class="form-label">Kode Fakultas</label>
+                                <input type="text" class="form-control" id="input_nama_fakultas" name="input_nama_fakultas">
+                            </div>
+                            <div class="mb-3">
+                                <label for="input_misi_fakultas" class="form-label">Kode Prodi</label>
+                                <input type="text" class="form-control" id="input_misi_fakultas" name="input_misi_fakultas">
+                            </div>
+                            <div class="mb-3">
                                 <label for="input_deskripsi_fakultas" class="form-label">Deskripsi Prodi</label>
-                                <input type="text" class="form-control" id="input_deskripsi_fakultas" name="input_deskripsi_fakultas">
+                                <div id="deskripsi_prodi"></div>
                             </div>
                             <div class="mb-3">
                                 <label for="input_lokasi_fakultas" class="form-label">Visi</label>
-                                <input type="text" class="form-control" id="input_lokasi_fakultas" name="input_lokasi_fakultas">
+                                <div id="visi_prodi"></div>
                             </div>
                             <div class="mb-3">
                                 <label for="input_visi_fakultas" class="form-label">Misi</label>
-                                <input type="text" class="form-control" id="input_visi_fakultas" name="input_visi_fakultas">
+                                <div id="misi_prodi"></div>
                             </div>
                             <div class="mb-3">
                                 <label for="input_misi_fakultas" class="form-label">Prospek</label>
-                                <input type="text" class="form-control" id="input_misi_fakultas" name="input_misi_fakultas">
+                                <div id="prospek_prodi"></div>
                             </div>
                             <div class="mb-3">
                                 <label for="input_misi_fakultas" class="form-label">Gelar</label>
@@ -557,17 +588,14 @@
                                 <label for="input_misi_fakultas" class="form-label">Lama Studi</label>
                                 <input type="text" class="form-control" id="input_misi_fakultas" name="input_misi_fakultas">
                             </div>
+                            
                             <div class="mb-3">
-                                <label for="input_misi_fakultas" class="form-label">Kode Fakultas</label>
-                                <input type="text" class="form-control" id="input_misi_fakultas" name="input_misi_fakultas">
-                            </div>
-                            <div class="mb-3">
-                                <label for="input_misi_fakultas" class="form-label">Kode Fakultas</label>
-                                <input type="text" class="form-control" id="input_misi_fakultas" name="input_misi_fakultas">
+                                <label for="input_misi_fakultas" class="form-label">Syarat Masuk Prodi</label>
+                                <div id="syarat_prodi"></div>
                             </div>
                             <div class="mb-3">
                                 <label for="input_sertifikat_akreditasi" class="form-label">Gambar Prodi</label>
-                                <input class="form-control" type="file" id="input_sertifikat_akreditasi" name="input_sertifikat_akreditasi">
+                                <input class="form-control" type="file" id="input_sertifikat_akreditasi" name="input_sertifikat_akreditasi" multiple>
                             </div>
                         </form>
                     </div>
@@ -617,7 +645,7 @@
                         <td>Test</td>
                         <td>Anni</td>
                         <td style="min-width: 120px; width: 120px">
-                            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#myEditprodi">
+                            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#myEditProdi">
                                 <i class="bi bi-pen"></i>
                             </button>
                             <button class="btn btn-danger">
@@ -631,35 +659,44 @@
         </div>
     </div>
     <!-- Modal Edit -->
-    <div class="modal fade" id="myEditprodi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="myEditProdi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Fakultas</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Prodi</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="card-body">
                         <form action="" method="post">
+                            @csrf
                             <div class="mb-3">
                                 <label for="input_nama_fakultas" class="form-label">Nama Prodi</label>
                                 <input type="text" class="form-control" id="input_nama_fakultas" name="input_nama_fakultas">
                             </div>
                             <div class="mb-3">
+                                <label for="input_misi_fakultas" class="form-label">Kode Fakultas</label>
+                                <input type="text" class="form-control" id="input_nama_fakultas" name="input_nama_fakultas">
+                            </div>
+                            <div class="mb-3">
+                                <label for="input_misi_fakultas" class="form-label">Kode Prodi</label>
+                                <input type="text" class="form-control" id="input_misi_fakultas" name="input_misi_fakultas">
+                            </div>
+                            <div class="mb-3">
                                 <label for="input_deskripsi_fakultas" class="form-label">Deskripsi Prodi</label>
-                                <input type="text" class="form-control" id="input_deskripsi_fakultas" name="input_deskripsi_fakultas">
+                                <div id="edit_deskripsi_prodi"></div>
                             </div>
                             <div class="mb-3">
                                 <label for="input_lokasi_fakultas" class="form-label">Visi</label>
-                                <input type="text" class="form-control" id="input_lokasi_fakultas" name="input_lokasi_fakultas">
+                                <div id="edit_visi_prodi"></div>
                             </div>
                             <div class="mb-3">
                                 <label for="input_visi_fakultas" class="form-label">Misi</label>
-                                <input type="text" class="form-control" id="input_visi_fakultas" name="input_visi_fakultas">
+                                <div id="edit_misi_prodi"></div>
                             </div>
                             <div class="mb-3">
                                 <label for="input_misi_fakultas" class="form-label">Prospek</label>
-                                <input type="text" class="form-control" id="input_misi_fakultas" name="input_misi_fakultas">
+                                <div id="edit_prospek_prodi"></div>
                             </div>
                             <div class="mb-3">
                                 <label for="input_misi_fakultas" class="form-label">Gelar</label>
@@ -669,18 +706,15 @@
                                 <label for="input_misi_fakultas" class="form-label">Lama Studi</label>
                                 <input type="text" class="form-control" id="input_misi_fakultas" name="input_misi_fakultas">
                             </div>
+                            
                             <div class="mb-3">
-                                <label for="input_misi_fakultas" class="form-label">Kode Fakultas</label>
-                                <input type="text" class="form-control" id="input_misi_fakultas" name="input_misi_fakultas">
-                            </div>
-                            <div class="mb-3">
-                                <label for="input_misi_fakultas" class="form-label">Kode Fakultas</label>
-                                <input type="text" class="form-control" id="input_misi_fakultas" name="input_misi_fakultas">
+                                <label for="input_misi_fakultas" class="form-label">Syarat Masuk Prodi</label>
+                                <div id="edit_syarat_prodi"></div>
                             </div>
                             <div class="mb-3">
                                 <label for="input_sertifikat_akreditasi" class="form-label">Gambar Prodi</label>
-                                <input class="form-control" type="file" id="input_sertifikat_akreditasi" name="input_sertifikat_akreditasi">
-                            </div> 
+                                <input class="form-control" type="file" id="input_sertifikat_akreditasi" name="input_sertifikat_akreditasi" multiple>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -759,6 +793,123 @@
 
             prodi.setAttribute("aria-current", "page");
       };
+
+    
+    ClassicEditor
+        .create( document.querySelector( '#deskripsi_fakultas' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+
+        
+    ClassicEditor
+        
+        .create( document.querySelector( '#visi_fakultas' ) )
+
+        .catch( error => {
+            console.error( error );
+        } );
+
+        
+    ClassicEditor
+        .create( document.querySelector( '#misi_fakultas' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+
+
+        ClassicEditor
+        .create( document.querySelector( '#edit_deskripsi_fakultas' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+
+        
+    ClassicEditor
+        
+        .create( document.querySelector( '#edit_visi_fakultas' ) )
+
+        .catch( error => {
+            console.error( error );
+        } );
+
+        
+    ClassicEditor
+        .create( document.querySelector( '#edit_misi_fakultas' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+
+
+
+        ClassicEditor
+        .create( document.querySelector( '#deskripsi_prodi' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+
+        
+    ClassicEditor
+        
+        .create( document.querySelector( '#visi_prodi' ) )
+
+        .catch( error => {
+            console.error( error );
+        } );
+
+        
+    ClassicEditor
+        .create( document.querySelector( '#misi_prodi' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+    
+        ClassicEditor
+        .create( document.querySelector( '#prospek_prodi' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+
+        ClassicEditor
+        .create( document.querySelector( '#syarat_prodi' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+
+        ClassicEditor
+        .create( document.querySelector( '#edit_deskripsi_prodi' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+
+        
+    ClassicEditor
+        
+        .create( document.querySelector( '#edit_visi_prodi' ) )
+
+        .catch( error => {
+            console.error( error );
+        } );
+
+        
+    ClassicEditor
+        .create( document.querySelector( '#edit_misi_prodi' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+
+        ClassicEditor
+        .create( document.querySelector( '#edit_syarat_prodi' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+    
+        ClassicEditor
+        .create( document.querySelector( '#edit_prospek_prodi' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+
 
 
 
