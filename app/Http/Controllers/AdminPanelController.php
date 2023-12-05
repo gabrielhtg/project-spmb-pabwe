@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\admin;
+use App\Models\Faculty;
 use App\Models\data_institusi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+
 
 class AdminPanelController extends Controller
 {
@@ -81,9 +83,12 @@ class AdminPanelController extends Controller
 
     public function getProgramPanel () {
         $admin = Auth::user();
+        $faculties = Faculty::all();
+
         $data = [
             'indexActive' => 3,
-            'admin' => $admin
+            'admin' => $admin,
+            'faculties'=>$faculties,
         ];
         return view('admin-panel.program_panel', $data);
     }
