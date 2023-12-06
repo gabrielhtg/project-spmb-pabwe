@@ -454,9 +454,6 @@
         </div>
     </section>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -476,7 +473,6 @@
                     }
                 },
             }).mount();
-
 <div id="chat-container" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
   <div id="chat-button" style="width: 100px; height: 105px; border-radius: 0; color: #fff; text-align: center; line-height: 70px; cursor: pointer; position: relative; overflow: hidden; transition: transform 0.5s ease-in-out;" onclick="toggleChatForm()" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
     <img src="{{ asset("/assets/img/icon2.png") }}" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; transition: transform 0.5s ease-in-out;" class="d-block w-100" alt="gambar-1">
@@ -498,9 +494,6 @@
 
 <script src="{{ asset("/assets/js/chatbot.js") }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
-
-<script src="{{ asset("/assets/js/chatbot.js") }}"></script>
-<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
 <script>
     document.addEventListener( 'DOMContentLoaded', function () {
         new Splide( '#testimoni', {
@@ -510,24 +503,6 @@
             breakpoints: {
                 1400: {
                     perPage:3,
-
-    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            new Splide('#testimoni', {
-                perPage: 4,
-                type: 'loop',
-                autoplay: true,
-                breakpoints: {
-                    1400: {
-                        perPage: 3,
-                    },
-                    1020: {
-                        perPage: 2,
-                    },
-                    768: {
-                        perPage: 1,
-                    }
                 },
                 1020: {
                     perPage: 2,

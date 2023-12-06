@@ -59,10 +59,8 @@ Route::get('/faq', [FaqController::class, 'getviewFaq'])->name("faq.faq");
 Route::get('/beasiswa', [BeasiswaController::class, 'getviewBeasiswa'])->name("beasiswa.beasiswa");
 
 //----
-Route::get('/mitra/mitra', [MitraController::class, 'mitra'])->name('mitra.mitra');
+Route::get('/mitra', [MitraController::class, 'getviewMitra'])->name('mitra.mitra');
 
-//----
-Route::get('/mitra/mitra', [MitraController::class, 'mitra'])->name('mitra.mitra');
 
 Route::get('/form', function () {
     return view('chatbot.form');
