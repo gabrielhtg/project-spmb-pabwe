@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminPanelController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProgramController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\FasilitasController;
@@ -70,10 +71,11 @@ Route::get('/form', function () {
 
 // ROUTE PROGRAM STUDI [TEAM 02]
 
-Route::get('/program', [FacultyController::class,'getProgram'])->name('program');
+Route::get('/program', [ProgramController::class,'program'])->name('program');
 Route::get('/fakultas', [FacultyController::class,'getFakultas'])->name('fakultas');
 Route::get('/prodi', [MajorController::class,'getProdi'])->name('prodi');
 Route::post('/faculties/store', [FacultyController::class, 'store'])->name('faculties.store');
+Route::post('/major/store', [MajorController::class, 'store'])->name('major.store');
 Route::delete('/admin-panel/program_panel/{id}', [FacultyController::class, 'destroy'])->name('admin.program.panel.destroy');
 
 

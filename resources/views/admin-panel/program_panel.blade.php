@@ -32,7 +32,7 @@
         Tambah Data Fakultas
     </button>
 
-    <!-- Modal -->
+    <!-- Modal Add Fakultas -->
     <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -531,6 +531,7 @@
 
   </section >
 
+  {{-- PRODI SECTION --}}
   <section id="prodi-subpage" class="container d-none">
 
     <div class="container mt-5 mb-3">
@@ -540,7 +541,7 @@
         Tambah Data Prodi
     </button>
 
-    <!-- Modal -->
+    <!-- Modal Add Prodi -->
     <div class="modal fade" id="myModalProdi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -550,64 +551,77 @@
                 </div>
                 <div class="modal-body">
                     <div class="card-body">
-                        <form action="" method="post">
+                        <form action="{{ route('major.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
                                 <label for="input_nama_fakultas" class="form-label">Nama Prodi</label>
-                                <input type="text" class="form-control" id="input_nama_fakultas" name="input_nama_fakultas">
+                                <input type="text" class="form-control" id="inputNamaProdi" name="nama">
                             </div>
                             <div class="mb-3">
-                                <label for="input_misi_fakultas" class="form-label">Kode Fakultas</label>
-                                <input type="text" class="form-control" id="input_nama_fakultas" name="input_nama_fakultas">
+                                <label for="input_kode_fakultas" class="form-label">Kode Fakultas</label>
+                                <input type="text" class="form-control" id="inputKodeFakultas" name="kode_fakultas">
                             </div>
                             <div class="mb-3">
                                 <label for="input_misi_fakultas" class="form-label">Kode Prodi</label>
-                                <input type="text" class="form-control" id="input_misi_fakultas" name="input_misi_fakultas">
+                                <input type="text" class="form-control" id="inputKodeProdi" name="kode_prodi">
                             </div>
                             <div class="mb-3">
                                 <label for="input_deskripsi_fakultas" class="form-label">Deskripsi Prodi</label>
-                                <div id="deskripsi_prodi"></div>
+                                <div id="deskripsi_prodi" name="deskripsi"></div>
                             </div>
                             <div class="mb-3">
                                 <label for="input_lokasi_fakultas" class="form-label">Visi</label>
-                                <div id="visi_prodi"></div>
+                                <div id="visi_prodi" name="misi"></div>
                             </div>
                             <div class="mb-3">
                                 <label for="input_visi_fakultas" class="form-label">Misi</label>
-                                <div id="misi_prodi"></div>
+                                <div id="misi_prodi" name="visi"></div>
                             </div>
                             <div class="mb-3">
                                 <label for="input_misi_fakultas" class="form-label">Prospek</label>
-                                <div id="prospek_prodi"></div>
+                                <div id="prospek_prodi" name="prospek"></div>
                             </div>
                             <div class="mb-3">
                                 <label for="input_misi_fakultas" class="form-label">Gelar</label>
-                                <input type="text" class="form-control" id="input_misi_fakultas" name="input_misi_fakultas">
+                                <input type="text" class="form-control" id="inputGelarProdi" name="gelar">
+                            </div>
+                            <div class="mb-3">
+                                <label for="input_misi_fakultas" class="form-label">Biaya</label>
+                                <input type="text" class="form-control" id="inputBiayaProdi" name="biaya">
                             </div>
                             <div class="mb-3">
                                 <label for="input_misi_fakultas" class="form-label">Lama Studi</label>
-                                <input type="text" class="form-control" id="input_misi_fakultas" name="input_misi_fakultas">
+                                <input type="text" class="form-control" id="inputLamaProdi" name="lama">
                             </div>
-                            
+                            <div class="mb-3">
+                                <label for="input_misi_fakultas" class="form-label">Akreditasi</label>
+                                <input type="text" class="form-control" id="inputAkreditasiProdi" name="akreditasi">
+                            </div>
+                            <div class="mb-3">
+                                <label for="input_misi_fakultas" class="form-label">Lokasi</label>
+                                <input type="text" class="form-control" id="inputLokasiProdi" name="lokasi">
+                            </div>
                             <div class="mb-3">
                                 <label for="input_misi_fakultas" class="form-label">Syarat Masuk Prodi</label>
-                                <div id="syarat_prodi"></div>
+                                <div id="syarat_prodi" name="syarat"></div>
                             </div>
                             <div class="mb-3">
-                                <label for="input_sertifikat_akreditasi" class="form-label">Gambar Prodi</label>
-                                <input class="form-control" type="file" id="input_sertifikat_akreditasi" name="input_sertifikat_akreditasi" multiple>
+                                <label for="inp ut_sertifikat_akreditasi" class="form-label">Gambar Prodi</label>
+                                <input class="form-control" type="file" id="input_sertifikat_akreditasi" name="gambar" multiple>
                             </div>
-                        </form>
+                        
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                    <button type="button" class="btn btn-primary">Simpan Data</button>
+                    <button class=v   "btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    <button type="submit" class="btn btn-primary">Simpan Data</button>
                 </div>
+                        </form>
             </div>
         </div>
     </div>
 
+    {{-- Display Prodi --}}
     <div id="item-2" class="card">
         <div class="card-header bg-primary text-white">
             <span class="fs-5">Data Prodi</span>
@@ -617,48 +631,59 @@
                 <table class="table text-center align-middle table-striped table-bordered">
                     <thead class="align-middle">
                     <tr>
-                        <th scope="col">No</th>
+                        <th scope="col">#</th>
                         <th scope="col">Nama</th>
+                        <th scope="col">Prodi</th>
+                        <th scope="col">Fakultas</th>
                         <th scope="col">Deskripsi</th>
+                        <th scope="col">Gambar</th>
                         <th scope="col">Visi</th>
                         <th scope="col">Misi</th>
-                        <th scope="col">Gambar</th>
                         <th scope="col">Prospek</th>
                         <th scope="col">Gelar</th>
-                        <th scope="col">Prospek</th>
                         <th scope="col">Lama</th>
-                        <th scope="col">Kode</th>
+                        <th scope="col">Biaya</th>
+                        <th scope="col">Syarat</th>
+                        <th scope="col">Lokasi</th>
+                        <th scope="col">Akreditasi</th>
                         <th scope="col">Action</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Test</td>
-                        <td>Test</td>
-                        <td>Test</td>
-                        <td>Test</td>
-                        <td>Test</td>
-                        <td>Test</td>
-                        <td>Test</td>
-                        <td>Test</td>
-                        <td>Test</td>
-                        <td>Anni</td>
-                        <td style="min-width: 120px; width: 120px">
-                            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#myEditProdi">
-                                <i class="bi bi-pen"></i>
-                            </button>
-                            <button class="btn btn-danger">
-                                <i class="bi bi-trash"></i>
-                            </button>
-                        </td>
-                    </tr>
+                        @foreach ($majors as $major)
+                            <tr>
+                                <td>{{ $major->id }}</td>
+                                <td>{{ $major->nama }}</td>
+                                <td>{{ $major->kode_prodi }}</td>
+                                <td>{{ $major->kode_fakultas }}</td>
+                                <td>{{ $major->deskripsi }}</td>
+                                <td>{{ $major->gambar }}</td>
+                                <td>{{ $major->visi }}</td>
+                                <td>{{ $major->misi }}</td>
+                                <td>{{ $major->prospek }}</td>
+                                <td>{{ $major->gelar }}</td>
+                                <td>{{ $major->lama }}</td>
+                                <td>{{ $major->biaya }}</td>
+                                <td>{{ $major->syarat }}</td>
+                                <td>{{ $major->lokasi }}</td>
+                                <td>{{ $major->akreditasi }}</td>
+                                <td style="min-width: 120px; width: 120px">
+                                    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#myEditProdi">
+                                        <i class="bi bi-pen"></i>
+                                    </button>
+                                    <button class="btn btn-danger">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </form>
         </div>
     </div>
-    <!-- Modal Edit -->
+
+    <!-- Modal Edit Prodi -->
     <div class="modal fade" id="myEditProdi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
