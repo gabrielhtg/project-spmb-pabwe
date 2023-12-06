@@ -15,9 +15,13 @@ class DatabaseSeeder extends Seeder
         $this->call([
             add_master_admin::class,
             add_profile_pict_admin::class,
-            update_admin_name::class,
             insert_data_institusi::class,
-            PrestasiSeeder::class
+            insert_social_media::class,
+            add_hero_section_data::class,
+            add_data_alamat_institusi::class,
+            insert_data_akreditasi_dashboard::class,
+            add_data_alamat_institusi::class,
+            input_image_header_admisi::class
         ]);
     }
 }
