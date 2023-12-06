@@ -92,4 +92,40 @@ class AdminController extends Controller
 
         return redirect()->route('admins');
     }
+
+    public function removeSelf(Request $request)
+    {
+        $selectedAdmin = AdminModel::where('id', $request->id)->first();
+
+        if (Hash::check($request->verifikasi_password, $selectedAdmin->password)) {
+            if ($selectedAdmin->profile_pict && file_exists(selectedAdmin->profile_pict)) {
+                unlink($selectedAdmin->profile_pict);
+            }
+            $selectedAdmin->delete();
+            return redirect()->route('logout');
+        }
+
+        return null;
+    }
+
+    public function changeAdminPassword(Request $request)
+    {
+        $request->validate([
+            'oldPassword' => "max:80|required",
+            'newPassword' => "max:80|required|min:5",
+            'newRePassword' => "max:80|required|min:5",
+        ]);
+
+        $admin = AdminModel::where('id', Auth::user()->id)->first();
+
+        if (Hash::check($request->oldPassword, $admin->password)) {
+            if ($request->newPassword === $request->newRePassword) {
+                $admin->password = Hash::make($request->newPassword);
+
+                $admin->update();
+            }
+        }
+
+        return redirect()->back();
+    }
 }

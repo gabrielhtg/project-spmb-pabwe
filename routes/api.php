@@ -35,5 +35,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('/remove-alamat', [AdminPanelController::class, 'removeAlamat'])->name('removeAlamat');
     Route::post('/add-admin', [AdminController::class, 'addAdmin'])->name('add-admin');
     Route::post('/edit-admin', [AdminController::class, 'editAdmin'])->name('edit-admin');
+    Route::post('/change-password', [AdminController::class, 'changeAdminPassword'])->name('changeAdminPassword');
     Route::delete('/remove-admin', [AdminController::class, 'removeAdmin'])->name('remove-admin');
+    Route::delete('/remove-self', [AdminController::class, 'removeSelf'])->name('remove-self');
 });
