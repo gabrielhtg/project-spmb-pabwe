@@ -46,32 +46,46 @@
                                             <div class="modal-body text-start">
                                                 <input type="hidden" name="id" value="{{ $e -> id }}">
                                                 <div class="mb-3">
-                                                    <label class="form-label">Nama</label>
-                                                    <input type="text" class="form-control" value="{{ $e->nama }}" disabled>
+                                                    <label class="form-label w-100">
+                                                        Nama
+                                                        <input type="text" class="form-control" value="{{ $e->nama }}" disabled>
+                                                    </label>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label class="form-label">Link</label>
-                                                    <input type="text" class="form-control" value="{{ $e->link }}" disabled>
+                                                    <label class="form-label">
+                                                        Link
+                                                        <input type="text" class="form-control" value="{{ $e->link }}" disabled>
+                                                    </label>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label class="form-label">Icon</label>
-                                                    <input type="text" class="form-control" value="{{ $e->icon }}" disabled>
+                                                    <label class="form-label">
+                                                        Icon
+                                                        <input type="text" class="form-control" value="{{ $e->icon }}" disabled>
+                                                    </label>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label class="form-label">Created By</label>
-                                                    <input type="text" class="form-control" value="{{ $e->created_by }}" disabled>
+                                                    <label class="form-label">
+                                                        Created By
+                                                        <input type="text" class="form-control" value="{{ $e->created_by }}" disabled>
+                                                    </label>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label class="form-label">Updated By</label>
-                                                    <input type="text" class="form-control" value="{{ $e->updated_by }}" disabled>
+                                                    <label class="form-label">
+                                                        Updated By
+                                                        <input type="text" class="form-control" value="{{ $e->updated_by }}" disabled>
+                                                    </label>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label class="form-label">Created At</label>
-                                                    <input value="{{ date("d-m-Y", strtotime($e->created_at)) }}" class="form-control" disabled>
+                                                    <label class="form-label">
+                                                        Created At
+                                                        <input value="{{ date("d-m-Y", strtotime($e->created_at)) }}" class="form-control" disabled>
+                                                    </label>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label class="form-label">Updated At</label>
-                                                    <input value="{{ date("d-m-Y", strtotime($e->updated_at)) }}" class="form-control" disabled>
+                                                    <label class="form-label">
+                                                        Updated At
+                                                        <input value="{{ date("d-m-Y", strtotime($e->updated_at)) }}" class="form-control" disabled>
+                                                    </label>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">

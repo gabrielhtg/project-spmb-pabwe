@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AdminModel;
 use App\Models\AkreditasiSectionModel;
 use App\Models\AlamatInstitusiModel;
 use App\Models\data_institusi;
@@ -173,9 +174,11 @@ class AdminPanelController extends Controller
 
     public function getAddAdminView() {
         $admin = Auth::user();
+        $admins = AdminModel::all();
 
         $data = [
             'admin' => $admin,
+            'admins' => $admins,
         ];
 
         return view('admin-panel.add_admin', $data);

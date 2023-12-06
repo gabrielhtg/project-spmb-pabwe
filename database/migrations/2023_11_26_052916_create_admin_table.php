@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('password', 80);
             $table->string('firstname', 25);
             $table->string('lastname', 25);
-            $table->integer('created_by')->nullable(true);
+            $table->string('created_by', 20)->nullable(true);
             $table->string('profile_pict', 100)->nullable(true);
             $table->timestamps();
         });
