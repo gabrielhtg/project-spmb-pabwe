@@ -15,7 +15,11 @@ class add_data_alamat_institusi extends Seeder
     {
         DB::table('alamat_institusi')->insert([
             'nama' => 'Kampus Laguboti',
-            'alamat' => 'Jl. Sisingamangaraja, Sitoluama Laguboti, Toba Sumatera Utara, Indonesia'
+            'alamat' => 'Jl. Sisingamangaraja, Sitoluama Laguboti, Toba Sumatera Utara, Indonesia',
+            'created_by' => 'admin',
+            'updated_by' => 'admin',
+            'updated_at' => now(),
+            'created_At' => now(),
         ]);
     }
 }

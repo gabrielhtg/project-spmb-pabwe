@@ -32,15 +32,32 @@
         {{--    tampilan hp end--}}
     </section>
 
-    <section class="container p-5 text-center" id="section_akreditasi">
-        <h1 class="text-center fw-bold">Akreditasi Kampus</h1>
-
-        <div class="text-center pt-4">
-            <span id="akreditasi" class="fw-bold d-block lh-1" style="font-size: 10rem">B</span>
-            <span id="akreditasi_lengkap" class="d-block lh-1" style="font-size: 3rem">BAIK</span>
-            <span id="lembaga_akreditasi" class="d-block lh-1">BAN-PT</span>
+    <div class="container col-xxl-8 px-4 py-5">
+        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+            <div class="col-10 col-sm-8 col-lg-6">
+                <img src="{{ asset($dataInstitusi->sertifikat_akreditasi ? $dataInstitusi->sertifikat_akreditasi : 'assets/img/default.jpg') }}" class="d-block n shadow-lg mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+            </div>
+            <div class="col-lg-6">
+                <h1 class=" fw-bold lh-1 mb-3">{{ $akreditasiDashboard->header }}</h1>
+                <p class="lead">
+                    {{ $akreditasiDashboard->description }}
+                </p>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                    <a href="{{ asset($dataInstitusi->sertifikat_akreditasi ? $dataInstitusi->sertifikat_akreditasi : 'assets/img/default.jpg') }}" class="btn btn-primary btn-lg px-4 me-md-2">Download Sertifikat</a>
+                </div>
+            </div>
         </div>
-    </section>
+    </div>
+
+{{--    <section class="container p-5 text-center" id="section_akreditasi">--}}
+{{--        <h1 class="text-center fw-bold">Akreditasi Kampus</h1>--}}
+
+{{--        <div class="text-center pt-4">--}}
+{{--            <span id="akreditasi" class="fw-bold d-block lh-1" style="font-size: 10rem">B</span>--}}
+{{--            <span id="akreditasi_lengkap" class="d-block lh-1" style="font-size: 3rem">BAIK</span>--}}
+{{--            <span id="lembaga_akreditasi" class="d-block lh-1">BAN-PT</span>--}}
+{{--        </div>--}}
+{{--    </section>--}}
 
     <section class="container">
         <div id="carouselExampleCaptions" class="carousel slide">
@@ -149,7 +166,7 @@
                         <i class="fa-solid fa-chalkboard-user card-img-top" style="font-size: 80px"></i>
                     </div>
                     <div class="card-body">
-                        <span id="jumlah-dosen" class="fs-2 text-primary fw-bold">9999+</span>
+                        <span id="jumlah-dosen" class="fs-2 text-primary fw-bold">0</span>
                         <br>
                         <span class="fs-5"><strong>Dosen</strong></span>
                     </div>
@@ -162,7 +179,7 @@
                         <i class="fa-solid fa-child-reaching card-img-top" style="font-size: 80px"></i>
                     </div>
                     <div class="card-body">
-                        <span id="jumlah-mahasiswa" class="fs-2 text-primary fw-bold">9999+</span>
+                        <span id="jumlah-mahasiswa" class="fs-2 text-primary fw-bold">0</span>
                         <br>
                         <span class="fs-5"><strong>Mahasiswa</strong></span>
                     </div>
@@ -175,7 +192,7 @@
                         <i class="fa-solid fa-user-graduate" style="font-size: 80px"></i>
                     </div>
                     <div class="card-body">
-                        <span id="jumlah-dosen" class="fs-2 text-primary fw-bold">9999+</span>
+                        <span id="jumlah-alumni" class="fs-2 text-primary fw-bold">0</span>
                         <br>
                         <span class="fs-5"><strong>Alumni</strong></span>
                     </div>
@@ -183,6 +200,29 @@
             </div>
         </div>
     </section>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        // Fungsi untuk membuat animasi iterasi angka
+        function animateCount(elementId, startValue, endValue, duration) {
+            let currentVal = startValue;
+            const increment = (endValue - startValue) / duration;
+
+            const interval = setInterval(function () {
+                currentVal += increment;
+                document.getElementById(elementId).innerText = Math.round(currentVal);
+
+                if (currentVal >= endValue) {
+                    clearInterval(interval);
+                }
+            }, 10);
+        }
+
+        // Panggil fungsi untuk masing-masing kategori (dosen, mahasiswa, alumni)
+        animateCount('jumlah-dosen', 0, {{ $dataInstitusi->jumlah_dosen }}, 100);
+        animateCount('jumlah-mahasiswa', 0, {{ $dataInstitusi->jumlah_mahasiswa }}, 100);
+        animateCount('jumlah-alumni', 0, {{ $dataInstitusi->jumlah_alumni }}, 100);
+    </script>
 
     @php
         $lebarCardMitra = 'width: 10rem;'
@@ -415,6 +455,28 @@
     </section>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Splide('#testimoni', {
+                perPage: 4,
+                type: 'loop',
+                autoplay: true,
+                breakpoints: {
+                    1400: {
+                        perPage: 3,
+                    },
+                    1020: {
+                        perPage: 2,
+                    },
+                    768: {
+                        perPage: 1,
+                    }
+                },
+            }).mount();
+
 <div id="chat-container" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
   <div id="chat-button" style="width: 100px; height: 105px; border-radius: 0; color: #fff; text-align: center; line-height: 70px; cursor: pointer; position: relative; overflow: hidden; transition: transform 0.5s ease-in-out;" onclick="toggleChatForm()" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
     <img src="{{ asset("/assets/img/icon2.png") }}" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; transition: transform 0.5s ease-in-out;" class="d-block w-100" alt="gambar-1">
@@ -436,6 +498,9 @@
 
 <script src="{{ asset("/assets/js/chatbot.js") }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+
+<script src="{{ asset("/assets/js/chatbot.js") }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
 <script>
     document.addEventListener( 'DOMContentLoaded', function () {
         new Splide( '#testimoni', {
@@ -445,7 +510,7 @@
             breakpoints: {
                 1400: {
                     perPage:3,
-=======
+
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -463,9 +528,15 @@
                     768: {
                         perPage: 1,
                     }
->>>>>>> dev
                 },
-            }).mount();
+                1020: {
+                    perPage: 2,
+                },
+                768: {
+                    perPage: 1,
+                }
+            },
+        } ).mount();
 
             new Splide('#mitra-kampus', {
                 perPage: 5,

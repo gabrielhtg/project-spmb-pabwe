@@ -8,20 +8,28 @@ use App\Models\Faq;
 use App\Models\data_institusi;
 use App\Models\SocalMediaModel;
 use App\Models\HeroSectionModel;
+use App\Models\AkreditasiSectionModel;
+use App\Models\AlamatInstitusiModel;
+use App\Models\ModelHeaderAdmisi;
 
 class FaqController extends Controller
 {
     public function getviewFaq()
-    {
+    { 
         $dataInstitusi = data_institusi::where('id', 1)->first();
         $dataHeroSection = HeroSectionModel::where('id', 1)->first();
         $dataSosmed = SocalMediaModel::all();
+        $dataAlamat = AlamatInstitusiModel::all();
+        $akreditasiDashboard = AkreditasiSectionModel::where('id', 1)->first();
 
         $data = [
             'dataInstitusi' => $dataInstitusi,
             'dataHeroSection' => $dataHeroSection,
-            'dataSosmed' => $dataSosmed
+            'dataSosmed' => $dataSosmed,
+            'dataAlamat' => $dataAlamat,
+            'akreditasiDashboard' => $akreditasiDashboard
         ];
+
         return view("faq.faq", $data);
     }
 

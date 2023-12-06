@@ -11,11 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('hero_section', function (Blueprint $table) {
+        Schema::create('header_admisi', function (Blueprint $table) {
             $table->id();
-            $table->string('header', 50);
-            $table->string('paragraph', 250);
-            $table->string('bg_image', 100);
+            $table->string('letak_foto', 100);
             $table->timestamps();
         });
     }
@@ -25,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('hero_section');
+        Schema::dropIfExists('header_admisi');
     }
 };

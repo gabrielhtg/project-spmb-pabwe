@@ -360,7 +360,7 @@
   </div>
 </div>
 
-
 <script src="{{ asset("/assets/js/chatbot.js") }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
 @endsection
 

@@ -20,7 +20,7 @@
     <div class="d-flex w-100">
 
     {{--        Ini adalah sidebar besar mulai--}}
-        <div class="d-none ps-3 pe-3 fixed-top bg-sidebar d-flex flex-column align-items-center" id="sidebar_besar" style="width: 18rem; height: 100vh">
+        <div class="d-none ps-3 pe-3 fixed-top bg-sidebar d-flex flex-column align-items-center" id="sidebar_besar" style="width: 18rem; height: 300vh">
             <div class="d-flex justify-content-center align-items-center mb-3 w-100" style="height: 60px; border: 0 solid white;border-bottom-width: 1px;">
                 <span class="text-white fw-semibold fs-4" style="font-size: 1rem">SPMB Admin</span>
             </div>
@@ -32,6 +32,7 @@
                         Dashboard
                     </button>
                 </a>
+<<<<<<< HEAD
 <<<<<<< HEAD
                 <a href="">
                     <button id="btn_akreditasi" class="btn_sidebar w-100 text-start">
@@ -45,12 +46,15 @@
                         Dashboard Panel
                     </button>
                 </a>
+=======
+>>>>>>> dev
                 <a href="{{ route("admisi-panel") }}">
                     <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start">
                         <i class="fa-regular fa-note-sticky"></i>
                         Admisi
                     </button>
                 </a>
+<<<<<<< HEAD
 
 
                 <a href="#">
@@ -84,6 +88,8 @@
 
 =======
 >>>>>>> dev
+=======
+>>>>>>> dev
             </div>
         </div>
         <div id="geser_besar" style="width: 18rem; min-width: 18rem; height: 100vh"></div>
@@ -91,23 +97,28 @@
     {{--        ini adalah sidebar besar selesai--}}
 
         {{--        Ini adalah sidebar kecil mulai--}}
-        <div class="bg-sidebar fixed-top d-flex flex-wrap justify-content-center" id="sidebar_kecil" style="width: 4rem; height: 100vh">
+        <div class="bg-sidebar fixed-top d-flex flex-wrap justify-content-center" id="sidebar_kecil" style="width: 4rem; height: 300vh">
             <div class="d-flex align-items-center flex-column" style="height: 56px">
                 <div style="margin-top: 60px" class="mb-3">
                 </div>
 
                 <div class="d-flex flex-column row-gap-3 w-100">
                     <a href="{{ route("admin-panel") }}">
+<<<<<<< HEAD
                         <button id="btn_dashboard" class="btn_sidebar_kecil btn_sidebar_active"><i class="bi bi-speedometer"></i></button>
                     </a>
 <<<<<<< HEAD
                     <button id="btn_akreditasi" class="btn_sidebar_kecil">A</button>
                     <a href="{{ route("spmb-dashboard") }}">
                         <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="bi bi-house"></i></button>
+=======
+                        <button id="btn_dashboard-kecil" class="btn_sidebar_kecil btn_sidebar_active"><i class="bi bi-speedometer"></i> </button>
+>>>>>>> dev
                     </a>
                     <a href="{{ route("admisi-panel") }}">
                         <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="fa-regular fa-note-sticky"></i></button>
                     </a>
+<<<<<<< HEAD
                     <a href="{{ route("spmb-dashboard") }}">
                         <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="bi bi-mortarboard"></i></button>
                     </a>
@@ -120,6 +131,8 @@
                     <a href="{{ route("spmb-dashboard") }}">
                         <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="fa-regular fa-handshake"></i></button>
                     </a>
+=======
+>>>>>>> dev
 =======
 >>>>>>> dev
                 </div>
@@ -150,7 +163,7 @@
                         </button>
                         <ul class="dropdown-menu mt-3 dropdown-menu-end">
                             <li><a class="dropdown-item" href="{{ route('edit-profile') }}"><i class="bi bi-person me-2"></i>Edit Profile</a></li>
-                            <li><a class="dropdown-item" href="{{ route('add-admin') }}"><i class="bi bi-person-add me-2"></i>Tambah Admin</a></li>
+                            <li><a class="dropdown-item" href="{{ route('admins') }}"><i class="bi bi-person-add me-2"></i>Tambah Admin</a></li>
                             <li><a class="dropdown-item" href="{{ route('dashboard') }}" target="_blank"><i class="bi bi-house me-2"></i>SPMB Dashboard</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item text-danger" href="{{ route('logout') }}"><i class="bi bi-box-arrow-left me-2"></i> Logout</a></li>
@@ -169,6 +182,8 @@
     <script>
         const buttonSidebar = document.querySelectorAll(".btn_sidebar");
         const buttonSidebarKecil = document.querySelectorAll(".btn_sidebar_kecil");
+        // const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        // const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 
         for (let i = 0; i < buttonSidebar.length; i++) {
             buttonSidebar[i].classList.remove("btn_sidebar_active");
