@@ -11,6 +11,7 @@ use App\Models\HeroSectionModel;
 use App\Models\ModelHeaderAdmisi;
 use App\Models\NomorTeleponModel;
 use App\Models\SocalMediaModel;
+use App\Models\JalurPendaftaranModel;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
@@ -248,6 +249,7 @@ class AdminPanelController extends Controller
     public function getAdmisiPanel () {
         $admin = Auth::user();
         $dataHeaderAdmisi = ModelHeaderAdmisi::where('id', 1)->first();
+        $jalur = 
 
         $data = [
             'indexActive' => 1,
