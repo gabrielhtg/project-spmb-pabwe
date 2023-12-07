@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\ModelHeaderAdmisi;
+use App\Models\JalurPendaftaranModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class AdmisiController extends Controller
@@ -41,4 +43,22 @@ class AdmisiController extends Controller
 
         return redirect()->route('admisi-panel');
     }
+
+    
+    public function addJalur (Request $request){
+        $request->validate([
+            'jalur_pendaftarn'=>'required',
+            'desk_pers_umum' =>'required'
+        ]);
+
+        JalurPendaftaranModel::create([
+            'jalur_pendaftaran' => $request->inputjalurpendaftaran,
+            'desk_pers_umum' => $request->inputpersyaratanumum,
+            'created_by' => Auth::user()->username,
+            'updated_by' => Auth::user()->username,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        return redirect('admisi-panel');   
+        }
 }

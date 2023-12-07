@@ -269,7 +269,7 @@
                 </div>
 
                 <div class="card-body">
-                    @include('admin-panel.sub_admisi_panel.add_biaya_studi')
+                    @include('admin-panel.sub_admisi_panel.add_persyaratan_umum')
                     <form action="">
                         <table class="table table-striped">
                             <thead>
@@ -286,8 +286,8 @@
                                 <td>Test</td>
                                 <td>Test</td>
                                 <td>
-                                    <button type="button" class="btn btn-warning">Ubah</button>
-                                    <button type="button" class="btn btn-danger">Hapus</button>
+                                    <button type="button" class="btn btn-warning"><i class="bi bi-pen"></i></button>
+                                    <button type="button" class="btn btn-danger"><i class="bi bi-trash"></i></button>
                                 </td>
                             </tr>
                             </tbody>

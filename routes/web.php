@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\AdmisiController;
 use App\Http\Controllers\FasilitasController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\BeasiswaController;
@@ -50,6 +51,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/admins', [AdminPanelController::class, 'getAddAdminView'])->name('admins');
         Route::get('/prestasipanel', [AdminPanelController::class, 'getPrestasiPanel'])->name('prestasipanel');
         Route::get('/testimonipanel', [AdminPanelController::class, 'getTestimoniPanel'])->name('testimonipanel');
+        Route::post('/addjalurpendaftaran', [AdmisiController::class,'addJalur'])->name('addJalur');
     });
 });
 
