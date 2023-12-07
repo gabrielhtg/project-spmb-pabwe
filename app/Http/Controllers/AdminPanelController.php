@@ -8,6 +8,7 @@ use App\Models\AlamatInstitusiModel;
 use App\Models\data_institusi;
 use App\Models\EmailModel;
 use App\Models\HeroSectionModel;
+use App\Models\MbkmModel;
 use App\Models\ModelHeaderAdmisi;
 use App\Models\NomorTeleponModel;
 use App\Models\SocalMediaModel;
@@ -268,11 +269,15 @@ class AdminPanelController extends Controller
     public function getAdmisiPanel () {
         $admin = Auth::user();
         $dataHeaderAdmisi = ModelHeaderAdmisi::where('id', 1)->first();
+        $dataNonKompetisi  = MbkmModel::where('jenis_kegiatan', 'Non Kompetisi')->get();
+        $dataKompetisi =  MbkmModel::where('jenis_kegiatan', 'Kompetisi')->get();
 
         $data = [
             'indexActive' => 1,
             'admin' => $admin,
             'dataHeaderAdmisi' => $dataHeaderAdmisi,
+            'dataNonKompetisi' => $dataNonKompetisi,
+            'dataKompetisi'=>$dataKompetisi
         ];
         return view('admin-panel.admisi_panel', $data);
     }

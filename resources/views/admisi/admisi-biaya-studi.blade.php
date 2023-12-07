@@ -199,25 +199,33 @@
         <div class="d-flex justify-content-center flex-column pt-5 ">
             <h3 class="fw-semibold text-start pb-3">Biaya Pendidikan Peserta Merdeka Belajar Kampus Merdeka (MBKM)</h3>
 
-            <table class="table align-middle">
+            <table class="table align-middle table-bordered">
                 <thead>
                 <tr>
-                    <th scope="col" style="background-color: #47A5D4">Jenis Kegiatan</th>
-                    <th scope="col" style="background-color: #47A5D4">Jumlah SKS Kegiatan</th>
-                    <th scope="col" style="background-color: #47A5D4">Potongan SPP</th>
+                    <th scope="col" style="background-color: #47A5D4" class="text-white fw-semibold">Jenis Kegiatan</th>
+                    <th scope="col" style="background-color: #47A5D4" class="text-white fw-semibold">Jumlah SKS Kegiatan</th>
+                    <th scope="col" style="background-color: #47A5D4" class="text-white fw-semibold">Potongan SPP</th>
                 </tr>
                 </thead>
                 <tbody>
+                    <tr>
+                        <td rowspan="{{ $dataNonKompetisi->count() + 1 }}"> Kegiatan MBKM Non Kompetisi</td>
+                    </tr>
+                @foreach($dataNonKompetisi as $e)
+                    <tr>
+                        <td>{{ $e -> jumlah_sks }}</td>
+                        <td>{{$e -> potongan_spp}}</td>
+                    </tr>
+                @endforeach
                 <tr>
-                    <td>Kegiatan MBKM Non Kompetisi</td>
-                    <td>10</td>
-                    <td>10%</td>
+                    <td rowspan="{{ $dataKompetisi->count() + 1 }}">Kegiatan MBKM Kompetisi</td>
                 </tr>
-                <tr>
-                    <td>Kegiatan MBKM Kompetisi</td>
-                    <td><20</td>
-                    <td>20%</td>
-                </tr>
+                @foreach($dataKompetisi as $e)
+                    <tr>
+                        <td>{{ $e -> jumlah_sks }}</td>
+                        <td>{{$e -> potongan_spp}}</td>
+                    </tr>
+                @endforeach
                 </tbody>
             </table>
         </div>

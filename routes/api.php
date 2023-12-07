@@ -43,5 +43,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('/remove-self', [AdminController::class, 'removeSelf'])->name('remove-self');
     Route::post('/add-email', [AdminController::class, 'addEmail'])->name('addEmail');
     Route::post('/edit-email', [AdminController::class, 'editEmail'])->name('editEmail');
+    Route::post('/add-mbkm-non-kompetisi', [AdmisiController::class, 'addMbkmNonKompetisi'])->name('addMbkmNonKompetisi');
+    Route::post('/add-mbkm-kompetisi', [AdmisiController::class, 'addMbkmKompetisi'])->name('addMbkmKompetisi');
     Route::delete('/delete-email', [AdminController::class, 'removeEmail'])->name('removeEmail');
+    Route::delete('/remove-mbkm', [AdmisiController::class, 'removeMbkm'])->name('removeMbkm');
 });

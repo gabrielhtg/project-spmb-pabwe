@@ -18,12 +18,13 @@ class DatabaseSeeder extends Seeder
             insert_data_institusi::class,
             insert_social_media::class,
             add_hero_section_data::class,
+            add_data_alamat_institusi::class,
             insert_data_akreditasi_dashboard::class,
             add_data_alamat_institusi::class,
             add_nomor_telepon::class,
             input_image_header_admisi::class,
             add_email::class,
-            insert_data_akreditasi_dashboard::class
+            add_data_mbkm::class
         ]);
     }
 }
