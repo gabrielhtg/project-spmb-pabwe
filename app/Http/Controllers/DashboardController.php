@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AkreditasiInstitutiModel;
 use App\Models\AkreditasiSectionModel;
 use App\Models\AlamatInstitusiModel;
 use App\Models\data_institusi;
@@ -23,6 +24,7 @@ class DashboardController extends Controller
         $akreditasiDashboard = AkreditasiSectionModel::where('id', 1)->first();
         $dataNomorTelepon = NomorTeleponModel::all();
         $dataEmail = EmailModel::all();
+        $dataAkreditasiInstitusi = AkreditasiInstitutiModel::all()->sortByDesc('tahun_akreditasi')->first();
 
         $data = [
             'dataInstitusi' => $dataInstitusi,
@@ -32,6 +34,7 @@ class DashboardController extends Controller
             'akreditasiDashboard' => $akreditasiDashboard,
             'dataNomorTelepon' => $dataNomorTelepon,
             'dataEmail' => $dataEmail,
+            'dataAkreditasiInstitusi' => $dataAkreditasiInstitusi,
         ];
 
         return view('dashboard/dashboard', $data);

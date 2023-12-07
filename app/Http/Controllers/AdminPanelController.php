@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AdminModel;
+use App\Models\AkreditasiInstitutiModel;
 use App\Models\AkreditasiSectionModel;
 use App\Models\AlamatInstitusiModel;
 use App\Models\data_institusi;
@@ -30,6 +31,7 @@ class AdminPanelController extends Controller
         $dataAkreditasiDashboard = AkreditasiSectionModel::where('id', 1)->first();
         $dataNomorTelepon = NomorTeleponModel::all();
         $dataEmail = EmailModel::all();
+        $dataAkreditasiInstitusi = AkreditasiInstitutiModel::all()->sortByDesc('tahun_akreditasi');
 
         $data = [
             'indexActive' => 0,
@@ -41,6 +43,7 @@ class AdminPanelController extends Controller
             'dataAkreditasiDashboard' => $dataAkreditasiDashboard,
             'dataNomorTelepon' => $dataNomorTelepon,
             'dataEmail' => $dataEmail,
+            'dataAkreditasiInstitusi' => $dataAkreditasiInstitusi
         ];
 
         return view('admin-panel.adminpanel', $data);
@@ -91,30 +94,7 @@ class AdminPanelController extends Controller
             $dataInstitusi->logo_institusi = 'assets/img/dashboard/' . $filename;
         }
 
-//        if ($request->input_sertifikat_institusi) {
-//            $request->validate([
-//                'input_sertifikat_institusi' => 'required|image|mimes:jpeg,png,jpg|max:1024',
-//            ]);
-//
-//            // Mengambil file yang sudah divalidasi dari request
-//            $photo = $request->file('input_sertifikat_institusi');
-//
-//            // Membuat nama unik untuk file yang diunggah
-//            $filename = 'sertifikat_institusi.' . $photo->getClientOriginalExtension();
-//
-//            // Menentukan direktori tempat penyimpanan file di dalam direktori 'public'
-//            $directory = public_path('assets/img/dashboard/');
-//
-//            //Pindahkan file ke direktori yang diinginkan
-//            $photo->move($directory, $filename);
-//
-//            // Menghapus photo lama jika ada
-//            if ($dataInstitusi->sertifikat_akreditasi && file_exists($dataInstitusi->sertifikat_akreditasi)) {
-//                unlink($dataInstitusi->sertifikat_akreditasi);
-//            }
-//
-//            $dataInstitusi->sertifikat_akreditasi = 'assets/img/dashboard/' . $filename;
-//        }
+
 
         $dataInstitusi->nama_institusi = $request->nama_institusi;
         $dataInstitusi->singkatan_nama_institusi = $request->input_singkatan_nama_institusi;
@@ -282,4 +262,35 @@ class AdminPanelController extends Controller
         return view('admin-panel.admisi_panel', $data);
     }
 
+    public function addAkreditasiInstitusi (Request $request) {
+        if ($request->sertifikat_akreditasi) {
+            $request->validate([
+                'akreditasi' => 'required',
+                'lembaga_akreditasi' => 'required|string',
+                'sertifikat_akreditasi' => 'required|image|mimes:jpeg,png,jpg|max:1024',
+                'tahun_akreditasi' => 'required',
+            ]);
+
+            // Mengambil file yang sudah divalidasi dari request
+            $photo = $request->file('sertifikat_akreditasi');
+
+            // Membuat nama unik untuk file yang diunggah
+            $filename = 'sertifikat_institusi.' . $photo->getClientOriginalExtension();
+
+            // Menentukan direktori tempat penyimpanan file di dalam direktori 'public'
+            $directory = public_path('assets/img/dashboard/');
+
+            //Pindahkan file ke direktori yang diinginkan
+            $photo->move($directory, $filename);
+
+            AkreditasiInstitutiModel::create([
+                'akreditasi' => $request->akreditasi,
+                'lembaga_akreditasi' => $request->lembaga_akreditasi,
+                'sertifikat_akreditasi' => 'assets/img/dashboard/' . $filename,
+                'tahun_akreditasi' => $request->tahun_akreditasi,
+            ]);
+        }
+
+        return redirect()->route('admin-panel');
+    }
 }

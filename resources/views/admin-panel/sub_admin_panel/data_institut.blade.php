@@ -27,14 +27,7 @@
                     </label>
                 </div>
 
-                <div class="mb-3">
-                    <label for="input_akreditasi" class="form-label fw-semibold">Akreditasi</label>
-                    <select id="input_akreditasi" name="input_akreditasi" class="form-control">
-                        <option value="A" <?php echo ($dataInstitusi->akreditasi === 'A') ? 'selected' : ''; ?>>A</option>
-                        <option value="B" <?php echo ($dataInstitusi->akreditasi === 'B') ? 'selected' : ''; ?>>B</option>
-                        <option value="C" <?php echo ($dataInstitusi->akreditasi === 'C') ? 'selected' : ''; ?>>C</option>
-                    </select>
-                </div>
+
 
                 <div class="mb-3">
                     <label class="form-label w-100 fw-semibold">
@@ -97,19 +90,10 @@
             <hr>
 
             <div class="mb-3">
-{{--                <label for="input_sertifikat_institusi" class="form-label fw-semibold">Sertifikat Akreditasi</label>--}}
-{{--                <br>--}}
-{{--                <div class="w-100 border border-1 mb-2 p-3 d-flex justify-content-center rounded-2">--}}
-{{--                    <img--}}
-{{--                        src="{{ asset($dataInstitusi->sertifikat_akreditasi ? $dataInstitusi->sertifikat_akreditasi : 'assets/img/default.jpg') }}"--}}
-{{--                        alt="sertifikat akreditasi"--}}
-{{--                        style="width: 500px">--}}
-{{--                </div>--}}
-{{--                <input class="form-control" type="file" id="input_sertifikat_institusi"--}}
-{{--                       name="input_sertifikat_institusi">--}}
-{{--                @error('input_sertifikat_institusi')--}}
-{{--                <span class="text-danger">{{ $message }}</span>--}}
-{{--                @enderror--}}
+
+                <div class="d-flex justify-content-end">
+                    @include('admin-panel.sub_admin_panel.tambah_data_akreditasi')
+                </div>
 
                 <table class="table table-striped table-bordered overflow-x-auto align-middle text-center">
                     <thead>
@@ -123,14 +107,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        @php
+                        $i = 1;
+                        @endphp
+                        @foreach($dataAkreditasiInstitusi as $e)
+                            <td>{{ $i++ }}</td>
+                            <td>{{ $e->akreditasi }}</td>
+                            <td>{{ $e->lembaga_akreditasi }}</td>
+                            <td>
+                                <a class="btn btn-outline-primary" target="_blank" href="{{ asset($e->sertifikat_akreditasi) }}">Download Here</a>
+                            </td>
+                            <td>{{ $e->tahun_akreditasi }}</td>
                             <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

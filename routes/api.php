@@ -45,6 +45,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/edit-email', [AdminController::class, 'editEmail'])->name('editEmail');
     Route::post('/add-mbkm-non-kompetisi', [AdmisiController::class, 'addMbkmNonKompetisi'])->name('addMbkmNonKompetisi');
     Route::post('/add-mbkm-kompetisi', [AdmisiController::class, 'addMbkmKompetisi'])->name('addMbkmKompetisi');
+    Route::post('/add-akreditasi-institusi', [AdminPanelController::class, 'addAkreditasiInstitusi'])->name('addAkreditasi');
     Route::delete('/delete-email', [AdminController::class, 'removeEmail'])->name('removeEmail');
     Route::delete('/remove-mbkm', [AdmisiController::class, 'removeMbkm'])->name('removeMbkm');
 });
