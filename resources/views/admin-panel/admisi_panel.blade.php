@@ -111,57 +111,92 @@
                     <span class="fs-3">Data Pembiayaan MBKM Non-Kompetisi</span>
                 </div>
 
-                <form>
-                    <div class="card-body">
-                        <div class="mb-3">
-                            <label for="input_jumlah_sks_kegiatan" class="form-label">Jumlah SKS Kegiatan</label>
-                            <input type="text" class="form-control" id="input_jumlah_sks_kegiatan"
-                                   name="input_jumlah_sks_kegiatan">
-                        </div>
-                        <div class="mb-3">
-                            <label for="input_potongan_spp" class="form-label">Potongan SPP (%)</label>
-                            <input type="text" class="form-control" id="input_potongan_spp" name="input_potongan_spp">
-                        </div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-end mb-2">
+                        @include('admin-panel.sub_admisi_panel.tambah_mbkm_non_kompetisi')
                     </div>
-                    <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                </form>
+                    <table class="table table-bordered text-center table-striped align-middle">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Jumlah SKS</th>
+                            <th>Potongan SPP</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @php
+                        $i = 1;
+                        @endphp
+                        @foreach($dataNonKompetisi as $e)
+                            <tr>
+                                <td>{{ $i++ }}</td>
+                                <td>{{ $e->jumlah_sks }}</td>
+                                <td>{{ $e->potongan_spp }}</td>
+                                <td style="width: 180px; max-width: 180px">
+                                    <div class="d-flex justify-content-center w-100 gap-2">
+                                        <form action="{{ route('removeMbkm') }}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <input type="hidden" name="id" value="{{ $e->id }}">
+                                            <button class="btn btn-danger">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
         <div class="mt-3">
-            <div class="card card-success">
+            <div class="card">
                 <div class="card-header bg-primary text-white">
                     <span class="fs-3">Data Pembiayaan MBKM Kompetisi</span>
-
                 </div>
 
                 <div class="card-body">
-                    @include('admin-panel.sub_admisi_panel.add_mbkm')
-                    <form action="">
-                        <table class="table table-striped">
-                            <thead>
+                    <div class="d-flex justify-content-end mb-2">
+                        @include('admin-panel.sub_admisi_panel.tambah_mbkm_kompetisi')
+                    </div>
+                    <table class="table table-bordered text-center table-striped align-middle">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Jumlah SKS</th>
+                            <th>Potongan SPP</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @php
+                            $i = 1;
+                        @endphp
+                        @foreach($dataKompetisi as $e)
                             <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Jumlah SKS</th>
-                                <th scope="col">Potongan SPP (%)</th>
-                                <th scope="col">Action</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Test</td>
-                                <td>Test</td>
-                                <td>
-                                    <button type="button" class="btn btn-warning">Ubah</button>
-                                    <button type="button" class="btn btn-danger">Hapus</button>
+                                <td>{{ $i++ }}</td>
+                                <td>{{ $e->jumlah_sks }}</td>
+                                <td>{{ $e->potongan_spp }}</td>
+                                <td style="width: 180px; max-width: 180px">
+                                    <div class="d-flex justify-content-center w-100 gap-2">
+                                        <form action="{{ route('removeMbkm') }}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <input type="hidden" name="id" value="{{ $e->id }}">
+                                            <button class="btn btn-danger">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </form>
+                                    </div>
                                 </td>
                             </tr>
-                            </tbody>
-                        </table>
-                    </form>
+                        @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

@@ -7,6 +7,7 @@ use App\Models\AlamatInstitusiModel;
 use App\Models\data_institusi;
 use App\Models\EmailModel;
 use App\Models\HeroSectionModel;
+use App\Models\MbkmModel;
 use App\Models\ModelHeaderAdmisi;
 use App\Models\NomorTeleponModel;
 use App\Models\SocalMediaModel;
@@ -41,12 +42,16 @@ class DashboardController extends Controller
         $dataAlamat = AlamatInstitusiModel::all();
         $dataSosmed = SocalMediaModel::all();
         $dataHeaderAdmisi = ModelHeaderAdmisi::where('id', 1)->first();
+        $dataNomorTelepon = NomorTeleponModel::all();
+        $dataEmail = EmailModel::all();
 
         $data = [
             'dataInstitusi' => $dataInstitusi,
             'dataSosmed' => $dataSosmed,
             'dataAlamat' => $dataAlamat,
-            'dataHeaderAdmisi' => $dataHeaderAdmisi
+            'dataHeaderAdmisi' => $dataHeaderAdmisi,
+            'dataNomorTelepon' => $dataNomorTelepon,
+            'dataEmail' => $dataEmail
         ];
 
         return view('admisi.admisi-tanggal-penting', $data);
@@ -57,12 +62,16 @@ class DashboardController extends Controller
         $dataAlamat = AlamatInstitusiModel::all();
         $dataSosmed = SocalMediaModel::all();
         $dataHeaderAdmisi = ModelHeaderAdmisi::where('id', 1)->first();
+        $dataNomorTelepon = NomorTeleponModel::all();
+        $dataEmail = EmailModel::all();
 
         $data = [
             'dataInstitusi' => $dataInstitusi,
             'dataSosmed' => $dataSosmed,
             'dataAlamat' => $dataAlamat,
-            'dataHeaderAdmisi' => $dataHeaderAdmisi
+            'dataHeaderAdmisi' => $dataHeaderAdmisi,
+            'dataNomorTelepon' => $dataNomorTelepon,
+            'dataEmail' => $dataEmail
         ];
 
         return view('admisi.admisi-jalur-pendaftaran', $data);
@@ -73,12 +82,20 @@ class DashboardController extends Controller
         $dataAlamat = AlamatInstitusiModel::all();
         $dataSosmed = SocalMediaModel::all();
         $dataHeaderAdmisi = ModelHeaderAdmisi::where('id', 1)->first();
+        $dataNomorTelepon = NomorTeleponModel::all();
+        $dataEmail = EmailModel::all();
+        $dataNonKompetisi  = MbkmModel::where('jenis_kegiatan', 'Non Kompetisi')->get();
+        $dataKompetisi =  MbkmModel::where('jenis_kegiatan', 'Kompetisi')->get();
 
         $data = [
             'dataInstitusi' => $dataInstitusi,
             'dataSosmed' => $dataSosmed,
             'dataAlamat' => $dataAlamat,
-            'dataHeaderAdmisi' => $dataHeaderAdmisi
+            'dataHeaderAdmisi' => $dataHeaderAdmisi,
+            'dataNomorTelepon' => $dataNomorTelepon,
+            'dataEmail' => $dataEmail,
+            'dataNonKompetisi' => $dataNonKompetisi,
+            'dataKompetisi'=>$dataKompetisi
         ];
 
         return view('admisi.admisi-biaya-studi', $data);
@@ -89,12 +106,16 @@ class DashboardController extends Controller
         $dataAlamat = AlamatInstitusiModel::all();
         $dataSosmed = SocalMediaModel::all();
         $dataHeaderAdmisi = ModelHeaderAdmisi::where('id', 1)->first();
+        $dataNomorTelepon = NomorTeleponModel::all();
+        $dataEmail = EmailModel::all();
 
         $data = [
             'dataInstitusi' => $dataInstitusi,
             'dataSosmed' => $dataSosmed,
             'dataAlamat' => $dataAlamat,
-            'dataHeaderAdmisi' => $dataHeaderAdmisi
+            'dataHeaderAdmisi' => $dataHeaderAdmisi,
+            'dataNomorTelepon' => $dataNomorTelepon,
+            'dataEmail' => $dataEmail
         ];
 
         return view('admisi.admisi-persyaratan-khusus', $data);

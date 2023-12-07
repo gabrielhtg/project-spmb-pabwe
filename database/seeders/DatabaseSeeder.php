@@ -23,7 +23,8 @@ class DatabaseSeeder extends Seeder
             add_data_alamat_institusi::class,
             add_nomor_telepon::class,
             input_image_header_admisi::class,
-            add_email::class
+            add_email::class,
+            add_data_mbkm::class
         ]);
     }
 }
