@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\AdminModel;
 use App\Models\AkreditasiSectionModel;
 use App\Models\AlamatInstitusiModel;
+use App\Models\CoverFaq;
 use App\Models\data_institusi;
 use App\Models\HeroSectionModel;
 use App\Models\ModelHeaderAdmisi;
@@ -231,6 +232,18 @@ class AdminPanelController extends Controller
             'dataHeaderAdmisi' => $dataHeaderAdmisi,
         ];
         return view('admin-panel.admisi_panel', $data);
+    }
+
+    public function getFaqPanel () {
+        $admin = Auth::user();
+        // $dataHeaderAdmisi = CoverFaq::where('id', 1)->first();
+
+        // $data = [
+        //     'indexActive' => 1,
+        //     'admin' => $admin,
+        //     'dataHeaderAdmisi' => $dataHeaderAdmisi,
+        // ];
+        return view('admin-panel.faq_admin');
     }
 
 }

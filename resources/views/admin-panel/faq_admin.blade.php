@@ -8,11 +8,10 @@
                 <div data-bs-spy="scroll" data-bs-target="#sidebar-kanan" data-bs-smooth-scroll="true"
                      class="scrollspy-example-2 d-flex gap-3 flex-column justify-content-center" tabindex="0">
 
-                    @include('admin-panel.sub_admin_panel.data_institut')
-                    @include('admin-panel.sub_admin_panel.section_akreditas_dashboard')
-                    @include('admin-panel.sub_admin_panel.social_media')
-                    @include('admin-panel.sub_admin_panel.hero_section')
-                    @include('admin-panel.sub_admin_panel.alamat_institusi')
+                    @include('admin-panel.sub_faq_panel.cover')
+                    {{-- @include('admin-panel.sub_admin_panel.section_akreditas_dashboard')
+                    @include('admin-panel.sub_admin_panel.social_media') --}}
+                    
 
                 </div>
             </div>

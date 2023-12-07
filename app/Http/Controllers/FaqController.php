@@ -7,9 +7,10 @@ use Illuminate\Http\Request;
 use App\Models\Faq;
 use App\Models\data_institusi;
 use App\Models\SocalMediaModel;
-use App\Models\HeroSectionModel;
+use App\Models\CoverFaq;
 use App\Models\AkreditasiSectionModel;
 use App\Models\AlamatInstitusiModel;
+use App\Models\HeroSectionModel;
 use App\Models\ModelHeaderAdmisi;
 
 class FaqController extends Controller
@@ -107,5 +108,43 @@ class FaqController extends Controller
 
         $faq->delete();
         return redirect()->route("faq");
+    }
+
+    public function updateCoverFaq(Request $request)
+    {
+        $dataCover = CoverFaq::where('id', 1)->first();
+
+        $dataCover->header = $request->input_judul_header;
+        $dataCover->paragraph = $request->input_deskripsi_header;
+
+        if ($request->input_bg_faq) {
+            $request->validate([
+                'input_bg_faq' => 'image|mimes:jpeg,png,jpg|max:1024',
+            ]);
+
+            // Mengambil file yang sudah divalidasi dari request
+            $photo = $request->file('input_bg_faq');
+
+            // Membuat nama unik untuk file yang diunggah
+            $filename = time() . '_faq.' . $photo->getClientOriginalExtension();
+
+            // Menentukan direktori tempat penyimpanan file di dalam direktori 'public'
+            $directory = public_path('assets/img/faq/');
+
+            //Pindahkan file ke direktori yang diinginkan
+            $photo->move($directory, $filename);
+
+            // Menghapus photo lama jika ada
+            if ($dataCover->bg_image && file_exists($dataCover->bg_image)) {
+                unlink($dataCover->bg_image);
+            }
+
+            $dataCover->bg_image = 'assets/img/faq/' . $filename;
+        }
+
+        $dataCover->update();
+
+        return redirect()->back();
+
     }
 }

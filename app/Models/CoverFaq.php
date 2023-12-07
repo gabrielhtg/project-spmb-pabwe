@@ -5,13 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ModelHeaderAdmisi extends Model
+class CoverFaq extends Model
 {
     use HasFactory;
 
-    protected $table = "header_admisi";
+    protected $table = 'cover_faq';
 
     protected $fillable = [
-        'letak_foto'
+        'header',
+        'paragraph',
+        'bg_image'
     ];
+
+    public $timestamps = true;
 }

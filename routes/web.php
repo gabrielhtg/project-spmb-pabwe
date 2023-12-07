@@ -46,6 +46,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/admins', [AdminPanelController::class, 'getAddAdminView'])->name('admins');
         Route::get('/prestasipanel', [AdminPanelController::class, 'getPrestasiPanel'])->name('prestasipanel');
         Route::get('/testimonipanel', [AdminPanelController::class, 'getTestimoniPanel'])->name('testimonipanel');
+        Route::get('/faq-panel', [FaqController::class, 'getTestimoniPanel'])->name('testimonipanel');
     });
 });
 

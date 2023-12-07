@@ -32,64 +32,12 @@
                         Dashboard
                     </button>
                 </a>
-<<<<<<< HEAD
-<<<<<<< HEAD
-                <a href="">
-                    <button id="btn_akreditasi" class="btn_sidebar w-100 text-start">
-                        <span class="me-2">&nbsp;A</span>
-                        Akreditasi
-                    </button>
-                </a>
-                <a href="{{ route("spmb-dashboard") }}">
-                    <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start">
-                        <i class="bi bi-house me-2"></i>
-                        Dashboard Panel
-                    </button>
-                </a>
-=======
->>>>>>> dev
                 <a href="{{ route("admisi-panel") }}">
                     <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start">
                         <i class="fa-regular fa-note-sticky"></i>
                         Admisi
                     </button>
                 </a>
-<<<<<<< HEAD
-
-
-                <a href="#">
-                    <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start">
-                        <i class="bi bi-mortarboard"></i>
-                        Beasiswa
-                    </button>
-                </a>
-                <a href="#">
-                    <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start"><i class="fa-regular fa-comment-dots"></i>
-                        Form</button>
-                </a>
-                <a href="#">
-                    <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start"><i class="bi bi-question-square"></i>
-                        FAQ</button>
-                </a>
-                <a href="#">
-                    <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start"><i class="fa-regular fa-handshake"></i>
-                        Kemitraan</button>
-                </a>
-
-                <a href="{{ route("prestasipanel") }}">
-                    <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start"><i class="fas fa-trophy"></i>
-                        Prestasi</button>
-                </a>
-
-                <a href="{{ route("testimonipanel") }}">
-                    <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start"><i class="fas fa-comment-dots"></i>
-                        Testimoni</button>
-                </a>
-
-=======
->>>>>>> dev
-=======
->>>>>>> dev
             </div>
         </div>
         <div id="geser_besar" style="width: 18rem; min-width: 18rem; height: 100vh"></div>
@@ -104,37 +52,11 @@
 
                 <div class="d-flex flex-column row-gap-3 w-100">
                     <a href="{{ route("admin-panel") }}">
-<<<<<<< HEAD
-                        <button id="btn_dashboard" class="btn_sidebar_kecil btn_sidebar_active"><i class="bi bi-speedometer"></i></button>
-                    </a>
-<<<<<<< HEAD
-                    <button id="btn_akreditasi" class="btn_sidebar_kecil">A</button>
-                    <a href="{{ route("spmb-dashboard") }}">
-                        <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="bi bi-house"></i></button>
-=======
                         <button id="btn_dashboard-kecil" class="btn_sidebar_kecil btn_sidebar_active"><i class="bi bi-speedometer"></i> </button>
->>>>>>> dev
                     </a>
                     <a href="{{ route("admisi-panel") }}">
                         <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="fa-regular fa-note-sticky"></i></button>
                     </a>
-<<<<<<< HEAD
-                    <a href="{{ route("spmb-dashboard") }}">
-                        <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="bi bi-mortarboard"></i></button>
-                    </a>
-                    <a href="{{ route("spmb-dashboard") }}">
-                        <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="fa-regular fa-comment-dots"></i></button>
-                    </a>
-                    <a href="{{ route("spmb-dashboard") }}">
-                        <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="bi bi-question-square"></i></button>
-                    </a>
-                    <a href="{{ route("spmb-dashboard") }}">
-                        <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="fa-regular fa-handshake"></i></button>
-                    </a>
-=======
->>>>>>> dev
-=======
->>>>>>> dev
                 </div>
             </div>
         </div>
@@ -157,7 +79,7 @@
 
                     <div class="btn-group">
                         <button type="button" style="border-style: none;" class="ps-1 bg-light dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                            <span class="me-3">Haloo {{ $admin->firstname }}</span>
+                            <span class="me-3">Hii {{ $admin->firstname }}!!</span>
                             <img class="border border-1 border-primary" src="{{ $admin->profile_pict ? asset($admin->profile_pict) : asset("assets/img/admin/default.png") }}" alt="foto_profil" style="width: 40px; border-radius: 50%">
                             <span class="visually-hidden">Toggle Dropdown</span>
                         </button>
@@ -178,7 +100,6 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script>
         const buttonSidebar = document.querySelectorAll(".btn_sidebar");
         const buttonSidebarKecil = document.querySelectorAll(".btn_sidebar_kecil");
@@ -190,10 +111,27 @@
             buttonSidebarKecil[i].classList.remove("btn_sidebar_active");
         }
 
-        buttonSidebar[{{ $indexActive = $indexActive ?? -1 }}].classList.add("btn_sidebar_active");
-        buttonSidebarKecil[{{ $indexActive = $indexActive ?? -1 }}].classList.add("btn_sidebar_active");
+        try {
+            buttonSidebar[{{ $indexActive = $indexActive ?? -1 }}].classList.add("btn_sidebar_active");
+            buttonSidebarKecil[{{ $indexActive = $indexActive ?? -1 }}].classList.add("btn_sidebar_active");
+        } catch (e) {
+
+        }
+
     </script>
-{{--    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>--}}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+    <script>
+        const toastTrigger = document.getElementById('liveToastBtn')
+        const toastLiveExample = document.getElementById('liveToast')
+
+        if (toastTrigger) {
+            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+            toastTrigger.addEventListener('click', () => {
+                toastBootstrap.show()
+            })
+        }
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
     <script src="https://kit.fontawesome.com/965a381e3a.js" crossorigin="anonymous"></script>
     <script src="{{ asset("/assets/js/kel4.js") }}"></script>
