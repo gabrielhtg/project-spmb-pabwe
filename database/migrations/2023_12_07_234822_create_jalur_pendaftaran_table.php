@@ -15,6 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('jalur_pendaftaran');
             $table->text('desk_pers_umum');
+            $table->string('created_by', 50);
+            $table->string('updated_by', 50);
+            $table->string('created_at', 50);
+            $table->string('updated_at', 50);
             $table->timestamps();
         });
     }
