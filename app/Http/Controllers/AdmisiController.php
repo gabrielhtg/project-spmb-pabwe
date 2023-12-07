@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MbkmModel;
 use App\Models\ModelHeaderAdmisi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class AdmisiController extends Controller
@@ -38,6 +40,40 @@ class AdmisiController extends Controller
             return redirect()->route('admisi-panel');
         }
 
+
+        return redirect()->route('admisi-panel');
+    }
+
+    public function addMbkmNonKompetisi(Request $request) {
+        MbkmModel::create([
+            'jenis_kegiatan' => 'Non Kompetisi',
+            'jumlah_sks' => $request->jumlah_sks,
+            'potongan_spp' => $request->potongan_spp,
+            'updated_by' => Auth::user()->username,
+            'created_by' => Auth::user()->username,
+            'updated_at' => now(),
+            'created_at' => now()
+        ]);
+
+        return redirect()->route('admisi-panel');
+    }
+
+    public function addMbkmKompetisi(Request $request) {
+        MbkmModel::create([
+            'jenis_kegiatan' => 'Kompetisi',
+            'jumlah_sks' => $request->jumlah_sks,
+            'potongan_spp' => $request->potongan_spp,
+            'updated_by' => Auth::user()->username,
+            'created_by' => Auth::user()->username,
+            'updated_at' => now(),
+            'created_at' => now()
+        ]);
+
+        return redirect()->route('admisi-panel');
+    }
+
+    public function removeMbkm (Request $request) {
+        MbkmModel::where('id', $request->id)->first()->delete();
 
         return redirect()->route('admisi-panel');
     }
