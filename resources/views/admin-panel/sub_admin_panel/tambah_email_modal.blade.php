@@ -1,5 +1,5 @@
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary mt-3 mb-2 align-self-end" data-bs-toggle="modal" data-bs-target="#tambahEmailModal">
+<button type="button" class="btn btn-primary mb-2 align-self-end" data-bs-toggle="modal" data-bs-target="#tambahEmailModal">
     Tambah Email
 </button>
 
