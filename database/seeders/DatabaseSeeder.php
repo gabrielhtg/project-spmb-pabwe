@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             // add_master_admin::class,
             // add_profile_pict_admin::class,
             insert_data_institusi::class,
+            PengumumanSeeder::class,
         ]);
     }
 }

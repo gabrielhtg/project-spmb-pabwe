@@ -43,13 +43,6 @@
             <a href="{{ route('get.add-fasilitas') }}">
                 <button class="btn btn-primary">Tambah Fasilitas</button>
             </a>
-
-            <div class="input-group mb-3" style="width: 300px;">
-                <input type="text" class="form-control" placeholder="cari fasilitas" aria-label="cari fasilitas" aria-describedby="basic-addon2">
-                <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="button">Cari</button>
-                </div>
-            </div>
         </div>
 
 
@@ -86,9 +79,9 @@
                                                 onclick="showModalEdit({{$item->id}},'{{ $item->kategori }}', '{{ $item->nama_fasilitas }}', '{{ $item->deskripsi_fasilitas }}', '{{ $item->nama_file }}', '{{ $item->file_gambar }}')">
                                             <i class="bi bi-pen"></i>
                                         </button>
-                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="bi bi-trash"></i></button>
+                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $item->id }}"><i class="bi bi-trash"></i></button>
                                         <!-- Modal -->
-                                        <div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
+                                        <div class="modal fade" id="deleteModal{{ $item->id }}" tabindex="-1" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">

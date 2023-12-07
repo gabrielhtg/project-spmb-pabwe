@@ -55,11 +55,31 @@
                                                 onclick="showModalEdit({{$item->id}},'{{$item->kategoriPengumuman}}','{{$item->judulPengumuman}}','{{$item->filePengumuman}}','{{date('Y-m-d', strtotime($item->tanggalPengumuman))}}')">
                                                 <i class="bi bi-pen"></i>
                                         </button>
-                                        <form action="{{ route('post.destroy.pengumuman',  ['id' => $item->id]) }}" method="post">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit"  class="btn btn-danger"><i class="bi bi-trash"></i></button>
-                                        </form>
+
+                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $item->id }}"><i class="bi bi-trash"></i></button>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="deleteModal{{ $item->id }}" tabindex="-1" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Hapus Pengumuman!</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Apakah anda yakin ingin menghapus {{ $item->judulPengumuman }}?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                        <form action="{{ route('post.destroy.pengumuman',  $item->id) }}" method="post">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-danger">Hapus</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </td>
                             </tr>
