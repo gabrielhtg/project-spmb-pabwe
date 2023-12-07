@@ -13,6 +13,8 @@ class JalurPendaftaranModel extends Model
 
     protected $fillable = [
         'jalur_pendaftarn',
-        'desk_pers_umum' 
+        'desk_pers_umum',
+        'created_by',
+        'updated_by' 
     ];
 }
