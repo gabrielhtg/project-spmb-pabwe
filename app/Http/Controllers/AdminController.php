@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\AdminModel;
+use App\Models\EmailModel;
+use App\Models\NomorTeleponModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -127,5 +129,50 @@ class AdminController extends Controller
         }
 
         return redirect()->back();
+    }
+
+    public function editNomorTelepon (Request $request) {
+        $data = NomorTeleponModel::where("id", $request->id)->first();
+
+        $data->nama = $request->nama;
+        $data->nomor_telepon = $request->nomor_telepon;
+        $data->updated_by = Auth::user()->username;
+        $data->updated_at = now();
+
+        $data->update();
+
+        return redirect()->route('admin-panel');
+    }
+
+    public function addEmail (Request $request) {
+        EmailModel::create([
+            'nama' => $request->namaEmail,
+            'email' => $request->email,
+            'created_at' => now(),
+            'updated_at' => now(),
+            'created_by' => Auth::user()->username,
+            'updated_by' => Auth::user()->username,
+        ]);
+
+        return redirect()->route('admin-panel');
+    }
+
+    public function removeEmail (Request $request) {
+        EmailModel::where('id', $request->id)->first()->delete();
+
+        return redirect()->route('admin-panel');
+    }
+
+    public function editEmail (Request $request) {
+        $data = EmailModel::where("id", $request->id)->first();
+
+        $data->nama = $request->inputNamaEmail;
+        $data->email = $request->email;
+        $data->updated_by = Auth::user()->username;
+        $data->updated_at = now();
+
+        $data->update();
+
+        return redirect()->route('admin-panel');
     }
 }

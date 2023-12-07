@@ -27,8 +27,8 @@
                         <td><a href="{{ $e->link }}">Klik Disini</a></td>
                         <td>{{ $e->icon }}</td>
                         <td class="" style="min-width: 180px; width: 180px">
-                            <button class="btn btn-primary" data-bs-toggle="modal"
-                                    data-bs-target="#info-social-media-modal{{ $e->id }}" title="gas">
+                            <button class="btn btn-primary" data-bs-toggle="modal" title="Info Social Media"
+                                    data-bs-target="#info-social-media-modal{{ $e->id }}">
                                 <i class="bi bi-info-circle"></i>
                             </button>
 
@@ -52,37 +52,37 @@
                                                     </label>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label class="form-label">
+                                                    <label class="form-label w-100">
                                                         Link
                                                         <input type="text" class="form-control" value="{{ $e->link }}" disabled>
                                                     </label>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label class="form-label">
+                                                    <label class="form-label w-100">
                                                         Icon
                                                         <input type="text" class="form-control" value="{{ $e->icon }}" disabled>
                                                     </label>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label class="form-label">
+                                                    <label class="form-label w-100">
                                                         Created By
                                                         <input type="text" class="form-control" value="{{ $e->created_by }}" disabled>
                                                     </label>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label class="form-label">
+                                                    <label class="form-label w-100">
                                                         Updated By
                                                         <input type="text" class="form-control" value="{{ $e->updated_by }}" disabled>
                                                     </label>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label class="form-label">
+                                                    <label class="form-label w-100">
                                                         Created At
                                                         <input value="{{ date("d-m-Y", strtotime($e->created_at)) }}" class="form-control" disabled>
                                                     </label>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label class="form-label">
+                                                    <label class="form-label w-100">
                                                         Updated At
                                                         <input value="{{ date("d-m-Y", strtotime($e->updated_at)) }}" class="form-control" disabled>
                                                     </label>
@@ -99,7 +99,7 @@
                             </div>
 
                             <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                                    data-bs-target="#edit_social_media_modal{{ $e->id }}" title="gas">
+                                    data-bs-target="#edit_social_media_modal{{ $e->id }}" title="Edit Social Media">
                                 <i class="bi bi-pen"></i>
                             </button>
 
@@ -114,7 +114,7 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                         </div>
-                                        <form action="{{ url('/api/edit-alamat') }}" method="post">
+                                        <form action="{{ route('updateSocialMedia') }}" method="post">
                                             @csrf
                                             <div class="modal-body text-start">
                                                 <input type="hidden" name="id" value="{{ $e -> id }}">
@@ -134,7 +134,11 @@
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="input_edit_icon_socialmedia{{$e->id}}"
-                                                           class="form-label">Icon</label>
+                                                           class="form-label">
+                                                        Icon
+                                                        <a href="https://youtu.be/RPesi3LShOE" target="_blank"><i class="bi bi-info-circle"></i></a>
+                                                        <a href="https://icons.getbootstrap.com/" target="_blank"><i class="bi bi-bootstrap"></i></a>
+                                                    </label>
                                                     <input type="text" class="form-control"
                                                            id="input_edit_icon_socialmedia{{$e->id}}" name="input_icon"
                                                            value="{{ $e->icon }}">
@@ -144,6 +148,7 @@
                                                 <button type="button" class="btn btn-secondary"
                                                         data-bs-dismiss="modal">Cancel
                                                 </button>
+                                                <input type="hidden" value="{{ $e->id }}" name="id">
                                                 <button type="submit" class="btn btn-primary">Save</button>
                                             </div>
                                         </form>
@@ -155,7 +160,7 @@
                                 @csrf
                                 @method('DELETE')
                                 <input type="hidden" name="id" value="{{ $e->id }}">
-                                <button class="btn btn-danger">
+                                <button class="btn btn-danger" title="Remove Social Media">
                                     <i class="bi bi-trash"></i>
                                 </button>
                             </form>

@@ -196,15 +196,18 @@
                         <a href="http://www.del.ac.id">http://www.del.ac.id</a>
                     </li>
 
-                    <li class="nav-item mb-2 ">
-                        <span class="text-muted">Email : </span>
-                        <a href="mailto:info@del.ac.id">info@del.ac.id</a>
-                    </li>
+                    @foreach($dataNomorTelepon as $e)
+                        <li class="nav-item mb-2 ">
+                            <span class="text-muted">{{ $e->nama . ' : ' . $e->nomor_telepon }}</span>
+                        </li>
+                    @endforeach
 
-                    <li class="nav-item mb-2 ">
-                        <span class="text-muted">Email : </span>
-                        <a href="mailto:karir@del.ac.id">karir@del.ac.id</a>
-                    </li>
+                    @foreach($dataEmail as $e)
+                        <li class="nav-item mb-2 ">
+                            <span class="text-muted">{{ $e -> nama }} :</span>
+                            <a href="mailto:{{ $e -> email }}">{{ $e->email }}</a>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
 

@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\AkreditasiSectionModel;
 use App\Models\AlamatInstitusiModel;
 use App\Models\data_institusi;
+use App\Models\EmailModel;
 use App\Models\HeroSectionModel;
 use App\Models\ModelHeaderAdmisi;
+use App\Models\NomorTeleponModel;
 use App\Models\SocalMediaModel;
 use Illuminate\Http\Request;
 
@@ -18,13 +20,17 @@ class DashboardController extends Controller
         $dataSosmed = SocalMediaModel::all();
         $dataAlamat = AlamatInstitusiModel::all();
         $akreditasiDashboard = AkreditasiSectionModel::where('id', 1)->first();
+        $dataNomorTelepon = NomorTeleponModel::all();
+        $dataEmail = EmailModel::all();
 
         $data = [
             'dataInstitusi' => $dataInstitusi,
             'dataHeroSection' => $dataHeroSection,
             'dataSosmed' => $dataSosmed,
             'dataAlamat' => $dataAlamat,
-            'akreditasiDashboard' => $akreditasiDashboard
+            'akreditasiDashboard' => $akreditasiDashboard,
+            'dataNomorTelepon' => $dataNomorTelepon,
+            'dataEmail' => $dataEmail,
         ];
 
         return view('dashboard/dashboard', $data);

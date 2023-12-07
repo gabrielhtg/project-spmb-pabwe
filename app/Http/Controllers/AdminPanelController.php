@@ -6,8 +6,10 @@ use App\Models\AdminModel;
 use App\Models\AkreditasiSectionModel;
 use App\Models\AlamatInstitusiModel;
 use App\Models\data_institusi;
+use App\Models\EmailModel;
 use App\Models\HeroSectionModel;
 use App\Models\ModelHeaderAdmisi;
+use App\Models\NomorTeleponModel;
 use App\Models\SocalMediaModel;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -25,6 +27,8 @@ class AdminPanelController extends Controller
         $dataHeroSection = HeroSectionModel::where('id', 1)->first();
         $dataAlamat = AlamatInstitusiModel::all();
         $dataAkreditasiDashboard = AkreditasiSectionModel::where('id', 1)->first();
+        $dataNomorTelepon = NomorTeleponModel::all();
+        $dataEmail = EmailModel::all();
 
         $data = [
             'indexActive' => 0,
@@ -33,7 +37,9 @@ class AdminPanelController extends Controller
             'socialMedia' => $dataSocialMedia,
             'dataHeroSection' => $dataHeroSection,
             'dataAlamat' => $dataAlamat,
-            'dataAkreditasiDashboard' => $dataAkreditasiDashboard
+            'dataAkreditasiDashboard' => $dataAkreditasiDashboard,
+            'dataNomorTelepon' => $dataNomorTelepon,
+            'dataEmail' => $dataEmail,
         ];
 
         return view('admin-panel.adminpanel', $data);
@@ -123,9 +129,27 @@ class AdminPanelController extends Controller
         SocalMediaModel::create([
             'nama' => $request->input_nama_social_media,
             'link' => $request->input_link_social_media,
-            'icon' => $request->input_logo_social_media
+            'icon' => $request->input_logo_social_media,
+            'created_by' => Auth::user()->username,
+            'updated_by' => Auth::user()->username,
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
         return redirect('admin-panel');
+    }
+
+    public function updateSocialMedia (Request $request) {
+        $socialMedia = SocalMediaModel::where('id', $request->id)->first();
+
+        $socialMedia->nama = $request->input_nama_socialmedia;
+        $socialMedia->link = $request->input_link;
+        $socialMedia->icon = $request->input_icon;
+
+        $socialMedia->updated_by = Auth::user()->username;
+
+        $socialMedia->update();
+
+        return redirect()->route('admin-panel');
     }
 
     public function removeSocialMedia(Request $request)

@@ -13,6 +13,7 @@
                     @include('admin-panel.sub_admin_panel.social_media')
                     @include('admin-panel.sub_admin_panel.hero_section')
                     @include('admin-panel.sub_admin_panel.alamat_institusi')
+                    @include('admin-panel.sub_admin_panel.contact_institusi')
 
                 </div>
             </div>
@@ -27,6 +28,7 @@
                         <a class="nav-link" href="#item-3"><i class="bi bi-people me-2"></i> Social Media</a>
                         <a class="nav-link" href="#item-4"><i class="bi bi-card-image me-2"></i> Hero Section</a>
                         <a class="nav-link" href="#item-5"><i class="bi bi-geo-alt me-2"></i> Alamat Institusi</a>
+                        <a class="nav-link" href="#item-5"><i class="bi bi-telephone-plus me-2"></i> Contact Institusi</a>
                     </nav>
                 </nav>
             </div>

@@ -25,6 +25,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/data-institut', [AdminPanelController::class, 'ubahDataInstitut'])->name('ubahDataInstitut');
     Route::post('/add-social-media', [AdminPanelController::class, 'addSocialMedia'])->name('addSocialMedia');
+    Route::post('/update-social-media', [AdminPanelController::class, 'updateSocialMedia'])->name('updateSocialMedia');
     Route::post('/save-hero-section', [AdminPanelController::class, 'saveHeroSection'])->name('saveHeroSection');
     Route::post('/updateHeroSection', [AdminPanelController::class, 'updateHeroSection'])->name('updateHeroSection');
     Route::post('/save-akreditasi-section', [AdminPanelController::class, 'updateAkreditasiSection'])->name('updateAkreditasiSection');
@@ -35,7 +36,12 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('/remove-alamat', [AdminPanelController::class, 'removeAlamat'])->name('removeAlamat');
     Route::post('/add-admin', [AdminController::class, 'addAdmin'])->name('add-admin');
     Route::post('/edit-admin', [AdminController::class, 'editAdmin'])->name('edit-admin');
+    Route::post('/edit-nomor-telepon', [AdminController::class, 'editNomorTelepon'])->name('editNomorTelepon');
     Route::post('/change-password', [AdminController::class, 'changeAdminPassword'])->name('changeAdminPassword');
+    Route::post('/add-phone-number', [AdminController::class, 'addPhoneNumber'])->name('addPhoneNumber');
     Route::delete('/remove-admin', [AdminController::class, 'removeAdmin'])->name('remove-admin');
     Route::delete('/remove-self', [AdminController::class, 'removeSelf'])->name('remove-self');
+    Route::post('/add-email', [AdminController::class, 'addEmail'])->name('addEmail');
+    Route::post('/edit-email', [AdminController::class, 'editEmail'])->name('editEmail');
+    Route::delete('/delete-email', [AdminController::class, 'removeEmail'])->name('removeEmail');
 });
