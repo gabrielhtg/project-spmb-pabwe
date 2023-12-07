@@ -260,6 +260,41 @@
                 </form>
             </div>
         </div>
-    </div>
 
+        <div class="mt-3">
+            <div class="card card-success">
+                <div class="card-header bg-primary text-white">
+                    <span class="fs-3">Jalur Pendaftaran</span>
+
+                </div>
+
+                <div class="card-body">
+                    @include('admin-panel.sub_admisi_panel.add_biaya_studi')
+                    <form action="">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Jalur Pendaftaran</th>
+                                <th scope="col">Deskripsi Persyaratan Umum</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Test</td>
+                                <td>Test</td>
+                                <td>
+                                    <button type="button" class="btn btn-warning">Ubah</button>
+                                    <button type="button" class="btn btn-danger">Hapus</button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
