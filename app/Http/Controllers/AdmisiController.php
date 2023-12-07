@@ -52,8 +52,7 @@ class AdmisiController extends Controller
         'inputJalurPendaftaran' => 'required',
         'inputPersyaratanUmum' => 'required'
     ]);
-
-    $admin = Auth::user();
+    
     JalurPendaftaranModel::create([
         'jalur_pendaftaran' => $request->input('inputJalurPendaftaran'),
         'desk_pers_umum' => $request->input('inputPersyaratanUmum'),
