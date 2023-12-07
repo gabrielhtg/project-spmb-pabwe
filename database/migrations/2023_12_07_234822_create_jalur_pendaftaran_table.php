@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('jalur_pendaftaran', function (Blueprint $table) {
             $table->id();
-            $table->string('jalur_pendaftaran');
+            $table->string('jalurPendaftaran');
             $table->text('desk_pers_umum');
             $table->timestamps();
         });

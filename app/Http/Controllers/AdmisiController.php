@@ -48,8 +48,9 @@ class AdmisiController extends Controller
     
     public function addJalur(Request $request)
 {
+
     JalurPendaftaranModel::create([
-        'jalur_pendaftaran' => $request->input('inputJalurPendaftaran'),
+        'jalurPendaftaran' => $request->input('inputJalurPendaftaran'),
         'desk_pers_umum' => $request->input('inputPersyaratanUmum'),
     ]);
 

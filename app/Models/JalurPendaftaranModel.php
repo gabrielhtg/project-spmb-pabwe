@@ -12,7 +12,7 @@ class JalurPendaftaranModel extends Model
     protected $table = "jalur_pendaftaran";
 
     protected $fillable = [
-        'jalur_pendaftarn',
+        'jalurPendaftaran',
         'desk_pers_umum',
     ];
 }
