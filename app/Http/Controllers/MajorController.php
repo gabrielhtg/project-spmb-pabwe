@@ -11,8 +11,11 @@ class MajorController extends Controller
     public function getProdi () {
         $dataInstitusi = data_institusi::where('id', 1)->first();
 
+        $major = Major::with('faculty')->get();
+
         $data = [
             'dataInstitusi' => $dataInstitusi,
+            'majors' => $major,
         ];
 
         return view('program.prodi', $data);
@@ -22,7 +25,7 @@ class MajorController extends Controller
     {
         $request->validate([
             'nama' => 'required',
-            'kode_fakultas' => 'required',
+            'kode_fakultas' => 'required|unique:majors|max:255',
             'kode_prodi' => 'required',
             'deskripsi' => 'required',
             'visi' => 'required',

@@ -549,74 +549,80 @@
                     <h5 class="modal-title" id="exampleModalLabel">Modal Tambah Prodi</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <div class="card-body">
-                        <form action="{{ route('major.store') }}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            <div class="mb-3">
-                                <label for="input_nama_fakultas" class="form-label">Nama Prodi</label>
-                                <input type="text" class="form-control" id="inputNamaProdi" name="nama">
-                            </div>
-                            <div class="mb-3">
-                                <label for="input_kode_fakultas" class="form-label">Kode Fakultas</label>
-                                <input type="text" class="form-control" id="inputKodeFakultas" name="kode_fakultas">
-                            </div>
-                            <div class="mb-3">
-                                <label for="input_misi_fakultas" class="form-label">Kode Prodi</label>
-                                <input type="text" class="form-control" id="inputKodeProdi" name="kode_prodi">
-                            </div>
-                            <div class="mb-3">
-                                <label for="input_deskripsi_fakultas" class="form-label">Deskripsi Prodi</label>
-                                <div id="deskripsi_prodi" name="deskripsi"></div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="input_lokasi_fakultas" class="form-label">Visi</label>
-                                <div id="visi_prodi" name="misi"></div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="input_visi_fakultas" class="form-label">Misi</label>
-                                <div id="misi_prodi" name="visi"></div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="input_misi_fakultas" class="form-label">Prospek</label>
-                                <div id="prospek_prodi" name="prospek"></div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="input_misi_fakultas" class="form-label">Gelar</label>
-                                <input type="text" class="form-control" id="inputGelarProdi" name="gelar">
-                            </div>
-                            <div class="mb-3">
-                                <label for="input_misi_fakultas" class="form-label">Biaya</label>
-                                <input type="text" class="form-control" id="inputBiayaProdi" name="biaya">
-                            </div>
-                            <div class="mb-3">
-                                <label for="input_misi_fakultas" class="form-label">Lama Studi</label>
-                                <input type="text" class="form-control" id="inputLamaProdi" name="lama">
-                            </div>
-                            <div class="mb-3">
-                                <label for="input_misi_fakultas" class="form-label">Akreditasi</label>
-                                <input type="text" class="form-control" id="inputAkreditasiProdi" name="akreditasi">
-                            </div>
-                            <div class="mb-3">
-                                <label for="input_misi_fakultas" class="form-label">Lokasi</label>
-                                <input type="text" class="form-control" id="inputLokasiProdi" name="lokasi">
-                            </div>
-                            <div class="mb-3">
-                                <label for="input_misi_fakultas" class="form-label">Syarat Masuk Prodi</label>
-                                <div id="syarat_prodi" name="syarat"></div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="inp ut_sertifikat_akreditasi" class="form-label">Gambar Prodi</label>
-                                <input class="form-control" type="file" id="input_sertifikat_akreditasi" name="gambar" multiple>
-                            </div>
-                        
+                <form action="{{ route('major.store') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="card-body">
+                                <div class="mb-3">
+                                    <label for="input_nama_fakultas" class="form-label">Nama Prodi</label>
+                                    <input type="text" class="form-control" id="inputNamaProdi" name="nama">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="input_kode_fakultas" class="form-label">Kode Fakultas</label>
+                                    <input type="text" class="form-control" id="inputKodeFakultas" name="kode_fakultas">
+                                    <select class="form-select form-control" id="inputKodeFakultas" aria-label="Default select example">
+                                        <option selected>Open this select menu</option>
+                                        <option value="1">FV</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">FT</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="input_misi_fakultas" class="form-label">Kode Prodi</label>
+                                    <input type="text" class="form-control" id="inputKodeProdi" name="kode_prodi">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="input_deskripsi_fakultas" class="form-label">Deskripsi Prodi</label>
+                                    <div id="deskripsi_prodi" name="deskripsi"></div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="input_lokasi_fakultas" class="form-label">Visi</label>
+                                    <div id="visi_prodi" name="misi"></div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="input_visi_fakultas" class="form-label">Misi</label>
+                                    <div id="misi_prodi" name="visi"></div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="input_misi_fakultas" class="form-label">Prospek</label>
+                                    <div id="prospek_prodi" name="prospek"></div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="input_misi_fakultas" class="form-label">Gelar</label>
+                                    <input type="text" class="form-control" id="inputGelarProdi" name="gelar">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="input_misi_fakultas" class="form-label">Biaya</label>
+                                    <input type="text" class="form-control" id="inputBiayaProdi" name="biaya">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="input_misi_fakultas" class="form-label">Lama Studi</label>
+                                    <input type="text" class="form-control" id="inputLamaProdi" name="lama">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="input_misi_fakultas" class="form-label">Akreditasi</label>
+                                    <input type="text" class="form-control" id="inputAkreditasiProdi" name="akreditasi">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="input_misi_fakultas" class="form-label">Lokasi</label>
+                                    <input type="text" class="form-control" id="inputLokasiProdi" name="lokasi">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="input_misi_fakultas" class="form-label">Syarat Masuk Prodi</label>
+                                    <div id="syarat_prodi" name="syarat"></div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="inp ut_sertifikat_akreditasi" class="form-label">Gambar Prodi</label>
+                                    <input class="form-control" type="file" id="input_sertifikat_akreditasi" name="gambar" multiple>
+                                </div>
+                            
+                        </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button class=v   "btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-primary">Simpan Data</button>
-                </div>
-                        </form>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-primary">Simpan Data</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -655,7 +661,7 @@
                                 <td>{{ $major->id }}</td>
                                 <td>{{ $major->nama }}</td>
                                 <td>{{ $major->kode_prodi }}</td>
-                                <td>{{ $major->kode_fakultas }}</td>
+                                <td>{{ optional($major->faculty)->nama }}</td>
                                 <td>{{ $major->deskripsi }}</td>
                                 <td>{{ $major->gambar }}</td>
                                 <td>{{ $major->visi }}</td>

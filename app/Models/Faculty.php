@@ -20,4 +20,9 @@ class Faculty extends Model
         'visi',
         'misi',
     ];
+
+    public function major()
+    {
+        return $this->hasMany(Major::class, 'kode_fakultas', 'id');
+    }
 }

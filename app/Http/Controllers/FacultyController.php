@@ -13,8 +13,11 @@ class FacultyController extends Controller
     public function getFakultas () {
         $dataInstitusi = data_institusi::where('id', 1)->first();
 
+        $faculty = Faculty::with('major')->get();
+
         $data = [
             'dataInstitusi' => $dataInstitusi,
+            'faculties' => $faculty,
         ];
 
         return view('program.fakultas', $data);
@@ -69,5 +72,4 @@ class FacultyController extends Controller
             return redirect('admin-panel/program')->with('success', 'Faculty deleted successfully!');
         }
 
-   
 }

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Major extends Model
 {
@@ -20,11 +21,18 @@ class Major extends Model
         'misi',
         'prospek',
         'gelar',
-        'biaya',
         'lama',
+        'biaya',
         'syarat',
+        'lokasi',       
         'gambar',
         'akreditasi',
-        'lokasi',
     ];
+    public function faculty()
+    {
+        return $this->belongsTo(Faculty::class, 'kode_fakultas', 'id');
+    }
+
+    
+
 }
