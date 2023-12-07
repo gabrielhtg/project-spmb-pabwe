@@ -53,14 +53,10 @@ class AdmisiController extends Controller
         'inputPersyaratanUmum' => 'required'
     ]);
 
-    $admin = AdminModel::all();
+    $admin = Auth::user();
     JalurPendaftaranModel::create([
         'jalur_pendaftaran' => $request->input('inputJalurPendaftaran'),
         'desk_pers_umum' => $request->input('inputPersyaratanUmum'),
-        'created_by' => Auth::user()->username,
-        'updated_by' => Auth::user()->username,
-        'created_at' => now(),
-        'updated_at' => now(),
     ]);
 
     return redirect('admisi-panel');
