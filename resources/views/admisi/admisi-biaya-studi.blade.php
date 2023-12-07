@@ -209,10 +209,14 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td>Kegiatan MBKM Non Kompetisi</td>
-                    <td>10</td>
-                    <td>10%</td>
+                    <td rowspan="{{ $dataNonKompetisi->count() }}">Kegiatan MBKM Non Kompetisi</td>
                 </tr>
+                @foreach($dataNonKompetisi as $e)
+                    <tr>
+                        <td>{{ $e -> jumlah_sks }}</td>
+                        <td>{{$e -> potongan_spp}}%</td>
+                    </tr>
+                @endforeach
                 <tr>
                     <td>Kegiatan MBKM Kompetisi</td>
                     <td><20</td>
