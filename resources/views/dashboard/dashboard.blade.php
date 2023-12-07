@@ -49,16 +49,6 @@
         </div>
     </div>
 
-{{--    <section class="container p-5 text-center" id="section_akreditasi">--}}
-{{--        <h1 class="text-center fw-bold">Akreditasi Kampus</h1>--}}
-
-{{--        <div class="text-center pt-4">--}}
-{{--            <span id="akreditasi" class="fw-bold d-block lh-1" style="font-size: 10rem">B</span>--}}
-{{--            <span id="akreditasi_lengkap" class="d-block lh-1" style="font-size: 3rem">BAIK</span>--}}
-{{--            <span id="lembaga_akreditasi" class="d-block lh-1">BAN-PT</span>--}}
-{{--        </div>--}}
-{{--    </section>--}}
-
     <section class="container">
         <div id="carouselExampleCaptions" class="carousel slide">
             <div class="carousel-indicators">

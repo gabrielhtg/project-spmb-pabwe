@@ -30,10 +30,10 @@
                     <div class="mb-3">
                         <label for="input_logo_social_media" class="form-label">
                             Logo Social Media
-                            <a class="text-decoration-none" data-bs-toggle="tooltip" data-bs-placement="right"
-                               data-bs-title="Tutorial Penggunaan">
+                            <a class="text-decoration-none" href="https://youtu.be/RPesi3LShOE" target="_blank">
                                 <i class="bi bi-info-circle"></i>
                             </a>
+                            <a href="https://icons.getbootstrap.com/" target="_blank"><i class="bi bi-bootstrap"></i></a>
                         </label>
                         <input type="text" class="form-control" id="input_logo_social_media"
                                name="input_logo_social_media">

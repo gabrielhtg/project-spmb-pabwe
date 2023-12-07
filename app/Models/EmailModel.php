@@ -5,19 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SocalMediaModel extends Model
+class EmailModel extends Model
 {
     use HasFactory;
 
-    protected $table= 'social_media_institusi';
+    protected $table = 'email';
 
     protected $fillable = [
         'nama',
-        'link',
-        'icon',
+        'email',
         'created_by',
-        'updated_by'
+        'created_at',
+        'updated_by',
+        'udpated_at'
     ];
-
-    public $timestamps = true;
 }
