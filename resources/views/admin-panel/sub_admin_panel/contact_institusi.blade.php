@@ -35,7 +35,8 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h1 class="modal-title fs-5 fw-semibold" id="info-sosmed-label{{ $e->id }}">
-                                                Info Nomor Telepon</h1>
+                                                Info Nomor Telepon
+                                            </h1>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                         </div>
@@ -150,11 +151,9 @@
                 </tbody>
             </table>
         </div>
-    </div>
 
-{{--    ini bagian Email start--}}
+        <hr>
 
-    <div class="card-body d-flex flex-column">
         @include('admin-panel.sub_admin_panel.tambah_email_modal')
         <div>
             <table class="align-middle text-center table table-striped table-bordered">

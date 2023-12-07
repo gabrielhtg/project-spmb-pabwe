@@ -52,11 +52,32 @@ class AdminPanelController extends Controller
         if ($request->input_logo_institusi) {
             $request->validate([
                 'input_logo_institusi' => 'required|image|mimes:jpeg,png,jpg|max:1024',
+                'nama_institusi' => 'required|max:30|string',
+                'input_singkatan_nama_institusi' => 'required|max:10|string',
+                'input_akreditasi' => 'required|max:1',
+                'input_jargon_institusi' => 'required|string|max:50',
+                'input_jumlah_dosen' => 'required',
+                'input_jumlah_mahasiswa' => 'required',
+                'input_jumlah_alumni' => 'required'
             ]);
+        }
 
+        else {
+            $request->validate([
+                'nama_institusi' => 'required|max:30|string',
+                'input_singkatan_nama_institusi' => 'required|max:10|string',
+                'input_akreditasi' => 'required|max:1',
+                'input_jargon_institusi' => 'required|string|max:50',
+                'input_jumlah_dosen' => 'required',
+                'input_jumlah_mahasiswa' => 'required',
+                'input_jumlah_alumni' => 'required'
+            ]);
+        }
+
+        if ($request->input_logo_institusi) {
             $photo = $request->file('input_logo_institusi');
 
-            $filename = time() . '_logo_institusi.' . $photo->getClientOriginalExtension();
+            $filename = 'logo_institusi.' . $photo->getClientOriginalExtension();
 
             $directory = public_path('assets/img/dashboard/');
 
@@ -69,33 +90,32 @@ class AdminPanelController extends Controller
             $dataInstitusi->logo_institusi = 'assets/img/dashboard/' . $filename;
         }
 
-        if ($request->input_sertifikat_institusi) {
-            $request->validate([
-                'input_sertifikat_institusi' => 'required|image|mimes:jpeg,png,jpg|max:1024',
-            ]);
+//        if ($request->input_sertifikat_institusi) {
+//            $request->validate([
+//                'input_sertifikat_institusi' => 'required|image|mimes:jpeg,png,jpg|max:1024',
+//            ]);
+//
+//            // Mengambil file yang sudah divalidasi dari request
+//            $photo = $request->file('input_sertifikat_institusi');
+//
+//            // Membuat nama unik untuk file yang diunggah
+//            $filename = 'sertifikat_institusi.' . $photo->getClientOriginalExtension();
+//
+//            // Menentukan direktori tempat penyimpanan file di dalam direktori 'public'
+//            $directory = public_path('assets/img/dashboard/');
+//
+//            //Pindahkan file ke direktori yang diinginkan
+//            $photo->move($directory, $filename);
+//
+//            // Menghapus photo lama jika ada
+//            if ($dataInstitusi->sertifikat_akreditasi && file_exists($dataInstitusi->sertifikat_akreditasi)) {
+//                unlink($dataInstitusi->sertifikat_akreditasi);
+//            }
+//
+//            $dataInstitusi->sertifikat_akreditasi = 'assets/img/dashboard/' . $filename;
+//        }
 
-            // Mengambil file yang sudah divalidasi dari request
-            $photo = $request->file('input_sertifikat_institusi');
-
-            // Membuat nama unik untuk file yang diunggah
-            $filename = time() . '_sertifikat_institusi.' . $photo->getClientOriginalExtension();
-
-            // Menentukan direktori tempat penyimpanan file di dalam direktori 'public'
-            $directory = public_path('assets/img/dashboard/');
-
-            //Pindahkan file ke direktori yang diinginkan
-            $photo->move($directory, $filename);
-
-            // Menghapus photo lama jika ada
-            if ($dataInstitusi->sertifikat_akreditasi && file_exists($dataInstitusi->sertifikat_akreditasi)) {
-                unlink($dataInstitusi->sertifikat_akreditasi);
-            }
-
-            $dataInstitusi->sertifikat_akreditasi = 'assets/img/dashboard/' . $filename;
-        }
-
-
-        $dataInstitusi->nama_institusi = $request->input_nama_institusi;
+        $dataInstitusi->nama_institusi = $request->nama_institusi;
         $dataInstitusi->singkatan_nama_institusi = $request->input_singkatan_nama_institusi;
         $dataInstitusi->akreditasi = $request->input_akreditasi;
         $dataInstitusi->jargon = $request->input_jargon_institusi;
