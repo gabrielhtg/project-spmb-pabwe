@@ -45,20 +45,23 @@ class AdmisiController extends Controller
     }
 
     
-    public function addJalur (Request $request){
-        $request->validate([
-            'jalur_pendaftarn'=>'required',
-            'desk_pers_umum' =>'required'
-        ]);
+    public function addJalur(Request $request)
+{
+    $request->validate([
+        'inputJalurPendaftaran' => 'required',
+        'inputPersyaratanUmum' => 'required'
+    ]);
 
-        JalurPendaftaranModel::create([
-            'jalur_pendaftaran' => $request->inputjalurpendaftaran,
-            'desk_pers_umum' => $request->inputpersyaratanumum,
-            'created_by' => Auth::user()->username,
-            'updated_by' => Auth::user()->username,
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-        return redirect('admisi-panel');   
-        }
+    JalurPendaftaranModel::create([
+        'jalur_pendaftaran' => $request->input('inputJalurPendaftaran'),
+        'desk_pers_umum' => $request->input('inputPersyaratanUmum'),
+        'created_by' => Auth::user()->username,
+        'updated_by' => Auth::user()->username,
+        'created_at' => now(),
+        'updated_at' => now(),
+    ]);
+
+    return redirect('admisi-panel');
+}
+
 }
