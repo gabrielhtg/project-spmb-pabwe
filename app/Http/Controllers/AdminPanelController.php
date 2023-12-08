@@ -13,6 +13,7 @@ use App\Models\MbkmModel;
 use App\Models\ModelHeaderAdmisi;
 use App\Models\NomorTeleponModel;
 use App\Models\SocalMediaModel;
+use App\Models\Prestasi;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
@@ -292,5 +293,24 @@ class AdminPanelController extends Controller
         }
 
         return redirect()->route('admin-panel');
+    }
+
+    public function getPrestasiPanel () {
+        $admin = Auth::user();
+        $data = [
+            'indexActive' => 2,
+            'admin' => $admin
+        ];
+
+        return view('admin-panel.prestasipanel', $data);
+    }
+
+    public function getTestimoniPanel () {
+        $admin = Auth::user();
+        $data = [
+            'indexActive' => 2,
+            'admin' => $admin
+        ];
+        return view('admin-panel.testimonipanel', $data);
     }
 }
