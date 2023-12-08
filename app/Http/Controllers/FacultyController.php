@@ -57,19 +57,70 @@ class FacultyController extends Controller
                         ->with('success', 'Faculty created successfully!');
     }
 
-    public function destroy(string $id)
-        {
-            $faculty = Faculty::find($id);
+    public function edit($id)
+    {
+        $faculty = Faculty::find($id);
 
-            if (!$faculty) {
-                return redirect('admin-panel/program')->with('error', 'Faculty not found!');
-            }
-
-            // Additional logic (e.g., delete related records) if needed
-
-            $faculty->delete();
-
-            return redirect('admin-panel/program')->with('success', 'Faculty deleted successfully!');
+        if (!$faculty) {
+            return redirect('admin-panel/program')->with('error', 'Faculty not found!');
         }
+
+        $data = [
+            'faculty' => $faculty,
+        ];
+
+        return view('program.editfakultas', $data);
+    }
+    
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'kode_fakultas' => 'required|unique:faculties,kode_fakultas,' . $id,
+            'nama' => 'required|max:255',
+            'deskripsi' => 'required',
+            'lokasi' => 'required|max:255',
+            'visi' => 'required',
+            'misi' => 'required',
+        ]);
+    
+        $faculty = Faculty::find($id);
+    
+        if (!$faculty) {
+            return redirect('admin-panel/program')->with('error', 'Faculty not found!');
+        }
+    
+        // Update faculty data
+        $faculty->update([
+            'kode_fakultas' => $request->get('kode_fakultas'),
+            'nama' => $request->get('nama'),
+            'deskripsi' => $request->get('deskripsi'),
+            'lokasi' => $request->get('lokasi'),
+            'visi' => $request->get('visi'),
+            'misi' => $request->get('misi'),
+        ]);
+    
+        // Update gambar if provided
+        if ($request->hasFile('gambar')) {
+            $gambarPath = $request->file('gambar')->store('img/program', 'public');
+            $faculty->update(['gambar' => $gambarPath]);
+        }
+    
+        return redirect('admin-panel/program')->with('success', 'Faculty updated successfully!');
+    }
+
+    public function destroy(string $id)
+    {
+        $faculty = Faculty::find($id);
+
+        if (!$faculty) {
+            return redirect('admin-panel/program')->with('error', 'Faculty not found!');
+        }
+
+        // Additional logic (e.g., delete related records) if needed
+
+        $faculty->delete();
+
+        return redirect('admin-panel/program')->with('success', 'Faculty deleted successfully!');
+    }
 
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\admin;
 use App\Models\Major;
 use App\Models\Faculty;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 use App\Models\data_institusi;
 use Illuminate\Support\Facades\Auth;
@@ -86,12 +87,14 @@ class AdminPanelController extends Controller
         $admin = Auth::user();
         $faculties = Faculty::all();
         $majors = Major::all();
+        $employees = Employee::all();
 
         $data = [
             'indexActive' => 3,
             'admin' => $admin,
             'faculties'=>$faculties,
             'majors'=>$majors,
+            'employees'=>$employees,
         ];
         return view('admin-panel.program_panel', $data);
     }

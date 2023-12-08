@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('kode_prodi');
             $table->foreign('kode_prodi')->references('kode_prodi')->on('majors');
-            $table->string('fakultas'); 
-            $table->foreign('fakultas')->references('kode_fakultas')->on('faculties');
+            // $table->string('fakultas'); 
+            // $table->foreign('fakultas')->references('kode_fakultas')->on('faculties');
             $table->string('nama');
             $table->string('nidn');
             $table->string('jabatan');

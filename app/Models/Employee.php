@@ -8,4 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class Employee extends Model
 {
     use HasFactory;
+
+    protected $table = "employees";
+
+    protected $fillable = [
+        'kode_prodi',
+        'nama',
+        'nidn',
+        'jabatan',
+        'pendidikan',
+        'gambar',
+    ];
+
+    public function major()
+    {
+        return $this->belongsTo(Major::class, 'kode_prodi', 'id');
+    }
 }

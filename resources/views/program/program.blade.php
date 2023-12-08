@@ -65,7 +65,7 @@
     
         <div class="d-flex flex-column row-gap-3">
 
-            <div class="card text-bg-dark">
+            {{-- <div class="card text-bg-dark">
                 <img src="{{ asset('img/program/home/fite-button.jpg') }}" class="card-img object-fit-cover" alt="" style="height: 200px;">
                 <div class="card-img-overlay">
                     <div class="card-img-overlay d-flex justify-content-center align-items-center">
@@ -73,8 +73,8 @@
                     </div>
                     
                 </div>
-            </div>
-            <div class="card text-bg-dark">
+            </div> --}}
+            {{-- <div class="card text-bg-dark">
                 <img src="{{ asset('img/program/home/fti-button.jpg') }}" class="card-img object-fit-cover" alt="" style="height: 200px;">
                 <div class="card-img-overlay">
                     <div class="card-img-overlay d-flex justify-content-center align-items-center">
@@ -100,7 +100,19 @@
                     </div>
                     
                 </div>
-            </div>
+            </div> --}}
+
+            @foreach ($faculties as $faculty)
+                <div class="card text-bg-dark">
+                    <img src="{{ asset('img/program/home/fite-button.jpg') }}" class="card-img object-fit-cover" alt="" style="height: 200px;">
+                    <div class="card-img-overlay">
+                        <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                            <a href="{{ route('fakultas')}}" class="fs-5 text-light text-decoration-none fw-semibold text-center">{{ $faculty->deskripsi }}</a>
+                        </div>
+                        
+                    </div>
+                </div>
+            @endforeach
         </div>
     </div>
 

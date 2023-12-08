@@ -1,18 +1,19 @@
 <?php
 
-use App\Http\Controllers\AdminPanelController;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ProgramController;
 use Illuminate\Support\Facades\Route;
-
-use App\Http\Controllers\FasilitasController;
-use App\Http\Controllers\PengumumanController;
-use App\Http\Controllers\BeasiswaController;
-use App\Http\Controllers\FacultyController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MajorController;
-use App\Http\Controllers\PrestasiController;
 use App\Http\Controllers\MitraController;
+use App\Http\Controllers\FacultyController;
+
+use App\Http\Controllers\ProgramController;
+use App\Http\Controllers\BeasiswaController;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\PrestasiController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FasilitasController;
+use App\Http\Controllers\AdminPanelController;
+use App\Http\Controllers\PengumumanController;
 
 
 /*
@@ -76,7 +77,13 @@ Route::get('/fakultas', [FacultyController::class,'getFakultas'])->name('fakulta
 Route::get('/prodi', [MajorController::class,'getProdi'])->name('prodi');
 Route::post('/faculties/store', [FacultyController::class, 'store'])->name('faculties.store');
 Route::post('/major/store', [MajorController::class, 'store'])->name('major.store');
-Route::delete('/admin-panel/program_panel/{id}', [FacultyController::class, 'destroy'])->name('admin.program.panel.destroy');
+Route::post('/employee/store', [EmployeeController::class, 'store'])->name('employee.store');
+Route::put('/faculty/{id}/update', [FacultyController::class, 'update'])->name('faculty.update');
+Route::patch('/major/{id}/update', [MajorController::class, 'update'])->name('major.update');
+Route::patch('/employee/{id}/update', [EmployeeController::class, 'update'])->name('employee.update');
+Route::delete('/admin-panel/program_panel/faculty/{id}/delete', [FacultyController::class, 'destroy'])->name('admin.program.faculty.destroy');
+Route::delete('/admin-panel/program_panel/major/{id}/delete', [MajorController::class, 'destroy'])->name('admin.program.major.destroy');
+Route::delete('/admin-panel/program_panel/employee/{id}/delete', [EmployeeController::class, 'destroy'])->name('admin.program.employee.destroy');
 
 
 

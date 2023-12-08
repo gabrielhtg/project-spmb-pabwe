@@ -13,10 +13,11 @@ class Major extends Model
     protected $table = "majors";
 
     protected $fillable = [
+        'kode_prodi',
         'nama',
         'kode_fakultas',
-        'kode_prodi',
         'deskripsi',
+        'gambar',
         'visi',
         'misi',
         'prospek',
@@ -25,7 +26,6 @@ class Major extends Model
         'biaya',
         'syarat',
         'lokasi',       
-        'gambar',
         'akreditasi',
     ];
     public function faculty()
@@ -33,6 +33,9 @@ class Major extends Model
         return $this->belongsTo(Faculty::class, 'kode_fakultas', 'id');
     }
 
-    
+    public function employee()
+    {
+        return $this->hasMany(Employee::class, 'kode_prodi', 'id');
+    }
 
 }
