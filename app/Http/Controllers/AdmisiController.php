@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AkreditasiInstitutiModel;
+use App\Models\InfografisModel;
 use App\Models\MbkmModel;
 use App\Models\ModelHeaderAdmisi;
 use App\Models\JalurPendaftaranModel;
@@ -111,5 +113,28 @@ class AdmisiController extends Controller
     {
         JalurPendaftaranModel::where('id', $request->id)->first()->delete();
     return redirect()->back();
+    }
+
+    public function addInfografisPmdk (Request $request) {
+        $request->validate([
+            'gambar' => 'required|image|mimes:jpeg,png,jpg|max:1024',
+        ]);
+        // Mengambil file yang sudah divalidasi dari request
+        $photo = $request->file('gambar');
+
+        // Membuat nama unik untuk file yang diunggah
+        $filename = time() . '_infografis.' . $photo->getClientOriginalExtension();
+
+        // Menentukan direktori tempat penyimpanan file di dalam direktori 'public'
+        $directory = public_path('assets/img/');
+
+        //Pindahkan file ke direktori yang diinginkan
+        $photo->move($directory, $filename);
+
+        InfografisModel::create([
+            'gambar' => 'assets/img/' . $filename,
+            'jalur' => 'PMDK',
+            'nomor_urut' => $request->nomor_urut
+        ]);
     }
 }

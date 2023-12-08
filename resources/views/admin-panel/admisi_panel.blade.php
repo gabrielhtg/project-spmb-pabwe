@@ -201,6 +201,248 @@
             </div>
         </div>
 
+        <div class="mt-3">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <span class="fs-3">Manage Infografis</span>
+                </div>
+
+                <div class="card-body">
+                    <section id="jalur-pendaftaran" class="border border-1 w-100 p-3">
+                        <ul class="nav nav-fill nav-pills" id="jalur-pendaftaran-Tab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="pmdk-tab" data-bs-toggle="tab" data-bs-target="#pmdk-tab-pane"
+                                        type="button" role="tab" aria-controls="pmdk-tab-pane" aria-selected="true">
+                                    PMDK
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="usm-tab" data-bs-toggle="tab" data-bs-target="#usm-tab-pane" type="button"
+                                        role="tab" aria-controls="usm-tab-pane" aria-selected="false">
+                                    USM
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="utbk-tab" data-bs-toggle="tab" data-bs-target="#utbk-tab-pane"
+                                        type="button" role="tab" aria-controls="utbk-tab-pane" aria-selected="false">
+                                    UTBK
+                                </button>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content" id="jenis-pendaftaran-TabContent">
+                            <div class="tab-pane fade show active" id="pmdk-tab-pane" role="tabpanel" aria-labelledby="pmdk-tab"
+                                 tabindex="0">
+                                <div class="p-3 border border-1 mt-3">
+                                    <!-- Button trigger modal -->
+                                    <div class="d-flex justify-content-end mb-3">
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahInfografisPMDK">
+                                            Tambah
+                                        </button>
+                                    </div>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="tambahInfografisPMDK" tabindex="-1" aria-labelledby="tambahInfografisPMDKLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5 fw-semibold" id="tambahInfografisPMDKLabel">Tambah Infografis PMDK</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <form action="{{ route('addInfografisPmdk') }}" method="post">
+                                                    @csrf
+                                                    <div class="modal-body">
+                                                        <div class="mb-3">
+                                                            <label class="form-label w-100">
+                                                                Nomor Urut
+                                                                <input class="form-control" type="number" name="nomor_urut">
+                                                                @error('nomor_urut')
+                                                                <span class="text-danger">{{ $message }}</span>
+                                                                @enderror
+                                                            </label>
+                                                        </div>
+
+                                                        <div class="mb-3">
+                                                            <label class="form-label w-100">
+                                                                File Gambar
+                                                                <input class="form-control" type="file" name="gambar">
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                                    </div>
+                                                </form>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <table class="table table-striped table-bordered align-middle text-center">
+                                        <thead>
+                                        <tr>
+                                            <th>No Urut</th>
+                                            <th>Gambar</th>
+                                            <th>Jalur Masuk</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($dataInfografis[0] as $e)
+                                            <tr>
+                                                <td>{{ $e->nomor_urut }}</td>
+                                                <td>
+                                                    <img style="width: 12rem" src="{{ asset($e->gambar) }}" alt="">
+                                                </td>
+                                                <td>{{ $e->jalur }}</td>
+                                                <td></td>
+                                            </tr>
+                                        @endforeach
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+
+                            <div class="tab-pane fade show active" id="usm-tab-pane" role="tabpanel" aria-labelledby="usm-tab"
+                                 tabindex="0">
+                                <div class="p-3 border border-1 mt-3">
+                                    <!-- Button trigger modal -->
+                                    <div class="d-flex justify-content-end mb-3">
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahInfografisUSM">
+                                            Tambah
+                                        </button>
+                                    </div>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="tambahInfografisUSM" tabindex="-1" aria-labelledby="tambahInfografisUSMLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Infografis USM</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="mb-3">
+                                                        <label class="form-label w-100">
+                                                            Nomor Urut
+                                                            <input class="form-control" type="number" name="nomor_urut">
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="mb-3">
+                                                        <label class="form-label w-100">
+                                                            File Gambar
+                                                            <input class="form-control" type="file" name="gambar">
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <table class="table table-striped table-bordered align-middle text-center">
+                                        <thead>
+                                        <tr>
+                                            <th>No Urut</th>
+                                            <th>Gambar</th>
+                                            <th>Jalur Masuk</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($dataInfografis[1] as $e)
+                                            <tr>
+                                                <td>{{ $e->nomor_urut }}</td>
+                                                <td>
+                                                    <img style="width: 12rem" src="{{ asset($e->gambar) }}" alt="">
+                                                </td>
+                                                <td>{{ $e->jalur }}</td>
+                                                <td></td>
+                                            </tr>
+                                        @endforeach
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade show active" id="utbk-tab-pane" role="tabpanel" aria-labelledby="utbk-tab"
+                                 tabindex="0">
+                                <div class="p-3 border border-1 mt-3">
+                                    <!-- Button trigger modal -->
+                                    <div class="d-flex justify-content-end mb-3">
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahInfografisUTBK">
+                                            Tambah
+                                        </button>
+                                    </div>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="tambahInfografisUTBK" tabindex="-1" aria-labelledby="tambahInfografisUTBKLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Infografis UTBK</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="mb-3">
+                                                        <label class="form-label w-100">
+                                                            Nomor Urut
+                                                            <input class="form-control" type="number" name="nomor_urut">
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="mb-3">
+                                                        <label class="form-label w-100">
+                                                            File Gambar
+                                                            <input class="form-control" type="file" name="gambar">
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <table class="table table-striped table-bordered align-middle text-center">
+                                        <thead>
+                                        <tr>
+                                            <th>No Urut</th>
+                                            <th>Gambar</th>
+                                            <th>Jalur Masuk</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($dataInfografis[2] as $e)
+                                            <tr>
+                                                <td>{{ $e->nomor_urut }}</td>
+                                                <td>
+                                                    <img style="width: 12rem" src="{{ asset($e->gambar) }}" alt="">
+                                                </td>
+                                                <td>{{ $e->jalur }}</td>
+                                                <td></td>
+                                            </tr>
+                                        @endforeach
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+            </div>
+        </div>
 
         <div class="mt-3">
             <div class="card">
