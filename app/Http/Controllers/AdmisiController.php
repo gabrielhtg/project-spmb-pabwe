@@ -53,7 +53,9 @@ class AdmisiController extends Controller
         'jalurPendaftaran' => $request->inputJalurPendaftaran,
         'desk_pers_umum' => $request->inputPersyaratanUmum,
         'created by'=> $username,
-        'created at'=>now()
+        'created at'=>now(),
+        'updated by'=> $username,
+        'updated at'=>now()
     ]);
 
     return redirect('admisi-panel');
