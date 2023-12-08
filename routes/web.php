@@ -51,13 +51,13 @@ Route::middleware('auth')->group(function () {
         Route::get('/admins', [AdminPanelController::class, 'getAddAdminView'])->name('admins');
         Route::get('/prestasipanel', [AdminPanelController::class, 'getPrestasiPanel'])->name('prestasipanel');
         Route::get('/testimonipanel', [AdminPanelController::class, 'getTestimoniPanel'])->name('testimonipanel');
-    });
-});
 
-Route::prefix('/admisi-panel')->group(function(){
-    Route::post('/addjalurpendaftaran', [AdmisiController::class,'addJalur'])->name('addJalur');
-    Route::post('/edit-jalur-pendaftaran', [AdmisiController::class,'editJalur'])->name('editJalur');
-    Route::post('/delete-jalur-pendaftaran', [AdmisiController::class,'removeJalur'])->name('removeJalur');
+        Route::prefix('/admisi-panel')->group(function(){
+            Route::post('/addjalurpendaftaran', [AdmisiController::class,'addJalur'])->name('addJalur');
+            Route::post('/edit-jalur-pendaftaran', [AdmisiController::class,'editJalur'])->name('editJalur');
+            Route::post('/delete-jalur-pendaftaran', [AdmisiController::class,'removeJalur'])->name('removeJalur');
+        });
+    });
 });
 
 Route::get('/fasilitas-Asrama', [FasilitasController::class, "getviewAsrama"])->name("fasilitas.asrama");
