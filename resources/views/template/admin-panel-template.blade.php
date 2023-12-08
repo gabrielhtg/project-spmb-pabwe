@@ -17,124 +17,158 @@
 </head>
 <body>
 {{--    Disini adalah bagian dari navbar--}}
-    <div class="d-flex w-100">
+<div class="d-flex w-100">
 
     {{--        Ini adalah sidebar besar mulai--}}
-        <div class="d-none ps-3 pe-3 fixed-top bg-sidebar d-flex flex-column align-items-center" id="sidebar_besar" style="width: 18rem; height: 300vh">
-            <div class="d-flex justify-content-center align-items-center mb-3 w-100" style="height: 60px; border: 0 solid white;border-bottom-width: 1px;">
-                <span class="text-white fw-semibold fs-4" style="font-size: 1rem">SPMB Admin</span>
+    <div class="d-none ps-3 pe-3 fixed-top bg-sidebar d-flex flex-column align-items-center" id="sidebar_besar"
+         style="width: 18rem; height: 300vh">
+        <div class="d-flex justify-content-center align-items-center mb-3 w-100"
+             style="height: 60px; border: 0 solid white;border-bottom-width: 1px;">
+            <span class="text-white fw-semibold fs-4" style="font-size: 1rem">SPMB Admin</span>
+        </div>
+
+        <div class="d-flex flex-column row-gap-3 w-100">
+            <a href="{{ route("admin-panel") }}">
+                <button id="btn_dashboard" class="btn_sidebar w-100 btn_sidebar_active text-start">
+                    <i class="bi bi-speedometer me-2"></i>
+                    Dashboard
+                </button>
+            </a>
+            <a href="{{ route("admisi-panel") }}">
+                <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start">
+                    <i class="fa-regular fa-note-sticky"></i>
+                    Admisi
+                </button>
+            </a>
+            <a href="{{ route("prestasipanel") }}">
+                <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start"><i class="fas fa-trophy"></i>
+                    Prestasi
+                </button>
+            </a>
+
+            <a href="{{ route("testimonipanel") }}">
+                <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start"><i
+                        class="fas fa-comment-dots"></i>
+                    Testimoni
+                </button>
+            </a>
+        </div>
+    </div>
+    <div id="geser_besar" style="width: 18rem; min-width: 18rem; height: 100vh"></div>
+
+    {{--        ini adalah sidebar besar selesai--}}
+
+    {{--        Ini adalah sidebar kecil mulai--}}
+    <div class="bg-sidebar fixed-top d-flex flex-wrap justify-content-center" id="sidebar_kecil"
+         style="width: 4rem; height: 300vh">
+        <div class="d-flex align-items-center flex-column" style="height: 56px">
+            <div style="margin-top: 60px" class="mb-3">
             </div>
 
             <div class="d-flex flex-column row-gap-3 w-100">
                 <a href="{{ route("admin-panel") }}">
-                    <button id="btn_dashboard" class="btn_sidebar w-100 btn_sidebar_active text-start">
-                        <i class="bi bi-speedometer me-2"></i>
-                        Dashboard
-                    </button>
+                    <button id="btn_dashboard-kecil" class="btn_sidebar_kecil btn_sidebar_active"><i
+                            class="bi bi-speedometer"></i></button>
                 </a>
                 <a href="{{ route("admisi-panel") }}">
-                    <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start">
-                        <i class="fa-regular fa-note-sticky"></i>
-                        Admisi
+                    <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="fa-regular fa-note-sticky"></i>
                     </button>
                 </a>
-            </div>
-        </div>
-        <div id="geser_besar" style="width: 18rem; min-width: 18rem; height: 100vh"></div>
-
-    {{--        ini adalah sidebar besar selesai--}}
-
-        {{--        Ini adalah sidebar kecil mulai--}}
-        <div class="bg-sidebar fixed-top d-flex flex-wrap justify-content-center" id="sidebar_kecil" style="width: 4rem; height: 300vh">
-            <div class="d-flex align-items-center flex-column" style="height: 56px">
-                <div style="margin-top: 60px" class="mb-3">
-                </div>
-
-                <div class="d-flex flex-column row-gap-3 w-100">
-                    <a href="{{ route("admin-panel") }}">
-                        <button id="btn_dashboard-kecil" class="btn_sidebar_kecil btn_sidebar_active"><i class="bi bi-speedometer"></i> </button>
-                    </a>
-                    <a href="{{ route("admisi-panel") }}">
-                        <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="fa-regular fa-note-sticky"></i></button>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div id="geser_kecil" style="min-width: 4rem; width: 4rem; height: 100vh"></div>
-        {{--        ini adalah sidebar kecil selesai--}}
-
-        <div class="w-100">
-            <nav class="navbar shadow-sm fixed-top navbar-expand-lg bg-body-tertiary border border-bottom-1">
-                <div class="container-fluid">
-                    <button id="tombol_sidebar" class="btn border border-1" onclick="tampilkanSidebar()">
-                        <i id="logo_sidebar" class="fa-solid fa-bars"></i>
+                <a href="{{ route("testimonipanel") }}">
+                    <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="fas fa-comment-dots"></i>
                     </button>
-
-                    <div class="mx-auto">
-                        <a href="{{ route('admin-panel') }}" class="text-decoration-none text-black">
-                            <span class="d-none d-sm-block fw-semibold fs-4">SPMB Admin Panel</span>
-                            <span class="d-sm-none fw-semibold fs-4">SPMB</span>
-                        </a>
-                    </div>
-
-                    <div class="btn-group">
-                        <button type="button" style="border-style: none;" class="ps-1 bg-light dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                            <span class="me-3">Hii {{ $admin->firstname }}!!</span>
-                            <img class="border border-1 border-primary" src="{{ $admin->profile_pict ? asset($admin->profile_pict) : asset("assets/img/admin/default.png") }}" alt="foto_profil" style="width: 40px; border-radius: 50%">
-                            <span class="visually-hidden">Toggle Dropdown</span>
-                        </button>
-                        <ul class="dropdown-menu mt-3 dropdown-menu-end">
-                            <li><a class="dropdown-item" href="{{ route('edit-profile') }}"><i class="bi bi-person me-2"></i>Edit Profile</a></li>
-                            <li><a class="dropdown-item" href="{{ route('admins') }}"><i class="bi bi-person-add me-2"></i>Tambah Admin</a></li>
-                            <li><a class="dropdown-item" href="{{ route('dashboard') }}" target="_blank"><i class="bi bi-house me-2"></i>SPMB Dashboard</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item text-danger" href="{{ route('logout') }}"><i class="bi bi-box-arrow-left me-2"></i> Logout</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-
-            <div style="padding-top: 60px">
-                @yield('isi-admin-panel')
+                </a>
+                <a href="{{ route("prestasipanel") }}">
+                    <button id="btn_dasshboard_panel" class="btn_sidebar_kecil"><i class="fas fa-trophy"></i></button>
+                </a>
             </div>
         </div>
     </div>
+    <div id="geser_kecil" style="min-width: 4rem; width: 4rem; height: 100vh"></div>
+    {{--        ini adalah sidebar kecil selesai--}}
 
-    <script>
-        const buttonSidebar = document.querySelectorAll(".btn_sidebar");
-        const buttonSidebarKecil = document.querySelectorAll(".btn_sidebar_kecil");
-        // const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-        // const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    <div class="w-100">
+        <nav class="navbar shadow-sm fixed-top navbar-expand-lg bg-body-tertiary border border-bottom-1">
+            <div class="container-fluid">
+                <button id="tombol_sidebar" class="btn border border-1" onclick="tampilkanSidebar()">
+                    <i id="logo_sidebar" class="fa-solid fa-bars"></i>
+                </button>
 
-        for (let i = 0; i < buttonSidebar.length; i++) {
-            buttonSidebar[i].classList.remove("btn_sidebar_active");
-            buttonSidebarKecil[i].classList.remove("btn_sidebar_active");
-        }
+                <div class="mx-auto">
+                    <a href="{{ route('admin-panel') }}" class="text-decoration-none text-black">
+                        <span class="d-none d-sm-block fw-semibold fs-4">SPMB Admin Panel</span>
+                        <span class="d-sm-none fw-semibold fs-4">SPMB</span>
+                    </a>
+                </div>
 
-        try {
-            buttonSidebar[{{ $indexActive = $indexActive ?? -1 }}].classList.add("btn_sidebar_active");
-            buttonSidebarKecil[{{ $indexActive = $indexActive ?? -1 }}].classList.add("btn_sidebar_active");
-        } catch (e) {
+                <div class="btn-group">
+                    <button type="button" style="border-style: none;"
+                            class="ps-1 bg-light dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                        <span class="me-3">Hii {{ $admin->firstname }}!!</span>
+                        <img class="border border-1 border-primary"
+                             src="{{ $admin->profile_pict ? asset($admin->profile_pict) : asset("assets/img/admin/default.png") }}"
+                             alt="foto_profil" style="width: 40px; border-radius: 50%">
+                        <span class="visually-hidden">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu mt-3 dropdown-menu-end">
+                        <li><a class="dropdown-item" href="{{ route('edit-profile') }}"><i
+                                    class="bi bi-person me-2"></i>Edit Profile</a></li>
+                        <li><a class="dropdown-item" href="{{ route('admins') }}"><i class="bi bi-person-add me-2"></i>Tambah
+                                Admin</a></li>
+                        <li><a class="dropdown-item" href="{{ route('dashboard') }}" target="_blank"><i
+                                    class="bi bi-house me-2"></i>SPMB Dashboard</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item text-danger" href="{{ route('logout') }}"><i
+                                    class="bi bi-box-arrow-left me-2"></i> Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
 
-        }
+        <div style="padding-top: 60px">
+            @yield('isi-admin-panel')
+        </div>
+    </div>
+</div>
 
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+<script>
+    const buttonSidebar = document.querySelectorAll(".btn_sidebar");
+    const buttonSidebarKecil = document.querySelectorAll(".btn_sidebar_kecil");
+    // const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    // const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
+    for (let i = 0; i < buttonSidebar.length; i++) {
+        buttonSidebar[i].classList.remove("btn_sidebar_active");
+        buttonSidebarKecil[i].classList.remove("btn_sidebar_active");
+    }
+
+    try {
+        buttonSidebar[{{ $indexActive = $indexActive ?? -1 }}].classList.add("btn_sidebar_active");
+        buttonSidebarKecil[{{ $indexActive = $indexActive ?? -1 }}].classList.add("btn_sidebar_active");
+    } catch (e) {
+
+    }
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
-    <script>
-        const toastTrigger = document.getElementById('liveToastBtn')
-        const toastLiveExample = document.getElementById('liveToast')
+<script>
+    const toastTrigger = document.getElementById('liveToastBtn')
+    const toastLiveExample = document.getElementById('liveToast')
 
-        if (toastTrigger) {
-            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
-            toastTrigger.addEventListener('click', () => {
-                toastBootstrap.show()
-            })
-        }
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
-    <script src="https://kit.fontawesome.com/965a381e3a.js" crossorigin="anonymous"></script>
-    <script src="{{ asset("/assets/js/kel4.js") }}"></script>
-    <script src="{{ asset("/assets/js/admin-panel.js") }}"></script>
+    if (toastTrigger) {
+        const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+        toastTrigger.addEventListener('click', () => {
+            toastBootstrap.show()
+        })
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+<script src="https://kit.fontawesome.com/965a381e3a.js" crossorigin="anonymous"></script>
+<script src="{{ asset("/assets/js/kel4.js") }}"></script>
+<script src="{{ asset("/assets/js/admin-panel.js") }}"></script>
 </body>
 </html>
