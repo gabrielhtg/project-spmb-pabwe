@@ -47,14 +47,33 @@ class AdmisiController extends Controller
 
     
     public function addJalur(Request $request)
-{
+{       $username= Auth::user()->username;
 
     JalurPendaftaranModel::create([
-        'jalurPendaftaran' => $request->input('inputJalurPendaftaran'),
-        'desk_pers_umum' => $request->input('inputPersyaratanUmum'),
+        'jalurPendaftaran' => $request->inputJalurPendaftaran,
+        'desk_pers_umum' => $request->inputPersyaratanUmum,
+        'created by'=> $username,
+        'created at'=>now()
     ]);
 
     return redirect('admisi-panel');
 }
+
+    public function editJalur(Request $request){
+        $username = Auth::user()->username;
+        $jalur = JalurPendaftaranModel::where('id', $request->id)->first();
+
+        $jalur->jalurPendaftaran = $request->inputJalurPendaftaran;
+        $jalur->desk_pers_umum = $request->inputPersyaratanUmum;
+        $jalur->updated_by = $username;
+        $jalur->updated_at = now();
+        $jalur->update();
+        return redirect()->route('admisi-panel');
+    }
+
+    public function removeJalur(Request $request){
+        JalurPendaftaranModel::where('id', $request->id)->first()->delete();
+        return redirect()->back();
+    }
 
 }

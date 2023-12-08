@@ -249,12 +249,13 @@ class AdminPanelController extends Controller
     public function getAdmisiPanel () {
         $admin = Auth::user();
         $dataHeaderAdmisi = ModelHeaderAdmisi::where('id', 1)->first();
-        $jalur = 
+        $jalur = JalurPendaftaranModel::all();
 
         $data = [
             'indexActive' => 1,
             'admin' => $admin,
             'dataHeaderAdmisi' => $dataHeaderAdmisi,
+            'jalur'=>$jalur,
         ];
         return view('admin-panel.admisi_panel', $data);
     }
