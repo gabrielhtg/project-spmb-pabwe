@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MbkmModel;
 use App\Models\ModelHeaderAdmisi;
-use App\Models\AdminModel;
-use App\Models\JalurPendaftaranModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -45,37 +44,37 @@ class AdmisiController extends Controller
         return redirect()->route('admisi-panel');
     }
 
-    
-    public function addJalur(Request $request)
-{       $username= Auth::user()->username;
+    public function addMbkmNonKompetisi(Request $request) {
+        MbkmModel::create([
+            'jenis_kegiatan' => 'Non Kompetisi',
+            'jumlah_sks' => $request->jumlah_sks,
+            'potongan_spp' => $request->potongan_spp,
+            'updated_by' => Auth::user()->username,
+            'created_by' => Auth::user()->username,
+            'updated_at' => now(),
+            'created_at' => now()
+        ]);
 
-    JalurPendaftaranModel::create([
-        'jalurPendaftaran' => $request->inputJalurPendaftaran,
-        'desk_pers_umum' => $request->inputPersyaratanUmum,
-        'created by'=> $username,
-        'created at'=>now(),
-        'updated by'=> $username,
-        'updated at'=>now()
-    ]);
-
-    return redirect('admisi-panel');
-}
-
-    public function editJalur(Request $request){
-        $username = Auth::user()->username;
-        $jalur = JalurPendaftaranModel::where('id', $request->id)->first();
-
-        $jalur->jalurPendaftaran = $request->inputJalurPendaftaran;
-        $jalur->desk_pers_umum = $request->inputPersyaratanUmum;
-        $jalur->updated_by = $username;
-        $jalur->updated_at = now();
-        $jalur->update();
         return redirect()->route('admisi-panel');
     }
 
-    public function removeJalur(Request $request){
-        JalurPendaftaranModel::where('id', $request->id)->first()->delete();
-        return redirect()->back();
+    public function addMbkmKompetisi(Request $request) {
+        MbkmModel::create([
+            'jenis_kegiatan' => 'Kompetisi',
+            'jumlah_sks' => $request->jumlah_sks,
+            'potongan_spp' => $request->potongan_spp,
+            'updated_by' => Auth::user()->username,
+            'created_by' => Auth::user()->username,
+            'updated_at' => now(),
+            'created_at' => now()
+        ]);
+
+        return redirect()->route('admisi-panel');
     }
 
+    public function removeMbkm (Request $request) {
+        MbkmModel::where('id', $request->id)->first()->delete();
+
+        return redirect()->route('admisi-panel');
+    }
 }
