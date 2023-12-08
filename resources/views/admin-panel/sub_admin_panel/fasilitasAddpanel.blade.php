@@ -36,7 +36,7 @@
 
                 <div class="mb-3">
                     <label for="deskripsi_fasilitas" class="form-label">Deskripsi Fasilitas</label>
-                    <input type="text" class="form-control" id="deskripsi_fasilitas" name="deskripsi_fasilitas">
+                    <textarea type="text" class="form-control" id="deskripsi_fasilitas" rows="5" name="deskripsi_fasilitas"></textarea>
                 </div>
 
                 <p class="fw-bold">Tambah Gambar Fasilitas</p>
@@ -56,5 +56,14 @@
             </div>
         </div>
     </div>
-
 @endsection
+
+    @section('other-js')
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#deskripsi_fasilitas' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
+    @endsection

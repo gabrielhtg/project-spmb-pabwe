@@ -12,13 +12,6 @@
                 <a href="{{ route('get.add-pengumuman') }}">
                     <button class="btn btn-primary">Tambah pengumuman</button>
                 </a>
-
-                <div class="input-group mb-3" style="width: 300px;">
-                    <input type="text" class="form-control" placeholder="cari pengumuman" aria-label="cari pengumuman" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button">Cari</button>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -31,8 +24,9 @@
                     <th scope="col">Tag</th>
                     <th scope="col">Judul Pengumuman</th>
                     <th scope="col">File</th>
-                    <th scope="col">Created by</th>
                     <th scope="col">Tanggal Pengumuman</th>
+                    <th scope="col">Created by</th>
+                    <th scope="col">Created at</th>
                     <th scope="col">Actions</th>
                     </tr>
                 </thead>
@@ -47,8 +41,9 @@
                                 <td>{{ $item->kategoriPengumuman }}</td>
                                 <td>{{ $item->judulPengumuman }}</td>
                                 <td>{{ $item->filePengumuman}}</td>
-                                <td>{{ $admin->firstname}}</td>
                                 <td>{{  date('d F Y', strtotime($item->tanggalPengumuman)) }}</td>
+                                <td>{{ $admin->firstname}}</td>
+                                <td>{{ date('d F Y  - H:i', strtotime($item->created_at)) }}</td>
                                 <td style="min-width: 120px; width: 120px">
                                     <div class="d-grid gap-2 d-md-flex align-middle text-center col-md-6">
                                         <button class="btn btn-success"
@@ -151,25 +146,25 @@
 </div> 
     <script>
         function showModalEdit(id, kategoriPengumuman, judulPengumuman, filePengumuman, tanggalPengumuman) {
-    const modalEditPengumuman = document.getElementById("editPengumuman");
-    const inputId = document.getElementById("inputEditPengumuman");
-    const inputKategori = document.getElementById("inputEditKategori");
-    const inputJudulPengumuman = document.getElementById("inputjudulPengumuman");
-    const inputFilePengumuman = document.getElementById("inputfilePengumuman");
-    const inputTanggalPengumuman = document.getElementById("inputtanggalPengumuman");
+        const modalEditPengumuman = document.getElementById("editPengumuman");
+        const inputId = document.getElementById("inputEditPengumuman");
+        const inputKategori = document.getElementById("inputEditKategori");
+        const inputJudulPengumuman = document.getElementById("inputjudulPengumuman");
+        const inputFilePengumuman = document.getElementById("inputfilePengumuman");
+        const inputTanggalPengumuman = document.getElementById("inputtanggalPengumuman");
 
-    inputId.value = id;
-    inputKategori.value = kategoriPengumuman;
-    inputJudulPengumuman.value = judulPengumuman;
-    inputFilePengumuman.value = '';
-    
-    // Set nilai awal pada elemen input tanggal
-    inputTanggalPengumuman.value = tanggalPengumuman;
+        inputId.value = id;
+        inputKategori.value = kategoriPengumuman;
+        inputJudulPengumuman.value = judulPengumuman;
+        inputFilePengumuman.value = '';
+        
+        // Set nilai awal pada elemen input tanggal
+        inputTanggalPengumuman.value = tanggalPengumuman;
 
-    var myModal = new bootstrap.Modal(modalEditPengumuman);
-    myModal.show();
-}
-
-
+        var myModal = new bootstrap.Modal(modalEditPengumuman);
+        myModal.show();
+    }
     </script>
+    
+
 @endsection

@@ -22,7 +22,7 @@
 
         <div class="container pt-5">
 
-            <div colspan="4" class="justify text-center">
+            <div class="justify text-center">
                 <div class="input-group mb-3" style="width: 700px; margin: auto;">
                     <input type="text" class="form-control" placeholder="cari pengumuman" aria-label="cari pengumuman" aria-describedby="basic-addon2">
                     <div class="input-group-append">
@@ -32,7 +32,7 @@
             </div>
 
             <div class="table-pengumuman">
-                <table border="1" class="table">
+                <table border="1" class="table align-middle">
                     <thead class="text-center">
                         <tr>
                             <th style="text-align:center;">No.</th>
@@ -51,7 +51,7 @@
                             <td style="text-align:center;">{{$counter++}}</td>
                             <td style="text-align:center;"><button type="button" class="btn btn-light" disabled>{{$item->kategoriPengumuman}}</button>
                             </td>
-                            <td><a href="{{ asset('assets/file_Pengumuman/' . $item->filePengumuman) }}" target="_blank">{{$item->judulPengumuman}}</a></td>
+                            <td><a href="{{ asset('assets/file_Pengumuman/' . $item->filePengumuman) }}" target="_blank" class="text-decoration-none">{{$item->judulPengumuman}}</a></td>
                             <td style="text-align:center;">{{ date('d F Y', strtotime($item->tanggalPengumuman)) }}</td>
                         </tr>
                         @endforeach

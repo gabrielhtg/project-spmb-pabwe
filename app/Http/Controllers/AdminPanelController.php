@@ -195,7 +195,7 @@ class AdminPanelController extends Controller
             'fasilitas' => $fasilitas,
         ];
 
-        return view('admin-panel.sub_admin_panel.fasilitasAddpanel', $data);
+        return $this->getFasilitasPanel();
     }
 
 
@@ -205,17 +205,6 @@ class AdminPanelController extends Controller
     }
 
 
-    public function getPengumumanPanel()
-    {
-        $admin = Auth::user();
-        $pengumuman = Pengumuman::orderBy('created_at', 'desc')->get();
-        $data = [
-            'indexActive' => 2,
-            'admin' => $admin,
-            'pengumuman' => $pengumuman,
-        ];
-        return view('admin-panel.pengumumanpanel', $data);
-    }
 
     public function getPengumumanAdmin()
     {

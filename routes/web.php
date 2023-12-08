@@ -51,7 +51,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/fasilitas/edit', [AdminPanelController::class, 'postEditFasilitas'])->name('post.fasilitas.edit');
         Route::post('/tambah-fasilitas', [AdminPanelController::class, 'postFasilitas'])->name('post.fasilitas');
         Route::delete('post-fasilitas/{id}', [AdminPanelController::class, 'destroy'])->name('post.destroy');
-        Route::get('/pengumuman-admin', [AdminPanelController::class, 'getPengumumanPanel'])->name('pengumuman-panel');
+        Route::get('/pengumuman-admin', [PengumumanController::class, 'getPengumumanPanel'])->name('pengumuman-panel');
         Route::get('/pengumuman-admin-get', [AdminPanelController::class, 'getAddPengumuman'])->name('get.add-pengumuman');
         Route::post('/tambah-pengumuman', [PengumumanController::class, 'postPengumuman'])->name('post.pengumuman');
         Route::post('/pengumuman/edit', [AdminPanelController::class, 'postEditPengumuman'])->name('post.edit.pengumuman');

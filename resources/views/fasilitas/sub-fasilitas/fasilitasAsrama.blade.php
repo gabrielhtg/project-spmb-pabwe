@@ -18,9 +18,7 @@
                         <div class="col-md-6 mx-auto d-flex flex-column my-auto">
                             <h3>{{$item->nama_fasilitas}}</h3>
                             <div class="lh-base text-break text-justify custom-justified-text align-items-center">
-                                <p>
-                                {{$item->deskripsi_fasilitas}}
-                                </p>
+                                {!! $item->deskripsi_fasilitas !!}
                             </div>
                         </div>
                     </div>

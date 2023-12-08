@@ -9,13 +9,14 @@ use App\models\admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Session;
 
 class PengumumanController extends Controller
 {
     public function getviewPengumuman()
     {
         $dataInstitusi = data_institusi::where('id', 1)->first();
-        $pengumuman = Pengumuman::orderBy('tanggalPengumuman', 'desc')->get();
+        $pengumuman = Pengumuman::orderBy('tanggalPengumuman', 'desc')->paginate(10);
         $data = [
             'dataInstitusi' => $dataInstitusi,
             'pengumuman' => $pengumuman,
@@ -35,9 +36,9 @@ class PengumumanController extends Controller
         // Ambil ekstensi file gambar
         $fileExtension = $request->filePengumuman->extension();
 
-        // Ubah spasi dalam judulPengumuman menjadi _
-        $judulPengumumanTanpaSpasi = str_replace(' ', '_', $request->judulPengumuman);
-
+        // Ubah karakter selain huruf, angka, dan underscore dalam judulPengumuman menjadi _
+        $judulPengumumanTanpaSpasi = preg_replace('/[^\w]/', '_', $request->judulPengumuman);
+        
         // Nama file gabungan dengan ekstensi
         $namaFile = $judulPengumumanTanpaSpasi . '.' . $fileExtension;
 
@@ -60,6 +61,18 @@ class PengumumanController extends Controller
         return redirect()->route('pengumuman-panel');
     }
 
+    public function getPengumumanPanel()
+    {
+        $admin = Auth::user();
+        $pengumuman = Pengumuman::orderBy('created_at', 'desc')->get();
+        $data = [
+            'indexActive' => 2,
+            'admin' => $admin,
+            'pengumuman' => $pengumuman,
+        ];
+        return view('admin-panel.pengumumanpanel', $data);
+    }
+
     public function destroy($id)
     {
         $admin = Auth::user();
@@ -68,14 +81,9 @@ class PengumumanController extends Controller
         if ($pengumuman) {
             $pengumuman->delete();
         }
-    
-        $data = [
-            'indexActive' => 2,
-            'admin' => $admin,
-            'pengumuman' => $pengumuman,
-        ];
 
-        return view('admin-panel.sub_admin_panel.pengumumanAddpanel', $data);
+        // Redirect back to the pengumuman panel with updated data
+        return $this->getPengumumanPanel();
     }
 
 }

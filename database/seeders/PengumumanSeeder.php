@@ -18,6 +18,6 @@ class PengumumanSeeder extends Seeder
         Pengumuman::truncate();
 
         // Generate 20 pengumuman baru
-        Pengumuman::factory(20)->create();
+        Pengumuman::factory(30)->create();
     }
 }
