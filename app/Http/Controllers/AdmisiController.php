@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\MbkmModel;
 use App\Models\ModelHeaderAdmisi;
+use App\Models\JalurPendaftaranModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -76,5 +77,39 @@ class AdmisiController extends Controller
         MbkmModel::where('id', $request->id)->first()->delete();
 
         return redirect()->route('admisi-panel');
+    }
+
+    public function addJalur(Request $request)
+    {
+
+        JalurPendaftaranModel::create([
+            'jalurPendaftaran' => $request->inputJalurPendaftaran,
+            'desk_pers_umum' => $request->input_desk_pers_umum,
+            'icon' => $request->input_logo_social_media,
+            'created_by' => Auth::user()->username,
+            'updated_by' => Auth::user()->username,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        return redirect('admisi-panel');
+    }
+
+    public function editJalur (Request $request) {
+        $jalur = JalurPendaftaranModel::where('id', $request->id)->first();
+
+        $jalur->jalurPendaftaran = $request->inputJalurPendaftaran;
+        $jalur->desk_pers_umum = $request->input_desk_pers_umum;
+
+        $jalur->updated_by = Auth::user()->username;
+
+        $jalur->update();
+
+        return redirect()->route('admisi-panel');
+    }
+
+    public function removeJalur(Request $request)
+    {
+        JalurPendaftaranModel::where('id', $request->id)->first()->delete();
+    return redirect()->back();
     }
 }

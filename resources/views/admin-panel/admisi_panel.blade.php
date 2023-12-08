@@ -295,6 +295,97 @@
                 </form>
             </div>
         </div>
-    </div>
 
+        <div class="mt-3">
+            <div class="card card-success">
+                <div class="card-header bg-primary text-white">
+                    <span class="fs-3">Jalur Pendaftaran</span>
+
+                </div>
+
+                <div class="card-body">
+                    @include('admin-panel.sub_admisi_panel.add_persyaratan_umum')
+                    <form action="">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Jalur Pendaftaran</th>
+                                <th scope="col">Deskripsi Persyaratan Umum</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @php
+                                $i = 1;
+                            @endphp
+                            @foreach($jalur as $e)
+                            <tr>
+                                <td>{{$i++}}</td>
+                                <td>{{$e->jalurPendaftaran}}</td>
+                                <td>{{$e->desk_pers_umum}}t</td>
+                                <td>
+                                    <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                    data-bs-target="#edit_persum_modal{{ $e->id }}" title="Edit Persyaratan Umum"><i class="bi bi-pen"></i></button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="edit_persum_modal{{ $e->id }}" tabindex="-1"
+                                 aria-labelledby="edit_persum_modal_label{{ $e->id }}" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5 fw-semibold"
+                                                id="edit_persum_modal_label{{ $e->id }}">Edit Social Media</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                        </div>
+                                        <form action="{{ route('editJalur') }}" method="post" enctype="multipart/form-data">
+                                            @csrf
+                                            <div class="modal-body text-start">
+                                                <input type="hidden" name="id" value="{{ $e -> id }}">
+                                                <div class="mb-3">
+                                                    <label class="form-label"
+                                                           for="input_edit_JalurPendaftaran{{$e->id}}">Jalur Pendaftaran</label>
+                                                    <input type="text" class="form-control"
+                                                           id="input_edit_JalurPendaftaran{{$e->id}}"
+                                                           name="input_Jalur" value="{{ $e->jalurPendaftaran }}">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="input_edit_deskUmum{{$e->id}}"
+                                                           class="form-label">Link</label>
+                                                    <input type="text" class="form-control"
+                                                           id="input_edit_deskUmum{{$e->id}}" name="input_deskUmum"
+                                                           value="{{ $e->desk_pers_umum }}">
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Cancel
+                                                </button>
+                                                <input type="hidden" value="{{ $e->id }}" name="id">
+                                                <button type="submit" class="btn btn-primary">Save</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <form action="{{ route('removeJalur') }}" class="d-inline" method="post" enctype="multipart/form-data">
+                                @csrf
+                                @method('DELETE')
+                                <input type="hidden" name="id" value="{{ $e->id }}">
+                                <button class="btn btn-danger" title="Remove Jalur Pendaftaran">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </form>
+                        </td>
+                            </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
