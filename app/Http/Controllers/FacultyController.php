@@ -10,10 +10,10 @@ use App\Models\Faculty;
 class FacultyController extends Controller
 {
 
-    public function getFakultas () {
+    public function getFakultas(String $id) {
         $dataInstitusi = data_institusi::where('id', 1)->first();
 
-        $faculty = Faculty::with('major')->get();
+        $faculty = Faculty::where('id', $id)->with('major')->get();
 
         $data = [
             'dataInstitusi' => $dataInstitusi,

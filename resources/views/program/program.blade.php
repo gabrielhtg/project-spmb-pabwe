@@ -107,7 +107,7 @@
                     <img src="{{ asset('img/program/home/fite-button.jpg') }}" class="card-img object-fit-cover" alt="" style="height: 200px;">
                     <div class="card-img-overlay">
                         <div class="card-img-overlay d-flex justify-content-center align-items-center">
-                            <a href="{{ route('fakultas')}}" class="fs-5 text-light text-decoration-none fw-semibold text-center">{{ $faculty->deskripsi }}</a>
+                            <a href="{{ route('fakultas', $faculty->id)}}" class="fs-5 text-light text-decoration-none fw-semibold text-center">{!! $faculty->nama !!}</a>
                         </div>
                         
                     </div>

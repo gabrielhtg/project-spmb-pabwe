@@ -497,7 +497,7 @@
             <span>Data Dosen/Staff</span>
         </div>
         <div class="card-body d-flex flex-column">
-            <form action="">
+            {{-- <form action=""> --}}
                 <table class="table text-center align-middle table-striped table-bordered">
                     <thead class="align-middle">
                     <tr>
@@ -528,7 +528,7 @@
                                         <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editDosen-{{ $employee->id }}">
                                             <i class="bi bi-pen"></i>
                                         </button>
-                                        <button type="submit" class="btn btn-danger">
+                                        <button type="submit" class="btn btn-danger" onclick="deleteEmployee({{ $employee->id }})">
                                             <i class="bi bi-trash"></i>
                                         </button>
                                     </form>
@@ -587,7 +587,7 @@
                         @endforeach
                     </tbody>
                 </table>
-            </form>
+            {{-- </form> --}}
         </div>
     </div>
 

@@ -73,7 +73,7 @@ Route::get('/form', function () {
 // ROUTE PROGRAM STUDI [TEAM 02]
 
 Route::get('/program', [ProgramController::class,'program'])->name('program');
-Route::get('/fakultas', [FacultyController::class,'getFakultas'])->name('fakultas');
+Route::get('/fakultas/{id}', [FacultyController::class,'getFakultas'])->name('fakultas');
 Route::get('/prodi', [MajorController::class,'getProdi'])->name('prodi');
 Route::post('/faculties/store', [FacultyController::class, 'store'])->name('faculties.store');
 Route::post('/major/store', [MajorController::class, 'store'])->name('major.store');

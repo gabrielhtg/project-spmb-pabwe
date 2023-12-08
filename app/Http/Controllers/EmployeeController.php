@@ -94,9 +94,11 @@ class EmployeeController extends Controller
         return redirect('admin-panel/program')->with('success', 'Employee updated successfully!');
     }
 
-    public function destroy(string $id)
+    public function destroy(String $id)
     {
         $employee = Employee::find($id);
+
+        // dd($employee);
 
         if (!$employee) {
             return redirect('admin-panel/program')->with('error', 'Employee not found!');
