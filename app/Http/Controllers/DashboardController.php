@@ -14,6 +14,7 @@ use App\Models\ModelHeaderAdmisi;
 use App\Models\NomorTeleponModel;
 use App\Models\SocalMediaModel;
 use App\Models\Lokasi;
+use App\Models\JenisTes;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -50,6 +51,7 @@ class DashboardController extends Controller
         $dataNomorTelepon = NomorTeleponModel::all();
         $dataEmail = EmailModel::all();
         $lokasi = Lokasi::orderBy('lokasiTes', 'asc')->get();
+        $jenis = JenisTes::orderBy('gelombang', 'asc')->get();
 
         $data = [
             'dataInstitusi' => $dataInstitusi,
@@ -59,6 +61,7 @@ class DashboardController extends Controller
             'dataNomorTelepon' => $dataNomorTelepon,
             'dataEmail' => $dataEmail,
             'lokasi' => $lokasi,
+            'jenis' => $jenis,
         ];
 
         return view('admisi.admisi-tanggal-penting', $data);

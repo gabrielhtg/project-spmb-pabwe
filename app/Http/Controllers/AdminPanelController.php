@@ -16,6 +16,7 @@ use App\Models\NomorTeleponModel;
 use App\Models\SocalMediaModel;
 use App\Models\JalurPendaftaranModel;
 use App\Models\Lokasi;
+use App\Models\JenisTes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -252,6 +253,7 @@ class AdminPanelController extends Controller
         $dataKompetisi =  MbkmModel::where('jenis_kegiatan', 'Kompetisi')->get();
         $jalurMasuk = [];
         $lokasi = Lokasi::orderBy('lokasiTes', 'asc')->get();
+        $jenis = JenisTes::orderBy('gelombang', 'asc')->get();
 
         foreach (InfografisModel::all() as $e) {
             if (!in_array($e->jalur, $jalurMasuk)) {
@@ -273,6 +275,7 @@ class AdminPanelController extends Controller
             'dataKompetisi'=>$dataKompetisi,
             'dataInfografis' => $dataInfografisJalurMasuk,
             'lokasi' => $lokasi,
+            'jenis' => $jenis,
         ];
         return view('admin-panel.admisi_panel', $data);
     }
@@ -327,6 +330,24 @@ class AdminPanelController extends Controller
         return $this->getAdmisiPanel();
     }
 
+    public function destroyJenisTes($id)
+    {
+        $admin = Auth::user();
+        $jenis = JenisTes::find($id);
+
+        if($jenis){
+            $jenis->delete();
+        }
+
+        $data = [
+            'indexActive' => 2,
+            'admin' => $admin,
+            'jenis' => $jenis,
+        ];
+
+        return $this->getAdmisiPanel();
+    }
+
     public function postEditlokasi(Request $request)
     {
         // Mendapatkan user yang sedang login
@@ -348,6 +369,32 @@ class AdminPanelController extends Controller
         
             // Menyimpan perubahan
             $lokasi->save();
+    }
+    // Redirect dengan pesan sukses
+    return $this->getAdmisiPanel();
+    }
+
+    public function postEditJenis(Request $request)
+    {
+        // Mendapatkan user yang sedang login
+        $admin = Auth::user();
+
+        $request->validate([
+            'id' => 'required|exists:jenis',
+            'gelombang' => 'required',
+            'jenisUjian' => 'required',
+        ]);
+
+        // Mengambil data fasilitas berdasarkan ID
+        $jenis = JenisTes::where("id", $request->id)->first();
+
+        if ($jenis) {
+            // Mengupdate data fasilitas
+            $jenis->gelombang = $request->gelombang;
+            $jenis->jenisUjian = $request->jenisUjian;
+        
+            // Menyimpan perubahan
+            $jenis->save();
     }
     // Redirect dengan pesan sukses
     return $this->getAdmisiPanel();

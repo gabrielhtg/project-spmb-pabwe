@@ -9,6 +9,7 @@ use App\Models\MbkmModel;
 use App\Models\ModelHeaderAdmisi;
 use App\Models\JalurPendaftaranModel;
 use App\Models\Lokasi;
+use App\Models\JenisTes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -159,6 +160,22 @@ class AdmisiController extends Controller
 
         $lokasi->save();
 
+        return redirect()->route('admisi-panel');
+    }
+
+    public function postJenisTes(Request $request)
+    {
+        $request->validate([
+            'gelombang' => 'required',
+            'jenisUjian' => 'required',
+        ]);
+
+        $jenis = new JenisTes;
+
+        $jenis->gelombang = $request->gelombang;
+        $jenis->jenisUjian = $request->jenisUjian;
+
+        $jenis->save();
         return redirect()->route('admisi-panel');
     }
 

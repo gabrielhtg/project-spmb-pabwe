@@ -4,23 +4,23 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateJadwalTable extends Migration
+return new class extends Migration
 {
+    
     public function up()
     {
-        Schema::create('jadwal', function (Blueprint $table) {
+        Schema::create('jenis', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('idGelombang')->constrained('gelombang');
+            $table->string('gelombang');
             $table->string('jenisUjian');
-            $table->dateTime('jadwalTest');
             $table->timestamps();
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('jadwal');
+        Schema::dropIfExists('jenis');
     }
 
+};
 
-}

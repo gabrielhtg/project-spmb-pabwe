@@ -713,7 +713,28 @@
                         </tr>
                         </thead>
                         <tbody>
-                            
+                            @php
+                                $counter = 1;
+                            @endphp
+                            @foreach($jenis as $item)
+                            <tr>
+                                <td>{{ $counter++}}</td>
+                                <td>{{ $item->gelombang}}</td>
+                                <td>{{ $item->jenisUjian}}</td>
+                                <td style="min-width: 120px; width: 120px">
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                                    <button class="btn btn-warning"
+                                    onclick="showModalEditJenis({{$item->id}}, '{{ $item->gelombang }}', '{{ $item->jenisUjian}}')">
+                                    <i class="bi bi-pen"></i></button>
+                                    <form action="{{ route('post.destroy.jenis', $item->id) }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                                    </form>
+                                </div>
+                                </td>
+                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -769,7 +790,7 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="editFasilitasLabel">Ubah Data Lokasi</h5>
+                                    <h5 class="modal-title" id="editLokasiLabel">Ubah Data Lokasi</h5>
                                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <form action="{{ route('post.lokasi.edit') }}" method="POST">
@@ -797,6 +818,48 @@
                         </div>
                     </div>
                     <!-- AKHIR MODAL EDIT -->
+
+                    <!-- MODAL EDIT JENIS -->
+                    <div class="modal fade" id="editJenis" tabindex="-1" aria-labelledby="editJenisLabel" aria-hidder="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="editJenisLabel">Ubah Data Jenis Tes</h5>
+                                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <form action="{{ route('post.jenis.edit') }}" method="POST">
+                                    @csrf
+                                    <input name="id" type="hidden" id="inputEditJenis">
+
+                                    <div class="modal-body">
+
+                                        <div class="mb-3">
+                                            <label for="inputEditGelombang" class="form-label">Gelombang</label>
+                                            <select class="form-select" id="inputEditGelombang" name="gelombang">
+                                                <option value="PMDK">PMDK</option>
+                                                <option value="USM 1">USM 1</option>
+                                                <option value="USM 2">USM 2</option>
+                                                <option value="USM 3">USM 3</option>
+                                                <option value="USM 4">USM 4</option>
+                                                <option value="UTBK">UTBK</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="jenisUjian" class="form-label">Jenis Tes</label>
+                                            <input type="text" class="form-control" id="jenisUjian" name="jenisUjian">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                        <button type="submit" class="btn btn-primary">Save</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- AKHIR MODAL EDIT -->
+
                 </div>
             </div>
         </div>
@@ -817,5 +880,20 @@
             var myModal = new bootstrap.Modal(modalEditLokasi)
             myModal.show();
         }
+
+        function showModalEditJenis(id, gelombang, jenisUjian) {
+            const modalEditJenis = document.getElementById("editJenis");
+            const inputId = document.getElementById("inputEditJenis");
+            const inputGelombang = document.getElementById("inputEditGelombang");  // Match the case here
+            const inputJenis = document.getElementById("jenisUjian");  // Match the case here
+
+            inputId.value = id;
+            inputGelombang.value = gelombang;
+            inputJenis.value = jenisUjian;
+
+            var myModal = new bootstrap.Modal(modalEditJenis);
+            myModal.show();
+        }
+
     </script>
 @endsection
