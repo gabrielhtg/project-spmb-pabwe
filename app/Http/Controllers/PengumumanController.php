@@ -13,16 +13,31 @@ use Illuminate\Support\Facades\Session;
 
 class PengumumanController extends Controller
 {
-    public function getviewPengumuman()
+    public function getviewPengumuman(Request $request)
     {
+        // Ambil query pencarian
+        $keywords = $request->query("keywords") ?? null;
         $dataInstitusi = data_institusi::where('id', 1)->first();
-        $pengumuman = Pengumuman::orderBy('tanggalPengumuman', 'desc')->paginate(10);
+
+        // Mulai query dari model Pengumuman
+        $query = Pengumuman::orderBy('tanggalPengumuman', 'desc');
+
+        // Jika terdapat keyword pencarian, tambahkan kondisi WHERE
+        if ($keywords !== null) {
+            $query->where("judulPengumuman", "LIKE", "%$keywords%");
+        }
+
+        // Eksekusi query dan terapkan paginasi
+        $pengumuman = $query->paginate(10);
+
         $data = [
             'dataInstitusi' => $dataInstitusi,
             'pengumuman' => $pengumuman,
         ];
+
         return view("pengumuman.pengumuman", $data);
     }
+
 
     public function postPengumuman(Request $request)
     {

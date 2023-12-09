@@ -23,12 +23,14 @@
         <div class="container pt-5">
 
             <div class="justify text-center">
-                <div class="input-group mb-3" style="width: 700px; margin: auto;">
-                    <input type="text" class="form-control" placeholder="cari pengumuman" aria-label="cari pengumuman" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                        <button class="btn btn-primary" type="button">Cari</button>
+                <form method="GET">
+                    <div class="input-group mb-3" style="width: 700px; margin: auto;">
+                        <input name="keywords" type="text" class="form-control" placeholder="cari pengumuman..." aria-label="cari pengumuman" aria-describedby="basic-addon2" value="{{request()->query("keywords")}}">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="submit">Cari</button>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
 
             <div class="table-pengumuman">
