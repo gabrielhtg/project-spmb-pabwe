@@ -23,6 +23,9 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/add-infografis-pmdk', [AdmisiController::class, 'addInfografisPmdk'])->name('addInfografisPmdk');
+    Route::post('/add-infografis-usm', [AdmisiController::class, 'addInfografisUsm'])->name('addInfografisUsm');
+    Route::post('/add-infografis-utbk', [AdmisiController::class, 'addInfografisUtbk'])->name('addInfografisUtbk');
     Route::post('/data-institut', [AdminPanelController::class, 'ubahDataInstitut'])->name('ubahDataInstitut');
     Route::post('/add-social-media', [AdminPanelController::class, 'addSocialMedia'])->name('addSocialMedia');
     Route::post('/update-social-media', [AdminPanelController::class, 'updateSocialMedia'])->name('updateSocialMedia');
@@ -48,5 +51,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/add-akreditasi-institusi', [AdminPanelController::class, 'addAkreditasiInstitusi'])->name('addAkreditasi');
     Route::delete('/delete-email', [AdminController::class, 'removeEmail'])->name('removeEmail');
     Route::delete('/remove-mbkm', [AdmisiController::class, 'removeMbkm'])->name('removeMbkm');
-    Route::post('/add-infografis-pmdk', [AdmisiController::class, 'addInfografisPmdk'])->name('addInfografisPmdk');
+    Route::delete('/remove-infografis', [AdmisiController::class, 'removeInfografis'])->name('removeInfografis');
 });
