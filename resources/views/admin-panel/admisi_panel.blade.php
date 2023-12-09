@@ -704,7 +704,20 @@
                         </tr>
                         </thead>
                         <tbody>
-
+                            @php
+                                $counter=1;
+                            @endphp
+                            @foreach($lokasi as $item)
+                            <tr>
+                                <td>{{ $counter++}}</td>
+                                <td>{{ $item->lokasiTes }}</td>
+                                <td>{{ $item->alamatLokasi}}</td>
+                                <td>
+                                    <button type="button" class="btn btn-warning"><i class="bi bi-pen"></i></button>
+                                    <button type="button" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                                </td>
+                            </tr>
+                            @endforeach 
                         </tbody>
                     </table>
                 </div>

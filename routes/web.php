@@ -51,6 +51,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/admins', [AdminPanelController::class, 'getAddAdminView'])->name('admins');
         Route::get('/prestasipanel', [AdminPanelController::class, 'getPrestasiPanel'])->name('prestasipanel');
         Route::get('/testimonipanel', [AdminPanelController::class, 'getTestimoniPanel'])->name('testimonipanel');
+        Route::post('/add-lokasi', [AdmisiController::class, 'postLokasiTes'])->name('post.lokasi');
 
         Route::prefix('/admisi-panel')->group(function(){
             Route::post('/addjalurpendaftaran', [AdmisiController::class,'addJalur'])->name('addJalur');

@@ -15,6 +15,7 @@ use App\Models\ModelHeaderAdmisi;
 use App\Models\NomorTeleponModel;
 use App\Models\SocalMediaModel;
 use App\Models\JalurPendaftaranModel;
+use App\Models\Lokasi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -251,6 +252,7 @@ class AdminPanelController extends Controller
         $dataKompetisi =  MbkmModel::where('jenis_kegiatan', 'Kompetisi')->get();
         $dataInfografis = InfografisModel::all();
         $jalurMasuk = [];
+        $lokasi = Lokasi::orderBy('lokasiTes', 'asc')->get();
 
         foreach ($dataInfografis as $e) {
             if (!in_array($e->jalur, $jalurMasuk)) {
@@ -270,7 +272,8 @@ class AdminPanelController extends Controller
             'dataHeaderAdmisi' => $dataHeaderAdmisi,
             'dataNonKompetisi' => $dataNonKompetisi,
             'dataKompetisi'=>$dataKompetisi,
-            'dataInfografis' => $dataInfografisJalurMasuk
+            'dataInfografis' => $dataInfografisJalurMasuk,
+            'lokasi' => $lokasi,
         ];
         return view('admin-panel.admisi_panel', $data);
     }

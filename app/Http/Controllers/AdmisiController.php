@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\AkreditasiInstitutiModel;
 use App\Models\InfografisModel;
 use App\Models\MbkmModel;
 use App\Models\ModelHeaderAdmisi;
 use App\Models\JalurPendaftaranModel;
+use App\Models\Lokasi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -137,6 +139,24 @@ class AdmisiController extends Controller
             'jalur' => 'PMDK',
             'nomor_urut' => $request->nomor_urut
         ]);
+
+        return redirect()->route('admisi-panel');
+    }
+
+    // KELOMPOK 6
+    public function postLokasiTes(Request $request)
+    {
+        $request->validate([
+            'lokasiTes' => 'required',
+            'alamatLokasi' => 'required',
+        ]);
+
+        $lokasi = new Lokasi;
+
+        $lokasi->lokasiTes = $request->lokasiTes;
+        $lokasi->alamatLokasi = $request->alamatLokasi;
+
+        $lokasi->save();
 
         return redirect()->route('admisi-panel');
     }

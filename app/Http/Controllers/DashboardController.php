@@ -12,6 +12,7 @@ use App\Models\MbkmModel;
 use App\Models\ModelHeaderAdmisi;
 use App\Models\NomorTeleponModel;
 use App\Models\SocalMediaModel;
+use App\Models\Lokasi;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -47,6 +48,7 @@ class DashboardController extends Controller
         $dataHeaderAdmisi = ModelHeaderAdmisi::where('id', 1)->first();
         $dataNomorTelepon = NomorTeleponModel::all();
         $dataEmail = EmailModel::all();
+        $lokasi = Lokasi::orderBy('lokasiTes', 'asc')->get();
 
         $data = [
             'dataInstitusi' => $dataInstitusi,
@@ -54,7 +56,8 @@ class DashboardController extends Controller
             'dataAlamat' => $dataAlamat,
             'dataHeaderAdmisi' => $dataHeaderAdmisi,
             'dataNomorTelepon' => $dataNomorTelepon,
-            'dataEmail' => $dataEmail
+            'dataEmail' => $dataEmail,
+            'lokasi' => $lokasi
         ];
 
         return view('admisi.admisi-tanggal-penting', $data);

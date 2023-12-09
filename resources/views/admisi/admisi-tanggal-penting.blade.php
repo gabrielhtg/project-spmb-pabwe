@@ -105,8 +105,18 @@
                         <div class="tab-pane fade" id="jenis-test-tab-pane" role="tabpanel"
                              aria-labelledby="jenis-test-tab" tabindex="0">...
                         </div>
-                        <div class="tab-pane fade" id="lokasi-tab-pane" role="tabpanel" aria-labelledby="lokasi-tab"
-                             tabindex="0">...
+                        <div class="tab-pane ps-3 pe-3 fade show active" id="lokasi-tab-pane" role="tabpanel" aria-labelledby="lokasi-tab"
+                             tabindex="0">
+                             <table class="table table-striped table-bordered mt-5">
+                                <tbody>
+                                    @foreach($lokasi as $item)
+                                    <tr>
+                                        <td>{{ $item->lokasiTes}}</td>
+                                        <td>{{ $item->alamatLokasi}}</td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                             </table>
                         </div>
                     </div>
                 </div>
