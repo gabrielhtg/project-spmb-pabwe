@@ -57,6 +57,7 @@ Route::middleware('auth')->group(function () {
             Route::post('/addjalurpendaftaran', [AdmisiController::class,'addJalur'])->name('addJalur');
             Route::post('/edit-jalur-pendaftaran', [AdmisiController::class,'editJalur'])->name('editJalur');
             Route::post('/delete-jalur-pendaftaran', [AdmisiController::class,'removeJalur'])->name('removeJalur');
+            Route::delete('/delete-lokasi/{id}', [AdminPanelController::class, 'destroyLokasi'])->name('post.destroy.lokasi');
         });
     });
 });

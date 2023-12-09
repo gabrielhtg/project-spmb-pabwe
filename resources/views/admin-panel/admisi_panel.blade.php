@@ -748,7 +748,11 @@
                                 <td>{{ $item->alamatLokasi}}</td>
                                 <td>
                                     <button type="button" class="btn btn-warning"><i class="bi bi-pen"></i></button>
-                                    <button type="button" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                                    <form action="{{ route('post.destroy.lokasi', $item->id) }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                                    </form>
                                 </td>
                             </tr>
                             @endforeach 

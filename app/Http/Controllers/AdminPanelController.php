@@ -308,4 +308,22 @@ class AdminPanelController extends Controller
 
         return redirect()->route('admin-panel');
     }
+
+    public function destroyLokasi($id)
+    {
+        $admin = Auth::user();
+        $lokasi = Lokasi::find($id);
+
+        if ($lokasi) {
+            $lokasi->delete();
+        }
+    
+        $data = [
+            'indexActive' => 2,
+            'admin' => $admin,
+            'lokasi' => $lokasi,
+        ];
+
+        return $this->getAdmisiPanel();
+    }
 }

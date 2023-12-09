@@ -221,4 +221,6 @@ class AdmisiController extends Controller
 
         return redirect()->route('admisi-panel');
     }
+
+    
 }
