@@ -9,9 +9,8 @@ class CreateJadwalTable extends Migration
     public function up()
     {
         Schema::create('jadwal', function (Blueprint $table) {
-            $table->id('idJadwal');
-            $table->bigInteger('idGelombang')->unsigned(); // Menggunakan tipe data yang sesuai
-            $table->foreign('idGelombang')->references('idGelombang')->on('gelombang');
+            $table->id();
+            $table->foreignId('idGelombang')->constrained('gelombang');
             $table->string('jenisUjian');
             $table->string('lokasiUjian');
             $table->dateTime('jadwalTest');
@@ -20,11 +19,13 @@ class CreateJadwalTable extends Migration
     }
 
     public function down()
-    {
-        Schema::table('jadwal', function (Blueprint $table) {
-            $table->dropForeign(['idGelombang']);
-        });
+{
+    Schema::table('jadwal', function (Blueprint $table) {
+        $table->dropForeign(['idGelombang']);
+    });
 
-        Schema::dropIfExists('jadwal');
-    }
+    Schema::dropIfExists('jadwal');
+}
+
+
 }

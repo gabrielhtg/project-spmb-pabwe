@@ -9,7 +9,7 @@ class CreateGelombangTable extends Migration
     public function up()
     {
         Schema::create('gelombang', function (Blueprint $table) {
-            $table->bigIncrements('idGelombang');
+            $table->id();
             $table->string('namaGelombang');
             $table->text('deskripsi');
             $table->timestamps();
