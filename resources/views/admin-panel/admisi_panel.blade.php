@@ -257,13 +257,13 @@
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                             aria-label="Close"></button>
                                                 </div>
-                                                <form action="{{ route('addInfografisPmdk') }}" method="post">
+                                                <form action="{{ url('/api/add-infografis-pmdk') }}" method="post" enctype="multipart/form-data">
                                                     @csrf
                                                     <div class="modal-body">
                                                         <div class="mb-3">
                                                             <label class="form-label w-100">
                                                                 Nomor Urut
-                                                                <input class="form-control" type="number"
+                                                                <input class="form-control"  type="number"
                                                                        name="nomor_urut">
                                                                 @error('nomor_urut')
                                                                 <span class="text-danger">{{ $message }}</span>
@@ -286,7 +286,6 @@
                                                         </button>
                                                     </div>
                                                 </form>
-
                                             </div>
                                         </div>
                                     </div>

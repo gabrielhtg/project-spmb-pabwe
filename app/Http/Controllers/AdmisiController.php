@@ -116,9 +116,10 @@ class AdmisiController extends Controller
     }
 
     public function addInfografisPmdk (Request $request) {
-        $request->validate([
-            'gambar' => 'required|image|mimes:jpeg,png,jpg|max:1024',
-        ]);
+//        $request->validate([
+//            'gambar' => 'required|image|mimes:jpeg,png,jpg|max:1024',
+//            'nomor_urut' => 'required|min:0'
+//        ]);
         // Mengambil file yang sudah divalidasi dari request
         $photo = $request->file('gambar');
 
@@ -136,5 +137,7 @@ class AdmisiController extends Controller
             'jalur' => 'PMDK',
             'nomor_urut' => $request->nomor_urut
         ]);
+
+        return redirect()->route('admisi-panel');
     }
 }
