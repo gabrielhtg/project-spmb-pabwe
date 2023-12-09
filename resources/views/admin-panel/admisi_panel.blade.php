@@ -693,5 +693,56 @@
                 </div>
             </div>
         </div>
+
+        <!-- KELOMPOK 6 -->
+        <div class="mt-3">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <span class="fs-3">Data Jenis Tes</span>
+                </div>
+
+                <div class="card-body">
+                    @include('admin-panel.sub_admisi_panel.add_jenis_test')
+                    <table class="table table-bordered text-center table-striped align-middle pt-3">
+                        <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Gelombang</th>
+                            <th>Jenis Test</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-3">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <span class="fs-3">Data Lokasi Tes</span>
+                </div>
+
+                <div class="card-body">
+                    @include('admin-panel.sub_admisi_panel.add_lokasi')
+                    <table class="table table-bordered text-center table-striped align-middle pt-3">
+                        <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Lokasi</th>
+                            <th>Alamat</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
