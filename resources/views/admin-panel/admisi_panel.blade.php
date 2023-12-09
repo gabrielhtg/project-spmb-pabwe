@@ -746,20 +746,76 @@
                                 <td>{{ $counter++}}</td>
                                 <td>{{ $item->lokasiTes }}</td>
                                 <td>{{ $item->alamatLokasi}}</td>
-                                <td>
-                                    <button type="button" class="btn btn-warning"><i class="bi bi-pen"></i></button>
-                                    <form action="{{ route('post.destroy.lokasi', $item->id) }}" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i></button>
-                                    </form>
+                                <td style="min-width: 120px; width: 120px">
+                                    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                                        <button class="btn btn-warning"
+                                                onclick="showModalEditLokasi({{$item->id}}, '{{ $item->lokasiTes }}', '{{ $item->alamatLokasi}}')">
+                                            <i class="bi bi-pen"></i>
+                                        </button>
+                                        <form action="{{ route('post.destroy.lokasi', $item->id) }}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                                        </form>
+                                    </div>
                                 </td>
                             </tr>
                             @endforeach 
                         </tbody>
                     </table>
+
+                    <!-- MODAL EDIT Lokasi -->
+                    <div class="modal fade" id="editLokasi" tabindex="-1" aria-labelledby="editLokasiLabel" aria-hidder="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="editFasilitasLabel">Ubah Data Lokasi</h5>
+                                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <form action="{{ route('post.lokasi.edit') }}" method="POST">
+                                    @csrf
+                                    <input name="id" type="hidden" id="inputEditLokasi">
+
+                                    <div class="modal-body">
+
+                                        <div class="mb-3">
+                                            <label for="inputLokasi" class="form-label">Nama Lokasi</label>
+                                            <input type="text" class="form-control" id="inputLokasi" name="lokasiTes">
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="inputAlamatLokasi" class="form-label">Alamat Lokasi</label>
+                                            <input type="text" class="form-control" id="inputAlamatLokasi" name="alamatLokasi" rows="5">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                        <button type="submit" class="btn btn-primary">Save</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- AKHIR MODAL EDIT -->
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+        function showModalEditLokasi(id, lokasiTes, alamatLokasi)
+        {
+            const modalEditLokasi = document.getElementById("editLokasi");
+            const inputId = document.getElementById("inputEditLokasi");
+            const inputLokasi = document.getElementById("inputLokasi");
+            const inputAlamat = document.getElementById("inputAlamatLokasi");
+
+            inputId.value = id;
+            inputLokasi.value = lokasiTes;
+            inputAlamat.value = alamatLokasi;
+
+            var myModal = new bootstrap.Modal(modalEditLokasi)
+            myModal.show();
+        }
+    </script>
 @endsection

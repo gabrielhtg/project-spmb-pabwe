@@ -326,4 +326,30 @@ class AdminPanelController extends Controller
 
         return $this->getAdmisiPanel();
     }
+
+    public function postEditlokasi(Request $request)
+    {
+        // Mendapatkan user yang sedang login
+        $admin = Auth::user();
+
+        $request->validate([
+            'id' => 'required|exists:lokasi',
+            'lokasiTes' => 'required',
+            'alamatLokasi' => 'required',
+        ]);
+
+        // Mengambil data fasilitas berdasarkan ID
+        $lokasi = Lokasi::where("id", $request->id)->first();
+
+        if ($lokasi) {
+            // Mengupdate data fasilitas
+            $lokasi->lokasiTes = $request->lokasiTes;
+            $lokasi->alamatLokasi = $request->alamatLokasi;
+        
+            // Menyimpan perubahan
+            $lokasi->save();
+    }
+    // Redirect dengan pesan sukses
+    return $this->getAdmisiPanel();
+    }
 }
