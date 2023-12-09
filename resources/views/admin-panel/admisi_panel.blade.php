@@ -23,7 +23,7 @@
                         <label for="header-admisi" class="form-label">Image Admisi</label>
                         <input class="form-control" type="file" id="header-admisi" name="header_admisi">
                         @error('header_admisi')
-                            <span class="text-danger fs-7">{{ $message }}</span>
+                        <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="card-footer">
@@ -126,7 +126,7 @@
                         </thead>
                         <tbody>
                         @php
-                        $i = 1;
+                            $i = 1;
                         @endphp
                         @foreach($dataNonKompetisi as $e)
                             <tr>
@@ -208,22 +208,25 @@
                 </div>
 
                 <div class="card-body">
-                    <section id="jalur-pendaftaran" class="border border-1 w-100 p-3">
+                    <div id="jalur-pendaftaran" class="border border-1 w-100 p-3">
                         <ul class="nav nav-fill nav-pills" id="jalur-pendaftaran-Tab" role="tablist">
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="pmdk-tab" data-bs-toggle="tab" data-bs-target="#pmdk-tab-pane"
+                                <button class="nav-link active" id="pmdk-tab" data-bs-toggle="tab"
+                                        data-bs-target="#pmdk-tab-pane"
                                         type="button" role="tab" aria-controls="pmdk-tab-pane" aria-selected="true">
                                     PMDK
                                 </button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="usm-tab" data-bs-toggle="tab" data-bs-target="#usm-tab-pane" type="button"
+                                <button class="nav-link" id="usm-tab" data-bs-toggle="tab"
+                                        data-bs-target="#usm-tab-pane" type="button"
                                         role="tab" aria-controls="usm-tab-pane" aria-selected="false">
                                     USM
                                 </button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="utbk-tab" data-bs-toggle="tab" data-bs-target="#utbk-tab-pane"
+                                <button class="nav-link" id="utbk-tab" data-bs-toggle="tab"
+                                        data-bs-target="#utbk-tab-pane"
                                         type="button" role="tab" aria-controls="utbk-tab-pane" aria-selected="false">
                                     UTBK
                                 </button>
@@ -231,23 +234,28 @@
                         </ul>
 
                         <div class="tab-content" id="jenis-pendaftaran-TabContent">
-                            <div class="tab-pane fade show active" id="pmdk-tab-pane" role="tabpanel" aria-labelledby="pmdk-tab"
+                            <div class="tab-pane fade show active" id="pmdk-tab-pane" role="tabpanel"
+                                 aria-labelledby="pmdk-tab"
                                  tabindex="0">
                                 <div class="p-3 border border-1 mt-3">
                                     <!-- Button trigger modal -->
                                     <div class="d-flex justify-content-end mb-3">
-                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahInfografisPMDK">
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                data-bs-target="#tambahInfografisPMDK">
                                             Tambah
                                         </button>
                                     </div>
 
                                     <!-- Modal -->
-                                    <div class="modal fade" id="tambahInfografisPMDK" tabindex="-1" aria-labelledby="tambahInfografisPMDKLabel" aria-hidden="true">
+                                    <div class="modal fade" id="tambahInfografisPMDK" tabindex="-1"
+                                         aria-labelledby="tambahInfografisPMDKLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h1 class="modal-title fs-5 fw-semibold" id="tambahInfografisPMDKLabel">Tambah Infografis PMDK</h1>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    <h1 class="modal-title fs-5 fw-semibold"
+                                                        id="tambahInfografisPMDKLabel">Tambah Infografis PMDK</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
                                                 </div>
                                                 <form action="{{ route('addInfografisPmdk') }}" method="post">
                                                     @csrf
@@ -255,7 +263,8 @@
                                                         <div class="mb-3">
                                                             <label class="form-label w-100">
                                                                 Nomor Urut
-                                                                <input class="form-control" type="number" name="nomor_urut">
+                                                                <input class="form-control" type="number"
+                                                                       name="nomor_urut">
                                                                 @error('nomor_urut')
                                                                 <span class="text-danger">{{ $message }}</span>
                                                                 @enderror
@@ -270,8 +279,11 @@
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                                        <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal">Close
+                                                        </button>
+                                                        <button type="submit" class="btn btn-primary">Save changes
+                                                        </button>
                                                     </div>
                                                 </form>
 
@@ -302,26 +314,30 @@
                                         </tbody>
                                     </table>
                                 </div>
-
                             </div>
 
-                            <div class="tab-pane fade show active" id="usm-tab-pane" role="tabpanel" aria-labelledby="usm-tab"
+                            <div class="tab-pane fade" id="usm-tab-pane" role="tabpanel"
+                                 aria-labelledby="usm-tab"
                                  tabindex="0">
                                 <div class="p-3 border border-1 mt-3">
                                     <!-- Button trigger modal -->
                                     <div class="d-flex justify-content-end mb-3">
-                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahInfografisUSM">
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                data-bs-target="#tambahInfografisUSM">
                                             Tambah
                                         </button>
                                     </div>
 
                                     <!-- Modal -->
-                                    <div class="modal fade" id="tambahInfografisUSM" tabindex="-1" aria-labelledby="tambahInfografisUSMLabel" aria-hidden="true">
+                                    <div class="modal fade" id="tambahInfografisUSM" tabindex="-1"
+                                         aria-labelledby="tambahInfografisUSMLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Infografis USM</h1>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah
+                                                        Infografis USM</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
                                                     <div class="mb-3">
@@ -339,7 +355,9 @@
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Close
+                                                    </button>
                                                     <button type="button" class="btn btn-primary">Save changes</button>
                                                 </div>
                                             </div>
@@ -371,23 +389,28 @@
                                 </div>
                             </div>
 
-                            <div class="tab-pane fade show active" id="utbk-tab-pane" role="tabpanel" aria-labelledby="utbk-tab"
+                            <div class="tab-pane fade   " id="utbk-tab-pane" role="tabpanel"
+                                 aria-labelledby="utbk-tab"
                                  tabindex="0">
                                 <div class="p-3 border border-1 mt-3">
                                     <!-- Button trigger modal -->
                                     <div class="d-flex justify-content-end mb-3">
-                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahInfografisUTBK">
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                data-bs-target="#tambahInfografisUTBK">
                                             Tambah
                                         </button>
                                     </div>
 
                                     <!-- Modal -->
-                                    <div class="modal fade" id="tambahInfografisUTBK" tabindex="-1" aria-labelledby="tambahInfografisUTBKLabel" aria-hidden="true">
+                                    <div class="modal fade" id="tambahInfografisUTBK" tabindex="-1"
+                                         aria-labelledby="tambahInfografisUTBKLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Infografis UTBK</h1>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah
+                                                        Infografis UTBK</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
                                                     <div class="mb-3">
@@ -405,7 +428,9 @@
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Close
+                                                    </button>
                                                     <button type="button" class="btn btn-primary">Save changes</button>
                                                 </div>
                                             </div>
@@ -438,7 +463,7 @@
 
                             </div>
                         </div>
-                    </section>
+                    </div>
                 </div>
 
             </div>
@@ -561,68 +586,74 @@
                             @php
                                 $i = 1;
                             @endphp
-                            @foreach($jalur as $e)
+                            {{--                            @foreach($jalur as $e)--}}
                             <tr>
                                 <td>{{$i++}}</td>
                                 <td>{{$e->jalurPendaftaran}}</td>
                                 <td>{{$e->desk_pers_umum}}t</td>
                                 <td>
                                     <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                                    data-bs-target="#edit_persum_modal{{ $e->id }}" title="Edit Persyaratan Umum"><i class="bi bi-pen"></i></button>
+                                            data-bs-target="#edit_persum_modal{{ $e->id }}"
+                                            title="Edit Persyaratan Umum"><i class="bi bi-pen"></i></button>
 
                                     <!-- Modal -->
                                     <div class="modal fade" id="edit_persum_modal{{ $e->id }}" tabindex="-1"
-                                 aria-labelledby="edit_persum_modal_label{{ $e->id }}" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5 fw-semibold"
-                                                id="edit_persum_modal_label{{ $e->id }}">Edit Social Media</h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
+                                         aria-labelledby="edit_persum_modal_label{{ $e->id }}" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5 fw-semibold"
+                                                        id="edit_persum_modal_label{{ $e->id }}">Edit Social Media</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                </div>
+                                                <form action="{{ route('editJalur') }}" method="post"
+                                                      enctype="multipart/form-data">
+                                                    @csrf
+                                                    <div class="modal-body text-start">
+                                                        <input type="hidden" name="id" value="{{ $e -> id }}">
+                                                        <div class="mb-3">
+                                                            <label class="form-label"
+                                                                   for="input_edit_JalurPendaftaran{{$e->id}}">Jalur
+                                                                Pendaftaran</label>
+                                                            <input type="text" class="form-control"
+                                                                   id="input_edit_JalurPendaftaran{{$e->id}}"
+                                                                   name="input_Jalur"
+                                                                   value="{{ $e->jalurPendaftaran }}">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="input_edit_deskUmum{{$e->id}}"
+                                                                   class="form-label">Link</label>
+                                                            <input type="text" class="form-control"
+                                                                   id="input_edit_deskUmum{{$e->id}}"
+                                                                   name="input_deskUmum"
+                                                                   value="{{ $e->desk_pers_umum }}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal">Cancel
+                                                        </button>
+                                                        <input type="hidden" value="{{ $e->id }}" name="id">
+                                                        <button type="submit" class="btn btn-primary">Save</button>
+                                                    </div>
+                                                </form>
+                                            </div>
                                         </div>
-                                        <form action="{{ route('editJalur') }}" method="post" enctype="multipart/form-data">
-                                            @csrf
-                                            <div class="modal-body text-start">
-                                                <input type="hidden" name="id" value="{{ $e -> id }}">
-                                                <div class="mb-3">
-                                                    <label class="form-label"
-                                                           for="input_edit_JalurPendaftaran{{$e->id}}">Jalur Pendaftaran</label>
-                                                    <input type="text" class="form-control"
-                                                           id="input_edit_JalurPendaftaran{{$e->id}}"
-                                                           name="input_Jalur" value="{{ $e->jalurPendaftaran }}">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="input_edit_deskUmum{{$e->id}}"
-                                                           class="form-label">Link</label>
-                                                    <input type="text" class="form-control"
-                                                           id="input_edit_deskUmum{{$e->id}}" name="input_deskUmum"
-                                                           value="{{ $e->desk_pers_umum }}">
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                        data-bs-dismiss="modal">Cancel
-                                                </button>
-                                                <input type="hidden" value="{{ $e->id }}" name="id">
-                                                <button type="submit" class="btn btn-primary">Save</button>
-                                            </div>
-                                        </form>
                                     </div>
-                                </div>
-                            </div>
 
-                            <form action="{{ route('removeJalur') }}" class="d-inline" method="post" enctype="multipart/form-data">
-                                @csrf
-                                @method('DELETE')
-                                <input type="hidden" name="id" value="{{ $e->id }}">
-                                <button class="btn btn-danger" title="Remove Jalur Pendaftaran">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-                            </form>
-                        </td>
+                                    <form action="{{ route('removeJalur') }}" class="d-inline" method="post"
+                                          enctype="multipart/form-data">
+                                        @csrf
+                                        @method('DELETE')
+                                        <input type="hidden" name="id" value="{{ $e->id }}">
+                                        <button class="btn btn-danger" title="Remove Jalur Pendaftaran">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </form>
+                                </td>
                             </tr>
-                            @endforeach
+                            {{--                            @endforeach--}}
                             </tbody>
                         </table>
                     </form>

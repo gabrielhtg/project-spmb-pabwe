@@ -154,7 +154,7 @@ class AdminPanelController extends Controller
     public function removeSocialMedia(Request $request)
     {
         SocalMediaModel::where('id', $request->id)->first()->delete();
-    return redirect()->back();
+        return redirect()->back();
     }
 
     public function updateHeroSection(Request $request)
