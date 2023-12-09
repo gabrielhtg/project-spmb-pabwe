@@ -17,8 +17,9 @@
 
 
         <div class="p-3">
-            <table class="table table-striped table-bordered text-center align-middle">
-                <thead>
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered text-center align-middle">
+                    <thead>
                     <tr>
                     <th scope="col">No</th>
                     <th scope="col">Tag</th>
@@ -86,6 +87,7 @@
                     @endif
                 </tbody>
             </table>
+        </div>
 
             <!-- MODAL EDIT PENGUMUMAN -->
             <div class="modal fade" id="editPengumuman" tabindex="-1" aria-labelledby="editFasilitasLabel" aria-hidder="true">
@@ -145,25 +147,28 @@
     </div>
 </div> 
     <script>
-        function showModalEdit(id, kategoriPengumuman, judulPengumuman, filePengumuman, tanggalPengumuman) {
-        const modalEditPengumuman = document.getElementById("editPengumuman");
-        const inputId = document.getElementById("inputEditPengumuman");
-        const inputKategori = document.getElementById("inputEditKategori");
-        const inputJudulPengumuman = document.getElementById("inputjudulPengumuman");
-        const inputFilePengumuman = document.getElementById("inputfilePengumuman");
-        const inputTanggalPengumuman = document.getElementById("inputtanggalPengumuman");
+       function showModalEdit(id, kategoriPengumuman, judulPengumuman, filePengumuman, tanggalPengumuman) {
+    const modalEditPengumuman = document.getElementById("editPengumuman");
+    const inputId = document.getElementById("inputEditPengumuman");
+    const inputKategori = document.getElementById("inputEditKategori");
+    const inputJudulPengumuman = document.getElementById("inputjudulPengumuman");
+    const inputFilePengumuman = document.getElementById("inputfilePengumuman");
+    const inputTanggalPengumuman = document.getElementById("inputtanggalPengumuman");
 
-        inputId.value = id;
-        inputKategori.value = kategoriPengumuman;
-        inputJudulPengumuman.value = judulPengumuman;
-        inputFilePengumuman.value = '';
-        
-        // Set nilai awal pada elemen input tanggal
-        inputTanggalPengumuman.value = tanggalPengumuman;
+    inputId.value = id;
+    inputKategori.value = kategoriPengumuman; // Jika inputKategori adalah elemen non-input
+    inputJudulPengumuman.value = judulPengumuman;
+    
+    // Berikan tanda bahwa file tidak diubah (opsional)
+    inputFilePengumuman.setAttribute('data-status', 'unchanged');
+    
+    // Set nilai awal pada elemen input tanggal
+    inputTanggalPengumuman.value = tanggalPengumuman;
 
-        var myModal = new bootstrap.Modal(modalEditPengumuman);
-        myModal.show();
-    }
+    var myModal = new bootstrap.Modal(modalEditPengumuman);
+    myModal.show();
+}
+
     </script>
     
 

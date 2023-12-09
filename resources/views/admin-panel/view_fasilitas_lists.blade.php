@@ -15,28 +15,34 @@
                     <tr>
                         <th scope="col">No</th>
                         <th scope="col">Nama Kategori</th>
+                        <th scope="col">Jumlah Fasilitas</th>
                     </tr>
                 </thead>
                 <tbody>
                     @php
                         $counter = 1;
-                        $displayedCategories = []; // Variabel untuk melacak kategori yang sudah ditampilkan
+                        $fasilitasByCategory = []; // Variabel untuk menyimpan jumlah fasilitas per kategori
                     @endphp
 
                     @foreach ($fasilitas as $item)
-                        @if (!in_array($item->kategori, $displayedCategories))
-                            <tr>
-                                <th>{{ $counter++ }}</th>
-                                <th>{{ $item->kategori }}</th>
-                            </tr>
-                            @php
-                                $displayedCategories[] = $item->kategori; // Tambahkan kategori ke array yang sudah ditampilkan
-                            @endphp
-                        @endif
+                        @php
+                            // Inisialisasi jumlah fasilitas untuk kategori jika belum ada
+                            $fasilitasByCategory[$item->kategori] = $fasilitasByCategory[$item->kategori] ?? 0;
+                            // Tambahkan 1 ke jumlah fasilitas untuk kategori tersebut
+                            $fasilitasByCategory[$item->kategori]++;
+                        @endphp
+                    @endforeach
+
+                    @foreach ($fasilitasByCategory as $kategori => $jumlahFasilitas)
+                        <tr>
+                            <td>{{ $counter++ }}</td>
+                            <td>{{ $kategori }}</td>
+                            <td>{{ $jumlahFasilitas }}</td>
+                        </tr>
                     @endforeach
                 </tbody>
-
             </table>
+
         </div>
         
         <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -79,6 +85,7 @@
                                                 onclick="showModalEdit({{$item->id}},'{{ $item->kategori }}', '{{ $item->nama_fasilitas }}', '{{ $item->deskripsi_fasilitas }}', '{{ $item->nama_file }}', '{{ $item->file_gambar }}')">
                                             <i class="bi bi-pen"></i>
                                         </button>
+
                                         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $item->id }}"><i class="bi bi-trash"></i></button>
                                         <!-- Modal -->
                                         <div class="modal fade" id="deleteModal{{ $item->id }}" tabindex="-1" aria-hidden="true">
@@ -144,7 +151,7 @@
 
                                     <div class="mb-3">
                                         <label for="inputDeskripsiFasilitas" class="form-label">Deskripsi Fasilitas</label>
-                                        <textarea type="text" class="form-control" id="inputDeskripsiFasilitas" name="deskripsi_fasilitas" rows="5">{{ old('deskripsi_fasilitas') }}</textarea>
+                                        <textarea type="text" class="form-control" id="inputDeskripsiFasilitas" name="deskripsi_fasilitas" rows="5">{{ $item->deskripsi_fasilitas }}</textarea>
                                     </div>
 
                                     <p class="fw-bold">Edit Gambar Fasilitas</p>
