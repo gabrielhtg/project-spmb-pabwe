@@ -43,14 +43,17 @@
                                         <div class="modal-body text-start">
                                             <input type="hidden" name="id" value="{{ $e -> id }}">
                                             <div class="mb-3">
-                                                <label for="input_edit_nama_alamat{{$e->id}}"
-                                                       class="form-label">Nama</label>
-                                                <input type="text" class="form-control"
-                                                       value="{{ $e->nama }}" disabled>
+                                                <label  class="form-label">
+                                                    Nama
+                                                    <input type="text" class="form-control"
+                                                           value="{{ $e->nama }}" disabled>
+                                                </label>
                                             </div>
                                             <div class="mb-3">
-                                                <label class="form-label">Alamat</label>
-                                                <input value="{{ $e->alamat }}" class="form-control" disabled>
+                                                <label class="form-label">
+                                                    Alamat
+                                                    <input value="{{ $e->alamat }}" class="form-control" disabled>
+                                                </label>
                                             </div>
                                             <div class="mb-3">
                                                 <label class="form-label">Created By</label>

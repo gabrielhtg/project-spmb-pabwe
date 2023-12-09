@@ -9,15 +9,15 @@ use App\Models\AlamatInstitusiModel;
 use App\Models\data_institusi;
 use App\Models\EmailModel;
 use App\Models\HeroSectionModel;
+use App\Models\InfografisModel;
 use App\Models\MbkmModel;
 use App\Models\ModelHeaderAdmisi;
 use App\Models\NomorTeleponModel;
 use App\Models\SocalMediaModel;
+use App\Models\JalurPendaftaranModel;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 
 class AdminPanelController extends Controller
 {
@@ -58,7 +58,6 @@ class AdminPanelController extends Controller
                 'input_logo_institusi' => 'required|image|mimes:jpeg,png,jpg|max:1024',
                 'nama_institusi' => 'required|max:30|string',
                 'input_singkatan_nama_institusi' => 'required|max:10|string',
-                'input_akreditasi' => 'required|max:1',
                 'input_jargon_institusi' => 'required|string|max:50',
                 'input_jumlah_dosen' => 'required',
                 'input_jumlah_mahasiswa' => 'required',
@@ -70,7 +69,6 @@ class AdminPanelController extends Controller
             $request->validate([
                 'nama_institusi' => 'required|max:30|string',
                 'input_singkatan_nama_institusi' => 'required|max:10|string',
-                'input_akreditasi' => 'required|max:1',
                 'input_jargon_institusi' => 'required|string|max:50',
                 'input_jumlah_dosen' => 'required',
                 'input_jumlah_mahasiswa' => 'required',
@@ -156,7 +154,7 @@ class AdminPanelController extends Controller
     public function removeSocialMedia(Request $request)
     {
         SocalMediaModel::where('id', $request->id)->first()->delete();
-    return redirect()->back();
+        return redirect()->back();
     }
 
     public function updateHeroSection(Request $request)
@@ -251,13 +249,28 @@ class AdminPanelController extends Controller
         $dataHeaderAdmisi = ModelHeaderAdmisi::where('id', 1)->first();
         $dataNonKompetisi  = MbkmModel::where('jenis_kegiatan', 'Non Kompetisi')->get();
         $dataKompetisi =  MbkmModel::where('jenis_kegiatan', 'Kompetisi')->get();
+        $dataInfografis = InfografisModel::all();
+        $jalurMasuk = [];
+
+        foreach ($dataInfografis as $e) {
+            if (!in_array($e->jalur, $jalurMasuk)) {
+                $jalurMasuk[] = $e->jalur;
+            }
+        }
+
+        $dataInfografisJalurMasuk = [];
+
+        foreach ($jalurMasuk as $e) {
+            $dataInfografisJalurMasuk[] = InfografisModel::where('jalur', $e)->get();
+        }
 
         $data = [
             'indexActive' => 1,
             'admin' => $admin,
             'dataHeaderAdmisi' => $dataHeaderAdmisi,
             'dataNonKompetisi' => $dataNonKompetisi,
-            'dataKompetisi'=>$dataKompetisi
+            'dataKompetisi'=>$dataKompetisi,
+            'dataInfografis' => $dataInfografisJalurMasuk
         ];
         return view('admin-panel.admisi_panel', $data);
     }
@@ -275,7 +288,7 @@ class AdminPanelController extends Controller
             $photo = $request->file('sertifikat_akreditasi');
 
             // Membuat nama unik untuk file yang diunggah
-            $filename = 'sertifikat_institusi.' . $photo->getClientOriginalExtension();
+            $filename = time() . '_sertifikat_institusi.' . $photo->getClientOriginalExtension();
 
             // Menentukan direktori tempat penyimpanan file di dalam direktori 'public'
             $directory = public_path('assets/img/dashboard/');

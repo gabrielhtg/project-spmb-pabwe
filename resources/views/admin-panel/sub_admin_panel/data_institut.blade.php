@@ -6,8 +6,8 @@
             <form action="{{ route('ubahDataInstitut') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
-                    <label class="form-label w-100 fw-semibold">
-                        Nama Institusi
+                    <label class="form-label w-100">
+                        <span class=" fw-semibold">Nama Institusi</span>
                         <input type="text" class="form-control"
                                name="nama_institusi" value="{{ $dataInstitusi->nama_institusi }}">
                         @error('nama_institusi')
@@ -26,8 +26,6 @@
                         @enderror
                     </label>
                 </div>
-
-
 
                 <div class="mb-3">
                     <label class="form-label w-100 fw-semibold">
@@ -111,14 +109,16 @@
                         $i = 1;
                         @endphp
                         @foreach($dataAkreditasiInstitusi as $e)
-                            <td>{{ $i++ }}</td>
-                            <td>{{ $e->akreditasi }}</td>
-                            <td>{{ $e->lembaga_akreditasi }}</td>
-                            <td>
-                                <a class="btn btn-outline-primary" target="_blank" href="{{ asset($e->sertifikat_akreditasi) }}">Download Here</a>
-                            </td>
-                            <td>{{ $e->tahun_akreditasi }}</td>
-                            <td></td>
+                            <tr>
+                                <td>{{ $i++ }}</td>
+                                <td>{{ $e->akreditasi }}</td>
+                                <td>{{ $e->lembaga_akreditasi }}</td>
+                                <td>
+                                    <a class="btn btn-outline-primary" target="_blank" href="{{ asset($e->sertifikat_akreditasi) }}">Download Here</a>
+                                </td>
+                                <td>{{ $e->tahun_akreditasi }}</td>
+                                <td></td>
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>

@@ -19,6 +19,8 @@ class insert_data_akreditasi_institusi extends Seeder
             'tahun_akreditasi' => 2018,
             'created_by' => 'admin',
             'updated_by' => 'admin',
+            'created_at' => now(),
+            'updated_at' => now()
         ]);
     }
 }
