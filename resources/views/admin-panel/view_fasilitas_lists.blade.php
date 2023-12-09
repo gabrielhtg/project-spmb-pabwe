@@ -151,7 +151,7 @@
 
                                     <div class="mb-3">
                                         <label for="inputDeskripsiFasilitas" class="form-label">Deskripsi Fasilitas</label>
-                                        <textarea type="text" class="form-control" id="inputDeskripsiFasilitas" name="deskripsi_fasilitas" rows="5">{{ $item->deskripsi_fasilitas }}</textarea>
+                                        <input type="text" class="form-control" id="inputDeskripsiFasilitas" name="deskripsi_fasilitas" rows="5">
                                     </div>
 
                                     <p class="fw-bold">Edit Gambar Fasilitas</p>

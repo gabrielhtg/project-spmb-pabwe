@@ -16,17 +16,15 @@
                 <div class="container pt-5" id="layanan-koperasi">
                     <div class="row">
                         <div class="col-md-6">
-                            <img src="{{ asset('/assets/img/fasilitas/layanan-koperasi .jpg') }}" class="img-fluid"
-                                alt="layanan-koperasi">
+                        <img src="{{ asset('/assets/img/fasilitas/' . $item->file_gambar) }}" class="img-fluid custom-imag 
+                                alt="{{ $item->nama_file }}">
                         </div>
 
                         <div class="col-md-6 mx-auto d-flex flex-column my-auto">
-                            <h3>Koperasi</h3>
+                            <h3>{{ $item->nama_fasilitas }}</h3>
                             <div class="lh-base text-break text-justify custom-justified-text align-items-center">
                                 <p>
-                                    Koperasi Institut Teknologi Del adalah tempat untuk membeli kebutuhan-kebutuhan mahasiswa.
-                                    Koperasi menyediakan berbagai kebutuhan mahasiswa del baik itu kebutuhan belajar, kebutuhan
-                                    kesehatan, dan kebutuhan primer dari mahasiswa Institut Teknologi Del.
+                                {!!  $item->deskripsi_fasilitas !!}
                                 </p>
                             </div>
                         </div>

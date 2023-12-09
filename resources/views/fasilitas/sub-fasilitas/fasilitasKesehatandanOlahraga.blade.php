@@ -22,7 +22,7 @@
                         <h3>{{$item->nama_fasilitas}}</h3>
                         <div class="lh-base text-break text-justify custom-justified-text align-items-center">
                             <p>
-                            {{$item->deskripsi_fasilitas}}
+                            {!!$item->deskripsi_fasilitas!!}
                             </p>
                         </div>
                     </div>
