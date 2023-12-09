@@ -10,7 +10,11 @@
                 <br>
                 <p class="lead mb-4">{!! nl2br($dataHeroSection->paragraph) !!}</p>
                 <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mt-5">
-                    <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Daftar Sekarang</button>
+                    <a class="d-none d-xl-inline" href="http://spmb.app.del.ac.id/">
+                        <button class="btn btn-primary btn-lg px-4 gap-3"
+                        >Daftar Sekarang
+                        </button>
+                    </a>
                 </div>
             </div>
         </div>

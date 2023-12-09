@@ -249,7 +249,7 @@
                                     <!-- Modal -->
                                     <div class="modal fade" id="tambahInfografisPMDK" tabindex="-1"
                                          aria-labelledby="tambahInfografisPMDKLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
+                                        <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h1 class="modal-title fs-5 fw-semibold"
@@ -257,17 +257,17 @@
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                             aria-label="Close"></button>
                                                 </div>
-                                                <form action="{{ url('/api/add-infografis-pmdk') }}" method="post" enctype="multipart/form-data">
+                                                <form method="post" enctype="multipart/form-data" action="{{ route('addInfografisPmdk') }}" >
                                                     @csrf
                                                     <div class="modal-body">
                                                         <div class="mb-3">
                                                             <label class="form-label w-100">
                                                                 Nomor Urut
-                                                                <input class="form-control"  type="number"
+                                                                <input class="form-control" type="number"
                                                                        name="nomor_urut">
-                                                                @error('nomor_urut')
-                                                                <span class="text-danger">{{ $message }}</span>
-                                                                @enderror
+{{--                                                                @error('nomor_urut')--}}
+{{--                                                                <span class="text-danger">{{ $message }}</span>--}}
+{{--                                                                @enderror--}}
                                                             </label>
                                                         </div>
 
@@ -306,7 +306,16 @@
                                                     <img style="width: 12rem" src="{{ asset($e->gambar) }}" alt="">
                                                 </td>
                                                 <td>{{ $e->jalur }}</td>
-                                                <td></td>
+                                                <td>
+                                                    <form action="{{ route('removeInfografis') }}" method="post">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <input type="hidden" value="{{ $e->id }}" name="id">
+                                                        <button class="btn btn-danger">
+                                                            <i class="bi bi-trash"></i>
+                                                        </button>
+                                                    </form>
+                                                </td>
                                             </tr>
                                         @endforeach
 
@@ -338,27 +347,31 @@
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                             aria-label="Close"></button>
                                                 </div>
-                                                <div class="modal-body">
-                                                    <div class="mb-3">
-                                                        <label class="form-label w-100">
-                                                            Nomor Urut
-                                                            <input class="form-control" type="number" name="nomor_urut">
-                                                        </label>
+                                                <form action="{{ route('addInfografisUsm') }}" method="post" enctype="multipart/form-data">
+                                                    @csrf
+                                                    <div class="modal-body">
+                                                        <div class="mb-3">
+                                                            <label class="form-label w-100">
+                                                                Nomor Urut
+                                                                <input class="form-control" min="1" value="1" type="number" name="nomor_urut">
+                                                            </label>
+                                                        </div>
+
+                                                        <div class="mb-3">
+                                                            <label class="form-label w-100">
+                                                                File Gambar
+                                                                <input class="form-control" type="file" name="gambar">
+                                                            </label>
+                                                        </div>
                                                     </div>
 
-                                                    <div class="mb-3">
-                                                        <label class="form-label w-100">
-                                                            File Gambar
-                                                            <input class="form-control" type="file" name="gambar">
-                                                        </label>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal">Close
+                                                        </button>
+                                                        <button type="submit" class="btn btn-primary">Save changes</button>
                                                     </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
-                                                            data-bs-dismiss="modal">Close
-                                                    </button>
-                                                    <button type="button" class="btn btn-primary">Save changes</button>
-                                                </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -379,7 +392,16 @@
                                                     <img style="width: 12rem" src="{{ asset($e->gambar) }}" alt="">
                                                 </td>
                                                 <td>{{ $e->jalur }}</td>
-                                                <td></td>
+                                                <td>
+                                                    <form action="{{ route('removeInfografis') }}" method="post">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <input type="hidden" value="{{ $e->id }}" name="id">
+                                                        <button class="btn btn-danger">
+                                                            <i class="bi bi-trash"></i>
+                                                        </button>
+                                                    </form>
+                                                </td>
                                             </tr>
                                         @endforeach
 
@@ -411,27 +433,30 @@
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                             aria-label="Close"></button>
                                                 </div>
-                                                <div class="modal-body">
-                                                    <div class="mb-3">
-                                                        <label class="form-label w-100">
-                                                            Nomor Urut
-                                                            <input class="form-control" type="number" name="nomor_urut">
-                                                        </label>
-                                                    </div>
+                                                <form action="{{ route('addInfografisUtbk') }}" method="post" enctype="multipart/form-data">
+                                                    @csrf
+                                                    <div class="modal-body">
+                                                        <div class="mb-3">
+                                                            <label class="form-label w-100">
+                                                                Nomor Urut
+                                                                <input class="form-control" type="number" name="nomor_urut">
+                                                            </label>
+                                                        </div>
 
-                                                    <div class="mb-3">
-                                                        <label class="form-label w-100">
-                                                            File Gambar
-                                                            <input class="form-control" type="file" name="gambar">
-                                                        </label>
+                                                        <div class="mb-3">
+                                                            <label class="form-label w-100">
+                                                                File Gambar
+                                                                <input class="form-control" type="file" name="gambar">
+                                                            </label>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
-                                                            data-bs-dismiss="modal">Close
-                                                    </button>
-                                                    <button type="button" class="btn btn-primary">Save changes</button>
-                                                </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal">Close
+                                                        </button>
+                                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -452,7 +477,16 @@
                                                     <img style="width: 12rem" src="{{ asset($e->gambar) }}" alt="">
                                                 </td>
                                                 <td>{{ $e->jalur }}</td>
-                                                <td></td>
+                                                <td>
+                                                    <form action="{{ route('removeInfografis') }}" method="post">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <input type="hidden" value="{{ $e->id }}" name="id">
+                                                        <button class="btn btn-danger">
+                                                            <i class="bi bi-trash"></i>
+                                                        </button>
+                                                    </form>
+                                                </td>
                                             </tr>
                                         @endforeach
 
@@ -606,7 +640,7 @@
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                             aria-label="Close"></button>
                                                 </div>
-                                                <form action="{{ route('editJalur') }}" method="post"
+{{--                                                <form action="{{ route('editJalur') }}" method="post"--}}
                                                       enctype="multipart/form-data">
                                                     @csrf
                                                     <div class="modal-body text-start">
@@ -636,12 +670,12 @@
                                                         <input type="hidden" value="{{ $e->id }}" name="id">
                                                         <button type="submit" class="btn btn-primary">Save</button>
                                                     </div>
-                                                </form>
+{{--                                                </form>--}}
                                             </div>
                                         </div>
                                     </div>
 
-                                    <form action="{{ route('removeJalur') }}" class="d-inline" method="post"
+{{--                                    <form action="{{ route('removeJalur') }}" class="d-inline" method="post"--}}
                                           enctype="multipart/form-data">
                                         @csrf
                                         @method('DELETE')
@@ -649,13 +683,64 @@
                                         <button class="btn btn-danger" title="Remove Jalur Pendaftaran">
                                             <i class="bi bi-trash"></i>
                                         </button>
-                                    </form>
+{{--                                    </form>--}}
                                 </td>
                             </tr>
                             {{--                            @endforeach--}}
                             </tbody>
                         </table>
                     </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- KELOMPOK 6 -->
+        <div class="mt-3">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <span class="fs-3">Data Jenis Tes</span>
+                </div>
+
+                <div class="card-body">
+                    @include('admin-panel.sub_admisi_panel.add_jenis_test')
+                    <table class="table table-bordered text-center table-striped align-middle pt-3">
+                        <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Gelombang</th>
+                            <th>Jenis Test</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-3">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <span class="fs-3">Data Lokasi Tes</span>
+                </div>
+
+                <div class="card-body">
+                    @include('admin-panel.sub_admisi_panel.add_lokasi')
+                    <table class="table table-bordered text-center table-striped align-middle pt-3">
+                        <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Lokasi</th>
+                            <th>Alamat</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

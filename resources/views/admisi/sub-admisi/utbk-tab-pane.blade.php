@@ -1,33 +1,30 @@
 <div class="tab-pane fade mb-5" id="utbk-tab-pane" role="tabpanel" aria-labelledby="utbk-tab" tabindex="0">
     <div class="d-flex justify-content-center align-items-center mt-5">
         <div id="carouselExampleIndicatorsUtbk" class="carousel carousel-dark slide border border-1" data-bs-ride="carousel" style="width: 60%">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleIndicatorsUtbk" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicatorsUtbk" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicatorsUtbk" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            </div>
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="{{asset("assets/img/flow-pendaftaran-utbk.jpg")}}" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="{{asset("assets/img/panduan-daftar-ulang.jpg")}}" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="{{asset("assets/img/jalur-seleksi-penerimaan.jpg")}}" class="d-block w-100" alt="...">
-                </div>
+                @php
+                    $i = 0;
+                @endphp
+                @foreach($dataInfografis[2] as $e)
+                    @if($i == 0)
+                        <div class="carousel-item active">
+                            <img src="{{asset($e->gambar)}}" class="d-block w-100" alt="gambar">
+                        </div>
+                    @else
+                        <div class="carousel-item">
+                            <img src="{{asset($e->gambar)}}" class="d-block w-100" alt="gambar">
+                        </div>
+                    @endif
+                    @php
+                        $i++;
+                    @endphp
+                @endforeach
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicatorsUtbk" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
-{{--                <div class="bg-black d-flex justify-content-center align-items-center" style="width: 50px; height: 50px; border-radius: 50%">--}}
-{{--                    <span class="fs-3"><</span>--}}
-{{--                </div>--}}
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicatorsUtbk" data-bs-slide="next">
-{{--                <div class="bg-black d-flex justify-content-center align-items-center" style="width: 50px; height: 50px; border-radius: 50%">--}}
-{{--                    <span class="fs-3"> > </span>--}}
-{{--                </div>--}}
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>
