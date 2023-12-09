@@ -124,6 +124,9 @@
                                                     <input type="text" class="form-control"
                                                            id="input_edit_nama_socialmedia{{$e->id}}"
                                                            name="input_nama_socialmedia" value="{{ $e->nama }}">
+                                                    @error('input_nama_socialmedia')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="input_edit_link_socialmedia{{$e->id}}"
@@ -131,6 +134,9 @@
                                                     <input type="text" class="form-control"
                                                            id="input_edit_link_socialmedia{{$e->id}}" name="input_link"
                                                            value="{{ $e->link }}">
+                                                    @error('input_link')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="input_edit_icon_socialmedia{{$e->id}}"

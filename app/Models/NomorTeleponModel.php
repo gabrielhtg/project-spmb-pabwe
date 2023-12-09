@@ -13,6 +13,10 @@ class NomorTeleponModel extends Model
 
     protected $fillable = [
         'nama',
-        'nomor_telepon'
+        'nomor_telepon',
+        'created_by',
+        'updated_by',
+        'created_at',
+        'updated_at',
     ];
 }

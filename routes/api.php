@@ -41,7 +41,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/edit-admin', [AdminController::class, 'editAdmin'])->name('edit-admin');
     Route::post('/edit-nomor-telepon', [AdminController::class, 'editNomorTelepon'])->name('editNomorTelepon');
     Route::post('/change-password', [AdminController::class, 'changeAdminPassword'])->name('changeAdminPassword');
-    Route::post('/add-phone-number', [AdminController::class, 'addPhoneNumber'])->name('addPhoneNumber');
     Route::delete('/remove-admin', [AdminController::class, 'removeAdmin'])->name('remove-admin');
     Route::delete('/remove-self', [AdminController::class, 'removeSelf'])->name('remove-self');
     Route::post('/add-email', [AdminController::class, 'addEmail'])->name('addEmail');
@@ -52,4 +51,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('/delete-email', [AdminController::class, 'removeEmail'])->name('removeEmail');
     Route::delete('/remove-mbkm', [AdmisiController::class, 'removeMbkm'])->name('removeMbkm');
     Route::delete('/remove-infografis', [AdmisiController::class, 'removeInfografis'])->name('removeInfografis');
+    Route::delete('/remove-no-telp', [AdminPanelController::class, 'removeNomorTelepon'])->name('removeNomorTelepon');
+    Route::delete('/remove-akreditasi', [AdminPanelController::class, 'removeAkreditasi'])->name('removeAkreditasi');
+    Route::post('/add-nomor-telepon', [AdminPanelController::class, 'addNomorTelepon'])->name('addNomorTelepon');
 });
