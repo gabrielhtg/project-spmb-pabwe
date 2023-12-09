@@ -250,11 +250,10 @@ class AdminPanelController extends Controller
         $dataHeaderAdmisi = ModelHeaderAdmisi::where('id', 1)->first();
         $dataNonKompetisi  = MbkmModel::where('jenis_kegiatan', 'Non Kompetisi')->get();
         $dataKompetisi =  MbkmModel::where('jenis_kegiatan', 'Kompetisi')->get();
-        $dataInfografis = InfografisModel::all();
         $jalurMasuk = [];
         $lokasi = Lokasi::orderBy('lokasiTes', 'asc')->get();
 
-        foreach ($dataInfografis as $e) {
+        foreach (InfografisModel::all() as $e) {
             if (!in_array($e->jalur, $jalurMasuk)) {
                 $jalurMasuk[] = $e->jalur;
             }

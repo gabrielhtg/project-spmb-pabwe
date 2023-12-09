@@ -8,6 +8,7 @@ use App\Models\AlamatInstitusiModel;
 use App\Models\data_institusi;
 use App\Models\EmailModel;
 use App\Models\HeroSectionModel;
+use App\Models\InfografisModel;
 use App\Models\MbkmModel;
 use App\Models\ModelHeaderAdmisi;
 use App\Models\NomorTeleponModel;
@@ -57,7 +58,7 @@ class DashboardController extends Controller
             'dataHeaderAdmisi' => $dataHeaderAdmisi,
             'dataNomorTelepon' => $dataNomorTelepon,
             'dataEmail' => $dataEmail,
-            'lokasi' => $lokasi
+            'lokasi' => $lokasi,
         ];
 
         return view('admisi.admisi-tanggal-penting', $data);
@@ -70,6 +71,20 @@ class DashboardController extends Controller
         $dataHeaderAdmisi = ModelHeaderAdmisi::where('id', 1)->first();
         $dataNomorTelepon = NomorTeleponModel::all();
         $dataEmail = EmailModel::all();
+        $jalurMasuk = [];
+
+        foreach (InfografisModel::all() as $e) {
+            if (!in_array($e->jalur, $jalurMasuk)) {
+                $jalurMasuk[] = $e->jalur;
+            }
+        }
+
+        $dataInfografisJalurMasuk = [];
+
+        foreach ($jalurMasuk as $e) {
+            $dataInfografisJalurMasuk[] = InfografisModel::where('jalur', $e)->get();
+        }
+
 
         $data = [
             'dataInstitusi' => $dataInstitusi,
@@ -77,7 +92,8 @@ class DashboardController extends Controller
             'dataAlamat' => $dataAlamat,
             'dataHeaderAdmisi' => $dataHeaderAdmisi,
             'dataNomorTelepon' => $dataNomorTelepon,
-            'dataEmail' => $dataEmail
+            'dataEmail' => $dataEmail,
+            'dataInfografis' => $dataInfografisJalurMasuk
         ];
 
         return view('admisi.admisi-jalur-pendaftaran', $data);
