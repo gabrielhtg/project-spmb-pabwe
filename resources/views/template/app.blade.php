@@ -84,11 +84,15 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ Route('fasilitas.asrama')}}">Fasilitas</a>
+                        <a class="nav-link" href="{{ route('fasilitas.asrama')}}">Fasilitas</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('pengumuman')}}">Pengumuman</a>
                     </li>
                 </ul>
             </div>
-            <a class="d-none d-xl-inline" href="{{ route('pengumuman') }}">
+            <a class="d-none d-xl-inline" href="http://spmb.app.del.ac.id/">
                 <button class="btn btn-primary"
                 >Daftar Sekarang
                 </button>
