@@ -11,7 +11,7 @@
                 <h1 class="modal-title fs-5 fw-semibold">Tambah Nomor Telepon</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="{{ route('addPhoneNumber') }}" method="post">
+            <form action="{{ route('addNomorTelepon') }}" method="post">
                 @csrf
                 <div class="modal-body">
                     <div class="mb-3">

@@ -18,6 +18,7 @@ use App\Models\JalurPendaftaranModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Mockery\Exception;
 
 class AdminPanelController extends Controller
 {
@@ -59,9 +60,9 @@ class AdminPanelController extends Controller
                 'nama_institusi' => 'required|max:30|string',
                 'input_singkatan_nama_institusi' => 'required|max:10|string',
                 'input_jargon_institusi' => 'required|string|max:50',
-                'input_jumlah_dosen' => 'required',
-                'input_jumlah_mahasiswa' => 'required',
-                'input_jumlah_alumni' => 'required'
+                'input_jumlah_dosen' => 'required|numeric',
+                'input_jumlah_mahasiswa' => 'required|numeric',
+                'input_jumlah_alumni' => 'required|numeric'
             ]);
         }
 
@@ -70,9 +71,9 @@ class AdminPanelController extends Controller
                 'nama_institusi' => 'required|max:30|string',
                 'input_singkatan_nama_institusi' => 'required|max:10|string',
                 'input_jargon_institusi' => 'required|string|max:50',
-                'input_jumlah_dosen' => 'required',
-                'input_jumlah_mahasiswa' => 'required',
-                'input_jumlah_alumni' => 'required'
+                'input_jumlah_dosen' => 'required|numeric',
+                'input_jumlah_mahasiswa' => 'required|numeric',
+                'input_jumlah_alumni' => 'required|numeric',
             ]);
         }
 
@@ -92,8 +93,6 @@ class AdminPanelController extends Controller
             $dataInstitusi->logo_institusi = 'assets/img/dashboard/' . $filename;
         }
 
-
-
         $dataInstitusi->nama_institusi = $request->nama_institusi;
         $dataInstitusi->singkatan_nama_institusi = $request->input_singkatan_nama_institusi;
         $dataInstitusi->akreditasi = $request->input_akreditasi;
@@ -101,7 +100,6 @@ class AdminPanelController extends Controller
         $dataInstitusi->jumlah_dosen = $request->input_jumlah_dosen;
         $dataInstitusi->jumlah_mahasiswa = $request->input_jumlah_mahasiswa;
         $dataInstitusi->jumlah_alumni = $request->input_jumlah_alumni;
-
 
         $dataInstitusi->update();
 
@@ -122,15 +120,19 @@ class AdminPanelController extends Controller
     public function addSocialMedia(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'input_nama_institusi' => 'required|exists:data_institusi',
+            'input_nama_social_media' => 'required|string|50',
+            'input_link' => 'required|string|150',
+            'input_logo_social_media' => 'required|string|100',
         ]);
+
+        $username = Auth::user()->username;
 
         SocalMediaModel::create([
             'nama' => $request->input_nama_social_media,
-            'link' => $request->input_link_social_media,
+            'link' => $request->input_link,
             'icon' => $request->input_logo_social_media,
-            'created_by' => Auth::user()->username,
-            'updated_by' => Auth::user()->username,
+            'created_by' => $username,
+            'updated_by' => $username,
             'created_at' => now(),
             'updated_at' => now(),
         ]);
@@ -240,8 +242,12 @@ class AdminPanelController extends Controller
 
     public function removeAlamat(Request $request)
     {
-        AlamatInstitusiModel::where('id', $request->id)->first()->delete();
-        return redirect()->back();
+        try {
+            AlamatInstitusiModel::where('id', $request->id)->first()->delete();
+            return redirect(null, 200)->back();
+        } catch (Exception $e) {
+            return redirect(null, 404)->back();
+        }
     }
 
     public function getAdmisiPanel () {
@@ -304,5 +310,43 @@ class AdminPanelController extends Controller
         }
 
         return redirect()->route('admin-panel');
+    }
+
+    public function removeNomorTelepon (Request $request) {
+        try {
+            NomorTeleponModel::where('id', $request->id)->first()->delete();
+            return redirect(null, 200)->route('admin-panel');
+        } catch (\Exception $e) {
+            abort(404, 'ID nomor telepon tidak ditemukan');
+        }
+    }
+
+    public function addNomorTelepon (Request $request) {
+        try {
+            $username = Auth::user()->username;
+
+            NomorTeleponModel::create([
+                'nama' => $request->namaNomorTelepon,
+                'nomor_telepon' => $request->nomorTelepon,
+                'updated_at' => now(),
+                'created_at' => now(),
+                'created_by' => $username,
+                'updated_by' => $username,
+            ]);
+
+            return redirect(null, 200)->route('admin-panel');
+        } catch (Exception $e) {
+            abort(403, 'Gagal Menambah Nomor Telepon');
+        }
+    }
+
+    public function removeAkreditasi (Request $request) {
+        try {
+            AkreditasiInstitutiModel::where('id', $request->id)->first()->delete();
+
+            return redirect(null, 200)->route('admin-panel');
+        } catch (\Exception $e) {
+            abort(404, 'ID tidak ditemukan');
+        }
     }
 }
