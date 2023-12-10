@@ -137,11 +137,11 @@
                                 </div>
                             </div>
 
-                            <form action="{{ route('removeAlamat') }}" class="d-inline" method="post">
+                            <form action="{{ route('removeNomorTelepon') }}" class="d-inline" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <input type="hidden" name="id" value="{{ $e -> id }}">
-                                <button class="btn btn-danger">
+                                <button type="submit" class="btn btn-danger">
                                     <i class="bi bi-trash"></i>
                                 </button>
                             </form>
