@@ -15,7 +15,10 @@ class DatabaseSeeder extends Seeder
         $this->call([
             add_master_admin::class,
             add_profile_pict_admin::class,
-            update_admin_name::class
+            insert_data_institusi::class,
+            insert_social_media::class,
+            add_hero_section_data::class,
+            add_data_alamat_institusi::class
         ]);
     }
 }

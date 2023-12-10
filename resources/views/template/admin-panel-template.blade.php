@@ -32,6 +32,7 @@
                         Dashboard
                     </button>
                 </a>
+<<<<<<< HEAD
                 <a href="">
                     <button id="btn_akreditasi" class="btn_sidebar w-100 text-start">
                         <span class="me-2">&nbsp;A</span>
@@ -44,6 +45,14 @@
                         Dashboard Panel
                     </button>
                 </a>
+                <a href="{{ route("admisi-panel") }}">
+                    <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start">
+                        <i class="fa-regular fa-note-sticky"></i>
+                        Admisi
+                    </button>
+                </a>
+
+
                 <a href="#">
                     <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start">
                         <i class="bi bi-mortarboard"></i>
@@ -63,6 +72,18 @@
                         Kemitraan</button>
                 </a>
 
+                <a href="{{ route("prestasipanel") }}">
+                    <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start"><i class="fas fa-trophy"></i>
+                        Prestasi</button>
+                </a>
+
+                <a href="{{ route("testimonipanel") }}">
+                    <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start"><i class="fas fa-comment-dots"></i>
+                        Testimoni</button>
+                </a>
+
+=======
+>>>>>>> dev
             </div>
         </div>
         <div id="geser_besar" style="width: 18rem; min-width: 18rem; height: 100vh"></div>
@@ -79,9 +100,13 @@
                     <a href="{{ route("admin-panel") }}">
                         <button id="btn_dashboard" class="btn_sidebar_kecil btn_sidebar_active"><i class="bi bi-speedometer"></i></button>
                     </a>
+<<<<<<< HEAD
                     <button id="btn_akreditasi" class="btn_sidebar_kecil">A</button>
                     <a href="{{ route("spmb-dashboard") }}">
                         <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="bi bi-house"></i></button>
+                    </a>
+                    <a href="{{ route("admisi-panel") }}">
+                        <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="fa-regular fa-note-sticky"></i></button>
                     </a>
                     <a href="{{ route("spmb-dashboard") }}">
                         <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="bi bi-mortarboard"></i></button>
@@ -95,10 +120,12 @@
                     <a href="{{ route("spmb-dashboard") }}">
                         <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="fa-regular fa-handshake"></i></button>
                     </a>
+=======
+>>>>>>> dev
                 </div>
             </div>
         </div>
-        <div id="geser_kecil" style="width: 4rem; height: 100vh"></div>
+        <div id="geser_kecil" style="min-width: 4rem; width: 4rem; height: 100vh"></div>
         {{--        ini adalah sidebar kecil selesai--}}
 
         <div class="w-100">
@@ -118,13 +145,15 @@
                     <div class="btn-group">
                         <button type="button" style="border-style: none;" class="ps-1 bg-light dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
                             <span class="me-3">Haloo {{ $admin->firstname }}</span>
-                            <img class="border border-1 border-primary" src="{{ asset($admin->profile_pict) }}" alt="foto_profil" style="width: 40px; border-radius: 50%">
+                            <img class="border border-1 border-primary" src="{{ $admin->profile_pict ? asset($admin->profile_pict) : asset("assets/img/admin/default.png") }}" alt="foto_profil" style="width: 40px; border-radius: 50%">
                             <span class="visually-hidden">Toggle Dropdown</span>
                         </button>
                         <ul class="dropdown-menu mt-3 dropdown-menu-end">
-                            <li><a class="dropdown-item" href="{{ route('edit-profile') }}"> <i class="fa-solid fa-user me-2"></i>Edit Profile</a></li>
+                            <li><a class="dropdown-item" href="{{ route('edit-profile') }}"><i class="bi bi-person me-2"></i>Edit Profile</a></li>
+                            <li><a class="dropdown-item" href="{{ route('add-admin') }}"><i class="bi bi-person-add me-2"></i>Tambah Admin</a></li>
+                            <li><a class="dropdown-item" href="{{ route('dashboard') }}" target="_blank"><i class="bi bi-house me-2"></i>SPMB Dashboard</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="{{ route('logout') }}"><i class="fa-solid fa-arrow-right-from-bracket fa-flip-horizontal me-2"></i> Logout</a></li>
+                            <li><a class="dropdown-item text-danger" href="{{ route('logout') }}"><i class="bi bi-box-arrow-left me-2"></i> Logout</a></li>
                         </ul>
                     </div>
                 </div>
@@ -136,7 +165,7 @@
         </div>
     </div>
 
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script>
         const buttonSidebar = document.querySelectorAll(".btn_sidebar");
         const buttonSidebarKecil = document.querySelectorAll(".btn_sidebar_kecil");
@@ -146,11 +175,11 @@
             buttonSidebarKecil[i].classList.remove("btn_sidebar_active");
         }
 
-        buttonSidebar[{{ $indexActive }}].classList.add("btn_sidebar_active");
-        buttonSidebarKecil[{{ $indexActive }}].classList.add("btn_sidebar_active");
+        buttonSidebar[{{ $indexActive = $indexActive ?? -1 }}].classList.add("btn_sidebar_active");
+        buttonSidebarKecil[{{ $indexActive = $indexActive ?? -1 }}].classList.add("btn_sidebar_active");
     </script>
+{{--    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>--}}
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/965a381e3a.js" crossorigin="anonymous"></script>
     <script src="{{ asset("/assets/js/kel4.js") }}"></script>
     <script src="{{ asset("/assets/js/admin-panel.js") }}"></script>

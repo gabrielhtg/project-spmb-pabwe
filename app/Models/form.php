@@ -1,13 +1,31 @@
 <?php
-namespace App\Models;
+// app/Http/Controllers/FormController.php
 
+use App\Models\Form;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
-class form extends Model
+class formController extends Controller
 {
     use HasFactory;
-    protected $fillable = ['nama', 'nomor', 'pesan'];
-    
+    protected $table = 'form';
+    public function form()
+    {
+        return view('chatbot.form');
+    }
+
+    public function processForm(Request $request)
+    {
+        
+        $formData = new Form([
+            'nama' => $request->input('nama'),
+            'nomor' => $request->input('nomor'),
+            'pesan' => $request->input('pesan'),
+        ]);
+
+        $formData->save();
+
+        return redirect()->route('chatbot.form')->with('success', 'Formulir berhasil dikirim');
+    }
 }
 

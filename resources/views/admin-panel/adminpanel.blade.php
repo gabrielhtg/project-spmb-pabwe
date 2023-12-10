@@ -2,70 +2,67 @@
 
 @section('isi-admin-panel')
 
-    <div class="container-fluid p-3">
-        <div class="row">
-            <div class="col-md-6">
+    <div class="container-fluid bg-light p-3">
+        <div class="d-flex w-100">
+            <div class="w-100">
+                <div data-bs-spy="scroll" data-bs-target="#sidebar-kanan" data-bs-smooth-scroll="true"
+                     class="scrollspy-example-2 d-flex gap-3 flex-column justify-content-center" tabindex="0">
 
-                <div class="card">
-                    <div class="card-header bg-primary text-white">
-                        <span class="fs-3">Data Institusi</span>
-                    </div>
+                    @include('admin-panel.sub_admin_panel.data_institut')
+                    @include('admin-panel.sub_admin_panel.social_media')
+                    @include('admin-panel.sub_admin_panel.hero_section')
 
-                    <form>
+                    <div id="item-4" class="card shadow-sm">
+                        <div class="card-header bg-primary text-white">
+                            <span class="fs-5">Alamat Institusi</span>
+                        </div>
                         <div class="card-body">
-                            <div class="mb-3">
-                                <label for="input_alamat">Alamat Institusi</label>
-                                <input type="text" class="form-control" id="input_alamat">
-                            </div>
-                            <div class="mb-3">
-                                <label for="input_akreditasi">Akreditasi Institusi</label>
-                                <input type="text" class="form-control" id="input_akreditasi">
-                            </div>
-                            <div class="mb-3">
-                                <label for="input_akreditasi">Website Institusi</label>
-                                <input type="text" class="form-control" id="input_akreditasi">
-                            </div>
-                            <div class="">
-                                <label for="input_file_akreditasi" class="form-label">Sertifikat Akreditasi Institusi (JPG, JPEG, PNG)</label>
-                                <input class="form-control" type="file" id="input_file_akreditasi">
-                            </div>
+{{--                            @include('admin-panel.sub_admin_panel.tambah_tombol_hero_section')--}}
+                            <form action="">
+                                <table class="table table-striped table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Nama</th>
+                                        <th scope="col">Alamat</th>
+                                        <th scope="col"></th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Test</td>
+                                        <td>Test</td>
+                                        <td style="min-width: 120px; width: 120px">
+                                            <button class="btn btn-success">
+                                                <i class="bi bi-pen"></i>
+                                            </button>
+                                            <button class="btn btn-danger">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </form>
                         </div>
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
 
+            <div class="d-none d-md-inline" style="width: 18rem; min-width: 18rem"></div>
 
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header bg-primary text-white">
-                        <span class="fs-3">Data Kontak Institusi</span>
-                    </div>
-
-                    <form>
-                        <div class="card-body">
-                            <div class="mb-3">
-                                <label for="input_email_institusi">Email Institusi</label>
-                                <input type="text" class="form-control" id="input_email_institusi" name="input_email_institusi">
-                            </div>
-                            <div class="mb-3">
-                                <label for="input_no_telp">Nomor Telepon Institusi</label>
-                                <input type="text" class="form-control" id="input_no_telp" name="input_no_telp">
-                            </div>
-                            <div class="mb-3">
-                                <label for="input_ig">Instagram Institusi</label>
-                                <input type="text" class="form-control" id="input_ig" name="input_ig">
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
-                    </form>
-                </div>
+            <div class="d-none d-md-inline position-fixed end-0" style="width: 18rem; min-width: 18rem">
+                <nav id="sidebar-kanan" class="h-100 flex-column align-items-stretch pe-4 border-start">
+                    <nav class="nav nav-pills flex-column ps-3">
+                        <a class="nav-link" href="#item-1"><i class="bi bi-database me-2"></i> Data Institut</a>
+                        <a class="nav-link" href="#item-2"><i class="bi bi-people me-2"></i> Social Media</a>
+                        <a class="nav-link" href="#item-3"><i class="bi bi-card-image me-2"></i> Hero Section</a>
+                        <a class="nav-link" href="#item-4"><i class="bi bi-geo-alt me-2"></i> Alamat Institusi</a>
+                    </nav>
+                </nav>
             </div>
         </div>
     </div>
-
 @endsection
