@@ -99,8 +99,19 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="tab-pane fade" id="jadwal-ujian-tab-pane" role="tabpanel"
-                             aria-labelledby="profile-tab" tabindex="0">...
+                        <div class="tab-pane fade p-3" id="jadwal-ujian-tab-pane" role="tabpanel"
+                             aria-labelledby="profile-tab" tabindex="0">
+                            <p>Jadwal pelaksanaan ujian Institut Teknologi Del dapat dilihat pada info dibawah ini.</p>
+                            <ul>
+                            @foreach($dataJadwalUjian as $e)
+                                <li>
+                                    <span class="fw-semibold">Jadwal Pelaksanaan Ujian {{ $e->jalur_ujian }} Tahun Akademik {{ $e->tahun_akademik }}</span>
+                                    <p>
+                                        {!! $e->deskripsi !!}
+                                    </p>
+                                </li>
+                            @endforeach
+                            </ul>
                         </div>
                         <div class="tab-pane fade" id="jenis-test-tab-pane" role="tabpanel"
                              aria-labelledby="jenis-test-tab" tabindex="0">

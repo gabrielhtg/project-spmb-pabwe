@@ -10,6 +10,7 @@ use App\Models\data_institusi;
 use App\Models\EmailModel;
 use App\Models\HeroSectionModel;
 use App\Models\InfografisModel;
+use App\Models\JadwalUjianModel;
 use App\Models\MbkmModel;
 use App\Models\ModelHeaderAdmisi;
 use App\Models\NomorTeleponModel;
@@ -251,7 +252,6 @@ class AdminPanelController extends Controller
             return redirect(null, 404)->back();
         }
     }
-
     public function getAdmisiPanel () {
         $admin = Auth::user();
         $dataHeaderAdmisi = ModelHeaderAdmisi::where('id', 1)->first();
@@ -260,6 +260,7 @@ class AdminPanelController extends Controller
         $jalurMasuk = [];
         $lokasi = Lokasi::orderBy('lokasiTes', 'asc')->get();
         $jenis = JenisTes::orderBy('gelombang', 'asc')->get();
+        $dataJadwalUjian = JadwalUjianModel::all();
 
         foreach (InfografisModel::all() as $e) {
             if (!in_array($e->jalur, $jalurMasuk)) {
@@ -282,6 +283,7 @@ class AdminPanelController extends Controller
             'dataInfografis' => $dataInfografisJalurMasuk,
             'lokasi' => $lokasi,
             'jenis' => $jenis,
+            'dataJadwalUjian' => $dataJadwalUjian
         ];
         return view('admin-panel.admisi_panel', $data);
     }

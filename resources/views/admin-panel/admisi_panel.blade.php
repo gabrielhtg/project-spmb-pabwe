@@ -410,7 +410,7 @@
                                 </div>
                             </div>
 
-                            <div class="tab-pane fade   " id="utbk-tab-pane" role="tabpanel"
+                            <div class="tab-pane fade " id="utbk-tab-pane" role="tabpanel"
                                  aria-labelledby="utbk-tab"
                                  tabindex="0">
                                 <div class="p-3 border border-1 mt-3">
@@ -781,12 +781,12 @@
                                     </div>
                                 </td>
                             </tr>
-                            @endforeach 
+                            @endforeach
                         </tbody>
                     </table>
 
                     <!-- MODAL EDIT Lokasi -->
-                    <div class="modal fade" id="editLokasi" tabindex="-1" aria-labelledby="editLokasiLabel" aria-hidder="true">
+                    <div class="modal fade" id="editLokasi" tabindex="-1" aria-labelledby="editLokasiLabel">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -806,7 +806,7 @@
 
                                         <div class="mb-3">
                                             <label for="inputAlamatLokasi" class="form-label">Alamat Lokasi</label>
-                                            <input type="text" class="form-control" id="inputAlamatLokasi" name="alamatLokasi" rows="5">
+                                            <input type="text" class="form-control" id="inputAlamatLokasi" name="alamatLokasi">
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -820,7 +820,7 @@
                     <!-- AKHIR MODAL EDIT -->
 
                     <!-- MODAL EDIT JENIS -->
-                    <div class="modal fade" id="editJenis" tabindex="-1" aria-labelledby="editJenisLabel" aria-hidder="true">
+                    <div class="modal fade" id="editJenis" tabindex="-1" aria-labelledby="editJenisLabel">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -863,6 +863,145 @@
                 </div>
             </div>
         </div>
+
+        <div class="mt-3">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <span class="fs-3">Jadwal Ujian</span>
+                </div>
+
+                <div class="card-body">
+                    <div class="d-flex justify-content-end mb-3">
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahJenisTest">
+                            Tambah
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="tambahJenisTest" tabindex="-1" aria-labelledby="tambahJenisTestLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5 fw-semibold" id="exampleModalLabel">Tambah Jenis Test</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <form action="{{ route('addJadwalUjian') }}" method="post">
+                                        @csrf
+                                        <div class="modal-body">
+                                            <label class="form-label w-100">
+                                                Jalur Ujian
+                                                <input type="text" class="form-control" name="jalur_ujian">
+                                            </label>
+                                            <label class="form-label w-100">
+                                                Tahun Akademik
+                                                <input type="text" class="form-control" name="tahun_akademik">
+                                            </label>
+                                            <label class="form-label w-100">
+                                                Deskripsi
+                                                <textarea id="summernote" class="form-control" rows="6" name="deskripsi"></textarea>
+                                            </label>
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <table class="table table-striped table-bordered align-middle text-center">
+                        <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Jalur Ujian</th>
+                            <th>Tahun Akademik</th>
+                            <th>Deskripsi Jalur Ujian</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @php
+                            $i = 1;
+                        @endphp
+                        @forelse($dataJadwalUjian as $e)
+                            <tr>
+                                <td>{{ $i++ }}</td>
+                                <td>{{ $e->jalur_ujian }}</td>
+                                <td>{{ $e->tahun_akademik }}</td>
+                                <td>
+                                    <div class="text-start">
+                                        {!! $e->deskripsi !!}
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="d-flex justify-content-center gap-1">
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#editJadwalUjianModal">
+                                            <i class="bi bi-pen"></i>
+                                        </button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="editJadwalUjianModal" tabindex="-1" aria-labelledby="editJadwalUjianModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Jadwal Ujian</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <form action="{{ route('editJadwalUjian') }}" method="post">
+                                                        @csrf
+                                                        <div class="modal-body">
+                                                            <label class="form-label w-100 text-start mb-3">
+                                                                Jalur Masuk
+                                                                <input type="text" name="jalurUjian" class="form-control" value="{{ $e->jalur_ujian }}">
+                                                            </label>
+
+                                                            <label class="form-label w-100 text-start mb-3">
+                                                                Tahun Akademik
+                                                                <input type="text" name="tahunAkademik" class="form-control" value="{{ $e->tahun_akademik }}">
+                                                            </label>
+
+                                                            <label class="form-label w-100 text-start mb-3">
+                                                                Deskripsi
+                                                                <textarea name="deskripsi" id="summernoteEditJadwalUjian"> {{ $e->deskripsi }} </textarea>
+                                                            </label>
+                                                            <input type="hidden" name="id" value="{{ $e->id }}">
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-primary">Save changes</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <form action="{{ route('removeJadwalUjian') }}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <input type="hidden" name="id" value="{{ $e->id }}">
+                                            <button type="submit" class="btn btn-danger">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="5">
+                                    <span class="fs-2">Tidak ada data</span>
+                                </td>
+                            </tr>
+                        @endforelse
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -877,7 +1016,7 @@
             inputLokasi.value = lokasiTes;
             inputAlamat.value = alamatLokasi;
 
-            var myModal = new bootstrap.Modal(modalEditLokasi)
+            const myModal = new bootstrap.Modal(modalEditLokasi)
             myModal.show();
         }
 
@@ -891,9 +1030,25 @@
             inputGelombang.value = gelombang;
             inputJenis.value = jenisUjian;
 
-            var myModal = new bootstrap.Modal(modalEditJenis);
+            const myModal = new bootstrap.Modal(modalEditJenis);
             myModal.show();
         }
 
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#summernote').summernote({
+                maxHeight: 250,
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#summernoteEditJadwalUjian').summernote({
+                maxHeight: 250,
+            });
+        });
     </script>
 @endsection

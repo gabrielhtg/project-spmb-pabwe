@@ -9,6 +9,7 @@ use App\Models\data_institusi;
 use App\Models\EmailModel;
 use App\Models\HeroSectionModel;
 use App\Models\InfografisModel;
+use App\Models\JadwalUjianModel;
 use App\Models\MbkmModel;
 use App\Models\ModelHeaderAdmisi;
 use App\Models\NomorTeleponModel;
@@ -52,6 +53,7 @@ class DashboardController extends Controller
         $dataEmail = EmailModel::all();
         $lokasi = Lokasi::orderBy('lokasiTes', 'asc')->get();
         $jenis = JenisTes::orderBy('gelombang', 'asc')->get();
+        $dataJadwalUjian = JadwalUjianModel::all();
 
         $data = [
             'dataInstitusi' => $dataInstitusi,
@@ -62,6 +64,7 @@ class DashboardController extends Controller
             'dataEmail' => $dataEmail,
             'lokasi' => $lokasi,
             'jenis' => $jenis,
+            'dataJadwalUjian' => $dataJadwalUjian,
         ];
 
         return view('admisi.admisi-tanggal-penting', $data);
