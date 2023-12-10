@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('nama', 50);
             $table->string('alamat', 150);
+            $table->string('created_by', 20);
+            $table->string('updated_by', 20)->nullable(true);
             $table->timestamps();
         });
     }

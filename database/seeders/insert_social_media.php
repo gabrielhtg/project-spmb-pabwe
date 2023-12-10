@@ -17,13 +17,22 @@ class insert_social_media extends Seeder
             [
                 'nama' => 'Instagram',
                 'link' => 'https://www.instagram.com/it.del/?hl=id',
-                'icon' => '<i class="bi bi-instagram"></i>'
+                'icon' => '<i class="bi bi-instagram"></i>',
+                'created_by' => 'admin',
+                'updated_by' => 'admin',
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'nama' => 'Facebook',
                 'link' => 'https://www.facebook.com/Institut.Teknologi.Del',
-                'icon' => '<i class="bi bi-facebook"></i>'
+                'icon' => '<i class="bi bi-facebook"></i>',
+                'created_by' => 'admin',
+                'updated_by' => 'admin',
+                'created_at' => now(),
+                'updated_at' => now(),
             ]
         ]);
     }
 }
+

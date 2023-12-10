@@ -22,9 +22,9 @@
             <div class="mb-3">
                 <label for="input_akreditasi" class="form-label fw-semibold">Akreditasi</label>
                 <select id="input_akreditasi" name="input_akreditasi" class="form-control">
-                    <option value="A">Unggul (A)</option>
-                    <option value="B">Baik Sekali (B)</option>
-                    <option value="C">Baik (C)</option>
+                    <option value="A" <?php echo ($dataInstitusi->akreditasi === 'A') ? 'selected' : ''; ?>>A</option>
+                    <option value="B" <?php echo ($dataInstitusi->akreditasi === 'B') ? 'selected' : ''; ?>>B</option>
+                    <option value="C" <?php echo ($dataInstitusi->akreditasi === 'C') ? 'selected' : ''; ?>>C</option>
                 </select>
             </div>
 
@@ -53,11 +53,24 @@
                 <label for="input_logo_institusi" class="form-label fw-semibold">Logo Institusi</label>
                 <br>
                 <div class="w-100 border border-1 mb-2 p-3 d-flex justify-content-center rounded-2">
-                    <img src="{{ asset($dataInstitusi->logo_institusi) }}" alt="logo institusi"
-                         style="width: 60px">
+                    <img src="{{ asset($dataInstitusi->logo_institusi ? $dataInstitusi->logo_institusi : 'assets/img/default.jpg') }}" alt="logo institusi"
+                         style="width: 300px">
                 </div>
                 <input class="form-control" type="file" id="input_logo_institusi"
                        name="input_logo_institusi">
+            </div>
+
+            <div class="mb-3">
+                <label for="input_sertifikat_institusi" class="form-label fw-semibold">Sertifikat Akreditasi</label>
+                <br>
+                <div class="w-100 border border-1 mb-2 p-3 d-flex justify-content-center rounded-2">
+                    <img
+                        src="{{ asset($dataInstitusi->sertifikat_akreditasi ? $dataInstitusi->sertifikat_akreditasi : 'assets/img/default.jpg') }}"
+                        alt="sertifikat akreditasi"
+                        style="width: 500px">
+                </div>
+                <input class="form-control" type="file" id="input_sertifikat_institusi"
+                       name="input_sertifikat_institusi">
             </div>
         </div>
         <div class="card-footer bg-white">
