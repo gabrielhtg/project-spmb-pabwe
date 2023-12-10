@@ -11,8 +11,16 @@
     <link rel="stylesheet" href="{{ asset("/assets/css/admin_panel.css") }}">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="{{ asset("/assets/css/admisi.css") }}">
-    <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <!-- include libraries(jQuery, bootstrap) -->
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+{{--    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" />--}}
+{{--    <script type="text/javascript" src="cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>--}}
+
+    <!-- include summernote css/js-->
+    <link href="{{ asset('assets/summernote-0.8.18-dist/summernote.css') }}" rel="stylesheet">
+    <script src="{{ asset('assets/summernote-0.8.18-dist/summernote.js') }}"></script>
+
     <title>Admin Panel</title>
 </head>
 <body>

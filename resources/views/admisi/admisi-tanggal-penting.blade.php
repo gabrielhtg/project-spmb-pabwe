@@ -99,14 +99,45 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="tab-pane fade" id="jadwal-ujian-tab-pane" role="tabpanel"
-                             aria-labelledby="profile-tab" tabindex="0">...
+                        <div class="tab-pane fade p-3" id="jadwal-ujian-tab-pane" role="tabpanel"
+                             aria-labelledby="profile-tab" tabindex="0">
+                            <p>Jadwal pelaksanaan ujian Institut Teknologi Del dapat dilihat pada info dibawah ini.</p>
+                            <ul>
+                            @foreach($dataJadwalUjian as $e)
+                                <li>
+                                    <span class="fw-semibold">Jadwal Pelaksanaan Ujian {{ $e->jalur_ujian }} Tahun Akademik {{ $e->tahun_akademik }}</span>
+                                    <p>
+                                        {!! $e->deskripsi !!}
+                                    </p>
+                                </li>
+                            @endforeach
+                            </ul>
                         </div>
                         <div class="tab-pane fade" id="jenis-test-tab-pane" role="tabpanel"
-                             aria-labelledby="jenis-test-tab" tabindex="0">...
+                             aria-labelledby="jenis-test-tab" tabindex="0">
+                             <table class="table table-striped table-bordered mt-5">
+                                <tbody>
+                                    @foreach($jenis as $item)
+                                    <tr>
+                                        <td>{{ $item->gelombang}}</td>
+                                        <td>{{ $item->jenisUjian}}</td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                             </table>
                         </div>
-                        <div class="tab-pane fade" id="lokasi-tab-pane" role="tabpanel" aria-labelledby="lokasi-tab"
-                             tabindex="0">...
+                        <div class="tab-pane ps-3 pe-3 fade show active" id="lokasi-tab-pane" role="tabpanel" aria-labelledby="lokasi-tab"
+                             tabindex="0">
+                             <table class="table table-striped table-bordered mt-5">
+                                <tbody>
+                                    @foreach($lokasi as $item)
+                                    <tr>
+                                        <td>{{ $item->lokasiTes}}</td>
+                                        <td>{{ $item->alamatLokasi}}</td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                             </table>
                         </div>
                     </div>
                 </div>

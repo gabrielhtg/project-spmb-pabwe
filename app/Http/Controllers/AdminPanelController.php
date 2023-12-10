@@ -10,11 +10,14 @@ use App\Models\data_institusi;
 use App\Models\EmailModel;
 use App\Models\HeroSectionModel;
 use App\Models\InfografisModel;
+use App\Models\JadwalUjianModel;
 use App\Models\MbkmModel;
 use App\Models\ModelHeaderAdmisi;
 use App\Models\NomorTeleponModel;
 use App\Models\SocalMediaModel;
 use App\Models\JalurPendaftaranModel;
+use App\Models\Lokasi;
+use App\Models\JenisTes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -249,13 +252,15 @@ class AdminPanelController extends Controller
             return redirect(null, 404)->back();
         }
     }
-
     public function getAdmisiPanel () {
         $admin = Auth::user();
         $dataHeaderAdmisi = ModelHeaderAdmisi::where('id', 1)->first();
         $dataNonKompetisi  = MbkmModel::where('jenis_kegiatan', 'Non Kompetisi')->get();
         $dataKompetisi =  MbkmModel::where('jenis_kegiatan', 'Kompetisi')->get();
         $jalurMasuk = [];
+        $lokasi = Lokasi::orderBy('lokasiTes', 'asc')->get();
+        $jenis = JenisTes::orderBy('gelombang', 'asc')->get();
+        $dataJadwalUjian = JadwalUjianModel::all();
 
         foreach (InfografisModel::all() as $e) {
             if (!in_array($e->jalur, $jalurMasuk)) {
@@ -275,7 +280,10 @@ class AdminPanelController extends Controller
             'dataHeaderAdmisi' => $dataHeaderAdmisi,
             'dataNonKompetisi' => $dataNonKompetisi,
             'dataKompetisi'=>$dataKompetisi,
-            'dataInfografis' => $dataInfografisJalurMasuk
+            'dataInfografis' => $dataInfografisJalurMasuk,
+            'lokasi' => $lokasi,
+            'jenis' => $jenis,
+            'dataJadwalUjian' => $dataJadwalUjian
         ];
         return view('admin-panel.admisi_panel', $data);
     }
@@ -348,5 +356,93 @@ class AdminPanelController extends Controller
         } catch (\Exception $e) {
             abort(404, 'ID tidak ditemukan');
         }
+    }
+
+    public function destroyLokasi($id)
+    {
+        $admin = Auth::user();
+        $lokasi = Lokasi::find($id);
+
+        if ($lokasi) {
+            $lokasi->delete();
+        }
+
+        $data = [
+            'indexActive' => 2,
+            'admin' => $admin,
+            'lokasi' => $lokasi,
+        ];
+
+        return $this->getAdmisiPanel();
+    }
+
+    public function destroyJenisTes($id)
+    {
+        $admin = Auth::user();
+        $jenis = JenisTes::find($id);
+
+        if($jenis){
+            $jenis->delete();
+        }
+
+        $data = [
+            'indexActive' => 2,
+            'admin' => $admin,
+            'jenis' => $jenis,
+        ];
+
+        return $this->getAdmisiPanel();
+    }
+
+    public function postEditlokasi(Request $request)
+    {
+        // Mendapatkan user yang sedang login
+        $admin = Auth::user();
+
+        $request->validate([
+            'id' => 'required|exists:lokasi',
+            'lokasiTes' => 'required',
+            'alamatLokasi' => 'required',
+        ]);
+
+        // Mengambil data fasilitas berdasarkan ID
+        $lokasi = Lokasi::where("id", $request->id)->first();
+
+        if ($lokasi) {
+            // Mengupdate data fasilitas
+            $lokasi->lokasiTes = $request->lokasiTes;
+            $lokasi->alamatLokasi = $request->alamatLokasi;
+
+            // Menyimpan perubahan
+            $lokasi->save();
+    }
+    // Redirect dengan pesan sukses
+    return $this->getAdmisiPanel();
+    }
+
+    public function postEditJenis(Request $request)
+    {
+        // Mendapatkan user yang sedang login
+        $admin = Auth::user();
+
+        $request->validate([
+            'id' => 'required|exists:jenis',
+            'gelombang' => 'required',
+            'jenisUjian' => 'required',
+        ]);
+
+        // Mengambil data fasilitas berdasarkan ID
+        $jenis = JenisTes::where("id", $request->id)->first();
+
+        if ($jenis) {
+            // Mengupdate data fasilitas
+            $jenis->gelombang = $request->gelombang;
+            $jenis->jenisUjian = $request->jenisUjian;
+
+            // Menyimpan perubahan
+            $jenis->save();
+    }
+    // Redirect dengan pesan sukses
+    return $this->getAdmisiPanel();
     }
 }

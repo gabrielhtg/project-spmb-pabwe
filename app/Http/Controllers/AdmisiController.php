@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\AkreditasiInstitutiModel;
 use App\Models\InfografisModel;
 use App\Models\MbkmModel;
 use App\Models\ModelHeaderAdmisi;
 use App\Models\JalurPendaftaranModel;
+use App\Models\Lokasi;
+use App\Models\JenisTes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -142,6 +145,40 @@ class AdmisiController extends Controller
         return redirect()->route('admisi-panel');
     }
 
+    // KELOMPOK 6
+    public function postLokasiTes(Request $request)
+    {
+        $request->validate([
+            'lokasiTes' => 'required',
+            'alamatLokasi' => 'required',
+        ]);
+
+        $lokasi = new Lokasi;
+
+        $lokasi->lokasiTes = $request->lokasiTes;
+        $lokasi->alamatLokasi = $request->alamatLokasi;
+
+        $lokasi->save();
+
+        return redirect()->route('admisi-panel');
+    }
+
+    public function postJenisTes(Request $request)
+    {
+        $request->validate([
+            'gelombang' => 'required',
+            'jenisUjian' => 'required',
+        ]);
+
+        $jenis = new JenisTes;
+
+        $jenis->gelombang = $request->gelombang;
+        $jenis->jenisUjian = $request->jenisUjian;
+
+        $jenis->save();
+        return redirect()->route('admisi-panel');
+    }
+
     public function addInfografisUsm (Request $request)
     {
         $request->validate([
@@ -201,4 +238,6 @@ class AdmisiController extends Controller
 
         return redirect()->route('admisi-panel');
     }
+
+    
 }
