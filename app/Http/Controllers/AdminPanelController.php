@@ -16,6 +16,7 @@ use App\Models\JadwalUjianModel;
 use App\Models\MbkmModel;
 use App\Models\ModelHeaderAdmisi;
 use App\Models\NomorTeleponModel;
+use App\Models\Prestasi;
 use App\Models\SocalMediaModel;
 use App\Models\JalurPendaftaranModel;
 use App\Models\Lokasi;
@@ -694,7 +695,8 @@ class AdminPanelController extends Controller
         $admin = Auth::user();
         $data = [
             'indexActive' => 2,
-            'admin' => $admin
+            'admin' => $admin,
+            'dataPrestasi' => Prestasi::orderBy('created_at', 'desc')->get(),
         ];
         return view('admin-panel.prestasi_panel', $data);
     }

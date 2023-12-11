@@ -13,7 +13,7 @@
                 <h1 class="modal-title fs-5 fw-semibold">Tambah Prestasi</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="{{ route('addPrestasi')  }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('prestasi.add')  }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
                     <div class="mb-3">
@@ -38,7 +38,7 @@
                     <div class="mb-3">
                         <label for="gambar" class="form-label">Foto</label>
                         <input type="file" class="form-control" id="gambar"
-                               name="gambar">
+                               name="gambar" accept="image/png, image/gif, image/jpeg" />>
                     </div>
                 </div>
                 <div class="modal-footer">
