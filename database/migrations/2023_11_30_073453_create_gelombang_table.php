@@ -11,13 +11,17 @@ class CreateGelombangTable extends Migration
         Schema::create('gelombang', function (Blueprint $table) {
             $table->id();
             $table->string('namaGelombang');
-            $table->text('deskripsi');
             $table->timestamps();
         });
     }
 
     public function down()
     {
+
+        Schema::disableForeignKeyConstraints();
+
         Schema::dropIfExists('gelombang');
+
+            Schema::enableForeignKeyConstraints();
     }
 };
