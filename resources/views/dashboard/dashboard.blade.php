@@ -46,7 +46,7 @@
             <div class="col-lg-6">
                 <h1 class=" fw-bold lh-1 mb-3">{{ $akreditasiDashboard->header }}</h1>
                 <p class="lead">
-                    {{ $akreditasiDashboard->description }}
+                    {!! $akreditasiDashboard->description !!}
                 </p>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-start">
                     <a href="{{ asset($dataAkreditasiInstitusi->sertifikat_akreditasi ? : 'assets/img/default.jpg') }}"
