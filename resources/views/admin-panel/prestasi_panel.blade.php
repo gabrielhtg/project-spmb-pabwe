@@ -50,7 +50,9 @@
                                 </td>
                                 <td>{{ $item->created_at }}</td>
                                 <td style="min-width: 120px; width: 120px">
-                                    <button onclick="showModalUpdate({{ $item->id }}, '{{ htmlentities($item->judul_prestasi, ENT_QUOTES) }}', '{{ htmlentities($item->deskripsi,ENT_QUOTES) }}', '{{ $item->jenis_prestasi }}')" class="btn btn-success">
+                                    <button
+                                        onclick="showModalUpdate({{ $item->id }}, '{{ htmlentities($item->judul_prestasi, ENT_QUOTES) }}', '{{ htmlentities($item->deskripsi,ENT_QUOTES) }}', '{{ $item->jenis_prestasi }}')"
+                                        class="btn btn-success">
                                         <i class="bi bi-pen"></i>
                                     </button>
                                     <button onclick="showModalDelete({{$item->id}})" class="btn btn-danger">

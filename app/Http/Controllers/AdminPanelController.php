@@ -705,6 +705,7 @@ class AdminPanelController extends Controller
     public function getTestimoniPanel()
     {
         $admin = Auth::user();
+
         $data = [
             'indexActive' => 2,
             'admin' => $admin,

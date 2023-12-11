@@ -26,24 +26,30 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Nama</td>
-                                <td>Prodi</td>
-                                <td>Foto</td>
-                                <td>Angkatan</td>
-                                <td>Deskripsi</td>
-                                <td>Jenis Testimoni</td>
-                                <td>Created at</td>
-                                <td style="min-width: 120px; width: 120px">
-                                    <button class="btn btn-success">
-                                        <i class="bi bi-pen"></i>
-                                    </button>
-                                    <button class="btn btn-danger">
-                                        <i class="bi bi-trash"></i>
-                                    </button>
-                                </td>
-                            </tr>
+                            @forelse($dataTestimoni as $item)
+                                <tr>
+                                    <td>1</td>
+                                    <td>Nama</td>
+                                    <td>Prodi</td>
+                                    <td>Foto</td>
+                                    <td>Angkatan</td>
+                                    <td>Deskripsi</td>
+                                    <td>Jenis Testimoni</td>
+                                    <td>Created at</td>
+                                    <td style="min-width: 120px; width: 120px">
+                                        <button class="btn btn-success">
+                                            <i class="bi bi-pen"></i>
+                                        </button>
+                                        <button class="btn btn-danger">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="9" class="text-center text-muted">Belum ada data tersedia!</td>
+                                </tr>
+                            @endforelse
                             </tbody>
                         </table>
                     </form>
