@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset("/assets/css/global.css") }}">
@@ -59,6 +59,11 @@
                     </button>
                 </a>
 
+                <a href="{{ route("program-panel") }}">
+                    <button id="btn_program" class="btn_sidebar w-100 text-start">
+                        <i class="bi bi-book-half me-2"></i>
+                        Program
+                    </button>
             </div>
         </div>
         <div id="geser_besar" style="width: 18rem; min-width: 18rem; height: 100vh"></div>
@@ -83,6 +88,9 @@
                     </a>
                     <a href="{{ route("pengumuman-panel") }}">
                         <button id="btn_pengumuman_kecil" class="btn_sidebar_kecil"><i class="fas fa-bullhorn"></i></button>
+                    </a>
+                    <a href="{{ route("program-panel") }}">
+                        <button id="btn_program" class="btn_sidebar_kecil"><i class="bi bi-book-half"></i></button>
                     </a>
                 </div>
             </div>

@@ -20,6 +20,10 @@ use App\Models\SocalMediaModel;
 use App\Models\JalurPendaftaranModel;
 use App\Models\Lokasi;
 use App\Models\JenisTes;
+use App\Models\Major;
+use App\Models\Course;
+use App\Models\Faculty;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -665,5 +669,24 @@ class AdminPanelController extends Controller
         $akreditasiSection->update();
 
         return redirect()->back();
+    }
+
+    
+    public function getProgramPanel () {
+        $admin = Auth::user();
+        $faculties = Faculty::all();
+        $majors = Major::all();
+        $employees = Employee::with('major')->get();
+        $courses = Course::all();
+
+        $data = [
+            'indexActive' => 2,
+            'admin' => $admin,
+            'faculties'=>$faculties,
+            'majors'=>$majors,
+            'employees'=>$employees,
+            'courses'=>$courses,
+        ];
+        return view('admin-panel.program_panel', $data);
     }
 }

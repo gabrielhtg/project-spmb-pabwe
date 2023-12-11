@@ -4,6 +4,7 @@
 
 
     {{-- HERO SECTION --}}
+    <div style="margin: -10px;"></div>
     <section id="hero-section">
         <div id="carouselExampleCaptions" class="carousel slide">
             {{-- <div class="carousel-indicators">
@@ -14,15 +15,15 @@
             </div> --}}
             <div class="carousel-inner">
                 <div class="carousel-item active bg-dark-subtle">
-                    <img src="{{ asset('img/program/carousel-example.jpg')}}" class="d-block w-100 img-fluid" alt="...">
+                    <img src="{{ asset('storage/img/program/'. $majors->first()->faculty->gambar) }}" class="d-block w-100 img-fluid object-fit-cover" alt="..." style="height:500px;" media="(max-width: 600px) { height: 400px; }">
                 </div>
             </div>
             <div class="card-img-overlay d-flex align-items-center pt-5">
-                <div class="d-flex flex-column container pt-5 text-center text-white">
-                    <h1 class="fw-bold display-4 ">S1 Informatika</h1>
-                    <p class="fs-5 px-3 px-md-0 text-truncate ">
-                        <a href="/fakultas" class="text-decoration-none text-white d-inline-block">
-                            Fakultas Informatika dan Teknik Elektro
+                <div class="d-flex flex-column container pt-5 text-white">
+                    <h1 class="fw-bold align-items-end text-wrap ">{{ $majors->first()->nama }}</h1>
+                    <p class="fs-5 px-md-0 text-truncate ">
+                        <a href="/fakultas/{{ $majors->first()->faculty->id }}" class="text-wrap text-decoration-none text-white d-inline-block text-start ">
+                            {{ $majors->first()->faculty->nama }}
                         </a>
                     </p>
         </div>
@@ -37,6 +38,7 @@
             </button> --}}
         </div>
     </section>
+    {{-- End of HERO SECTION --}}
 
     <div class="d-flex justify-content-center">
         <ul class="nav nav-underline d-flex gap-5">
@@ -62,30 +64,20 @@
         <div class="d-flex flex-column-reverse flex-md-row">
             <div class="col-md-8">
                 <!-- Konten Utama -->
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam quibusdam dolor suscipit corrupti aperiam amet delectus maxime nihil laudantium vero debitis, eos distinctio mollitia blanditiis alias possimus dignissimos tempora cupiditate pariatur consectetur corporis? Adipisci illo at ipsa doloremque, corrupti alias sapiente tempore ea unde libero explicabo quibusdam, delectus voluptatum ullam quo exercitationem cum modi laborum perspiciatis similique inventore, vel porro dolorum! Sint adipisci nostrum quam reiciendis autem, suscipit assumenda, architecto dolorem officiis velit, quaerat tempora voluptatum unde. Animi, obcaecati voluptatibus dolores commodi maiores necessitatibus repellat non quibusdam minima rerum. Quasi tenetur facere aut corporis modi vel labore dolorum architecto dolores.</p>
+                <p>{!! $majors->first()->deskripsi !!}</p>
                 
                 <h2 class="fw-bold fs-4">Visi</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis illum magnam, praesentium fugit, veniam voluptatibus tenetur impedit cupiditate, iure rerum ipsam tempore? Magnam aut nulla quisquam odit illo illum quos quidem quo. Eaque unde aut expedita ratione quia rerum sed ea nesciunt minima. Tempore, vero quae odio alias dolores aliquid.</p>
+                <p>{!! $majors->first()->visi !!}</p>
                 
                 <h2 class="fw-bold fs-4">Misi</h2>
-                <p>
-                    <ol>
-                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, quae ab? Inventore ad labore debitis neque est impedit eum amet?</li>
-                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, quae ab? Inventore ad labore debitis neque est impedit eum amet?</li>
-                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, quae ab? Inventore ad labore debitis neque est impedit eum amet?</li>
-                    </ol>
-                </p>
+                <p>{!! $majors->first()->misi !!}</p>
                 
                 <h2 class="fw-bold fs-4">Prospek Kerja</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius dolore velit doloremque, temporibus debitis saepe autem cum ipsa expedita, dicta doloribus reprehenderit laudantium et nihil, voluptas quos est quia quaerat commodi tempora nobis sequi nulla necessitatibus? Alias suscipit eum perferendis voluptate, voluptatum labore, facilis at eveniet neque reprehenderit assumenda obcaecati! Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor minima quo exercitationem omnis optio debitis ut ipsa dolores deleniti nesciunt.</p>
+                <p>{!! $majors->first()->prospek !!}</p>
                 
                 <h2 class="fw-bold fs-4">Pendaftaran</h2>
                 <p>Syarat Pendaftaran:</p>
-                <ol>
-                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi eum magnam nisi veniam delectus sunt voluptas dignissimos eligendi libero maxime?</li>
-                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi eum magnam nisi veniam delectus sunt voluptas dignissimos eligendi libero maxime?</li>
-                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi eum magnam nisi veniam delectus sunt voluptas dignissimos eligendi libero maxime?</li>
-                </ol>
+                <p>{!! $majors->first()->syarat !!}</p>
 
                 <button type="button" class="btn btn-primary gap-3">Halaman Pendaftaran</button>
             </div>
@@ -97,15 +89,15 @@
                         <li class="list-group-item fw-bold list-group-item-secondary">Ketua Program Studi</li>
                         <li class="list-group-item">Arie Satia Dharma, S.T, M.Kom.</li>
                         <li class="list-group-item fw-bold list-group-item-secondary">Akreditasi</li>
-                        <li class="list-group-item">Baik (C)</li>
+                        <li class="list-group-item">{{ $majors->first()->akreditasi }}</li>
                         <li class="list-group-item fw-bold list-group-item-secondary">Gelar</li>
-                        <li class="list-group-item">S.Kom</li>
+                        <li class="list-group-item">{{ $majors->first()->gelar }}</li>
                         <li class="list-group-item fw-bold list-group-item-secondary">Lama Studi</li>
-                        <li class="list-group-item">4 Tahun</li>
+                        <li class="list-group-item">{{ $majors->first()->lama }}</li>
                         <li class="list-group-item fw-bold list-group-item-secondary">Biaya Kuliah</li>
-                        <li class="list-group-item">Rp. 6.500.000/semester</li>
+                        <li class="list-group-item">{{ $majors->first()->biaya }}</li>
                         <li class="list-group-item fw-bold list-group-item-secondary">Lokasi</li>
-                        <li class="list-group-item">Laguboti, Toba, Sumatera Utara</li>
+                        <li class="list-group-item">{{ $majors->first()->lokasi }}</li>
                     </ul>
                 </div>
             </div>
@@ -119,29 +111,29 @@
         </div>
 
         <div class="d-flex gy-4 row justify-content-center text-center">
-            @for ($i = 0; $i < 8; $i++)
+            @foreach ($employees as $employee)
             <div class="col-md-3 col-12">
-                <div class="card text-bg-dark" onmouseover="showOverlay({{ $i }})" onmouseout="hideOverlay({{ $i }})">
-                    <img src="{{ asset('img/program/dosen-profile-test.jpg') }}" class="card-img img-fluid" alt="">
+                <div class="card text-bg-dark" onmouseover="showOverlay({{ $employee->id }})" onmouseout="hideOverlay({{ $employee->id }})">
+                    <img src="{{ asset('img/program/employee/' . $employee->gambar) }}" class="card-img img-fluid" alt="">
 
-                    <div id="backOverlay-{{ $i }}" class="card-img-overlay " style="opacity: 1; transition: opacity 0.2s ease;">
+                    <div id="backOverlay-{{ $employee->id }}" class="card-img-overlay " style="opacity: 1; transition: opacity 0.2s ease;">
                         <div class="d-flex justify-content-start">
                             <div class=" badge bg-primary text-wrap fw-medium fs-6 small mb-3">
-                                <small>Dosen</small>
+                                <small>{{ $employee->jabatan }}</small>
                             </div>
                         </div>
                         <div class="d-flex card-img-overlay align-items-end ">
-                            <h5 class="card-title fw-semibold fs-6 ">Dedi Andre Martua Raja Panggabean</h5>
+                            <h5 class="card-title fw-semibold fs-6 ">{{ $employee->nama }}</h5>
                         </div>
                     </div>
 
-                    <div id="overlay-{{ $i }}" class="card-img-overlay bg-dark" style="--bs-bg-opacity: .8; opacity: 0; transition: opacity 0.2s ease;">
+                    <div id="overlay-{{ $employee->id }}" class="card-img-overlay bg-dark" style="--bs-bg-opacity: .8; opacity: 0; transition: opacity 0.2s ease;">
                         <div class="card-img-overlay d-flex row justify-content-center align-content-center align-items-center">
                             <div class="badge bg-primary text-wrap w-auto fw-medium fs-6 small mb-3">
-                                <small>Dosen</small>
+                                <small>{{ $employee->jabatan }}</small>
                             </div>
-                            <h5 class="card-title fw-semibold fs-6">Dedi Andre Martua Raja Panggabean</h5>
-                            <p class="card-text fs-6 small">S3 Ternak Lele</p>
+                            <h5 class="card-title fw-semibold fs-6">{{ $employee->nama }}</h5>
+                            <p class="card-text fs-6 small">{{ $employee->pendidikan }}</p>
                             <small><small class="text-dark"><a href="https://www.del.ac.id/?page_id=48" class="text-light text-decoration-none fst-italic">See More...</a></small></small>
                         </div>
                     </div>
@@ -163,10 +155,11 @@
                     backOverlay.style.opacity = "1";
                 }
             </script>
-            @endfor
+            @endforeach
         </div>
 </section>
 
+    <!-- KURIKULUM SUBPAGE -->
     <section id="kurikulum-subpage" class="container d-none">
         <div class="mt-5 mb-3">
             <h1 class="fw-bold">Kurikulum</h1>
@@ -189,6 +182,8 @@
                                     <div class="container text-center">
                                         <h2 class="fw-bold fs-5">Semester {{ $i * 2 + $j }}</h2>
                                             <table class="table table-bordered">
+                                            @foreach($courses as $course)
+                                            @if ($course->semester == $i * 2 + $j)
                                                 <thead class="table-primary">
                                                 <tr>
                                                     
@@ -198,12 +193,16 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td>11S3109 </td>
-                                                        <td>Pengembangan Aplikasi Berbasis Web</td>
-                                                        <td>4</td>
-                                                    </tr>
-                                                    <tr>
+                                                    
+                                                        
+                                                        <tr>
+                                                            <td>{{ $course->kode }}</td>
+                                                            <td>{{ $course->nama }}</td>
+                                                            <td>{{ $course->sks }}</td>
+                                                        </tr>
+                                                        @endif
+                                                    @endforeach
+                                                    <!-- <tr>
                                                         <td>10S3109</td>
                                                         <td>Kecerdasan Buatan</td>
                                                         <td>3</td>
@@ -227,11 +226,11 @@
                                                         <td>10S3109</td>
                                                         <td>Kecerdasan Buatan</td>
                                                         <td>3</td>
-                                                    </tr>
-                                                    <tr>
+                                                    </tr> -->
+                                                    <!-- <tr>
                                                         <td colspan="2" class="fw-semibold">Total SKS</td>
                                                         <td>7</td>
-                                                    </tr>
+                                                    </tr> -->
                                                 </tbody>
                                             </table>
                                     </div>

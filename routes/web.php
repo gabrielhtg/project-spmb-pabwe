@@ -11,7 +11,11 @@ use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\BeasiswaController;
 use App\Http\Controllers\PrestasiController;
 use App\Http\Controllers\MitraController;
-
+use App\Http\Controllers\ProgramController;
+use App\Http\Controllers\FacultyController;
+use App\Http\Controllers\MajorController;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\CourseController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,7 +44,6 @@ Route::get('/beasiswa', [BeasiswaController::class, 'index'])->name('beasiswa.in
 Route::get('/login', [AuthController::class, 'getLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'postLogin'])->name('post.login');
 
-
 Route::middleware('auth')->group(function () {
     Route::prefix('/admin-panel')->group(function () {
         Route::get('/', [AdminPanelController::class, 'getAdminPanel'])->name('admin-panel');
@@ -51,7 +54,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/prestasipanel', [AdminPanelController::class, 'getPrestasiPanel'])->name('prestasipanel');
         Route::get('/testimonipanel', [AdminPanelController::class, 'getTestimoniPanel'])->name('testimonipanel');
         Route::get('/logout', [AuthController::class, 'getLogout'])->name('logout');
-
+        Route::get('/program', [AdminPanelController::class, 'getProgramPanel'])->name('program-panel');
         Route::prefix('/admisi-panel')->group(function(){
             Route::post('/addjalurpendaftaran', [AdmisiController::class,'addJalur'])->name('addJalur');
             Route::post('/edit-jalur-pendaftaran', [AdmisiController::class,'editJalur'])->name('editJalur');
@@ -92,23 +95,29 @@ Route::get('/form', function () {
     return view('chatbot.form');
 })->name('form');
 
+
+
 // ROUTE PROGRAM STUDI [TEAM 02]
 
-Route::get('/program', function () {
-    return view('program.program');
-});
+Route::get('/program', [ProgramController::class,'program'])->name('program');
+Route::get('/fakultas/{id}', [FacultyController::class,'getFakultas'])->name('fakultas');
+Route::get('/prodi/{id}', [MajorController::class,'getProdi'])->name('prodi');
+Route::post('/faculties/store', [FacultyController::class, 'store'])->name('faculties.store');
+Route::post('/major/store', [MajorController::class, 'store'])->name('major.store');
+Route::post('/employee/store', [EmployeeController::class, 'store'])->name('employee.store');
+Route::post('/course/store', [CourseController::class, 'store'])->name('course.store');
+Route::put('/faculty/{id}/update', [FacultyController::class, 'update'])->name('faculty.update');
+Route::patch('/major/{id}/update', [MajorController::class, 'update'])->name('major.update');
+Route::patch('/employee/{id}/update', [EmployeeController::class, 'update'])->name('employee.update');
+Route::put('/course/{id}/update', [CourseController::class, 'update'])->name('course.update');
+Route::delete('/admin-panel/program_panel/faculty/{id}/delete', [FacultyController::class, 'destroy'])->name('admin.program.faculty.destroy');
+Route::delete('/admin-panel/program_panel/major/{id}/delete', [MajorController::class, 'destroy'])->name('admin.program.major.destroy');
+Route::delete('/admin-panel/program_panel/employee/{id}/delete', [EmployeeController::class, 'destroy'])->name('admin.program.employee.destroy');
+Route::delete('/admin-panel/program_panel/course/{id}/delete', [CourseController::class, 'destroy'])->name('admin.program.course.destroy');
 
-Route::get('/fakultas', function () {
-    return view('program.fakultas');
-});
-
-Route::get('/prodi', function () {
-    return view('program.prodi');
-});
+// End of ROUTE PROGRAM STUDI [TEAM 02]
 
 Route::get('/prestasi', [PrestasiController::class, 'getviewPrestasi'])->name('prestasi.prestasiOverview');
 Route::get('/prestasiInstitut', [PrestasiController::class, 'getviewPrestasiInstitut'])->name('prestasi.prestasiInstitut');
 Route::get('/prestasiDosenStaff', [PrestasiController::class, 'getviewPrestasiDosenStaff'])->name('prestasi.prestasiDosenStaff');
 Route::get('/prestasiMahasiswa', [PrestasiController::class, 'getviewPrestasiMahasiswa'])->name('prestasi.prestasiMahasiswa');
-
-
