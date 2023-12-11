@@ -25,10 +25,6 @@ class AdminController extends Controller
                 'profile_pict' => 'image|mimes:jpeg,png,jpg|max:1024',
             ]);
 
-            if ($request->username) {
-                return redirect()->route('admins');
-            }
-
             // Mengambil file yang sudah divalidasi dari request
             $photo = $request->file('profile_pict');
 
