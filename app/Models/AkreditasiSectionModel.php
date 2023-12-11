@@ -13,6 +13,8 @@ class AkreditasiSectionModel extends Model
 
     protected $fillable = [
         'header',
-        'paragraph'
+        'description',
+        'updated_at',
+        'created_at'
     ];
 }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset("/assets/css/global.css") }}">
@@ -17,7 +17,11 @@
 {{--    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" />--}}
 {{--    <script type="text/javascript" src="cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>--}}
 
+
     <!-- include summernote css/js-->
+
+    <!-- include summernote css/js -->
+
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
@@ -46,6 +50,11 @@
                         Admisi
                     </button>
                 </a>
+                <a href="{{ route("program-panel") }}">
+                    <button id="btn_program" class="btn_sidebar w-100 text-start">
+                        <i class="bi bi-book-half me-2"></i>
+                        Program
+                    </button>
             </div>
         </div>
         <div id="geser_besar" style="width: 18rem; min-width: 18rem; height: 100vh"></div>
@@ -64,6 +73,9 @@
                     </a>
                     <a href="{{ route("admisi-panel") }}">
                         <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="fa-regular fa-note-sticky"></i></button>
+                    </a>
+                    <a href="{{ route("program-panel") }}">
+                        <button id="btn_program" class="btn_sidebar_kecil"><i class="bi bi-book-half"></i></button>
                     </a>
                 </div>
             </div>
@@ -88,7 +100,7 @@
                     <div class="btn-group">
                         <button type="button" style="border-style: none;" class="ps-1 bg-light dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
                             <span class="me-3">Hii {{ $admin->firstname }}!!</span>
-                            <img class="border border-1 border-primary" src="{{ $admin->profile_pict ? asset($admin->profile_pict) : asset("assets/img/admin/default.png") }}" alt="foto_profil" style="width: 40px; border-radius: 50%">
+                            <img class="border border-1 border-primary" src="{{ $admin->profile_pict ? asset($admin->profile_pict) : asset("assets/img/admin/default.png") }}" alt="foto_profil" style="width: 40px; height: 40px; border-radius: 50%">
                             <span class="visually-hidden">Toggle Dropdown</span>
                         </button>
                         <ul class="dropdown-menu mt-3 dropdown-menu-end">

@@ -8,6 +8,7 @@ use App\Models\NomorTeleponModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 
 class AdminController extends Controller
 {
@@ -18,6 +19,14 @@ class AdminController extends Controller
 
         if ($request->profile_pict) {
             $request->validate([
+                'username' => [
+                    'required',
+                    'max:20',
+                    Rule::unique('admin', 'username'),
+                ],
+                'password' => 'required',
+                'firstname' => 'required',
+                'lastname' => 'required',
                 'profile_pict' => 'image|mimes:jpeg,png,jpg|max:1024',
             ]);
 
@@ -36,16 +45,33 @@ class AdminController extends Controller
             $profile_pict = 'assets/img/admin/' . $filename;
         }
 
-        AdminModel::create([
-            'username' => $request->username,
-            'password' => Hash::make($request->password),
-            'firstname' => $request->firstname,
-            'lastname' => $request->lastname,
-            'created_by' => $activeAdmin->username,
-            'profile_pict' => $profile_pict,
-            'created_at' => now(),
-            'udpated_at' => now()
-        ]);
+        else {
+            $request->validate([
+                'username' => [
+                    'required',
+                    'max:20',
+                    Rule::unique('admin', 'username'),
+                ],
+                'password' => 'required',
+                'firstname' => 'required',
+                'lastname' => 'required',
+            ]);
+        }
+
+        try {
+            AdminModel::create([
+                'password' => Hash::make($request->password),
+                'firstname' => $request->firstname,
+                'lastname' => $request->lastname,
+                'created_by' => $activeAdmin->username,
+                'username' => $request->username,
+                'profile_pict' => $profile_pict,
+                'created_at' => now(),
+                'udpated_at' => now()
+            ]);
+        } catch (\Exception $e) {
+            return redirect()->route('admins');
+        }
 
         return redirect()->route('admins');
     }
@@ -97,17 +123,18 @@ class AdminController extends Controller
 
     public function removeSelf(Request $request)
     {
-        $selectedAdmin = AdminModel::where('id', $request->id)->first();
+        $selectedAdmin = AdminModel::where('id', Auth::user()->id)->first();
 
         if (Hash::check($request->verifikasi_password, $selectedAdmin->password)) {
-            if ($selectedAdmin->profile_pict && file_exists(selectedAdmin->profile_pict)) {
+            if ($selectedAdmin->profile_pict && file_exists($selectedAdmin->profile_pict)) {
                 unlink($selectedAdmin->profile_pict);
             }
             $selectedAdmin->delete();
+
             return redirect()->route('logout');
         }
 
-        return null;
+        return redirect()->route('edit-profile')->with('error', "Gagal Menghapus Akun!");
     }
 
     public function changeAdminPassword(Request $request)
@@ -125,10 +152,12 @@ class AdminController extends Controller
                 $admin->password = Hash::make($request->newPassword);
 
                 $admin->update();
+
+                return redirect()->route('logout');
             }
         }
 
-        return redirect()->back();
+        return redirect()->route('edit-profile')->with('error', "Gagal Mengganti Password!");
     }
 
     public function editNomorTelepon (Request $request) {
