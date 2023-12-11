@@ -104,7 +104,7 @@
 
             @foreach ($faculties as $faculty)
                 <div class="card text-bg-dark">
-                    <img src="{{ asset('img/program/home/fite-button.jpg') }}" class="card-img object-fit-cover" alt="" style="height: 200px;">
+                    <img src="{{ asset('img/program/faculty/' . $faculty->gambar) }}" class="card-img object-fit-cover" alt="" style="height: 200px;">
                     <div class="card-img-overlay">
                         <div class="card-img-overlay d-flex justify-content-center align-items-center">
                             <a href="{{ route('fakultas', $faculty->id)}}" class="fs-5 text-light text-decoration-none fw-semibold text-center">{!! $faculty->nama !!}</a>
