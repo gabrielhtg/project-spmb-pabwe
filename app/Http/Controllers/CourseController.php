@@ -13,7 +13,6 @@ class CourseController extends Controller
         $dataInstitusi = data_institusi::where('id', 1)->first();
 
         $course = Course::with('major')->get();
-        $employee = Employee::with('major')->get();
 
         $data = [
             'dataInstitusi' => $dataInstitusi,

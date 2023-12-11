@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\admin;
+use App\Models\AdminModel;
+use App\Models\AkreditasiInstitutiModel;
+use App\Models\AkreditasiSectionModel;
+use App\Models\AlamatInstitusiModel;
 use App\Models\data_institusi;
 use App\Models\EmailModel;
 use App\Models\HeroSectionModel;
@@ -15,9 +18,14 @@ use App\Models\SocalMediaModel;
 use App\Models\JalurPendaftaranModel;
 use App\Models\Lokasi;
 use App\Models\JenisTes;
+use App\Models\Major;
+use App\Models\Course;
+use App\Models\Faculty;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Mockery\Exception;
 
 class AdminPanelController extends Controller
 {
@@ -282,5 +290,182 @@ class AdminPanelController extends Controller
             'dataJadwalUjian' => $dataJadwalUjian
         ];
         return view('admin-panel.admisi_panel', $data);
+    }
+
+    public function addAkreditasiInstitusi (Request $request) {
+        if ($request->sertifikat_akreditasi) {
+            $request->validate([
+                'akreditasi' => 'required',
+                'lembaga_akreditasi' => 'required|string',
+                'sertifikat_akreditasi' => 'required|image|mimes:jpeg,png,jpg|max:1024',
+                'tahun_akreditasi' => 'required',
+            ]);
+
+            // Mengambil file yang sudah divalidasi dari request
+            $photo = $request->file('sertifikat_akreditasi');
+
+            // Membuat nama unik untuk file yang diunggah
+            $filename = time() . '_sertifikat_institusi.' . $photo->getClientOriginalExtension();
+
+            // Menentukan direktori tempat penyimpanan file di dalam direktori 'public'
+            $directory = public_path('assets/img/dashboard/');
+
+            //Pindahkan file ke direktori yang diinginkan
+            $photo->move($directory, $filename);
+
+            AkreditasiInstitutiModel::create([
+                'akreditasi' => $request->akreditasi,
+                'lembaga_akreditasi' => $request->lembaga_akreditasi,
+                'sertifikat_akreditasi' => 'assets/img/dashboard/' . $filename,
+                'tahun_akreditasi' => $request->tahun_akreditasi,
+            ]);
+        }
+
+        return redirect()->route('admin-panel');
+    }
+
+    public function removeNomorTelepon (Request $request) {
+        try {
+            NomorTeleponModel::where('id', $request->id)->first()->delete();
+            return redirect(null, 200)->route('admin-panel');
+        } catch (\Exception $e) {
+            abort(404, 'ID nomor telepon tidak ditemukan');
+        }
+    }
+
+    public function addNomorTelepon (Request $request) {
+        try {
+            $username = Auth::user()->username;
+
+            NomorTeleponModel::create([
+                'nama' => $request->namaNomorTelepon,
+                'nomor_telepon' => $request->nomorTelepon,
+                'updated_at' => now(),
+                'created_at' => now(),
+                'created_by' => $username,
+                'updated_by' => $username,
+            ]);
+
+            return redirect(null, 200)->route('admin-panel');
+        } catch (Exception $e) {
+            abort(403, 'Gagal Menambah Nomor Telepon');
+        }
+    }
+
+    public function removeAkreditasi (Request $request) {
+        try {
+            AkreditasiInstitutiModel::where('id', $request->id)->first()->delete();
+
+            return redirect(null, 200)->route('admin-panel');
+        } catch (\Exception $e) {
+            abort(404, 'ID tidak ditemukan');
+        }
+    }
+
+    public function destroyLokasi($id)
+    {
+        $admin = Auth::user();
+        $lokasi = Lokasi::find($id);
+
+        if ($lokasi) {
+            $lokasi->delete();
+        }
+
+        $data = [
+            'indexActive' => 2,
+            'admin' => $admin,
+            'lokasi' => $lokasi,
+        ];
+
+        return $this->getAdmisiPanel();
+    }
+
+    public function destroyJenisTes($id)
+    {
+        $admin = Auth::user();
+        $jenis = JenisTes::find($id);
+
+        if($jenis){
+            $jenis->delete();
+        }
+
+        $data = [
+            'indexActive' => 2,
+            'admin' => $admin,
+            'jenis' => $jenis,
+        ];
+
+        return $this->getAdmisiPanel();
+    }
+
+    public function postEditlokasi(Request $request)
+    {
+        // Mendapatkan user yang sedang login
+        $admin = Auth::user();
+
+        $request->validate([
+            'id' => 'required|exists:lokasi',
+            'lokasiTes' => 'required',
+            'alamatLokasi' => 'required',
+        ]);
+
+        // Mengambil data fasilitas berdasarkan ID
+        $lokasi = Lokasi::where("id", $request->id)->first();
+
+        if ($lokasi) {
+            // Mengupdate data fasilitas
+            $lokasi->lokasiTes = $request->lokasiTes;
+            $lokasi->alamatLokasi = $request->alamatLokasi;
+
+            // Menyimpan perubahan
+            $lokasi->save();
+    }
+    // Redirect dengan pesan sukses
+    return $this->getAdmisiPanel();
+    }
+
+    public function postEditJenis(Request $request)
+    {
+        // Mendapatkan user yang sedang login
+        $admin = Auth::user();
+
+        $request->validate([
+            'id' => 'required|exists:jenis',
+            'gelombang' => 'required',
+            'jenisUjian' => 'required',
+        ]);
+
+        // Mengambil data fasilitas berdasarkan ID
+        $jenis = JenisTes::where("id", $request->id)->first();
+
+        if ($jenis) {
+            // Mengupdate data fasilitas
+            $jenis->gelombang = $request->gelombang;
+            $jenis->jenisUjian = $request->jenisUjian;
+
+            // Menyimpan perubahan
+            $jenis->save();
+    }
+    // Redirect dengan pesan sukses
+    return $this->getAdmisiPanel();
+    }
+
+    
+    public function getProgramPanel () {
+        $admin = Auth::user();
+        $faculties = Faculty::all();
+        $majors = Major::all();
+        $employees = Employee::with('major')->get();
+        $courses = Course::all();
+
+        $data = [
+            'indexActive' => 2,
+            'admin' => $admin,
+            'faculties'=>$faculties,
+            'majors'=>$majors,
+            'employees'=>$employees,
+            'courses'=>$courses,
+        ];
+        return view('admin-panel.program_panel', $data);
     }
 }

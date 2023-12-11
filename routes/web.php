@@ -1,25 +1,21 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminPanelController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\MajorController;
-use App\Http\Controllers\MitraController;
-use App\Http\Controllers\CourseController;
-
-use App\Http\Controllers\FacultyController;
-use App\Http\Controllers\ProgramController;
-use App\Http\Controllers\BeasiswaController;
-use App\Http\Controllers\EmployeeController;
-use App\Http\Controllers\PrestasiController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AdmisiController;
 use App\Http\Controllers\FasilitasController;
-use App\Http\Controllers\AdminPanelController;
 use App\Http\Controllers\PengumumanController;
-
-
+use App\Http\Controllers\BeasiswaController;
+use App\Http\Controllers\PrestasiController;
+use App\Http\Controllers\MitraController;
+use App\Http\Controllers\ProgramController;
+use App\Http\Controllers\FacultyController;
+use App\Http\Controllers\MajorController;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\CourseController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -59,7 +55,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/admins', [AdminPanelController::class, 'getAddAdminView'])->name('admins');
         Route::get('/prestasipanel', [AdminPanelController::class, 'getPrestasiPanel'])->name('prestasipanel');
         Route::get('/testimonipanel', [AdminPanelController::class, 'getTestimoniPanel'])->name('testimonipanel');
-        
+        Route::get('/program', [AdminPanelController::class, 'getProgramPanel'])->name('program-panel');
         Route::prefix('/admisi-panel')->group(function(){
             Route::post('/addjalurpendaftaran', [AdmisiController::class,'addJalur'])->name('addJalur');
             Route::post('/edit-jalur-pendaftaran', [AdmisiController::class,'editJalur'])->name('editJalur');
@@ -88,6 +84,8 @@ Route::get('/form', function () {
     return view('chatbot.form');
 })->name('form');
 
+
+
 // ROUTE PROGRAM STUDI [TEAM 02]
 
 Route::get('/program', [ProgramController::class,'program'])->name('program');
@@ -106,11 +104,9 @@ Route::delete('/admin-panel/program_panel/major/{id}/delete', [MajorController::
 Route::delete('/admin-panel/program_panel/employee/{id}/delete', [EmployeeController::class, 'destroy'])->name('admin.program.employee.destroy');
 Route::delete('/admin-panel/program_panel/course/{id}/delete', [CourseController::class, 'destroy'])->name('admin.program.course.destroy');
 
-
+// End of ROUTE PROGRAM STUDI [TEAM 02]
 
 Route::get('/prestasi', [PrestasiController::class, 'getviewPrestasi'])->name('prestasi.prestasiOverview');
 Route::get('/prestasiInstitut', [PrestasiController::class, 'getviewPrestasiInstitut'])->name('prestasi.prestasiInstitut');
 Route::get('/prestasiDosenStaff', [PrestasiController::class, 'getviewPrestasiDosenStaff'])->name('prestasi.prestasiDosenStaff');
 Route::get('/prestasiMahasiswa', [PrestasiController::class, 'getviewPrestasiMahasiswa'])->name('prestasi.prestasiMahasiswa');
-
-

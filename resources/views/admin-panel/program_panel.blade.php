@@ -282,9 +282,9 @@
                 <table class="table text-start align-middle table-striped table-bordered">
                     <thead class="align-middle">
                     <tr class="text-center">
-                        <th scope="col">#</th>
+                        <th scope="col">No</th>
                         <th scope="col">Nama</th>
-                        <th scope="col">Prodi</th>
+                        <th scope="col">Kode Prodi</th>
                         <th scope="col">Fakultas</th>
                         <th scope="col">Deskripsi</th>
                         <th scope="col">Gambar</th>
@@ -400,6 +400,7 @@
                                                     <div class="mb-3">
                                                         <label for="input_sertifikat_akreditasi" class="form-label">Gambar</label>
                                                         <input class="form-control" type="file" id="editGambarProdi" name="gambar" value="{{ $major->gambar }}" multiple>
+                                                        <img src="{{ asset('storage/' . $major->gambar) }}" alt="Gambar Fakultas" style="max-width: 100px;">
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="input_lokasi_fakultas" class="form-label">Visi</label>
@@ -627,7 +628,7 @@
                 <table class="table text-center align-middle table-striped table-bordered">
                     <thead class="align-middle">
                     <tr>
-                        <th scope="col">#</th>
+                        <th scope="col">No</th>
                         <th scope="col">Nama</th>
                         <th scope="col">Prodi</th>
                         <th scope="col">NIDN</th>
@@ -651,7 +652,7 @@
                                     <form action="{{ route('admin.program.employee.destroy', $employee->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editDosen-{{ $employee->id }}">
+                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="NoeditDosen-{{ $employee->id }}">
                                             <i class="bi bi-pen"></i>
                                         </button>
                                         <button type="submit" class="btn btn-danger" onclick="deleteEmployee({{ $employee->id }})">
@@ -726,59 +727,57 @@
     </div>
 
     <!-- Add Dosen/Staff -->
-    <div class="modal fade" id="addDosen" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title fw-bold" id="exampleModalLabel">Tambah Dosen/Staff</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form action="{{ route('employee.store') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <div class="modal-body">
-                        <div class="card-body">
-                            <div class="mb-3">
-                                <label for="kode_prodi" class="form-label">Prodi</label>
-                                {{-- <input type="text" class="form-control" id="kode_prodi" name="kode_prodi"> --}}
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected>Pilih Prodi</option>
-                                    @foreach ($majors as $major)
-                                        <option value="{{ $major->kode_prodi }}">{{ $major->nama }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="mb-3">
-                                <label for="nama" class="form-label">Nama</label>
-                                <input type="text" class="form-control" id="nama" name="nama">
-                            </div>
-                            <div class="mb-3">
-                                <label for="nidn" class="form-label">NIDN</label>
-                                <input type="text" class="form-control" id="nidn" name="nidn">
-                            </div>
-                            <div class="mb-3">
-                                <label for="jabatan" class="form-label">Jabatan</label>
-                                <input type="text" class="form-control" id="jabatan" name="jabatan">
-                            </div>
-                            <div class="mb-3">
-                                <label for="pendidikan" class="form-label">Pendidikan</label>
-                                <input type="text" class="form-control" id="pendidikan" name="pendidikan">
-                            </div>
-                            <div class="mb-3">
-                                <label for="gambar" class="form-label">Gambar</label>
-                                <input type="file" class="form-control" id="gambar" name="gambar">
-                            </div>
+<div class="modal fade" id="addDosen" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold" id="exampleModalLabel">Tambah Dosen/Staff</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="{{ route('employee.store') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-body">
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="kode_prodi" class="form-label">Prodi</label>
+                            <select class="form-select" id="kode_prodi" name="kode_prodi" aria-label="Default select example">
+                                <option selected>Pilih Prodi</option>
+                                @foreach ($majors as $major)
+                                    <option value="{{ $major->kode_prodi }}">{{ $major->nama }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="nama" class="form-label">Nama</label>
+                            <input type="text" class="form-control" id="nama" name="nama">
+                        </div>
+                        <div class="mb-3">
+                            <label for="nidn" class="form-label">NIDN</label>
+                            <input type="text" class="form-control" id="nidn" name="nidn">
+                        </div>
+                        <div class="mb-3">
+                            <label for="jabatan" class="form-label">Jabatan</label>
+                            <input type="text" class="form-control" id="jabatan" name="jabatan">
+                        </div>
+                        <div class="mb-3">
+                            <label for="pendidikan" class="form-label">Pendidikan</label>
+                            <input type="text" class="form-control" id="pendidikan" name="pendidikan">
+                        </div>
+                        <div class="mb-3">
+                            <label for="gambar" class="form-label">Gambar</label>
+                            <input type="file" class="form-control" id="gambar" name="gambar">
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <form method="dialog">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                            <button type="submit" class="btn btn-primary">Tambah</button>
-                        </form>
-                    </div>
-                </form>
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    <button type="submit" class="btn btn-primary">Tambah</button>
+                </div>
+            </form>
         </div>
     </div>
+</div>
+
 
     
 
@@ -789,7 +788,7 @@
 <section id="kurikulum-subpage" class="m-3 d-none">
 
     {{-- Button Add MK --}}
-    <button type="button" class="btn btn-success mb-2" data-bs-toggle="modal" data-bs-target="#myModalkur">
+    <button type="button" class="btn btn-success mb-2" data-bs-toggle="modal" data-bs-target="NomyModalkur">
         Tambah Matkul
     </button>
 
@@ -806,7 +805,7 @@
                         <th scope="col">No</th>
                         <th scope="col">Nama Mata Kuliah</th>
                         <th scope="col">Kode Mata Kuliah</th>
-                        <th scope="col">Kode Prodi</th>
+                        <th scope="col">Prodi</th>
                         <th scope="col">Jumlah SKS</th>
                         <th scope="col">Semester</th>
                         <th scope="col">Action</th>
@@ -825,7 +824,7 @@
                             <form action="{{ route('admin.program.course.destroy', $course->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editCourse-{{ $course->id }}">
+                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="NoeditCourse-{{ $course->id }}">
                                             <i class="bi bi-pen"></i>
                                         </button>
                                         <button type="submit" class="btn btn-danger">
@@ -847,18 +846,18 @@
                                     @method('PUT')
                                     <div class="modal-body">
                                         <div class="card-body">
-                                            <div class="mb-3">
-                                                <label for="kode_prodi" class="form-label">Prodi</label>
-                                                {{-- <input type="text" class="form-control" id="kode_prodi" name="kode_prodi" value="{{ $course->kode_prodi }}"> --}}
-                                                <select class="form-select" id="kode_prodi" name="kode_prodi" aria-label="Default select example">
-                                                    <option value="{{ ($course->major)->kode_prodi }}">{{ ($course->major)->nama }}</option>
-                                                    @foreach ($majors as $major)
-                                                        @if ($major->kode_prodi != ($course->major)->kode_prodi)
-                                                            <option value="{{ $major->kode_prodi }}">{{ $major->nama }}</option>
-                                                        @endif
-                                                    @endforeach
-                                                </select>
-                                            </div>
+                                        <div class="mb-3">
+                                                        <label for="kode_prodi" class="form-label">Kode Prodi</label>
+                                                        {{-- <input type="text" class="form-control" id="kode_prodi" name="kode_prodi" value="{{ optional($employee->major)->kode_prodi }}"> --}}
+                                                        <select class="form-select" id="kode_prodi" name="kode_prodi" aria-label="Default select example">
+                                                            <option value="{{ ($employee->major)->kode_prodi }}">{{ ($employee->major)->nama }}</option>
+                                                            @foreach ($majors as $major)
+                                                                @if ($major->kode_prodi != ($employee->major)->kode_prodi)
+                                                                    <option value="{{ $major->kode_prodi }}">{{ $major->nama }}</option>
+                                                                @endif
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
                                             <div class="mb-3">
                                                 <label for="nama" class="form-label">Nama</label>
                                                 <input type="text" class="form-control" id="nama" name="nama" value="{{ $course->nama }}">
@@ -914,13 +913,12 @@
                         @csrf
                         <div class="mb-3">
                         <label for="select_kode_prodi" class="form-label">Prodi</label>
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Pilih Prodi</option>
-                            @foreach ($majors as $major)
-                                <option value="{{ $major->kode_prodi }}">{{ $major->nama }}</option>
-                            @endforeach
-                        </select>
-                        
+                        <select class="form-select" id="kode_prodi" name="kode_prodi" aria-label="Default select example">
+                                <option selected>Pilih Prodi</option>
+                                @foreach ($majors as $major)
+                                    <option value="{{ $major->kode_prodi }}">{{ $major->nama }}</option>
+                                @endforeach
+                            </select>        
                         </div>
                         <div class="mb-3">
                             <label for="input_kode_mk" class="form-label">Kode Mata Kuliah</label>
@@ -1019,7 +1017,7 @@
 
     // TEXT EDITOR
     ClassicEditor
-        .create( document.querySelector( '#deskripsi_fakultas' ) )
+        .create( document.querySelector( 'Nodeskripsi_fakultas' ) )
         .catch( error => {
             console.error( error );
         } );
@@ -1027,7 +1025,7 @@
         
     ClassicEditor
         
-        .create( document.querySelector( '#visi_fakultas' ) )
+        .create( document.querySelector( 'Novisi_fakultas' ) )
 
         .catch( error => {
             console.error( error );
@@ -1035,14 +1033,14 @@
 
         
     ClassicEditor
-        .create( document.querySelector( '#misi_fakultas' ) )
+        .create( document.querySelector( 'Nomisi_fakultas' ) )
         .catch( error => {
             console.error( error );
         } );
 
     
         ClassicEditor
-        .create( document.querySelector( '#edit_deskripsi_fakultas' ) )
+        .create( document.querySelector( 'Noedit_deskripsi_fakultas' ) )
         .catch( error => {
             console.error( error );
         } );
@@ -1050,7 +1048,7 @@
         
     ClassicEditor
         
-        .create( document.querySelector( '#edit_visi_fakultas' ) )
+        .create( document.querySelector( 'Noedit_visi_fakultas' ) )
 
         .catch( error => {
             console.error( error );
@@ -1058,7 +1056,7 @@
 
         
     ClassicEditor
-        .create( document.querySelector( '#edit_misi_fakultas' ) )
+        .create( document.querySelector( 'Noedit_misi_fakultas' ) )
         .catch( error => {
             console.error( error );
         } );
@@ -1066,7 +1064,7 @@
 
 
         ClassicEditor
-        .create( document.querySelector( '#deskripsi_prodi' ) )
+        .create( document.querySelector( 'Nodeskripsi_prodi' ) )
         .catch( error => {
             console.error( error );
         } );
