@@ -134,7 +134,7 @@ class AdminController extends Controller
             return redirect()->route('logout');
         }
 
-        return redirect()->route('edit-profile');
+        return redirect()->route('edit-profile')->with('error', "Gagal Menghapus Akun!");
     }
 
     public function changeAdminPassword(Request $request)
