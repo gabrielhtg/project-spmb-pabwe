@@ -17,25 +17,40 @@
         </div>
     </section>
 
-    <div class="d-flex justify-content-center">
-        <ul class="nav nav-underline d-flex gap-5">
-            <li class="nav-item">
-                <a href="#" id="asrama-hyperlink" class="py-3 nav-link active" aria-current="page" onclick="showAsramaSubPage()">Asrama</a>
-            </li>
-            <li class="nav-item">
-                <a href="#" id="kesehatan-hyperlink" class="py-3 nav-link" onclick="showKesehatanSubPage()">Kesehatan & Olahraga</a>
-            </li>
-            <li class="nav-item">
-                <a href="#" id="areamhs-hyperlink" class="py-3 nav-link" onclick="showAreaSubPage()">Area Mahasiswa</a>
-            </li>
-            <li class="nav-item">
-                <a href="#" id="laboratorium-hyperlink" class="py-3 nav-link" onclick="showLaboratoriumSubPage()">Laboratorium</a>
-            </li>
-            <li class="nav-item">
-                <a href="#" id="layanan-hyperlink" class="py-3 nav-link" onclick="showLayananSubPage()">Layanan Makanan</a>
-            </li>
-        </ul>
-    </div>
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="small">Lihat Fasilitas Lainnya</span>
+                <i class="fas fa-caret-down small"></i>
+            </button>
+
+
+            <div class="collapse navbar-collapse justify-content-md-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="#" id="asrama-hyperlink" class="py-3 nav-link active" aria-current="page" onclick="showAsramaSubPage()">Asrama</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" id="kesehatan-hyperlink" class="py-3 nav-link" onclick="showKesehatanSubPage()">Kesehatan & Olahraga</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" id="areamhs-hyperlink" class="py-3 nav-link" onclick="showAreaSubPage()">Area Mahasiswa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" id="laboratorium-hyperlink" class="py-3 nav-link" onclick="showLaboratoriumSubPage()">Laboratorium</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" id="layanan-hyperlink" class="py-3 nav-link" onclick="showLayananSubPage()">Layanan Makanan</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+
+
 
     <section id="asrama-subpage" class="container">
         <div class="mt-3 mb-3">
