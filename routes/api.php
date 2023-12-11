@@ -60,7 +60,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/edit-jadwal-ujian', [JadwalUjianController::class, 'editJadwalUjian'])->name('editJadwalUjian');
     Route::delete('/delete-jadwal-ujian', [JadwalUjianController::class, 'removeJadwalUjian'])->name('removeJadwalUjian');
     Route::post('/addjalurpendaftaran', [AdmisiController::class,'addJalur'])->name('addJalur');
-    Route::post('/edit-jalur-pendaftaran', [AdmisiController::class,'editJalur'])->name('editJalur');
     Route::delete('/delete-jalur-pendaftaran/{jalur_id}', [AdmisiController::class, 'removeJalur'])->name('removeJalur');
     Route::post('/addjadwalpendaftaran', [AdmisiController::class,'addJadwalPendaftaran'])->name('addJadwalPendaftaran');
     Route::post('/editJadwalPendaftaran', [AdmisiController::class,'editJadwalPendaftaran'])->name('editJadwalPendaftaran');
