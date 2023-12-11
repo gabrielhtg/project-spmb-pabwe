@@ -2,6 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AkreditasiInstitutiModel;
+use App\Models\AkreditasiSectionModel;
+use App\Models\AlamatInstitusiModel;
+use App\Models\EmailModel;
+use App\Models\HeroSectionModel;
+use App\Models\InfografisModel;
+use App\Models\JadwalUjianModel;
+use App\Models\MbkmModel;
+use App\Models\ModelHeaderAdmisi;
+use App\Models\NomorTeleponModel;
+use App\Models\SocalMediaModel;
 use App\Models\data_institusi;
 use App\Models\Pengumuman;
 use App\models\admin;
@@ -18,6 +29,11 @@ class PengumumanController extends Controller
         // Ambil query pencarian
         $keywords = $request->query("keywords") ?? null;
         $dataInstitusi = data_institusi::where('id', 1)->first();
+        $dataAlamat = AlamatInstitusiModel::all();
+        $dataSosmed = SocalMediaModel::all();
+        $dataHeaderAdmisi = ModelHeaderAdmisi::where('id', 1)->first();
+        $dataNomorTelepon = NomorTeleponModel::all();
+        $dataEmail = EmailModel::all();
 
         // Mulai query dari model Pengumuman
         $query = Pengumuman::orderBy('tanggalPengumuman', 'desc');
@@ -33,6 +49,11 @@ class PengumumanController extends Controller
 
         $data = [
             'dataInstitusi' => $dataInstitusi,
+            'dataSosmed' => $dataSosmed,
+            'dataAlamat' => $dataAlamat,
+            'dataHeaderAdmisi' => $dataHeaderAdmisi,
+            'dataNomorTelepon' => $dataNomorTelepon,
+            'dataEmail' => $dataEmail,
             'pengumuman' => $pengumuman,
             'noSearchResults' => $pengumuman->isEmpty(),
         ];

@@ -15,14 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('nama_institusi', 30)->nullable(true);
             $table->string('singkatan_nama_institusi', 10)->nullable(true);
-            $table->string('akreditasi_singkat', 1)->nullable(true);
-            $table->string('akreditasi_lengkap', 10)->nullable(true);
+            $table->string('akreditasi', 1)->nullable(true);
             $table->string('jargon', 50)->nullable(true);
             $table->integer('jumlah_dosen')->nullable(true);
             $table->integer('jumlah_mahasiswa')->nullable(true);
             $table->integer('jumlah_alumni')->nullable(true);
-            $table->string('sertifikat_akreditasi', 100)->nullable(true);
-            $table->string('gambar_sertifikat_akreditasi', 100)->nullable(true);
             $table->string('logo_institusi', 100)->nullable(true);
             $table->timestamps();
         });
@@ -33,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('table_data_institusi');
+        Schema::dropIfExists('data_institusi');
     }
 };

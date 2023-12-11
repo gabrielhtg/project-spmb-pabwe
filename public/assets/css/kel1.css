@@ -67,10 +67,6 @@
     margin-bottom: 180px;
 }
 
-.blur-image {
-    filter: blur(2px);
-}
-
 .vertical-line {
     width: 1px;
     background-color: black;
@@ -102,7 +98,7 @@
 
 .bg-image-container {
     /*width: 200px; !* Set the desired width *!*/
-    height: 100px; /* Set the desired height */
+    height: 75px; /* Set the desired height */
     overflow: hidden;
     /*border: 1px solid #ccc; !* Optional: Add a border for visual clarity *!*/
 }
@@ -134,8 +130,34 @@
     height: auto;
 }
 
-/*.splide__slide img {*/
-/*    width: 100%;*/
-/*    height: 100%;*/
-/*    object-fit: cover;*/
-/*}*/
+     /* Style untuk wadah gambar */
+ .gambar-hero {
+     position: relative;
+     width: 100%; /* Sesuaikan lebar wadah sesuai kebutuhan Anda */
+     overflow: hidden;
+ }
+
+.gambar-hero img {
+    width: 100%; /* Agar gambar mengisi lebar wadah */
+    height: auto; /* Agar gambar menyesuaikan tinggi secara proporsional */
+    filter: blur(2px);
+    display: block; /* Menghilangkan spasi ekstra di bawah gambar */
+}
+
+@media (max-width: 768px) {
+    .gambar-hero img {
+        width: 100%; /* Agar gambar mengisi lebar wadah */
+        height: auto; /* Agar gambar menyesuaikan tinggi secara proporsional */
+        filter: blur(0px);
+        display: block; /* Menghilangkan spasi ekstra di bawah gambar */
+    }
+}
+
+/* Style tambahan untuk konten di dalam wadah (opsional) */
+.content-inside {
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    transform: translate(-40%, -50%);
+    color: white;
+}
