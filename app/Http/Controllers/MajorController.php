@@ -8,10 +8,10 @@ use App\Models\data_institusi;
 
 class MajorController extends Controller
 {
-    public function getProdi () {
+    public function getProdi(String $id) {
         $dataInstitusi = data_institusi::where('id', 1)->first();
 
-        $major = Major::with('faculty')->get();
+        $major = Major::where('id', $id)->with(['faculty', 'employee'])->get();
 
         $data = [
             'dataInstitusi' => $dataInstitusi,
@@ -41,9 +41,9 @@ class MajorController extends Controller
         ]);
 
         $extension = $request->file('gambar')->getClientOriginalExtension();
-        $gambarPath = $request->nama.'-'.now()->timestamp.'.'.$extension;
-        $request->file('gambar')->storeAs('img/program', $gambarPath);
-        // $gambarPath = $request->file('gambar')->store('img/program', 'public');
+        $lokasiPath = $request->nama.'-'.now()->timestamp.'.'.$extension;
+        // $request->file('gambar')->move(public_path('img/program/major'), $gambarPath);
+        $gambarPath = $request->file('gambar')->store('img/program/major', $lokasiPath);
         
 
         // Create a new Faculty instance
@@ -73,7 +73,7 @@ class MajorController extends Controller
     public function update(Request $request, String $id)
     {
         $request->validate([
-            'kode_prodi' => 'required|unique:majors',
+            'kode_prodi' => 'required|unique:majors,kode_prodi,' . $id,
             'nama' => 'required',
             'kode_fakultas' => 'required|max:255',
             'deskripsi' => 'required',
@@ -95,7 +95,7 @@ class MajorController extends Controller
 
         $extension = $request->file('gambar')->getClientOriginalExtension();
         $gambarPath = $request->nama.'-'.now()->timestamp.'.'.$extension;
-        $request->file('gambar')->storeAs('img/program', $gambarPath);
+        $request->file('gambar')->storeAs('img/program/major/', $gambarPath);
 
         $updatedMajor = [
             'kode_prodi' => $request->get('kode_prodi'),

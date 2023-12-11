@@ -35,7 +35,7 @@ class EmployeeController extends Controller
 
         $extension = $request->file('gambar')->getClientOriginalExtension();
         $gambarPath = $request->nama.'-'.now()->timestamp.'.'.$extension;
-        $request->file('gambar')->storeAs('img/program', $gambarPath);
+        $request->file('gambar')->storeAs('img/program/employee/', $gambarPath);
         // $gambarPath = $request->file('gambar')->store('img/program', 'public');
         
 
@@ -71,7 +71,7 @@ class EmployeeController extends Controller
 
         $extension = $request->file('gambar')->getClientOriginalExtension();
         $gambarPath = $request->nama.'-'.now()->timestamp.'.'.$extension;
-        $request->file('gambar')->storeAs('img/program', $gambarPath);
+        $request->file('gambar')->storeAs('img/program/employee', $gambarPath);
 
         $updatedEmployee = [
             'kode_prodi' => $request->get('kode_prodi'),

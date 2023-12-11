@@ -22,6 +22,6 @@ class Employee extends Model
 
     public function major()
     {
-        return $this->belongsTo(Major::class, 'kode_prodi', 'id');
+        return $this->belongsTo(Major::class, 'kode_prodi', 'kode_prodi');
     }
 }

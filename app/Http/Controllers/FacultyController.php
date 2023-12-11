@@ -36,7 +36,10 @@ class FacultyController extends Controller
             'misi' => 'required',
         ]);
 
-        $gambarPath = $request->file('gambar')->store('img/program', 'public');
+        // $gambarPath = $request->file('gambar')->store('img/program', 'public');
+        $extension = $request->file('gambar')->getClientOriginalExtension();
+        $gambarPath = $request->nama.'-'.now()->timestamp.'.'.$extension;
+        $request->file('gambar')->storeAs('img/program/faculty/', $gambarPath);
 
 
         // Create a new Faculty instance
@@ -101,7 +104,10 @@ class FacultyController extends Controller
     
         // Update gambar if provided
         if ($request->hasFile('gambar')) {
-            $gambarPath = $request->file('gambar')->store('img/program', 'public');
+            // $gambarPath = $request->file('gambar')->store('img/program', 'public');
+            $extension = $request->file('gambar')->getClientOriginalExtension();
+            $gambarPath = $request->nama.'-'.now()->timestamp.'.'.$extension;
+            $request->file('gambar')->storeAs('img/program/faculty/', $gambarPath);
             $faculty->update(['gambar' => $gambarPath]);
         }
     

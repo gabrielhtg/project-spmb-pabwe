@@ -4,8 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MajorController;
 use App\Http\Controllers\MitraController;
-use App\Http\Controllers\FacultyController;
+use App\Http\Controllers\CourseController;
 
+use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\BeasiswaController;
 use App\Http\Controllers\EmployeeController;
@@ -74,16 +75,19 @@ Route::get('/form', function () {
 
 Route::get('/program', [ProgramController::class,'program'])->name('program');
 Route::get('/fakultas/{id}', [FacultyController::class,'getFakultas'])->name('fakultas');
-Route::get('/prodi', [MajorController::class,'getProdi'])->name('prodi');
+Route::get('/prodi/{id}', [MajorController::class,'getProdi'])->name('prodi');
 Route::post('/faculties/store', [FacultyController::class, 'store'])->name('faculties.store');
 Route::post('/major/store', [MajorController::class, 'store'])->name('major.store');
 Route::post('/employee/store', [EmployeeController::class, 'store'])->name('employee.store');
+Route::post('/course/store', [CourseController::class, 'store'])->name('course.store');
 Route::put('/faculty/{id}/update', [FacultyController::class, 'update'])->name('faculty.update');
 Route::patch('/major/{id}/update', [MajorController::class, 'update'])->name('major.update');
 Route::patch('/employee/{id}/update', [EmployeeController::class, 'update'])->name('employee.update');
+Route::put('/course/{id}/update', [CourseController::class, 'update'])->name('course.update');
 Route::delete('/admin-panel/program_panel/faculty/{id}/delete', [FacultyController::class, 'destroy'])->name('admin.program.faculty.destroy');
 Route::delete('/admin-panel/program_panel/major/{id}/delete', [MajorController::class, 'destroy'])->name('admin.program.major.destroy');
 Route::delete('/admin-panel/program_panel/employee/{id}/delete', [EmployeeController::class, 'destroy'])->name('admin.program.employee.destroy');
+Route::delete('/admin-panel/program_panel/course/{id}/delete', [CourseController::class, 'destroy'])->name('admin.program.course.destroy');
 
 
 

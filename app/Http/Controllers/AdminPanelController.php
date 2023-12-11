@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\admin;
 use App\Models\Major;
+use App\Models\Course;
 use App\Models\Faculty;
 use App\Models\Employee;
 use Illuminate\Http\Request;
@@ -87,7 +88,8 @@ class AdminPanelController extends Controller
         $admin = Auth::user();
         $faculties = Faculty::all();
         $majors = Major::all();
-        $employees = Employee::all();
+        $employees = Employee::with('major')->get();
+        $courses = Course::all();
 
         $data = [
             'indexActive' => 3,
@@ -95,6 +97,7 @@ class AdminPanelController extends Controller
             'faculties'=>$faculties,
             'majors'=>$majors,
             'employees'=>$employees,
+            'courses'=>$courses,
         ];
         return view('admin-panel.program_panel', $data);
     }
