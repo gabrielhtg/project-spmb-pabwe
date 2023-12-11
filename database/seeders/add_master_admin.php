@@ -19,6 +19,7 @@ class add_master_admin extends Seeder
             'password' => Hash::make('admin'),
             'firstname' => 'Master',
             'lastname' => 'Admin',
+            'created_by' => 'IF 21 - BANDAR',
             'created_at' => now(),
             'updated_at' => now()
         ]);

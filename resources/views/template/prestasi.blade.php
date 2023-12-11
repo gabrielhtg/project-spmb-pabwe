@@ -5,11 +5,12 @@
         <div id="carouselExample" class="carousel slide">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="{{ asset('/assets/img/prestasi/mahasiswa.jpg') }}" class="img-fluid d-block w-60" alt="header-fasilitas">
-                     <div class="carousel-caption d-none d-md-block text-start">
-                        <div class="d-flex flex-column text-start h-100 pb-3">
-                             <h2 class=" fw-bold">Discover our campus achievemet</h2>
-                        </div>                            
+                    <img src="{{ asset('/assets/img/prestasi/prestasi-header.jpg') }}" class="img-fluid d-block w-60" alt="header-fasilitas">
+                    <div class="carousel-caption d-none d-md-block text-center"> <!-- Center the text -->
+                        <div class="d-flex flex-column text-center h-100 pb-3"> <!-- Center the content vertically -->
+                            <h2 class="fw-bold text-uppercase">OUR ACHIEVEMENT</h2>
+                            <h4 class="fw-italic">"If you can dream it, you can do it."</h4>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -36,3 +37,4 @@
             </div>
         </div>
     </nav>
+</main>

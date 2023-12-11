@@ -127,14 +127,14 @@
 
     <section class="container">
         <div class="cat-prestasi">
-        <div class="d-flex justify-content-between align-items-center">
+        {{-- <div class="d-flex justify-content-between align-items-center">
             <h2>Prestasi Mahasiswa</h2>
-        </div>
+        </div> --}}
 
         <div class="row">
             <div class="col">
             <div class="card">
-                <img src="{{asset('assets/img/prestasi/cta.jpg')}}" class="card-img-top" alt="..." />
+                <img src="{{asset('assets/img/prestasi/mahasiswa.jpg')}}" class="card-img-top" alt="..." />
                 <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">
@@ -150,7 +150,7 @@
                     <div class="overlay"></div>
                     <div class="popup-content">
                     <img
-                        src="{{asset('assets/img/prestasi/cta.jpg')}}"
+                        src="{{asset('assets/img/prestasi/mahasiswa.jpg')}}"
                         class="card-img-top"
                         alt="pict1"
                     />
@@ -183,7 +183,7 @@
 
             <div class="col">
             <div class="card">
-                <img src="{{asset('assets/img/prestasi/cta.jpg')}}" class="card-img-top" alt="..." />
+                <img src="{{asset('assets/img/prestasi/mahasiswa.jpg')}}" class="card-img-top" alt="..." />
                 <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">
@@ -199,7 +199,7 @@
                     <div class="overlay"></div>
                     <div class="popup-content">
                     <img
-                        src="{{asset('assets/img/prestasi/cta.jpg')}}"
+                        src="{{asset('assets/img/prestasi/mahasiswa.jpg')}}"
                         class="card-img-top"
                         alt="pict1"
                     />
@@ -232,7 +232,7 @@
 
             <div class="col">
             <div class="card">
-                <img src="{{asset('assets/img/prestasi/cta.jpg')}}" class="card-img-top" alt="..." />
+                <img src="{{asset('assets/img/prestasi/mahasiswa.jpg')}}" class="card-img-top" alt="..." />
                 <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">
@@ -248,7 +248,7 @@
                     <div class="overlay"></div>
                     <div class="popup-content">
                     <img
-                        src="{{asset('assets/img/prestasi/cta.jpg')}}"
+                        src="{{asset('assets/img/prestasi/mahasiswa.jpg')}}"
                         class="card-img-top"
                         alt="pict1"
                     />
@@ -281,7 +281,7 @@
 
             <div class="col">
             <div class="card">
-                <img src="{{asset('assets/img/prestasi/cta.jpg')}}" class="card-img-top" alt="..." />
+                <img src="{{asset('assets/img/prestasi/mahasiswa.jpg')}}" class="card-img-top" alt="..." />
                 <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">
@@ -297,205 +297,7 @@
                     <div class="overlay"></div>
                     <div class="popup-content">
                     <img
-                        src="{{asset('assets/img/prestasi/cta.jpg')}}"
-                        class="card-img-top"
-                        alt="pict1"
-                    />
-
-                    <div class="content-text">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">
-                        Some quick example text to build on the card title and
-                        make up the bulk of the card's content. Some quick
-                        example text to build on the card title and make up the
-                        bulk of the card's content. Some quick example text to
-                        build on the card title and make up the bulk of the
-                        card's content. Some quick example text to build on the
-                        card title and make up the bulk of the card's content.
-                        Some quick example text to build on the card title and
-                        make up the bulk of the card's content. Some quick
-                        example text to build on the card title and make up the
-                        bulk of the card's content.
-                        </p>
-                    </div>
-                    <div class="popup-footer">
-                        <span class="popup-date">Date: November 25, 2023</span>
-                        <button class="btn-close"></button>
-                    </div>
-                    </div>
-                </div>
-                </div>
-            </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col">
-            <div class="card">
-                <img src="{{asset('assets/img/prestasi/cta.jpg')}}" class="card-img-top" alt="..." />
-                <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                    Some quick example text to build on the card title and make up
-                    the bulk of the card's content.
-                </p>
-                <div class="d-flex justify-content-between align-items-center">
-                    <p style="font-size: 14px; margin: 0;">25 Nov 2023</p>
-                    <a href="#" class="btn btn-primary open-popup" data-popup="#popup1">See more</a>
-                </div>
-
-                <div class="popup" id="popup1">
-                    <div class="overlay"></div>
-                    <div class="popup-content">
-                    <img
-                        src="{{asset('assets/img/prestasi/cta.jpg')}}"
-                        class="card-img-top"
-                        alt="pict1"
-                    />
-
-                    <div class="content-text">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">
-                        Some quick example text to build on the card title and
-                        make up the bulk of the card's content. Some quick
-                        example text to build on the card title and make up the
-                        bulk of the card's content. Some quick example text to
-                        build on the card title and make up the bulk of the
-                        card's content. Some quick example text to build on the
-                        card title and make up the bulk of the card's content.
-                        Some quick example text to build on the card title and
-                        make up the bulk of the card's content. Some quick
-                        example text to build on the card title and make up the
-                        bulk of the card's content.
-                        </p>
-                    </div>
-                    <div class="popup-footer">
-                        <span class="popup-date">Date: November 25, 2023</span>
-                        <button class="btn-close"></button>
-                    </div>
-                    </div>
-                </div>
-                </div>
-            </div>
-            </div>
-
-            <div class="col">
-            <div class="card">
-                <img src="{{asset('assets/img/prestasi/cta.jpg')}}" class="card-img-top" alt="..." />
-                <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                    Some quick example text to build on the card title and make up
-                    the bulk of the card's content.
-                </p>
-                <div class="d-flex justify-content-between align-items-center">
-                    <p style="font-size: 14px; margin: 0;">25 Nov 2023</p>
-                    <a href="#" class="btn btn-primary open-popup" data-popup="#popup1">See more</a>
-                </div>
-
-                <div class="popup" id="popup1">
-                    <div class="overlay"></div>
-                    <div class="popup-content">
-                    <img
-                        src="{{asset('assets/img/prestasi/cta.jpg')}}"
-                        class="card-img-top"
-                        alt="pict1"
-                    />
-
-                    <div class="content-text">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">
-                        Some quick example text to build on the card title and
-                        make up the bulk of the card's content. Some quick
-                        example text to build on the card title and make up the
-                        bulk of the card's content. Some quick example text to
-                        build on the card title and make up the bulk of the
-                        card's content. Some quick example text to build on the
-                        card title and make up the bulk of the card's content.
-                        Some quick example text to build on the card title and
-                        make up the bulk of the card's content. Some quick
-                        example text to build on the card title and make up the
-                        bulk of the card's content.
-                        </p>
-                    </div>
-                    <div class="popup-footer">
-                        <span class="popup-date">Date: November 25, 2023</span>
-                        <button class="btn-close"></button>
-                    </div>
-                    </div>
-                </div>
-                </div>
-            </div>
-            </div>
-
-            <div class="col">
-            <div class="card">
-                <img src="{{asset('assets/img/prestasi/cta.jpg')}}" class="card-img-top" alt="..." />
-                <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                    Some quick example text to build on the card title and make up
-                    the bulk of the card's content.
-                </p>
-                <div class="d-flex justify-content-between align-items-center">
-                    <p style="font-size: 14px; margin: 0;">25 Nov 2023</p>
-                    <a href="#" class="btn btn-primary open-popup" data-popup="#popup1">See more</a>
-                </div>
-
-                <div class="popup" id="popup1">
-                    <div class="overlay"></div>
-                    <div class="popup-content">
-                    <img
-                        src="{{asset('assets/img/prestasi/cta.jpg')}}"
-                        class="card-img-top"
-                        alt="pict1"
-                    />
-
-                    <div class="content-text">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">
-                        Some quick example text to build on the card title and
-                        make up the bulk of the card's content. Some quick
-                        example text to build on the card title and make up the
-                        bulk of the card's content. Some quick example text to
-                        build on the card title and make up the bulk of the
-                        card's content. Some quick example text to build on the
-                        card title and make up the bulk of the card's content.
-                        Some quick example text to build on the card title and
-                        make up the bulk of the card's content. Some quick
-                        example text to build on the card title and make up the
-                        bulk of the card's content.
-                        </p>
-                    </div>
-                    <div class="popup-footer">
-                        <span class="popup-date">Date: November 25, 2023</span>
-                        <button class="btn-close"></button>
-                    </div>
-                    </div>
-                </div>
-                </div>
-            </div>
-            </div>
-
-            <div class="col">
-            <div class="card">
-                <img src="{{asset('assets/img/prestasi/cta.jpg')}}" class="card-img-top" alt="..." />
-                <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                    Some quick example text to build on the card title and make up
-                    the bulk of the card's content.
-                </p>
-                <div class="d-flex justify-content-between align-items-center">
-                    <p style="font-size: 14px; margin: 0;">25 Nov 2023</p>
-                    <a href="#" class="btn btn-primary open-popup" data-popup="#popup1">See more</a>
-                </div>
-
-                <div class="popup" id="popup1">
-                    <div class="overlay"></div>
-                    <div class="popup-content">
-                    <img
-                        src="{{asset('assets/img/prestasi/cta.jpg')}}"
+                        src="{{asset('assets/img/prestasi/mahasiswa.jpg')}}"
                         class="card-img-top"
                         alt="pict1"
                     />
@@ -530,7 +332,7 @@
         <div class="row">
             <div class="col">
             <div class="card">
-                <img src="{{asset('assets/img/prestasi/cta.jpg')}}" class="card-img-top" alt="..." />
+                <img src="{{asset('assets/img/prestasi/mahasiswa.jpg')}}" class="card-img-top" alt="..." />
                 <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">
@@ -546,7 +348,7 @@
                     <div class="overlay"></div>
                     <div class="popup-content">
                     <img
-                        src="{{asset('assets/img/prestasi/cta.jpg')}}"
+                        src="{{asset('assets/img/prestasi/mahasiswa.jpg')}}"
                         class="card-img-top"
                         alt="pict1"
                     />
@@ -579,7 +381,7 @@
 
             <div class="col">
             <div class="card">
-                <img src="{{asset('assets/img/prestasi/cta.jpg')}}" class="card-img-top" alt="..." />
+                <img src="{{asset('assets/img/prestasi/mahasiswa.jpg')}}" class="card-img-top" alt="..." />
                 <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">
@@ -595,7 +397,7 @@
                     <div class="overlay"></div>
                     <div class="popup-content">
                     <img
-                        src="{{asset('assets/img/prestasi/cta.jpg')}}"
+                        src="{{asset('assets/img/prestasi/mahasiswa.jpg')}}"
                         class="card-img-top"
                         alt="pict1"
                     />
@@ -628,7 +430,7 @@
 
             <div class="col">
             <div class="card">
-                <img src="{{asset('assets/img/prestasi/cta.jpg')}}" class="card-img-top" alt="..." />
+                <img src="{{asset('assets/img/prestasi/mahasiswa.jpg')}}" class="card-img-top" alt="..." />
                 <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">
@@ -644,7 +446,7 @@
                     <div class="overlay"></div>
                     <div class="popup-content">
                     <img
-                        src="{{asset('assets/img/prestasi/cta.jpg')}}"
+                        src="{{asset('assets/img/prestasi/mahasiswa.jpg')}}"
                         class="card-img-top"
                         alt="pict1"
                     />
@@ -677,7 +479,7 @@
 
             <div class="col">
             <div class="card">
-                <img src="{{asset('assets/img/prestasi/cta.jpg')}}" class="card-img-top" alt="..." />
+                <img src="{{asset('assets/img/prestasi/mahasiswa.jpg')}}" class="card-img-top" alt="..." />
                 <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">
@@ -693,7 +495,205 @@
                     <div class="overlay"></div>
                     <div class="popup-content">
                     <img
-                        src="{{asset('assets/img/prestasi/cta.jpg')}}"
+                        src="{{asset('assets/img/prestasi/mahasiswa.jpg')}}"
+                        class="card-img-top"
+                        alt="pict1"
+                    />
+
+                    <div class="content-text">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">
+                        Some quick example text to build on the card title and
+                        make up the bulk of the card's content. Some quick
+                        example text to build on the card title and make up the
+                        bulk of the card's content. Some quick example text to
+                        build on the card title and make up the bulk of the
+                        card's content. Some quick example text to build on the
+                        card title and make up the bulk of the card's content.
+                        Some quick example text to build on the card title and
+                        make up the bulk of the card's content. Some quick
+                        example text to build on the card title and make up the
+                        bulk of the card's content.
+                        </p>
+                    </div>
+                    <div class="popup-footer">
+                        <span class="popup-date">Date: November 25, 2023</span>
+                        <button class="btn-close"></button>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+            <div class="card">
+                <img src="{{asset('assets/img/prestasi/mahasiswa.jpg')}}" class="card-img-top" alt="..." />
+                <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                    Some quick example text to build on the card title and make up
+                    the bulk of the card's content.
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <p style="font-size: 14px; margin: 0;">25 Nov 2023</p>
+                    <a href="#" class="btn btn-primary open-popup" data-popup="#popup1">See more</a>
+                </div>
+
+                <div class="popup" id="popup1">
+                    <div class="overlay"></div>
+                    <div class="popup-content">
+                    <img
+                        src="{{asset('assets/img/prestasi/mahasiswa.jpg')}}"
+                        class="card-img-top"
+                        alt="pict1"
+                    />
+
+                    <div class="content-text">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">
+                        Some quick example text to build on the card title and
+                        make up the bulk of the card's content. Some quick
+                        example text to build on the card title and make up the
+                        bulk of the card's content. Some quick example text to
+                        build on the card title and make up the bulk of the
+                        card's content. Some quick example text to build on the
+                        card title and make up the bulk of the card's content.
+                        Some quick example text to build on the card title and
+                        make up the bulk of the card's content. Some quick
+                        example text to build on the card title and make up the
+                        bulk of the card's content.
+                        </p>
+                    </div>
+                    <div class="popup-footer">
+                        <span class="popup-date">Date: November 25, 2023</span>
+                        <button class="btn-close"></button>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+
+            <div class="col">
+            <div class="card">
+                <img src="{{asset('assets/img/prestasi/mahasiswa.jpg')}}" class="card-img-top" alt="..." />
+                <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                    Some quick example text to build on the card title and make up
+                    the bulk of the card's content.
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <p style="font-size: 14px; margin: 0;">25 Nov 2023</p>
+                    <a href="#" class="btn btn-primary open-popup" data-popup="#popup1">See more</a>
+                </div>
+
+                <div class="popup" id="popup1">
+                    <div class="overlay"></div>
+                    <div class="popup-content">
+                    <img
+                        src="{{asset('assets/img/prestasi/mahasiswa.jpg')}}"
+                        class="card-img-top"
+                        alt="pict1"
+                    />
+
+                    <div class="content-text">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">
+                        Some quick example text to build on the card title and
+                        make up the bulk of the card's content. Some quick
+                        example text to build on the card title and make up the
+                        bulk of the card's content. Some quick example text to
+                        build on the card title and make up the bulk of the
+                        card's content. Some quick example text to build on the
+                        card title and make up the bulk of the card's content.
+                        Some quick example text to build on the card title and
+                        make up the bulk of the card's content. Some quick
+                        example text to build on the card title and make up the
+                        bulk of the card's content.
+                        </p>
+                    </div>
+                    <div class="popup-footer">
+                        <span class="popup-date">Date: November 25, 2023</span>
+                        <button class="btn-close"></button>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+
+            <div class="col">
+            <div class="card">
+                <img src="{{asset('assets/img/prestasi/mahasiswa.jpg')}}" class="card-img-top" alt="..." />
+                <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                    Some quick example text to build on the card title and make up
+                    the bulk of the card's content.
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <p style="font-size: 14px; margin: 0;">25 Nov 2023</p>
+                    <a href="#" class="btn btn-primary open-popup" data-popup="#popup1">See more</a>
+                </div>
+
+                <div class="popup" id="popup1">
+                    <div class="overlay"></div>
+                    <div class="popup-content">
+                    <img
+                        src="{{asset('assets/img/prestasi/mahasiswa.jpg')}}"
+                        class="card-img-top"
+                        alt="pict1"
+                    />
+
+                    <div class="content-text">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">
+                        Some quick example text to build on the card title and
+                        make up the bulk of the card's content. Some quick
+                        example text to build on the card title and make up the
+                        bulk of the card's content. Some quick example text to
+                        build on the card title and make up the bulk of the
+                        card's content. Some quick example text to build on the
+                        card title and make up the bulk of the card's content.
+                        Some quick example text to build on the card title and
+                        make up the bulk of the card's content. Some quick
+                        example text to build on the card title and make up the
+                        bulk of the card's content.
+                        </p>
+                    </div>
+                    <div class="popup-footer">
+                        <span class="popup-date">Date: November 25, 2023</span>
+                        <button class="btn-close"></button>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+
+            <div class="col">
+            <div class="card">
+                <img src="{{asset('assets/img/prestasi/mahasiswa.jpg')}}" class="card-img-top" alt="..." />
+                <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                    Some quick example text to build on the card title and make up
+                    the bulk of the card's content.
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <p style="font-size: 14px; margin: 0;">25 Nov 2023</p>
+                    <a href="#" class="btn btn-primary open-popup" data-popup="#popup1">See more</a>
+                </div>
+
+                <div class="popup" id="popup1">
+                    <div class="overlay"></div>
+                    <div class="popup-content">
+                    <img
+                        src="{{asset('assets/img/prestasi/mahasiswa.jpg')}}"
                         class="card-img-top"
                         alt="pict1"
                     />
