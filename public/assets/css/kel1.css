@@ -98,7 +98,7 @@
 
 .bg-image-container {
     /*width: 200px; !* Set the desired width *!*/
-    height: 100px; /* Set the desired height */
+    height: 75px; /* Set the desired height */
     overflow: hidden;
     /*border: 1px solid #ccc; !* Optional: Add a border for visual clarity *!*/
 }

@@ -17,9 +17,9 @@
 {{--    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" />--}}
 {{--    <script type="text/javascript" src="cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>--}}
 
-    <!-- include summernote css/js-->
-    <link href="{{ asset('assets/summernote-0.8.18-dist/summernote.css') }}" rel="stylesheet">
-    <script src="{{ asset('assets/summernote-0.8.18-dist/summernote.js') }}"></script>
+    <!-- include summernote css/js -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
     <title>Admin Panel</title>
 </head>
@@ -96,7 +96,7 @@
                     <div class="btn-group">
                         <button type="button" style="border-style: none;" class="ps-1 bg-light dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
                             <span class="me-3">Hii {{ $admin->firstname }}!!</span>
-                            <img class="border border-1 border-primary" src="{{ $admin->profile_pict ? asset($admin->profile_pict) : asset("assets/img/admin/default.png") }}" alt="foto_profil" style="width: 40px; border-radius: 50%">
+                            <img class="border border-1 border-primary" src="{{ $admin->profile_pict ? asset($admin->profile_pict) : asset("assets/img/admin/default.png") }}" alt="foto_profil" style="width: 40px; height: 40px; border-radius: 50%">
                             <span class="visually-hidden">Toggle Dropdown</span>
                         </button>
                         <ul class="dropdown-menu mt-3 dropdown-menu-end">

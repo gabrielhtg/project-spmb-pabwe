@@ -118,7 +118,9 @@
                                 </td>
                                 <td>{{ $e->tahun_akreditasi }}</td>
                                 <td>
-                                    <form action="{{ route('removeAkreditasi') }}">
+                                    <form action="{{ route('removeAkreditasi') }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
                                         <input type="hidden" name="id" value="{{ $e->id }}">
                                         <button type="submit" class="btn btn-danger">
                                             <i class="bi bi-trash"></i>

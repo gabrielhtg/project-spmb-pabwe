@@ -13,8 +13,8 @@
             </div>
             <div class="mb-3">
                 <label for="input_deskripsi_akreditas_section" class="form-label fw-semibold">Paragraph</label>
-                <textarea type="text" class="form-control" id="input_deskripsi_akreditas_section"
-                       name="input_deskripsi" rows="3">{{ $dataAkreditasiDashboard->description }}</textarea>
+                <textarea type="text" id="input_deskripsi_akreditas_section"
+                       name="input_deskripsi">{{ $dataAkreditasiDashboard->description }}</textarea>
             </div>
         </div>
         <div class="card-footer bg-white">
@@ -22,3 +22,12 @@
         </div>
     </form>
 </div>
+
+<script>
+    $(document).ready(function() {
+        $('#input_deskripsi_akreditas_section').summernote({
+            height: 100,
+            maxHeight: 250,
+        });
+    });
+</script>
