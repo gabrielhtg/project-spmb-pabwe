@@ -24,8 +24,9 @@ class PengumumanController extends Controller
 
         // Jika terdapat keyword pencarian, tambahkan kondisi WHERE
         if ($keywords !== null) {
-            $query->where("judulPengumuman", "LIKE", "%$keywords%");
-        }
+            $query->where("judulPengumuman", "LIKE", "%$keywords%")
+                  ->orWhere("kategoriPengumuman", "LIKE", "%$keywords%");
+        } 
 
         // Eksekusi query dan terapkan paginasi
         $pengumuman = $query->paginate(10);
@@ -33,6 +34,7 @@ class PengumumanController extends Controller
         $data = [
             'dataInstitusi' => $dataInstitusi,
             'pengumuman' => $pengumuman,
+            'noSearchResults' => $pengumuman->isEmpty(),
         ];
 
         return view("pengumuman.pengumuman", $data);

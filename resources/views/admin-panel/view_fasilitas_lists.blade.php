@@ -33,13 +33,19 @@
                         @endphp
                     @endforeach
 
-                    @foreach ($fasilitasByCategory as $kategori => $jumlahFasilitas)
+                    @forelse ($fasilitasByCategory as $kategori => $jumlahFasilitas)
                         <tr>
                             <td>{{ $counter++ }}</td>
                             <td>{{ $kategori }}</td>
                             <td>{{ $jumlahFasilitas }}</td>
                         </tr>
-                    @endforeach
+                        @empty
+                            <tr>
+                                <td colspan="8" class="text-center">
+                                    <span class="fs-6">Tidak ada data</span>
+                                </td>
+                            </tr>
+                    @endforelse
                 </tbody>
             </table>
 
@@ -67,11 +73,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @if (!empty($fasilitas))
                             @php
                                 $counter = 1;
                             @endphp
-                            @foreach ($fasilitas as $item)
+                            @forelse ($fasilitas as $item)
                                 <tr>
                                 <th>{{ $counter++ }}</th>
                                 <td>{{ $item->kategori }}</td>
@@ -111,12 +116,13 @@
                                         </div>
                                     </td>
                                 </tr>
-                            @endforeach
-                        @else
-                            <tr>
-                                <td colspan="8" class="text-center text-muted">Belum ada data tersedia!</td>
-                            </tr>
-                        @endif
+                                @empty
+                                    <tr>
+                                        <td colspan="8" class="text-center">
+                                            <span class="fs-6">Tidak ada data</span>
+                                        </td>
+                                    </tr>
+                            @endforelse
                     </tbody>
                 </table>
 

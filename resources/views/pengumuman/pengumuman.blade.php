@@ -48,7 +48,7 @@
                         @php
                             $counter = 1;
                         @endphp
-                        @foreach($pengumuman as $item)
+                        @forelse($pengumuman as $item)
                         <tr>
                             <td style="text-align:center;">{{$counter++}}</td>
                             <td style="text-align:center;"><button type="button" class="btn btn-light" disabled>{{$item->kategoriPengumuman}}</button>
@@ -56,7 +56,16 @@
                             <td><a href="{{ asset('assets/file_Pengumuman/' . $item->filePengumuman) }}" target="_blank" class="text-decoration-none">{{$item->judulPengumuman}}</a></td>
                             <td style="text-align:center;">{{ date('d F Y', strtotime($item->tanggalPengumuman)) }}</td>
                         </tr>
-                        @endforeach
+
+                        @empty
+                            @if($noSearchResults)
+                                <tr>
+                                    <td colspan="8" class="text-center text-primary">
+                                        <span class="fs-6">Pengumuman tidak tersedia!</span>
+                                    </td>
+                                </tr>
+                            @endif
+                        @endforelse
                     </tbody>
 
 
