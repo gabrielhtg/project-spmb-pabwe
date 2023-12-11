@@ -1,57 +1,81 @@
 @extends('template.admin-panel-template')
 
 @section('isi-admin-panel')
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <img src="..." class="rounded me-2" alt="...">
+                <strong class="me-auto">Bootstrap</strong>
+                <small>11 mins ago</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                Hello, world! This is a toast message.
+            </div>
+        </div>
+    </div>
+
     <section id="tambah-admin" class="container-fluid p-3">
 
-        <div class="d-flex justify-content-end mb-3">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addAdminModal">
-                Tambah Admin
+        <!-- Button trigger modal -->
+        <div class="d-flex justify-content-end w-100 mb-3">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Tambah
             </button>
+        </div>
 
-            <div class="modal fade" id="addAdminModal" tabindex="-1" aria-labelledby="addAdminModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5 fw-semibold" id="tambah-admin-label">
-                                Tambah Admin
-                            </h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                        </div>
-                        <form action="{{ route('add-admin') }}" method="post" enctype="multipart/form-data">
-                            @csrf
-                            <div class="modal-body text-start">
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Admin</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                        <div class="modal-body">
+                            <form id="myForm" action="{{ route('add-admin') }}" method="post" enctype="multipart/form-data">
+                                @csrf
                                 <label class="form-label w-100 mb-3 ">
                                     Username
-                                    <input type="text" class="form-control" name="username">
+                                    <input type="text" class="form-control" name="username" required>
+                                    @error('username')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </label>
                                 <label class="form-label w-100 mb-3 ">
                                     Password
-                                    <input type="password" class="form-control" name="password">
+                                    <input type="password" class="form-control" name="password" required>
+                                    @error('password')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </label>
                                 <label class="form-label w-100 mb-3 ">
                                     Firstname
-                                    <input type="text" class="form-control" name="firstname">
+                                    <input type="text" class="form-control" name="firstname" required>
+                                    @error('firstname')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </label>
                                 <label class="form-label w-100 mb-3 ">
                                     Lastname
-                                    <input type="text" class="form-control" name="lastname">
+                                    <input type="text" class="form-control" name="lastname" required>
+                                    @error('lastname')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </label>
                                 <label class="form-label w-100">
                                     Foto Profil
                                     <input type="file" class="form-control" name="profile_pict">
+                                    @error('profile_pict')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </label>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Close
-                                </button>
-                                <button type="submit" class="btn btn-primary">
-                                    Save
-                                </button>
-                            </div>
-                        </form>
-                    </div>
+                            </form>
+                         </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" form="myForm" class="btn btn-primary">Save changes</button>
+                        </div>
                 </div>
             </div>
         </div>
@@ -167,5 +191,9 @@
             </tbody>
         </table>
     </section>
+
+    <script>
+
+    </script>
 @endsection
 

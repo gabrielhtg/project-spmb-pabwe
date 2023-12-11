@@ -122,17 +122,17 @@ class AdminPanelController extends Controller
 
     public function addSocialMedia(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'input_nama_social_media' => 'required|string|50',
-            'input_link' => 'required|string|150',
-            'input_logo_social_media' => 'required|string|100',
+        $request->validate([
+            'input_nama_social_media' => 'required|string|max:50',
+            'input_link_social_media' => 'required|string|max:150',
+            'input_logo_social_media' => 'required|string|max:100',
         ]);
 
         $username = Auth::user()->username;
 
         SocalMediaModel::create([
             'nama' => $request->input_nama_social_media,
-            'link' => $request->input_link,
+            'link' => $request->input_link_social_media,
             'icon' => $request->input_logo_social_media,
             'created_by' => $username,
             'updated_by' => $username,
@@ -143,7 +143,14 @@ class AdminPanelController extends Controller
     }
 
     public function updateSocialMedia (Request $request) {
+
         $socialMedia = SocalMediaModel::where('id', $request->id)->first();
+
+        $request->validate([
+            'input_nama_socialmedia' => 'required',
+            'input_link' => 'required',
+            'input_icon' => 'required',
+        ]);
 
         $socialMedia->nama = $request->input_nama_socialmedia;
         $socialMedia->link = $request->input_link;
@@ -444,5 +451,22 @@ class AdminPanelController extends Controller
     }
     // Redirect dengan pesan sukses
     return $this->getAdmisiPanel();
+    }
+
+    public function updateAkreditasiSection(Request $request) {
+        $request->validate([
+            'input_header' => 'required|string|max:20',
+            'input_deskripsi' => 'required|string|max:250',
+        ]);
+
+        $akreditasiSection = AkreditasiSectionModel::where('id', 1)->first();
+
+        $akreditasiSection->header = $request->input_header;
+        $akreditasiSection->description = $request->input_deskripsi;
+        $akreditasiSection->updated_at = now();
+
+        $akreditasiSection->update();
+
+        return redirect()->back();
     }
 }

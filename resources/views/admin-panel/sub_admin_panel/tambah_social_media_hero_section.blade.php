@@ -1,7 +1,7 @@
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary mt-3 mb-2 align-self-end" data-bs-toggle="modal"
         data-bs-target="#tambah_social_media_section_modal">
-    Tambah Social Media (Max 5)
+    Tambah Social Media
 </button>
 
 <!-- Modal -->

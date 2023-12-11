@@ -18,9 +18,9 @@
                         <label class="form-label w-100">
                             Akreditasi
                             <select name="akreditasi" class="form-control">
-                                <option value="A">A</option>
-                                <option value="B">B</option>
-                                <option value="C">C</option>
+                                <option value="A">Unggul</option>
+                                <option value="B">Baik Sekali</option>
+                                <option value="C">Baik</option>
                             </select>
                             @error('akreditasi')
                             <span class="text-danger">{{ $message }}</span>
