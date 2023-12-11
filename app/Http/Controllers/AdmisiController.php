@@ -8,6 +8,8 @@ use App\Models\InfografisModel;
 use App\Models\MbkmModel;
 use App\Models\ModelHeaderAdmisi;
 use App\Models\JalurPendaftaranModel;
+use App\Models\BiayaAdminModel;
+use App\Models\JadwalPendaftaranModel;
 use App\Models\Lokasi;
 use App\Models\JenisTes;
 use Illuminate\Http\Request;
@@ -82,40 +84,6 @@ class AdmisiController extends Controller
         MbkmModel::where('id', $request->id)->first()->delete();
 
         return redirect()->route('admisi-panel');
-    }
-
-    public function addJalur(Request $request)
-    {
-
-        JalurPendaftaranModel::create([
-            'jalurPendaftaran' => $request->inputJalurPendaftaran,
-            'desk_pers_umum' => $request->input_desk_pers_umum,
-            'icon' => $request->input_logo_social_media,
-            'created_by' => Auth::user()->username,
-            'updated_by' => Auth::user()->username,
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-        return redirect('admisi-panel');
-    }
-
-    public function editJalur (Request $request) {
-        $jalur = JalurPendaftaranModel::where('id', $request->id)->first();
-
-        $jalur->jalurPendaftaran = $request->inputJalurPendaftaran;
-        $jalur->desk_pers_umum = $request->input_desk_pers_umum;
-
-        $jalur->updated_by = Auth::user()->username;
-
-        $jalur->update();
-
-        return redirect()->route('admisi-panel');
-    }
-
-    public function removeJalur(Request $request)
-    {
-        JalurPendaftaranModel::where('id', $request->id)->first()->delete();
-    return redirect()->back();
     }
 
     public function addInfografisPmdk (Request $request)
@@ -239,5 +207,171 @@ class AdmisiController extends Controller
         return redirect()->route('admisi-panel');
     }
 
+    public function addJalur(Request $request)
+    {
+        $request->validate([
+            'jalurPendaftaran'=>'required',
+            'desk_pers_umum'=>'required',
+        ],[
+            'jalurPendaftaran.required' => 'Kolom Jalur Pendaftaran harus diisi.',
+            'desk_pers_umum.required' => 'Kolom Deskripsi Persyaratan Umum harus diisi.',
+        ]);
+        try {
+            JalurPendaftaranModel::create([
+                'jalurPendaftaran' => $request->jalurPendaftaran,
+                'desk_pers_umum' => $request->desk_pers_umum,
+                'created_by' => Auth::user()->username,
+                'updated_by' => Auth::user()->username,
+            ]);
+    
+            return redirect()->route('admisi-panel');
+        } catch (\Exception $e) {
+            return back()->withInput()->withErrors(['error' => 'Semua Kolom Harus diisi.']);
+        }
+    }
+
+
+    public function editJalur (Request $request) {
+
+        $request->validate([
+            'jalurPendaftaran'=>'required',
+            'desk_pers_umum'=>'required',
+        ],[
+            'jalurPendaftaran.required' => 'Kolom Jalur Pendaftaran harus diisi.',
+            'desk_pers_umum.required' => 'Kolom Deskripsi Persyaratan Umum harus diisi.',
+        ]);
+
+        
+        try{
+            JalurPendaftaranModel::where('id', $request->id)->update([
+                'jalurPendaftaran' => $request->jalurPendaftaran,
+                'desk_pers_umum' => $request->desk_pers_umum,
+                'updated_by' => Auth::user()->username
+            ]);
+               
+            return redirect()->route('admisi-panel');
+        }
+
+        catch (\Exception $e) {
+            return back()->withInput()->withErrors(['error' => 'Semua Kolom Harus diisi.']);
+        }
+    }
+
+    public function removeJalur(Request $request, $jalur_id) {
+        try {
+            $jalur = JalurPendaftaranModel::find($jalur_id);
+            if ($jalur) {
+                $jalur->delete();
+                return redirect()->route('admisi-panel')->with('success', 'Data berhasil dihapus.');
+            } else {
+                return redirect()->route('admisi-panel')->with('error', 'Data tidak ditemukan.');
+            }
+        } catch (\Exception $e) {
+            return redirect()->route('admisi-panel')->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+        }
+    }
+    
+
+    public function setbiayaadmin(Request $request)
+{
+    $request->validate([
+        'biayaasrama' => 'required',
+        'biayamakan' => 'required',
+        'biayawisuda' => 'required',
+        'biayadeposit' => 'required',
+        'biayatingkatakhir' => 'required',
+    ], [
+        'biayaasrama.required' => 'ISI KALIAN INI WOI'
+    ]);
+
+    // Find the existing record or create a new one
+    $dataBiaya = BiayaAdminModel::first();
+
+    // If a record exists, update it; otherwise, create a new one
+    if ($dataBiaya) {
+        $dataBiaya->update([
+            'biayaasrama' => $request->biayaasrama,
+            'biayamakan' => $request->biayamakan,
+            'biayawisuda' => $request->biayawisuda,
+            'biayadeposit' => $request->biayadeposit,
+            'biayatingkatakhir' => $request->biayatingkatakhir,
+        ]);
+    } else {
+        BiayaAdminModel::create([
+            'biayaasrama' => $request->biayaasrama,
+            'biayamakan' => $request->biayamakan,
+            'biayawisuda' => $request->biayawisuda,
+            'biayadeposit' => $request->biayadeposit,
+            'biayatingkatakhir' => $request->biayatingkatakhir,
+        ]);
+    }
+
+    return redirect()->route('admin-panel');
+}
+
+
+    public function addJadwalPendaftaran(Request $request)
+    {
+        $request->validate([
+            'jenis_jalur'=>'required',
+            'tanggal_pendaftaran'=>'required',
+        ],[
+            'jenis_jalur.required' => 'Kolom Jalur Pendaftaran harus diisi.',
+            'tanggal_pendaftaran.required' => 'Kolom Deskripsi Persyaratan Umum harus diisi.',
+        ]);
+        try {
+            JadwalPendaftaranModel::create([
+                'jenis_jalur' => $request->jenis_jalur,
+                'tanggal_pendaftaran' => $request->tanggal_pendaftaran,
+                'created_by' => Auth::user()->username,
+                'updated_by' => Auth::user()->username,
+            ]);
+    
+            return redirect()->route('admisi-panel');
+        } catch (\Exception $e) {
+            return back()->withInput()->withErrors(['error' => 'Semua Kolom Harus diisi.']);
+        }
+    }
+
+    public function editJadwalPendaftaran (Request $request) {
+
+        $request->validate([
+            'id' => 'required',
+            'jenis_jalur'=>'required',
+            'tanggal_pendaftaran'=>'required',
+        ],[
+            'jenis_jalur.required' => 'Kolom Jalur Pendaftaran harus diisi.',
+            'tanggal_pendaftaran.required' => 'Kolom Deskripsi Persyaratan Umum harus diisi.',
+        ]);
+
+        
+        try{
+            JadwalPendaftaranModel::where('id', $request->id)->update([
+                'jenis_jalur' => $request->jenis_jalur,
+                'tanggal_pendaftaran' => $request->tanggal_pendaftaran,
+                'updated_by' => Auth::user()->username
+            ]);
+               
+            return redirect()->route('admisi-panel');
+        }
+
+        catch (\Exception $e) {
+            return back()->withInput()->withErrors(['error' => 'Semua Kolom Harus diisi.']);
+        }
+    }
+
+    public function removeJadwalPendaftaran(Request $request, $jadwalPendaftaran_id) {
+        try {
+            $jadwalPendaftaran = JadwalPendaftaranModel::find($jadwalPendaftaran_id);
+            if ($jadwalPendaftaran) {
+                $jadwalPendaftaran->delete();
+                return redirect()->route('admisi-panel')->with('success', 'Data berhasil dihapus.');
+            } else {
+                return redirect()->route('admisi-panel')->with('error', 'Data tidak ditemukan.');
+            }
+        } catch (\Exception $e) {
+            return redirect()->route('admisi-panel')->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+        }
+    }
     
 }

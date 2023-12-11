@@ -16,6 +16,9 @@ use App\Models\ModelHeaderAdmisi;
 use App\Models\NomorTeleponModel;
 use App\Models\SocalMediaModel;
 use App\Models\JalurPendaftaranModel;
+use App\Models\BiayaAdminModel;
+use App\Models\SubJalurPendaftaran;
+use App\Models\JadwalPendaftaranModel;
 use App\Models\Lokasi;
 use App\Models\JenisTes;
 use Illuminate\Http\Request;
@@ -257,10 +260,15 @@ class AdminPanelController extends Controller
         $dataHeaderAdmisi = ModelHeaderAdmisi::where('id', 1)->first();
         $dataNonKompetisi  = MbkmModel::where('jenis_kegiatan', 'Non Kompetisi')->get();
         $dataKompetisi =  MbkmModel::where('jenis_kegiatan', 'Kompetisi')->get();
+        $jalur = JalurPendaftaranModel::all();
+        $jadwalPendaftaran = JadwalPendaftaranModel::all();
+        $dataBiaya = BiayaAdminModel::all();
+        $dataInfografis = InfografisModel::all();
         $jalurMasuk = [];
         $lokasi = Lokasi::orderBy('lokasiTes', 'asc')->get();
         $jenis = JenisTes::orderBy('gelombang', 'asc')->get();
         $dataJadwalUjian = JadwalUjianModel::all();
+        $dataSubJalurPendaftaran = SubJalurPendaftaran::all();
 
         foreach (InfografisModel::all() as $e) {
             if (!in_array($e->jalur, $jalurMasuk)) {
@@ -283,7 +291,11 @@ class AdminPanelController extends Controller
             'dataInfografis' => $dataInfografisJalurMasuk,
             'lokasi' => $lokasi,
             'jenis' => $jenis,
-            'dataJadwalUjian' => $dataJadwalUjian
+            'jalur'=>$jalur,
+            'dataBiaya' => $dataBiaya,
+            'dataJadwalUjian' => $dataJadwalUjian,
+            'jadwalPendaftaran'=>$jadwalPendaftaran,
+            'dataSubJalurPendaftaran'=>$dataSubJalurPendaftaran,
         ];
         return view('admin-panel.admisi_panel', $data);
     }

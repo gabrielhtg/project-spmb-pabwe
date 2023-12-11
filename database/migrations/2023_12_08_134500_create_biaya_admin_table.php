@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jalur_pendaftaran', function (Blueprint $table) {
+        Schema::create('biaya_admin', function (Blueprint $table) {
             $table->id();
-            $table->string('jalurPendaftaran');
-            $table->text('desk_pers_umum');
-            $table->string('created_by');
-            $table->string('updated_by');
+            $table->integer('biayaasrama');
+            $table->integer('biayamakan');
+            $table->integer('biayawisuda');
+            $table->integer('biayadeposit');
+            $table->integer('biayatingkatakhir');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jalur_pendaftaran');
+        Schema::dropIfExists('setbiayaadmin');
     }
 };

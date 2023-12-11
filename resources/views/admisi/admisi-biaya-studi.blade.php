@@ -167,22 +167,25 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>Biaya Asrama dan Kemahasiswaan</td>
-                    <td>300.000</td>
-                </tr>
-                <tr>
-                    <td>Biaya Makan/hari (Rp)</td>
-                    <td>30.000</td>
-                </tr>
-                <tr>
-                    <td>Biaya Wisuda</td>
-                    <td>1.100.000</td>
-                </tr>
-                <tr>
-                    <td>Biaya Deposit Toga (*</td>
-                    <td>1000.000</td>
-                </tr>
+                @foreach($dataBiaya as $biaya)
+                    <tr>
+                        <td>Biaya Asrama dan Kemahasiswaan</td>
+                        <td>{{ number_format($biaya->biayaasrama, 0, ',', '.') }}</td>
+                    </tr>
+                    <tr>
+                        <td>Biaya Makan/hari (Rp)</td>
+                        <td>{{ number_format($biaya->biayamakan, 0, ',', '.') }}</td>
+                    </tr>
+                    <tr>
+                        <td>Biaya Wisuda</td>
+                        <td>{{ number_format($biaya->biayawisuda, 0, ',', '.') }}</td>
+                    </tr>
+                    <tr>
+                        <td>Biaya Deposit Toga</td>
+                        <td>{{ number_format($biaya->biayadeposit, 0, ',', '.') }}</td>
+                    </tr>
+                    <!-- Add similar code for other input fields -->
+                
                 </tbody>
             </table>
         </div>
@@ -192,9 +195,11 @@
 
             <p>
                 Besaran biaya pendidikan bagi mahasiswa yang tidak mengikuti kegiatan perkuliahan selain tugas akhir di
-                suatu semester adalah Rp500.000,- (Lima Ratus Ribu Rupiah).
+                suatu semester adalah Rp{{ number_format($biaya->biayatingkatakhir, 0, ',', '.') }}.
             </p>
         </div>
+        @endforeach
+
 
         <div class="d-flex justify-content-center flex-column pt-5 ">
             <h3 class="fw-semibold text-start pb-3">Biaya Pendidikan Peserta Merdeka Belajar Kampus Merdeka (MBKM)</h3>
