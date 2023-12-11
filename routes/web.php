@@ -51,6 +51,14 @@ Route::middleware('auth')->group(function () {
         Route::get('/prestasipanel', [AdminPanelController::class, 'getPrestasiPanel'])->name('prestasipanel');
         Route::get('/testimonipanel', [AdminPanelController::class, 'getTestimoniPanel'])->name('testimonipanel');
     });
+
+    Route::prefix('/prestasi')->group(function () {
+        /* Prestasi Panel */
+        Route::get('/', [AdminPanelController::class, 'getPrestasiPanel'])->name('prestasipanel');
+        Route::post('/add', [AdminPanelController::class, 'addPrestasi'])->name('addPrestasi');
+        Route::post('/delete', [AdminPanelController::class, 'deletePrestasi'])->name('deletePrestasi');
+        Route::post('/update', [AdminPanelController::class, 'updatePrestasi'])->name('updatePrestasi');
+    });
 });
 
 Route::get('/fasilitas-Asrama', [FasilitasController::class, "getviewAsrama"])->name("fasilitas.asrama");
@@ -81,6 +89,7 @@ Route::get('/prodi', function () {
     return view('program.prodi');
 });
 
+// ROUTE PRESTASI [TEAM 03]
 Route::get('/prestasi', [PrestasiController::class, 'getviewPrestasi'])->name('prestasi.prestasiOverview');
 Route::get('/prestasiInstitut', [PrestasiController::class, 'getviewPrestasiInstitut'])->name('prestasi.prestasiInstitut');
 Route::get('/prestasiDosenStaff', [PrestasiController::class, 'getviewPrestasiDosenStaff'])->name('prestasi.prestasiDosenStaff');
