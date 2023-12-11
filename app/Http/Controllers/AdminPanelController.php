@@ -85,6 +85,7 @@ class AdminPanelController extends Controller
         return view('admin-panel.admisi_panel', $data);
     }
 
+<<<<<<< HEAD
     public function getPrestasiPanel()
     {
         $admin = Auth::user();
@@ -200,5 +201,15 @@ class AdminPanelController extends Controller
             'admin' => $admin
         ];
         return view('admin-panel.testimonipanel', $data);
+=======
+    public function getPrestasiPage()
+    {
+        return view('admin-panel.prestasiPanel', ['prestasiData' => Prestasi::all(), 'admin' => Auth::user()]);
+    }
+
+    public function getTestimoniPage()
+    {
+//        return;
+>>>>>>> 58ee4b5 (Penambahan controller dan migration Prestasi)
     }
 }
