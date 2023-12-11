@@ -8,6 +8,7 @@ use App\Models\NomorTeleponModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 
 class AdminController extends Controller
 {
@@ -18,7 +19,11 @@ class AdminController extends Controller
 
         if ($request->profile_pict) {
             $request->validate([
-                'username' => 'required|max:20',
+                'username' => [
+                    'required',
+                    'max:20',
+                    Rule::unique('admin', 'username'),
+                ],
                 'password' => 'required',
                 'firstname' => 'required',
                 'lastname' => 'required',
@@ -40,16 +45,33 @@ class AdminController extends Controller
             $profile_pict = 'assets/img/admin/' . $filename;
         }
 
-        AdminModel::create([
-            'username' => $request->username,
-            'password' => Hash::make($request->password),
-            'firstname' => $request->firstname,
-            'lastname' => $request->lastname,
-            'created_by' => $activeAdmin->username,
-            'profile_pict' => $profile_pict,
-            'created_at' => now(),
-            'udpated_at' => now()
-        ]);
+        else {
+            $request->validate([
+                'username' => [
+                    'required',
+                    'max:20',
+                    Rule::unique('admin', 'username'),
+                ],
+                'password' => 'required',
+                'firstname' => 'required',
+                'lastname' => 'required',
+            ]);
+        }
+
+        try {
+            AdminModel::create([
+                'password' => Hash::make($request->password),
+                'firstname' => $request->firstname,
+                'lastname' => $request->lastname,
+                'created_by' => $activeAdmin->username,
+                'username' => $request->username,
+                'profile_pict' => $profile_pict,
+                'created_at' => now(),
+                'udpated_at' => now()
+            ]);
+        } catch (\Exception $e) {
+            return redirect()->route('admins');
+        }
 
         return redirect()->route('admins');
     }
@@ -104,7 +126,7 @@ class AdminController extends Controller
         $selectedAdmin = AdminModel::where('id', $request->id)->first();
 
         if (Hash::check($request->verifikasi_password, $selectedAdmin->password)) {
-            if ($selectedAdmin->profile_pict && file_exists(selectedAdmin->profile_pict)) {
+            if ($selectedAdmin->profile_pict && file_exists($selectedAdmin->profile_pict)) {
                 unlink($selectedAdmin->profile_pict);
             }
             $selectedAdmin->delete();
