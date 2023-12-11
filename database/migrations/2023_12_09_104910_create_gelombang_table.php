@@ -22,6 +22,6 @@ class CreateGelombangTable extends Migration
 
         Schema::dropIfExists('gelombang');
 
-        Schema::enableForeignKeyConstraints();
+            Schema::enableForeignKeyConstraints();
     }
 };

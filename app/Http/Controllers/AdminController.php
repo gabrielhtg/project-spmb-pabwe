@@ -18,6 +18,10 @@ class AdminController extends Controller
 
         if ($request->profile_pict) {
             $request->validate([
+                'username' => 'required|max:20',
+                'password' => 'required',
+                'firstname' => 'required',
+                'lastname' => 'required',
                 'profile_pict' => 'image|mimes:jpeg,png,jpg|max:1024',
             ]);
 

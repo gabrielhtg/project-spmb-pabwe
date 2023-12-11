@@ -3,53 +3,63 @@
 @section('isi-admin-panel')
     <section id="tambah-admin" class="container-fluid p-3">
 
-        <div class="d-flex justify-content-end mb-3">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Tambah Admin
-            </button>
-        </div>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Launch demo modal
+        </button>
 
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form action="{{ route('add-admin') }}" method="post" enctype="multipart/form-data">
-                        @csrf
                         <div class="modal-body">
-                            <label class="form-label w-100 mb-3 ">
-                                Username
-                                <input type="text" class="form-control" name="username">
-                            </label>
-                            <label class="form-label w-100 mb-3 ">
-                                Password
-                                <input type="password" class="form-control" name="password">
-                            </label>
-                            <label class="form-label w-100 mb-3 ">
-                                Firstname
-                                <input type="text" class="form-control" name="firstname">
-                            </label>
-                            <label class="form-label w-100 mb-3 ">
-                                Lastname
-                                <input type="text" class="form-control" name="lastname">
-                            </label>
-                            <label class="form-label w-100">
-                                Foto Profil
-                                <input type="file" class="form-control" name="profile_pict">
-                            </label>
+                            <form id="myForm" action="{{ route('add-admin') }}" method="post" enctype="multipart/form-data">
+                                @csrf
+                                <label class="form-label w-100 mb-3 ">
+                                    Username
+                                    <input type="text" class="form-control" name="username">
+                                    @error('username')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </label>
+                                <label class="form-label w-100 mb-3 ">
+                                    Password
+                                    <input type="password" class="form-control" name="password">
+                                    @error('password')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </label>
+                                <label class="form-label w-100 mb-3 ">
+                                    Firstname
+                                    <input type="text" class="form-control" name="firstname">
+                                    @error('firstname')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </label>
+                                <label class="form-label w-100 mb-3 ">
+                                    Lastname
+                                    <input type="text" class="form-control" name="lastname">
+                                    @error('lastname')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </label>
+                                <label class="form-label w-100">
+                                    Foto Profil
+                                    <input type="file" class="form-control" name="profile_pict">
+                                    @error('profile_pict')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </label>
+                            </form>
+                         </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" form="myForm" class="btn btn-primary">Save changes</button>
                         </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary"
-                                data-bs-dismiss="modal">Close
-                        </button>
-                        <button type="submit" class="btn btn-primary">
-                            Save
-                        </button>
-                    </div>
-                    </form>
                 </div>
             </div>
         </div>
