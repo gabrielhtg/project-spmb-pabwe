@@ -151,10 +151,12 @@ class AdminController extends Controller
                 $admin->password = Hash::make($request->newPassword);
 
                 $admin->update();
+
+                return redirect()->route('logout');
             }
         }
 
-        return redirect()->back();
+        return redirect()->route('edit-profile')->with('error', "Gagal Mengganti Password!");
     }
 
     public function editNomorTelepon (Request $request) {
