@@ -1,3 +1,5 @@
+<!-- resources/views/tambah-fasilitas.blade.php -->
+
 @extends('template.admin-panel-template')
 
 @section('isi-admin-panel')
@@ -14,51 +16,69 @@
             </div>
 
             <div class="p-3">
-            <form method="POST" action="{{ route('post.fasilitas') }}" enctype="multipart/form-data">
-                @csrf
-                <p class="fw-bold">Tambah Detail Fasilitas</p>
+                <form method="POST" action="{{ route('post.fasilitas') }}" enctype="multipart/form-data">
+                    @csrf
+                    <p class="fw-bold">Tambah Detail Fasilitas</p>
 
-                <div class="mb-3">
-                    <label for="selectOption" class="form-label">Pilih Kategori Fasilitas<span class="star">*</span></label>
-                    <select class="form-select" id="selectOption" name="kategori">
-                        <option value="Asrama">Asrama</option>
-                        <option value="Kesehatan & Olahraga">Kesehatan & Olahraga</option>
-                        <option value="Area Mahasiswa">Area Mahasiswa</option>
-                        <option value="Laboratorium">Laboratorium</option>
-                        <option value="Layanan Makanan">Layanan Makanan</option>
-                    </select>
-                </div>
+                    <!-- Kategori -->
+                    <div class="mb-3">
+                        <label for="selectOption" class="form-label">Pilih Kategori Fasilitas<span class="star">*</span></label>
+                        <select class="form-select @error('kategori') is-invalid @enderror" id="selectOption" name="kategori">
+                            <option value="Asrama">Asrama</option>
+                            <option value="Kesehatan & Olahraga">Kesehatan & Olahraga</option>
+                            <option value="Area Mahasiswa">Area Mahasiswa</option>
+                            <option value="Laboratorium">Laboratorium</option>
+                            <option value="Layanan Makanan">Layanan Makanan</option>
+                        </select>
+                        @error('kategori')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
 
-                <div class="mb-3">
-                    <label for="nama_fasilitas" class="form-label">Nama Fasilitas<span class="star">*</span></label>
-                    <input type="text" class="form-control" id="nama_fasilitas" name="nama_fasilitas">
-                </div>
+                    <!-- Nama Fasilitas -->
+                    <div class="mb-3">
+                        <label for="nama_fasilitas" class="form-label">Nama Fasilitas<span class="star">*</span></label>
+                        <input type="text" class="form-control @error('nama_fasilitas') is-invalid @enderror" id="nama_fasilitas" name="nama_fasilitas">
+                        @error('nama_fasilitas')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
 
-                <div class="mb-3">
-                    <label for="deskripsi_fasilitas" class="form-label">Deskripsi Fasilitas<span class="star">*</span></label>
-                    <textarea type="text" class="form-control" id="deskripsi_fasilitas" rows="5" name="deskripsi_fasilitas"></textarea>
-                </div>
+                    <!-- Deskripsi Fasilitas -->
+                    <div class="mb-3">
+                        <label for="deskripsi_fasilitas" class="form-label">Deskripsi Fasilitas<span class="star">*</span></label>
+                        <textarea type="text" class="form-control @error('deskripsi_fasilitas') is-invalid @enderror" id="deskripsi_fasilitas" rows="5" name="deskripsi_fasilitas"></textarea>
+                        @error('deskripsi_fasilitas')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
 
-                <p class="fw-bold">Tambah Gambar Fasilitas</p>
+                    <!-- Nama File -->
+                    <div class="mb-3">
+                        <label for="nama_file" class="form-label">Nama File<span class="star">*</span></label>
+                        <input type="text" class="form-control @error('nama_file') is-invalid @enderror" id="nama_file" name="nama_file">
+                        @error('nama_file')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
 
-                <div class="mb-3">
-                    <label for="nama_file" class="form-label">Nama File<span class="star">*</span></label>
-                    <input type="text" class="form-control" id="nama_file" name="nama_file">
-                </div>
+                    <!-- File Gambar -->
+                    <div class="mb-3">
+                        <label for="file_gambar" class="form-label">Tambahkan File (JPG, JPEG, PNG)<span class="star">*</span></label>
+                        <input type="file" class="form-control @error('file_gambar') is-invalid @enderror" id="file_gambar" name="file_gambar">
+                        @error('file_gambar')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
 
-                <div class="mb-3">
-                    <label for="file_gambar" class="form-label">Tambahkan File (JPG, JPEG, PNG)<span class="star">*</span></label>
-                    <input type="file" class="form-control" id="file_gambar" name="file_gambar">
-                </div>
-
-                <button type="submit" class="btn btn-primary">Tambahkan</button>
-            </form>
+                    <button type="submit" class="btn btn-primary">Tambahkan</button>
+                </form>
             </div>
         </div>
     </div>
 @endsection
 
-    @section('other-js')
+@section('other-js')
     <script>
         ClassicEditor
             .create( document.querySelector( '#deskripsi_fasilitas' ) )
@@ -66,4 +86,4 @@
                 console.error( error );
             } );
     </script>
-    @endsection
+@endsection

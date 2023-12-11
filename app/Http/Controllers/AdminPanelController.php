@@ -97,54 +97,65 @@ class AdminPanelController extends Controller
             'nama_fasilitas' => 'required',
             'deskripsi_fasilitas' => 'required',
             'nama_file' => 'required',
-            'file_gambar' => 'required|image|mimes:jpeg,jpg,png|max:2048'
+            'file_gambar' => 'required|image|mimes:jpeg,jpg,png|max:2048',
+        ], [
+            'required' => 'Kolom :attribute wajib diisi.',
+            'file_gambar.required' => 'File gambar wajib diunggah.',
+            'file_gambar.image' => 'File harus berupa gambar.',
+            'file_gambar.mimes' => 'Kolom :attribute wajib diisi dengan format file jpeg, jpg, atau png.',
+            'file_gambar.max' => 'Ukuran file tidak boleh lebih dari 2 MB.',
         ]);
     
         // Ambil ekstensi file gambar
-    $fileExtension = $request->file_gambar->extension();
-
-    $judulFasilitasTanpaSpasi = str_replace(' ', '_', $request->nama_file);
-
-    // Nama file gabungan dengan ekstensi
-    $namaGambar = $judulFasilitasTanpaSpasi . '.' . $fileExtension;
-
-    // Pindahkan file gambar ke direktori yang ditentukan
-    $request->file_gambar->move(public_path('assets/img/fasilitas'), $namaGambar);
-
-    // Buat instance Fasilitas
-    $fasilitas = new Fasilitas;
-
-    // Set nilai atribut fasilitas
-    $fasilitas->kategori = $request->kategori;
-    $fasilitas->nama_fasilitas = $request->nama_fasilitas;
-    $fasilitas->deskripsi_fasilitas = $request->deskripsi_fasilitas;
-    $fasilitas->nama_file = $request->nama_file;
-    $fasilitas->file_gambar = $namaGambar;
-
-    // Simpan data ke database
-    $fasilitas->save();
-
-    // Redirect atau berikan respons sesuai kebutuhan
-    return redirect()->route('fasilitas-admin');
+        $fileExtension = $request->file_gambar->extension();
+    
+        $judulFasilitasTanpaSpasi = str_replace(' ', '_', $request->nama_file);
+    
+        // Nama file gabungan dengan ekstensi
+        $namaGambar = $judulFasilitasTanpaSpasi . '.' . $fileExtension;
+    
+        // Pindahkan file gambar ke direktori yang ditentukan
+        $request->file_gambar->move(public_path('assets/img/fasilitas'), $namaGambar);
+    
+        // Buat instance Fasilitas
+        $fasilitas = new Fasilitas;
+    
+        // Set nilai atribut fasilitas
+        $fasilitas->kategori = $request->kategori;
+        $fasilitas->nama_fasilitas = $request->nama_fasilitas;
+        $fasilitas->deskripsi_fasilitas = $request->deskripsi_fasilitas;
+        $fasilitas->nama_file = $request->nama_file;
+        $fasilitas->file_gambar = $namaGambar;
+    
+        // Simpan data ke database
+        $fasilitas->save();
+    
+        // Redirect atau berikan respons sesuai kebutuhan
+        return redirect()->route('fasilitas-admin');
     }
-
+    
     public function postEditFasilitas(Request $request)
     {
         // Mendapatkan user yang sedang login
         $admin = Auth::user();
-
+    
         $request->validate([
             'id' => 'required|exists:fasilitas',
             'kategori' => 'required',
             'nama_fasilitas' => 'required',
             'deskripsi_fasilitas' => 'required',
             'nama_file' => 'required',
-            'file_gambar' => 'nullable|image|mimes:jpeg,jpg,png|max:2048'
+            'file_gambar' => 'nullable|image|mimes:jpeg,jpg,png|max:2048',
+        ], [
+            'required' => 'Kolom :attribute wajib diisi.',
+            'file_gambar.image' => 'File harus berupa gambar.',
+            'file_gambar.mimes' => 'Kolom :attribute wajib diisi dengan format file jpeg, jpg, atau png.',
+            'file_gambar.max' => 'Ukuran file tidak boleh lebih dari 2 MB.',
         ]);
-
+    
         // Mengambil data fasilitas berdasarkan ID
         $fasilitas = Fasilitas::where("id", $request->id)->first();
-
+    
         if ($fasilitas) {
             // Mengupdate data fasilitas
             $fasilitas->kategori = $request->kategori;
@@ -157,18 +168,20 @@ class AdminPanelController extends Controller
                 $fileExtension = $request->file_gambar->extension();
                 $nama_gambar = $request->nama_file . '.' . $fileExtension;
                 $gambar->move(public_path('path_ke_folder_upload'), $nama_gambar);
-        
+    
                 // Update both nama_file and file_gambar
                 $fasilitas->nama_file = $request->nama_file;
                 $fasilitas->file_gambar = $nama_gambar;
             }
-        
+    
             // Menyimpan perubahan
             $fasilitas->save();
+        }
+    
+        // Redirect dengan pesan sukses
+        return redirect()->route('fasilitas-admin')->with('success', 'Fasilitas berhasil diperbarui.');
     }
-    // Redirect dengan pesan sukses
-    return redirect()->route('fasilitas-admin')->with('success', 'Fasilitas berhasil diperbarui.');
-    }
+    
 
     public function destroy($id)
     {
