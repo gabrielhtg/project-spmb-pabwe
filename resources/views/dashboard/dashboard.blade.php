@@ -301,7 +301,7 @@
                                          alt="foto-profil">
                                 </div>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body" >
                                 <h5 class="card-title fw-bold">Gabriel Hutagalung</h5>
                                 <div id="tempat-pill" class="d-flex gap-1 mb-4">
                                     <div class="pill d-inline text-muted">
@@ -316,9 +316,11 @@
                                         S1 Informatika
                                     </div>
                                 </div>
-                                <p class="card-text fs-7">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Accusantium architecto atque eligendi enim fugiat iure quia, quo sunt tempora
-                                    tempore.</p>
+                                <div class="d-flex justify-content-center align-items-center border border-1 rounded p-3" style="height: 200px;">
+                                    <p class="card-text fs-7">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                        Accusantium architecto atque eligendi enim fugiat iure quia, quo sunt tempora
+                                        tempore.</p>
+                                </div>
                             </div>
                         </div>
                     </li>
@@ -332,7 +334,7 @@
                                          alt="foto-profil">
                                 </div>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body" >
                                 <h5 class="card-title fw-bold">Gabriel Hutagalung</h5>
                                 <div id="tempat-pill" class="d-flex gap-1 mb-4">
                                     <div class="pill d-inline text-muted">
@@ -347,9 +349,11 @@
                                         S1 Informatika
                                     </div>
                                 </div>
-                                <p class="card-text fs-7">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Accusantium architecto atque eligendi enim fugiat iure quia, quo sunt tempora
-                                    tempore.</p>
+                                <div class="d-flex justify-content-center align-items-center border border-1 rounded p-3" style="height: 200px;">
+                                    <p class="card-text fs-7">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                        Accusantium architecto atque eligendi enim fugiat iure quia, quo sunt tempora
+                                        tempore.</p>
+                                </div>
                             </div>
                         </div>
                     </li>
@@ -363,7 +367,7 @@
                                          alt="foto-profil">
                                 </div>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body" >
                                 <h5 class="card-title fw-bold">Gabriel Hutagalung</h5>
                                 <div id="tempat-pill" class="d-flex gap-1 mb-4">
                                     <div class="pill d-inline text-muted">
@@ -378,9 +382,11 @@
                                         S1 Informatika
                                     </div>
                                 </div>
-                                <p class="card-text fs-7">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Accusantium architecto atque eligendi enim fugiat iure quia, quo sunt tempora
-                                    tempore.</p>
+                                <div class="d-flex justify-content-center align-items-center border border-1 rounded p-3" style="height: 200px;">
+                                    <p class="card-text fs-7">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                        Accusantium architecto atque eligendi enim fugiat iure quia, quo sunt tempora
+                                        tempore.</p>
+                                </div>
                             </div>
                         </div>
                     </li>
@@ -394,7 +400,7 @@
                                          alt="foto-profil">
                                 </div>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body" >
                                 <h5 class="card-title fw-bold">Gabriel Hutagalung</h5>
                                 <div id="tempat-pill" class="d-flex gap-1 mb-4">
                                     <div class="pill d-inline text-muted">
@@ -409,9 +415,11 @@
                                         S1 Informatika
                                     </div>
                                 </div>
-                                <p class="card-text fs-7">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Accusantium architecto atque eligendi enim fugiat iure quia, quo sunt tempora
-                                    tempore.</p>
+                                <div class="d-flex justify-content-center align-items-center border border-1 rounded p-3" style="height: 200px;">
+                                    <p class="card-text fs-7">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                        Accusantium architecto atque eligendi enim fugiat iure quia, quo sunt tempora
+                                        tempore.</p>
+                                </div>
                             </div>
                         </div>
                     </li>
@@ -425,7 +433,7 @@
                                          alt="foto-profil">
                                 </div>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body" >
                                 <h5 class="card-title fw-bold">Gabriel Hutagalung</h5>
                                 <div id="tempat-pill" class="d-flex gap-1 mb-4">
                                     <div class="pill d-inline text-muted">
@@ -440,9 +448,11 @@
                                         S1 Informatika
                                     </div>
                                 </div>
-                                <p class="card-text fs-7">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Accusantium architecto atque eligendi enim fugiat iure quia, quo sunt tempora
-                                    tempore.</p>
+                                <div class="d-flex justify-content-center align-items-center border border-1 rounded p-3" style="height: 200px;">
+                                    <p class="card-text fs-7">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                        Accusantium architecto atque eligendi enim fugiat iure quia, quo sunt tempora
+                                        tempore.</p>
+                                </div>
                             </div>
                         </div>
                     </li>
