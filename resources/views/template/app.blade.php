@@ -79,7 +79,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('fasilitas.asrama')}}">Fasilitas</a>
+                        <a class="nav-link" href="{{ route('fasilitas.fasilitas')}}">Fasilitas</a>
                     </li>
 
                     <li class="nav-item">
