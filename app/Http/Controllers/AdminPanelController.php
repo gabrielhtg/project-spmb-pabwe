@@ -700,4 +700,16 @@ class AdminPanelController extends Controller
         ];
         return view('admin-panel.prestasi_panel', $data);
     }
+
+    public function getTestimoniPanel()
+    {
+        $admin = Auth::user();
+        $data = [
+            'indexActive' => 2,
+            'admin' => $admin,
+            'dataTestimoni' => Testimoni::orderBy('created_at', 'desc')->get(),
+        ];
+
+        return view('admin-panel.testimoni_panel', $data);
+    }
 }

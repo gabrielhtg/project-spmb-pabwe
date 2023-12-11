@@ -72,6 +72,16 @@
     <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
 
     <script>
+        function showModalDelete(delId) {
+            const modalDeleteEdu = document.getElementById("modal-delete");
+            const inputId = document.getElementById("inputDeleteEduId");
+
+            inputId.value = delId;
+
+            var myModal = new bootstrap.Modal(modalDeleteEdu)
+            myModal.show()
+        }
+
         $(document).ready(function () {
             $('#table-data').DataTable();
         })
