@@ -2,14 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\MajorController;
 use App\Http\Controllers\MitraController;
-use App\Http\Controllers\CourseController;
 
-use App\Http\Controllers\FacultyController;
-use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\BeasiswaController;
+use App\Http\Controllers\ProgramController;
+use App\Http\Controllers\FacultyController;
+use App\Http\Controllers\MajorController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\PrestasiController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FasilitasController;
@@ -88,8 +88,6 @@ Route::delete('/admin-panel/program_panel/faculty/{id}/delete', [FacultyControll
 Route::delete('/admin-panel/program_panel/major/{id}/delete', [MajorController::class, 'destroy'])->name('admin.program.major.destroy');
 Route::delete('/admin-panel/program_panel/employee/{id}/delete', [EmployeeController::class, 'destroy'])->name('admin.program.employee.destroy');
 Route::delete('/admin-panel/program_panel/course/{id}/delete', [CourseController::class, 'destroy'])->name('admin.program.course.destroy');
-
-
 
 // End of ROUTE PROGRAM STUDI [TEAM 02]
 
