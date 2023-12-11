@@ -11,20 +11,25 @@
 }
 
 .bg-informasi-umum {
-    background-color: #D8DFEB;
+    background-color: #d8dfeb;
 }
 
 .ukuran-div-beasiswa {
     width: 500px;
     border-radius: 10px;
     backdrop-filter: blur(10px); /* Adjust the blur value as needed */
-    background-color: rgba(255, 255, 255, 0.2); /* Adjust the background color and opacity as needed */
+    background-color: rgba(
+        255,
+        255,
+        255,
+        0.2
+    ); /* Adjust the background color and opacity as needed */
     display: flex;
     flex-direction: column;
 }
 
 .text-oyen {
-    color: #820D0D;
+    color: #820d0d;
 }
 
 .tombol-kita {
@@ -34,7 +39,7 @@
 }
 
 .text-oyen:hover {
-    color: #820D0D;
+    color: #820d0d;
     background-color: #c2c2c2;
 }
 
@@ -65,10 +70,6 @@
 
 .margin-hero-title {
     margin-bottom: 180px;
-}
-
-.blur-image {
-    filter: blur(2px);
 }
 
 .vertical-line {
@@ -102,7 +103,7 @@
 
 .bg-image-container {
     /*width: 200px; !* Set the desired width *!*/
-    height: 100px; /* Set the desired height */
+    height: 75px; /* Set the desired height */
     overflow: hidden;
     /*border: 1px solid #ccc; !* Optional: Add a border for visual clarity *!*/
 }
@@ -134,8 +135,36 @@
     height: auto;
 }
 
-/*.splide__slide img {*/
-/*    width: 100%;*/
-/*    height: 100%;*/
-/*    object-fit: cover;*/
-/*}*/
+/* Style untuk wadah gambar */
+.gambar-hero {
+    position: relative;
+    width: 100%; /* Sesuaikan lebar wadah sesuai kebutuhan Anda */
+    overflow: hidden;
+}
+
+.gambar-hero img {
+    width: 100%; /* Agar gambar mengisi lebar wadah */
+    height: 500px;
+    object-fit: cover; /* Atur objek gambar untuk menutupi area yang ditetapkan */
+    object-position: center; /* Atur posisi objek gambar ke tengah */
+    filter: blur(2px);
+    display: block; /* Menghilangkan spasi ekstra di bawah gambar */
+}
+
+@media (max-width: 768px) {
+    .gambar-hero img {
+        width: 100%; /* Agar gambar mengisi lebar wadah */
+        height: auto; /* Agar gambar menyesuaikan tinggi secara proporsional */
+        filter: blur(0px);
+        display: block; /* Menghilangkan spasi ekstra di bawah gambar */
+    }
+}
+
+/* Style tambahan untuk konten di dalam wadah (opsional) */
+.content-inside {
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    transform: translate(-40%, -50%);
+    color: white;
+}

@@ -111,29 +111,29 @@
         </div>
 
         <div class="d-flex gy-4 row justify-content-center text-center">
-            @for ($i = 0; $i < 8; $i++)
+            @foreach ($employees as $employee)
             <div class="col-md-3 col-12">
-                <div class="card text-bg-dark" onmouseover="showOverlay({{ $i }})" onmouseout="hideOverlay({{ $i }})">
-                    <img src="{{ asset('img/program/dosen-profile-test.jpg') }}" class="card-img img-fluid" alt="">
+                <div class="card text-bg-dark" onmouseover="showOverlay({{ $employee->id }})" onmouseout="hideOverlay({{ $employee->id }})">
+                    <img src="{{ asset('img/program/employee/' . $employee->gambar) }}" class="card-img img-fluid" alt="">
 
-                    <div id="backOverlay-{{ $i }}" class="card-img-overlay " style="opacity: 1; transition: opacity 0.2s ease;">
+                    <div id="backOverlay-{{ $employee->id }}" class="card-img-overlay " style="opacity: 1; transition: opacity 0.2s ease;">
                         <div class="d-flex justify-content-start">
                             <div class=" badge bg-primary text-wrap fw-medium fs-6 small mb-3">
-                                <small>Dosen</small>
+                                <small>{{ $employee->jabatan }}</small>
                             </div>
                         </div>
                         <div class="d-flex card-img-overlay align-items-end ">
-                            <h5 class="card-title fw-semibold fs-6 ">Dedi Andre Martua Raja Panggabean</h5>
+                            <h5 class="card-title fw-semibold fs-6 ">{{ $employee->nama }}</h5>
                         </div>
                     </div>
 
-                    <div id="overlay-{{ $i }}" class="card-img-overlay bg-dark" style="--bs-bg-opacity: .8; opacity: 0; transition: opacity 0.2s ease;">
+                    <div id="overlay-{{ $employee->id }}" class="card-img-overlay bg-dark" style="--bs-bg-opacity: .8; opacity: 0; transition: opacity 0.2s ease;">
                         <div class="card-img-overlay d-flex row justify-content-center align-content-center align-items-center">
                             <div class="badge bg-primary text-wrap w-auto fw-medium fs-6 small mb-3">
-                                <small>Dosen</small>
+                                <small>{{ $employee->jabatan }}</small>
                             </div>
-                            <h5 class="card-title fw-semibold fs-6">Dedi Andre Martua Raja Panggabean</h5>
-                            <p class="card-text fs-6 small">S3 Ternak Lele</p>
+                            <h5 class="card-title fw-semibold fs-6">{{ $employee->nama }}</h5>
+                            <p class="card-text fs-6 small">{{ $employee->pendidikan }}</p>
                             <small><small class="text-dark"><a href="https://www.del.ac.id/?page_id=48" class="text-light text-decoration-none fst-italic">See More...</a></small></small>
                         </div>
                     </div>
@@ -155,10 +155,11 @@
                     backOverlay.style.opacity = "1";
                 }
             </script>
-            @endfor
+            @endforeach
         </div>
 </section>
 
+    <!-- KURIKULUM SUBPAGE -->
     <section id="kurikulum-subpage" class="container d-none">
         <div class="mt-5 mb-3">
             <h1 class="fw-bold">Kurikulum</h1>
@@ -181,6 +182,8 @@
                                     <div class="container text-center">
                                         <h2 class="fw-bold fs-5">Semester {{ $i * 2 + $j }}</h2>
                                             <table class="table table-bordered">
+                                            @foreach($courses as $course)
+                                            @if ($course->semester == $i * 2 + $j)
                                                 <thead class="table-primary">
                                                 <tr>
                                                     
@@ -190,12 +193,16 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td>11S3109 </td>
-                                                        <td>Pengembangan Aplikasi Berbasis Web</td>
-                                                        <td>4</td>
-                                                    </tr>
-                                                    <tr>
+                                                    
+                                                        
+                                                        <tr>
+                                                            <td>{{ $course->kode }}</td>
+                                                            <td>{{ $course->nama }}</td>
+                                                            <td>{{ $course->sks }}</td>
+                                                        </tr>
+                                                        @endif
+                                                    @endforeach
+                                                    <!-- <tr>
                                                         <td>10S3109</td>
                                                         <td>Kecerdasan Buatan</td>
                                                         <td>3</td>
@@ -219,11 +226,11 @@
                                                         <td>10S3109</td>
                                                         <td>Kecerdasan Buatan</td>
                                                         <td>3</td>
-                                                    </tr>
-                                                    <tr>
+                                                    </tr> -->
+                                                    <!-- <tr>
                                                         <td colspan="2" class="fw-semibold">Total SKS</td>
                                                         <td>7</td>
-                                                    </tr>
+                                                    </tr> -->
                                                 </tbody>
                                             </table>
                                     </div>

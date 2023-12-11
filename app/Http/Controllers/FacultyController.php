@@ -2,9 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\data_institusi;
+
 use Illuminate\Http\Request;
 use App\Models\Faculty;
+use App\Models\data_institusi;
+use App\Models\HeroSectionModel;
+use App\Models\SocalMediaModel;
+use App\Models\AlamatInstitusiModel;
+use App\Models\AkreditasiInstitutiModel;
+use App\Models\AkreditasiSectionModel;
+use App\Models\NomorTeleponModel;
+use App\Models\EmailModel;
 
 
 class FacultyController extends Controller
@@ -14,10 +22,27 @@ class FacultyController extends Controller
         $dataInstitusi = data_institusi::where('id', 1)->first();
 
         $faculty = Faculty::where('id', $id)->with('major')->get();
+        $dataHeroSection = HeroSectionModel::where('id', 1)->first();
+        $dataSosmed = SocalMediaModel::all();
+        $dataAlamat = AlamatInstitusiModel::all();
+        $akreditasiDashboard = AkreditasiSectionModel::where('id', 1)->first();
+        $dataNomorTelepon = NomorTeleponModel::all();
+        $dataEmail = EmailModel::all();
+        $dataAkreditasiInstitusi = AkreditasiInstitutiModel::all()->sortByDesc('tahun_akreditasi')->first();
+
 
         $data = [
             'dataInstitusi' => $dataInstitusi,
             'faculties' => $faculty,
+            'dataHeroSection' => $dataHeroSection,
+            'dataSosmed' => $dataSosmed,
+            'dataAlamat' => $dataAlamat,
+            'akreditasiDashboard' => $akreditasiDashboard,
+            'dataNomorTelepon' => $dataNomorTelepon,
+            'dataEmail' => $dataEmail,
+            'dataAkreditasiInstitusi' => $dataAkreditasiInstitusi,
+            
+            
         ];
 
         return view('program.fakultas', $data);
@@ -39,8 +64,7 @@ class FacultyController extends Controller
         // $gambarPath = $request->file('gambar')->store('img/program', 'public');
         $extension = $request->file('gambar')->getClientOriginalExtension();
         $gambarPath = $request->nama.'-'.now()->timestamp.'.'.$extension;
-        $request->file('gambar')->storeAs('img/program/faculty/', $gambarPath);
-
+        $request->file('gambar')->move(public_path('img/program/faculty/'), $gambarPath);
 
         // Create a new Faculty instance
         $faculty = new Faculty([
@@ -74,7 +98,6 @@ class FacultyController extends Controller
 
         return view('program.editfakultas', $data);
     }
-    
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -84,6 +107,7 @@ class FacultyController extends Controller
             'lokasi' => 'required|max:255',
             'visi' => 'required',
             'misi' => 'required',
+            'gambar' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
     
         $faculty = Faculty::find($id);
@@ -91,6 +115,9 @@ class FacultyController extends Controller
         if (!$faculty) {
             return redirect('admin-panel/program')->with('error', 'Faculty not found!');
         }
+    
+        // Simpan nama gambar lama
+        $oldGambar = $faculty->gambar;
     
         // Update faculty data
         $faculty->update([
@@ -104,15 +131,24 @@ class FacultyController extends Controller
     
         // Update gambar if provided
         if ($request->hasFile('gambar')) {
-            // $gambarPath = $request->file('gambar')->store('img/program', 'public');
+            // Hapus gambar lama jika ada
+            if ($oldGambar) {
+                $gambarPath = public_path('img/program/faculty/') . $oldGambar;
+                if (file_exists($gambarPath)) {
+                    unlink($gambarPath);
+                }
+            }
+    
+            // Unggah dan simpan gambar baru
             $extension = $request->file('gambar')->getClientOriginalExtension();
             $gambarPath = $request->nama.'-'.now()->timestamp.'.'.$extension;
-            $request->file('gambar')->storeAs('img/program/faculty/', $gambarPath);
+            $request->file('gambar')->move(public_path('img/program/faculty/'), $gambarPath);
             $faculty->update(['gambar' => $gambarPath]);
         }
     
         return redirect('admin-panel/program')->with('success', 'Faculty updated successfully!');
     }
+    
 
     public function destroy(string $id)
     {
