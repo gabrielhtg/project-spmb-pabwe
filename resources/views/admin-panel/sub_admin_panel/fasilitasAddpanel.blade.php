@@ -66,6 +66,7 @@
                     <div class="mb-3">
                         <label for="file_gambar" class="form-label">Tambahkan File (JPG, JPEG, PNG)<span class="star">*</span></label>
                         <input type="file" class="form-control @error('file_gambar') is-invalid @enderror" id="file_gambar" name="file_gambar">
+                        <small class="text-muted">*File harus berupa jpg, jpeg, atau png, dan ukurannya tidak boleh lebih dari 2 MB.</small>
                         @error('file_gambar')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror

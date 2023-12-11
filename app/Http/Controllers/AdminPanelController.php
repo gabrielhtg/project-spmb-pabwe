@@ -241,8 +241,12 @@ class AdminPanelController extends Controller
             'judulPengumuman' => 'required',
             'filePengumuman' => 'nullable|mimes:pdf',
             'tanggalPengumuman' => 'required',
+        ], [
+            'required' => 'Kolom :attribute wajib diisi.',
+            'filePengumuman.required' => 'File pengumuman wajib diunggah.',
+            'filePengumuman.mimes' => 'File pengumuman harus dalam format PDF.',
+            'filePengumuman.max' => 'Ukuran file tidak boleh lebih dari 2 MB.',
         ]);
-        
         
         $pengumuman = Pengumuman::where("id", $request->id)->first();
 

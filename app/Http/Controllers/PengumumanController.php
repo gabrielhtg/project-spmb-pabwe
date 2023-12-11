@@ -48,6 +48,11 @@ class PengumumanController extends Controller
             'judulPengumuman' => 'required',
             'filePengumuman' => 'required|mimes:pdf|max:2048',
             'tanggalPengumuman' => 'required',
+        ], [
+            'required' => 'Kolom :attribute wajib diisi.',
+            'filePengumuman.required' => 'File pengumuman wajib diunggah.',
+            'filePengumuman.mimes' => 'File pengumuman harus dalam format PDF.',
+            'filePengumuman.max' => 'Ukuran file tidak boleh lebih dari 2 MB.',
         ]);
     
         // Ambil ekstensi file gambar
