@@ -4,9 +4,11 @@
     <section id="tambah-admin" class="container-fluid p-3">
 
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Launch demo modal
-        </button>
+        <div class="d-flex justify-content-end w-100 mb-3">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Tambah
+            </button>
+        </div>
 
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -21,28 +23,28 @@
                                 @csrf
                                 <label class="form-label w-100 mb-3 ">
                                     Username
-                                    <input type="text" class="form-control" name="username">
+                                    <input type="text" class="form-control" name="username" required>
                                     @error('username')
                                     <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <label class="form-label w-100 mb-3 ">
                                     Password
-                                    <input type="password" class="form-control" name="password">
+                                    <input type="password" class="form-control" name="password" required>
                                     @error('password')
                                     <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <label class="form-label w-100 mb-3 ">
                                     Firstname
-                                    <input type="text" class="form-control" name="firstname">
+                                    <input type="text" class="form-control" name="firstname" required>
                                     @error('firstname')
                                     <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </label>
                                 <label class="form-label w-100 mb-3 ">
                                     Lastname
-                                    <input type="text" class="form-control" name="lastname">
+                                    <input type="text" class="form-control" name="lastname" required>
                                     @error('lastname')
                                     <span class="text-danger">{{ $message }}</span>
                                     @enderror
