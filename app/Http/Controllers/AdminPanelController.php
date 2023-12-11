@@ -25,6 +25,7 @@ use App\Models\Major;
 use App\Models\Course;
 use App\Models\Faculty;
 use App\Models\Employee;
+use App\Models\Testimoni;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;

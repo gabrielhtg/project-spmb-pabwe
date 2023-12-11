@@ -12,6 +12,10 @@
                 <div class="card-body d-flex flex-column">
                     @include('admin-panel.sub_admin_panel.tambah_prestasi')
 
+                    @include('admin-panel.sub_admin_panel.ubah_prestasi')
+
+                    @include('admin-panel.sub_admin_panel.hapus_prestasi')
+
                     <table id="table-data" class="table text-center align-middle table-striped table-bordered">
                         <thead class="align-middle">
                         <tr>
@@ -28,8 +32,8 @@
                         @forelse($dataPrestasi as $item)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $item->judul_prestasi }}</td>
-                                <td>{{ $item->deskripsi }}</td>
+                                <td>{{ htmlentities($item->judul_prestasi, ENT_QUOTES) }}</td>
+                                <td>{{ htmlentities($item->deskripsi,ENT_QUOTES) }}</td>
                                 <td><img src="{{ asset($item->photo) }}" alt="" width="50" height="50"></td>
                                 <td>
                                     @switch($item->jenis_prestasi)
@@ -46,10 +50,10 @@
                                 </td>
                                 <td>{{ $item->created_at }}</td>
                                 <td style="min-width: 120px; width: 120px">
-                                    <button class="btn btn-success">
+                                    <button onclick="showModalUpdate({{ $item->id }}, '{{ htmlentities($item->judul_prestasi, ENT_QUOTES) }}', '{{ htmlentities($item->deskripsi,ENT_QUOTES) }}', '{{ $item->jenis_prestasi }}')" class="btn btn-success">
                                         <i class="bi bi-pen"></i>
                                     </button>
-                                    <button class="btn btn-danger">
+                                    <button onclick="showModalDelete({{$item->id}})" class="btn btn-danger">
                                         <i class="bi bi-trash"></i>
                                     </button>
                                 </td>
@@ -72,13 +76,30 @@
     <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
 
     <script>
+        function showModalUpdate(upId, upJudul, upDesc, upJenis) {
+            const modalUpdate = document.getElementById("modal-edit");
+
+            const inputId = document.getElementById("inputId");
+            const inputJudul = document.getElementById("judulUpdate");
+            const inputDesc = document.getElementById("deskripsiUpdate");
+            const inputJenis = document.getElementById("input_jenis_prestasi_update");
+
+            inputId.value = upId;
+            inputJudul.value = upJudul;
+            inputDesc.value = upDesc;
+            inputJenis.value = upJenis;
+
+            var myModal = new bootstrap.Modal(modalUpdate)
+            myModal.show()
+        }
+
         function showModalDelete(delId) {
-            const modalDeleteEdu = document.getElementById("modal-delete");
-            const inputId = document.getElementById("inputDeleteEduId");
+            const modalDelete = document.getElementById("modal-delete");
+            const inputId = document.getElementById("inputIdDelete");
 
             inputId.value = delId;
 
-            var myModal = new bootstrap.Modal(modalDeleteEdu)
+            var myModal = new bootstrap.Modal(modalDelete)
             myModal.show()
         }
 

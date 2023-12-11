@@ -89,8 +89,8 @@ Route::middleware('auth')->group(function () {
             /* Bagian Prestasi */
             Route::get('/', [AdminPanelController::class, 'getPrestasiPanel'])->name('prestasi.panel');
             Route::post('/add', [PrestasiController::class, 'postAddPrestasi'])->name('prestasi.add');
-//            Route::post('/edit', [AdminPanelController::class, 'postEditPrestasi'])->name('prestasi.edit');
-            Route::post('/delete', [AdminPanelController::class, 'addPrestasi'])->name('prestasi.delete');
+            Route::post('/edit', [PrestasiController::class, 'postEditPrestasi'])->name('prestasi.edit');
+            Route::post('/delete', [PrestasiController::class, 'postDeletePrestasi'])->name('prestasi.delete');
         });
 
         Route::prefix('testimoni-panel')->group(function () {
