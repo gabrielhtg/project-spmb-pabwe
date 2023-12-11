@@ -195,7 +195,6 @@
                                 <label for="input-password-hapus-profil">Apakah kamu yakin untuk menghapus akunmu? <br> <br> Kalau ya,
                                     masukkan passwordmu disini untuk
                                     mengonfirmasi ini adalah kamu. <br> <br></label>
-                                <input type="hidden" name="id" value="{{ $admin->id }}">
                                 <input class="form-control" id="input-password-hapus-profil" type="password"
                                        name="verifikasi_password" placeholder="Password Kamu">
                             </div>

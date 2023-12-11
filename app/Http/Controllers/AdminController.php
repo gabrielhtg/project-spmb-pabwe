@@ -123,17 +123,18 @@ class AdminController extends Controller
 
     public function removeSelf(Request $request)
     {
-        $selectedAdmin = AdminModel::where('id', $request->id)->first();
+        $selectedAdmin = AdminModel::where('id', Auth::user()->id)->first();
 
         if (Hash::check($request->verifikasi_password, $selectedAdmin->password)) {
             if ($selectedAdmin->profile_pict && file_exists($selectedAdmin->profile_pict)) {
                 unlink($selectedAdmin->profile_pict);
             }
             $selectedAdmin->delete();
+
             return redirect()->route('logout');
         }
 
-        return null;
+        return redirect()->route('edit-profile');
     }
 
     public function changeAdminPassword(Request $request)
