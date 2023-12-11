@@ -19,7 +19,7 @@
                 <p class="fw-bold">Tambah Detail Fasilitas</p>
 
                 <div class="mb-3">
-                    <label for="selectOption" class="form-label">Pilih Kategori Fasilitas</label>
+                    <label for="selectOption" class="form-label">Pilih Kategori Fasilitas<span class="star">*</span></label>
                     <select class="form-select" id="selectOption" name="kategori">
                         <option value="Asrama">Asrama</option>
                         <option value="Kesehatan & Olahraga">Kesehatan & Olahraga</option>
@@ -30,24 +30,24 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="nama_fasilitas" class="form-label">Nama Fasilitas</label>
+                    <label for="nama_fasilitas" class="form-label">Nama Fasilitas<span class="star">*</span></label>
                     <input type="text" class="form-control" id="nama_fasilitas" name="nama_fasilitas">
                 </div>
 
                 <div class="mb-3">
-                    <label for="deskripsi_fasilitas" class="form-label">Deskripsi Fasilitas</label>
+                    <label for="deskripsi_fasilitas" class="form-label">Deskripsi Fasilitas<span class="star">*</span></label>
                     <textarea type="text" class="form-control" id="deskripsi_fasilitas" rows="5" name="deskripsi_fasilitas"></textarea>
                 </div>
 
                 <p class="fw-bold">Tambah Gambar Fasilitas</p>
 
                 <div class="mb-3">
-                    <label for="nama_file" class="form-label">Nama File</label>
+                    <label for="nama_file" class="form-label">Nama File<span class="star">*</span></label>
                     <input type="text" class="form-control" id="nama_file" name="nama_file">
                 </div>
 
                 <div class="mb-3">
-                    <label for="file_gambar" class="form-label">Tambahkan File (JPG, JPEG, PNG)</label>
+                    <label for="file_gambar" class="form-label">Tambahkan File (JPG, JPEG, PNG)<span class="star">*</span></label>
                     <input type="file" class="form-control" id="file_gambar" name="file_gambar">
                 </div>
 

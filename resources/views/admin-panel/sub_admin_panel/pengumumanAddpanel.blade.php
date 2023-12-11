@@ -17,7 +17,7 @@
         action="{{ route('post.pengumuman') }}"
         enctype="multipart/form-data">
       @csrf
-      <label for="kategoriPengumuman" class="form-label">Pilih Tag Pengumuman</label>
+      <label for="kategoriPengumuman" class="form-label">Pilih Tag Pengumuman<span class="star">*</span></label>
       <select class="form-select" name="kategoriPengumuman" id="kategoriPengumuman">
           <option value="PMDK">PMDK</option>
           <option value="USM 1">USM 1</option>
@@ -28,19 +28,19 @@
       </select>
 
       <div class="mb-3">
-          <label for="judulPengumuman" class="form-label">Judul Pengumuman</label>
+          <label for="judulPengumuman" class="form-label">Judul Pengumuman<span class="star">*</span></label>
           <input type="text" class="form-control" name="judulPengumuman" id="judulPengumuman">
       </div>
 
       <div class="fw-bold">Tambah File Pengumuman</div>
 
       <div class="mb-3">
-          <label for="filePengumuman" class="form-label">File</label>
+          <label for="filePengumuman" class="form-label">Add File<span class="star">*</span></label>
           <input type="file" class="form-control" name="filePengumuman" id="filePengumuman">
       </div>
 
       <div class="mb-3">
-          <label for="tanggalPengumuman" class="form-label">Tanggal Pengumuman</label>
+          <label for="tanggalPengumuman" class="form-label">Tanggal Pengumuman<span class="star">*</span></label>
           <input type="date" class="form-control" name="tanggalPengumuman" id="tanggalPengumuman">
       </div>
 

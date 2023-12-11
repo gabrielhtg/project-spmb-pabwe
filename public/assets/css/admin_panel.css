@@ -1,5 +1,5 @@
 .bg-sidebar {
-    background-color: #353A40;
+    background-color: #353a40;
 }
 
 @keyframes slideIn {
@@ -49,7 +49,11 @@
 }
 
 .btn_sidebar_active {
-    background-color: #0D6EFD;
+    background-color: #0d6efd;
     color: white;
     font-weight: bold;
+}
+
+.star {
+    color: red;
 }
