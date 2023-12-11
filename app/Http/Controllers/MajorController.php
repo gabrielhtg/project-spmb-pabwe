@@ -10,7 +10,8 @@ use App\Models\AkreditasiInstitutiModel;
 use App\Models\AkreditasiSectionModel;
 use App\Models\NomorTeleponModel;
 use App\Models\EmailModel;
-
+use App\Models\Employee;
+use App\Models\Course;
 use Illuminate\Http\Request;
 
 class MajorController extends Controller
@@ -19,6 +20,8 @@ class MajorController extends Controller
         $dataInstitusi = data_institusi::where('id', 1)->first();
 
         $major = Major::where('id', $id)->with(['faculty', 'employee'])->get();
+        $employees = Employee::with('major')->get();
+        $courses = Course::with('major')->get();
         $dataHeroSection = HeroSectionModel::where('id', 1)->first();
         $dataSosmed = SocalMediaModel::all();
         $dataAlamat = AlamatInstitusiModel::all();
@@ -31,6 +34,8 @@ class MajorController extends Controller
         $data = [
             'dataInstitusi' => $dataInstitusi,
             'majors' => $major,
+            'employees' => $employees,
+            'courses' => $courses,
             'dataHeroSection' => $dataHeroSection,
             'dataSosmed' => $dataSosmed,
             'dataAlamat' => $dataAlamat,
