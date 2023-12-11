@@ -445,4 +445,21 @@ class AdminPanelController extends Controller
     // Redirect dengan pesan sukses
     return $this->getAdmisiPanel();
     }
+
+    public function updateAkreditasiSection(Request $request) {
+        $request->validate([
+            'input_header' => 'required|string|max:20',
+            'input_deskripsi' => 'required|string|max:250',
+        ]);
+
+        $akreditasiSection = AkreditasiSectionModel::where('id', 1)->first();
+
+        $akreditasiSection->header = $request->input_header;
+        $akreditasiSection->description = $request->input_deskripsi;
+        $akreditasiSection->updated_at = now();
+
+        $akreditasiSection->update();
+
+        return redirect()->back();
+    }
 }
