@@ -3,6 +3,8 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminPanelController;
 use App\Http\Controllers\AdmisiController;
+use App\Http\Controllers\JadwalUjianController;
+use App\Models\JalurPendaftaranModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +25,9 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/add-infografis-pmdk', [AdmisiController::class, 'addInfografisPmdk'])->name('addInfografisPmdk');
+    Route::post('/add-infografis-usm', [AdmisiController::class, 'addInfografisUsm'])->name('addInfografisUsm');
+    Route::post('/add-infografis-utbk', [AdmisiController::class, 'addInfografisUtbk'])->name('addInfografisUtbk');
     Route::post('/data-institut', [AdminPanelController::class, 'ubahDataInstitut'])->name('ubahDataInstitut');
     Route::post('/add-social-media', [AdminPanelController::class, 'addSocialMedia'])->name('addSocialMedia');
     Route::post('/update-social-media', [AdminPanelController::class, 'updateSocialMedia'])->name('updateSocialMedia');
@@ -38,7 +43,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/edit-admin', [AdminController::class, 'editAdmin'])->name('edit-admin');
     Route::post('/edit-nomor-telepon', [AdminController::class, 'editNomorTelepon'])->name('editNomorTelepon');
     Route::post('/change-password', [AdminController::class, 'changeAdminPassword'])->name('changeAdminPassword');
-    Route::post('/add-phone-number', [AdminController::class, 'addPhoneNumber'])->name('addPhoneNumber');
     Route::delete('/remove-admin', [AdminController::class, 'removeAdmin'])->name('remove-admin');
     Route::delete('/remove-self', [AdminController::class, 'removeSelf'])->name('remove-self');
     Route::post('/add-email', [AdminController::class, 'addEmail'])->name('addEmail');
@@ -48,4 +52,11 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/add-akreditasi-institusi', [AdminPanelController::class, 'addAkreditasiInstitusi'])->name('addAkreditasi');
     Route::delete('/delete-email', [AdminController::class, 'removeEmail'])->name('removeEmail');
     Route::delete('/remove-mbkm', [AdmisiController::class, 'removeMbkm'])->name('removeMbkm');
+    Route::delete('/remove-infografis', [AdmisiController::class, 'removeInfografis'])->name('removeInfografis');
+    Route::delete('/remove-no-telp', [AdminPanelController::class, 'removeNomorTelepon'])->name('removeNomorTelepon');
+    Route::delete('/remove-akreditasi', [AdminPanelController::class, 'removeAkreditasi'])->name('removeAkreditasi');
+    Route::post('/add-nomor-telepon', [AdminPanelController::class, 'addNomorTelepon'])->name('addNomorTelepon');
+    Route::post('/add-jadwal-ujian', [JadwalUjianController::class, 'addJadwalUjian'])->name('addJadwalUjian');
+    Route::post('/edit-jadwal-ujian', [JadwalUjianController::class, 'editJadwalUjian'])->name('editJadwalUjian');
+    Route::delete('/delete-jadwal-ujian', [JadwalUjianController::class, 'removeJadwalUjian'])->name('removeJadwalUjian');
 });

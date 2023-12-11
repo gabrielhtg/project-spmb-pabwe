@@ -6,8 +6,8 @@
             <form action="{{ route('ubahDataInstitut') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
-                    <label class="form-label w-100 fw-semibold">
-                        Nama Institusi
+                    <label class="form-label w-100">
+                        <span class=" fw-semibold">Nama Institusi</span>
                         <input type="text" class="form-control"
                                name="nama_institusi" value="{{ $dataInstitusi->nama_institusi }}">
                         @error('nama_institusi')
@@ -27,11 +27,9 @@
                     </label>
                 </div>
 
-
-
                 <div class="mb-3">
-                    <label class="form-label w-100 fw-semibold">
-                        Jargon Institusi
+                    <label class="form-label w-100">
+                        <span class="fw-semibold">Jargon Institusi</span>
                         <input type="text" class="form-control"
                                name="input_jargon_institusi" value="{{ $dataInstitusi->jargon }}">
                         @error('input_jargon_institusi')
@@ -41,8 +39,8 @@
 
                 </div>
                 <div class="mb-3">
-                    <label class="form-label fw-semibold w-100">
-                        Jumlah Dosen
+                    <label class="form-label w-100">
+                        <span class="fw-semibold">Jumlah Dosen</span>
                         <input type="number" min="0" class="form-control"
                                name="input_jumlah_dosen" value="{{ $dataInstitusi->jumlah_dosen }}">
                         @error('input_jumlah_dosen')
@@ -52,8 +50,8 @@
 
                 </div>
                 <div class="mb-3">
-                    <label class="form-label fw-semibold w-100">
-                        Jumlah Mahasiswa
+                    <label class="form-label w-100">
+                        <span class="fw-semibold">Jumlah Mahasiswa</span>
                         <input type="number" min="0" class="form-control" name="input_jumlah_mahasiswa" value="{{ $dataInstitusi->jumlah_mahasiswa }}">
                         @error('input_jumlah_mahasiswa')
                         <span class="text-danger">{{ $message }}</span>
@@ -62,8 +60,8 @@
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label fw-semibold w-100">
-                        Jumlah Alumni
+                    <label class="form-label w-100">
+                        <span class="fw-semibold">Jumlah Alumni</span>
                         <input type="number" min="0" class="form-control" name="input_jumlah_alumni" value="{{ $dataInstitusi->jumlah_alumni }}">
                         @error('input_jumlah_alumni')
                         <span class="text-danger">{{ $message }}</span>
@@ -111,14 +109,23 @@
                         $i = 1;
                         @endphp
                         @foreach($dataAkreditasiInstitusi as $e)
-                            <td>{{ $i++ }}</td>
-                            <td>{{ $e->akreditasi }}</td>
-                            <td>{{ $e->lembaga_akreditasi }}</td>
-                            <td>
-                                <a class="btn btn-outline-primary" target="_blank" href="{{ asset($e->sertifikat_akreditasi) }}">Download Here</a>
-                            </td>
-                            <td>{{ $e->tahun_akreditasi }}</td>
-                            <td></td>
+                            <tr>
+                                <td>{{ $i++ }}</td>
+                                <td>{{ $e->akreditasi }}</td>
+                                <td>{{ $e->lembaga_akreditasi }}</td>
+                                <td>
+                                    <a class="btn btn-outline-primary" target="_blank" href="{{ asset($e->sertifikat_akreditasi) }}">Download Here</a>
+                                </td>
+                                <td>{{ $e->tahun_akreditasi }}</td>
+                                <td>
+                                    <form action="{{ route('removeAkreditasi') }}">
+                                        <input type="hidden" name="id" value="{{ $e->id }}">
+                                        <button type="submit" class="btn btn-danger">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>

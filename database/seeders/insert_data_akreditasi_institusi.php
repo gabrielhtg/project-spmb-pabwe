@@ -17,8 +17,12 @@ class insert_data_akreditasi_institusi extends Seeder
             'akreditasi' => 'B',
             'lembaga_akreditasi' => 'BAN-PT',
             'tahun_akreditasi' => 2018,
+            'sertifikat_akreditasi' => '/assets/img/dashboard/sertifikat.jpeg
+            ',
             'created_by' => 'admin',
             'updated_by' => 'admin',
+            'created_at' => now(),
+            'updated_at' => now()
         ]);
     }
 }

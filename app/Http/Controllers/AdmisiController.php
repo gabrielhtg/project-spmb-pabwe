@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Models\AkreditasiInstitutiModel;
+use App\Models\InfografisModel;
 use App\Models\MbkmModel;
 use App\Models\ModelHeaderAdmisi;
+use App\Models\JalurPendaftaranModel;
+use App\Models\Lokasi;
+use App\Models\JenisTes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -77,4 +83,161 @@ class AdmisiController extends Controller
 
         return redirect()->route('admisi-panel');
     }
+
+    public function addJalur(Request $request)
+    {
+
+        JalurPendaftaranModel::create([
+            'jalurPendaftaran' => $request->inputJalurPendaftaran,
+            'desk_pers_umum' => $request->input_desk_pers_umum,
+            'icon' => $request->input_logo_social_media,
+            'created_by' => Auth::user()->username,
+            'updated_by' => Auth::user()->username,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        return redirect('admisi-panel');
+    }
+
+    public function editJalur (Request $request) {
+        $jalur = JalurPendaftaranModel::where('id', $request->id)->first();
+
+        $jalur->jalurPendaftaran = $request->inputJalurPendaftaran;
+        $jalur->desk_pers_umum = $request->input_desk_pers_umum;
+
+        $jalur->updated_by = Auth::user()->username;
+
+        $jalur->update();
+
+        return redirect()->route('admisi-panel');
+    }
+
+    public function removeJalur(Request $request)
+    {
+        JalurPendaftaranModel::where('id', $request->id)->first()->delete();
+    return redirect()->back();
+    }
+
+    public function addInfografisPmdk (Request $request)
+    {
+        $request->validate([
+            'gambar' => 'required|image|mimes:jpeg,png,jpg|max:1024',
+            'nomor_urut' => 'required|min:0'
+        ]);
+//         Mengambil file yang sudah divalidasi dari request
+        $photo = $request->file('gambar');
+
+        // Membuat nama unik untuk file yang diunggah
+        $filename = time() . '_infografis.' . $photo->getClientOriginalExtension();
+
+        // Menentukan direktori tempat penyimpanan file di dalam direktori 'public'
+        $directory = public_path('assets/img/');
+
+        //Pindahkan file ke direktori yang diinginkan
+        $photo->move($directory, $filename);
+
+        InfografisModel::create([
+            'gambar' => 'assets/img/' . $filename,
+            'jalur' => 'PMDK',
+            'nomor_urut' => $request->nomor_urut
+        ]);
+
+        return redirect()->route('admisi-panel');
+    }
+
+    // KELOMPOK 6
+    public function postLokasiTes(Request $request)
+    {
+        $request->validate([
+            'lokasiTes' => 'required',
+            'alamatLokasi' => 'required',
+        ]);
+
+        $lokasi = new Lokasi;
+
+        $lokasi->lokasiTes = $request->lokasiTes;
+        $lokasi->alamatLokasi = $request->alamatLokasi;
+
+        $lokasi->save();
+
+        return redirect()->route('admisi-panel');
+    }
+
+    public function postJenisTes(Request $request)
+    {
+        $request->validate([
+            'gelombang' => 'required',
+            'jenisUjian' => 'required',
+        ]);
+
+        $jenis = new JenisTes;
+
+        $jenis->gelombang = $request->gelombang;
+        $jenis->jenisUjian = $request->jenisUjian;
+
+        $jenis->save();
+        return redirect()->route('admisi-panel');
+    }
+
+    public function addInfografisUsm (Request $request)
+    {
+        $request->validate([
+            'gambar' => 'required|image|mimes:jpeg,png,jpg|max:1024',
+            'nomor_urut' => 'required|min:0'
+        ]);
+//         Mengambil file yang sudah divalidasi dari request
+        $photo = $request->file('gambar');
+
+        // Membuat nama unik untuk file yang diunggah
+        $filename = time() . '_infografis.' . $photo->getClientOriginalExtension();
+
+        // Menentukan direktori tempat penyimpanan file di dalam direktori 'public'
+        $directory = public_path('assets/img/');
+
+        //Pindahkan file ke direktori yang diinginkan
+        $photo->move($directory, $filename);
+
+        InfografisModel::create([
+            'gambar' => 'assets/img/' . $filename,
+            'jalur' => 'USM',
+            'nomor_urut' => $request->nomor_urut
+        ]);
+
+        return redirect()->route('admisi-panel');
+    }
+
+    public function addInfografisUtbk (Request $request)
+    {
+        $request->validate([
+            'gambar' => 'required|image|mimes:jpeg,png,jpg|max:1024',
+            'nomor_urut' => 'required|min:0'
+        ]);
+//         Mengambil file yang sudah divalidasi dari request
+        $photo = $request->file('gambar');
+
+        // Membuat nama unik untuk file yang diunggah
+        $filename = time() . '_infografis.' . $photo->getClientOriginalExtension();
+
+        // Menentukan direktori tempat penyimpanan file di dalam direktori 'public'
+        $directory = public_path('assets/img/');
+
+        //Pindahkan file ke direktori yang diinginkan
+        $photo->move($directory, $filename);
+
+        InfografisModel::create([
+            'gambar' => 'assets/img/' . $filename,
+            'jalur' => 'UTBK',
+            'nomor_urut' => $request->nomor_urut
+        ]);
+
+        return redirect()->route('admisi-panel');
+    }
+
+    public function removeInfografis (Request $request) {
+        InfografisModel::where('id', $request->id)->delete();
+
+        return redirect()->route('admisi-panel');
+    }
+
+    
 }

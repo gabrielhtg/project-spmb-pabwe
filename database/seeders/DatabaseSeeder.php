@@ -24,7 +24,9 @@ class DatabaseSeeder extends Seeder
             add_nomor_telepon::class,
             input_image_header_admisi::class,
             add_email::class,
-            add_data_mbkm::class
+            add_data_mbkm::class,
+            add_infografis_admisi::class,
+            insert_data_akreditasi_institusi::class
         ]);
     }
 }

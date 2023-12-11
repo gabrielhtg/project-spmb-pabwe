@@ -9,16 +9,23 @@ use App\Models\AlamatInstitusiModel;
 use App\Models\data_institusi;
 use App\Models\EmailModel;
 use App\Models\HeroSectionModel;
+use App\Models\InfografisModel;
+use App\Models\JadwalUjianModel;
 use App\Models\MbkmModel;
 use App\Models\ModelHeaderAdmisi;
 use App\Models\NomorTeleponModel;
 use App\Models\SocalMediaModel;
+<<<<<<< HEAD
 use App\Models\Prestasi;
+=======
+use App\Models\JalurPendaftaranModel;
+use App\Models\Lokasi;
+use App\Models\JenisTes;
+>>>>>>> ee2a44492e8414b828563ea457b35cada40b5f9a
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use Symfony\Component\HttpFoundation\Response as ResponseAlias;
+use Mockery\Exception;
 
 class AdminPanelController extends Controller
 {
@@ -59,11 +66,10 @@ class AdminPanelController extends Controller
                 'input_logo_institusi' => 'required|image|mimes:jpeg,png,jpg|max:1024',
                 'nama_institusi' => 'required|max:30|string',
                 'input_singkatan_nama_institusi' => 'required|max:10|string',
-                'input_akreditasi' => 'required|max:1',
                 'input_jargon_institusi' => 'required|string|max:50',
-                'input_jumlah_dosen' => 'required',
-                'input_jumlah_mahasiswa' => 'required',
-                'input_jumlah_alumni' => 'required'
+                'input_jumlah_dosen' => 'required|numeric',
+                'input_jumlah_mahasiswa' => 'required|numeric',
+                'input_jumlah_alumni' => 'required|numeric'
             ]);
         }
 
@@ -71,11 +77,10 @@ class AdminPanelController extends Controller
             $request->validate([
                 'nama_institusi' => 'required|max:30|string',
                 'input_singkatan_nama_institusi' => 'required|max:10|string',
-                'input_akreditasi' => 'required|max:1',
                 'input_jargon_institusi' => 'required|string|max:50',
-                'input_jumlah_dosen' => 'required',
-                'input_jumlah_mahasiswa' => 'required',
-                'input_jumlah_alumni' => 'required'
+                'input_jumlah_dosen' => 'required|numeric',
+                'input_jumlah_mahasiswa' => 'required|numeric',
+                'input_jumlah_alumni' => 'required|numeric',
             ]);
         }
 
@@ -95,8 +100,6 @@ class AdminPanelController extends Controller
             $dataInstitusi->logo_institusi = 'assets/img/dashboard/' . $filename;
         }
 
-
-
         $dataInstitusi->nama_institusi = $request->nama_institusi;
         $dataInstitusi->singkatan_nama_institusi = $request->input_singkatan_nama_institusi;
         $dataInstitusi->akreditasi = $request->input_akreditasi;
@@ -104,7 +107,6 @@ class AdminPanelController extends Controller
         $dataInstitusi->jumlah_dosen = $request->input_jumlah_dosen;
         $dataInstitusi->jumlah_mahasiswa = $request->input_jumlah_mahasiswa;
         $dataInstitusi->jumlah_alumni = $request->input_jumlah_alumni;
-
 
         $dataInstitusi->update();
 
@@ -125,15 +127,19 @@ class AdminPanelController extends Controller
     public function addSocialMedia(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'input_nama_institusi' => 'required|exists:data_institusi',
+            'input_nama_social_media' => 'required|string|50',
+            'input_link' => 'required|string|150',
+            'input_logo_social_media' => 'required|string|100',
         ]);
+
+        $username = Auth::user()->username;
 
         SocalMediaModel::create([
             'nama' => $request->input_nama_social_media,
-            'link' => $request->input_link_social_media,
+            'link' => $request->input_link,
             'icon' => $request->input_logo_social_media,
-            'created_by' => Auth::user()->username,
-            'updated_by' => Auth::user()->username,
+            'created_by' => $username,
+            'updated_by' => $username,
             'created_at' => now(),
             'updated_at' => now(),
         ]);
@@ -157,7 +163,7 @@ class AdminPanelController extends Controller
     public function removeSocialMedia(Request $request)
     {
         SocalMediaModel::where('id', $request->id)->first()->delete();
-    return redirect()->back();
+        return redirect()->back();
     }
 
     public function updateHeroSection(Request $request)
@@ -243,22 +249,45 @@ class AdminPanelController extends Controller
 
     public function removeAlamat(Request $request)
     {
-        AlamatInstitusiModel::where('id', $request->id)->first()->delete();
-        return redirect()->back();
+        try {
+            AlamatInstitusiModel::where('id', $request->id)->first()->delete();
+            return redirect(null, 200)->back();
+        } catch (Exception $e) {
+            return redirect(null, 404)->back();
+        }
     }
-
     public function getAdmisiPanel () {
         $admin = Auth::user();
         $dataHeaderAdmisi = ModelHeaderAdmisi::where('id', 1)->first();
         $dataNonKompetisi  = MbkmModel::where('jenis_kegiatan', 'Non Kompetisi')->get();
         $dataKompetisi =  MbkmModel::where('jenis_kegiatan', 'Kompetisi')->get();
+        $jalurMasuk = [];
+        $lokasi = Lokasi::orderBy('lokasiTes', 'asc')->get();
+        $jenis = JenisTes::orderBy('gelombang', 'asc')->get();
+        $dataJadwalUjian = JadwalUjianModel::all();
+
+        foreach (InfografisModel::all() as $e) {
+            if (!in_array($e->jalur, $jalurMasuk)) {
+                $jalurMasuk[] = $e->jalur;
+            }
+        }
+
+        $dataInfografisJalurMasuk = [];
+
+        foreach ($jalurMasuk as $e) {
+            $dataInfografisJalurMasuk[] = InfografisModel::where('jalur', $e)->get();
+        }
 
         $data = [
             'indexActive' => 1,
             'admin' => $admin,
             'dataHeaderAdmisi' => $dataHeaderAdmisi,
             'dataNonKompetisi' => $dataNonKompetisi,
-            'dataKompetisi'=>$dataKompetisi
+            'dataKompetisi'=>$dataKompetisi,
+            'dataInfografis' => $dataInfografisJalurMasuk,
+            'lokasi' => $lokasi,
+            'jenis' => $jenis,
+            'dataJadwalUjian' => $dataJadwalUjian
         ];
         return view('admin-panel.admisi_panel', $data);
     }
@@ -276,7 +305,7 @@ class AdminPanelController extends Controller
             $photo = $request->file('sertifikat_akreditasi');
 
             // Membuat nama unik untuk file yang diunggah
-            $filename = 'sertifikat_institusi.' . $photo->getClientOriginalExtension();
+            $filename = time() . '_sertifikat_institusi.' . $photo->getClientOriginalExtension();
 
             // Menentukan direktori tempat penyimpanan file di dalam direktori 'public'
             $directory = public_path('assets/img/dashboard/');
@@ -295,6 +324,7 @@ class AdminPanelController extends Controller
         return redirect()->route('admin-panel');
     }
 
+<<<<<<< HEAD
     public function getPrestasiPanel () {
         $admin = Auth::user();
         $data = [
@@ -312,5 +342,131 @@ class AdminPanelController extends Controller
             'admin' => $admin
         ];
         return view('admin-panel.testimonipanel', $data);
+=======
+    public function removeNomorTelepon (Request $request) {
+        try {
+            NomorTeleponModel::where('id', $request->id)->first()->delete();
+            return redirect(null, 200)->route('admin-panel');
+        } catch (\Exception $e) {
+            abort(404, 'ID nomor telepon tidak ditemukan');
+        }
+    }
+
+    public function addNomorTelepon (Request $request) {
+        try {
+            $username = Auth::user()->username;
+
+            NomorTeleponModel::create([
+                'nama' => $request->namaNomorTelepon,
+                'nomor_telepon' => $request->nomorTelepon,
+                'updated_at' => now(),
+                'created_at' => now(),
+                'created_by' => $username,
+                'updated_by' => $username,
+            ]);
+
+            return redirect(null, 200)->route('admin-panel');
+        } catch (Exception $e) {
+            abort(403, 'Gagal Menambah Nomor Telepon');
+        }
+    }
+
+    public function removeAkreditasi (Request $request) {
+        try {
+            AkreditasiInstitutiModel::where('id', $request->id)->first()->delete();
+
+            return redirect(null, 200)->route('admin-panel');
+        } catch (\Exception $e) {
+            abort(404, 'ID tidak ditemukan');
+        }
+    }
+
+    public function destroyLokasi($id)
+    {
+        $admin = Auth::user();
+        $lokasi = Lokasi::find($id);
+
+        if ($lokasi) {
+            $lokasi->delete();
+        }
+
+        $data = [
+            'indexActive' => 2,
+            'admin' => $admin,
+            'lokasi' => $lokasi,
+        ];
+
+        return $this->getAdmisiPanel();
+    }
+
+    public function destroyJenisTes($id)
+    {
+        $admin = Auth::user();
+        $jenis = JenisTes::find($id);
+
+        if($jenis){
+            $jenis->delete();
+        }
+
+        $data = [
+            'indexActive' => 2,
+            'admin' => $admin,
+            'jenis' => $jenis,
+        ];
+
+        return $this->getAdmisiPanel();
+    }
+
+    public function postEditlokasi(Request $request)
+    {
+        // Mendapatkan user yang sedang login
+        $admin = Auth::user();
+
+        $request->validate([
+            'id' => 'required|exists:lokasi',
+            'lokasiTes' => 'required',
+            'alamatLokasi' => 'required',
+        ]);
+
+        // Mengambil data fasilitas berdasarkan ID
+        $lokasi = Lokasi::where("id", $request->id)->first();
+
+        if ($lokasi) {
+            // Mengupdate data fasilitas
+            $lokasi->lokasiTes = $request->lokasiTes;
+            $lokasi->alamatLokasi = $request->alamatLokasi;
+
+            // Menyimpan perubahan
+            $lokasi->save();
+    }
+    // Redirect dengan pesan sukses
+    return $this->getAdmisiPanel();
+    }
+
+    public function postEditJenis(Request $request)
+    {
+        // Mendapatkan user yang sedang login
+        $admin = Auth::user();
+
+        $request->validate([
+            'id' => 'required|exists:jenis',
+            'gelombang' => 'required',
+            'jenisUjian' => 'required',
+        ]);
+
+        // Mengambil data fasilitas berdasarkan ID
+        $jenis = JenisTes::where("id", $request->id)->first();
+
+        if ($jenis) {
+            // Mengupdate data fasilitas
+            $jenis->gelombang = $request->gelombang;
+            $jenis->jenisUjian = $request->jenisUjian;
+
+            // Menyimpan perubahan
+            $jenis->save();
+    }
+    // Redirect dengan pesan sukses
+    return $this->getAdmisiPanel();
+>>>>>>> ee2a44492e8414b828563ea457b35cada40b5f9a
     }
 }
