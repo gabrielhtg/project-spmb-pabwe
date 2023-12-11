@@ -46,10 +46,11 @@
                                 </td>
                                 <td>{{ $item->created_at }}</td>
                                 <td style="min-width: 120px; width: 120px">
-                                    <button class="btn btn-success">
+                                    <button onclick="showModalEdit({{ $item->id }}, '{{ addslashes($item->judul_prestasi) }}', '{{ addslashes($item->deskripsi) }}', '{{ $item->jenis_prestasi }}')" class="btn btn-success">
                                         <i class="bi bi-pen"></i>
                                     </button>
-                                    <button class="btn btn-danger">
+
+                                    <button onclick="showModalDelete({{ $item->id }})" class="btn btn-danger">
                                         <i class="bi bi-trash"></i>
                                     </button>
                                 </td>
@@ -67,11 +68,42 @@
         </div>
     </div>
 
+    @include('admin-panel.sub_admin_panel.hapus_prestasi')
+
+    @include('admin-panel.sub_admin_panel.ubah_prestasi')
+
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
 
     <script>
+        function showModalEdit(idEdit, judul, deskripsi, jenis_prestasi) {
+            const modal = document.getElementById("modal-edit");
+
+            const inputId = document.getElementById("inputEdit");
+            const inputJudul = document.getElementById("judulUpdate");
+            const inputDeskripsi = document.getElementById("deskripsiUpdate");
+            const inputJenisPrestasi = document.getElementById("input_jenis_prestasi_update");
+
+            inputId.value = idEdit;
+            inputJudul.value = judul;
+            inputDeskripsi.value = deskripsi;
+            inputJenisPrestasi.value = jenis_prestasi;
+
+            var bsModal = new bootstrap.Modal(modal);
+            bsModal.show();
+        }
+
+        function showModalDelete(idDelete) {
+            const modal = document.getElementById("modal-delete");
+            const inputId = document.getElementById("inputDelete");
+
+            inputId.value = idDelete;
+
+            var bsModal = new bootstrap.Modal(modal);
+            bsModal.show();
+        }
+
         $(document).ready(function () {
             $('#table-data').DataTable();
         })

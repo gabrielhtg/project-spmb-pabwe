@@ -50,7 +50,10 @@ Route::middleware('auth')->group(function () {
         /* Routing Kelompok 3 -  (Prestasi, Testimoni)*/
         /* Bagian Prestasi */
         Route::get('/prestasi', [AdminPanelController::class, 'getPrestasiPanel'])->name('prestasipanel');
-    
+        Route::post('/prestasi-add', [AdminPanelController::class, 'addPrestasi'])->name('addPrestasi');
+        Route::post('/prestasi-delete', [AdminPanelController::class, 'deletePrestasi'])->name('deletePrestasi');
+        Route::post('/prestasi-update', [AdminPanelController::class, 'updatePrestasi'])->name('updatePrestasi');
+
         /* Bagian Testimoni */
         Route::get('/testimoni', [AdminPanelController::class, 'getTestimoniPanel'])->name('testimonipanel');
 
@@ -72,7 +75,7 @@ Route::get('/form', function () {
     return view('chatbot.form');
 })->name('form');
 
-//----
+/* Routing Kelompok 3 -  (Prestasi) */
 Route::get('/prestasi', [PrestasiController::class, 'getviewPrestasi'])->name('prestasi.prestasiOverview');
 Route::get('/prestasi-institut', [PrestasiController::class, 'getviewPrestasiInstitut'])->name('prestasi.prestasiInstitut');
 Route::get('/prestasi-dosen-staff', [PrestasiController::class, 'getviewPrestasiDosenStaff'])->name('prestasi.prestasiDosenStaff');

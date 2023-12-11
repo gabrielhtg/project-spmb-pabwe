@@ -37,7 +37,7 @@ class PrestasiFactory extends Factory
         return [
             'jenis_prestasi' => $typePrestasi,
             'photo' => 'assets/img/prestasi/'.$fileName.'.jpg',
-            'deskripsi' => $this->faker->sentence,
+            'deskripsi' => addslashes(htmlspecialchars($this->faker->sentence)),
             'judul_prestasi' => $this->faker->realText(50),
         ];
     }

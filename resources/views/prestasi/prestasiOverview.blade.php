@@ -140,7 +140,7 @@
         <div class="row">
             @if(isset($dataPrestasiInstitutOverview) && sizeof($dataPrestasiInstitutOverview))
                 @foreach($dataPrestasiInstitutOverview as $item)
-                    <div class="col">
+                    <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="card">
                             <img src="{{asset($item->photo)}}" class="card-img-top" alt="pict1"/>
                             <div class="card-body">
@@ -192,7 +192,7 @@
         <div class="row">
             @if((isset($dataPrestasiDosenOverview) && sizeof($dataPrestasiDosenOverview)))
                 @foreach($dataPrestasiDosenOverview as $item)
-                    <div class="col">
+                    <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="card">
                             <img src="{{asset($item->photo)}}" class="card-img-top" alt="pict1"/>
                             <div class="card-body">
@@ -242,7 +242,7 @@
         <div class="row">
             @if((isset($dataPrestasiMahasiswaOverview) && sizeof($dataPrestasiMahasiswaOverview)))
                 @foreach($dataPrestasiMahasiswaOverview as $item)
-                    <div class="col">
+                    <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="card">
                             <img src="{{asset($item->photo)}}" class="card-img-top" alt="pict1"/>
                             <div class="card-body">

@@ -90,14 +90,108 @@ class AdminPanelController extends Controller
         $admin = Auth::user();
 
         $data = [
-            'indexActive' => 2,
-            'dataPrestasi' => Prestasi::all(),
+            'indexActive' => 1,
+            'dataPrestasi' => Prestasi::orderBy('created_at', 'desc')->get(),
             'admin' => $admin
         ];
 
         return view('admin-panel.prestasipanel', $data);
     }
 
+    public function addPrestasi(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'judul-prestasi' => 'required|string|max:255',
+            'gambar' => 'required|image|mimes:jpeg,png,jpg|max:1024',
+            'input_jenis_prestasi' => 'required',
+            'deskripsi' => 'required|string',
+        ]);
+
+        $photo = $request->file('gambar');
+
+        if ($photo) {
+            $filename =  "prestasi" . time() . '.' . $photo->getClientOriginalExtension();
+
+            $directory = public_path('assets/img/prestasi');
+
+            $photo->move($directory, $filename);
+
+            Prestasi::create([
+                "jenis_prestasi" => $request->input_jenis_prestasi,
+                "photo" => "assets/img/prestasi/" . $filename,
+                "deskripsi" => $request->deskripsi,
+                "judul_prestasi" => $request->judul,
+            ]);
+
+            return redirect()->route("prestasipanel");
+        } else {
+            if ($validator->fails()) {
+                return redirect()
+                    ->route('prestasipanel')
+                    ->withErrors($validator)
+                    ->withInput();
+            }
+        }
+    }
+
+    public function deletePrestasi(Request $request)
+    {
+        $prestasi = Prestasi::find($request->id);
+        $prestasi->delete();
+
+        return redirect()->back();
+    }
+
+    public function updatePrestasi(Request $request)
+    {
+
+//        dd($request);
+        $validator = Validator::make($request->all(), [
+            'judulUpdate' => 'required|string|max:255',
+            'gambarUpdate' => 'image|mimes:jpeg,png,jpg|max:1024',
+            'input_jenis_prestasi_update' => 'required',
+            'deskripsiUpdate' => 'required|string',
+        ]);
+
+        $photo = $request->file('gambarUpdate');
+
+        if ($photo) {
+            $filename =  "prestasi" . time() . '.' . $photo->getClientOriginalExtension();
+
+            $directory = public_path('assets/img/prestasi');
+
+            $photo->move($directory, $filename);
+
+            $prestasi = Prestasi::find($request->inputEdit);
+
+            $prestasi->update([
+                "jenis_prestasi" => $request->input_jenis_prestasi_update,
+                "deskripsi" => $request->deskripsiUpdate,
+                "judul_prestasi" => $request->judulUpdate,
+                "photo" => "assets/img/prestasi/" . $filename,
+            ]);
+
+            return redirect()->route("prestasipanel");
+        } else if ($photo == null) {
+            $prestasi = Prestasi::find($request->inputEdit);
+
+            $prestasi->update([
+                "jenis_prestasi" => $request->input_jenis_prestasi_update,
+                "deskripsi" => $request->deskripsiUpdate,
+                "judul_prestasi" => $request->judulUpdate
+            ]);
+
+            return redirect()->route("prestasipanel");
+        } else {
+            if ($validator->fails()) {
+                return redirect()
+                    ->route('prestasipanel')
+                    ->withErrors($validator)
+                    ->withInput();
+            }
+        }
+
+    }
     public function getTestimoniPanel()
     {
         $admin = Auth::user();

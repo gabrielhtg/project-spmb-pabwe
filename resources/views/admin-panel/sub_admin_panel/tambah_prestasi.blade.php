@@ -1,7 +1,3 @@
-<!-- include summernote css/js -->
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
-
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary mt-3 mb-2 align-self-end" data-bs-toggle="modal"
         data-bs-target="#tambah_tombol_hero_section_modal">
@@ -17,12 +13,13 @@
                 <h1 class="modal-title fs-5 fw-semibold">Tambah Prestasi</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="" method="post" enctype="multipart/form-data">
+            <form action="{{ route('addPrestasi')  }}" method="post" enctype="multipart/form-data">
+                @csrf
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label for="judul-prestasi" class="form-label">Judul Prestasi</label>
-                        <input type="text" class="form-control" id="judul-prestasi"
-                               name="judul-prestasi">
+                        <label for="judul" class="form-label">Judul Prestasi</label>
+                        <input type="text" class="form-control" id="judul"
+                               name="judul">
                     </div>
 
                     <div class="mb-3">
@@ -31,17 +28,17 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="input_jenis_testimoni" class="form-label">Jenis Testimoni</label>
-                        <select class="form-select" id="input_jenis_testimoni" name="input_jenis_testimoni">
+                        <label for="input_jenis_prestasi" class="form-label">Jenis Testimoni</label>
+                        <select class="form-select" id="input_jenis_prestasi" name="input_jenis_prestasi">
                             <option value="Institut">Prestasi Institut</option>
                             <option value="Dosen">Prestasi Dosen dan Staff</option>
                             <option value="Mahasiswa">Prestasi Mahasiswa</option>
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="input_foto" class="form-label">Foto</label>
-                        <input type="file" class="form-control" id="input_foto"
-                               name="input_foto">
+                        <label for="gambar" class="form-label">Foto</label>
+                        <input type="file" class="form-control" id="gambar"
+                               name="gambar">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -53,8 +50,3 @@
     </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-<script>
-    $(document).ready(function() {
-        $('#deskripsi').summernote();
-    });
-</script>
