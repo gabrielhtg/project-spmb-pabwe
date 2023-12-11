@@ -69,7 +69,7 @@ Route::middleware('auth')->group(function () {
             Route::post('/add-jenis', [AdmisiController::class, 'postJenistes'])->name('post.jenis');
         });
 
-        Route::prefix('fasilitas-panel')->group(function(){
+        Route::prefix('fasilitas-panel')->group(function () {
             Route::get('/fasilitas-admin', [AdminPanelController::class, 'getFasilitasAdmin'])->name('fasilitas-admin');
             Route::get('/fasilitas-admin-get', [AdminPanelController::class, 'getAddFasilitas'])->name('get.add-fasilitas');
             Route::post('/fasilitas/edit', [AdminPanelController::class, 'postEditFasilitas'])->name('post.fasilitas.edit');
@@ -77,12 +77,27 @@ Route::middleware('auth')->group(function () {
             Route::delete('post-fasilitas/{id}', [AdminPanelController::class, 'destroy'])->name('post.destroy');
         });
 
-        Route::prefix('pengumuman-panel')->group(function(){
+        Route::prefix('pengumuman-panel')->group(function () {
             Route::get('/pengumuman-admin', [PengumumanController::class, 'getPengumumanPanel'])->name('pengumuman-panel');
             Route::get('/pengumuman-admin-get', [AdminPanelController::class, 'getAddPengumuman'])->name('get.add-pengumuman');
             Route::post('/tambah-pengumuman', [PengumumanController::class, 'postPengumuman'])->name('post.pengumuman');
             Route::post('/pengumuman/edit', [AdminPanelController::class, 'postEditPengumuman'])->name('post.edit.pengumuman');
             Route::delete('post-pengumuman/{id}', [PengumumanController::class, 'destroy'])->name('post.destroy.pengumuman');
+        });
+
+        Route::prefix('prestasi-panel')->group(function () {
+            /* Bagian Prestasi */
+            Route::get('/', [AdminPanelController::class, 'getPrestasiPanel'])->name('prestasi.panel');
+            Route::post('/add', [AdminPanelController::class, 'postAddPrestasi'])->name('prestasi.add');
+//            Route::post('/edit', [AdminPanelController::class, 'postEditPrestasi'])->name('prestasi.edit');
+//            Route::post('/delete', [AdminPanelController::class, 'addPrestasi'])->name('prestasi.delete');
+        });
+
+        Route::prefix('testimoni-panel')->group(function () {
+            Route::get('/', [AdminPanelController::class, 'getTestimoniPanel'])->name('testimoni.panel');
+//            Route::post('/add', [AdminPanelController::class, 'getTestimoniPanel'])->name('testimonipanel');
+//            Route::post('/edit', [AdminPanelController::class, 'getTestimoniPanel'])->name('testimonipanel');
+//            Route::post('/delete', [AdminPanelController::class, 'getTestimoniPanel'])->name('testimonipanel');
         });
     });
 });
