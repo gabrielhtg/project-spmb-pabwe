@@ -18,8 +18,8 @@
 {{--    <script type="text/javascript" src="cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>--}}
 
     <!-- include summernote css/js-->
-    <link href="{{ asset('assets/summernote-0.8.18-dist/summernote.css') }}" rel="stylesheet">
-    <script src="{{ asset('assets/summernote-0.8.18-dist/summernote.js') }}"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
     <title>Admin Panel</title>
 </head>
