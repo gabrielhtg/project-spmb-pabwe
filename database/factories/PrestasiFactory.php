@@ -10,6 +10,8 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class PrestasiFactory extends Factory
 {
+
+    protected $model = Prestasi::class;
     /**
      * Define the model's default state.
      *
@@ -17,8 +19,6 @@ class PrestasiFactory extends Factory
      */
     public function definition(): array
     {
-        protected $model = Prestasi::class;
-
         $typePrestasi = $this->faker->randomElement(['Institut', 'Dosen', 'Mahasiswa']);
 
         switch ($typePrestasi)
@@ -37,7 +37,7 @@ class PrestasiFactory extends Factory
         return [
             'jenis_prestasi' => $typePrestasi,
             'photo' => 'assets/img/prestasi/'.$fileName.'.jpg',
-            'deskripsi' => htmlspecialchars(addslashes('$this->faker->sentence')),
+            'deskripsi' => htmlspecialchars(addslashes($this->faker->sentence)),
             'judul_prestasi' => htmlspecialchars(addslashes($this->faker->realText(50))),
         ];
     }
