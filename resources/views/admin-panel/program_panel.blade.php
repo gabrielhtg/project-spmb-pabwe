@@ -119,7 +119,7 @@
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="input_deskripsi_fakultas" class="form-label">Deskripsi</label>
-                                                    <textarea class="form-control" id="edit_deskripsi_fakultas_{{ $faculty->id }}" name="deskripsi" placeholder="{{ old('deskripsi', $faculty->deskripsi) }}" required>{{ old('deskripsi', $faculty->deskripsi) }}</textarea>
+                                                    <textarea class="form-control" id="edit_deskripsi_fakultas_{{ $faculty->id }}" name="deskripsi" placeholder="{{ old('deskripsi', $faculty->deskripsi) }}">{{ old('deskripsi', $faculty->deskripsi) }}</textarea>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="input_lokasi_fakultas" class="form-label">Lokasi</label>
@@ -130,11 +130,11 @@
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="input_visi_fakultas" class="form-label">Visi</label>
-                                                    <textarea class="form-control" id="edit_visi_fakultas_{{ $faculty->id }}" name="visi" placeholder="{{ old('visi', $faculty->visi) }}" required>{{ old('visi', $faculty->visi) }}</textarea>
+                                                    <textarea class="form-control" id="edit_visi_fakultas_{{ $faculty->id }}" name="visi" placeholder="{{ old('visi', $faculty->visi) }}" >{{ old('visi', $faculty->visi) }}</textarea>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="input_misi_fakultas" class="form-label">Misi</label>
-                                                    <textarea class="form-control" id="edit_misi_fakultas_{{ $faculty->id }}" name="misi" placeholder="{{ old('visi', $faculty->misi) }}" required>{{ old('misi', $faculty->misi) }}</textarea>
+                                                    <textarea class="form-control" id="edit_misi_fakultas_{{ $faculty->id }}" name="misi" placeholder="{{ old('visi', $faculty->misi) }}">{{ old('misi', $faculty->misi) }}</textarea>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="input_sertifikat_akreditasi" class="form-label">Gambar</label>
@@ -233,7 +233,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="input_deskripsi_fakultas" class="form-label">Deskripsi</label>
-                                <textarea class="form-control" id="deskripsi_fakultas" name="deskripsi" placeholder="Tuliskan deskripsi fakultas..." required></textarea>
+                                <textarea class="form-control" id="deskripsi_fakultas" name="deskripsi" placeholder="Tuliskan deskripsi fakultas..."></textarea>
                             </div>
                             <div class="mb-3">
                                 <label for="input_lokasi_fakultas" class="form-label">Lokasi</label>
@@ -244,11 +244,11 @@
                             </div>
                             <div class="mb-3">
                                 <label for="input_visi_fakultas" class="form-label">Visi</label>
-                                <textarea class="form-control" id="visi_fakultas" name="visi" placeholder="Tuliskan visi fakultas..." required></textarea>
+                                <textarea class="form-control" id="visi_fakultas" name="visi" placeholder="Tuliskan visi fakultas..."></textarea>
                             </div>
                             <div class="mb-3">
                                 <label for="input_misi_fakultas" class="form-label">Misi</label>
-                                <textarea class="form-control" id="misi_fakultas" name="misi" placeholder="Tuliskan misi fakultas..." required></textarea>
+                                <textarea class="form-control" id="misi_fakultas" name="misi" placeholder="Tuliskan misi fakultas..."></textarea>
                             </div>
                             <div class="mb-3">
                                 <label for="input_gambar_fakultas" class="form-label">Gambar</label>
@@ -413,7 +413,7 @@
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="input_deskripsi_fakultas" class="form-label">Deskripsi</label>
-                                                        <textarea id="editDeskripsiProdi-{{ $major->id }}" class="form-control" name="deskripsi" placeholder="{{ old('deskripsi', $major->deskripsi) }}" required>{{ old('deskripsi', $major->deskripsi) }}</textarea>
+                                                        <textarea id="editDeskripsiProdi-{{ $major->id }}" class="form-control" name="deskripsi" placeholder="{{ old('deskripsi', $major->deskripsi) }}" >{{ old('deskripsi', $major->deskripsi) }}</textarea>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="input_sertifikat_akreditasi" class="form-label">Gambar</label>
@@ -422,15 +422,15 @@
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="input_lokasi_fakultas" class="form-label">Visi</label>
-                                                        <textarea id="editVisiProdi-{{ $major->id }}" class="form-control" name="visi" placeholder="{{ old('deskripsi', $major->visi) }}" required>{{ old('deskripsi', $major->visi) }}</textarea>
+                                                        <textarea id="editVisiProdi-{{ $major->id }}" class="form-control" name="visi" placeholder="{{ old('deskripsi', $major->visi) }}" >{{ old('deskripsi', $major->visi) }}</textarea>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="input_visi_fakultas" class="form-label">Misi</label>
-                                                        <textarea id="editMisiProdi-{{ $major->id }}" class="form-control" name="misi" placeholder="{{ old('deskripsi', $major->misi) }}" required>{{ old('deskripsi', $major->misi) }}</textarea>
+                                                        <textarea id="editMisiProdi-{{ $major->id }}" class="form-control" name="misi" placeholder="{{ old('deskripsi', $major->misi) }}" >{{ old('deskripsi', $major->misi) }}</textarea>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="input_misi_fakultas" class="form-label">Prospek</label>
-                                                        <textarea id="editProspekProdi-{{ $major->id }}" class="form-control" name="prospek" placeholder="{{ old('deskripsi', $major->prospek) }}" required>{{ old('deskripsi', $major->prospek) }}</textarea>
+                                                        <textarea id="editProspekProdi-{{ $major->id }}" class="form-control" name="prospek" placeholder="{{ old('deskripsi', $major->prospek) }}" >{{ old('deskripsi', $major->prospek) }}</textarea>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="input_misi_fakultas" class="form-label">Gelar</label>
@@ -453,7 +453,7 @@
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="input_misi_fakultas" class="form-label">Syarat Masuk</label>
-                                                        <textarea id="editSyaratProdi-{{ $major->id }}" class="form-control" name="syarat" placeholder="{{ old('deskripsi', $major->syarat) }}" required>{{ old('deskripsi', $major->syarat) }}</textarea>
+                                                        <textarea id="editSyaratProdi-{{ $major->id }}" class="form-control" name="syarat" placeholder="{{ old('deskripsi', $major->syarat) }}" >{{ old('deskripsi', $major->syarat) }}</textarea>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="input_misi_fakultas" class="form-label">Lokasi</label>
@@ -651,7 +651,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="input_deskripsi_fakultas" class="form-label">Deskripsi Prodi</label>
-                                    <textarea id="deskripsi_prodi" class="form-control" name="deskripsi" placeholder="Tuliskan deskripsi prodi..." required></textarea>
+                                    <textarea id="deskripsi_prodi" class="form-control" name="deskripsi" placeholder="Tuliskan deskripsi prodi..." ></textarea>
                                 </div>
                                 <div class="mb-3">
                                     <label for="inp ut_sertifikat_akreditasi" class="form-label">Gambar</label>
@@ -659,15 +659,15 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="input_lokasi_fakultas" class="form-label">Visi</label>
-                                    <textarea id="visi_prodi" class="form-control" name="visi" placeholder="Tuliskan visi prodi..." required></textarea>
+                                    <textarea id="visi_prodi" class="form-control" name="visi" placeholder="Tuliskan visi prodi..." ></textarea>
                                 </div>
                                 <div class="mb-3">
                                     <label for="input_visi_fakultas" class="form-label">Misi</label>
-                                    <textarea id="misi_prodi" class="form-control" name="misi" placeholder="Tuliskan misi prodi..." required></textarea>
+                                    <textarea id="misi_prodi" class="form-control" name="misi" placeholder="Tuliskan misi prodi..." ></textarea>
                                 </div>
                                 <div class="mb-3">
                                     <label for="input_misi_fakultas" class="form-label">Prospek Kerja</label>
-                                    <textarea id="prospek_prodi" class="form-control" name="prospek" placeholder="Tuliskan prospek prodi..." required></textarea>
+                                    <textarea id="prospek_prodi" class="form-control" name="prospek" placeholder="Tuliskan prospek prodi..."></textarea>
                                 </div>
                                 <div class="mb-3">
                                     <label for="input_misi_fakultas" class="form-label">Gelar</label>
@@ -690,7 +690,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="input_misi_fakultas" class="form-label">Syarat Masuk</label>
-                                    <textarea id="syarat_prodi" class="form-control" name="syarat" placeholder="Tuliskan syarat pendaftaran..." required></textarea>
+                                    <textarea id="syarat_prodi" class="form-control" name="syarat" placeholder="Tuliskan syarat pendaftaran..."></textarea>
                                 </div>
                                 <div class="mb-3">
                                     <label for="input_misi_fakultas" class="form-label">Lokasi</label>
