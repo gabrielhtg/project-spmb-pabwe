@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Faculty;
+use App\Models\Employee;
 use App\Models\data_institusi;
 use App\Models\HeroSectionModel;
 use App\Models\SocalMediaModel;
@@ -20,8 +21,8 @@ class FacultyController extends Controller
 
     public function getFakultas(String $id) {
         $dataInstitusi = data_institusi::where('id', 1)->first();
-
         $faculty = Faculty::where('id', $id)->with('major')->get();
+        $employees = Employee::with('major')->get();
         $dataHeroSection = HeroSectionModel::where('id', 1)->first();
         $dataSosmed = SocalMediaModel::all();
         $dataAlamat = AlamatInstitusiModel::all();
@@ -41,7 +42,7 @@ class FacultyController extends Controller
             'dataNomorTelepon' => $dataNomorTelepon,
             'dataEmail' => $dataEmail,
             'dataAkreditasiInstitusi' => $dataAkreditasiInstitusi,
-            
+            'employees' => $employees,
             
         ];
 

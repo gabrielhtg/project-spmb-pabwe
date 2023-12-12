@@ -108,4 +108,20 @@ public function update(Request $request, String $id)
         return redirect('admin-panel/program')->with('error', 'Error updating employee: ' . $e->getMessage());
     }
 }
+
+public function destroy(string $id)
+{
+    $employee = Employee::find($id);
+
+    if (!$employee) {
+        return redirect('admin-panel/program')->with('error', 'Faculty not found!');
+    }
+
+    // Additional logic (e.g., delete related records) if needed
+
+    $employee->delete();
+
+    return redirect('admin-panel/program')->with('success', 'Faculty deleted successfully!');
+}
+
 }

@@ -17,37 +17,16 @@
             <!-- Gambar Carousel -->
             <div class="carousel-inner">
                 <!-- Item Carousel 1 -->
+                @foreach($faculties as $faculty)
                 <div class="carousel-item active bg-dark-subtle">
-                    <img src="{{ asset('img/program/carousel-example.jpg')}}" class="d-block w-100 img-fluid" alt="...">
+                    <img src="{{ asset('img/program/faculty/' . $faculty->gambar) }}" class="d-block w-100 img-fluid" alt="...">
                     <div class="carousel-caption d-none d-md-block">
-                        <h5>Fakultas Informatika dan Teknik Elektro</h5>
-                        <p>Beberapa konten tempat penahan wadah untuk slide pertama.</p>
+                        <h5>{{$faculty->first()->nama}}</h5>
                     </div>
                 </div>
                 <!-- Item Carousel 2 -->
-                <div class="carousel-item">
-                    <img src="{{ asset('img/program/carousel-example.jpg')}}" class="d-block w-100 img-fluid" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Fakultas Teknologi Industri</h5>
-                        <p>Beberapa konten tempat penahan wadah untuk slide kedua.</p>
-                    </div>
-                </div>
-                <!-- Item Carousel 3 -->
-                <div class="carousel-item">
-                    <img src="{{ asset('img/program/carousel-example.jpg')}}" class="d-block w-100 img-fluid" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Fakultas Bioteknologi</h5>
-                        <p>Beberapa konten tempat penahan wadah untuk slide ketiga.</p>
-                    </div>
-                </div>
-                <!-- Item Carousel 4 -->
-                <div class="carousel-item">
-                    <img src="{{ asset('img/program/carousel-example.jpg')}}" class="d-block w-100 img-fluid" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Fakultas Vokasi</h5>
-                        <p>Beberapa konten tempat penahan wadah untuk slide keempat.</p>
-                    </div>
-                </div>
+                @endforeach
+                
             </div>
             <!-- Tombol Navigasi Carousel -->
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
@@ -69,7 +48,7 @@
 
         <div class="row">
             <div class="col-lg-8">
-                <p>{{ $faculties->first()->deskripsi }}</p>
+                <p>{!! $faculties->first()->deskripsi !!}</p>
             
                 <h2 class="fw-bold fs-4">Visi</h2>
                 <p>{!! $faculties->first()->visi !!}</p>
@@ -97,7 +76,17 @@
                         Dekan
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Indra Hartanto Tambunan, Ph.D</li>
+                        @php $deanFound = false; @endphp
+                            @foreach($employees as $employee)
+                                @if ($employee->jabatan == "Dekan" AND $employee->major->faculty->id == $faculties->first()->id)
+                                    <li class="list-group-item">{{ $employee->nama }}</li>
+                                    @php $deanFound = true; @endphp
+                                @endif
+                            @endforeach
+
+                            @if (!$deanFound)
+                                <li class="list-group-item">Dekan tidak ada</li>
+                            @endif
                     </ul>
                     <div class="card-header fw-bold list-group-item-secondary">
                         Lokasi

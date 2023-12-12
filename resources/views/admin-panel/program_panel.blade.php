@@ -872,8 +872,16 @@
                         </div>
                         <div class="mb-3">
                             <label for="jabatan" class="form-label">Jabatan</label>
-                            <input type="text" class="form-control" id="jabatan" name="jabatan">
-                        </div>
+                            <select class="form-select" id="jabatan" name="jabatan" aria-label="Default select example">
+                                <option selected>Pilih Jabatan</option>
+                                
+                                    <option value="Rektor">Rektor</option>
+                                    <option value="Dekan">Dekan</option>
+                                    <option value="Kaprodi">Kaprodi</option>
+                                    <option value="Dosen">Dosen</option>
+                                    <option value="Staff">Staff</option>
+                                    <option value="Teaching Assistant">Teaching Assistant</option>
+                            </select>
                         <div class="mb-3">
                             <label for="pendidikan" class="form-label">Pendidikan</label>
                             <input type="text" class="form-control" id="pendidikan" name="pendidikan">
