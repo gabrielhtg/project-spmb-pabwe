@@ -233,7 +233,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="input_deskripsi_fakultas" class="form-label">Deskripsi</label>
-                                <textarea class="form-control" id="deskripsi_fakultas" name="deskripsi" placeholder="Tuliskan deskripsi fakultas..." required></textarea>
+                                <textarea class="form-control" id="deskripsi_fakultas" name="deskripsi" placeholder="Tuliskan deskripsi fakultas..."></textarea>
                             </div>
                             <div class="mb-3">
                                 <label for="input_lokasi_fakultas" class="form-label">Lokasi</label>
@@ -244,11 +244,11 @@
                             </div>
                             <div class="mb-3">
                                 <label for="input_visi_fakultas" class="form-label">Visi</label>
-                                <textarea class="form-control" id="visi_fakultas" name="visi" placeholder="Tuliskan visi fakultas..." required></textarea>
+                                <textarea class="form-control" id="visi_fakultas" name="visi" placeholder="Tuliskan visi fakultas..."></textarea>
                             </div>
                             <div class="mb-3">
                                 <label for="input_misi_fakultas" class="form-label">Misi</label>
-                                <textarea class="form-control" id="misi_fakultas" name="misi" placeholder="Tuliskan misi fakultas..." required></textarea>
+                                <textarea class="form-control" id="misi_fakultas" name="misi" placeholder="Tuliskan misi fakultas..."></textarea>
                             </div>
                             <div class="mb-3">
                                 <label for="input_gambar_fakultas" class="form-label">Gambar</label>
