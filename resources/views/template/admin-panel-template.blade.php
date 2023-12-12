@@ -46,11 +46,35 @@
                         Admisi
                     </button>
                 </a>
+                <a href="{{ route("fasilitas-admin") }}">
+                    <button id="btn_fasilitas_panel" class="btn_sidebar w-100 text-start">
+                        <i class="fas fa-university"></i>
+                        Fasilitas
+                    </button>
+                </a>
+                <a href="{{ route("pengumuman-panel") }}">
+                    <button id="btn_pengumuman_panel" class="btn_sidebar w-100 text-start">
+                        <i class="fas fa-bullhorn"></i>
+                        Pengumuman
+                    </button>
+                </a>
+
                 <a href="{{ route("program-panel") }}">
                     <button id="btn_program" class="btn_sidebar w-100 text-start">
                         <i class="bi bi-book-half me-2"></i>
                         Program
                     </button>
+                </a>
+
+                <a href="{{ route("prestasi.panel") }}">
+                    <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start"><i class="fas fa-trophy"></i>
+                        Prestasi</button>
+                </a>
+
+                <a href="{{ route("testimoni.panel") }}">
+                    <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start"><i class="fas fa-comment-dots"></i>
+                        Testimoni</button>
+                </a>
             </div>
         </div>
         <div id="geser_besar" style="width: 18rem; min-width: 18rem; height: 100vh"></div>
@@ -70,9 +94,23 @@
                     <a href="{{ route("admisi-panel") }}">
                         <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="fa-regular fa-note-sticky"></i></button>
                     </a>
+                    <a href="{{ route("fasilitas-admin") }}">
+                        <button id="btn_fasilitas_kecil" class="btn_sidebar_kecil"><i class="fas fa-university"></i></button>
+                    </a>
+                    <a href="{{ route("pengumuman-panel") }}">
+                        <button id="btn_pengumuman_kecil" class="btn_sidebar_kecil"><i class="fas fa-bullhorn"></i></button>
+                    </a>
                     <a href="{{ route("program-panel") }}">
                         <button id="btn_program" class="btn_sidebar_kecil"><i class="bi bi-book-half"></i></button>
                     </a>
+
+                    <a href="{{ route("prestasi.panel") }}">
+                        <button id="btn_dasshboard_panel" class="btn_sidebar_kecil"><i class="fas fa-trophy"></i></button>
+                    </a>
+                    <a href="{{ route("testimoni.panel") }}">
+                        <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="fas fa-comment-dots"></i></button>
+                    </a>
+
                 </div>
             </div>
         </div>
@@ -150,7 +188,9 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
     <script src="https://kit.fontawesome.com/965a381e3a.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>
     <script src="{{ asset("/assets/js/kel4.js") }}"></script>
     <script src="{{ asset("/assets/js/admin-panel.js") }}"></script>
+    @yield('other-js')
 </body>
 </html>

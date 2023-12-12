@@ -25,13 +25,13 @@
                         <a href="{{ route("prestasi.prestasiOverview") }}" class="nav-link {{ Request::is('prestasi') ? 'active' : '' }}">All</a>
                     </li>
                     <li class="nav-item mx-3">
-                        <a href="{{ route("prestasi.prestasiMahasiswa") }}" class="nav-link {{ Request::is('prestasiMahasiswa') ? 'active' : '' }}">Prestasi Mahasiswa</a>
+                        <a href="{{ route("prestasi.prestasiMahasiswa") }}" class="nav-link {{ Request::is('prestasi-mahasiswa') ? 'active' : '' }}">Prestasi Mahasiswa</a>
                     </li>
                     <li class="nav-item mx-3">
-                        <a href="{{ route("prestasi.prestasiInstitut") }}" class="nav-link {{ Request::is('prestasiInstitut') ? 'active' : '' }}">Prestasi Institut</a>
+                        <a href="{{ route("prestasi.prestasiInstitut") }}" class="nav-link {{ Request::is('prestasi-institut') ? 'active' : '' }}">Prestasi Institut</a>
                     </li>
                     <li class="nav-item mx-3">
-                        <a href="{{ route("prestasi.prestasiDosenStaff") }}" class="nav-link {{ Request::is('prestasiDosenStaff') ? 'active' : '' }}">Prestasi Dosen/Staff</a>
+                        <a href="{{ route("prestasi.prestasiDosenStaff") }}" class="nav-link {{ Request::is('prestasi-dosen-staff') ? 'active' : '' }}">Prestasi Dosen/Staff</a>
                     </li>
                 </ul>
             </div>

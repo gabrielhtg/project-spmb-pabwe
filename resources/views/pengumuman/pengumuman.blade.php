@@ -1,102 +1,104 @@
 @extends('template.app')
 
 @section('isi-halaman')
-        <section class="container-judul" id="Pengumuman">
-            <div id="carouselExample" class="carousel slide">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="{{ asset('/assets/img/pengumuman/hero-pengumuman.jpg') }}" class="img-fluid d-block w-100" alt="header-fasilitas">
-                        <div class="carousel-caption d-none d-md-block text-start">
-                            <div class="d-flex flex-column pb-5 text-center h-100">
-                                <h1 class="display-5 fw-bold" style="color:#0477BF">Pengumuman SPMB</h1>
-                                <p>
-                                    Cari informasi terbaru seputar asrama, pengumuman kelulusan ujian masuk, jadwal kegiatan, dan berita penting lainnya melalui fitur pencarian atau berdasarkan tag yang disediakan.
-                                </p>
-                            </div>
+    <section class="container-judul" id="Pengumuman">
+        <div id="carouselExample" class="carousel slide">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{{ asset('/assets/img/pengumuman/hero-pengumuman.jpg') }}" class="img-fluid d-block w-100"
+                        alt="header-fasilitas">
+                    <div class="carousel-caption d-none d-md-block text-start">
+                        <div class="d-flex flex-column pb-5 text-center h-100">
+                            <h1 class="display-5 fw-bold" style="color:#0477BF">Pengumuman SPMB</h1>
+                            <p>
+                                Cari informasi terbaru seputar asrama, pengumuman kelulusan ujian masuk, jadwal kegiatan,
+                                dan berita penting lainnya melalui fitur pencarian atau berdasarkan tag yang disediakan.
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="container pt-5">
-                <div class="table-pengumuman">
-                    <table border="1">
+        <div class="container pt-5">
+
+            <div class="justify text-center">
+                <form method="GET">
+                    <div class="input-group mb-3" style="width: 700px; margin: auto;">
+                        <input name="keywords" type="text" class="form-control" placeholder="cari pengumuman..." aria-label="cari pengumuman" aria-describedby="basic-addon2" value="{{request()->query("keywords")}}">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="submit">Cari</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="table-pengumuman">
+                <table border="1" class="table align-middle">
+                    <thead class="text-center">
                         <tr>
                             <th style="text-align:center;">No.</th>
                             <th style="text-align:center;">Tags</th>
                             <th style="text-align:center;">Judul Pengumuman</th>
                             <th style="text-align:center;">Tanggal Pengumuman</th>
                         </tr>
+                    </thead>
+
+                    <tbody>
+                        @php
+                            $counter = 1;
+                        @endphp
+                        @forelse($pengumuman as $item)
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td><input rows="1" cols="50" placeholder="cari di sini" style="width: 100%;"></input></td>
-                            <td style="text-align:center;"><button class="button-search">Cari</button></td>
+                            <td style="text-align:center;">{{$counter++}}</td>
+                            <td style="text-align:center;"><button type="button" class="btn btn-light" disabled>{{$item->kategoriPengumuman}}</button>
+                            </td>
+                            <td><a href="{{ asset('assets/file_Pengumuman/' . $item->filePengumuman) }}" target="_blank" class="text-decoration-none">{{$item->judulPengumuman}}</a></td>
+                            <td style="text-align:center;">{{ date('d F Y', strtotime($item->tanggalPengumuman)) }}</td>
                         </tr>
-                        <tr>
-                            <td style="text-align:center;">1.</td>
-                            <td style="text-align:center;"><button type="button" class="btn btn-secondary" disabled>USM 1</button></td>
-                            <td><a href="#">Pengumuman hasil seleksi jalur USM 1 Teknik Metalurgi</a></td>
-                            <td style="text-align:center;">21 November 2023</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align:center;">2.</td>
-                            <td style="text-align:center;"><button type="button" class="btn btn-secondary" disabled>USM 2</button></td>
-                            <td><a href="#">Pengumuman Re-entry Mahasiswa Baru angkatan 2023/2024</a></td>
-                            <td style="text-align:center;">21 November 2023</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align:center;">3.</td>
-                            <td style="text-align:center;"><button type="button" class="btn btn-secondary" disabled>PMDK</button></td>
-                            <td><a href="#">Pengumuman hasil seleksi jalur USM 2 Mahasiswa Baru 2023/2024</a></td>
-                            <td style="text-align:center;">21 November 2023</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align:center;">4.</td>
-                            <td style="text-align:center;"><button type="button" class="btn btn-secondary" disabled>USM 3</button></td>
-                            <td><a href="#">Pengumuman hasil seleksi jalur USM 1 Teknik Metalurgi 2023/2024</a></td>
-                            <td style="text-align:center;">21 November 2023</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align:center;">5.</td>
-                            <td style="text-align:center;"><button type="button" class="btn btn-secondary" disabled>USM 4</button></td>
-                            <td><a href="#">Pengumuman hasil seleksi jalur USM 1 Teknik Metalurgi 2023/2024</a></td>
-                            <td style="text-align:center;">21 November 2023</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align:center;">6.</td>
-                            <td style="text-align:center;"><button type="button" class="btn btn-secondary" disabled>Asrama</button></td>
-                            <td><a href="#">Pengumuman hasil seleksi jalur USM 1 Teknik Metalurgi 2023/2024</a></td>
-                            <td style="text-align:center;">21 November 2023</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align:center;">7.</td>
-                            <td style="text-align:center;"><button type="button" class="btn btn-secondary" disabled>Administrasi</button></td>
-                            <td><a href="#">Pengumuman hasil seleksi jalur USM 1 Teknik Metalurgi 2023/2024</a></td>
-                            <td style="text-align:center;">21 November 2023</td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="pt-3">
-                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                        <div class="container justify-content-center">
-                            <ul class="pagination">
-                                <li class="page-item disabled">
-                                <a class="page-link">Previous</a>
-                                </li>
-                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item" aria-current="page">
-                                <a class="page-link" href="#">2</a>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item">
-                                <a class="page-link" href="#">Next</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </nav>
-                </div>
+
+                        @empty
+                            @if($noSearchResults)
+                                <tr>
+                                    <td colspan="8" class="text-center text-primary">
+                                        <span class="fs-6">Pengumuman tidak tersedia!</span>
+                                    </td>
+                                </tr>
+                            @endif
+                        @endforelse
+                    </tbody>
+
+
+                </table>
             </div>
+
+            <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-center">
+
+                    <!-- Tombol Previous -->
+                    <li class="page-item {{ $pengumuman->onFirstPage() ? 'disabled' : '' }}">
+                        <a class="page-link" href="{{ $pengumuman->previousPageUrl() }}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+
+                    <!-- Tautan Halaman -->
+                    @for ($i = 1; $i <= $pengumuman->lastPage(); $i++)
+                        <li class="page-item {{ $i == $pengumuman->currentPage() ? 'active' : '' }}">
+                            <a class="page-link" href="{{ $pengumuman->url($i) }}">{{ $i }}</a>
+                        </li>
+                    @endfor
+
+                    <!-- Tombol Next -->
+                    <li class="page-item {{ $pengumuman->hasMorePages() ? '' : 'disabled' }}">
+                        <a class="page-link" href="{{ $pengumuman->nextPageUrl() }}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+                     
+        </div>
 
         </section>
 
