@@ -21,7 +21,7 @@ class MajorSeeder extends Seeder
                         • Meningkatkan peranan program studi adar mampu menjadi pembaharu dalam kemampuan, keterampilan pilihan rujukan, dan pengembangan rekayasa karya masyarakat, khususnya dalam bidang ilmu pengetahuan dan teknologi khususnya Teknik Bioproses.
                         • Meningkatkan peran nyata kepada masyarakat melalui penerapan tridarma perguruan tinggi.
                         • Menjadikan program studi Teknik Bioproses sebagai program studi yang memiliki sistem pengelolaan yang baik, efisien, dan produktif.',
-            'gambar' => 'img/program/faculty/fv-carousel.jpg',
+            'gambar' => 'fv-carousel.jpg',
             'gelar' => 'S.Kom',
             'lama' => '4',
             'biaya' => '6.500.000',
@@ -42,7 +42,7 @@ class MajorSeeder extends Seeder
                         • Meningkatkan peranan program studi adar mampu menjadi pembaharu dalam kemampuan, keterampilan pilihan rujukan, dan pengembangan rekayasa karya masyarakat, khususnya dalam bidang ilmu pengetahuan dan teknologi khususnya Teknik Bioproses.
                         • Meningkatkan peran nyata kepada masyarakat melalui penerapan tridarma perguruan tinggi.
                         • Menjadikan program studi Teknik Bioproses sebagai program studi yang memiliki sistem pengelolaan yang baik, efisien, dan produktif.',
-            'gambar' => 'img/program/faculty/fv-carousel.jpg',
+            'gambar' => 'fv-carousel.jpg',
             'gelar' => 'S.Kom',
             'lama' => '4',
             'biaya' => '6.500.000',
@@ -63,7 +63,7 @@ class MajorSeeder extends Seeder
                         • Meningkatkan peranan program studi adar mampu menjadi pembaharu dalam kemampuan, keterampilan pilihan rujukan, dan pengembangan rekayasa karya masyarakat, khususnya dalam bidang ilmu pengetahuan dan teknologi khususnya Teknik Bioproses.
                         • Meningkatkan peran nyata kepada masyarakat melalui penerapan tridarma perguruan tinggi.
                         • Menjadikan program studi Teknik Bioproses sebagai program studi yang memiliki sistem pengelolaan yang baik, efisien, dan produktif.',
-            'gambar' => 'img/program/faculty/fv-carousel.jpg',
+            'gambar' => 'fv-carousel.jpg',
             'gelar' => 'S.T',
             'lama' => '4',
             'biaya' => '6.500.000',
@@ -84,7 +84,7 @@ class MajorSeeder extends Seeder
                         • Meningkatkan peranan program studi adar mampu menjadi pembaharu dalam kemampuan, keterampilan pilihan rujukan, dan pengembangan rekayasa karya masyarakat, khususnya dalam bidang ilmu pengetahuan dan teknologi khususnya Teknik Bioproses.
                         • Meningkatkan peran nyata kepada masyarakat melalui penerapan tridarma perguruan tinggi.
                         • Menjadikan program studi Teknik Bioproses sebagai program studi yang memiliki sistem pengelolaan yang baik, efisien, dan produktif.',
-            'gambar' => 'img/program/faculty/fv-carousel.jpg',
+            'gambar' => 'fv-carousel.jpg',
             'gelar' => 'S.T',
             'lama' => '4',
             'biaya' => '6.500.000',
@@ -105,7 +105,7 @@ class MajorSeeder extends Seeder
                         • Meningkatkan peranan program studi adar mampu menjadi pembaharu dalam kemampuan, keterampilan pilihan rujukan, dan pengembangan rekayasa karya masyarakat, khususnya dalam bidang ilmu pengetahuan dan teknologi khususnya Teknik Bioproses.
                         • Meningkatkan peran nyata kepada masyarakat melalui penerapan tridarma perguruan tinggi.
                         • Menjadikan program studi Teknik Bioproses sebagai program studi yang memiliki sistem pengelolaan yang baik, efisien, dan produktif.',
-            'gambar' => 'img/program/faculty/fv-carousel.jpg',
+            'gambar' => 'fv-carousel.jpg',
             'gelar' => 'S.T',
             'lama' => '4',
             'biaya' => '6.500.000',
@@ -126,7 +126,7 @@ class MajorSeeder extends Seeder
                         • Meningkatkan peranan program studi adar mampu menjadi pembaharu dalam kemampuan, keterampilan pilihan rujukan, dan pengembangan rekayasa karya masyarakat, khususnya dalam bidang ilmu pengetahuan dan teknologi khususnya Teknik Bioproses.
                         • Meningkatkan peran nyata kepada masyarakat melalui penerapan tridarma perguruan tinggi.
                         • Menjadikan program studi Teknik Bioproses sebagai program studi yang memiliki sistem pengelolaan yang baik, efisien, dan produktif.',
-            'gambar' => 'img/program/faculty/fv-carousel.jpg',
+            'gambar' => 'fv-carousel.jpg',
             'gelar' => 'S.T',
             'lama' => '4',
             'biaya' => 'Rp.7.500.000,-',
@@ -147,7 +147,7 @@ class MajorSeeder extends Seeder
                         • Meningkatkan peranan program studi adar mampu menjadi pembaharu dalam kemampuan, keterampilan pilihan rujukan, dan pengembangan rekayasa karya masyarakat, khususnya dalam bidang ilmu pengetahuan dan teknologi khususnya Teknik Bioproses.
                         • Meningkatkan peran nyata kepada masyarakat melalui penerapan tridarma perguruan tinggi.
                         • Menjadikan program studi Teknik Bioproses sebagai program studi yang memiliki sistem pengelolaan yang baik, efisien, dan produktif.',
-            'gambar' => 'img/program/faculty/fv-carousel.jpg',
+            'gambar' => 'fv-carousel.jpg',
             'gelar' => 'S.Tr.Kom',
             'lama' => '4',
             'biaya' => '6.500.000',
@@ -168,7 +168,7 @@ class MajorSeeder extends Seeder
                         • Meningkatkan peranan program studi adar mampu menjadi pembaharu dalam kemampuan, keterampilan pilihan rujukan, dan pengembangan rekayasa karya masyarakat, khususnya dalam bidang ilmu pengetahuan dan teknologi khususnya Teknik Bioproses.
                         • Meningkatkan peran nyata kepada masyarakat melalui penerapan tridarma perguruan tinggi.
                         • Menjadikan program studi Teknik Bioproses sebagai program studi yang memiliki sistem pengelolaan yang baik, efisien, dan produktif.',
-            'gambar' => 'img/program/faculty/fv-carousel.jpg',
+            'gambar' => 'fv-carousel.jpg',
             'gelar' => 'A.Md.Kom',
             'lama' => '3',
             'biaya' => '5.500.000',
@@ -189,7 +189,7 @@ class MajorSeeder extends Seeder
                         • Meningkatkan peranan program studi adar mampu menjadi pembaharu dalam kemampuan, keterampilan pilihan rujukan, dan pengembangan rekayasa karya masyarakat, khususnya dalam bidang ilmu pengetahuan dan teknologi khususnya Teknik Bioproses.
                         • Meningkatkan peran nyata kepada masyarakat melalui penerapan tridarma perguruan tinggi.
                         • Menjadikan program studi Teknik Bioproses sebagai program studi yang memiliki sistem pengelolaan yang baik, efisien, dan produktif.',
-            'gambar' => 'img/program/faculty/fv-carousel.jpg',
+            'gambar' => 'fv-carousel.jpg',
             'gelar' => 'A.Md.T',
             'lama' => '3',
             'biaya' => '5.500.000',
