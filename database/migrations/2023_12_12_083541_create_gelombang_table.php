@@ -17,6 +17,11 @@ class CreateGelombangTable extends Migration
 
     public function down()
     {
+
+        Schema::disableForeignKeyConstraints();
+
         Schema::dropIfExists('gelombang');
+
+            Schema::enableForeignKeyConstraints();
     }
 };

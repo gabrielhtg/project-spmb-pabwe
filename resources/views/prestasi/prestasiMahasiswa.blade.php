@@ -17,8 +17,9 @@
         }
 
         .card {
-           margin-bottom: 30px;
+            margin-bottom: 30px;
         }
+
         .popup {
             display: none;
             position: fixed;
@@ -127,620 +128,61 @@
 
     <section class="container">
         <div class="cat-prestasi">
-        {{-- <div class="d-flex justify-content-between align-items-center">
-            <h2>Prestasi Mahasiswa</h2>
-        </div> --}}
+            {{-- <div class="d-flex justify-content-between align-items-center">
+                <h2>Prestasi Mahasiswa</h2>
+            </div> --}}
 
-        <div class="row">
-            <div class="col">
-            <div class="card">
-                <img src="{{asset('assets/img/prestasi/mahasiswa.jpg')}}" class="card-img-top" alt="..." />
-                <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                    Some quick example text to build on the card title and make up
-                    the bulk of the card's content.
-                </p>
-                <div class="d-flex justify-content-between align-items-center">
-                    <p style="font-size: 14px; margin: 0;">25 Nov 2023</p>
-                    <a href="#" class="btn btn-primary open-popup" data-popup="#popup1">See more</a>
-                </div>
+            <div class="row">
+                @if(isset($dataPrestasi) && sizeof($dataPrestasi) > 0)
+                    @foreach($dataPrestasi as $item)
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="card">
+                                <img src="{{asset($item->photo)}}" class="card-img-top" alt="..."/>
+                                <div class="card-body">
+                                    <h5 class="card-title">{{$item->judul_prestasi}}</h5>
+                                    <p class="card-text">
+                                        {{$item->deskripsi}}
+                                    </p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <p style="font-size: 14px; margin: 0;">{{$item->created_at}}</p>
+                                        <a href="#" class="btn btn-primary open-popup" data-popup="#popup{{$item->id}}">See
+                                            more</a>
+                                    </div>
 
-                <div class="popup" id="popup1">
-                    <div class="overlay"></div>
-                    <div class="popup-content">
-                    <img
-                        src="{{asset('assets/img/prestasi/mahasiswa.jpg')}}"
-                        class="card-img-top"
-                        alt="pict1"
-                    />
+                                    <div class="popup" id="popup{{$item->id}}">
+                                        <div class="overlay"></div>
+                                        <div class="popup-content">
+                                            <img
+                                                src="{{asset($item->photo)}}"
+                                                class="card-img-top"
+                                                alt="pict1"
+                                            />
 
-                    <div class="content-text">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">
-                        Some quick example text to build on the card title and
-                        make up the bulk of the card's content. Some quick
-                        example text to build on the card title and make up the
-                        bulk of the card's content. Some quick example text to
-                        build on the card title and make up the bulk of the
-                        card's content. Some quick example text to build on the
-                        card title and make up the bulk of the card's content.
-                        Some quick example text to build on the card title and
-                        make up the bulk of the card's content. Some quick
-                        example text to build on the card title and make up the
-                        bulk of the card's content.
-                        </p>
-                    </div>
-                    <div class="popup-footer">
-                        <span class="popup-date">Date: November 25, 2023</span>
-                        <button class="btn-close"></button>
-                    </div>
-                    </div>
-                </div>
-                </div>
+                                            <div class="content-text">
+                                                <h5 class="card-title">{{$item->judul_prestasi}}</h5>
+                                                <p class="card-text">
+                                                    {{$item->deskripsi}}
+                                                </p>
+                                            </div>
+                                            <div class="popup-footer">
+                                                <span class="popup-date">{{$item->created_at}}</span>
+                                                <button class="btn-close"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    @endforeach
+                @endif
+
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        {{$dataPrestasi->links()}}
+                    </ul>
+                </nav>
             </div>
-            </div>
-
-            <div class="col">
-            <div class="card">
-                <img src="{{asset('assets/img/prestasi/mahasiswa.jpg')}}" class="card-img-top" alt="..." />
-                <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                    Some quick example text to build on the card title and make up
-                    the bulk of the card's content.
-                </p>
-                <div class="d-flex justify-content-between align-items-center">
-                    <p style="font-size: 14px; margin: 0;">25 Nov 2023</p>
-                    <a href="#" class="btn btn-primary open-popup" data-popup="#popup1">See more</a>
-                </div>
-
-                <div class="popup" id="popup1">
-                    <div class="overlay"></div>
-                    <div class="popup-content">
-                    <img
-                        src="{{asset('assets/img/prestasi/mahasiswa.jpg')}}"
-                        class="card-img-top"
-                        alt="pict1"
-                    />
-
-                    <div class="content-text">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">
-                        Some quick example text to build on the card title and
-                        make up the bulk of the card's content. Some quick
-                        example text to build on the card title and make up the
-                        bulk of the card's content. Some quick example text to
-                        build on the card title and make up the bulk of the
-                        card's content. Some quick example text to build on the
-                        card title and make up the bulk of the card's content.
-                        Some quick example text to build on the card title and
-                        make up the bulk of the card's content. Some quick
-                        example text to build on the card title and make up the
-                        bulk of the card's content.
-                        </p>
-                    </div>
-                    <div class="popup-footer">
-                        <span class="popup-date">Date: November 25, 2023</span>
-                        <button class="btn-close"></button>
-                    </div>
-                    </div>
-                </div>
-                </div>
-            </div>
-            </div>
-
-            <div class="col">
-            <div class="card">
-                <img src="{{asset('assets/img/prestasi/mahasiswa.jpg')}}" class="card-img-top" alt="..." />
-                <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                    Some quick example text to build on the card title and make up
-                    the bulk of the card's content.
-                </p>
-                <div class="d-flex justify-content-between align-items-center">
-                    <p style="font-size: 14px; margin: 0;">25 Nov 2023</p>
-                    <a href="#" class="btn btn-primary open-popup" data-popup="#popup1">See more</a>
-                </div>
-
-                <div class="popup" id="popup1">
-                    <div class="overlay"></div>
-                    <div class="popup-content">
-                    <img
-                        src="{{asset('assets/img/prestasi/mahasiswa.jpg')}}"
-                        class="card-img-top"
-                        alt="pict1"
-                    />
-
-                    <div class="content-text">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">
-                        Some quick example text to build on the card title and
-                        make up the bulk of the card's content. Some quick
-                        example text to build on the card title and make up the
-                        bulk of the card's content. Some quick example text to
-                        build on the card title and make up the bulk of the
-                        card's content. Some quick example text to build on the
-                        card title and make up the bulk of the card's content.
-                        Some quick example text to build on the card title and
-                        make up the bulk of the card's content. Some quick
-                        example text to build on the card title and make up the
-                        bulk of the card's content.
-                        </p>
-                    </div>
-                    <div class="popup-footer">
-                        <span class="popup-date">Date: November 25, 2023</span>
-                        <button class="btn-close"></button>
-                    </div>
-                    </div>
-                </div>
-                </div>
-            </div>
-            </div>
-
-            <div class="col">
-            <div class="card">
-                <img src="{{asset('assets/img/prestasi/mahasiswa.jpg')}}" class="card-img-top" alt="..." />
-                <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                    Some quick example text to build on the card title and make up
-                    the bulk of the card's content.
-                </p>
-                <div class="d-flex justify-content-between align-items-center">
-                    <p style="font-size: 14px; margin: 0;">25 Nov 2023</p>
-                    <a href="#" class="btn btn-primary open-popup" data-popup="#popup1">See more</a>
-                </div>
-
-                <div class="popup" id="popup1">
-                    <div class="overlay"></div>
-                    <div class="popup-content">
-                    <img
-                        src="{{asset('assets/img/prestasi/mahasiswa.jpg')}}"
-                        class="card-img-top"
-                        alt="pict1"
-                    />
-
-                    <div class="content-text">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">
-                        Some quick example text to build on the card title and
-                        make up the bulk of the card's content. Some quick
-                        example text to build on the card title and make up the
-                        bulk of the card's content. Some quick example text to
-                        build on the card title and make up the bulk of the
-                        card's content. Some quick example text to build on the
-                        card title and make up the bulk of the card's content.
-                        Some quick example text to build on the card title and
-                        make up the bulk of the card's content. Some quick
-                        example text to build on the card title and make up the
-                        bulk of the card's content.
-                        </p>
-                    </div>
-                    <div class="popup-footer">
-                        <span class="popup-date">Date: November 25, 2023</span>
-                        <button class="btn-close"></button>
-                    </div>
-                    </div>
-                </div>
-                </div>
-            </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col">
-            <div class="card">
-                <img src="{{asset('assets/img/prestasi/mahasiswa.jpg')}}" class="card-img-top" alt="..." />
-                <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                    Some quick example text to build on the card title and make up
-                    the bulk of the card's content.
-                </p>
-                <div class="d-flex justify-content-between align-items-center">
-                    <p style="font-size: 14px; margin: 0;">25 Nov 2023</p>
-                    <a href="#" class="btn btn-primary open-popup" data-popup="#popup1">See more</a>
-                </div>
-
-                <div class="popup" id="popup1">
-                    <div class="overlay"></div>
-                    <div class="popup-content">
-                    <img
-                        src="{{asset('assets/img/prestasi/mahasiswa.jpg')}}"
-                        class="card-img-top"
-                        alt="pict1"
-                    />
-
-                    <div class="content-text">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">
-                        Some quick example text to build on the card title and
-                        make up the bulk of the card's content. Some quick
-                        example text to build on the card title and make up the
-                        bulk of the card's content. Some quick example text to
-                        build on the card title and make up the bulk of the
-                        card's content. Some quick example text to build on the
-                        card title and make up the bulk of the card's content.
-                        Some quick example text to build on the card title and
-                        make up the bulk of the card's content. Some quick
-                        example text to build on the card title and make up the
-                        bulk of the card's content.
-                        </p>
-                    </div>
-                    <div class="popup-footer">
-                        <span class="popup-date">Date: November 25, 2023</span>
-                        <button class="btn-close"></button>
-                    </div>
-                    </div>
-                </div>
-                </div>
-            </div>
-            </div>
-
-            <div class="col">
-            <div class="card">
-                <img src="{{asset('assets/img/prestasi/mahasiswa.jpg')}}" class="card-img-top" alt="..." />
-                <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                    Some quick example text to build on the card title and make up
-                    the bulk of the card's content.
-                </p>
-                <div class="d-flex justify-content-between align-items-center">
-                    <p style="font-size: 14px; margin: 0;">25 Nov 2023</p>
-                    <a href="#" class="btn btn-primary open-popup" data-popup="#popup1">See more</a>
-                </div>
-
-                <div class="popup" id="popup1">
-                    <div class="overlay"></div>
-                    <div class="popup-content">
-                    <img
-                        src="{{asset('assets/img/prestasi/mahasiswa.jpg')}}"
-                        class="card-img-top"
-                        alt="pict1"
-                    />
-
-                    <div class="content-text">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">
-                        Some quick example text to build on the card title and
-                        make up the bulk of the card's content. Some quick
-                        example text to build on the card title and make up the
-                        bulk of the card's content. Some quick example text to
-                        build on the card title and make up the bulk of the
-                        card's content. Some quick example text to build on the
-                        card title and make up the bulk of the card's content.
-                        Some quick example text to build on the card title and
-                        make up the bulk of the card's content. Some quick
-                        example text to build on the card title and make up the
-                        bulk of the card's content.
-                        </p>
-                    </div>
-                    <div class="popup-footer">
-                        <span class="popup-date">Date: November 25, 2023</span>
-                        <button class="btn-close"></button>
-                    </div>
-                    </div>
-                </div>
-                </div>
-            </div>
-            </div>
-
-            <div class="col">
-            <div class="card">
-                <img src="{{asset('assets/img/prestasi/mahasiswa.jpg')}}" class="card-img-top" alt="..." />
-                <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                    Some quick example text to build on the card title and make up
-                    the bulk of the card's content.
-                </p>
-                <div class="d-flex justify-content-between align-items-center">
-                    <p style="font-size: 14px; margin: 0;">25 Nov 2023</p>
-                    <a href="#" class="btn btn-primary open-popup" data-popup="#popup1">See more</a>
-                </div>
-
-                <div class="popup" id="popup1">
-                    <div class="overlay"></div>
-                    <div class="popup-content">
-                    <img
-                        src="{{asset('assets/img/prestasi/mahasiswa.jpg')}}"
-                        class="card-img-top"
-                        alt="pict1"
-                    />
-
-                    <div class="content-text">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">
-                        Some quick example text to build on the card title and
-                        make up the bulk of the card's content. Some quick
-                        example text to build on the card title and make up the
-                        bulk of the card's content. Some quick example text to
-                        build on the card title and make up the bulk of the
-                        card's content. Some quick example text to build on the
-                        card title and make up the bulk of the card's content.
-                        Some quick example text to build on the card title and
-                        make up the bulk of the card's content. Some quick
-                        example text to build on the card title and make up the
-                        bulk of the card's content.
-                        </p>
-                    </div>
-                    <div class="popup-footer">
-                        <span class="popup-date">Date: November 25, 2023</span>
-                        <button class="btn-close"></button>
-                    </div>
-                    </div>
-                </div>
-                </div>
-            </div>
-            </div>
-
-            <div class="col">
-            <div class="card">
-                <img src="{{asset('assets/img/prestasi/mahasiswa.jpg')}}" class="card-img-top" alt="..." />
-                <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                    Some quick example text to build on the card title and make up
-                    the bulk of the card's content.
-                </p>
-                <div class="d-flex justify-content-between align-items-center">
-                    <p style="font-size: 14px; margin: 0;">25 Nov 2023</p>
-                    <a href="#" class="btn btn-primary open-popup" data-popup="#popup1">See more</a>
-                </div>
-
-                <div class="popup" id="popup1">
-                    <div class="overlay"></div>
-                    <div class="popup-content">
-                    <img
-                        src="{{asset('assets/img/prestasi/mahasiswa.jpg')}}"
-                        class="card-img-top"
-                        alt="pict1"
-                    />
-
-                    <div class="content-text">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">
-                        Some quick example text to build on the card title and
-                        make up the bulk of the card's content. Some quick
-                        example text to build on the card title and make up the
-                        bulk of the card's content. Some quick example text to
-                        build on the card title and make up the bulk of the
-                        card's content. Some quick example text to build on the
-                        card title and make up the bulk of the card's content.
-                        Some quick example text to build on the card title and
-                        make up the bulk of the card's content. Some quick
-                        example text to build on the card title and make up the
-                        bulk of the card's content.
-                        </p>
-                    </div>
-                    <div class="popup-footer">
-                        <span class="popup-date">Date: November 25, 2023</span>
-                        <button class="btn-close"></button>
-                    </div>
-                    </div>
-                </div>
-                </div>
-            </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col">
-            <div class="card">
-                <img src="{{asset('assets/img/prestasi/mahasiswa.jpg')}}" class="card-img-top" alt="..." />
-                <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                    Some quick example text to build on the card title and make up
-                    the bulk of the card's content.
-                </p>
-                <div class="d-flex justify-content-between align-items-center">
-                    <p style="font-size: 14px; margin: 0;">25 Nov 2023</p>
-                    <a href="#" class="btn btn-primary open-popup" data-popup="#popup1">See more</a>
-                </div>
-
-                <div class="popup" id="popup1">
-                    <div class="overlay"></div>
-                    <div class="popup-content">
-                    <img
-                        src="{{asset('assets/img/prestasi/mahasiswa.jpg')}}"
-                        class="card-img-top"
-                        alt="pict1"
-                    />
-
-                    <div class="content-text">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">
-                        Some quick example text to build on the card title and
-                        make up the bulk of the card's content. Some quick
-                        example text to build on the card title and make up the
-                        bulk of the card's content. Some quick example text to
-                        build on the card title and make up the bulk of the
-                        card's content. Some quick example text to build on the
-                        card title and make up the bulk of the card's content.
-                        Some quick example text to build on the card title and
-                        make up the bulk of the card's content. Some quick
-                        example text to build on the card title and make up the
-                        bulk of the card's content.
-                        </p>
-                    </div>
-                    <div class="popup-footer">
-                        <span class="popup-date">Date: November 25, 2023</span>
-                        <button class="btn-close"></button>
-                    </div>
-                    </div>
-                </div>
-                </div>
-            </div>
-            </div>
-
-            <div class="col">
-            <div class="card">
-                <img src="{{asset('assets/img/prestasi/mahasiswa.jpg')}}" class="card-img-top" alt="..." />
-                <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                    Some quick example text to build on the card title and make up
-                    the bulk of the card's content.
-                </p>
-                <div class="d-flex justify-content-between align-items-center">
-                    <p style="font-size: 14px; margin: 0;">25 Nov 2023</p>
-                    <a href="#" class="btn btn-primary open-popup" data-popup="#popup1">See more</a>
-                </div>
-
-                <div class="popup" id="popup1">
-                    <div class="overlay"></div>
-                    <div class="popup-content">
-                    <img
-                        src="{{asset('assets/img/prestasi/mahasiswa.jpg')}}"
-                        class="card-img-top"
-                        alt="pict1"
-                    />
-
-                    <div class="content-text">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">
-                        Some quick example text to build on the card title and
-                        make up the bulk of the card's content. Some quick
-                        example text to build on the card title and make up the
-                        bulk of the card's content. Some quick example text to
-                        build on the card title and make up the bulk of the
-                        card's content. Some quick example text to build on the
-                        card title and make up the bulk of the card's content.
-                        Some quick example text to build on the card title and
-                        make up the bulk of the card's content. Some quick
-                        example text to build on the card title and make up the
-                        bulk of the card's content.
-                        </p>
-                    </div>
-                    <div class="popup-footer">
-                        <span class="popup-date">Date: November 25, 2023</span>
-                        <button class="btn-close"></button>
-                    </div>
-                    </div>
-                </div>
-                </div>
-            </div>
-            </div>
-
-            <div class="col">
-            <div class="card">
-                <img src="{{asset('assets/img/prestasi/mahasiswa.jpg')}}" class="card-img-top" alt="..." />
-                <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                    Some quick example text to build on the card title and make up
-                    the bulk of the card's content.
-                </p>
-                <div class="d-flex justify-content-between align-items-center">
-                    <p style="font-size: 14px; margin: 0;">25 Nov 2023</p>
-                    <a href="#" class="btn btn-primary open-popup" data-popup="#popup1">See more</a>
-                </div>
-
-                <div class="popup" id="popup1">
-                    <div class="overlay"></div>
-                    <div class="popup-content">
-                    <img
-                        src="{{asset('assets/img/prestasi/mahasiswa.jpg')}}"
-                        class="card-img-top"
-                        alt="pict1"
-                    />
-
-                    <div class="content-text">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">
-                        Some quick example text to build on the card title and
-                        make up the bulk of the card's content. Some quick
-                        example text to build on the card title and make up the
-                        bulk of the card's content. Some quick example text to
-                        build on the card title and make up the bulk of the
-                        card's content. Some quick example text to build on the
-                        card title and make up the bulk of the card's content.
-                        Some quick example text to build on the card title and
-                        make up the bulk of the card's content. Some quick
-                        example text to build on the card title and make up the
-                        bulk of the card's content.
-                        </p>
-                    </div>
-                    <div class="popup-footer">
-                        <span class="popup-date">Date: November 25, 2023</span>
-                        <button class="btn-close"></button>
-                    </div>
-                    </div>
-                </div>
-                </div>
-            </div>
-            </div>
-
-            <div class="col">
-            <div class="card">
-                <img src="{{asset('assets/img/prestasi/mahasiswa.jpg')}}" class="card-img-top" alt="..." />
-                <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                    Some quick example text to build on the card title and make up
-                    the bulk of the card's content.
-                </p>
-                <div class="d-flex justify-content-between align-items-center">
-                    <p style="font-size: 14px; margin: 0;">25 Nov 2023</p>
-                    <a href="#" class="btn btn-primary open-popup" data-popup="#popup1">See more</a>
-                </div>
-
-                <div class="popup" id="popup1">
-                    <div class="overlay"></div>
-                    <div class="popup-content">
-                    <img
-                        src="{{asset('assets/img/prestasi/mahasiswa.jpg')}}"
-                        class="card-img-top"
-                        alt="pict1"
-                    />
-
-                    <div class="content-text">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">
-                        Some quick example text to build on the card title and
-                        make up the bulk of the card's content. Some quick
-                        example text to build on the card title and make up the
-                        bulk of the card's content. Some quick example text to
-                        build on the card title and make up the bulk of the
-                        card's content. Some quick example text to build on the
-                        card title and make up the bulk of the card's content.
-                        Some quick example text to build on the card title and
-                        make up the bulk of the card's content. Some quick
-                        example text to build on the card title and make up the
-                        bulk of the card's content.
-                        </p>
-                    </div>
-                    <div class="popup-footer">
-                        <span class="popup-date">Date: November 25, 2023</span>
-                        <button class="btn-close"></button>
-                    </div>
-                    </div>
-                </div>
-                </div>
-            </div>
-            </div>
-
-            <nav aria-label="Page navigation example">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                    </li>
-                </ul>
-            </nav>
         </div>
     </section>
 
@@ -750,7 +192,8 @@
             let popupNode = document.querySelector(id);
             if (!popupNode) {
                 console.error(`Popup with id ${id} not found`);
-                return function() {}; // Return an empty function
+                return function () {
+                }; // Return an empty function
             }
 
             let overlay = popupNode.querySelector(".overlay");
@@ -775,11 +218,11 @@
             return openPopup;
         }
 
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             let popups = document.querySelectorAll(".open-popup");
 
-            popups.forEach(function(popupButton) {
-                popupButton.addEventListener("click", function() {
+            popups.forEach(function (popupButton) {
+                popupButton.addEventListener("click", function () {
                     let popupId = popupButton.getAttribute("data-popup");
                     let popup = createPopUp(popupId);
                     popup();

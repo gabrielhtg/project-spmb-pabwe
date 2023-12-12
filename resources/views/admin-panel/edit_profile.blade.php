@@ -2,22 +2,6 @@
 
 @section('isi-admin-panel')
 
-{{--    <button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>--}}
-
-{{--    <div class="toast-container position-fixed bottom-0 end-0 p-3">--}}
-{{--        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">--}}
-{{--            <div class="toast-header bg-danger text-white">--}}
-{{--                <span class="me-2"><i class="bi bi-exclamation-triangle"></i></span>--}}
-{{--                <strong class="me-auto">Bootstrap</strong>--}}
-{{--                <small>11 mins ago</small>--}}
-{{--                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>--}}
-{{--            </div>--}}
-{{--            <div class="toast-body">--}}
-{{--                Hello, world! This is a toast message.--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-
     <section class="p-3">
         <div class="w-100 d-flex justify-content-center mt-5">
             <img class="border border-primary border-2"
@@ -48,6 +32,15 @@
             </table>
         </div>
 
+        @if(Session::get('error'))
+            <div class="w-100 d-flex justify-content-center">
+                <div class="alert alert-danger" role="alert" style="width: 18rem">
+                    {{ Session::get('error') }}
+                </div>
+
+            </div>
+        @endif
+
         <div class="d-flex justify-content-center gap-3 mt-4">
             <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editProfileModal">
                 Edit Profile
@@ -55,7 +48,7 @@
 
             <!-- Modal -->
             <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h1 class="modal-title fs-5 fw-semibold"> Edit Admin</h1>
@@ -202,7 +195,6 @@
                                 <label for="input-password-hapus-profil">Apakah kamu yakin untuk menghapus akunmu? <br> <br> Kalau ya,
                                     masukkan passwordmu disini untuk
                                     mengonfirmasi ini adalah kamu. <br> <br></label>
-                                <input type="hidden" name="id" value="{{ $admin->id }}">
                                 <input class="form-control" id="input-password-hapus-profil" type="password"
                                        name="verifikasi_password" placeholder="Password Kamu">
                             </div>

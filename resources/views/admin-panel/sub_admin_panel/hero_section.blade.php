@@ -13,7 +13,7 @@
             <div class="mb-3">
                 <label for="input_deskripsi_header" class="form-label">Example textarea</label>
                 <textarea class="form-control" id="input_deskripsi_header"
-                          name="input_deskripsi_header" rows="5">{{ $dataHeroSection->paragraph }}</textarea>
+                          name="input_deskripsi_header">{{ $dataHeroSection->paragraph }}</textarea>
             </div>
             <div class="mb-3">
                 <label for="input_bg_hero" class="form-label">Background Hero</label>
@@ -29,3 +29,12 @@
         </form>
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+        $('#input_deskripsi_header').summernote({
+            height: 100,
+            maxHeight: 250,
+        });
+    });
+</script>
