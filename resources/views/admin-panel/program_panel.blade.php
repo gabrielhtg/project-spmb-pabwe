@@ -71,17 +71,20 @@
                             <td class="text-center">
                                 <img src="{{ asset('storage/' . $faculty->gambar) }}" alt="Gambar Fakultas" style="max-width: 100px;">
                             </td>
-                            <td class="text-center" style="min-width: 120px; width: 120px">
+                            <td class="text-center" style="min-width: 120px;">
                                 
                                 <form action="{{ route('admin.program.faculty.destroy', $faculty->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detailFakultas-{{ $faculty->id }}" >
+                                        <i class="bi bi-info-circle"></i>
+                                    </button>
                                     <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#myModaleditfakultas-{{ $faculty->id }}" >
-                                    <i class="bi bi-pen"></i>
-                                </button>
+                                        <i class="bi bi-pen"></i>
+                                    </button>
                                     <button type="submit" class="btn btn-danger" onclick="deleteFaculty({{ $faculty->id }})">
-                                                    <i class="bi bi-trash"></i>
-                                </button>
+                                        <i class="bi bi-trash"></i>
+                                    </button>
                                 </form>
                             </td>
                         </tr>
@@ -97,32 +100,41 @@
                                     <div class="modal-body">
                                         <div class="card-body">
                                             <!-- Form untuk edit -->
-                                            <form action="{{ route('faculty.update', $faculty->id) }}" method="post" enctype="multipart/form-data">
+                                            <form class="was-validated" action="{{ route('faculty.update', $faculty->id) }}" method="post" enctype="multipart/form-data">
                                                 @csrf
                                                 @method('PUT') <!-- Gunakan metode PUT untuk update -->
                                                 <div class="mb-3">
                                                     <label for="input_nama_fakultas" class="form-label">Nama Fakultas</label>
-                                                    <input type="text" class="form-control" id="input_nama_fakultas" name="nama" value="{{ old('nama', $faculty->nama) }}">
+                                                    <input type="text" class="form-control" id="input_nama_fakultas" name="nama" placeholder="{{ old('nama', $faculty->nama) }}" value="{{ old('nama', $faculty->nama) }}" required>
+                                                    <div class="invalid-feedback">
+                                                        Nama tidak boleh kosong
+                                                    </div>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="input_kode_fakultas" class="form-label">Kode Fakultas</label>
-                                                    <input type="text" class="form-control" id="input_kode_fakultas" name="kode_fakultas" value="{{ old('kode_fakultas', $faculty->kode_fakultas) }}">
+                                                    <input type="text" class="form-control" id="input_kode_fakultas" name="kode_fakultas" placeholder="{{ old('kode_fakultas', $faculty->kode_fakultas) }}" value="{{ old('kode_fakultas', $faculty->kode_fakultas) }}" required>
+                                                    <div class="invalid-feedback">
+                                                        Kode Fakultas tidak boleh kosong
+                                                    </div>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="input_deskripsi_fakultas" class="form-label">Deskripsi</label>
-                                                    <textarea class="form-control" id="edit_deskripsi_fakultas_{{ $faculty->id }}" name="deskripsi">{{ old('deskripsi', $faculty->deskripsi) }}</textarea>
+                                                    <textarea class="form-control" id="edit_deskripsi_fakultas_{{ $faculty->id }}" name="deskripsi" placeholder="{{ old('deskripsi', $faculty->deskripsi) }}" required>{{ old('deskripsi', $faculty->deskripsi) }}</textarea>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="input_lokasi_fakultas" class="form-label">Lokasi</label>
-                                                    <input type="text" class="form-control" id="input_lokasi_fakultas_{{ $faculty->id }}" name="lokasi" value="{{ old('lokasi', $faculty->lokasi) }}">
+                                                    <input type="text" class="form-control" id="input_lokasi_fakultas_{{ $faculty->id }}" name="lokasi" placeholder="{{ old('lokasi', $faculty->lokasi) }}" value="{{ old('lokasi', $faculty->lokasi) }}" required>
+                                                    <div class="invalid-feedback">
+                                                        Lokasi tidak boleh kosong
+                                                    </div>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="input_visi_fakultas" class="form-label">Visi</label>
-                                                    <textarea class="form-control" id="edit_visi_fakultas_{{ $faculty->id }}" name="visi">{{ old('visi', $faculty->visi) }}</textarea>
+                                                    <textarea class="form-control" id="edit_visi_fakultas_{{ $faculty->id }}" name="visi" placeholder="{{ old('visi', $faculty->visi) }}" required>{{ old('visi', $faculty->visi) }}</textarea>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="input_misi_fakultas" class="form-label">Misi</label>
-                                                    <textarea class="form-control" id="edit_misi_fakultas_{{ $faculty->id }}" name="misi">{{ old('misi', $faculty->misi) }}</textarea>
+                                                    <textarea class="form-control" id="edit_misi_fakultas_{{ $faculty->id }}" name="misi" placeholder="{{ old('visi', $faculty->misi) }}" required>{{ old('misi', $faculty->misi) }}</textarea>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="input_sertifikat_akreditasi" class="form-label">Gambar</label>
@@ -134,6 +146,53 @@
                                                     <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                                                 </div>
                                             </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- Detail Fakultas --}}
+                        <div class="modal fade" id="detailFakultas-{{ $faculty->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title fw-bold" id="exampleModalLabel">Detail Fakultas</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="card-body">
+                                            <div class="mb-3">
+                                                <label for="input_nama_fakultas" class="form-label">Nama Fakultas</label>
+                                                <input type="text" class="form-control" id="input_nama_fakultas" name="nama" value="{{ old('nama', $faculty->nama) }}" disabled readonly>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="input_kode_fakultas" class="form-label">Kode Fakultas</label>
+                                                <input type="text" class="form-control" id="input_kode_fakultas" name="kode_fakultas" value="{{ old('kode_fakultas', $faculty->kode_fakultas) }}" disabled readonly>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="input_deskripsi_fakultas" class="form-label">Deskripsi</label>
+                                                <textarea class="form-control" name="deskripsi" disabled readonly>{{ old('deskripsi', $faculty->deskripsi) }}</textarea>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="input_lokasi_fakultas" class="form-label">Lokasi</label>
+                                                <input type="text" class="form-control" id="input_lokasi_fakultas_{{ $faculty->id }}" name="lokasi" value="{{ old('lokasi', $faculty->lokasi) }}" disabled readonly>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="input_visi_fakultas" class="form-label">Visi</label>
+                                                <textarea class="form-control"name="visi" disabled readonly>{{ old('visi', $faculty->visi) }}</textarea>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="input_misi_fakultas" class="form-label">Misi</label>
+                                                <textarea class="form-control" name="misi" disabled readonly>{{ old('misi', $faculty->misi) }}</textarea>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="input_sertifikat_akreditasi" class="form-label">Gambar</label><br>
+                                                <img src="{{ asset('storage/' . $faculty->gambar) }}" alt="Gambar Fakultas" style="max-width: 100px;">
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Tutup</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -155,36 +214,48 @@
                 </div>
                 <div class="modal-body">
                     <div class="card-body">
-                        <form action="{{ route('faculties.store') }}" method="post" enctype="multipart/form-data">
+                        <form class="was-validated" action="{{ route('faculties.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
                                 <label for="input_nama_fakultas" class="form-label">Nama Fakultas</label>
-                                <input type="text" class="form-control" id="input_nama_fakultas" name="nama">
+                                <input type="text" class="form-control" id="input_nama_fakultas" name="nama" placeholder="Cth: Fakultas Informatika dan Teknik Elektro" required>
                                 {{-- <div class="form-text">Masukkan teks dengan awalan huruf kapital pada setiap kata.</div> --}}
+                                <div class="invalid-feedback">
+                                    Nama Fakultas tidak boleh kosong
+                                </div>
                             </div>
                             <div class="mb-3">
                                 <label for="input_kode_fakultas" class="form-label">Kode Fakultas</label>
-                                <input type="text" class="form-control" id="input_kode_fakultas" name="kode_fakultas">
+                                <input type="text" class="form-control" id="input_kode_fakultas" name="kode_fakultas" placeholder="Cth: 1, 2, 3..." required>
+                                <div class="invalid-feedback">
+                                    Kode Fakultas tidak boleh kosong
+                                </div>
                             </div>
                             <div class="mb-3">
                                 <label for="input_deskripsi_fakultas" class="form-label">Deskripsi</label>
-                                <textarea class="form-control" id="deskripsi_fakultas" name="deskripsi"></textarea>
+                                <textarea class="form-control" id="deskripsi_fakultas" name="deskripsi" placeholder="Tuliskan deskripsi fakultas..." required></textarea>
                             </div>
                             <div class="mb-3">
                                 <label for="input_lokasi_fakultas" class="form-label">Lokasi</label>
-                                <input type="text" class="form-control" id="input_lokasi_fakultas" name="lokasi">
+                                <input type="text" class="form-control" id="input_lokasi_fakultas" name="lokasi" placeholder="Cth: Jl.XYZ123, Kota, Provinsi" required>
+                                <div class="invalid-feedback">
+                                    Lokasi tidak boleh kosong
+                                </div>
                             </div>
                             <div class="mb-3">
                                 <label for="input_visi_fakultas" class="form-label">Visi</label>
-                                <textarea class="form-control" id="visi_fakultas" name="visi"></textarea>
+                                <textarea class="form-control" id="visi_fakultas" name="visi" placeholder="Tuliskan visi fakultas..." required></textarea>
                             </div>
                             <div class="mb-3">
                                 <label for="input_misi_fakultas" class="form-label">Misi</label>
-                                <textarea class="form-control" id="misi_fakultas" name="misi"></textarea>
+                                <textarea class="form-control" id="misi_fakultas" name="misi" placeholder="Tuliskan misi fakultas..." required></textarea>
                             </div>
                             <div class="mb-3">
                                 <label for="input_gambar_fakultas" class="form-label">Gambar</label>
-                                <input class="form-control" type="file" id="input_gambar_fakultas" name="gambar" accept="image/*" multiple>
+                                <input class="form-control" type="file" id="input_gambar_fakultas" name="gambar" accept="image/*" multiple required>
+                                <div class="invalid-feedback">
+                                    Gambar tidak boleh kosong
+                                </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
@@ -196,58 +267,6 @@
             </div>
         </div>
     </div>
-{{-- 
-    <!-- Edit Fakultas -->
-    <div class="modal fade" id="myModaleditfakultas" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Fakultas</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="card-body">
-                        <form action="" method="post">
-                            @csrf
-                            <div class="mb-3">
-                                <label for="input_nama_fakultas" class="form-label">Nama Fakultas</label>
-                                <input type="text" class="form-control" id="input_nama_fakultas" name="input_nama_fakultas">
-                            </div>
-                            <div class="mb-3">
-                                <label for="input_nama_fakultas" class="form-label">Kode Fakultas</label>
-                                <input type="text" class="form-control" id="input_nama_fakultas" name="input_nama_fakultas">
-                            </div>
-                            <div class="mb-3">
-                                <label for="input_deskripsi_fakultas" class="form-label">Deskripsi Fakultas</label>
-                                <div id="edit_deskripsi_fakultas"></div>
-
-                            </div>
-                            <div class="mb-3">
-                                <label for="input_lokasi_fakultas" class="form-label">Lokasi Fakultas</label>
-                                <input type="text" class="form-control" id="input_lokasi_fakultas" name="input_lokasi_fakultas">
-                            </div>
-                            <div class="mb-3">
-                                <label for="input_visi_fakultas" class="form-label">Visi Fakultas</label>
-                                <div id="edit_visi_fakultas"></div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="input_misi_fakultas" class="form-label">Misi Fakultas</label>
-                                <div id="edit_misi_fakultas"></div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="input_sertifikat_akreditasi" class="form-label">Gambar Fakultas</label>
-                                <input class="form-control" type="file" id="input_sertifikat_akreditasi" name="input_sertifikat_akreditasi" multiple>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                    <button type="button" class="btn btn-primary">Simpan Perubahan</button>
-                </div>
-            </div>
-        </div>
-    </div> --}}
 
     {{-- Session Flash Message --}}
     <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
@@ -346,17 +365,16 @@
                                 <td class="text-break" style="max-width: 200px;">
                                     {{ \Illuminate\Support\Str::limit($major->akreditasi, 10, $end='...') }}
                                 </td>
-                                <td style="min-width: 120px; width: 120px">
-                                    <form action="{{ route('admin.program.major.destroy', $major->id) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#popupUpdateProdi-{{ $major->id }}" >
-                                            <i class="bi bi-pen"></i>
-                                        </button>
-                                        <button type="submit" class="btn btn-danger" onclick="deleteMajor({{ $major->id }})">
-                                            <i class="bi bi-trash"></i>
-                                        </button>
-                                    </form>
+                                <td class="text-center" style="min-width: 120px; width: 120px">
+                                    <button type="button" class="btn btn-primary my-1" data-bs-toggle="modal" data-bs-target="#detailProdi-{{ $major->id }}" >
+                                        <i class="bi bi-info-circle"></i>
+                                    </button><br>
+                                    <button type="button" class="btn btn-warning my-1" data-bs-toggle="modal" data-bs-target="#popupUpdateProdi-{{ $major->id }}" >
+                                        <i class="bi bi-pen"></i>
+                                    </button><br>
+                                    <button type="submit" class="btn btn-danger my-1" onclick="deleteMajor({{ $major->id }})">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
                                 </td>
                             </tr>
 
@@ -375,11 +393,11 @@
                                                 <div class="card-body">
                                                     <div class="mb-3">
                                                         <label for="input_misi_fakultas" class="form-label">Kode Prodi</label>
-                                                        <input type="text" class="form-control" id="editKodeProdi" name="kode_prodi" value="{{ $major->kode_prodi }}" placeholder="{{ $major->kode_prodi }}">
+                                                        <input type="text" class="form-control" id="editKodeProdi" name="kode_prodi" value="{{ $major->kode_prodi }}" placeholder="{{ $major->kode_prodi }}" required>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="input_nama_fakultas" class="form-label">Nama Prodi</label>
-                                                        <input type="text" class="form-control" id="editNamaProdi" name="nama" value="{{ $major->nama }}" placeholder="{{ $major->nama }}">
+                                                        <input type="text" class="form-control" id="editNamaProdi" name="nama" value="{{ $major->nama }}" placeholder="{{ $major->nama }}" required>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="input_misi_fakultas" class="form-label">Fakultas</label>
@@ -395,33 +413,33 @@
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="input_deskripsi_fakultas" class="form-label">Deskripsi</label>
-                                                        <textarea id="editDeskripsiProdi-{{ $major->id }}" class="form-control" name="deskripsi">{{ old('deskripsi', $major->deskripsi) }}</textarea>
+                                                        <textarea id="editDeskripsiProdi-{{ $major->id }}" class="form-control" name="deskripsi" placeholder="{{ old('deskripsi', $major->deskripsi) }}" required>{{ old('deskripsi', $major->deskripsi) }}</textarea>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="input_sertifikat_akreditasi" class="form-label">Gambar</label>
-                                                        <input class="form-control" type="file" id="editGambarProdi" name="gambar" value="{{ $major->gambar }}" multiple>
+                                                        <input class="form-control" type="file" id="editGambarProdi" name="gambar" value="{{ $major->gambar }}" multiple required>
                                                         <img src="{{ asset('storage/' . $major->gambar) }}" alt="Gambar Fakultas" style="max-width: 100px;">
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="input_lokasi_fakultas" class="form-label">Visi</label>
-                                                        <textarea id="editVisiProdi-{{ $major->id }}" class="form-control" name="visi">{{ old('deskripsi', $major->visi) }}</textarea>
+                                                        <textarea id="editVisiProdi-{{ $major->id }}" class="form-control" name="visi" placeholder="{{ old('deskripsi', $major->visi) }}" required>{{ old('deskripsi', $major->visi) }}</textarea>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="input_visi_fakultas" class="form-label">Misi</label>
-                                                        <textarea id="editMisiProdi-{{ $major->id }}" class="form-control" name="misi">{{ old('deskripsi', $major->misi) }}</textarea>
+                                                        <textarea id="editMisiProdi-{{ $major->id }}" class="form-control" name="misi" placeholder="{{ old('deskripsi', $major->misi) }}" required>{{ old('deskripsi', $major->misi) }}</textarea>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="input_misi_fakultas" class="form-label">Prospek</label>
-                                                        <textarea id="editProspekProdi-{{ $major->id }}" class="form-control" name="prospek">{{ old('deskripsi', $major->prospek) }}</textarea>
+                                                        <textarea id="editProspekProdi-{{ $major->id }}" class="form-control" name="prospek" placeholder="{{ old('deskripsi', $major->prospek) }}" required>{{ old('deskripsi', $major->prospek) }}</textarea>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="input_misi_fakultas" class="form-label">Gelar</label>
-                                                        <input type="text" class="form-control" id="editGelarProdi" name="gelar" value="{{ $major->gelar }}" placeholder="{{ $major->gelar }}">
+                                                        <input type="text" class="form-control" id="editGelarProdi" name="gelar" value="{{ $major->gelar }}" placeholder="{{ $major->gelar }}" required>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="input_misi_fakultas" class="form-label">Lama Studi</label>
                                                         <div class="input-group mb-3">
-                                                            <input type="number" class="form-control" id="editLamaProdi" name="lama" step="1" min="1" max="10" value="{{ $major->lama }}">
+                                                            <input type="number" class="form-control" id="editLamaProdi" name="lama" step="1" min="1" max="10" value="{{ $major->lama }}" placeholder="{{ $major->lama }}" required>
                                                             <span class="input-group-text">tahun</span>
                                                         </div>
                                                     </div>
@@ -429,17 +447,17 @@
                                                         <label for="input_misi_fakultas" class="form-label">Biaya</label>
                                                         <div class="input-group mb-3">
                                                             <span class="input-group-text">Rp.</span>
-                                                            <input type="text" class="form-control" id="editBiayaProdi" name="biaya" value="{{ $major->biaya }}">
+                                                            <input type="text" class="form-control" id="editBiayaProdi" name="biaya" value="{{ $major->biaya }}" placeholder="{{ $major->biaya }}" required>
                                                             <span class="input-group-text">,-</span>
                                                         </div>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="input_misi_fakultas" class="form-label">Syarat Masuk</label>
-                                                        <textarea id="editSyaratProdi-{{ $major->id }}" class="form-control" name="syarat">{{ old('deskripsi', $major->syarat) }}</textarea>
+                                                        <textarea id="editSyaratProdi-{{ $major->id }}" class="form-control" name="syarat" placeholder="{{ old('deskripsi', $major->syarat) }}" required>{{ old('deskripsi', $major->syarat) }}</textarea>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="input_misi_fakultas" class="form-label">Lokasi</label>
-                                                        <input type="text" class="form-control" id="editLokasiProdi" name="lokasi" value="{{ $major->lokasi }}" placeholder="{{ $major->lokasi }}">
+                                                        <input type="text" class="form-control" id="editLokasiProdi" name="lokasi" value="{{ $major->lokasi }}" placeholder="{{ $major->lokasi }}" required>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="input_misi_fakultas" class="form-label">Akreditasi</label>
@@ -461,6 +479,103 @@
                                                 </form>
                                             </div>
                                         </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Detail Prodi -->
+                            <div class="modal fade" id="detailProdi-{{ $major->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-xl">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title fw-bold" id="exampleModalLabel">Detail Prodi</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="card-body">
+                                                <div class="mb-3">
+                                                    <label for="input_misi_fakultas" class="form-label">Kode Prodi</label>
+                                                    <input type="text" class="form-control" id="editKodeProdi" name="kode_prodi" value="{{ $major->kode_prodi }}" placeholder="{{ $major->kode_prodi }}" disabled readonly>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="input_nama_fakultas" class="form-label">Nama Prodi</label>
+                                                    <input type="text" class="form-control" id="editNamaProdi" name="nama" value="{{ $major->nama }}" placeholder="{{ $major->nama }}" disabled readonly>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="input_misi_fakultas" class="form-label">Fakultas</label>
+                                                    <select class="form-select" id="editKodeFakultas" name="kode_fakultas" aria-label="Default select example" disabled readonly>
+                                                        <option value="{{ ($major->faculty)->id }}">{{ ($major->faculty)->nama }}</option>
+                                                        @foreach ($faculties as $faculty)
+                                                            @if ($faculty->id != ($major->faculty)->id)
+                                                                <option value="{{ $faculty->id }}">{{ $faculty->nama }}</option>
+                                                            @endif
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="input_deskripsi_fakultas" class="form-label">Deskripsi</label>
+                                                    <textarea class="form-control" name="deskripsi" disabled readonly>{{ old('deskripsi', $major->deskripsi) }}</textarea>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="input_sertifikat_akreditasi" class="form-label">Gambar</label><br>
+                                                    <img src="{{ asset('storage/' . $major->gambar) }}" alt="Gambar Fakultas" style="max-width: 100px;">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="input_lokasi_fakultas" class="form-label">Visi</label>
+                                                    <textarea class="form-control" name="visi" disabled readonly>{{ old('deskripsi', $major->visi) }}</textarea>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="input_visi_fakultas" class="form-label">Misi</label>
+                                                    <textarea class="form-control" name="misi" disabled readonly>{{ old('deskripsi', $major->misi) }}</textarea>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="input_misi_fakultas" class="form-label">Prospek</label>
+                                                    <textarea class="form-control" name="prospek" disabled readonly>{{ old('deskripsi', $major->prospek) }}</textarea>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="input_misi_fakultas" class="form-label">Gelar</label>
+                                                    <input type="text" class="form-control" id="editGelarProdi" name="gelar" value="{{ $major->gelar }}" placeholder="{{ $major->gelar }}" disabled readonly>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="input_misi_fakultas" class="form-label">Lama Studi</label>
+                                                    <div class="input-group mb-3">
+                                                        <input type="number" class="form-control" id="editLamaProdi" name="lama" step="1" min="1" max="10" value="{{ $major->lama }}" disabled readonly>
+                                                        <span class="input-group-text">tahun</span>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="input_misi_fakultas" class="form-label">Biaya</label>
+                                                    <div class="input-group mb-3">
+                                                        <span class="input-group-text">Rp.</span>
+                                                        <input type="text" class="form-control" id="editBiayaProdi" name="biaya" value="{{ $major->biaya }}" disabled readonly>
+                                                        <span class="input-group-text">,-</span>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="input_misi_fakultas" class="form-label">Syarat Masuk</label>
+                                                    <textarea class="form-control" name="syarat" disabled readonly>{{ old('deskripsi', $major->syarat) }}</textarea>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="input_misi_fakultas" class="form-label">Lokasi</label>
+                                                    <input type="text" class="form-control" id="editLokasiProdi" name="lokasi" value="{{ $major->lokasi }}" placeholder="{{ $major->lokasi }}" disabled readonly>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="input_misi_fakultas" class="form-label">Akreditasi</label>
+                                                    {{-- <input type="text" class="form-control" id="editAkreditasiProdi" name="akreditasi" value="{{ $major->akreditasi }}" placeholder="{{ $major->akreditasi }}"> --}}
+                                                    <select class="form-select" id="inputAkreditasiProdi" name="akreditasi" aria-label="Default select example" disabled readonly>
+                                                        <option value="{{ $major->akreditasi }}">{{ $major->akreditasi }}</option>
+                                                        <option value="Unggul">Unggul</option>
+                                                        <option value="Sangat Baik">Sangat Baik</option>
+                                                        <option value="Baik Sekali">Baik</option>
+                                                        <option value="Tidak Terakreditasi">Tidak Terakreditasi</option>
+                                                    </select>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Tutup</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -518,16 +633,16 @@
                         <div class="card-body">
                                 <div class="mb-3">
                                     <label for="input_misi_fakultas" class="form-label">Kode Prodi</label>
-                                    <input type="text" class="form-control" id="inputKodeProdi" name="kode_prodi" placeholder="Cth: ifs, mrs, bps...">
+                                    <input type="text" class="form-control" id="inputKodeProdi" name="kode_prodi" placeholder="Cth: ifs, mrs, bps..." required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="input_nama_fakultas" class="form-label">Nama Prodi</label>
-                                    <input type="text" class="form-control" id="inputNamaProdi" name="nama" placeholder="Cth: S1 Informatika">
+                                    <input type="text" class="form-control" id="inputNamaProdi" name="nama" placeholder="Cth: S1 Informatika" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="input_kode_fakultas" class="form-label">Fakultas</label>
                                     {{-- <input type="text" class="form-control" id="inputKodeFakultas" name="kode_fakultas"> --}}
-                                    <select class="form-select" id="inputKodeFakultas" name="kode_fakultas" aria-label="Default select example">
+                                    <select class="form-select" id="inputKodeFakultas" name="kode_fakultas" aria-label="Default select example" required>
                                         <option>Pilih Fakultas</option>
                                         @foreach ($faculties as $faculty)
                                             <option value="{{ $faculty->id }}">{{ $faculty->nama }}</option>
@@ -536,7 +651,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="input_deskripsi_fakultas" class="form-label">Deskripsi Prodi</label>
-                                    <textarea id="deskripsi_prodi" class="form-control" name="deskripsi"></textarea>
+                                    <textarea id="deskripsi_prodi" class="form-control" name="deskripsi" placeholder="Tuliskan deskripsi prodi..." required></textarea>
                                 </div>
                                 <div class="mb-3">
                                     <label for="inp ut_sertifikat_akreditasi" class="form-label">Gambar</label>
@@ -544,24 +659,24 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="input_lokasi_fakultas" class="form-label">Visi</label>
-                                    <textarea id="visi_prodi" class="form-control" name="visi"></textarea>
+                                    <textarea id="visi_prodi" class="form-control" name="visi" placeholder="Tuliskan visi prodi..." required></textarea>
                                 </div>
                                 <div class="mb-3">
                                     <label for="input_visi_fakultas" class="form-label">Misi</label>
-                                    <textarea id="misi_prodi" class="form-control" name="misi"></textarea>
+                                    <textarea id="misi_prodi" class="form-control" name="misi" placeholder="Tuliskan misi prodi..." required></textarea>
                                 </div>
                                 <div class="mb-3">
                                     <label for="input_misi_fakultas" class="form-label">Prospek Kerja</label>
-                                    <textarea id="prospek_prodi" class="form-control" name="prospek"></textarea>
+                                    <textarea id="prospek_prodi" class="form-control" name="prospek" placeholder="Tuliskan prospek prodi..." required></textarea>
                                 </div>
                                 <div class="mb-3">
                                     <label for="input_misi_fakultas" class="form-label">Gelar</label>
-                                    <input type="text" class="form-control" id="inputGelarProdi" name="gelar" placeholder="Cth: S.Kom, S.T...">
+                                    <input type="text" class="form-control" id="inputGelarProdi" name="gelar" placeholder="Cth: S.Kom, S.T..." required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="input_misi_fakultas" class="form-label">Lama Studi</label>
                                     <div class="input-group mb-3">
-                                        <input type="number" class="form-control" id="inputLamaProdi" name="lama" min="1" max="20" step="1" value="4" placeholder="Cth: 4 tahun">
+                                        <input type="number" class="form-control" id="inputLamaProdi" name="lama" min="1" max="20" step="1" value="4" placeholder="Cth: 4 tahun" required>
                                         <span class="input-group-text">tahun</span>
                                     </div>
                                 </div>
@@ -569,22 +684,22 @@
                                     <label for="input_misi_fakultas" class="form-label">Biaya</label>
                                     <div class="input-group mb-3">
                                         <span class="input-group-text">Rp.</span>
-                                        <input type="text" class="form-control" id="inputBiayaProdi" name="biaya" placeholder="Cth: Rp.6.500.000,-">
+                                        <input type="text" class="form-control" id="inputBiayaProdi" name="biaya" placeholder="Cth: Rp.6.500.000,-" required>
                                         <span class="input-group-text">,-</span>
                                     </div>
                                 </div>
                                 <div class="mb-3">
                                     <label for="input_misi_fakultas" class="form-label">Syarat Masuk</label>
-                                    <textarea id="syarat_prodi" class="form-control" name="syarat"></textarea>
+                                    <textarea id="syarat_prodi" class="form-control" name="syarat" placeholder="Tuliskan syarat pendaftaran..." required></textarea>
                                 </div>
                                 <div class="mb-3">
                                     <label for="input_misi_fakultas" class="form-label">Lokasi</label>
-                                    <input type="text" class="form-control" id="inputLokasiProdi" name="lokasi" placeholder="Cth: Jln. XXX">
+                                    <input type="text" class="form-control" id="inputLokasiProdi" name="lokasi" placeholder="Cth: Jln. XXX" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="input_misi_fakultas" class="form-label">Akreditasi</label>
                                     {{-- <input type="text" class="form-control" id="inputAkreditasiProdi" name="akreditasi"> --}}
-                                    <select class="form-select" id="inputAkreditasiProdi" name="akreditasi" aria-label="Default select example">
+                                    <select class="form-select" id="inputAkreditasiProdi" name="akreditasi" aria-label="Default select example" required>
                                         <option>Pilih Akreditasi</option>
                                         <option value="Unggul">Unggul</option>
                                         <option value="Sangat Baik">Sangat Baik</option>
@@ -652,7 +767,7 @@
                                     <form action="{{ route('admin.program.employee.destroy', $employee->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="NoeditDosen-{{ $employee->id }}">
+                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editDosen-{{ $employee->id }}">
                                             <i class="bi bi-pen"></i>
                                         </button>
                                         <button type="submit" class="btn btn-danger" onclick="deleteEmployee({{ $employee->id }})">
@@ -788,7 +903,7 @@
 <section id="kurikulum-subpage" class="m-3 d-none">
 
     {{-- Button Add MK --}}
-    <button type="button" class="btn btn-success mb-2" data-bs-toggle="modal" data-bs-target="NomyModalkur">
+    <button type="button" class="btn btn-success mb-2" data-bs-toggle="modal" data-bs-target="#myModalkur">
         Tambah Matkul
     </button>
 
@@ -824,7 +939,7 @@
                             <form action="{{ route('admin.program.course.destroy', $course->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="NoeditCourse-{{ $course->id }}">
+                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editCourse-{{ $course->id }}">
                                             <i class="bi bi-pen"></i>
                                         </button>
                                         <button type="submit" class="btn btn-danger">
@@ -1017,7 +1132,7 @@
 
     // TEXT EDITOR
     ClassicEditor
-        .create( document.querySelector( 'Nodeskripsi_fakultas' ) )
+        .create( document.querySelector( '#deskripsi_fakultas' ) )
         .catch( error => {
             console.error( error );
         } );
@@ -1025,7 +1140,7 @@
         
     ClassicEditor
         
-        .create( document.querySelector( 'Novisi_fakultas' ) )
+        .create( document.querySelector( '#visi_fakultas' ) )
 
         .catch( error => {
             console.error( error );
@@ -1033,14 +1148,14 @@
 
         
     ClassicEditor
-        .create( document.querySelector( 'Nomisi_fakultas' ) )
+        .create( document.querySelector( '#misi_fakultas' ) )
         .catch( error => {
             console.error( error );
         } );
 
     
         ClassicEditor
-        .create( document.querySelector( 'Noedit_deskripsi_fakultas' ) )
+        .create( document.querySelector( '#edit_deskripsi_fakultas' ) )
         .catch( error => {
             console.error( error );
         } );
@@ -1048,7 +1163,7 @@
         
     ClassicEditor
         
-        .create( document.querySelector( 'Noedit_visi_fakultas' ) )
+        .create( document.querySelector( '#edit_visi_fakultas' ) )
 
         .catch( error => {
             console.error( error );
@@ -1056,7 +1171,7 @@
 
         
     ClassicEditor
-        .create( document.querySelector( 'Noedit_misi_fakultas' ) )
+        .create( document.querySelector( '#edit_misi_fakultas' ) )
         .catch( error => {
             console.error( error );
         } );
@@ -1064,7 +1179,7 @@
 
 
         ClassicEditor
-        .create( document.querySelector( 'Nodeskripsi_prodi' ) )
+        .create( document.querySelector( '#deskripsi_prodi' ) )
         .catch( error => {
             console.error( error );
         } );

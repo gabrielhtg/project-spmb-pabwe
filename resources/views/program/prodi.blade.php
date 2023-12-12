@@ -93,9 +93,9 @@
                         <li class="list-group-item fw-bold list-group-item-secondary">Gelar</li>
                         <li class="list-group-item">{{ $majors->first()->gelar }}</li>
                         <li class="list-group-item fw-bold list-group-item-secondary">Lama Studi</li>
-                        <li class="list-group-item">{{ $majors->first()->lama }}</li>
+                        <li class="list-group-item">{{ $majors->first()->lama }} tahun</li>
                         <li class="list-group-item fw-bold list-group-item-secondary">Biaya Kuliah</li>
-                        <li class="list-group-item">{{ $majors->first()->biaya }}</li>
+                        <li class="list-group-item">Rp.{{ $majors->first()->biaya }},-</li>
                         <li class="list-group-item fw-bold list-group-item-secondary">Lokasi</li>
                         <li class="list-group-item">{{ $majors->first()->lokasi }}</li>
                     </ul>

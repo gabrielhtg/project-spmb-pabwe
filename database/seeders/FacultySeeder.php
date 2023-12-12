@@ -26,7 +26,7 @@ class FacultySeeder extends Seeder
                         khususnya dalam bidang Informatika dan Teknik Elektro.
                         4. Meningkatkan peran nyata Fakultas kepada masyarakat melalui penerapan Tridarma
                         Perguruan Tinggi secara khusus di bidang Informatika dan Teknik Elektro',
-            'gambar' => 'img/program/faculty/fite-carousel.jpg',
+            'gambar' => 'fite-carousel.jpg',
             'lokasi' => 'Jl. PI.Del, Gedung VII, Laguboti, Toba, Sumatera Utara'
         ]);
         
@@ -45,7 +45,7 @@ class FacultySeeder extends Seeder
                         khususnya dalam bidang Informatika dan Teknik Elektro.
                         4. Meningkatkan peran nyata Fakultas kepada masyarakat melalui penerapan Tridarma
                         Perguruan Tinggi secara khusus di bidang Informatika dan Teknik Elektro',
-            'gambar' => 'img/program/faculty/fti-carousel.jpg',
+            'gambar' => 'fti-carousel.jpg',
             'lokasi' => 'Jl. PI.Del, Gedung IX, Laguboti, Toba, Sumatera Utara'
         ]);
 
@@ -59,7 +59,7 @@ class FacultySeeder extends Seeder
                         • Meningkatkan peranan program studi adar mampu menjadi pembaharu dalam kemampuan, keterampilan pilihan rujukan, dan pengembangan rekayasa karya masyarakat, khususnya dalam bidang ilmu pengetahuan dan teknologi khususnya Teknik Bioproses.
                         • Meningkatkan peran nyata kepada masyarakat melalui penerapan tridarma perguruan tinggi.
                         • Menjadikan program studi Teknik Bioproses sebagai program studi yang memiliki sistem pengelolaan yang baik, efisien, dan produktif.',
-            'gambar' => 'img/program/faculty/fb-carousel.jpg',
+            'gambar' => 'fb-carousel.jpg',
             'lokasi' => 'Jl. PI.Del, Gedung VIII, Laguboti, Toba, Sumatera Utara'
         ]);
 
@@ -73,7 +73,7 @@ class FacultySeeder extends Seeder
                         • Meningkatkan peranan program studi adar mampu menjadi pembaharu dalam kemampuan, keterampilan pilihan rujukan, dan pengembangan rekayasa karya masyarakat, khususnya dalam bidang ilmu pengetahuan dan teknologi khususnya Teknik Bioproses.
                         • Meningkatkan peran nyata kepada masyarakat melalui penerapan tridarma perguruan tinggi.
                         • Menjadikan program studi Teknik Bioproses sebagai program studi yang memiliki sistem pengelolaan yang baik, efisien, dan produktif.',
-            'gambar' => 'img/program/faculty/fv-carousel.jpg',
+            'gambar' => 'fv-carousel.jpg',
             'lokasi' => 'Jl. PI.Del, Gedung V, Laguboti, Toba, Sumatera Utara'
         ]);
 

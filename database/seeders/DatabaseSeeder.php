@@ -29,7 +29,6 @@ class DatabaseSeeder extends Seeder
             insert_data_akreditasi_institusi::class,
             FacultySeeder::class,
             MajorSeeder::class,
-            MajorSeeder::class,
         ]);
     }
 }
