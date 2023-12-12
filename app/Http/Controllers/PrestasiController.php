@@ -9,6 +9,7 @@ use App\Models\Prestasi;
 use App\Models\SocalMediaModel;
 use Illuminate\Http\Request;
 use App\Models\data_institusi;
+use Illuminate\Support\Facades\Validator;
 
 class PrestasiController extends Controller
 {
@@ -83,5 +84,112 @@ class PrestasiController extends Controller
         ];
 
         return view("prestasi.prestasiMahasiswa", $data);
+    }
+
+    public function postAddPrestasi(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'judul-prestasi' => 'required|string|max:255',
+            'gambar' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'input_jenis_prestasi' => 'required',
+            'deskripsi' => 'required|string',
+        ]);
+
+        $photo = $request->file('gambar');
+
+        if ($photo) {
+            $filename =  "prestasi" . time() . '.' . $photo->getClientOriginalExtension();
+
+            $directory = public_path('assets/img/prestasi');
+
+            $photo->move($directory, $filename);
+
+            Prestasi::create([
+                "jenis_prestasi" => $request->input_jenis_prestasi,
+                "photo" => "assets/img/prestasi/" . $filename,
+                "deskripsi" => $request->deskripsi,
+                "judul_prestasi" => $request->judul,
+            ]);
+
+            return redirect()->route("prestasi.panel");
+        } else {
+            if ($validator->fails()) {
+                return redirect()
+                    ->route('prestasi.panel')
+                    ->withErrors($validator)
+                    ->withInput();
+            }
+        }
+    }
+
+    public function postDeletePrestasi(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'id' => 'required|exists:prestasi',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()
+                ->route('prestasi.panel')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $delete = Prestasi::where("id", $request->id)->first();
+
+        if ($delete->photo && file_exists($delete->photo) && $delete) {
+            unlink($delete->photo);
+            $delete->delete();
+        }
+
+        return redirect()->back();
+    }
+
+    public function postEditPrestasi(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'id' => 'required|exists:prestasi',
+            'judulUpdate' => 'required|string|max:255',
+            'gambarUpdate' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'input_jenis_prestasi_update' => 'required',
+            'deskripsiUpdate' => 'required|string',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()
+                ->route('prestasi.panel')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $data = Prestasi::where('id', $request->id)->first();
+
+        if ($data == null) {
+            return redirect()->back();
+        } else {
+            if (!empty($request->gambarUpdate)) {
+                $photo = $request->file('gambarUpdate');
+
+                $fileName = "prestasi" . time() . '.' . $photo->getClientOriginalExtension();
+
+                $dir = public_path('assets/img/prestasi');
+
+                $photo->move($dir, $fileName);
+
+                if ($data->photo && file_exists($data->photo)) {
+                    unlink($data->photo);
+                }
+
+                $data->photo = $fileName;
+            }
+
+            $data->jenis_prestasi = $request->input_jenis_prestasi_update;
+            $data->deskripsi = $request->deskripsiUpdate;
+            $data->judul_prestasi = $request->judulUpdate;
+
+            $data->save();
+
+            return redirect()->back();
+        }
     }
 }

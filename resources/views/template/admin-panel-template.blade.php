@@ -64,6 +64,17 @@
                         <i class="bi bi-book-half me-2"></i>
                         Program
                     </button>
+                </a>
+
+                <a href="{{ route("prestasi.panel") }}">
+                    <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start"><i class="fas fa-trophy"></i>
+                        Prestasi</button>
+                </a>
+
+                <a href="{{ route("testimoni.panel") }}">
+                    <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start"><i class="fas fa-comment-dots"></i>
+                        Testimoni</button>
+                </a>
             </div>
         </div>
         <div id="geser_besar" style="width: 18rem; min-width: 18rem; height: 100vh"></div>
@@ -92,6 +103,14 @@
                     <a href="{{ route("program-panel") }}">
                         <button id="btn_program" class="btn_sidebar_kecil"><i class="bi bi-book-half"></i></button>
                     </a>
+
+                    <a href="{{ route("prestasi.panel") }}">
+                        <button id="btn_dasshboard_panel" class="btn_sidebar_kecil"><i class="fas fa-trophy"></i></button>
+                    </a>
+                    <a href="{{ route("testimoni.panel") }}">
+                        <button id="btn_dashboard_panel" class="btn_sidebar_kecil"><i class="fas fa-comment-dots"></i></button>
+                    </a>
+
                 </div>
             </div>
         </div>
