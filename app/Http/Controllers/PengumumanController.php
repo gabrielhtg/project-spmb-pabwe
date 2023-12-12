@@ -109,7 +109,7 @@ class PengumumanController extends Controller
         $admin = Auth::user();
         $pengumuman = Pengumuman::orderBy('created_at', 'desc')->get();
         $data = [
-            'indexActive' => 2,
+            'indexActive' => 3,
             'admin' => $admin,
             'pengumuman' => $pengumuman,
         ];
