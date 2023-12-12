@@ -14,14 +14,17 @@
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
             </div>
             <div class="carousel-inner">
-                <div class="carousel-item active bg-dark-subtle">
-                    <img src="{{ asset('img/program/home/fite-carousel.jpg')}}" class="d-block img-fluid object-fit-cover" alt="Gedung VII (FITE)" style="object-position: center;">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Fakultas Informatika dan Teknik Elektro</h5>
-                        <p>Some representative placeholder content for the first slide.</p>
-                    </div>
+                <div class="carousel-inner">
+                    @foreach($faculties as $index => $faculty)
+                        <div class="carousel-item {{ $index === 0 ? 'active' : '' }} bg-dark-subtle">
+                            <img src="{{ asset('img/program/faculty/' . $faculty->gambar) }}" class="d-block img-fluid object-fit-cover" alt="Gedung VII (FITE)" style="object-position: center;">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>{{ $faculty->nama }}</h5>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
-                <div class="carousel-item">
+                <!-- <div class="carousel-item">
                     <img src="{{ asset('img/program/home/fti-carousel.jpg')}}" class="d-block img-fluid object-fit-cover" alt="Gedung IX (FTI)" style="object-position: center;">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Fakultas Teknologi Industri</h5>
@@ -41,7 +44,9 @@
                         <h5>Fakultas Vokasi</h5>
                         <p>Some representative placeholder content for the third slide.</p>
                     </div>
-                </div>
+                </div> -->
+
+                
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>

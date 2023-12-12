@@ -15,7 +15,7 @@
             </div> --}}
             <div class="carousel-inner">
                 <div class="carousel-item active bg-dark-subtle">
-                    <img src="{{ asset('storage/img/program/'. $majors->first()->faculty->gambar) }}" class="d-block w-100 img-fluid object-fit-cover" alt="..." style="height:500px;" media="(max-width: 600px) { height: 400px; }">
+                    <img src="{{ asset('img/program/major/' . $majors->first()->gambar) }}" class="d-block w-100 img-fluid object-fit-cover" alt="..." style="height:500px;" media="(max-width: 600px) { height: 400px; }">
                 </div>
             </div>
             <div class="card-img-overlay d-flex align-items-center pt-5">
@@ -79,7 +79,8 @@
                 <p>Syarat Pendaftaran:</p>
                 <p>{!! $majors->first()->syarat !!}</p>
 
-                <button type="button" class="btn btn-primary gap-3">Halaman Pendaftaran</button>
+                <a href="/admisi"><button type="button" class="btn btn-primary gap-3">Halaman Pendaftaran</button></a>
+                
             </div>
 
             <div class="col-md-4 order-md-last mt-4 mt-md-0">
@@ -87,7 +88,22 @@
                 <div class="card">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item fw-bold list-group-item-secondary">Ketua Program Studi</li>
-                        <li class="list-group-item">Arie Satia Dharma, S.T, M.Kom.</li>
+                        @php
+                            $kaprodiFound = false;
+                        @endphp
+
+                        @foreach($employees->where('jabatan', 'Kaprodi') as $employee)
+                            @if($employee->major->kode_prodi == $majors->first()->kode_prodi)
+                                <li class="list-group-item">{{ $employee->first()->nama }}</li>
+                                @php
+                                    $kaprodiFound = true;
+                                @endphp
+                            @endif
+                        @endforeach
+
+                        @if(!$kaprodiFound)
+                            <li class="list-group-item">Tidak ada Kaprodi</li>
+                        @endif
                         <li class="list-group-item fw-bold list-group-item-secondary">Akreditasi</li>
                         <li class="list-group-item">{{ $majors->first()->akreditasi }}</li>
                         <li class="list-group-item fw-bold list-group-item-secondary">Gelar</li>
@@ -106,19 +122,37 @@
 
     {{-- DOSEN SUBPAGE --}}
     <section id="dosen-subpage" class="container d-none">
-        <div class="mt-5 mb-3">
-            <h1 class="fw-bold">Dosen</h1>
-        </div>
+    <div class="mt-5 mb-3">
+        <h1 class="fw-bold">Dosen</h1>
+    </div>
 
-        <div class="d-flex gy-4 row justify-content-center text-center">
-            @foreach ($employees as $employee)
+    <div class="d-flex gy-4 row justify-content-center text-center">
+        @php
+            // Define the custom order of positions
+            $positionOrder = [
+                'Rektor' => 1,
+                'Dekan' => 2,
+                'Kaprodi' => 3,
+                'Dosen'=> 4,
+                'Staff' => 5,
+                'Teaching Assistant' => 6,
+            ];
+
+            // Sort employees based on custom order
+            $sortedEmployees = $employees->where('major.kode_prodi', $majors->first()->kode_prodi)->sortBy(function ($employee) use ($positionOrder) {
+                // If the position is not in the defined order, default to a high value
+                return $positionOrder[$employee->jabatan] ?? 9999;
+            });
+        @endphp
+
+        @foreach ($sortedEmployees as $employee)
             <div class="col-md-3 col-12">
                 <div class="card text-bg-dark" onmouseover="showOverlay({{ $employee->id }})" onmouseout="hideOverlay({{ $employee->id }})">
                     <img src="{{ asset('img/program/employee/' . $employee->gambar) }}" class="card-img img-fluid" alt="">
 
                     <div id="backOverlay-{{ $employee->id }}" class="card-img-overlay " style="opacity: 1; transition: opacity 0.2s ease;">
                         <div class="d-flex justify-content-start">
-                            <div class=" badge bg-primary text-wrap fw-medium fs-6 small mb-3">
+                            <div class="badge bg-primary text-wrap fw-medium fs-6 small mb-3">
                                 <small>{{ $employee->jabatan }}</small>
                             </div>
                         </div>
@@ -155,9 +189,10 @@
                     backOverlay.style.opacity = "1";
                 }
             </script>
-            @endforeach
-        </div>
+        @endforeach
+    </div>
 </section>
+
 
     <!-- KURIKULUM SUBPAGE -->
     <section id="kurikulum-subpage" class="container d-none">
@@ -182,9 +217,7 @@
                                     <div class="container text-center">
                                         <h2 class="fw-bold fs-5">Semester {{ $i * 2 + $j }}</h2>
                                             <table class="table table-bordered">
-                                            @foreach($courses as $course)
-                                            @if ($course->semester == $i * 2 + $j)
-                                                <thead class="table-primary">
+                                            <thead class="table-primary">
                                                 <tr>
                                                     
                                                     <th scope="col" class="fw-semibold">Kode MK</th>
@@ -192,11 +225,14 @@
                                                     <th scope="col" class="fw-semibold">SKS</th>
                                                 </tr>
                                                 </thead>
+                                            @foreach($courses as $course)
+                                            @if ($course->semester == $i * 2 + $j)
+                                                
                                                 <tbody>
                                                     
                                                         
                                                         <tr>
-                                                            <td>{{ $course->kode }}</td>
+                                                            <td>{{ $course->kode_mk }}</td>
                                                             <td>{{ $course->nama }}</td>
                                                             <td>{{ $course->sks }}</td>
                                                         </tr>
