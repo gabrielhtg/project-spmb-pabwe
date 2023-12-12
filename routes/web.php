@@ -97,8 +97,8 @@ Route::middleware('auth')->group(function () {
         Route::prefix('testimoni-panel')->group(function () {
             Route::get('/', [AdminPanelController::class, 'getTestimoniPanel'])->name('testimoni.panel');
             Route::post('/add', [TestimoniController::class, 'postAddTestimoni'])->name('testimoni.add');
-//            Route::post('/edit', [AdminPanelController::class, 'getTestimoniPanel'])->name('testimonipanel');
-//            Route::post('/delete', [AdminPanelController::class, 'getTestimoniPanel'])->name('testimonipanel');
+            Route::post('/edit', [TestimoniController::class, 'postEditTestimoni'])->name('testimoni.edit');
+            Route::post('/delete', [TestimoniController::class, 'postDeletePanel'])->name('testimoni.delete');
         });
     });
 });
