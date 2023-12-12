@@ -3,6 +3,7 @@
 @section('isi-halaman')
 
     <section id="hero" class="container-fluid">
+
         <div class="gambar-hero">
             <img src="{{ asset($dataHeroSection->bg_image) }}" alt="Your Image">
             <div class="content-inside d-none d-md-inline">
