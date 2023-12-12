@@ -57,16 +57,16 @@
                         Fakultas Informatika dan Teknik Elektro
                     </td>
                 </tr>
-
+                @foreach($dataBiaya as $biaya)
                 <tr>
                     <td>Informatika</td>
                     <td>6.500.000</td>
                     <td>9.500.000 + N x 1.000.000 (min N=1)</td>
-                    <td>4.500.000</td>
-                    <td>850.000</td>
-                    <td>250.000</td>
+                    <td>{{ number_format($biaya->biayaUangPangkal, 0, ',', '.') }}</td>
+                    <td>{{ number_format($biaya->biayaPerlengkapanMahasiswa, 0, ',', '.') }}</td>
+                    <td>{{ number_format($biaya->biayaPerlengkapanMakan, 0, ',', '.') }}</td>
                 </tr>
-
+                @endforeach
                 <tr>
                     <td>Teknik Elektro</td>
                     <td>6.500.000</td>
@@ -156,6 +156,26 @@
             </table>
         </div>
 
+        <div class="d-flex justify-content-center flex-column pt-5 ">
+            <h3 class="fw-semibold text-start pb-3">Biaya Pendaftaran</h3>
+
+            <table class="table align-middle table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col" style="background-color: #47A5D4" class="text-white fw-semibold">Jalur Pendaftaran</th>
+                    <th scope="col" style="background-color: #47A5D4" class="text-white fw-semibold">Biaya (Rp)</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($biayaPen as $e)
+                    <tr>
+                        <td>{{ $e -> jlr_Pen }}</td>
+                        <td>{{$e -> biayaPen}}</td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+        </div>
         <div class="d-flex justify-content-center flex-column pt-5">
             <h3 class="fw-semibold text-start pb-3">Biaya Lainnya</h3>
 
@@ -237,7 +257,7 @@
 
         <div class="d-flex justify-content-center flex-column pt-5">
             <div class="d-flex align-items-center pb-3 justify-content-center">
-                <button class="btn btn-primary ms-3">Unduh di sini</button>
+            <a href="{{ route('download-pdfbiaya') }}" class="btn btn-primary ms-3">Unduh di sini</a>
             </div>
         </div>
     </section>

@@ -9,5 +9,15 @@ class BiayaAdminModel extends Model
 {
     use HasFactory;
     protected $table = 'biaya_admin';
-    protected $fillable = ['biayaasrama', 'biayamakan', 'biayawisuda', 'biayadeposit','biayatingkatakhir'];
+    protected $fillable = [
+    'biayaasrama', 
+    'biayamakan', 
+    'biayawisuda', 
+    'biayadeposit',
+    'biayatingkatakhir', 
+    'biayaUangPangkal',
+    'biayaPerlengkapanMahasiswa',
+    'biayaPerlengkapanMakan',
+
+];
 }

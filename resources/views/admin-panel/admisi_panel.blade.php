@@ -49,25 +49,41 @@
                                 <th scope="col">#</th>
                                 <th scope="col">Program Studi</th>
                                 <th scope="col">Deskripsi Persyaratan</th>
+                                <th scope="col">Cover</th>
                                 <th scope="col">Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Test</td>
-                                <td>Test</td>
-                                <td>
-                                    <button type="button" class="btn btn-warning">Ubah</button>
-                                    <button type="button" class="btn btn-danger">Hapus</button>
-                                </td>
-                            </tr>
+                            @php
+                                $i = 1;
+                            @endphp
+                            @foreach($prodis as $prodi)
+                                <tr>
+                                    <td>{{ $i++ }}</td>
+                                    <td>{{$prodi->program_studi}}</td>
+                                    <td>{{$prodi->deskripsi_persyaratan}}</td>
+                                    <td><img src="{{asset($prodi->cover)}}" style="height: 64px;" alt="Cover"></td>
+                                    <td>
+                                        <form action="{{ route('post.delete.prodi', ['id' => $prodi->id]) }}">
+                                        </form>
+                                        @include('admin-panel.sub_admisi_panel.edit_pers_khusus')
+                                        <form action="{{ route('post.delete.prodi', ['id' => $prodi->id]) }}" method="POST" onsubmit="return confirm('Yakin menghapus data?')">
+                                            @csrf
+                                            @method('DELETE')
+                                            <input type="hidden" name="id" value="{{ $prodi->id }}">
+                                            <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                                        </form>
+
+                                    </td>
+                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </form>
                 </div>
             </div>
         </div>
+
 
         <div class="mt-3">
             <div class="card card-success">
@@ -89,15 +105,66 @@
                             </tr>
                             </thead>
                             <tbody>
+                                @php
+                                    $i = 1;
+                                @endphp
+                                @foreach($biayaPen as $e)
                             <tr>
-                                <td>1</td>
-                                <td>USM</td>
-                                <td>10.000</td>
+                                <td>{{$i++}}</td>
+                                <td>{{$e->jlr_Pen}}</td>
+                                <td>{{$e->biayaPen}}</td>
                                 <td>
-                                    <button type="button" class="btn btn-warning">Ubah</button>
-                                    <button type="button" class="btn btn-danger">Hapus</button>
-                                </td>
+                                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editjlr_Pen{{ $e->id }}" title="Edit Jalur Pendaftaran">
+                                        <i class="bi bi-pen"></i>
+                                    </button>
+                                    <form action="{{ route('removeBiayaPendaftaran', ['biayaPendaftaran_id' => $e->id]) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this?')">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </form>
+                                    
+                                <!-- Modal -->
+                                <div class="modal fade" id="editjlr_Pen{{ $e->id }}" tabindex="-1" aria-labelledby="edit_biaya_pendaftaran_label" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5 fw-semibold"
+                                                        id="edit_biaya_pendaftaran_label{{ $e->id }}">Edit </h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                </div>
+                                                <form action="{{ route('editBiayaPendaftaran') }}" method="post">
+                                                    @csrf
+                                                    <div class="modal-body text-start">
+                                                        <input type="hidden" name="id" value="{{ $e->id }}">
+                                                        <div class="mb-3">
+                                                            <label class="form-label">Jalur Pendaftaran</label>
+                                                            <input type="text" class="form-control"
+                                                                name="jlr_Pen" value="{{ $e->jlr_Pen }}">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="biayaPen"
+                                                                class="form-label">Biaya Pendaftaran</label>
+                                                            <input type="text" class="form-control" name="biayaPen"
+                                                                value="{{ $e->biayaPen}}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Cancel
+                                                        </button>
+                                                        <input type="hidden" value="{{ $e->id }}" name="id">
+                                                        <button type="submit" class="btn btn-primary">Save</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>    
                             </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </form>
@@ -546,6 +613,27 @@
                                 <div class="alert alert-danger"{{$message}}></div>
                             @enderror
                         </div>
+                        <div class="mb-3">
+                            <label class="form-label">Biaya Uang Pangkal (Rp) </label>
+                            <input type="text" class="form-control" name="biayaUangPangkal"  >
+                            @error('biayaUangPangkal')
+                                <div class="alert alert-danger"{{$message}}></div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Biaya Perlengkapan Mahasiswa (Rp) </label>
+                            <input type="text" class="form-control" name="biayaPerlengkapanMahasiswa"  >
+                            @error('biayaPerlengkapanMahasiswa')
+                                <div class="alert alert-danger"{{$message}}></div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Biaya Perlengkapan Makan (Rp) </label>
+                            <input type="text" class="form-control"  name="biayaPerlengkapanMakan"  >
+                            @error('biayaPerlengakapanMakan')
+                                <div class="alert alert-danger"{{$message}}></div>
+                            @enderror
+                        </div>
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">Submit</button>
@@ -554,43 +642,7 @@
             </div>
         </div>
 
-        <div class="mt-3">
-            <div class="card card-success">
-                <div class="card-header bg-primary text-white">
-                    <span class="fs-3">Data Biaya Studi</span>
-
-                </div>
-
-                <div class="card-body">
-                    @include('admin-panel.sub_admisi_panel.add_biaya_studi')
-                    <form action="">
-                        <table class="table table-striped">
-                            <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Program Studi</th>
-                                <th scope="col">Biaya SPP (Rp)</th>
-                                <th scope="col">Uang Pengembangan (Rp)</th>
-                                <th scope="col">Action</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Test</td>
-                                <td>Test</td>
-                                <td>Test</td>
-                                <td>
-                                    <button type="button" class="btn btn-warning">Ubah</button>
-                                    <button type="button" class="btn btn-danger">Hapus</button>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </form>
-                </div>
-            </div>
-        </div>
+        
 
         <div class="mt-3">
             <div class="card">
@@ -598,10 +650,14 @@
                     <span class="fs-3">Data PDF Biaya Studi</span>
                 </div>
 
-                <form>
+                <form method="post" action="{{route('pdf_biaya')}}" enctype="multipart/form-data">
+                    @csrf
                     <div class="card-body">
-                        <label for="inputbiayaAsrama" class="form-label">File Biaya Studi</label>
-                        <input class="form-control" type="file" id="formFile">
+                        <label class="form-label">Unggah File Biaya Studi</label>
+                        <input class="form-control" type="file" name="PdfbiayaPendaftaran">
+                        @error('PdfbiayaPendaftaran')
+                                <div class="alert alert-danger">{{$message}}</div>
+                            @enderror
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">Submit</button>
@@ -1229,6 +1285,29 @@
         </div>
     </div>
     </div>
+    <div class="mt-3">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <span class="fs-3">Upload file Pedoman pendaftaran</span>
+                </div>
+        
+                <form method="post" action="{{ route('pedoman-pendaftaran') }}" enctype="multipart/form-data">
+                    @csrf
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="PedomanPendaftaran" class="form-label">Unggah Dokumen</label>
+                            <input type="file" class="form-control" id="PedomanPendaftaran" name="PedomanPendaftaran">
+                            @error('PedomanPendaftaran')
+                                <div class="alert alert-danger">{{$message}}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 
     <script>

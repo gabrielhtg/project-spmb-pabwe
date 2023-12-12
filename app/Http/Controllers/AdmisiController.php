@@ -11,7 +11,11 @@ use App\Models\JalurPendaftaranModel;
 use App\Models\BiayaAdminModel;
 use App\Models\JadwalPendaftaranModel;
 use App\Models\Lokasi;
+use App\Models\prodi;
+use App\Models\BiayaPendaftaranModel;
 use App\Models\JenisTes;
+use App\Models\PedomanPendaftaranModel;
+use App\Models\PdfBiayaModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -295,6 +299,9 @@ class AdmisiController extends Controller
             'biayawisuda' => $request->biayawisuda,
             'biayadeposit' => $request->biayadeposit,
             'biayatingkatakhir' => $request->biayatingkatakhir,
+            'biayaUangPangkal' => $request->biayaUangPangkal,
+            'biayaPerlengkapanMahasiswa' => $request->biayaPerlengkapanMahasiswa,
+            'biayaPerlengkapanMakan' => $request->biayaPerlengkapanMakan,
         ]);
     } else {
         BiayaAdminModel::create([
@@ -303,6 +310,9 @@ class AdmisiController extends Controller
             'biayawisuda' => $request->biayawisuda,
             'biayadeposit' => $request->biayadeposit,
             'biayatingkatakhir' => $request->biayatingkatakhir,
+            'biayaUangPangkal' => $request->biayaUangPangkal,
+            'biayaPerlengkapanMahasiswa' => $request->biayaPerlengkapanMahasiswa,
+            'biayaPerlengkapanMakan' => $request->biayaPerlengkapanMakan,
         ]);
     }
 
@@ -373,5 +383,251 @@ class AdmisiController extends Controller
             return redirect()->route('admisi-panel')->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
     }
+
+    public function postAddProdi(Request $request){
+
+        $this->validate($request, [
+            'program_studi' => 'required|string',
+            'deskripsi_persyaratan' => 'required|string',
+            'cover' => 'required|image|max:2048',
+        ]);
+
+        $auth = Auth::user();
+
+        $photo = $request->file('cover');
+        $filename = $auth->id . "_" . time() . '.' . $photo->getClientOriginalExtension();
+        $directory = public_path('assets/img/');
+        $photo->move($directory, $filename);
+        $cover = "assets/img/" . $filename;
+        prodi::create([
+            "program_studi" => $request->program_studi,
+            "deskripsi_persyaratan" => $request->deskripsi_persyaratan,
+            "cover" => $cover
+        ]);
+
+        return redirect()->route("admisi-panel");
+    }
+
+    public function postEditProdi(Request $request)
+    {
+        $this->validate($request, [
+            'id' => 'required|exists:prodi,id',
+            'program_studi' => 'string|nullable',
+            'deskripsi_persyaratan' => 'string|nullable',
+            'cover' => 'image|max:2048|nullable',
+        ]);
+
+        $auth = Auth::user();
+
+        $prodi = Prodi::where('id', $request->id)->first();
+
+        if (!$prodi) {
+           return redirect()->route("admisi-panel");
+        }
+
+        $file_cover = $request->file('cover');
+
+        if ($file_cover) {
+            $filename = $auth->id . "_" . time() . '.' . $file_cover->getClientOriginalExtension();
+            $directory = public_path('assets/img/');
+            $file_cover->move($directory, $filename);
+
+            if ($prodi->cover && file_exists($prodi->cover)) {
+                unlink($prodi->cover);
+            }
+
+            $prodi->cover = "assets/img/" . $filename;
+        }
+
+        $prodi->program_studi = $request->program_studi;
+        $prodi->deskripsi_persyaratan = $request->deskripsi_persyaratan;
+        $prodi->save();
+
+        return redirect()->route("admisi-panel");
+    }
+
+    public function deleteprodi($id)
+    {
+        // Find the record based on the ID
+        $prodi = prodi::find($id);
+
+        // Check if the record exists
+        if (!$prodi) {
+            return redirect()->route('admisi-panel');
+        }
+
+        // Delete the record
+        $prodi->delete();
+
+        return redirect()->route('admisi-panel');
+    }
+
+    
+    public function addBiayaPendaftaran(Request $request)
+    {
+        $request->validate([
+            'jlr_Pen'=>'required',
+            'biayaPen'=>'required',
+        ],[
+            'jlr_Pen.required' => 'Kolom Jalur Pendaftaran harus diisi.',
+            'biayaPen.required' => 'Kolom Deskripsi Persyaratan Umum harus diisi.',
+        ]);
+        try {
+            BiayaPendaftaranModel::create([
+                'jlr_Pen' => $request->jlr_Pen,
+                'biayaPen' => $request->biayaPen,
+            ]);
+    
+            return redirect()->route('admisi-panel');
+        } catch (\Exception $e) {
+            return back()->withInput()->withErrors(['error' => 'Semua Kolom Harus diisi.']);
+        }
+    }
+
+    public function editBiayaPendaftaran (Request $request) {
+
+        $request->validate([
+            'id' => 'required',
+            'jlr_Pen'=>'required',
+            'biayaPen'=>'required',
+        ],[
+            'jlr_Pen.required' => 'Kolom Jalur Pendaftaran harus diisi.',
+            'biayaPen.required' => 'Kolom Deskripsi Persyaratan Umum harus diisi.',
+        ]);
+
+        
+        try{
+            BiayaPendaftaranModel::where('id', $request->id)->update([
+                'jlr_Pen' => $request->jlr_Pen,
+                'biayaPen' => $request->biayaPen,
+            ]);
+               
+            return redirect()->route('admisi-panel');
+        }
+
+        catch (\Exception $e) {
+            return back()->withInput()->withErrors(['error' => 'Semua Kolom Harus diisi.']);
+        }
+    }
+
+    public function removeBiayaPendaftaran(Request $request, $biayaPendaftaran_id) {
+        try {
+            $biayaPendaftaran = BiayaPendaftaranModel::find($biayaPendaftaran_id);
+            if ($biayaPendaftaran) {
+                $biayaPendaftaran->delete();
+                return redirect()->route('admisi-panel')->with('success', 'Data berhasil dihapus.');
+            } else {
+                return redirect()->route('admisi-panel')->with('error', 'Data tidak ditemukan.');
+            }
+        } catch (\Exception $e) {
+            return redirect()->route('admisi-panel')->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+        }
+    }
+    public function addPedomanPendaftaran(Request $request)
+    {
+        $request->validate([
+            'PedomanPendaftaran' => 'required|mimes:pdf,doc,docx|max:2048',
+        ], [
+            'PedomanPendaftaran.required' => 'Harap isi Pedoman Pendaftaran.',
+        ]);
+
+        $namaFile = time().'.'.$request->PedomanPendaftaran->extension();
+
+        $request->PedomanPendaftaran->move(public_path('dokumenkel4'), $namaFile);
+        
+        $pedomanpendaftaran = PedomanPendaftaranModel::first();
+
+        if ($pedomanpendaftaran) {
+            // Jika sudah ada dokumen sebelumnya, gantilah dokumen tersebut
+            unlink(public_path($pedomanpendaftaran->PedomanPendaftaran));
+            $pedomanpendaftaran->update([
+                'PedomanPendaftaran' => 'dokumenkel4/' . $namaFile,
+            ]);
+        } else {
+            // Jika belum ada dokumen, buat dokumen baru
+            $pedomanpendaftaran = PedomanPendaftaranModel::create([
+                'PedomanPendaftaran' => 'dokumenkel4/' . $namaFile,
+            ]);
+        }
+
+        return redirect()->route('admisi-panel');
+        // return view('admisi-panel;', compact('pedomanpendaftaran'));
+    }
+
+public function downloadPedoman()
+    {
+        $pedomanpendaftaran = PedomanPendaftaranModel::first();
+
+        if ($pedomanpendaftaran) {
+            $file = public_path($pedomanpendaftaran->PedomanPendaftaran);
+
+            // Mendapatkan ekstensi file
+            $extension = pathinfo($file, PATHINFO_EXTENSION);
+
+            // Membuat response dengan file yang akan didownload
+            $headers = [
+                'Content-Type' => 'application/' . $extension,
+            ];
+
+            return response()->download($file, 'PedomanPendaftaran.' . $extension, $headers);
+        } else {
+            // Handle jika tidak ada file
+            return redirect()->route('admisi-panel')->with('error', 'Dokumen tidak ditemukan.');
+        }
+    }
+
+    public function addPdfbiaya(Request $request)
+    {
+        $request->validate([
+            'PdfbiayaPendaftaran' => 'required|mimes:pdf,doc,docx|max:2048',
+        ], [
+            'PdfbiayaPendaftaran.required' => 'Harap isi.',
+        ]);
+
+        $namaFile = time().'.'.$request->PdfbiayaPendaftaran->extension();
+
+        $request->PdfbiayaPendaftaran->move(public_path('dokumentkel4'), $namaFile);
+        
+        $PdfbiayaPendaftaran = PdfBiayaModel::first();
+
+        if ($PdfbiayaPendaftaran) {
+            // Jika sudah ada dokumen sebelumnya, gantilah dokumen tersebut
+            unlink(public_path($PdfbiayaPendaftaran->PdfbiayaPendaftaran));
+            $PdfbiayaPendaftaran->update([
+                'PdfbiayaPendaftaran' => 'dokumentkel4/' . $namaFile,
+            ]);
+        } else {
+            // Jika belum ada dokumen, buat dokumen baru
+            $PdfbiayaPendaftaran = PdfBiayaModel::create([
+                'PdfbiayaPendaftaran' => 'dokumentkel4/' . $namaFile,
+            ]);
+        }
+
+        return redirect()->route('admisi-panel');
+        // return view('admisi-panel;', compact('pedomanpendaftaran'));
+    }
+
+public function downloadPdfBiaya()
+    {
+        $PdfbiayaPendaftaran = PdfBiayaModel::first();
+
+        if ($PdfbiayaPendaftaran) {
+            $file = public_path($PdfbiayaPendaftaran->PdfbiayaPendaftaran);
+
+            // Mendapatkan ekstensi file
+            $extension = pathinfo($file, PATHINFO_EXTENSION);
+
+            // Membuat response dengan file yang akan didownload
+            $headers = [
+                'Content-Type' => 'application/' . $extension,
+            ];
+
+            return response()->download($file, 'PdfbiayaPendaftaran.' . $extension, $headers);
+        } else {
+            // Handle jika tidak ada file
+            return redirect()->route('admisi-panel')->with('error', 'Dokumen tidak ditemukan.');
+        }
+    }
+
     
 }

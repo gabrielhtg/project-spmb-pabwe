@@ -6,6 +6,7 @@ use App\Models\AdminModel;
 use App\Models\AkreditasiInstitutiModel;
 use App\Models\AkreditasiSectionModel;
 use App\Models\AlamatInstitusiModel;
+use App\Models\BiayaStudi;
 use App\Models\data_institusi;
 use App\Models\EmailModel;
 use App\Models\HeroSectionModel;
@@ -14,14 +15,18 @@ use App\Models\JadwalUjianModel;
 use App\Models\MbkmModel;
 use App\Models\ModelHeaderAdmisi;
 use App\Models\NomorTeleponModel;
+use App\Models\PdfBiayaModel;
 use App\Models\SocalMediaModel;
 use App\Models\JalurPendaftaranModel;
 use App\Models\BiayaAdminModel;
 use App\Models\SubJalurPendaftaran;
 use App\Models\JadwalPendaftaranModel;
+use App\Models\BiayaPendaftaranModel;
+use App\Models\PedomanPendaftaranModel;
 use App\Models\Lokasi;
 use App\Models\JenisTes;
 use App\Models\Major;
+use App\Models\prodi;
 use App\Models\Course;
 use App\Models\Faculty;
 use App\Models\Employee;
@@ -280,6 +285,13 @@ class AdminPanelController extends Controller
         $jenis = JenisTes::orderBy('gelombang', 'asc')->get();
         $dataJadwalUjian = JadwalUjianModel::all();
         $dataSubJalurPendaftaran = SubJalurPendaftaran::all();
+        $biayaPen = BiayaPendaftaranModel::all();
+        $pedomanpendaftaran = PedomanPendaftaranModel::all();
+        $PdfbiayaPendaftaran = PdfBiayaModel::all();
+        $prodis = prodi::orderBy("created_at", "desc")->get();
+        $biayaStudis = BiayaStudi::all();
+
+
 
         foreach (InfografisModel::all() as $e) {
             if (!in_array($e->jalur, $jalurMasuk)) {
@@ -307,6 +319,11 @@ class AdminPanelController extends Controller
             'dataJadwalUjian' => $dataJadwalUjian,
             'jadwalPendaftaran'=>$jadwalPendaftaran,
             'dataSubJalurPendaftaran'=>$dataSubJalurPendaftaran,
+            'biayaPen'=>$biayaPen,
+            'pedomanpendaftaran' => $pedomanpendaftaran,
+            'PdfbiayaPendaftaran'=>$PdfbiayaPendaftaran,
+            'prodis' => $prodis,
+            'biayaStudis'=>$biayaStudis
         ];
         return view('admin-panel.admisi_panel', $data);
     }

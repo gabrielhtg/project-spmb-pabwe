@@ -76,26 +76,12 @@
                              aria-labelledby="jadwalpendaftaran-tab" tabindex="0">
                             <table class="table table-striped table-bordered mt-5">
                                 <tbody>
+                                    @foreach($jadwalPendaftaran as $e)
                                 <tr>
-                                    <td>PMDK</td>
-                                    <td>05 DESEMBER 2022 - 15 JANUARI 2023</td>
+                                    <td>{{$e -> jenis_jalur}}</td>
+                                    <td>{{$e ->tanggal_pendaftaran}}</td>
                                 </tr>
-                                <tr>
-                                    <td style="min-width: 80px">USM 1</td>
-                                    <td>16 JANUARI 2023 - 12 FEBRUARI 2023</td>
-                                </tr>
-                                <tr>
-                                    <td>USM 2</td>
-                                    <td>13 FEBRUARI 2023 - 31 MARET 2023</td>
-                                </tr>
-                                <tr>
-                                    <td>USM 3</td>
-                                    <td>1 APRIL 2023 - 2 JUNI 2023</td>
-                                </tr>
-                                <tr>
-                                    <td>UTBK</td>
-                                    <td>29 MEI 2023 - 9 JULI 2023</td>
-                                </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -126,7 +112,7 @@
                                 </tbody>
                              </table>
                         </div>
-                        <div class="tab-pane ps-3 pe-3 fade show active" id="lokasi-tab-pane" role="tabpanel" aria-labelledby="lokasi-tab"
+                        <div class="tab-pane ps-3 pe-3 fade" id="lokasi-tab-pane" role="tabpanel" aria-labelledby="lokasi-tab"
                              tabindex="0">
                              <table class="table table-striped table-bordered mt-5">
                                 <tbody>
