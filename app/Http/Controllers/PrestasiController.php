@@ -180,7 +180,7 @@ class PrestasiController extends Controller
                     unlink($data->photo);
                 }
 
-                $data->photo = $fileName;
+                $data->photo = 'assets/img/prestasi/'.$fileName;
             }
 
             $data->jenis_prestasi = $request->input_jenis_prestasi_update;
