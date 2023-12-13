@@ -40,9 +40,10 @@
     <div class="container col-xxl-8 px-4 py-5">
         <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
             <div class="col-10 col-sm-8 col-lg-6">
-                    <img src="{{ $dataAkreditasiInstitusi->sertifikat_akreditasi ? asset($dataAkreditasiInstitusi->sertifikat_akreditasi) : asset("assets/img/default.jpg") }}"
-                         class="d-block n shadow-lg mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500"
-                         loading="lazy">
+                <img
+                    src="{{ $dataAkreditasiInstitusi->sertifikat_akreditasi ? asset($dataAkreditasiInstitusi->sertifikat_akreditasi) : asset("assets/img/default.jpg") }}"
+                    class="d-block n shadow-lg mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500"
+                    loading="lazy">
             </div>
             <div class="col-lg-6">
                 <h1 class=" fw-bold lh-1 mb-3">{{ $akreditasiDashboard->header }}</h1>
@@ -293,170 +294,43 @@
         <div class="splide__slider">
             <div class="splide__track">
                 <ul class="splide__list">
-                    <li class="splide__slide d-flex justify-content-center" data-splide-interval="2000">
-                        <div class="card" style="{{ $lebarCard }}">
-                            <div class="bg-primary bg-image-container card-img-top"></div>
-                            <div class="d-flex justify-content-center">
-                                <div class="image-container">
-                                    <img src="{{ asset("/assets/img/profil.jpg") }}" class="cropped-image"
-                                         alt="foto-profil">
+                    @forelse($dataTestimoni as $itemTestimoni)
+                        <li class="splide__slide d-flex justify-content-center" data-splide-interval="2000">
+                            <div class="card" style="{{ $lebarCard }}">
+                                <div class="bg-primary bg-image-container card-img-top"></div>
+                                <div class="d-flex justify-content-center">
+                                    <div class="image-container">
+                                        <img src="{{ asset($itemTestimoni->photo) }}" class="cropped-image"
+                                             alt="foto-profil">
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title fw-bold">{{ $itemTestimoni->nama_mahasiswa  }}</h5>
+                                    <div id="tempat-pill" class="d-flex gap-1 mb-4">
+                                        <div class="pill d-inline text-muted">
+                                            {{ $itemTestimoni->kategori_mahasiswa  }}
+                                        </div>
+
+                                        <div class="pill d-inline text-muted">
+                                            {{ $itemTestimoni->angkatan  }}
+                                        </div>
+
+                                        <div class="pill d-inline text-muted">
+                                            {{ $itemTestimoni->prodi }}
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="d-flex justify-content-center align-items-center border border-1 rounded p-3"
+                                        style="height: 200px;">
+                                        <p class="card-text fs-7">
+                                            {{ $itemTestimoni->deskripsi }}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="card-body" >
-                                <h5 class="card-title fw-bold">Gabriel Hutagalung</h5>
-                                <div id="tempat-pill" class="d-flex gap-1 mb-4">
-                                    <div class="pill d-inline text-muted">
-                                        Alumni
-                                    </div>
-
-                                    <div class="pill d-inline text-muted">
-                                        2021
-                                    </div>
-
-                                    <div class="pill d-inline text-muted">
-                                        S1 Informatika
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-center align-items-center border border-1 rounded p-3" style="height: 200px;">
-                                    <p class="card-text fs-7">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                        Accusantium architecto atque eligendi enim fugiat iure quia, quo sunt tempora
-                                        tempore.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="splide__slide d-flex justify-content-center" data-splide-interval="2000">
-                        <div class="card" style="{{ $lebarCard }}">
-                            <div class="bg-primary bg-image-container card-img-top"></div>
-                            <div class="d-flex justify-content-center">
-                                <div class="image-container">
-                                    <img src="{{ asset("/assets/img/profil.jpg") }}" class="cropped-image"
-                                         alt="foto-profil">
-                                </div>
-                            </div>
-                            <div class="card-body" >
-                                <h5 class="card-title fw-bold">Gabriel Hutagalung</h5>
-                                <div id="tempat-pill" class="d-flex gap-1 mb-4">
-                                    <div class="pill d-inline text-muted">
-                                        Alumni
-                                    </div>
-
-                                    <div class="pill d-inline text-muted">
-                                        2021
-                                    </div>
-
-                                    <div class="pill d-inline text-muted">
-                                        S1 Informatika
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-center align-items-center border border-1 rounded p-3" style="height: 200px;">
-                                    <p class="card-text fs-7">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                        Accusantium architecto atque eligendi enim fugiat iure quia, quo sunt tempora
-                                        tempore.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="splide__slide d-flex justify-content-center" data-splide-interval="2000">
-                        <div class="card" style="{{ $lebarCard }}">
-                            <div class="bg-primary bg-image-container card-img-top"></div>
-                            <div class="d-flex justify-content-center">
-                                <div class="image-container">
-                                    <img src="{{ asset("/assets/img/profil.jpg") }}" class="cropped-image"
-                                         alt="foto-profil">
-                                </div>
-                            </div>
-                            <div class="card-body" >
-                                <h5 class="card-title fw-bold">Gabriel Hutagalung</h5>
-                                <div id="tempat-pill" class="d-flex gap-1 mb-4">
-                                    <div class="pill d-inline text-muted">
-                                        Alumni
-                                    </div>
-
-                                    <div class="pill d-inline text-muted">
-                                        2021
-                                    </div>
-
-                                    <div class="pill d-inline text-muted">
-                                        S1 Informatika
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-center align-items-center border border-1 rounded p-3" style="height: 200px;">
-                                    <p class="card-text fs-7">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                        Accusantium architecto atque eligendi enim fugiat iure quia, quo sunt tempora
-                                        tempore.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="splide__slide d-flex justify-content-center" data-splide-interval="2000">
-                        <div class="card" style="{{ $lebarCard }}">
-                            <div class="bg-primary bg-image-container card-img-top"></div>
-                            <div class="d-flex justify-content-center">
-                                <div class="image-container">
-                                    <img src="{{ asset("/assets/img/profil.jpg") }}" class="cropped-image"
-                                         alt="foto-profil">
-                                </div>
-                            </div>
-                            <div class="card-body" >
-                                <h5 class="card-title fw-bold">Gabriel Hutagalung</h5>
-                                <div id="tempat-pill" class="d-flex gap-1 mb-4">
-                                    <div class="pill d-inline text-muted">
-                                        Alumni
-                                    </div>
-
-                                    <div class="pill d-inline text-muted">
-                                        2021
-                                    </div>
-
-                                    <div class="pill d-inline text-muted">
-                                        S1 Informatika
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-center align-items-center border border-1 rounded p-3" style="height: 200px;">
-                                    <p class="card-text fs-7">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                        Accusantium architecto atque eligendi enim fugiat iure quia, quo sunt tempora
-                                        tempore.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="splide__slide d-flex justify-content-center" data-splide-interval="2000">
-                        <div class="card" style="{{ $lebarCard }}">
-                            <div class="bg-primary bg-image-container card-img-top"></div>
-                            <div class="d-flex justify-content-center">
-                                <div class="image-container">
-                                    <img src="{{ asset("/assets/img/profil.jpg") }}" class="cropped-image"
-                                         alt="foto-profil">
-                                </div>
-                            </div>
-                            <div class="card-body" >
-                                <h5 class="card-title fw-bold">Gabriel Hutagalung</h5>
-                                <div id="tempat-pill" class="d-flex gap-1 mb-4">
-                                    <div class="pill d-inline text-muted">
-                                        Alumni
-                                    </div>
-
-                                    <div class="pill d-inline text-muted">
-                                        2021
-                                    </div>
-
-                                    <div class="pill d-inline text-muted">
-                                        S1 Informatika
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-center align-items-center border border-1 rounded p-3" style="height: 200px;">
-                                    <p class="card-text fs-7">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                        Accusantium architecto atque eligendi enim fugiat iure quia, quo sunt tempora
-                                        tempore.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
+                        </li>
+                    @empty
+                    @endforelse
                 </ul>
             </div>
         </div>

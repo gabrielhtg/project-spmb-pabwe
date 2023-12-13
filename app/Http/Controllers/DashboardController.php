@@ -16,6 +16,7 @@ use App\Models\NomorTeleponModel;
 use App\Models\SocalMediaModel;
 use App\Models\Lokasi;
 use App\Models\JenisTes;
+use App\Models\Testimoni;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -39,6 +40,7 @@ class DashboardController extends Controller
             'dataNomorTelepon' => $dataNomorTelepon,
             'dataEmail' => $dataEmail,
             'dataAkreditasiInstitusi' => $dataAkreditasiInstitusi,
+            'dataTestimoni' => Testimoni::orderBy('created_at', 'desc')->take(8)->get(),
         ];
 
         return view('dashboard/dashboard', $data);
