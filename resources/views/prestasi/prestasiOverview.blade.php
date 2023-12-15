@@ -19,6 +19,16 @@
 
         .card {
             margin-bottom: 30px;
+            width:300px;
+            height:450px
+        }
+
+        .card-text {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3; /* Jumlah baris yang ingin ditampilkan */
+            -webkit-box-orient: vertical;
         }
 
         .popup {
@@ -35,7 +45,9 @@
 
         .popup-content {
             position: absolute;
-            top: 50%;
+            width: 650px;
+            height:700px;
+            top: 52%;
             left: 50%;
             transform: translate(-50%, -50%);
             padding: 20px;
@@ -43,12 +55,13 @@
             /* White background */
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            overflow-y: auto; /* Tambahkan overflow-y agar dapat discroll jika kontennya panjang */
         }
 
         .popup .popup-content img {
-            max-width: 100%;
+            width: 100%;
             /* Image takes 100% width of its container */
-            height: auto;
+            height: 330px;
             display: block;
             margin-top: 40px;
         }
@@ -83,12 +96,13 @@
 
 
         .popup-content img {
-            max-width: 100%;
-            height: auto;
+            width: 100%;
+            height: 330px;
         }
 
         .content-text {
             margin-top: 20px;
+            /* white-space: pre-wrap; Agar konten dapat mempertahankan format dan baris baru */
         }
 
         .btn-close {
