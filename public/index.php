@@ -52,7 +52,7 @@ try {
     $response = $kernel->handle(
         $request = Request::capture()
     )->send();
-} catch (\Exception $e) {
+} catch (\Illuminate\Http\Exceptions\PostTooLargeException $e) {
 }
 
 
