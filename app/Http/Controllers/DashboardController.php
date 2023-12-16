@@ -22,6 +22,7 @@ use App\Models\JenisTes;
 use App\Models\BiayaAdminModel;
 use App\Models\BiayaPendaftaranModel;
 use App\Models\PedomanPendaftaranModel;
+use App\Models\Testimoni;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -45,6 +46,7 @@ class DashboardController extends Controller
             'dataNomorTelepon' => $dataNomorTelepon,
             'dataEmail' => $dataEmail,
             'dataAkreditasiInstitusi' => $dataAkreditasiInstitusi,
+            'dataTestimoni' => Testimoni::orderBy('created_at', 'desc')->take(8)->get(),
         ];
 
         return view('dashboard/dashboard', $data);
@@ -101,7 +103,7 @@ class DashboardController extends Controller
             $dataInfografisJalurMasuk[] = InfografisModel::where('jalur', $e)->get();
         }
 
-        
+
 
         $data = [
             'dataInstitusi' => $dataInstitusi,
@@ -112,7 +114,6 @@ class DashboardController extends Controller
             'dataEmail' => $dataEmail,
             'dataInfografis' => $dataInfografisJalurMasuk,
             'pedomanpendaftaran' => $pedomanpendaftaran,
-
         ];
 
         return view('admisi.admisi-jalur-pendaftaran', $data);
@@ -127,7 +128,7 @@ class DashboardController extends Controller
         $dataEmail = EmailModel::all();
         $dataNonKompetisi  = MbkmModel::where('jenis_kegiatan', 'Non Kompetisi')->get();
         $dataKompetisi =  MbkmModel::where('jenis_kegiatan', 'Kompetisi')->get();
-        $dataBiaya = BiayaAdminModel::all(); 
+        $dataBiaya = BiayaAdminModel::all();
         $biayaPen = BiayaPendaftaranModel::all();
         $PdfbiayaPendaftaran = PdfBiayaModel::all();
 

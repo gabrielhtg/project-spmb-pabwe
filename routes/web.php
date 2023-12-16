@@ -16,6 +16,8 @@ use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\MajorController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\TestimoniController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -59,8 +61,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/testimonipanel', [AdminPanelController::class, 'getTestimoniPanel'])->name('testimonipanel');
         Route::get('/logout', [AuthController::class, 'getLogout'])->name('logout');
         Route::get('/program', [AdminPanelController::class, 'getProgramPanel'])->name('program-panel');
-        Route::prefix('/admisi-panel')->group(function(){
-            Route::post('/addbiayapendaftaran', [AdmisiController::class,'addBiayaPendaftaran'])->name('addBiayaPendaftaran');
+
+        Route::prefix('/admisi-panel')->group(function () {
+            Route::post('/addbiayapendaftaran', [AdmisiController::class, 'addBiayaPendaftaran'])->name('addBiayaPendaftaran');
             Route::post('/edit-jalur-pendaftaran', [AdmisiController::class,'editJalur'])->name('editJalur');
             Route::delete('/delete-lokasi/{id}', [AdminPanelController::class, 'destroyLokasi'])->name('post.destroy.lokasi');
             Route::delete('/delete-jenis/{id}', [AdminPanelController::class, 'destroyJenisTes'])->name('post.destroy.jenis');
@@ -75,14 +78,41 @@ Route::middleware('auth')->group(function () {
             Route::post('/edit-biaya-studi', [AdmisiController::class, 'editBiayaStudi'])->name('edit_biaya_studi');
             Route::delete('/remove-biaya-studi', [AdmisiController::class, 'removeBiayaStudi'])->name('remove-biaya-studi');
         });
+
+        Route::prefix('fasilitas-panel')->group(function () {
+            Route::get('/fasilitas-admin', [AdminPanelController::class, 'getFasilitasAdmin'])->name('fasilitas-admin');
+            Route::get('/fasilitas-admin-get', [AdminPanelController::class, 'getAddFasilitas'])->name('get.add-fasilitas');
+            Route::post('/fasilitas/edit', [AdminPanelController::class, 'postEditFasilitas'])->name('post.fasilitas.edit');
+            Route::post('/tambah-fasilitas', [AdminPanelController::class, 'postFasilitas'])->name('post.fasilitas');
+            Route::delete('post-fasilitas/{id}', [AdminPanelController::class, 'destroy'])->name('post.destroy');
+        });
+
+        Route::prefix('pengumuman-panel')->group(function () {
+            Route::get('/pengumuman-admin', [PengumumanController::class, 'getPengumumanPanel'])->name('pengumuman-panel');
+            Route::get('/pengumuman-admin-get', [AdminPanelController::class, 'getAddPengumuman'])->name('get.add-pengumuman');
+            Route::post('/tambah-pengumuman', [PengumumanController::class, 'postPengumuman'])->name('post.pengumuman');
+            Route::post('/pengumuman/edit', [AdminPanelController::class, 'postEditPengumuman'])->name('post.edit.pengumuman');
+            Route::delete('post-pengumuman/{id}', [PengumumanController::class, 'destroy'])->name('post.destroy.pengumuman');
+        });
+
+        Route::prefix('prestasi-panel')->group(function () {
+            /* Bagian Prestasi */
+            Route::get('/', [AdminPanelController::class, 'getPrestasiPanel'])->name('prestasi.panel');
+            Route::post('/add', [PrestasiController::class, 'postAddPrestasi'])->name('prestasi.add');
+            Route::post('/edit', [PrestasiController::class, 'postEditPrestasi'])->name('prestasi.edit');
+            Route::post('/delete', [PrestasiController::class, 'postDeletePrestasi'])->name('prestasi.delete');
+        });
+
+        Route::prefix('testimoni-panel')->group(function () {
+            Route::get('/', [AdminPanelController::class, 'getTestimoniPanel'])->name('testimoni.panel');
+            Route::post('/add', [TestimoniController::class, 'postAddTestimoni'])->name('testimoni.add');
+            Route::post('/edit', [TestimoniController::class, 'postEditTestimoni'])->name('testimoni.edit');
+            Route::post('/delete', [TestimoniController::class, 'postDeletePanel'])->name('testimoni.delete');
+        });
     });
 });
+Route::get('/fasilitas', [FasilitasController::class, "getviewFasilitas"])->name("fasilitas.fasilitas");
 
-Route::get('/fasilitas-Asrama', [FasilitasController::class, "getviewAsrama"])->name("fasilitas.asrama");
-Route::get('/fasilitas-Kesehatan-dan-Olahraga', [FasilitasController::class, "getviewKesehatandanOlahraga"])->name("fasilitas.kesehatandanolahraga");
-Route::get('/fasilitas-Area-Mahasiswa', [FasilitasController::class, "getviewAreaMahasiswa"])->name("fasilitas.areamahasiswa");
-Route::get('/fasilitas-Laboratorium', [FasilitasController::class, "getviewLaboratorium"])->name("fasilitas.laboratorium");
-Route::get('/fasilitas-Layanan-Makanan', [FasilitasController::class, "getviewLayananMakanan"])->name("fasilitas.layananmakanan");
 Route::get('/pengumuman', [PengumumanController::class, 'getviewPengumuman'])->name("pengumuman");
 
 //----
@@ -93,12 +123,11 @@ Route::get('/form', function () {
 })->name('form');
 
 
-
 // ROUTE PROGRAM STUDI [TEAM 02]
 
-Route::get('/program', [ProgramController::class,'program'])->name('program');
-Route::get('/fakultas/{id}', [FacultyController::class,'getFakultas'])->name('fakultas');
-Route::get('/prodi/{id}', [MajorController::class,'getProdi'])->name('prodi');
+Route::get('/program', [ProgramController::class, 'program'])->name('program');
+Route::get('/fakultas/{id}', [FacultyController::class, 'getFakultas'])->name('fakultas');
+Route::get('/prodi/{id}', [MajorController::class, 'getProdi'])->name('prodi');
 Route::post('/faculties/store', [FacultyController::class, 'store'])->name('faculties.store');
 Route::post('/major/store', [MajorController::class, 'store'])->name('major.store');
 Route::post('/employee/store', [EmployeeController::class, 'store'])->name('employee.store');
@@ -112,9 +141,8 @@ Route::delete('/admin-panel/program_panel/major/{id}/delete', [MajorController::
 Route::delete('/admin-panel/program_panel/employee/{id}/delete', [EmployeeController::class, 'destroy'])->name('admin.program.employee.destroy');
 Route::delete('/admin-panel/program_panel/course/{id}/delete', [CourseController::class, 'destroy'])->name('admin.program.course.destroy');
 
-// End of ROUTE PROGRAM STUDI [TEAM 02]
-
+// End of ROUTE PROGRAM STUDI [TEAM 03]
 Route::get('/prestasi', [PrestasiController::class, 'getviewPrestasi'])->name('prestasi.prestasiOverview');
-Route::get('/prestasiInstitut', [PrestasiController::class, 'getviewPrestasiInstitut'])->name('prestasi.prestasiInstitut');
-Route::get('/prestasiDosenStaff', [PrestasiController::class, 'getviewPrestasiDosenStaff'])->name('prestasi.prestasiDosenStaff');
-Route::get('/prestasiMahasiswa', [PrestasiController::class, 'getviewPrestasiMahasiswa'])->name('prestasi.prestasiMahasiswa');
+Route::get('/prestasi-institut', [PrestasiController::class, 'getviewPrestasiInstitut'])->name('prestasi.prestasiInstitut');
+Route::get('/prestasi-dosen-staff', [PrestasiController::class, 'getviewPrestasiDosenStaff'])->name('prestasi.prestasiDosenStaff');
+Route::get('/prestasi-mahasiswa', [PrestasiController::class, 'getviewPrestasiMahasiswa'])->name('prestasi.prestasiMahasiswa');

@@ -1,6 +1,160 @@
 @extends("template.app")
 
 @section("isi-halaman")
+<<<<<<< HEAD:resources/views/admisi/admisi.blade.php
+
+    <div class="container">
+        <div class="bg-primary w-100">
+            <h1 class="pt-6 text-white ms-5 pb-5">Admisi</h1>
+        </div>
+
+        <div>
+            <div class="d-flex flex-column align-items-center mt-4 justify-content-center">
+                <div class="card-admisi shadow-lg p-4 rounded-4">
+                    <ul class="nav nav-pills nav-fill" id="tab-tabeltanggalpenting" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="jadwalpendaftaran-tab" data-bs-toggle="tab"
+                                    data-bs-target="#jadwalpendaftaran-tab-pane" type="button" role="tab"
+                                    aria-controls="home-tab-pane" aria-selected="true">
+                                Jadwal Pendaftaran
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="jadwal-ujian-tab" data-bs-toggle="tab"
+                                    data-bs-target="#jadwal-ujian-tab-pane" type="button" role="tab"
+                                    aria-controls="profile-tab-pane" aria-selected="false">
+                                Jadwal Ujian
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="jenis-test-tab" data-bs-toggle="tab"
+                                    data-bs-target="#jenis-test-tab-pane" type="button" role="tab"
+                                    aria-controls="contact-tab-pane" aria-selected="false">
+                                Jenis Test
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="lokasi-tab" data-bs-toggle="tab"
+                                    data-bs-target="#lokasi-tab-pane" type="button" role="tab"
+                                    aria-controls="disabled-tab-pane" aria-selected="false">
+                                Lokasi
+                            </button>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane ps-5 pe-5 fade show active" id="jadwalpendaftaran-tab-pane" role="tabpanel"
+                             aria-labelledby="jadwalpendaftaran-tab" tabindex="0">
+                            <table class="table mt-5">
+                                <tbody>
+                                <tr>
+                                    <td>PMDK</td>
+                                    <td>05 DESEMBER 2022 - 15 JANUARI 2023</td>
+                                </tr>
+                                <tr>
+                                    <td>USM 1</td>
+                                    <td>16 JANUARI 2023 - 12 FEBRUARI 2023</td>
+                                </tr>
+                                <tr>
+                                    <td>USM 2</td>
+                                    <td>13 FEBRUARI 2023 - 31 MARET 2023</td>
+                                </tr>
+                                <tr>
+                                    <td>USM 3</td>
+                                    <td>1 APRIL 2023 - 2 JUNI 2023</td>
+                                </tr>
+                                <tr>
+                                    <td>UTBK</td>
+                                    <td>29 MEI 2023 - 9 JULI 2023</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="tab-pane fade" id="jadwal-ujian-tab-pane" role="tabpanel"
+                             aria-labelledby="profile-tab" tabindex="0">
+                             <ul class="nav nav-pills nav-fill" id="tab-tabeltanggalpenting" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="jadwalujianpmdk-tab" data-bs-toggle="tab"
+                                        data-bs-target="#jadwalujianpmdk-tab-pane" type="button" role="tab"
+                                        aria-controls="home-tab-pane" aria-selected="true">
+                                        PMDK
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="jadwalujianusm1-tab" data-bs-toggle="tab"
+                                        data-bs-target="#jadwalujianusm1-tab-pane" type="button" role="tab"
+                                        aria-controls="profile-tab-pane" aria-selected="false">
+                                        USM 1
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="jadwalujianusm2-tab" data-bs-toggle="tab"
+                                        data-bs-target="#jadwalujianusm2-tab-pane" type="button" role="tab"
+                                        aria-controls="contact-tab-pane" aria-selected="false">
+                                        USM 2
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="jadwalujianusm3-tab" data-bs-toggle="tab"
+                                        data-bs-target="#jadwalujianusm3-tab-pane" type="button" role="tab"
+                                        aria-controls="disabled-tab-pane" aria-selected="false">
+                                        USM 3
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="jadwalujianutbk-tab" data-bs-toggle="tab"
+                                        data-bs-target="#jadwalujianutbk-tab-pane" type="button" role="tab"
+                                        aria-controls="disabled-tab-pane" aria-selected="false">
+                                        UTBK
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tab-pane ps-5 pe-5 fade show" id="jenis-test-tab-pane" role="tabpanel"
+                             aria-labelledby="jenis-test-tab" tabindex="0">
+                             <table class="table mt-5">
+                                <tbody>
+                                <tr>
+                                    <td>PMDK</td>
+                                    <td>Nilai Rapor + Wawancara + Psikotes</td>
+                                </tr>
+                                <tr>
+                                    <td>USM 1</td>
+                                    <td>Tes Akademik + Psikotes</td>
+                                </tr>
+                                <tr>
+                                    <td>USM 2</td>
+                                    <td>Tes Akademik + Psikotes</td>
+                                </tr>
+                                <tr>
+                                    <td>USM 3</td>
+                                    <td>Tes Akademik + Psikotes</td>
+                                </tr>
+                                <tr>
+                                    <td>UTBK</td>
+                                    <td>Nilai UTBK + Psikotes</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="tab-pane ps-5 pe-5 fade show" id="lokasi-tab-pane" role="tabpanel" aria-labelledby="lokasi-tab"
+                             tabindex="0">
+                             <table class="table mt-5">
+                                <tbody>
+                                <tr>
+                                    <td>Kampus IT Del</td>
+                                    <td>Jl. Sisingmangaraja, Sitoluama Laguboti, Toba Samosir Sumatera Utara</td>
+                                </tr>
+                                <tr>
+                                    <td>Medan</td>
+                                    <td>Kampus Universitas HKBP Nommensen (Medan) Jl. Perintis Kemerdekaan No.23, Perintis, Medan</td>
+                                </tr>
+                                <tr>
+                                    <td>Jakarta</td>
+                                    <td>Sopo Del Office Towers & Lifestyle Tower A Lt. 9 Jl. Mega Kuningan Barat III Lot 10.1-6 Jakarta Selatan 12950 No. tlp : 021 - 5080 6565</td>
+                                </tr>
+                                </tbody>
+                            </table>
+=======
     <section>
         <div id="carouselExample" class="carousel slide">
             <div class="carousel-inner">
@@ -10,6 +164,7 @@
                     <div class="carousel-caption d-none d-md-block text-center"> <!-- Center the text -->
                         <div class="d-flex flex-column text-center h-100 pb-3"> <!-- Center the content vertically -->
                             <h2 class="fw-bold text-uppercase">ADMISI</h2>
+>>>>>>> dev:resources/views/admisi/admisi-persyaratan-khusus.blade.php
                         </div>
                     </div>
                 </div>
