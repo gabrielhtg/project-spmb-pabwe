@@ -451,6 +451,11 @@ class AdminPanelController extends Controller
     }
 
     public function editAlamat (Request $request) {
+        $request->validate([
+            'input_nama_alamat' => 'required|string|max:50',
+            'input_alamat' => 'required|string|max:150'
+        ]);
+
         $username = Auth::user()->username;
         $alamat = AlamatInstitusiModel::where('id', $request->id)->first();
 
@@ -459,16 +464,9 @@ class AdminPanelController extends Controller
         $alamat->updated_at = now();
         $alamat->updated_by = $username;
 
-        dump([
-            $alamat-> nama,
-            $alamat-> alamat,
-            $alamat->updated_at,
-            $alamat->updated_by,
-        ]);
-
         $alamat->update();
 
-        return redirect(null, 200)->back();
+        return redirect()->back();
     }
 
     public function removeAlamat(Request $request)

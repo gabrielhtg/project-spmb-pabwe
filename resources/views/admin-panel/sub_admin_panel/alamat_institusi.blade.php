@@ -103,23 +103,31 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                         </div>
-                                        <form action="{{ url('/api/edit-alamat') }}" method="post">
+                                        <form action="{{ route('editAlamat') }}" method="post">
                                             @csrf
                                             <div class="modal-body text-start">
                                                 <input type="hidden" name="id" value="{{ $e -> id }}">
                                                 <div class="mb-3">
                                                     <label for="input_edit_nama_alamat{{$e->id}}"
                                                            class="form-label">Nama</label>
+                                                    <a tabindex="0" class="border-0 bg-white" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-content="Max length 50 characters."><i class="bi bi-info-circle"></i></a>
                                                     <input type="text" class="form-control"
                                                            id="input_edit_nama_alamat{{$e->id}}"
-                                                           name="input_nama_alamat" value="{{ $e->nama }}">
+                                                           name="input_nama_alamat" value="{{ $e->nama }}" required>
+                                                    @error('input_nama_alamat')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="input_edit_alamat{{$e->id}}"
                                                            class="form-label">Alamat</label>
+                                                    <a tabindex="0" class="border-0 bg-white" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-content="Max length 150 characters."><i class="bi bi-info-circle"></i></a>
                                                     <input type="text" class="form-control"
                                                            id="input_edit_alamat{{$e->id}}" name="input_alamat"
-                                                           value="{{ $e->alamat }}">
+                                                           value="{{ $e->alamat }}" required>
+                                                    @error('input_alamat')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
