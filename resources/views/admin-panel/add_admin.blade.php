@@ -99,7 +99,7 @@
                     <td>{{ $i++ }}</td>
                     <td>{{ $e->firstname . " " . $e->lastname }}</td>
                     <td>{{ $e->username }}</td>
-                    <td>{{ date("d-m-Y", strtotime($e->created_at)) }}</td>
+                    <td>{{ $e->created_at }}</td>
                     <td style="min-width: 120px; width: 120px">
                         <div class="d-flex justify-content-center gap-2">
                             <!-- Button trigger modal -->
