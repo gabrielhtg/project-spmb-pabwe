@@ -103,11 +103,11 @@ class AdminPanelController extends Controller
 
             $directory = public_path('assets/img/dashboard/');
 
-            $photo->move($directory, $filename);
-
             if ($dataInstitusi->logo_institusi && file_exists($dataInstitusi->logo_institusi)) {
                 unlink($dataInstitusi->logo_institusi);
             }
+
+            $photo->move($directory, $filename);
 
             $dataInstitusi->logo_institusi = 'assets/img/dashboard/' . $filename;
         }
