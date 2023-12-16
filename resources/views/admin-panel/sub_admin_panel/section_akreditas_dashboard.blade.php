@@ -9,12 +9,12 @@
             <div class="mb-3">
                 <label for="input_header_akreditasi_section" class="form-label fw-semibold">Header</label>
                 <input type="text" class="form-control" id="input_header_akreditasi_section"
-                       name="input_header" value="{{ $dataAkreditasiDashboard->header }}">
+                       name="input_header" value="{{ $dataAkreditasiDashboard->header }}" required>
             </div>
             <div class="mb-3">
                 <label for="input_deskripsi_akreditas_section" class="form-label fw-semibold">Paragraph</label>
-                <textarea type="text" id="input_deskripsi_akreditas_section"
-                       name="input_deskripsi">{{ $dataAkreditasiDashboard->description }}</textarea>
+                <textarea id="input_deskripsi_akreditas_section"
+                       name="input_deskripsi" required>{{ $dataAkreditasiDashboard->description }}</textarea>
             </div>
         </div>
         <div class="card-footer bg-white">
