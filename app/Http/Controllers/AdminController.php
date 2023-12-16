@@ -180,8 +180,8 @@ class AdminController extends Controller
 
     public function addEmail (Request $request) {
         $request->validate([
-            'namaEmail' => 'request|string|max:20',
-            'email' => 'request|string|max:50'
+            'namaEmail' => 'required|max:20',
+            'email' => 'required|max:50'
         ]);
 
         EmailModel::create([
@@ -204,8 +204,8 @@ class AdminController extends Controller
 
     public function editEmail (Request $request) {
         $request->validate([
-            'inputNamaEmail' => 'request|string|max:20',
-            'email' => 'request|string|max:50'
+            'inputNamaEmail' => 'required|max:20',
+            'email' => 'required|max:50'
         ]);
 
         $data = EmailModel::where("id", $request->id)->first();

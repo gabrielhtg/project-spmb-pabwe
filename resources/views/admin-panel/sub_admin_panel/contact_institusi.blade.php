@@ -278,7 +278,7 @@
                                                         Email
                                                     </label>
                                                     <a tabindex="0" class="border-0 bg-white" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-content="Max length 50 characters."><i class="bi bi-info-circle"></i></a>
-                                                    <input type="text" class="form-control" name="email"
+                                                    <input type="email" class="form-control" name="email"
                                                            value="{{ $e->email }}">
                                                     @error('email')
                                                     <span class="text-danger">{{ $message }}</span>
