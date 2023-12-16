@@ -2,6 +2,12 @@
 
 @section('isi-halaman')
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         .cat-prestasi {
             margin-top: 20px;
             margin-bottom: 70px;
@@ -19,15 +25,16 @@
 
         .card {
             margin-bottom: 30px;
-            width:300px;
-            height:450px
+            /* width:300px;
+            height:450px */
+            height:95%;
         }
 
         .card-text {
             overflow: hidden;
             text-overflow: ellipsis;
             display: -webkit-box;
-            -webkit-line-clamp: 3; /* Jumlah baris yang ingin ditampilkan */
+            -webkit-line-clamp: 5; /* Jumlah baris yang ingin ditampilkan */
             -webkit-box-orient: vertical;
         }
 
@@ -41,12 +48,13 @@
             /* background-color: white; */
             backdrop-filter: blur(5px);
             z-index: 1000;
+            overflow:auto;
         }
 
         .popup-content {
             position: absolute;
-            width: 650px;
-            height:700px;
+            width: 500px;
+            height:600px;
             top: 52%;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -55,13 +63,13 @@
             /* White background */
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            overflow-y: auto; /* Tambahkan overflow-y agar dapat discroll jika kontennya panjang */
+            overflow: auto; /* Tambahkan overflow-y agar dapat discroll jika kontennya panjang */
         }
 
         .popup .popup-content img {
             width: 100%;
             /* Image takes 100% width of its container */
-            height: 330px;
+            height: 250px;
             display: block;
             margin-top: 40px;
         }
@@ -74,7 +82,6 @@
             height: 100%;
             z-index: 1000;
         }
-
 
         .btn-close {
             cursor: pointer;
@@ -97,7 +104,7 @@
 
         .popup-content img {
             width: 100%;
-            height: 330px;
+            height: 250px;
         }
 
         .content-text {
@@ -139,6 +146,8 @@
             color: black;
             /* Adjust the color to your preference */
         }
+
+
     </style>
 
     <section class="container">
