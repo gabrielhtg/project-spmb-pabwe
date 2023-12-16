@@ -120,6 +120,7 @@
                                                 <div class="mb-3">
                                                     <label class="form-label"
                                                            for="input_edit_nama_socialmedia{{$e->id}}">Nama</label>
+                                                    <a tabindex="0" class="border-0 bg-white" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-content="Max length 50 characters."><i class="bi bi-info-circle"></i></a>
                                                     <input type="text" class="form-control"
                                                            id="input_edit_nama_socialmedia{{$e->id}}"
                                                            name="input_nama_socialmedia" value="{{ $e->nama }}" required>
@@ -130,6 +131,7 @@
                                                 <div class="mb-3">
                                                     <label for="input_edit_link_socialmedia{{$e->id}}"
                                                            class="form-label">Link</label>
+                                                    <a tabindex="0" class="border-0 bg-white" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-content="Max length 150 characters."><i class="bi bi-info-circle"></i></a>
                                                     <input type="text" class="form-control"
                                                            id="input_edit_link_socialmedia{{$e->id}}" name="input_link"
                                                            value="{{ $e->link }}" required>

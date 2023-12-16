@@ -382,6 +382,11 @@ class AdminPanelController extends Controller
 
     public function updateHeroSection(Request $request)
     {
+        $request->validate([
+            'input_judul_header' => 'required|string|max:50',
+            'input_deskripsi_header' => 'required|string|max:300'
+        ]);
+
         $dataHero = HeroSectionModel::where('id', 1)->first();
 
         $dataHero->header = $request->input_judul_header;
