@@ -17,7 +17,7 @@
                     <div class="mb-3">
                         <label class="form-label w-100">
                             Akreditasi
-                            <select name="akreditasi" class="form-control">
+                            <select name="akreditasi" class="form-control" required>
                                 <option value="A">Unggul</option>
                                 <option value="B">Baik Sekali</option>
                                 <option value="C">Baik</option>
@@ -31,7 +31,7 @@
                     <div class="mb-3">
                         <label class="form-label w-100">
                             Lembaga Akreditasi
-                            <input type="text" class="form-control" name="lembaga_akreditasi">
+                            <input type="text" class="form-control" name="lembaga_akreditasi" required>
                         </label>
                         @error('lembaga_akreditasi')
                         <span class="text-danger">{{ $message }}</span>
@@ -41,7 +41,7 @@
                     <div class="mb-3">
                         <label class="form-label w-100">
                             Sertifikat Akreditasi
-                            <input type="file" class="form-control" name="sertifikat_akreditasi">
+                            <input type="file" class="form-control" name="sertifikat_akreditasi" required>
                             @error('sertifikat_akreditasi')
                             <span class="text-danger">{{ $message }}</span>
                             @enderror
@@ -51,7 +51,7 @@
                     <div class="">
                         <label class="form-label w-100">
                             Tahun Akreditasi
-                            <input type="text" class="form-control" name="tahun_akreditasi">
+                            <input type="text" class="form-control" name="tahun_akreditasi" required>
                             @error('tahun_akreditasi')
                             <span class="text-danger">{{ $message }}</span>
                             @enderror
