@@ -122,7 +122,7 @@
                                                            for="input_edit_nama_socialmedia{{$e->id}}">Nama</label>
                                                     <input type="text" class="form-control"
                                                            id="input_edit_nama_socialmedia{{$e->id}}"
-                                                           name="input_nama_socialmedia" value="{{ $e->nama }}">
+                                                           name="input_nama_socialmedia" value="{{ $e->nama }}" required>
                                                     @error('input_nama_socialmedia')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
@@ -132,7 +132,7 @@
                                                            class="form-label">Link</label>
                                                     <input type="text" class="form-control"
                                                            id="input_edit_link_socialmedia{{$e->id}}" name="input_link"
-                                                           value="{{ $e->link }}">
+                                                           value="{{ $e->link }}" required>
                                                     @error('input_link')
                                                     <span class="text-danger">{{ $message }}</span>
                                                     @enderror
@@ -146,7 +146,7 @@
                                                     </label>
                                                     <input type="text" class="form-control"
                                                            id="input_edit_icon_socialmedia{{$e->id}}" name="input_icon"
-                                                           value="{{ $e->icon }}">
+                                                           value="{{ $e->icon }}" required>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
