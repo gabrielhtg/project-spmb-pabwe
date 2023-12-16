@@ -156,7 +156,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title">{{$item->judul_prestasi}}</h5>
                                     <p class="card-text">
-                                        {{$item->deskripsi}}
+                                        {{ substr($item->deskripsi, 0, 154) }}
                                     </p>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <p style="font-size: 14px; margin: 0;">{{$item->created_at}}</p>
