@@ -51,7 +51,7 @@
                     <div class="">
                         <label class="form-label w-100">
                             Tahun Akreditasi
-                            <input type="text" class="form-control" name="tahun_akreditasi" required>
+                            <input type="number" min="1900" class="form-control" name="tahun_akreditasi" required>
                             @error('tahun_akreditasi')
                             <span class="text-danger">{{ $message }}</span>
                             @enderror
