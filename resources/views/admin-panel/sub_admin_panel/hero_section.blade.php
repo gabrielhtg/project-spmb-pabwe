@@ -18,7 +18,7 @@
                 <label for="input_deskripsi_header" class="form-label">Example textarea</label>
                 <a tabindex="0" class="border-0 bg-white" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-content="Max length 300 characters."><i class="bi bi-info-circle"></i></a>
                 <textarea class="form-control" id="input_deskripsi_header"
-                          name="input_deskripsi_header" required>{{ $dataHeroSection->paragraph }}</textarea>
+                          name="input_deskripsi_header">{{ $dataHeroSection->paragraph }}</textarea>
                 @error("input_deskripsi_header")
                 <span class="text-danger">{{ $message }}</span>
                 @enderror
@@ -31,7 +31,7 @@
                 <input type="file" class="form-control" id="input_bg_hero"
                        name="input_bg_hero">
                 @error("input_bg_hero")
-                <span class="text-dangeer">{{ $message }}</span>
+                <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
             <div class="mb-3">
