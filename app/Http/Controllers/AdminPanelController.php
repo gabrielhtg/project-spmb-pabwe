@@ -437,9 +437,8 @@ class AdminPanelController extends Controller
 
     public function addAlamat (Request $request) {
         $request->validate([
-            'input_nama_alamat' => 'required|string|max:50',
-            'input_alamat' => 'required|string|max:150',
-            'username' => 'required|max:20'
+            'input_nama_alamat' => 'required|max:50',
+            'input_alamat' => 'required|max:150',
         ]);
 
         AlamatInstitusiModel::create([
