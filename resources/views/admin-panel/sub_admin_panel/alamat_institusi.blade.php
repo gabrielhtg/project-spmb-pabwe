@@ -43,40 +43,47 @@
                                         <div class="modal-body text-start">
                                             <input type="hidden" name="id" value="{{ $e -> id }}">
                                             <div class="mb-3">
-                                                <label  class="form-label">
+                                                <label  class="form-label w-100">
                                                     Nama
                                                     <input type="text" class="form-control"
                                                            value="{{ $e->nama }}" disabled>
                                                 </label>
                                             </div>
                                             <div class="mb-3">
-                                                <label class="form-label">
+                                                <label class="form-label w-100">
                                                     Alamat
                                                     <input value="{{ $e->alamat }}" class="form-control" disabled>
                                                 </label>
                                             </div>
                                             <div class="mb-3">
-                                                <label class="form-label">Created By</label>
+                                                <label class="form-label w-100">
+                                                    Created By
                                                 <input value="{{ $e->created_by }}" class="form-control" disabled>
+                                                </label>
                                             </div>
                                             <div class="mb-3">
-                                                <label class="form-label">Updated By</label>
+                                                <label class="form-label w-100">
+                                                    Updated By
                                                 <input value="{{ $e->updated_by }}" class="form-control" disabled>
+                                                </label>
                                             </div>
                                             <div class="mb-3">
-                                                <label class="form-label">Created At</label>
-                                                <input value="{{ date("d-m-Y", strtotime($e->created_at)) }}" class="form-control" disabled>
+                                                <label class="form-label w-100">
+                                                    Created At
+                                                <input value="{{ $e->created_at }}" class="form-control" disabled>
+                                                </label>
                                             </div>
                                             <div class="mb-3">
-                                                <label class="form-label">Updated At</label>
-                                                <input value="{{ date("d-m-Y", strtotime($e->updated_at)) }}" class="form-control" disabled>
+                                                <label class="form-label w-100">
+                                                    Updated At
+                                                <input value="{{ $e->updated_at }}" class="form-control" disabled>
+                                                </label>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
                                                     data-bs-dismiss="modal">Cancel
                                             </button>
-                                            <button type="submit" class="btn btn-primary">Save</button>
                                         </div>
                                     </div>
                                 </div>

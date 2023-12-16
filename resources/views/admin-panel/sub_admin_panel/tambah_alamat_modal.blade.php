@@ -18,11 +18,17 @@
                         <label for="input_nama_alamat" class="form-label text-start">Nama</label>
                         <a tabindex="0" class="border-0 bg-white" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-content="Max length 50 characters."><i class="bi bi-info-circle"></i></a>
                         <input type="text" class="form-control" id="input_nama_alamat" name="input_nama_alamat" required>
+                        @error('input_nama_alamat')
+                        <span class="text-danger">{{$message}}</span>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label for="input_alamat" class="form-label">Alamat</label>
                         <a tabindex="0" class="border-0 bg-white" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-content="Max length 150 characters."><i class="bi bi-info-circle"></i></a>
                         <input type="text" class="form-control" id="input_alamat" name="input_alamat" required>
+                        @error('input_alamat')
+                        <span class="text-danger">{{$message}}</span>
+                        @enderror
                     </div>
                 </div>
                 <div class="modal-footer">
