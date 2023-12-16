@@ -10,11 +10,17 @@
                 <label for="input_header_akreditasi_section" class="form-label fw-semibold">Header</label>
                 <input type="text" class="form-control" id="input_header_akreditasi_section"
                        name="input_header" value="{{ $dataAkreditasiDashboard->header }}" required>
+                @error('input_header')
+                <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
             <div class="mb-3">
                 <label for="input_deskripsi_akreditas_section" class="form-label fw-semibold">Paragraph</label>
                 <textarea id="input_deskripsi_akreditas_section"
                        name="input_deskripsi" required>{{ $dataAkreditasiDashboard->description }}</textarea>
+                @error('input_deskripsi')
+                <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
         </div>
         <div class="card-footer bg-white">

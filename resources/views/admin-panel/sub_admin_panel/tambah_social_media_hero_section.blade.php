@@ -20,12 +20,12 @@
                     <div class="mb-3">
                         <label for="input_nama_social_media" class="form-label">Nama Social Media</label>
                         <input type="text" class="form-control" id="input_nama_social_media"
-                               name="input_nama_social_media">
+                               name="input_nama_social_media" required>
                     </div>
                     <div class="mb-3">
                         <label for="input_link_social_media" class="form-label">Link Social Media</label>
                         <input type="text" class="form-control" id="input_link_social_media"
-                               name="input_link_social_media">
+                               name="input_link_social_media" required>
                     </div>
                     <div class="mb-3">
                         <label for="input_logo_social_media" class="form-label">
@@ -36,7 +36,7 @@
                             <a href="https://icons.getbootstrap.com/" target="_blank"><i class="bi bi-bootstrap"></i></a>
                         </label>
                         <input type="text" class="form-control" id="input_logo_social_media"
-                               name="input_logo_social_media">
+                               name="input_logo_social_media" required>
                         {{--                        <span style="font-size: 0.8rem">Cari <a href="https://icons.getbootstrap.com/">disini</a>. Kemudian paste icon fontnya di input ini.</span>--}}
                     </div>
                 </div>
