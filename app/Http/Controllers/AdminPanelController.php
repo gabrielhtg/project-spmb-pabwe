@@ -358,9 +358,9 @@ class AdminPanelController extends Controller
         $socialMedia = SocalMediaModel::where('id', $request->id)->first();
 
         $request->validate([
-            'input_nama_socialmedia' => 'required',
-            'input_link' => 'required',
-            'input_icon' => 'required',
+            'input_nama_socialmedia' => 'required|string|max:50',
+            'input_link' => 'required|string|max:150',
+            'input_icon' => 'required|string|max:100',
         ]);
 
         $socialMedia->nama = $request->input_nama_socialmedia;

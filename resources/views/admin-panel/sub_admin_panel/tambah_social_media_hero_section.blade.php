@@ -19,13 +19,21 @@
 
                     <div class="mb-3">
                         <label for="input_nama_social_media" class="form-label">Nama Social Media</label>
+                        <a tabindex="0" class="border-0 bg-white" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-content="Max length 50 characters."><i class="bi bi-info-circle"></i></a>
                         <input type="text" class="form-control" id="input_nama_social_media"
                                name="input_nama_social_media" required>
+                        @error('input_nama_social_media')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label for="input_link_social_media" class="form-label">Link Social Media</label>
+                        <a tabindex="0" class="border-0 bg-white" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-content="Max length 150 characters."><i class="bi bi-info-circle"></i></a>
                         <input type="text" class="form-control" id="input_link_social_media"
                                name="input_link_social_media" required>
+                        @error('input_link_social_media')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label for="input_logo_social_media" class="form-label">
@@ -37,7 +45,9 @@
                         </label>
                         <input type="text" class="form-control" id="input_logo_social_media"
                                name="input_logo_social_media" required>
-                        {{--                        <span style="font-size: 0.8rem">Cari <a href="https://icons.getbootstrap.com/">disini</a>. Kemudian paste icon fontnya di input ini.</span>--}}
+                        @error('input_logo_social_media')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
                 <div class="modal-footer">
