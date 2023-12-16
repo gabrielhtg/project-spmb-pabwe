@@ -108,21 +108,28 @@
                                             <div class="modal-body text-start">
                                                 <input type="hidden" name="id" value="{{ $e -> id }}">
                                                 <div class="mb-3">
-                                                    <label class="form-label w-100">
+                                                    <label class="form-label">
                                                         Nama
-                                                        <input type="text" class="form-control"
-                                                               id="editNamaNomorTelepon{{$e->id}}"
-                                                               name="nama" value="{{ $e->nama }}">
                                                     </label>
+                                                    <a tabindex="0" class="border-0 bg-white" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-content="Max length 20 characters."><i class="bi bi-info-circle"></i></a>
+                                                    <input type="text" class="form-control"
+                                                           id="editNamaNomorTelepon{{$e->id}}"
+                                                           name="nama" value="{{ $e->nama }}" required>
+                                                    @error('nama')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label class="form-label w-100">
+                                                    <label class="form-label">
                                                         Nomor Telepon
-                                                        <input type="text" class="form-control"
-                                                               id="editNomorTelepon{{$e->id}}" name="nomor_telepon"
-                                                               value="{{ $e->nomor_telepon }}">
                                                     </label>
-
+                                                    <a tabindex="0" class="border-0 bg-white" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-content="Max length 15 characters."><i class="bi bi-info-circle"></i></a>
+                                                    <input type="text" class="form-control"
+                                                           id="editNomorTelepon{{$e->id}}" name="nomor_telepon"
+                                                           value="{{ $e->nomor_telepon }}" required>
+                                                    @error('nomor_telepon')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
                                                 </div>
                                             </div>
                                             <div class="modal-footer">

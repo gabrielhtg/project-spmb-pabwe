@@ -577,6 +577,11 @@ class AdminPanelController extends Controller
     }
 
     public function addNomorTelepon (Request $request) {
+        $request->validate([
+            'namaNomorTelepon' => 'required|string|max:20',
+            'nomorTelepon' => 'required|string|max:15'
+        ]);
+
         try {
             $username = Auth::user()->username;
 
