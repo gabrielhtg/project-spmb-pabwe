@@ -80,6 +80,12 @@ class AdminController extends Controller
     {
         $admin = AdminModel::where('id', Auth::user()->id)->first();
 
+        $request->validate([
+            'username' => 'required|max:20',
+            'firstname' => 'required|max:25',
+            'lastname' => 'required|max:25',
+        ]);
+
         if ($request->profile_pict) {
             $request->validate([
                 'profile_pict' => 'image|mimes:jpeg,png,jpg|max:1024',

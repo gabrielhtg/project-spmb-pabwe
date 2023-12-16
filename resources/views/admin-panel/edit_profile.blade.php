@@ -62,27 +62,39 @@
                                     <label class="form-label w-100">
                                         Username
                                         <input type="text" class="form-control"
-                                               value="{{ $admin->username }}" name="username">
+                                               value="{{ $admin->username }}" name="username" required>
+                                        @error('username')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </label>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label w-100">
                                         Firstname
                                         <input type="text" class="form-control"
-                                               value="{{ $admin->firstname }}" name="firstname">
+                                               value="{{ $admin->firstname }}" name="firstname" required>
+                                        @error('firstname')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </label>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label w-100">
                                         Lastname
                                         <input type="text" class="form-control"
-                                               value="{{ $admin->lastname }}" name="lastname">
+                                               value="{{ $admin->lastname }}" name="lastname" required>
+                                        @error('lastname')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </label>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label w-100">
                                         Foto Profil
                                         <input type="file" class="form-control" name="profile_pict">
+                                        @error('profile_pict')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </label>
                                 </div>
                             </div>
