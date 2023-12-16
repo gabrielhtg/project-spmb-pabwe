@@ -41,7 +41,7 @@
                 <div class="mb-3">
                     <label class="form-label w-100">
                         <span class="fw-semibold">Jumlah Dosen</span>
-                        <input type="number" min="0" class="form-control"
+                        <input type="number" min="1" class="form-control"
                                name="input_jumlah_dosen" value="{{ $dataInstitusi->jumlah_dosen }}" required>
                         @error('input_jumlah_dosen')
                             <span class="text-danger">{{ $message }}</span>
@@ -52,7 +52,7 @@
                 <div class="mb-3">
                     <label class="form-label w-100">
                         <span class="fw-semibold">Jumlah Mahasiswa</span>
-                        <input type="number" min="0" class="form-control" name="input_jumlah_mahasiswa" value="{{ $dataInstitusi->jumlah_mahasiswa }}" required>
+                        <input type="number" min="1" class="form-control" name="input_jumlah_mahasiswa" value="{{ $dataInstitusi->jumlah_mahasiswa }}" required>
                         @error('input_jumlah_mahasiswa')
                         <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -62,7 +62,7 @@
                 <div class="mb-3">
                     <label class="form-label w-100">
                         <span class="fw-semibold">Jumlah Alumni</span>
-                        <input type="number" min="0" class="form-control" name="input_jumlah_alumni" value="{{ $dataInstitusi->jumlah_alumni }}" required>
+                        <input type="number" min="1" class="form-control" name="input_jumlah_alumni" value="{{ $dataInstitusi->jumlah_alumni }}" required>
                         @error('input_jumlah_alumni')
                         <span class="text-danger">{{ $message }}</span>
                         @enderror
