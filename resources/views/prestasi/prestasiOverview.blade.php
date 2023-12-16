@@ -34,7 +34,7 @@
             overflow: hidden;
             text-overflow: ellipsis;
             display: -webkit-box;
-            -webkit-line-clamp: 5; /* Jumlah baris yang ingin ditampilkan */
+            /*-webkit-line-clamp: 5; !* Jumlah baris yang ingin ditampilkan *!*/
             -webkit-box-orient: vertical;
         }
 
@@ -169,7 +169,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{$item->judul_prestasi}}</h5>
                                 <p class="card-text">
-                                    {{$item->deskripsi}}
+                                    {{ substr($item->deskripsi, 0, 154) }}
                                 </p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <p style="font-size: 14px; margin: 0;">{{$item->created_at}}</p>
@@ -221,7 +221,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{$item->judul_prestasi}}</h5>
                                 <p class="card-text">
-                                    {{$item->deskripsi}}
+                                    {{ substr($item->deskripsi, 0, 154) }}
                                 </p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <p style="font-size: 14px; margin: 0;">{{$item->created_at}}</p>
@@ -271,7 +271,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{$item->judul_prestasi}}</h5>
                                 <p class="card-text">
-                                    {{$item->deskripsi}}
+                                    {{ substr($item->deskripsi, 0, 154) }}
                                 </p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <p style="font-size: 14px; margin: 0;">{{$item->created_at}}</p>
