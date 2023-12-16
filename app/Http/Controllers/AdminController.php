@@ -161,6 +161,11 @@ class AdminController extends Controller
     }
 
     public function editNomorTelepon (Request $request) {
+        $request->validate([
+            'nama' => 'required|string|max:20',
+            'nomor_telepon' => 'required|max:15'
+        ]);
+
         $data = NomorTeleponModel::where("id", $request->id)->first();
 
         $data->nama = $request->nama;
@@ -174,6 +179,11 @@ class AdminController extends Controller
     }
 
     public function addEmail (Request $request) {
+        $request->validate([
+            'namaEmail' => 'request|string|max:20',
+            'email' => 'request|string|max:50'
+        ]);
+
         EmailModel::create([
             'nama' => $request->namaEmail,
             'email' => $request->email,
@@ -193,6 +203,11 @@ class AdminController extends Controller
     }
 
     public function editEmail (Request $request) {
+        $request->validate([
+            'inputNamaEmail' => 'request|string|max:20',
+            'email' => 'request|string|max:50'
+        ]);
+
         $data = EmailModel::where("id", $request->id)->first();
 
         $data->nama = $request->inputNamaEmail;

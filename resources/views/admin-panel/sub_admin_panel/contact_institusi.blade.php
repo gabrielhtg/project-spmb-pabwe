@@ -264,18 +264,25 @@
                                             <div class="modal-body text-start">
                                                 <input type="hidden" name="id" value="{{ $e -> id }}">
                                                 <div class="mb-3">
-                                                    <label class="form-label w-100">
+                                                    <label class="form-label">
                                                         Nama
-                                                        <input type="text" class="form-control" name="inputNamaEmail" value="{{ $e->nama }}">
                                                     </label>
+                                                    <a tabindex="0" class="border-0 bg-white" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-content="Max length 20 characters."><i class="bi bi-info-circle"></i></a>
+                                                    <input type="text" class="form-control" name="inputNamaEmail" value="{{ $e->nama }}">
+                                                    @error('inputNamaEmail')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label class="form-label w-100">
+                                                    <label class="form-label">
                                                         Email
-                                                        <input type="text" class="form-control" name="email"
-                                                               value="{{ $e->email }}">
                                                     </label>
-
+                                                    <a tabindex="0" class="border-0 bg-white" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-content="Max length 50 characters."><i class="bi bi-info-circle"></i></a>
+                                                    <input type="text" class="form-control" name="email"
+                                                           value="{{ $e->email }}">
+                                                    @error('email')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
