@@ -31,7 +31,7 @@
         }
 
         .card-text {
-            overflow: hidden;
+            /* overflow: hidden; */
             text-overflow: ellipsis;
             display: -webkit-box;
             /*-webkit-line-clamp: 5; !* Jumlah baris yang ingin ditampilkan *!*/
@@ -52,9 +52,10 @@
         }
 
         .popup-content {
+            overflow: auto;
             position: absolute;
             width: 500px;
-            height:600px;
+            height:80vh;
             top: 52%;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -63,7 +64,7 @@
             /* White background */
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            overflow: auto; /* Tambahkan overflow-y agar dapat discroll jika kontennya panjang */
+            /* Tambahkan overflow-y agar dapat discroll jika kontennya panjang */
         }
 
         .popup .popup-content img {
@@ -100,7 +101,6 @@
             background-color: #0056b3;
             /* Button background color on hover */
         }
-
 
         .popup-content img {
             width: 100%;
