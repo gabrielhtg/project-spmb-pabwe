@@ -75,4 +75,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/pdf-biaya', [AdmisiController::class, 'addPdfbiaya'])->name('pdf_biaya');
     Route::post('/addDropdown', [\App\Http\Controllers\DropdownAdmisiController::class, 'addDropdown'])->name('addDropdown');
     Route::post('/editDropdown', [\App\Http\Controllers\DropdownAdmisiController::class, 'editDropdown'])->name('editDropdown');
+    Route::post('/add-biaya-studi', [AdmisiController::class, 'addBiayaStudi'])->name('add_biaya_studi');
+    Route::post('/edit-biaya-studi', [AdmisiController::class, 'editBiayaStudi'])->name('edit_biaya_studi');
+    Route::delete('/remove-biaya-studi', [AdmisiController::class, 'removeBiayaStudi'])->name('remove_biaya_studi');
 });

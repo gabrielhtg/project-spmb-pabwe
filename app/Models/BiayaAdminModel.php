@@ -15,9 +15,6 @@ class BiayaAdminModel extends Model
     'biayawisuda', 
     'biayadeposit',
     'biayatingkatakhir', 
-    'biayaUangPangkal',
-    'biayaPerlengkapanMahasiswa',
-    'biayaPerlengkapanMakan',
 
 ];
 }

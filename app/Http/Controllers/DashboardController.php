@@ -24,6 +24,7 @@ use App\Models\JenisTes;
 use App\Models\BiayaAdminModel;
 use App\Models\BiayaPendaftaranModel;
 use App\Models\PedomanPendaftaranModel;
+use App\Models\BiayaStudi;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -128,6 +129,7 @@ class DashboardController extends Controller
         $dataBiaya = BiayaAdminModel::all();
         $biayaPen = BiayaPendaftaranModel::all();
         $PdfbiayaPendaftaran = PdfBiayaModel::all();
+        $biayaStudis = BiayaStudi::all();
 
         $data = [
             'dataInstitusi' => $dataInstitusi,
@@ -140,7 +142,9 @@ class DashboardController extends Controller
             'dataKompetisi'=>$dataKompetisi,
             'dataBiaya' => $dataBiaya,
             'biayaPen'=> $biayaPen,
-            'PdfbiayaPendaftaran'=>$PdfbiayaPendaftaran
+            'PdfbiayaPendaftaran'=>$PdfbiayaPendaftaran,
+            'biayaStudis'=>$biayaStudis,
+
         ];
 
         return view('admisi.admisi-biaya-studi', $data);

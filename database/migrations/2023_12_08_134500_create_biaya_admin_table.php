@@ -18,9 +18,6 @@ return new class extends Migration
             $table->integer('biayawisuda');
             $table->integer('biayadeposit');
             $table->integer('biayatingkatakhir');
-            $table->integer('biayaUangPangkal');
-            $table->integer('biayaPerlengkapanMahasiswa');
-            $table->integer('biayaPerlengkapanMakan');
             $table->timestamps();
         });
     }
