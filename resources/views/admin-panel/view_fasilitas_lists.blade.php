@@ -131,7 +131,7 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="editFasilitasLabel">Ubah Data Fasilitas</h5>
+                                <h5 class="modal-title" id="editFasilitasLabel">Ubah Data Fasilitas<span class="star">*</span></h5>
                                 <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <form action="{{ route('post.fasilitas.edit') }}" method="POST">
@@ -140,7 +140,7 @@
 
                                 <div class="modal-body">
                                     <div class="mb-3">
-                                        <label for="inputEditKategori" class="form-label">Pilih Kategori Fasilitas</label>
+                                        <label for="inputEditKategori" class="form-label">Pilih Kategori Fasilitas<span class="star">*</span></label>
                                         <select class="form-select" id="inputEditKategori" name="kategori">
                                             <option value="Asrama">Asrama</option>
                                             <option value="Kesehatan & Olahraga">Kesehatan & Olahraga</option>
@@ -151,25 +151,26 @@
                                     </div>
 
                                     <div class="mb-3">
-                                        <label for="inputNamaFasilitas" class="form-label">Nama Fasilitas</label>
+                                        <label for="inputNamaFasilitas" class="form-label">Nama Fasilitas<span class="star">*</span></label>
                                         <input type="text" class="form-control" id="inputNamaFasilitas" name="nama_fasilitas">
                                     </div>
 
                                     <div class="mb-3">
-                                        <label for="inputDeskripsiFasilitas" class="form-label">Deskripsi Fasilitas</label>
+                                        <label for="inputDeskripsiFasilitas" class="form-label">Deskripsi Fasilitas<span class="star">*</span></label>
                                         <input type="text" class="form-control" id="inputDeskripsiFasilitas" name="deskripsi_fasilitas" rows="5">
                                     </div>
 
                                     <p class="fw-bold">Edit Gambar Fasilitas</p>
 
                                     <div class="mb-3">
-                                        <label for="inputNamaFile" class="form-label">Nama File</label>
+                                        <label for="inputNamaFile" class="form-label">Nama File<span class="star">*</span></label>
                                         <input type="text" class="form-control" id="inputNamaFile" name="nama_file">
                                     </div>
 
                                     <div class="mb-3">
-                                        <label for="inputFileGambar" class="form-label">Tambahkan File (JPG, JPEG, PNG)</label>
+                                        <label for="inputFileGambar" class="form-label">Tambahkan File (JPG, JPEG, PNG)<span class="star">*</span></label>
                                         <input type="file" class="form-control" id="inputFileGambar" name="file_gambar" accept="image/jpeg, image/png">
+                                        <small class="text-muted">*Format file harus berupa .jpg, .jpeg, atau .png, dan batas maksimal ukuran file adalah 2 MB.</small>
                                     </div>
                                 </div>
 
