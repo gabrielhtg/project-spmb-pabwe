@@ -64,7 +64,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('/remove-jalur', [AdmisiController::class, 'removeJalur'])->name('removeJalur');
     Route::post('/addjadwalpendaftaran', [AdmisiController::class,'addJadwalPendaftaran'])->name('addJadwalPendaftaran');
     Route::post('/editJadwalPendaftaran', [AdmisiController::class,'editJadwalPendaftaran'])->name('editJadwalPendaftaran');
-    Route::delete('/removeJadwalPendaftaran/{jadwalPendaftaran_id}', [AdmisiController::class, 'removeJadwalPendaftaran'])->name('removeJadwalPendaftaran');
+    Route::delete('/removeJadwalPendaftaran/{jadwalPendaftaran_id}', [AdmisiController::class, 'removeJadwalPendaftaran'])->name('remove_JadwalPendaftaran');
     Route::post('/set-biaya-umum', [AdmisiController::class, 'setbiayaadmin'])->name('set-biaya-umum');
     Route::post('/add-sub-jalur-pendaftaran', [SubJalurPendaftaranController::class, 'addSubJalurPendaftaran'])->name('addSubJalurPendaftaran');
     Route::post('/edit-jalur-pendaftaran', [SubJalurPendaftaranController::class, 'editSubJalurPendaftaran'])->name('editSubJalurPendaftaran');

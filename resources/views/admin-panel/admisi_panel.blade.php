@@ -52,10 +52,10 @@
                                     <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#edit_jadwal_pendaftaran_{{ $e->id }}" title="Edit Jadwal Pendaftaran">
                                         <i class="bi bi-pen"></i>
                                     </button>
-                                    <form action="{{ route('removeJadwalPendaftaran', ['jadwalPendaftaran_id' => $e->id]) }}" method="POST">
+                                    <form action="{{ route('remove_JadwalPendaftaran', $e->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this?')">
+                                        <button type="submit" class="btn btn-danger">
                                             <i class="bi bi-trash"></i>
                                         </button>
                                     </form>
@@ -855,7 +855,6 @@
 
                   <div class="card-body">
                       @include('admin-panel.sub_admisi_panel.add_biaya_pendaftaran')
-                      <form action="">
                           <table class="table table-striped">
                               <thead>
                               <tr>
@@ -928,7 +927,6 @@
                               @endforeach
                               </tbody>
                           </table>
-                      </form>
                   </div>
               </div>
           </div>
