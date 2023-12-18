@@ -152,19 +152,19 @@
 
                                     <div class="mb-3">
                                         <label for="inputNamaFasilitas" class="form-label">Nama Fasilitas<span class="star">*</span></label>
-                                        <input type="text" class="form-control" id="inputNamaFasilitas" name="nama_fasilitas">
+                                        <input type="text" class="form-control" id="inputNamaFasilitas" name="nama_fasilitas" data-original-value="">
                                     </div>
 
                                     <div class="mb-3">
                                         <label for="inputDeskripsiFasilitas" class="form-label">Deskripsi Fasilitas<span class="star">*</span></label>
-                                        <input type="text" class="form-control" id="inputDeskripsiFasilitas" name="deskripsi_fasilitas" rows="5">
+                                        <textarea class="form-control" id="inputDeskripsiFasilitas" name="deskripsi_fasilitas" rows="5"></textarea>
                                     </div>
 
                                     <p class="fw-bold">Edit Gambar Fasilitas</p>
 
                                     <div class="mb-3">
                                         <label for="inputNamaFile" class="form-label">Nama File<span class="star">*</span></label>
-                                        <input type="text" class="form-control" id="inputNamaFile" name="nama_file">
+                                        <input type="text" class="form-control" id="inputNamaFile" name="nama_file" data-original-value="">
                                     </div>
 
                                     <div class="mb-3">
@@ -192,26 +192,44 @@
 
     @section('other-js')
         <script>
-            function showModalEdit(id, kategori, nama_fasilitas, deskripsi_fasilitas, nama_file, file_gambar)
-            {
-                const modalEditFasilitas = document.getElementById("editFasilitas");
-                const inputId = document.getElementById("inputEditFasilitas");
-                const inputKategori = document.getElementById("inputEditKategori")
-                const inputNamaFasilitas = document.getElementById("inputNamaFasilitas");
-                const inputDeskripsiFasilitas = document.getElementById("inputDeskripsiFasilitas");                                          
-                const inputNamaFile = document.getElementById("inputNamaFile");
-                const inputFileGambar = document.getElementById("inputFileGambar");
+        function showModalEdit(id, kategori, nama_fasilitas, deskripsi_fasilitas, nama_file, file_gambar) {
+            const modalEditFasilitas = document.getElementById("editFasilitas");
+            const inputId = document.getElementById("inputEditFasilitas");
+            const inputKategori = document.getElementById("inputEditKategori");
+            const inputNamaFasilitas = document.getElementById("inputNamaFasilitas");
+            const inputDeskripsiFasilitas = document.getElementById("inputDeskripsiFasilitas");
+            const inputNamaFile = document.getElementById("inputNamaFile");
+            const inputFileGambar = document.getElementById("inputFileGambar");
+            
+            inputKategori.value = kategori;
+            inputId.value = id;
+            inputNamaFasilitas.value = nama_fasilitas;
+            inputDeskripsiFasilitas.value = deskripsi_fasilitas; // Isi nilai "Deskripsi Fasilitas"
+            inputNamaFile.value = nama_file;
+            inputFileGambar.value = '';
 
-                inputKategori.value = kategori;
-                inputId.value = id;
-                inputNamaFasilitas.value = nama_fasilitas;
-                inputDeskripsiFasilitas.value = deskripsi_fasilitas;
-                inputNamaFile.value = nama_file;
-                inputFileGambar.value = '';
+            var myModal = new bootstrap.Modal(modalEditFasilitas);
+            myModal.show();
+        }
+        </script>
+        <script>
+            $('#editFasilitas').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget);
+                var id = button.data('id');
 
-                var myModal = new bootstrap.Modal(modalEditFasilitas)
-                myModal.show();
-            }
+                // Ganti URL_API dan NAMA_CONTROLLER dengan URL dan nama controller Laravel yang sesuai
+                var url = '/api/fasilitas/' + id; // Misalnya, '/api/fasilitas/1'
+    
+                // Mengambil data dari server dengan AJAX
+                $.get(url, function(data) {
+                    // Mengisi nilai input pada modal
+                    $('#inputEditFasilitas').val(data.id);
+                    $('#inputEditKategori').val(data.kategori);
+                    $('#inputNamaFasilitas').val(data.nama_fasilitas).data('original-value', data.nama_fasilitas);
+                    $('#inputDeskripsiFasilitas').val(data.deskripsi_fasilitas);
+                    $('#inputNamaFile').val(data.nama_file).data('original-value', data.nama_file);
+                });
+            });
         </script>
         <script>
             ClassicEditor
