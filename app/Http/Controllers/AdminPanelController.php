@@ -227,7 +227,7 @@ class AdminPanelController extends Controller
                 $gambar = $request->file('file_gambar');
                 $fileExtension = $request->file_gambar->extension();
                 $nama_gambar = $request->nama_file . '.' . $fileExtension;
-                $gambar->move(public_path('path_ke_folder_upload'), $nama_gambar);
+                $gambar->move(public_path('assets/img/fasilitas'), $nama_gambar);
 
                 // Update both nama_file and file_gambar
                 $fasilitas->nama_file = $request->nama_file;
