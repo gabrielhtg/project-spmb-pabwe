@@ -277,7 +277,7 @@ class AdminPanelController extends Controller
     {
         $admin = Auth::user();
         $data = [
-            'indexActive' => 2,
+            'indexActive' => 3,
             'admin' => $admin
         ];
         return view('admin-panel.sub_admin_panel.pengumumanAddpanel', $data);
