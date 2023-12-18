@@ -42,31 +42,28 @@
             <table class="table align-middle">
                 <thead>
                 <tr>
-                    <th scope="col" style="background-color: #47A5D4">Fakultas</th>
-                    <th scope="col" style="background-color: #47A5D4">Prodi</th>
-                    <th scope="col" style="background-color: #47A5D4">Biaya SPP/Sem (Rp)</th>
-                    <th scope="col" style="background-color: #47A5D4">Uang Pengembangan (Rp)</th>
-                    <th scope="col" style="background-color: #47A5D4">Uang Pangkal (Rp)</th>
-                    <th scope="col" style="background-color: #47A5D4">Perlengkapan Mahasiswa (Rp)</th>
-                    <th scope="col" style="background-color: #47A5D4">Perlengkapan Makan (Rp)</th>
+                    <th>Fakultas</th>
+                    <th>Program Studi</th>
+                    <th>Biaya SPP (Rp)</th>
+                    <th>Uang Pengembangan</th>
+                    <th>Uang Pangkal</th>
+                    <th>Perlengkapan Mahasiswa</th>
+                    <th>Perlengkapan Makan</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td rowspan="4" class="text-center">
-                        Fakultas Informatika dan Teknik Elektro
-                    </td>
-                </tr>
-                @foreach($dataBiaya as $biaya)
-                <tr>
-                    <td>Informatika</td>
-                    <td>6.500.000</td>
-                    <td>9.500.000 + N x 1.000.000 (min N=1)</td>
-                    <td>{{ number_format($biaya->biayaUangPangkal, 0, ',', '.') }}</td>
-                    <td>{{ number_format($biaya->biayaPerlengkapanMahasiswa, 0, ',', '.') }}</td>
-                    <td>{{ number_format($biaya->biayaPerlengkapanMakan, 0, ',', '.') }}</td>
-                </tr>
+                @foreach($biayaStudis as $biaya)
+                    <tr>
+                        <td>{{ $biaya->fakultas }}</td>
+                        <td>{{ $biaya->pro_stud }}</td>
+                        <td>{{ $biaya->biaya_spp }}</td>
+                        <td>{{ $biaya->uang_pengembangan }}</td>
+                        <td>{{ $biaya->uang_pangkal }}</td>
+                        <td>{{ $biaya->perlengkapan_mahasiswa }}</td>
+                        <td>{{ $biaya->perlengkapan_makan }}</td>
+                    </tr>
                 @endforeach
+                </tbody>
                 <tr>
                     <td>Teknik Elektro</td>
                     <td>6.500.000</td>
@@ -205,7 +202,7 @@
                         <td>{{ number_format($biaya->biayadeposit, 0, ',', '.') }}</td>
                     </tr>
                     <!-- Add similar code for other input fields -->
-                
+
                 </tbody>
             </table>
         </div>

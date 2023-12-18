@@ -1040,7 +1040,7 @@
 
                 <div class="card-body">
                 @include('admin-panel.sub_admisi_panel.add_biaya_studi')
-                    
+
                     <table class="table table-striped">
                         <thead>
                         <tr>
@@ -1071,7 +1071,7 @@
                         <td>
                         <!-- Button untuk menampilkan modal edit -->
                                 <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#edit_biaya_studi">Ubah</button>
-                                <form method="POST" action="{{ route('remove_biaya_studi') }}">
+                                <form method="POST" action="{{ route('remove_biaya_studi') }}" onsubmit="return confirm('Yakin menghapus data?')">
                                     @csrf
                                     @method('DELETE')
                                     <input type="hidden" name="id" value="{{ $biayaStudi->id }}">
@@ -1121,7 +1121,7 @@
                                     </div>
                                 </div>
 
-                            
+
                         </td>
                         </tr>
                         @endforeach
