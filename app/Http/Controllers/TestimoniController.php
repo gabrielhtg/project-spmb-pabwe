@@ -19,14 +19,14 @@ class TestimoniController extends Controller
             'gambar' => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
-        $photo = $request->file('gambar');
-
         if ($validator->fails()) {
             return redirect()
                 ->route('testimoni.panel')
                 ->withErrors($validator)
                 ->withInput();
         }
+
+        $photo = $request->file('gambar');
 
         if ($photo)
         {
