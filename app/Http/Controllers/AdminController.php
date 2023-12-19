@@ -70,15 +70,15 @@ class AdminController extends Controller
                 'udpated_at' => now()
             ]);
         } catch (\Exception $e) {
-            return redirect()->route('admins');
+//            return redirect()->route('admins');
         }
 
-        return redirect()->route('admins');
+        return redirect()->back()->with('success', 'Admin berhasil ditambahkan!');
     }
 
     public function editAdmin(Request $request)
     {
-        $admin = AdminModel::where('id', Auth::user()->id)->first();
+        $admin = AdminModel::where('id', $request->id)->first();
 
         $request->validate([
             'username' => 'required|max:20',
@@ -105,7 +105,6 @@ class AdminController extends Controller
 
             $profile_pict = 'assets/img/admin/' . $filename;
             $admin->profile_pict = $profile_pict;
-
         }
 
         $admin->username = $request->username;

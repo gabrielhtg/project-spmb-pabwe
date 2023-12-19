@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\Route;
 //});
 
 
-Route::middleware('auth:sanctum')->group(function () {
+//Route::middleware('auth:sanctum')->group(function () {
     Route::post('/add-infografis-pmdk', [AdmisiController::class, 'addInfografisPmdk'])->name('addInfografisPmdk');
     Route::post('/add-infografis-usm', [AdmisiController::class, 'addInfografisUsm'])->name('addInfografisUsm');
     Route::post('/add-infografis-utbk', [AdmisiController::class, 'addInfografisUtbk'])->name('addInfografisUtbk');
@@ -72,4 +72,4 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('/removeBiayaPendaftaran/{biayaPendaftaran_id}', [AdmisiController::class, 'removeBiayaPendaftaran'])->name('removeBiayaPendaftaran');
     Route::post('/pedoman-pendaftaran', [AdmisiController::class, 'addPedomanPendaftaran'])->name('pedoman-pendaftaran');
     Route::post('/pdf-biaya', [AdmisiController::class, 'addPdfbiaya'])->name('pdf_biaya');
-});
+//});
