@@ -64,92 +64,6 @@
                     </tr>
                 @endforeach
                 </tbody>
-                <tr>
-                    <td>Teknik Elektro</td>
-                    <td>6.500.000</td>
-                    <td>9.500.000 + N x 1.000.000 (min N=1)</td>
-                    <td>4.500.000</td>
-                    <td>850.000</td>
-                    <td>250.000</td>
-                </tr>
-
-                <tr>
-                    <td>Sistem Informasi</td>
-                    <td>6.500.000</td>
-                    <td>9.500.000 + N x 1.000.000 (min N=1)</td>
-                    <td>4.500.000</td>
-                    <td>850.000</td>
-                    <td>250.000</td>
-                </tr>
-
-                <tr>
-                    <td rowspan="3" class="text-center">
-                        Fakultas Teknik Industri
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>Managemen Rekayasa</td>
-                    <td>6.500.000</td>
-                    <td>9.500.000 + N x 1.000.000 (min N=1)</td>
-                    <td>4.500.000</td>
-                    <td>850.000</td>
-                    <td>250.000</td>
-                </tr>
-
-                <tr>
-                    <td>Teknik Metalurgi</td>
-                    <td>6.500.000</td>
-                    <td>9.500.000 + N x 1.000.000 (min N=1)</td>
-                    <td>4.500.000</td>
-                    <td>850.000</td>
-                    <td>250.000</td>
-                </tr>
-
-                <tr>
-                    <td>Fakultas Bioteknologi</td>
-                    <td>Teknik Bioproses</td>
-                    <td>7.000.000</td>
-                    <td>9.500.000 + N x 1.000.000 (min N=1)</td>
-                    <td>4.500.000</td>
-                    <td>850.000</td>
-                    <td>250.000</td>
-                </tr>
-
-                <tr>
-                    <td rowspan="4" class="text-center">
-                        Fakultas Vokasi
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>Teknologi Rekayasa Perangkat Lunak</td>
-                    <td>6.500.000</td>
-                    <td>9.500.000 + N x 1.000.000 (min N=1)</td>
-                    <td>4.500.000</td>
-                    <td>850.000</td>
-                    <td>250.000</td>
-                </tr>
-
-                <tr>
-                    <td>Teknologi Informasi</td>
-                    <td>5.500.000</td>
-                    <td>6.500.000 + N x 1.000.000 (min N=1)</td>
-                    <td>4.500.000</td>
-                    <td>850.000</td>
-                    <td>250.000</td>
-                </tr>
-
-                <tr>
-                    <td>Teknologi Komputer</td>
-                    <td>5.500.000</td>
-                    <td>6.500.000 + N x 1.000.000 (min N=1)</td>
-                    <td>4.500.000</td>
-                    <td>850.000</td>
-                    <td>250.000</td>
-                </tr>
-
-                </tbody>
             </table>
         </div>
 
@@ -179,8 +93,8 @@
             <table class="table align-middle">
                 <thead>
                 <tr>
-                    <th scope="col" style="background-color: #47A5D4">Jenis Biaya</th>
-                    <th scope="col" style="background-color: #47A5D4">Nominal</th>
+                    <th scope="col" class="text-white fw-semibold" style="background-color: #47A5D4">Jenis Biaya</th>
+                    <th scope="col" class="text-white fw-semibold" style="background-color: #47A5D4">Nominal</th>
                 </tr>
                 </thead>
                 <tbody>

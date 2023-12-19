@@ -70,7 +70,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/edit-jalur-pendaftaran', [SubJalurPendaftaranController::class, 'editSubJalurPendaftaran'])->name('editSubJalurPendaftaran');
     Route::delete('/delete-jalur-pendaftaran', [SubJalurPendaftaranController::class, 'removeSubJalurPendaftaran'])->name('removeSubJalurPendaftaran');
     Route::post('/editbiayaPendaftaran', [AdmisiController::class,'editBiayaPendaftaran'])->name('editBiayaPendaftaran');
-    Route::delete('/removeBiayaPendaftaran/{biayaPendaftaran_id}', [AdmisiController::class, 'removeBiayaPendaftaran'])->name('removeBiayaPendaftaran');
+    Route::delete('/removeBiayaPendaftaran', [AdmisiController::class, 'removeBiayaPendaftaran'])->name('removeBiayaPendaftaran');
     Route::post('/pedoman-pendaftaran', [AdmisiController::class, 'addPedomanPendaftaran'])->name('pedoman-pendaftaran');
     Route::post('/pdf-biaya', [AdmisiController::class, 'addPdfbiaya'])->name('pdf_biaya');
     Route::post('/addDropdown', [\App\Http\Controllers\DropdownAdmisiController::class, 'addDropdown'])->name('addDropdown');

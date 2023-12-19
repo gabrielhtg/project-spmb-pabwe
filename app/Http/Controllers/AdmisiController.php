@@ -378,7 +378,6 @@ public function addInfografis(Request $request)
         }
     }
 
-
     public function setbiayaadmin(Request $request)
 {
     $request->validate([
@@ -387,13 +386,19 @@ public function addInfografis(Request $request)
         'biayawisuda' => 'required',
         'biayadeposit' => 'required',
         'biayatingkatakhir' => 'required',
+    ], [
+        'biayaasrama.required' => 'Biaya Asrama Harus diisi',
+        'biayamakan.required' => 'Biaya Makan Harus diisi',
+        'biayawisuda.required' => 'Biaya Wisuda Harus diisi',
+        'biayadeposit.required' => 'Biaya Deposti Toga Harus diisi',
+        'biayatingkatakhir.required' => 'Biaya Tingkat Akhir Harus diisi',
     ]);
 
-    try {
-        // Find the existing record or create a new one
-        $dataBiaya = BiayaAdminModel::firstOrNew();
+    try{
+        $dataBiaya = BiayaAdminModel::first();
 
-        // Update or create a new record based on its existence
+    // If a record exists, update it; otherwise, create a new one
+    if ($dataBiaya) {
         $dataBiaya->update([
             'biayaasrama' => $request->biayaasrama,
             'biayamakan' => $request->biayamakan,
@@ -401,13 +406,22 @@ public function addInfografis(Request $request)
             'biayadeposit' => $request->biayadeposit,
             'biayatingkatakhir' => $request->biayatingkatakhir,
         ]);
+    } else {
+        BiayaAdminModel::create([
+            'biayaasrama' => $request->biayaasrama,
+            'biayamakan' => $request->biayamakan,
+            'biayawisuda' => $request->biayawisuda,
+            'biayadeposit' => $request->biayadeposit,
+            'biayatingkatakhir' => $request->biayatingkatakhir,
+        ]);
+    }
 
-        return redirect()->route('admin-panel')->with('success', 'Data biaya berhasil disimpan.');
-    } catch (\Exception $e) {
-        return redirect()->route('admin-panel')->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+    return redirect()->route('admisi-panel')->with('success', 'Data biaya berhasil disimpan.');;
+
+    } catch(\Exception $e){
+        return redirect()->route('admisi-panel')->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
     }
 }
-
     public function addJadwalPendaftaran(Request $request)
     {
         $request->validate([
@@ -631,9 +645,9 @@ public function editBiayaPendaftaran(Request $request)
 }
 
 
-    public function removeBiayaPendaftaran(Request $request, $biayaPendaftaran_id) {
+    public function removeBiayaPendaftaran(Request $request,) {
         try {
-            $biayaPendaftaran = BiayaPendaftaranModel::find($biayaPendaftaran_id);
+            $biayaPendaftaran = BiayaPendaftaranModel::find($request->id);
             if ($biayaPendaftaran) {
                 $biayaPendaftaran->delete();
                 return redirect()->route('admisi-panel')->with('success', 'Data berhasil dihapus.');
@@ -644,6 +658,8 @@ public function editBiayaPendaftaran(Request $request)
             return redirect()->route('admisi-panel')->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
     }
+
+    
     public function addPedomanPendaftaran(Request $request)
 {
     $request->validate([
@@ -696,8 +712,7 @@ public function downloadPedoman()
             'Content-Type' => 'application/' . $extension,
         ];
 
-        return response()->download($file, 'PedomanPendaftaran.' . $extension, $headers)
-            ->with('success', 'Download Pedoman Pendaftaran berhasil.');
+        return response()->download($file, 'PedomanPendaftaran.' . $extension, $headers);
     } else {
         // Handle jika tidak ada file
         return redirect()->route('admisi-panel')->with('error', 'Dokumen tidak ditemukan.');
