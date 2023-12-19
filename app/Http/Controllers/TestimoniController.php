@@ -13,7 +13,7 @@ class TestimoniController extends Controller
         $validator = Validator::make($request->all(), [
             'nama' => 'required|string|max:255',
             'prodi' => 'required|string|max:255',
-            'angkatan' => 'required|string|max:255',
+            'angkatan' => 'required|numeric|max_digits:4',
             'deskripsi' => 'required|string',
             'jenis' => 'required',
             'gambar' => 'required|image|mimes:jpeg,png,jpg|max:2048',
@@ -78,7 +78,7 @@ class TestimoniController extends Controller
             'id' => 'required|exists:testimoni',
             'namaUpdate' => 'required|string|max:255',
             'prodiUpdate' => 'required|string|max:255',
-            'angkatanUpdate' => 'required|string|max:255',
+            'angkatanUpdate' => 'required|numeric|max_digits:4',
             'deskripsiUpdate' => 'required|string',
             'jenisUpdate' => 'required',
             'gambarUpdate' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
