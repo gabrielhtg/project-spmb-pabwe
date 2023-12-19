@@ -27,8 +27,8 @@ class DatabaseSeeder extends Seeder
             add_data_mbkm::class,
             add_infografis_admisi::class,
             insert_data_akreditasi_institusi::class,
-            FacultySeeder::class,
-            MajorSeeder::class
+            // FacultySeeder::class,
+            // MajorSeeder::class
 
 
         ]);

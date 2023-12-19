@@ -103,6 +103,7 @@ Route::delete('/admin-panel/program_panel/major/{id}/delete', [MajorController::
 Route::delete('/admin-panel/program_panel/employee/{id}/delete', [EmployeeController::class, 'destroy'])->name('admin.program.employee.destroy');
 Route::delete('/admin-panel/program_panel/course/{id}/delete', [CourseController::class, 'destroy'])->name('admin.program.course.destroy');
 
+
 // End of ROUTE PROGRAM STUDI [TEAM 02]
 
 Route::get('/prestasi', [PrestasiController::class, 'getviewPrestasi'])->name('prestasi.prestasiOverview');
