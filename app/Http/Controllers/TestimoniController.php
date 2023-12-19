@@ -21,6 +21,13 @@ class TestimoniController extends Controller
 
         $photo = $request->file('gambar');
 
+        if ($validator->fails()) {
+            return redirect()
+                ->route('testimoni.panel')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
         if ($photo)
         {
             $filename =  "testimoni" . time() . '.' . $photo->getClientOriginalExtension();
