@@ -8,6 +8,7 @@ use App\Models\AkreditasiSectionModel;
 use App\Models\AlamatInstitusiModel;
 use App\Models\data_institusi;
 use App\Models\Fasilitas;
+use App\Models\Header_Prestasi;
 use App\Models\Pengumuman;
 use App\Models\EmailModel;
 use App\Models\HeroSectionModel;
@@ -694,10 +695,27 @@ class AdminPanelController extends Controller
 
     public function getPrestasiPanel () {
         $admin = Auth::user();
+
+        if (Header_Prestasi::first())
+        {
+            $judulPrestasi = Header_Prestasi::first()->judul;
+            $deskripsiPrestasi = Header_Prestasi::first()->deskripsi;
+            $fotoPrestasi = Header_Prestasi::first()->foto;
+        } else {
+            $judulPrestasi = "Prestasi";
+            $deskripsiPrestasi = "Prestasi";
+            $fotoPrestasi = "assets/img/prestasi/prestasi-header.JPG";
+        }
+
         $data = [
             'indexActive' => 2,
             'admin' => $admin,
             'dataPrestasi' => Prestasi::orderBy('created_at', 'desc')->get(),
+            'headerPrestasi' => [
+                'judul' => $judulPrestasi,
+                'deskripsi' => $deskripsiPrestasi,
+                'foto' => $fotoPrestasi,
+            ],
         ];
         return view('admin-panel.prestasi_panel', $data);
     }

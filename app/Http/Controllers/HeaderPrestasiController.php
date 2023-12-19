@@ -10,88 +10,73 @@ class HeaderPrestasiController extends Controller
 {
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'judul' => 'required|string|max:255',
-            'foto' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-            'deskripsi' => 'required|string',
-        ]);
+        $headerPrestasi = Header_Prestasi::first();
 
-        if ($validator->fails()) {
-            return redirect()
-                ->route('prestasi.panel')  // Ganti dengan nama route yang sesuai
-                ->withErrors($validator)
-                ->withInput();
-        }
+        if ($headerPrestasi) {
 
-        $photo = $request->file('foto');
-        $filename = "header_prestasi_" . time() . '.' . $photo->getClientOriginalExtension();
-        $directory = public_path('assets/img/prestasi');
-        $photo->move($directory, $filename);
+            $validator = Validator::make($request->all(), [
+                'judul' => 'required|string|max:255',
+                'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+                'deskripsi' => 'required|string',
+            ], [
+                'judul.required' => 'Judul harus diisi',
+                'judul.string' => 'Judul harus berupa teks',
+                'judul.max' => 'Judul maksimal 255 karakter',
+                'foto.image' => 'Foto harus berupa gambar',
+                'foto.mimes' => 'Format foto harus jpeg, png, atau jpg',
+                'foto.max' => 'Ukuran foto maksimal 2048 KB',
+                'deskripsi.required' => 'Deskripsi harus diisi',
+                'deskripsi.string' => 'Deskripsi harus berupa teks',
+            ]);
 
-        Header_Prestasi::create([
-            'judul' => $request->judul,
-            'foto' => "assets/img/prestasi/" . $filename,
-            'deskripsi' => $request->deskripsi,
-        ]);
-
-        return redirect()->route('prestasi.panel')->with('success', 'Header prestasi berhasil ditambahkan');
-    }
-
-    public function update(Request $request, $id)
-    {
-        $validator = Validator::make($request->all(), [
-            'judulUpdate' => 'required|string|max:255',
-            'fotoUpdate' => 'image|mimes:jpeg,png,jpg|max:2048',
-            'deskripsiUpdate' => 'required|string',
-        ]);
-
-        if ($validator->fails()) {
-            return redirect()
-                ->route('prestasi.panel')  // Ganti dengan nama route yang sesuai
-                ->withErrors($validator)
-                ->withInput();
-        }
-
-        $headerPrestasi = Header_Prestasi::find($id);
-
-        if (!$headerPrestasi) {
-            return redirect()->route('prestasi.panel')->with('error', 'Header prestasi tidak ditemukan');
-        }
-
-        if ($request->hasFile('fotoUpdate')) {
-            $photo = $request->file('fotoUpdate');
-            $filename = "header_prestasi_" . time() . '.' . $photo->getClientOriginalExtension();
-            $directory = public_path('assets/img/prestasi');
-
-            if ($headerPrestasi->foto && file_exists($headerPrestasi->foto)) {
-                unlink($headerPrestasi->foto);
+            if ($validator->fails()) {
+                return redirect()
+                    ->route('prestasi.panel')
+                    ->withErrors($validator)
+                    ->withInput();
             }
 
-            $photo->move($directory, $filename);
+            $photo = $request->file('foto');
+            $directory = public_path('assets/img/prestasi');
+            $filename = str_replace('assets/img/prestasi/', '', $headerPrestasi->foto);
+
+            if ($photo) {
+                $photo->move($directory, $filename);
+            }
+
+            $headerPrestasi->judul = $request->judul;
             $headerPrestasi->foto = "assets/img/prestasi/" . $filename;
+            $headerPrestasi->deskripsi = $request->deskripsi;
+            $headerPrestasi->save();
+
+            return redirect()->route('prestasi.panel')->with('success', 'Header prestasi berhasil diubah');
+        } else {
+            $validator = Validator::make($request->all(), [
+                'judul' => 'required|string|max:255',
+                'foto' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+                'deskripsi' => 'required|string',
+            ]);
+
+            if ($validator->fails()) {
+
+                return redirect()
+                    ->route('prestasi.panel')
+                    ->withErrors($validator)
+                    ->withInput();
+            }
+
+            $photo = $request->file('foto');
+            $filename = "header_prestasi_" . time() . '.' . $photo->getClientOriginalExtension();
+            $directory = public_path('assets/img/prestasi');
+            $photo->move($directory, $filename);
+
+            Header_Prestasi::create([
+                'judul' => $request->judul,
+                'foto' => "assets/img/prestasi/" . $filename,
+                'deskripsi' => $request->deskripsi,
+            ]);
+
+            return redirect()->route('prestasi.panel')->with('success', 'Header prestasi berhasil ditambahkan');
         }
-
-        $headerPrestasi->judul = $request->judulUpdate;
-        $headerPrestasi->deskripsi = $request->deskripsiUpdate;
-        $headerPrestasi->save();
-
-        return redirect()->route('prestasi.panel')->with('success', 'Header prestasi berhasil diupdate');
-    }
-
-    public function destroy($id)
-    {
-        $headerPrestasi = Header_Prestasi::find($id);
-
-        if (!$headerPrestasi) {
-            return redirect()->route('prestasi.panel')->with('error', 'Header prestasi tidak ditemukan');
-        }
-
-        if ($headerPrestasi->foto && file_exists($headerPrestasi->foto)) {
-            unlink($headerPrestasi->foto);
-        }
-
-        $headerPrestasi->delete();
-
-        return redirect()->route('prestasi.panel')->with('success', 'Header prestasi berhasil dihapus');
     }
 }

@@ -4,6 +4,41 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
 
     <div class="container-fluid p-3">
+        <div class="row">
+            <div class="col">
+                @if ($errors->any())
+                    <div class="alert alert-danger  alert-dismissible fade show">
+                        <strong class="alert-heading strong"><i class="fa-solid fa-exclamation-circle"></i> Terjadi Kesalahan!</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                @if(session('success'))
+                    <div class="alert alert-success  alert-dismissible fade show">
+                        <strong class="alert-heading strong"><i class="fa-solid fa-check-circle"></i> Sukses!</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+                        {{ session('success') }}
+                    </div>
+                @endif
+
+                    @if(session('error'))
+                        <div class="alert alert-danger alert-dismissible fade show">
+                            <strong class="alert-heading strong"><i class="fa-solid fa-exclamation-circle"></i> Terjadi Kesalahan!</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+                            {{ session('error') }}
+                        </div>
+                    @endif
+            </div>
+        </div>
+
         <div class="card">
             <div id="item-2" class="card">
                 <div class="card-header bg-primary text-white">
@@ -12,18 +47,21 @@
                 <div class="card-body">
                     <form action="{{ route('prestasiheader.add') }}" method="post" enctype="multipart/form-data">
                         @csrf
+
                         <div class="mb-3">
                             <label for="input_judul_header" class="form-label">Judul Header</label>
-                            <input type="text" class="form-control" id="input_judul_header" name="judul">
+                            <input type="text" class="form-control" id="input_judul_header" name="judul"
+                                   value="{{ $headerPrestasi['judul'] }}">
                         </div>
                         <div class="mb-3">
                             <label for="input_deskripsi_header" class="form-label">Deskripsi</label>
-                            <textarea class="form-control" id="input_deskripsi_header" name="deskripsi"></textarea>
+                            <textarea class="form-control" id="input_deskripsi_header"
+                                      name="deskripsi">{{ $headerPrestasi['deskripsi'] }}</textarea>
                         </div>
                         <div class="mb-3">
                             <label for="input_bg_hero" class="form-label">Foto</label>
                             <div class="p-3 border mb-2 border-1 w-100 d-flex justify-content-center">
-                                <img src="" alt="bg image" style="width: 80%">
+                                <img src="{{  asset($headerPrestasi['foto'])  }}" alt="bg image" style="width: 80%">
                             </div>
                             <input type="file" class="form-control" id="input_bg_hero" name="foto">
                         </div>
@@ -44,6 +82,7 @@
                     <span class="fs-5">Data Prestasi</span>
                 </div>
                 <div class="card-body d-flex flex-column">
+
                     @include('admin-panel.sub_admin_panel.tambah_prestasi')
 
                     @include('admin-panel.sub_admin_panel.ubah_prestasi')
@@ -107,7 +146,7 @@
     </div>
 
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('#input_deskripsi_header').summernote({
                 height: 100,
                 maxHeight: 250,
