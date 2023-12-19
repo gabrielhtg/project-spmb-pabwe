@@ -1,19 +1,18 @@
 @extends('template.admin-panel-template')
 
 @section('isi-admin-panel')
-    <div class="toast-container position-fixed bottom-0 end-0 p-3">
-        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header">
-                <img src="..." class="rounded me-2" alt="...">
-                <strong class="me-auto">Bootstrap</strong>
-                <small>11 mins ago</small>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-            <div class="toast-body">
-                Hello, world! This is a toast message.
-            </div>
-        </div>
-    </div>
+{{--    <div class="toast-container position-fixed bottom-0 end-0 p-3">--}}
+{{--        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">--}}
+{{--            <div class="toast-header bg-success text-white">--}}
+{{--                <i class="bi bi-check2-circle me-2"></i>--}}
+{{--                <strong class="me-auto">Bootstrap</strong>--}}
+{{--                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>--}}
+{{--            </div>--}}
+{{--            <div class="toast-body">--}}
+{{--                Hello, world! This is a toast message.--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 
     <section id="tambah-admin" class="container-fluid p-3">
 
@@ -35,6 +34,7 @@
                         <div class="modal-body">
                             <form id="myForm" action="{{ route('add-admin') }}" method="post" enctype="multipart/form-data">
                                 @csrf
+                                <input type="hidden" name="id" value="{{ $admin->id }}">
                                 <label class="form-label w-100 mb-3 ">
                                     Username
                                     <input type="text" class="form-control" name="username" required>
@@ -176,14 +176,16 @@
                                 </div>
                             </div>
 
-                            <form action="{{ route('remove-admin') }}" class="d-inline" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <input type="hidden" name="id" value="{{ $e -> id }}">
-                                <button class="btn btn-danger">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-                            </form>
+                            @if($admin->master_admin === 1)
+                                <form action="{{ route('remove-admin') }}" class="d-inline" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input type="hidden" name="id" value="{{ $e -> id }}">
+                                    <button class="btn btn-danger">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </form>
+                            @endif
                         </div>
                     </td>
                 </tr>
@@ -192,8 +194,10 @@
         </table>
     </section>
 
-    <script>
-
-    </script>
+{{--    <script>--}}
+{{--        const toastLiveExample = document.getElementById('liveToast')--}}
+{{--        const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)--}}
+{{--        toastBootstrap.show()--}}
+{{--    </script>--}}
 @endsection
 

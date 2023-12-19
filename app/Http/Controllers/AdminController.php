@@ -14,7 +14,6 @@ class AdminController extends Controller
 {
     public function addAdmin(Request $request)
     {
-        $activeAdmin = Auth::user();
         $profile_pict = '';
 
         if ($request->profile_pict) {
@@ -63,7 +62,7 @@ class AdminController extends Controller
                 'password' => Hash::make($request->password),
                 'firstname' => $request->firstname,
                 'lastname' => $request->lastname,
-                'created_by' => $activeAdmin->username,
+                'created_by' => $request->id,
                 'username' => $request->username,
                 'profile_pict' => $profile_pict,
                 'created_at' => now(),
@@ -150,7 +149,7 @@ class AdminController extends Controller
             'newRePassword' => "max:80|required|min:5",
         ]);
 
-        $admin = AdminModel::where('id', Auth::user()->id)->first();
+        $admin = AdminModel::where('id', $request->id)->first();
 
         if (Hash::check($request->oldPassword, $admin->password)) {
             if ($request->newPassword === $request->newRePassword) {

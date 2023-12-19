@@ -102,6 +102,7 @@
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                                     Close
                                 </button>
+                                <input type="hidden" name="id" value="{{ $admin->id }}">
                                 <button type="submit" class="btn btn-primary">Save</button>
                             </div>
                         </form>
@@ -143,6 +144,7 @@
                         </div>
                         <form action="{{ route("changeAdminPassword") }}" method="post">
                             @csrf
+                            <input type="hidden" name="id" value="{{ $admin->id }}">
                             <div class="modal-body">
                                 <div class="mb-3">
                                     <label class="form-label w-100">
