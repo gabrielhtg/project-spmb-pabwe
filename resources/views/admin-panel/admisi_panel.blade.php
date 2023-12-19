@@ -806,7 +806,7 @@
                                                                   </div>
                                                               </div>
                                                           </div>
-                                                          <form action="{{ route('removeInfografis') }}" method="post" onsubmit="return confirm('Apakah anda yakin ingin menghapus data?')">
+                                                          <form action="{{ route('removeInfografis') }}" method="post">
                                                               @csrf
                                                               @method('DELETE')
                                                               <input type="hidden" value="{{ $e->id }}" name="id">
