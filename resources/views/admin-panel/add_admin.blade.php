@@ -87,6 +87,7 @@
                 <th>Nama</th>
                 <th>Username</th>
                 <th>Created At</th>
+                <th>Master Admin</th>
                 <th>Action</th>
             </tr>
             </thead>
@@ -100,6 +101,16 @@
                     <td>{{ $e->firstname . " " . $e->lastname }}</td>
                     <td>{{ $e->username }}</td>
                     <td>{{ $e->created_at }}</td>
+                    <td>
+                        @if($e->master_admin === 1)
+                            <span class="text-success ">
+                                <i class="bi bi-check-circle-fill"></i>
+{{--                                <i class="bi bi-check-circle"></i>--}}
+                            </span>
+                        @else
+                            -
+                        @endif
+                    </td>
                     <td style="min-width: 120px; width: 120px">
                         <div class="d-flex justify-content-center gap-2">
                             <!-- Button trigger modal -->
