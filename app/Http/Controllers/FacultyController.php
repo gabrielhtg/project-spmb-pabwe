@@ -153,6 +153,10 @@ class FacultyController extends Controller
     
         // Update gambar if provided
         if ($request->hasFile('gambar')) {
+            $request->validate([
+                'gambar' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            ]);
+    
             // Hapus gambar lama jika ada
             if ($oldGambar) {
                 $gambarPath = public_path('img/program/faculty/') . $oldGambar;
@@ -172,25 +176,35 @@ class FacultyController extends Controller
     }
     
     public function destroy(string $id)
-        {
-            $faculty = Faculty::find($id);
+            {
+                $faculty = Faculty::find($id);
 
-            if (!$faculty) {
-                return redirect('admin-panel/program')->with('error', 'Faculty not found!');
+                if (!$faculty) {
+                    return redirect('admin-panel/program')->with('error', 'Faculty not found!');
+                }
+
+                // Check if the faculty is used as a foreign key in the 'majors' table
+                $isUsedAsForeignKey = DB::table('majors')->where('kode_fakultas', $faculty->kode_fakultas)->exists();
+
+                if ($isUsedAsForeignKey) {
+                    return redirect('admin-panel/program')->withErrors(['Kode Fakultas' => 'Kode Fakultas dipakai sebagai foreign key. Tidak dapat menghapus fakultas ini.']);
+                }
+
+                // Additional logic (e.g., delete related records) if needed
+
+                // Simpan nama gambar sebelum dihapus
+                $gambarPath = public_path('img/program/faculty/') . $faculty->gambar;
+
+                // Hapus fakultas
+                $faculty->delete();
+
+                // Hapus gambar dari direktori jika ada
+                if (file_exists($gambarPath)) {
+                    unlink($gambarPath);
+                }
+
+                return redirect('admin-panel/program')->with('success', 'Faculty deleted successfully!');
             }
 
-            // Check if the faculty is used as a foreign key in the 'majors' table
-            $isUsedAsForeignKey = DB::table('majors')->where('kode_fakultas', $faculty->kode_fakultas)->exists();
-
-            if ($isUsedAsForeignKey) {
-                return redirect('admin-panel/program')->withErrors(['Kode Fakultas' => 'Kode Fakultas dipakai sebagai foreign key. Tidak dapat menghapus fakultas ini.']);
-            }
-
-            // Additional logic (e.g., delete related records) if needed
-
-            $faculty->delete();
-
-            return redirect('admin-panel/program')->with('success', 'Faculty deleted successfully!');
-        }
 
 }
