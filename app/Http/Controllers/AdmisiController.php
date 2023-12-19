@@ -17,12 +17,119 @@ use App\Models\JenisTes;
 use App\Models\PedomanPendaftaranModel;
 use App\Models\PdfBiayaModel;
 use App\Models\BiayaStudi;
+use App\Models\JadwalUjianModel;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class AdmisiController extends Controller
 {
+
+    public function addJadwalUjian(Request $request) {
+        // Validasi input
+        $validator = Validator::make($request->all(), [
+            'jalur_ujian' => 'required',
+            'tahun_akademik' => 'required',
+            'deskripsi' => 'required',
+        ], [
+            'jalur_ujian.required' => 'Jalur ujian harus diisi',
+            'tahun_akademik.required' => 'Tahun akademik harus diisi',
+            'deskripsi.required' => 'Deskripsi harus diisi',
+        ]);
+    
+        if ($validator->fails()) {
+            return redirect()->route('admisi-panel')
+                ->withErrors($validator)
+                ->withInput()
+                ->with('error', 'Terjadi kesalahan: ' . $validator->errors()->first());
+        }
+    
+        try {
+            // Dapatkan username dari pengguna yang sedang login
+            $username = Auth::user()->username;
+    
+            // Buat JadwalUjianModel jika validasi sukses
+            JadwalUjianModel::create([
+                'jalur_ujian' => $request->jalur_ujian,
+                'tahun_akademik' => $request->tahun_akademik,
+                'deskripsi' => $request->deskripsi,
+                'created_at' => now(),
+                'updated_at' => now(),
+                'created_by' => $username,
+                'updated_by' => $username,
+            ]);
+    
+            // Jika berhasil, tambahkan pesan sukses ke dalam session
+            return redirect()->route('admisi-panel')->with('success', 'Jadwal ujian berhasil ditambahkan');
+        } catch (\Exception $e) {
+            // Jika terjadi kesalahan, kembalikan ke halaman sebelumnya dengan pesan error
+            return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage())->withInput();
+        }
+    }
+    
+    
+
+    public function removeJadwalUjian(Request $request) {
+        try {
+            $jadwalUjian = JadwalUjianModel::find($request->id);
+    
+            if (!$jadwalUjian) {
+                return redirect()->back()->with('error', 'Data tidak ditemukan');
+            }
+    
+            $jadwalUjian->delete();
+    
+            return redirect()->back()->with('success', 'Data jadwal ujian berhasil dihapus');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors('error', 'Terjadi kesalahan: ' . $e->getMessage());
+        }
+    }
+    
+    public function editJadwalUjian(Request $request) {
+        // Validasi input
+        $validator = Validator::make($request->all(), [
+            'jalurUjian' => 'required',
+            'tahunAkademik' => 'required',
+            'deskripsi' => 'required',
+        ], [
+            'jalurUjian.required' => 'Jalur ujian harus diisi',
+            'tahunAkademik.required' => 'Tahun akademik harus diisi',
+            'deskripsi.required' => 'Deskripsi harus diisi',
+        ]);
+    
+        if ($validator->fails()) {
+            return redirect()->route('admisi-panel')
+                ->withErrors($validator)
+                ->withInput()
+                ->with('error', 'Terjadi kesalahan: ' . $validator->errors()->first());
+        }
+    
+        try {
+            $username = Auth::user()->username;
+    
+            $dataJadwalUjian = JadwalUjianModel::find($request->id);
+    
+            if (!$dataJadwalUjian) {
+                return redirect()->back()->with('error', 'Data tidak ditemukan');
+            }
+    
+            // Update data jika validasi sukses
+            $dataJadwalUjian->jalur_ujian = $request->jalurUjian;
+            $dataJadwalUjian->tahun_akademik = $request->tahunAkademik;
+            $dataJadwalUjian->deskripsi = $request->deskripsi;
+            $dataJadwalUjian->updated_by = $username;
+            $dataJadwalUjian->updated_at = now();
+            $dataJadwalUjian->save();
+    
+            // Jika berhasil, tambahkan pesan sukses ke dalam session
+            return redirect()->back()->with('success', 'Data jadwal ujian berhasil diperbarui');
+        } catch (\Exception $e) {
+            // Jika terjadi kesalahan, kembalikan ke halaman sebelumnya dengan pesan error
+            return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage())->withInput();
+        }
+    }
+    
     public function setHeader(Request $request)
 {
     $modelAdmisi = ModelHeaderAdmisi::where('id', 1)->first();
@@ -67,10 +174,16 @@ public function addMbkmNonKompetisi(Request $request) {
     $validator = Validator::make($request->all(), [
         'jumlah_sks' => 'required', // Sesuaikan aturan validasi sesuai kebutuhan
         'potongan_spp' => 'required',
+    ], [
+        'jumlah_sks.required' => 'Jumlah SKS harus diisi.',
+        'potongan_spp.required' => 'Potongan SPP harus diisi.',
     ]);
 
     if ($validator->fails()) {
-        return redirect()->route('admisi-panel')->withErrors($validator)->withInput()->with('error', 'Terdapat kesalahan dalam input data.');
+        return redirect()->route('admisi-panel')
+            ->withErrors($validator)
+            ->withInput()
+            ->with('error', 'Terjadi kesalahan: ' . $validator->errors()->first());
     }
 
     // Jika validasi berhasil, buat entri baru
@@ -88,15 +201,59 @@ public function addMbkmNonKompetisi(Request $request) {
     return redirect()->route('admisi-panel')->with('success', 'Data Non Kompetisi berhasil ditambahkan.');
 }
 
+public function updateMbkmNonKompetisi(Request $request) {
+    $validator = Validator::make($request->all(), [
+        'jumlah_sks' => 'required', // Sesuaikan aturan validasi sesuai kebutuhan
+        'potongan_spp' => 'required',
+    ], [
+        'jumlah_sks.required' => 'Jumlah SKS harus diisi.',
+        'potongan_spp.required' => 'Potongan SPP harus diisi.',
+    ]);
+
+    if ($validator->fails()) {
+        return redirect()->route('admisi-panel')
+            ->withErrors($validator)
+            ->withInput()
+            ->with('error', 'Terjadi kesalahan: ' . $validator->errors()->first());
+    }
+
+    try {
+        $mbkmData = MbkmModel::find($request->id);
+
+        if (!$mbkmData) {
+            return redirect()->back()->with('error', 'Data tidak ditemukan');
+        }
+
+        $mbkmData->jenis_kegiatan = 'Non Kompetisi';
+        $mbkmData->jumlah_sks = $request->jumlah_sks;
+        $mbkmData->potongan_spp = $request->potongan_spp;
+        $mbkmData->updated_by = Auth::user()->username;
+        $mbkmData->updated_at = now();
+
+        $mbkmData->save();
+
+        return redirect()->route('admisi-panel')->with('success', 'Data Non Kompetisi berhasil diperbarui.');
+    } catch (\Exception $e) {
+        return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage())->withInput();
+    }
+}
+
+
 
 public function addMbkmKompetisi(Request $request) {
     $validator = Validator::make($request->all(), [
         'jumlah_sks' => 'required', // Sesuaikan aturan validasi sesuai kebutuhan
         'potongan_spp' => 'required',
+    ],[
+        'jumlah_sks.required' => 'Jumlah SKS harus diisi.',
+        'potongan_spp.required' => 'Potongan SPP harus diisi.',
     ]);
 
     if ($validator->fails()) {
-        return redirect()->route('admisi-panel')->withErrors($validator)->withInput();
+        return redirect()->route('admisi-panel')
+            ->withErrors($validator)
+            ->withInput()
+            ->with('error', 'Terjadi kesalahan: ' . $validator->errors()->first());
     }
 
     // Jika validasi berhasil, buat entri baru
@@ -112,6 +269,43 @@ public function addMbkmKompetisi(Request $request) {
 
     // Pesan sukses jika berhasil menambahkan entri
     return redirect()->route('admisi-panel')->with('success', 'Data Kompetisi berhasil ditambahkan.');
+}
+
+public function updateMbkmKompetisi(Request $request) {
+    $validator = Validator::make($request->all(), [
+        'jumlah_sks' => 'required', // Sesuaikan aturan validasi sesuai kebutuhan
+        'potongan_spp' => 'required',
+    ], [
+        'jumlah_sks.required' => 'Jumlah SKS harus diisi.',
+        'potongan_spp.required' => 'Potongan SPP harus diisi.',
+    ]);
+
+    if ($validator->fails()) {
+        return redirect()->route('admisi-panel')
+            ->withErrors($validator)
+            ->withInput()
+            ->with('error', 'Terjadi kesalahan: ' . $validator->errors()->first());
+    }
+
+    try {
+        $mbkmData = MbkmModel::find($request->id);
+
+        if (!$mbkmData) {
+            return redirect()->back()->with('error', 'Data tidak ditemukan');
+        }
+
+        $mbkmData->jenis_kegiatan = 'Kompetisi';
+        $mbkmData->jumlah_sks = $request->jumlah_sks;
+        $mbkmData->potongan_spp = $request->potongan_spp;
+        $mbkmData->updated_by = Auth::user()->username;
+        $mbkmData->updated_at = now();
+
+        $mbkmData->save();
+
+        return redirect()->route('admisi-panel')->with('success', 'Data Kompetisi berhasil diperbarui.');
+    } catch (\Exception $e) {
+        return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage())->withInput();
+    }
 }
 
 
@@ -134,10 +328,17 @@ public function addInfografisPmdk(Request $request)
     $validator = Validator::make($request->all(), [
         'gambar' => 'required|image|mimes:jpeg,png,jpg|max:1024',
         'nomor_urut' => 'required|min:0'
+    ],[
+        'gambar.required' => 'Jumlah SKS harus diisi.',
+        'gambar.image' => 'gambar harus dalam jpeg, png, dan jpg dengan ukuran maks 1MB.',
+        'nomor_urut.required' => 'Nomor Urut harus diisi.',
     ]);
 
     if ($validator->fails()) {
-        return redirect()->route('admisi-panel')->withErrors($validator)->withInput();
+        return redirect()->route('admisi-panel')
+            ->withErrors($validator)
+            ->withInput()
+            ->with('error', 'Terjadi kesalahan: ' . $validator->errors()->first());
     }
 
     if ($request->hasFile('gambar')) {
@@ -199,10 +400,17 @@ public function addInfografisPmdk(Request $request)
     $validator = Validator::make($request->all(), [
         'gambar' => 'required|image|mimes:jpeg,png,jpg|max:1024',
         'nomor_urut' => 'required|min:0'
+    ],[
+        'gambar.required' => 'Jumlah SKS harus diisi.',
+        'gambar.image' => 'gambar harus dalam jpeg, png, dan jpg dengan ukuran maks 1MB.',
+        'nomor_urut.required' => 'Nomor Urut harus diisi.',
     ]);
 
     if ($validator->fails()) {
-        return redirect()->route('admisi-panel')->withErrors($validator)->withInput();
+        return redirect()->route('admisi-panel')
+            ->withErrors($validator)
+            ->withInput()
+            ->with('error', 'Terjadi kesalahan: ' . $validator->errors()->first());
     }
 
     if ($request->hasFile('gambar')) {
@@ -230,10 +438,17 @@ public function addInfografisUtbk(Request $request)
     $validator = Validator::make($request->all(), [
         'gambar' => 'required|image|mimes:jpeg,png,jpg|max:1024',
         'nomor_urut' => 'required|min:0'
+    ],[
+        'gambar.required' => 'Jumlah SKS harus diisi.',
+        'gambar.image' => 'gambar harus dalam jpeg, png, dan jpg dengan ukuran maks 1MB.',
+        'nomor_urut.required' => 'Nomor Urut harus diisi.',
     ]);
 
     if ($validator->fails()) {
-        return redirect()->route('admisi-panel')->withErrors($validator)->withInput();
+        return redirect()->route('admisi-panel')
+            ->withErrors($validator)
+            ->withInput()
+            ->with('error', 'Terjadi kesalahan: ' . $validator->errors()->first());
     }
 
     if ($request->hasFile('gambar')) {
@@ -280,7 +495,10 @@ public function addJalur(Request $request)
     ]);
 
     if ($validator->fails()) {
-        return redirect()->route('admisi-panel')->withErrors($validator)->withInput();
+        return redirect()->route('admisi-panel')
+            ->withErrors($validator)
+            ->withInput()
+            ->with('error', 'Terjadi kesalahan: ' . $validator->errors()->first());
     }
 
     try {
@@ -310,7 +528,10 @@ public function editJalur(Request $request)
     ]);
 
     if ($validator->fails()) {
-        return redirect()->route('admisi-panel')->withErrors($validator)->withInput();
+        return redirect()->route('admisi-panel')
+            ->withErrors($validator)
+            ->withInput()
+            ->with('error', 'Terjadi kesalahan: ' . $validator->errors()->first());
     }
 
     try {
@@ -339,10 +560,18 @@ public function addInfografis(Request $request)
         'gambar' => 'required|image|mimes:jpeg,png,jpg|max:1024',
         'nomor_urut' => 'required|min:0',
         'jalur' => 'required' // Sesuaikan dengan aturan validasi yang diperlukan
+    ],[
+        'gambar.required' => 'Jumlah SKS harus diisi.',
+        'gambar.image' => 'gambar harus dalam jpeg, png, dan jpg dengan ukuran maks 1MB.',
+        'nomor_urut.required' => 'Nomor Urut harus diisi.',
+        'jalur.required'=>'Jalur pendaftaran harus diisi'
     ]);
 
     if ($validator->fails()) {
-        return redirect()->back()->withErrors($validator)->withInput();
+        return redirect()->route('admisi-panel')
+            ->withErrors($validator)
+            ->withInput()
+            ->with('error', 'Terjadi kesalahan: ' . $validator->errors()->first());
     }
 
     try {
@@ -380,7 +609,7 @@ public function addInfografis(Request $request)
 
     public function setbiayaadmin(Request $request)
 {
-    $request->validate([
+    $validator = Validator::make($request->all(),[
         'biayaasrama' => 'required',
         'biayamakan' => 'required',
         'biayawisuda' => 'required',
@@ -393,6 +622,13 @@ public function addInfografis(Request $request)
         'biayadeposit.required' => 'Biaya Deposti Toga Harus diisi',
         'biayatingkatakhir.required' => 'Biaya Tingkat Akhir Harus diisi',
     ]);
+
+    if ($validator->fails()) {
+        return redirect()->route('admisi-panel')
+            ->withErrors($validator)
+            ->withInput()
+            ->with('error', 'Terjadi kesalahan: ' . $validator->errors()->first());
+    }    
 
     try{
         $dataBiaya = BiayaAdminModel::first();
@@ -424,13 +660,20 @@ public function addInfografis(Request $request)
 }
     public function addJadwalPendaftaran(Request $request)
     {
-        $request->validate([
+        $validator = Validator::make($request->all(),[
             'jenis_jalur'=>'required',
             'tanggal_pendaftaran'=>'required',
         ],[
             'jenis_jalur.required' => 'Kolom Jalur Pendaftaran harus diisi.',
             'tanggal_pendaftaran.required' => 'Kolom Tanggal Pendaftaran harus diisi.',
         ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('admisi-panel')
+                ->withErrors($validator)
+                ->withInput()
+                ->with('error', 'Terjadi kesalahan: ' . $validator->errors()->first());
+        }
     
         try {
             JadwalPendaftaranModel::create([
@@ -448,14 +691,20 @@ public function addInfografis(Request $request)
     
     public function editJadwalPendaftaran(Request $request)
     {
-        $request->validate([
-            'id' => 'required',
-            'jenis_jalur' => 'required',
-            'tanggal_pendaftaran' => 'required',
-        ], [
+        $validator = Validator::make($request->all(),[
+            'jenis_jalur'=>'required',
+            'tanggal_pendaftaran'=>'required',
+        ],[
             'jenis_jalur.required' => 'Kolom Jalur Pendaftaran harus diisi.',
             'tanggal_pendaftaran.required' => 'Kolom Tanggal Pendaftaran harus diisi.',
         ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('admisi-panel')
+                ->withErrors($validator)
+                ->withInput()
+                ->with('error', 'Terjadi kesalahan: ' . $validator->errors()->first());
+        }
     
         try {
             $jadwal = JadwalPendaftaranModel::find($request->id);
@@ -495,7 +744,7 @@ public function addInfografis(Request $request)
 
     public function postAddProdi(Request $request)
 {
-    $this->validate($request, [
+    $validator = Validator::make($request->all(), [
         'program_studi' => 'required|string',
         'deskripsi_persyaratan' => 'required|string',
         'cover' => 'required|image|max:2048',
@@ -506,6 +755,13 @@ public function addInfografis(Request $request)
         'cover.image' => 'File harus berupa gambar.',
         'cover.max' => 'Ukuran gambar terlalu besar, maksimal 2MB.'
     ]);
+
+    if ($validator->fails()) {
+        return redirect()->route('admisi-panel')
+            ->withErrors($validator)
+            ->withInput()
+            ->with('error', 'Terjadi kesalahan: ' . $validator->errors()->first());
+    }
 
     try {
         $auth = Auth::user();
@@ -530,12 +786,25 @@ public function addInfografis(Request $request)
 
 public function postEditProdi(Request $request)
 {
-    $this->validate($request, [
-        'id' => 'required|exists:prodi,id',
-        'program_studi' => 'string|nullable',
-        'deskripsi_persyaratan' => 'string|nullable',
-        'cover' => 'image|max:2048|nullable',
+    $validator = Validator::make($request->all(), [
+        'id'=>'required',
+        'program_studi' => 'required|string',
+        'deskripsi_persyaratan' => 'required|string',
+        'cover' => 'required|image|max:2048',
+    ], [
+        'program_studi.required' => 'Kolom Program Studi harus diisi.',
+        'deskripsi_persyaratan.required' => 'Kolom Deskripsi Persyaratan harus diisi.',
+        'cover.required' => 'Harap unggah gambar cover.',
+        'cover.image' => 'File harus berupa gambar.',
+        'cover.max' => 'Ukuran gambar terlalu besar, maksimal 2MB.'
     ]);
+
+    if ($validator->fails()) {
+        return redirect()->route('admisi-panel')
+            ->withErrors($validator)
+            ->withInput()
+            ->with('error', 'Terjadi kesalahan: ' . $validator->errors()->first());
+    }
 
     try {
         $auth = Auth::user();
@@ -594,13 +863,19 @@ public function deleteprodi($id)
 
 public function addBiayaPendaftaran(Request $request)
 {
-    $request->validate([
+    $validator = Validator::make($request->all(), [
         'jlr_Pen'=>'required',
         'biayaPen'=>'required',
     ],[
         'jlr_Pen.required' => 'Kolom Jalur Pendaftaran harus diisi.',
         'biayaPen.required' => 'Kolom Biaya Pendaftaran harus diisi.',
     ]);
+    if ($validator->fails()) {
+        return redirect()->route('admisi-panel')
+            ->withErrors($validator)
+            ->withInput()
+            ->with('error', 'Terjadi kesalahan: ' . $validator->errors()->first());
+    }
 
     try {
         BiayaPendaftaranModel::create([
@@ -617,7 +892,7 @@ public function addBiayaPendaftaran(Request $request)
 
 public function editBiayaPendaftaran(Request $request)
 {
-    $request->validate([
+    $validator = Validator::make($request->all(),[
         'id' => 'required',
         'jlr_Pen' => 'required',
         'biayaPen' => 'required',
@@ -625,6 +900,13 @@ public function editBiayaPendaftaran(Request $request)
         'jlr_Pen.required' => 'Kolom Jalur Pendaftaran harus diisi.',
         'biayaPen.required' => 'Kolom Biaya Pendaftaran harus diisi.',
     ]);
+
+    if ($validator->fails()) {
+        return redirect()->route('admisi-panel')
+            ->withErrors($validator)
+            ->withInput()
+            ->with('error', 'Terjadi kesalahan: ' . $validator->errors()->first());
+    }
 
     try {
         $biayaPendaftaran = BiayaPendaftaranModel::find($request->id);
@@ -662,7 +944,7 @@ public function editBiayaPendaftaran(Request $request)
     
     public function addPedomanPendaftaran(Request $request)
 {
-    $request->validate([
+    $validator = Validator::make($request->all(),[
         'PedomanPendaftaran' => 'required|mimes:pdf,doc,docx|max:2048',
     ], [
         'PedomanPendaftaran.required' => 'Harap isi Pedoman Pendaftaran.',
@@ -670,6 +952,12 @@ public function editBiayaPendaftaran(Request $request)
         'PedomanPendaftaran.max' => 'Ukuran file tidak boleh lebih dari 2MB.',
     ]);
 
+    if ($validator->fails()) {
+        return redirect()->route('admisi-panel')
+            ->withErrors($validator)
+            ->withInput()
+            ->with('error', 'Terjadi kesalahan: ' . $validator->errors()->first());
+    }
     try {
         $namaFile = time().'.'.$request->PedomanPendaftaran->extension();
 
@@ -722,11 +1010,20 @@ public function downloadPedoman()
 
 public function addPdfbiaya(Request $request)
 {
-    $request->validate([
+    $validator = Validator::make($request->all(),[
         'PdfbiayaPendaftaran' => 'required|mimes:pdf,doc,docx|max:2048',
     ], [
-        'PdfbiayaPendaftaran.required' => 'Harap isi.',
+        'PdfbiayaPendaftaran.required' => 'Harap isi Pedoman Pendaftaran.',
+        'PdfbiayaPendaftaran.mimes' => 'Tipe file harus berupa PDF, DOC, atau DOCX.',
+        'PdfbiayaPendaftaran.max' => 'Ukuran file tidak boleh lebih dari 2MB.',
     ]);
+
+    if ($validator->fails()) {
+        return redirect()->route('admisi-panel')
+            ->withErrors($validator)
+            ->withInput()
+            ->with('error', 'Terjadi kesalahan: ' . $validator->errors()->first());
+    }
 
     try {
         $namaFile = time() . '.' . $request->PdfbiayaPendaftaran->extension();
@@ -781,7 +1078,7 @@ public function downloadPdfBiaya()
 
 public function addBiayaStudi(Request $request)
 {
-    $request->validate([
+    $validator = Validator::make($request->all(),[
         'fakultas' => 'required|string',
         'pro_stud' => 'nullable|string',
         'biaya_spp' => 'required|numeric',
@@ -804,6 +1101,13 @@ public function addBiayaStudi(Request $request)
         'perlengkapan_makan.numeric' => 'Kolom Perlengkapan Makan harus berupa angka.',
     ]);
 
+    if ($validator->fails()) {
+        return redirect()->route('admisi-panel')
+            ->withErrors($validator)
+            ->withInput()
+            ->with('error', 'Terjadi kesalahan: ' . $validator->errors()->first());
+    }
+
     try {
         BiayaStudi::create([
             'fakultas' => $request->fakultas,
@@ -824,7 +1128,7 @@ public function addBiayaStudi(Request $request)
 
 public function editBiayaStudi(Request $request)
 {
-    $request->validate([
+    $validator = Validator::make($request->all(),[
         'id' => 'required',
         'fakultas' => 'required',
         'pro_stud' => 'required',
@@ -843,6 +1147,13 @@ public function editBiayaStudi(Request $request)
         'perlengkapan_mahasiswa.required' => 'Kolom Perlengkapan Mahasiswa harus diisi.',
         'perlengkapan_makan.required' => 'Kolom Perlengkapan Makan harus diisi.',
     ]);
+
+    if ($validator->fails()) {
+        return redirect()->route('admisi-panel')
+            ->withErrors($validator)
+            ->withInput()
+            ->with('error', 'Terjadi kesalahan: ' . $validator->errors()->first());
+    }
 
     try {
         BiayaStudi::where('id', $request->id)->update([

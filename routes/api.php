@@ -49,7 +49,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/add-email', [AdminController::class, 'addEmail'])->name('addEmail');
     Route::post('/edit-email', [AdminController::class, 'editEmail'])->name('editEmail');
     Route::post('/add-mbkm-non-kompetisi', [AdmisiController::class, 'addMbkmNonKompetisi'])->name('addMbkmNonKompetisi');
+    Route::post('/edit-mbkm-non-kompetisi', [AdmisiController::class, 'updateMbkmNonKompetisi'])->name('editMbkmNonKompetisi');
     Route::post('/add-mbkm-kompetisi', [AdmisiController::class, 'addMbkmKompetisi'])->name('addMbkmKompetisi');
+    Route::post('/edit-mbkm-kompetisi', [AdmisiController::class, 'updateMbkmKompetisi'])->name('editMbkmKompetisi');
     Route::post('/add-akreditasi-institusi', [AdminPanelController::class, 'addAkreditasiInstitusi'])->name('addAkreditasi');
     Route::delete('/delete-email', [AdminController::class, 'removeEmail'])->name('removeEmail');
     Route::delete('/remove-mbkm', [AdmisiController::class, 'removeMbkm'])->name('removeMbkm');
@@ -57,9 +59,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('/remove-no-telp', [AdminPanelController::class, 'removeNomorTelepon'])->name('removeNomorTelepon');
     Route::delete('/remove-akreditasi', [AdminPanelController::class, 'removeAkreditasi'])->name('removeAkreditasi');
     Route::post('/add-nomor-telepon', [AdminPanelController::class, 'addNomorTelepon'])->name('addNomorTelepon');
-    Route::post('/add-jadwal-ujian', [JadwalUjianController::class, 'addJadwalUjian'])->name('addJadwalUjian');
-    Route::post('/edit-jadwal-ujian', [JadwalUjianController::class, 'editJadwalUjian'])->name('editJadwalUjian');
-    Route::delete('/delete-jadwal-ujian', [JadwalUjianController::class, 'removeJadwalUjian'])->name('removeJadwalUjian');
+    Route::post('/add-jadwal-ujian', [AdmisiController::class, 'addJadwalUjian'])->name('addJadwalUjian');
+    Route::post('/edit-jadwal-ujian', [AdmisiController::class, 'editJadwalUjian'])->name('editJadwalUjian');
+    Route::delete('/delete-jadwal-ujian', [AdmisiController::class, 'removeJadwalUjian'])->name('removeJadwalUjian');
     Route::post('/addjalurpendaftaran', [AdmisiController::class,'addJalur'])->name('addJalur');
     Route::delete('/remove-jalur', [AdmisiController::class, 'removeJalur'])->name('removeJalur');
     Route::post('/addjadwalpendaftaran', [AdmisiController::class,'addJadwalPendaftaran'])->name('addJadwalPendaftaran');
@@ -75,6 +77,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/pdf-biaya', [AdmisiController::class, 'addPdfbiaya'])->name('pdf_biaya');
     Route::post('/addDropdown', [\App\Http\Controllers\DropdownAdmisiController::class, 'addDropdown'])->name('addDropdown');
     Route::post('/editDropdown', [\App\Http\Controllers\DropdownAdmisiController::class, 'editDropdown'])->name('editDropdown');
+    Route::delete('/deleteDropdown', [\App\Http\Controllers\DropdownAdmisiController::class, 'deleteDropdown'])->name('deleteDropdown');
     Route::post('/add-biaya-studi', [AdmisiController::class, 'addBiayaStudi'])->name('add_biaya_studi');
     Route::post('/edit-biaya-studi', [AdmisiController::class, 'editBiayaStudi'])->name('edit_biaya_studi');
     Route::delete('/remove-biaya-studi', [AdmisiController::class, 'removeBiayaStudi'])->name('remove_biaya_studi');
