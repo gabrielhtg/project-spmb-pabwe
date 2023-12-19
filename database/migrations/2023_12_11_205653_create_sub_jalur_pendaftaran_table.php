@@ -11,16 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('admin', function (Blueprint $table) {
+        Schema::create('sub_jalur_pendaftaran', function (Blueprint $table) {
             $table->id();
-            $table->string('username', 20)->unique();
-            $table->string('password', 80);
-            $table->string('firstname', 25);
-            $table->string('lastname', 25);
-            $table->boolean('master_admin')->nullable(true)->default(false);
+            $table->string('title', 30)->nullable(true);
+            $table->string('jalurPen', 10)->nullable(true);
+            $table->string('deskripsi_jalur', 1500)->nullable(true);
             $table->string('created_by', 20)->nullable(true);
-            $table->string('profile_pict', 100)->nullable(true);
+            $table->string('updated_by', 20)->nullable(true);
             $table->timestamps();
+
         });
     }
 
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('admin');
+        Schema::dropIfExists('sub_jalur_pendaftaran');
     }
 };
