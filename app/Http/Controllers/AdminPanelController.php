@@ -278,7 +278,7 @@ class AdminPanelController extends Controller
     {
         $admin = Auth::user();
         $data = [
-            'indexActive' => 2,
+            'indexActive' => 3,
             'admin' => $admin
         ];
         return view('admin-panel.sub_admin_panel.pengumumanAddpanel', $data);
@@ -683,7 +683,7 @@ class AdminPanelController extends Controller
         $courses = Course::all();
 
         $data = [
-            'indexActive' => 2,
+            'indexActive' => 4,
             'admin' => $admin,
             'faculties'=>$faculties,
             'majors'=>$majors,
@@ -708,7 +708,7 @@ class AdminPanelController extends Controller
         }
 
         $data = [
-            'indexActive' => 2,
+            'indexActive' => 5,
             'admin' => $admin,
             'dataPrestasi' => Prestasi::orderBy('created_at', 'desc')->get(),
             'headerPrestasi' => [
@@ -725,7 +725,7 @@ class AdminPanelController extends Controller
         $admin = Auth::user();
 
         $data = [
-            'indexActive' => 2,
+            'indexActive' => 6,
             'admin' => $admin,
             'dataTestimoni' => Testimoni::orderBy('created_at', 'desc')->get(),
         ];

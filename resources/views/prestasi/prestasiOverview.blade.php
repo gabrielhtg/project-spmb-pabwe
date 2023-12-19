@@ -8,7 +8,7 @@
             height:450px */
             height:95%;
         }
-    
+
     .mx-auto h2{
         margin-bottom: 30px;
     }

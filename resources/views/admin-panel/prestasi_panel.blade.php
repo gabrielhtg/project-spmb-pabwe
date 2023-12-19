@@ -41,7 +41,7 @@
 
         <div class="card">
             <div id="item-2" class="card">
-                <div class="card-header bg-primary text-white">
+                <div class="card-header bg-primary text-white text-center">
                     <span class="fs-5">Header Prestasi</span>
                 </div>
                 <div class="card-body">
