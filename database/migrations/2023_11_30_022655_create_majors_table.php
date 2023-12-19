@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('kode_prodi')->unique();
             $table->string('nama');
-            $table->string('kode_fakultas'); // Sesuaikan dengan nama kolom di tabel 'faculties'
-            $table->foreign('kode_fakultas')->references('kode_fakultas')->on('faculties')->onDelete('cascade');
+            $table->unsignedBigInteger('kode_fakultas');
+            $table->foreign('kode_fakultas')->references('id')->on('faculties')->onDelete('cascade');
             $table->text('deskripsi');
             $table->string('gambar');
             $table->text('visi');

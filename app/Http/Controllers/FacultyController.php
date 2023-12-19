@@ -14,7 +14,11 @@ use App\Models\AkreditasiInstitutiModel;
 use App\Models\AkreditasiSectionModel;
 use App\Models\NomorTeleponModel;
 use App\Models\EmailModel;
+use Illuminate\Support\Facades\DB;
 
+use Illuminate\Validation\ValidationException;
+
+        
 
 class FacultyController extends Controller
 {
@@ -31,7 +35,6 @@ class FacultyController extends Controller
         $dataEmail = EmailModel::all();
         $dataAkreditasiInstitusi = AkreditasiInstitutiModel::all()->sortByDesc('tahun_akreditasi')->first();
 
-
         $data = [
             'dataInstitusi' => $dataInstitusi,
             'faculties' => $faculty,
@@ -43,47 +46,52 @@ class FacultyController extends Controller
             'dataEmail' => $dataEmail,
             'dataAkreditasiInstitusi' => $dataAkreditasiInstitusi,
             'employees' => $employees,
-            
         ];
 
         return view('program.fakultas', $data);
     }
 
-
     public function store(Request $request)
-    {
-        $request->validate([
-            'kode_fakultas' => 'required|unique:faculties|max:255',
-            'nama' => 'required|max:255',
-            'deskripsi' => 'required',
-            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120', 
-            'lokasi' => 'required|max:255',
-            'visi' => 'required',
-            'misi' => 'required',
-        ]);
+{
+    $request->validate([
+        'nama' => 'required|max:255|unique:faculties',
+        'deskripsi' => 'required',
+        'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120',
+        'lokasi' => 'required|max:255',
+        'visi' => 'required',
+        'misi' => 'required',
+    ], [
+        'nama.required' => 'Nama Fakultas tidak boleh kosong',
+        'nama.unique' => 'Nama Fakultas sudah ada',
+        'deskripsi.required' => 'Deskripsi tidak boleh kosong',
+        'gambar.required' => 'Gambar tidak boleh kosong',
+        'gambar.image' => 'File harus berupa gambar',
+        'gambar.mimes' => 'Format gambar harus jpeg, png, jpg, atau gif',
+        'gambar.max' => 'Ukuran gambar tidak boleh lebih dari 5 MB',
+        'lokasi.required' => 'Lokasi tidak boleh kosong',
+        'visi.required' => 'Visi tidak boleh kosong',
+        'misi.required' => 'Misi tidak boleh kosong',
+    ]);
 
-        // $gambarPath = $request->file('gambar')->store('img/program', 'public');
-        $extension = $request->file('gambar')->getClientOriginalExtension();
-        $gambarPath = $request->nama.'-'.now()->timestamp.'.'.$extension;
-        $request->file('gambar')->move(public_path('img/program/faculty/'), $gambarPath);
+    $extension = $request->file('gambar')->getClientOriginalExtension();
+    $gambarPath = $request->nama.'-'.now()->timestamp.'.'.$extension;
+    $request->file('gambar')->move(public_path('img/program/faculty/'), $gambarPath);
 
-        // Create a new Faculty instance
-        $faculty = new Faculty([
-            'kode_fakultas' => $request->get('kode_fakultas'),
-            'nama' => $request->get('nama'),
-            'deskripsi' => $request->get('deskripsi'),
-            'gambar' => $gambarPath, 
-            'lokasi' => $request->get('lokasi'),
-            'visi' => $request->get('visi'),
-            'misi' => $request->get('misi'),
-        ]);
+    $faculty = new Faculty([
+        'nama' => $request->get('nama'),
+        'deskripsi' => $request->get('deskripsi'),
+        'gambar' => $gambarPath,
+        'lokasi' => $request->get('lokasi'),
+        'visi' => $request->get('visi'),
+        'misi' => $request->get('misi'),
+    ]);
+
+    $faculty->save();
 
 
-        $faculty->save();
 
-        return redirect('admin-panel/program')
-                        ->with('success', 'Faculty created successfully!');
-    }
+    return redirect('admin-panel/program')->with('success', 'Faculty created successfully!');
+}
 
     public function edit($id)
     {
@@ -102,8 +110,8 @@ class FacultyController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'kode_fakultas' => 'required|unique:faculties,kode_fakultas,' . $id,
-            'nama' => 'required|max:255',
+            // 'kode_fakultas' => 'required|unique:faculties,kode_fakultas,' . $id,
+            'nama' => 'required|max:255|unique:faculties,nama,' . $id,
             'deskripsi' => 'required',
             'lokasi' => 'required|max:255',
             'visi' => 'required',
@@ -122,16 +130,33 @@ class FacultyController extends Controller
     
         // Update faculty data
         $faculty->update([
-            'kode_fakultas' => $request->get('kode_fakultas'),
+            // 'kode_fakultas' => $request->get('kode_fakultas'),
             'nama' => $request->get('nama'),
             'deskripsi' => $request->get('deskripsi'),
             'lokasi' => $request->get('lokasi'),
             'visi' => $request->get('visi'),
             'misi' => $request->get('misi'),
+        ],[
+            // 'kode_fakultas.required' => 'Kode Fakultas tidak boleh kosong',
+            'kode_fakultas.unique' => 'Kode Fakultas sudah ada',
+            'nama.required' => 'Nama Fakultas tidak boleh kosong',
+            'nama.unique' => 'Nama Fakultas sudah ada',
+            'deskripsi.required' => 'Deskripsi tidak boleh kosong',
+            'gambar.required' => 'Gambar tidak boleh kosong',
+            'gambar.image' => 'File harus berupa gambar',
+            'gambar.mimes' => 'Format gambar harus jpeg, png, jpg, atau gif',
+            'gambar.max' => 'Ukuran gambar tidak boleh lebih dari 5 MB',
+            'lokasi.required' => 'Lokasi tidak boleh kosong',
+            'visi.required' => 'Visi tidak boleh kosong',
+            'misi.required' => 'Misi tidak boleh kosong',
         ]);
     
         // Update gambar if provided
         if ($request->hasFile('gambar')) {
+            $request->validate([
+                'gambar' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            ]);
+    
             // Hapus gambar lama jika ada
             if ($oldGambar) {
                 $gambarPath = public_path('img/program/faculty/') . $oldGambar;
@@ -150,20 +175,36 @@ class FacultyController extends Controller
         return redirect('admin-panel/program')->with('success', 'Faculty updated successfully!');
     }
     
-
     public function destroy(string $id)
-    {
-        $faculty = Faculty::find($id);
+            {
+                $faculty = Faculty::find($id);
 
-        if (!$faculty) {
-            return redirect('admin-panel/program')->with('error', 'Faculty not found!');
-        }
+                if (!$faculty) {
+                    return redirect('admin-panel/program')->with('error', 'Faculty not found!');
+                }
 
-        // Additional logic (e.g., delete related records) if needed
+                // Check if the faculty is used as a foreign key in the 'majors' table
+                $isUsedAsForeignKey = DB::table('majors')->where('kode_fakultas', $faculty->kode_fakultas)->exists();
 
-        $faculty->delete();
+                if ($isUsedAsForeignKey) {
+                    return redirect('admin-panel/program')->withErrors(['Kode Fakultas' => 'Kode Fakultas dipakai sebagai foreign key. Tidak dapat menghapus fakultas ini.']);
+                }
 
-        return redirect('admin-panel/program')->with('success', 'Faculty deleted successfully!');
-    }
+                // Additional logic (e.g., delete related records) if needed
+
+                // Simpan nama gambar sebelum dihapus
+                $gambarPath = public_path('img/program/faculty/') . $faculty->gambar;
+
+                // Hapus fakultas
+                $faculty->delete();
+
+                // Hapus gambar dari direktori jika ada
+                if (file_exists($gambarPath)) {
+                    unlink($gambarPath);
+                }
+
+                return redirect('admin-panel/program')->with('success', 'Faculty deleted successfully!');
+            }
+
 
 }

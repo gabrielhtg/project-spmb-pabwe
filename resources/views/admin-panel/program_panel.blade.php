@@ -22,6 +22,27 @@
 
 {{-- FAKULTAS SUBPAGE --}}
 <section id="fakultas-subpage" class="m-3">
+        @if($errors->any())
+            <div class="pt-3">
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        @endif
+    
+        @if(session('success'))
+            <div class="pt-3">
+                <div class="alert alert-success">
+                    <h6>{{ session('success') }}</h6>
+                </div>
+            </div>
+        @endif
+
+
 
     {{-- Button Tambah Fakultas --}}
     <button type="button" class="btn btn-success mb-2" data-bs-toggle="modal" data-bs-target="#myModal">
@@ -55,7 +76,7 @@
                             <td class="text-break" style="max-width: 200px;">
                                 {{ \Illuminate\Support\Str::limit($faculty->nama, 10, $end='...') }}
                             </td>
-                            <td class="text-center">{{ $faculty->kode_fakultas }}</td>
+                            <td class="text-center">{{ $faculty->id }}</td>
                             <td class="text-break" style="max-width: 200px;">
                                 {{ \Illuminate\Support\Str::limit(strip_tags($faculty->deskripsi), 50, $end='...') }}
                             </td>
@@ -69,7 +90,7 @@
                                 {{ \Illuminate\Support\Str::limit(strip_tags($faculty->misi), 50, $end='...') }}
                             </td>
                             <td class="text-center">
-                                <img src="{{ asset('storage/' . $faculty->gambar) }}" alt="Gambar Fakultas" style="max-width: 100px;">
+                                <img src="{{ asset('img/program/faculty/'. $faculty->gambar) }}" alt="Gambar Fakultas" style="max-width: 100px;">
                             </td>
                             <td class="text-center" style="min-width: 120px;">
                                 
@@ -110,13 +131,13 @@
                                                         Nama tidak boleh kosong
                                                     </div>
                                                 </div>
-                                                <div class="mb-3">
+                                                <!-- <div class="mb-3">
                                                     <label for="input_kode_fakultas" class="form-label">Kode Fakultas</label>
                                                     <input type="text" class="form-control" id="input_kode_fakultas" name="kode_fakultas" placeholder="{{ old('kode_fakultas', $faculty->kode_fakultas) }}" value="{{ old('kode_fakultas', $faculty->kode_fakultas) }}" required>
                                                     <div class="invalid-feedback">
                                                         Kode Fakultas tidak boleh kosong
                                                     </div>
-                                                </div>
+                                                </div> -->
                                                 <div class="mb-3">
                                                     <label for="input_deskripsi_fakultas" class="form-label">Deskripsi</label>
                                                     <textarea class="form-control" id="edit_deskripsi_fakultas_{{ $faculty->id }}" name="deskripsi" placeholder="{{ old('deskripsi', $faculty->deskripsi) }}">{{ old('deskripsi', $faculty->deskripsi) }}</textarea>
@@ -139,7 +160,7 @@
                                                 <div class="mb-3">
                                                     <label for="input_sertifikat_akreditasi" class="form-label">Gambar</label>
                                                     <input class="form-control" type="file" id="input_sertifikat_akreditasi" name="gambar" multiple >
-                                                    <img src="{{ asset('storage/' . $faculty->gambar) }}" alt="Gambar Fakultas" style="max-width: 100px;">
+                                                    <img src="{{ asset('img/program/faculty/' . $faculty->gambar) }}" alt="Gambar Fakultas" style="max-width: 100px;">
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
@@ -168,7 +189,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="input_kode_fakultas" class="form-label">Kode Fakultas</label>
-                                                <input type="text" class="form-control" id="input_kode_fakultas" name="kode_fakultas" value="{{ old('kode_fakultas', $faculty->kode_fakultas) }}" disabled readonly>
+                                                <input type="text" class="form-control" id="input_kode_fakultas" name="kode_fakultas" value="{{ old('kode_fakultas', $faculty->id) }}" disabled readonly>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="input_deskripsi_fakultas" class="form-label">Deskripsi</label>
@@ -188,7 +209,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="input_sertifikat_akreditasi" class="form-label">Gambar</label><br>
-                                                <img src="{{ asset('storage/' . $faculty->gambar) }}" alt="Gambar Fakultas" style="max-width: 100px;">
+                                                <img src="{{ asset('img/program/faculty/' . $faculty->gambar) }}" alt="Gambar Fakultas" style="max-width: 100px;">
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Tutup</button>
@@ -224,13 +245,13 @@
                                     Nama Fakultas tidak boleh kosong
                                 </div>
                             </div>
-                            <div class="mb-3">
+                            <!-- <div class="mb-3">
                                 <label for="input_kode_fakultas" class="form-label">Kode Fakultas</label>
                                 <input type="text" class="form-control" id="input_kode_fakultas" name="kode_fakultas" placeholder="Cth: 1, 2, 3..." required>
                                 <div class="invalid-feedback">
                                     Kode Fakultas tidak boleh kosong
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="mb-3">
                                 <label for="input_deskripsi_fakultas" class="form-label">Deskripsi</label>
                                 <textarea class="form-control" id="deskripsi_fakultas" name="deskripsi" placeholder="Tuliskan deskripsi fakultas..."></textarea>
@@ -299,9 +320,8 @@
             <span>Data Prodi</span>
         </div>
         <div class="card-body d-flex flex-column">
-            <form action="">
                 <table class="table text-start align-middle table-striped table-bordered">
-                    <thead class="align-middle">
+                    <thead class="align-middle ">
                     <tr class="text-center">
                         <th scope="col">No</th>
                         <th scope="col">Nama</th>
@@ -338,7 +358,7 @@
                                     {{ \Illuminate\Support\Str::limit(strip_tags($major->deskripsi), 50, $end='...') }}
                                 </td>
                                 <td class="text-break" style="max-width: 200px;">
-                                    {{ \Illuminate\Support\Str::limit($major->gambar, 10, $end='...') }}
+                                    <img src="{{ asset('img/program/major/'. $major->gambar) }}" alt="Gambar Fakultas" style="max-width: 100px;">
                                 </td>
                                 <td class="text-break" style="max-width: 200px;">
                                     {{ \Illuminate\Support\Str::limit(strip_tags($major->visi), 50, $end='...') }}
@@ -368,15 +388,19 @@
                                     {{ \Illuminate\Support\Str::limit($major->akreditasi, 10, $end='...') }}
                                 </td>
                                 <td class="text-center" style="min-width: 120px; width: 120px">
-                                    <button type="button" class="btn btn-primary my-1" data-bs-toggle="modal" data-bs-target="#detailProdi-{{ $major->id }}" >
-                                        <i class="bi bi-info-circle"></i>
-                                    </button><br>
-                                    <button type="button" class="btn btn-warning my-1" data-bs-toggle="modal" data-bs-target="#popupUpdateProdi-{{ $major->id }}" >
-                                        <i class="bi bi-pen"></i>
-                                    </button><br>
-                                    <button type="submit" class="btn btn-danger my-1" onclick="deleteMajor({{ $major->id }})">
-                                        <i class="bi bi-trash"></i>
-                                    </button>
+                                        <form action="{{ route('admin.program.major.destroy', $major->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detailProdi-{{ $major->id }}" >
+                                                <i class="bi bi-info-circle"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#popupUpdateProdi-{{ $major->id }}" >
+                                                <i class="bi bi-pen"></i>
+                                            </button>
+                                            <button type="submit" class="btn btn-danger">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </form>
                                 </td>
                             </tr>
 
@@ -420,7 +444,7 @@
                                                     <div class="mb-3">
                                                         <label for="input_sertifikat_akreditasi" class="form-label">Gambar</label>
                                                         <input class="form-control" type="file" id="editGambarProdi" name="gambar" value="{{ $major->gambar }}" multiple required>
-                                                        <img src="{{ asset('storage/' . $major->gambar) }}" alt="Gambar Fakultas" style="max-width: 100px;">
+                                                        <img src="{{ asset('img/program/major/'. $major->gambar) }}" alt="Gambar Fakultas" style="max-width: 100px;">
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="input_lokasi_fakultas" class="form-label">Visi</label>
@@ -520,7 +544,7 @@
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="input_sertifikat_akreditasi" class="form-label">Gambar</label><br>
-                                                    <img src="{{ asset('storage/' . $major->gambar) }}" alt="Gambar Fakultas" style="max-width: 100px;">
+                                                    <img src="{{ asset('img/program/major/'. $major->gambar) }}" alt="Gambar Fakultas" style="max-width: 100px;">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="input_lokasi_fakultas" class="form-label">Visi</label>
@@ -617,7 +641,6 @@
                         @endforeach
                     </tbody>
                 </table>
-            </form>
         </div>
     </div>
 
@@ -764,11 +787,14 @@
                                 <td>{{ $employee->nidn }}</td>
                                 <td>{{ $employee->jabatan }}</td>
                                 <td>{{ $employee->pendidikan }}</td>
-                                <td>{{ $employee->gambar }}</td>
+                                <td><img src="{{ asset('img/program/employee/'. $employee->gambar) }}" alt="Gambar Fakultas" style="max-width: 100px;"></td>
                                 <td style="min-width: 120px; width: 120px">
                                     <form action="{{ route('admin.program.employee.destroy', $employee->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detailDosen-{{ $employee->id }}" >
+                                                <i class="bi bi-info-circle"></i>
+                                            </button>
                                         <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editDosen-{{ $employee->id }}">
                                             <i class="bi bi-pen"></i>
                                         </button>
@@ -805,6 +831,17 @@
                                                         </select>
                                                     </div>
                                                     <div class="mb-3">
+                                                        <label for="kode_fakultas" class="form-label">Kode Fakultas</label>
+                                                        <select class="form-select" id="kode_fakultas" name="kode_fakultas" aria-label="Default select example">
+                                                            <option value="{{ ($employee->major)->faculty->id }}">{{ ($employee->major)->faculty->nama }}</option>
+                                                            @foreach ($faculties as $faculty)
+                                                                @if ($faculty->id != ($employee->major)->faculty->id)
+                                                                    <option value="{{ $faculty->id }}">{{ $faculty->nama }}</option>
+                                                                @endif
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                    <div class="mb-3">
                                                         <label for="nama" class="form-label">Nama</label>
                                                         <input type="text" class="form-control" id="nama" name="nama" value="{{ $employee->nama }}">
                                                     </div>
@@ -814,7 +851,15 @@
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="jabatan" class="form-label">Jabatan</label>
-                                                        <input type="text" class="form-control" id="jabatan" name="jabatan" value="{{ $employee->jabatan }}">
+                                                        <select class="form-select" id="jabatan" name="jabatan" aria-label="Default select example">
+                                                            <option value="{{ $employee->jabatan }}" selected>{{ $employee->jabatan }}</option>
+                                                            <option value="Rektor">Rektor</option>
+                                                            <option value="Dekan">Dekan</option>
+                                                            <option value="Kaprodi">Kaprodi</option>
+                                                            <option value="Dosen">Dosen</option>
+                                                            <option value="Staff">Staff</option>
+                                                            <option value="Teaching Assistant">Teaching Assistant</option>
+                                                        </select>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="pendidikan" class="form-label">Pendidikan</label>
@@ -823,6 +868,7 @@
                                                     <div class="mb-3">
                                                         <label for="gambar" class="form-label">Gambar</label>
                                                         <input type="file" class="form-control" id="gambar" name="gambar" value="{{ $employee->gambar }}">
+                                                        <img src="{{ asset('img/program/employee/'. $employee->gambar) }}" alt="Gambar Fakultas" style="max-width: 100px;">
                                                     </div>
                                                 </div>
                                             </div>
@@ -836,6 +882,51 @@
                                     </div>
                                 </div>
                             </div>
+
+
+                            <!-- Detail Dosen/Staff -->
+                            <div class="modal fade" id="detailDosen-{{ $employee->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-xl">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title fw-bold" id="exampleModalLabel">Detail Dosen/Staff</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="card-body">
+                                                <div class="mb-3">
+                                                    <label for="input_nama_dosen" class="form-label">Nama Dosen/Staff</label>
+                                                    <input type="text" class="form-control" id="input_nama_dosen" name="nama" value="{{ old('nama', $employee->nama) }}" disabled readonly>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="input_kode_prodi" class="form-label">Prodi</label>
+                                                    <input type="text" class="form-control" id="input_kode_prodi" name="kode_prodi" value="{{ optional($employee->major)->nama }}" disabled readonly>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="input_nidn" class="form-label">NIDN</label>
+                                                    <input type="text" class="form-control" id="input_nidn" name="nidn" value="{{ $employee->nidn }}" disabled readonly>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="input_jabatan" class="form-label">Jabatan</label>
+                                                    <input type="text" class="form-control" id="input_jabatan" name="jabatan" value="{{ $employee->jabatan }}" disabled readonly>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="input_pendidikan" class="form-label">Pendidikan</label>
+                                                    <input type="text" class="form-control" id="input_pendidikan" name="pendidikan" value="{{ $employee->pendidikan }}" disabled readonly>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="input_gambar_dosen" class="form-label">Gambar</label><br>
+                                                    <img src="{{ asset('img/program/employee/' . $employee->gambar) }}" alt="Gambar Dosen/Staff" style="max-width: 100px;">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Tutup</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         @endforeach
                     </tbody>
                 </table>
@@ -843,8 +934,7 @@
         </div>
     </div>
 
-    <!-- Add Dosen/Staff -->
-<div class="modal fade" id="addDosen" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="addDosen" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
@@ -855,13 +945,25 @@
                 @csrf
                 <div class="modal-body">
                     <div class="card-body">
-                        <div class="mb-3">
-                            <label for="kode_prodi" class="form-label">Prodi</label>
-                            <select class="form-select" id="kode_prodi" name="kode_prodi" aria-label="Default select example">
-                                <option selected>Pilih Prodi</option>
+                    <div class="mb-3">
+                            <label for="kode_prodi" class="form-label">Kode Prodi</label>
+                            <select class="form-select" id="kode_prodi" name="kode_prodi" aria-label="Default select example" required>
+                                <option selected disabled>Pilih Prodi</option>
                                 @foreach ($majors as $major)
-                                    <option value="{{ $major->kode_prodi }}">{{ $major->nama }}</option>
+                                    <option value="{{ $major->kode_prodi }}" data-fakultas="{{ $major->faculty->id }}">{{ $major->nama }}</option>
                                 @endforeach
+                            </select>
+                        </div>
+
+                        <!-- Kode Fakultas -->
+                        <div class="mb-3">
+                            <label for="kode_fakultas" class="form-label">Kode Fakultas</label>
+                            <select class="form-select" id="kode_fakultas" name="kode_fakultas" aria-label="Default select example" required>
+                            <option selected disabled>Pilih Fakultas</option>
+                            @foreach ($faculties as $faculty)
+                                    <option value="{{ $faculty->id }}">{{ $faculty->nama }}</option>
+                                @endforeach
+
                             </select>
                         </div>
                         <div class="mb-3">
@@ -874,16 +976,16 @@
                         </div>
                         <div class="mb-3">
                             <label for="jabatan" class="form-label">Jabatan</label>
-                            <select class="form-select" id="jabatan" name="jabatan" aria-label="Default select example">
+                            <select class="form-select" id="jabatan" name="jabatan" aria-label="Default select example" required>
                                 <option selected>Pilih Jabatan</option>
-                                
-                                    <option value="Rektor">Rektor</option>
-                                    <option value="Dekan">Dekan</option>
-                                    <option value="Kaprodi">Kaprodi</option>
-                                    <option value="Dosen">Dosen</option>
-                                    <option value="Staff">Staff</option>
-                                    <option value="Teaching Assistant">Teaching Assistant</option>
+                                <option value="Rektor">Rektor</option>
+                                <option value="Dekan">Dekan</option>
+                                <option value="Kaprodi">Kaprodi</option>
+                                <option value="Dosen">Dosen</option>
+                                <option value="Staff">Staff</option>
+                                <option value="Teaching Assistant">Teaching Assistant</option>
                             </select>
+                        </div>
                         <div class="mb-3">
                             <label for="pendidikan" class="form-label">Pendidikan</label>
                             <input type="text" class="form-control" id="pendidikan" name="pendidikan">
@@ -902,6 +1004,16 @@
         </div>
     </div>
 </div>
+
+
+
+
+
+
+
+
+
+
 
 
     
@@ -949,6 +1061,10 @@
                             <form action="{{ route('admin.program.course.destroy', $course->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
+                                        
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detailKursus-{{ $course->id }}" >
+                                                <i class="bi bi-info-circle"></i>
+                                            </button>
                                         <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editCourse-{{ $course->id }}">
                                             <i class="bi bi-pen"></i>
                                         </button>
@@ -975,9 +1091,9 @@
                                                         <label for="kode_prodi" class="form-label">Kode Prodi</label>
                                                         {{-- <input type="text" class="form-control" id="kode_prodi" name="kode_prodi" value="{{ optional($employee->major)->kode_prodi }}"> --}}
                                                         <select class="form-select" id="kode_prodi" name="kode_prodi" aria-label="Default select example">
-                                                            <option value="{{ ($employee->major)->kode_prodi }}">{{ ($employee->major)->nama }}</option>
+                                                            <option value="{{ ($course->major)->kode_prodi }}">{{ ($course->major)->nama }}</option>
                                                             @foreach ($majors as $major)
-                                                                @if ($major->kode_prodi != ($employee->major)->kode_prodi)
+                                                                @if ($major->kode_prodi != ($course->major)->kode_prodi)
                                                                     <option value="{{ $major->kode_prodi }}">{{ $major->nama }}</option>
                                                                 @endif
                                                             @endforeach
@@ -993,11 +1109,11 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="sks" class="form-label">Jumlah SKS</label>
-                                                <input type="number" class="form-control" id="sks" name="sks" value="{{ $course->sks }}">
+                                                <input type="number" class="form-control" id="sks" name="sks" value="{{ $course->sks }}" max="4" min="1">
                                             </div>
                                             <div class="mb-3">
                                                 <label for="semester" class="form-label">Semester</label>
-                                                <input type="number" class="form-control" id="semester" name="semester" value="{{ $course->semester }}">
+                                                <input type="number" class="form-control" id="semester" name="semester" value="{{ $course->semester }}" max="8" min="1">
                                             </div>
                                         </div>
                                     </div>
@@ -1011,6 +1127,45 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Detail Kursus -->
+                    <div class="modal fade" id="detailKursus-{{ $course->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title fw-bold" id="exampleModalLabel">Detail Kursus</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="card-body">
+                                        <div class="mb-3">
+                                            <label for="input_nama_kursus" class="form-label">Nama Kursus</label>
+                                            <input type="text" class="form-control" id="input_nama_kursus" name="nama" value="{{ $course->nama }}" disabled readonly>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="input_kode_mk" class="form-label">Kode MK</label>
+                                            <input type="text" class="form-control" id="input_kode_mk" name="kode_mk" value="{{ $course->kode_mk }}" disabled readonly>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="input_kode_prodi" class="form-label">Prodi</label>
+                                            <input type="text" class="form-control" id="input_kode_prodi" name="kode_prodi" value="{{ optional($course->major)->nama }}" disabled readonly>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="input_sks" class="form-label">Jumlah SKS</label>
+                                            <input type="text" class="form-control" id="input_sks" name="sks" value="{{ $course->sks }}" disabled readonly>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="input_semester" class="form-label">Semester</label>
+                                            <input type="text" class="form-control" id="input_semester" name="semester" value="{{ $course->semester }}" disabled readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Tutup</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     @endforeach
                     </tbody>
                 </table>
@@ -1055,11 +1210,11 @@
                         </div>
                         <div class="mb-3">
                             <label for="input_sks" class="form-label">Jumlah SKS</label>
-                            <input type="number" class="form-control" id="input_sks" name="sks">
+                            <input type="number" class="form-control" id="input_sks" name="sks" max="4" min="1">
                         </div>
                         <div class="mb-3">
                             <label for="input_semester" class="form-label">Semester</label>
-                            <input type="number" class="form-control" id="input_semester" name="semester">
+                            <input type="number" class="form-control" id="input_semester" name="semester" max="8" min="1">
                         </div>
 
                         <div class="modal-footer">
@@ -1276,6 +1431,8 @@
                     console.error(error);
                 });
         @endforeach
+ 
+
 
 </script>
 
