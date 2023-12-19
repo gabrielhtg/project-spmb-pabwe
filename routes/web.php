@@ -17,6 +17,7 @@ use App\Http\Controllers\MajorController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\TestimoniController;
+use App\Http\Controllers\HeaderPrestasiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +54,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/admisi-panel', [AdminPanelController::class, 'getAdmisiPanel'])->name('admisi-panel');
         Route::get('/edit-profile', [AdminPanelController::class, 'getEditProfile'])->name('edit-profile');
         Route::get('/admins', [AdminPanelController::class, 'getAddAdminView'])->name('admins');
+        Route::post('/prestasipanel', [AdminPanelController::class, 'setHeader'])->name('set-header-prestasi');
         Route::get('/prestasipanel', [AdminPanelController::class, 'getPrestasiPanel'])->name('prestasipanel');
         Route::get('/testimonipanel', [AdminPanelController::class, 'getTestimoniPanel'])->name('testimonipanel');
         Route::get('/logout', [AuthController::class, 'getLogout'])->name('logout');
@@ -90,6 +92,7 @@ Route::middleware('auth')->group(function () {
             /* Bagian Prestasi */
             Route::get('/', [AdminPanelController::class, 'getPrestasiPanel'])->name('prestasi.panel');
             Route::post('/add', [PrestasiController::class, 'postAddPrestasi'])->name('prestasi.add');
+            Route::post('/add-header', [HeaderPrestasiController::class, 'store'])->name('prestasiheader.add');
             Route::post('/edit', [PrestasiController::class, 'postEditPrestasi'])->name('prestasi.edit');
             Route::post('/delete', [PrestasiController::class, 'postDeletePrestasi'])->name('prestasi.delete');
         });

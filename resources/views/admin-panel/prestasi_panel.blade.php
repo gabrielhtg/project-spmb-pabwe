@@ -7,7 +7,41 @@
         <div class="card">
             <div id="item-2" class="card">
                 <div class="card-header bg-primary text-white">
-                    <span class="fs-5">Prestasi</span>
+                    <span class="fs-5">Header Prestasi</span>
+                </div>
+                <div class="card-body">
+                    <form action="{{ route('prestasiheader.add') }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <div class="mb-3">
+                            <label for="input_judul_header" class="form-label">Judul Header</label>
+                            <input type="text" class="form-control" id="input_judul_header" name="judul">
+                        </div>
+                        <div class="mb-3">
+                            <label for="input_deskripsi_header" class="form-label">Deskripsi</label>
+                            <textarea class="form-control" id="input_deskripsi_header" name="deskripsi"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="input_bg_hero" class="form-label">Foto</label>
+                            <div class="p-3 border mb-2 border-1 w-100 d-flex justify-content-center">
+                                <img src="" alt="bg image" style="width: 80%">
+                            </div>
+                            <input type="file" class="form-control" id="input_bg_hero" name="foto">
+                        </div>
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid p-3">
+        <div class="card">
+            <div id="item-2" class="card">
+                <div class="card-header bg-primary text-white">
+                    <span class="fs-5">Data Prestasi</span>
                 </div>
                 <div class="card-body d-flex flex-column">
                     @include('admin-panel.sub_admin_panel.tambah_prestasi')
@@ -67,11 +101,19 @@
                         @endforelse
                         </tbody>
                     </table>
-
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#input_deskripsi_header').summernote({
+                height: 100,
+                maxHeight: 250,
+            });
+        });
+    </script>
 
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>

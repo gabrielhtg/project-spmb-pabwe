@@ -38,7 +38,7 @@
                     <div class="mb-3">
                         <label for="gambar" class="form-label">Foto</label>
                         <input type="file" class="form-control" id="gambar"
-                               name="gambar" accept="image/png, image/gif, image/jpeg" />>
+                               name="gambar" accept="image/png, image/gif, image/jpeg" />
                     </div>
                 </div>
                 <div class="modal-footer">
