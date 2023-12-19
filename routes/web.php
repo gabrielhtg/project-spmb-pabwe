@@ -17,6 +17,9 @@ use App\Http\Controllers\MajorController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\TestimoniController;
+use App\Http\Controllers\FaqController;
+use App\Http\Controllers\formController;
+use App\Http\Controllers\AdminBeasiswaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,13 +38,7 @@ Route::get('/admisi', [DashboardController::class, 'getAdmisi'])->name('admisi')
 Route::get('/admisi/jalur-pendaftaran', [DashboardController::class, 'getJalurPendaftaran'])->name('jalur-pendaftaran');
 Route::get('/admisi/biaya-studi', [DashboardController::class, 'getBiayaStudi'])->name('biaya-studi');
 Route::get('/admisi/persyaratan-khusus', [DashboardController::class, 'getPersyaratanKhusus'])->name('persyaratan-khusus');
-
-
-Route::get('/faqs', function () {
-    return view('faq.faq');
-});
-
-Route::get('/beasiswa', [BeasiswaController::class, 'index'])->name('beasiswa.index');
+// Route::get('/beasiswa', [DashboardController::class, 'getviewBeasiswa'])->name('beasiswa');
 
 Route::get('/login', [AuthController::class, 'getLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'postLogin'])->name('post.login');
@@ -57,6 +54,13 @@ Route::middleware('auth')->group(function () {
         Route::get('/testimonipanel', [AdminPanelController::class, 'getTestimoniPanel'])->name('testimonipanel');
         Route::get('/logout', [AuthController::class, 'getLogout'])->name('logout');
         Route::get('/program', [AdminPanelController::class, 'getProgramPanel'])->name('program-panel');
+        Route::get('/faq-admin', [AdminPanelController::class, 'getFaqAdmin'])->name('faq-admin');
+        Route::get('/faq-admin-get', [AdminPanelController::class, 'getAddFaq'])->name('get.add-faq');
+        Route::post('/faq/edit', [AdminPanelController::class, 'postEditFaq'])->name('post.faq.edit');
+        Route::post('/tambah-faq', [AdminPanelController::class, 'postFaq'])->name('post.faq');
+        Route::delete('post-faq/{id}', [AdminPanelController::class, 'destroyFaq'])->name('post.destroyFaq');
+        Route::get('/form-panel', [AdminPanelController::class, 'getFormPanel'])->name('form-panel');
+        Route::get('/admin/beasiswa-panel', [AdminPanelController::class, 'beasiswa'])->name('admin.beasiswa.panel');
 
         Route::prefix('/admisi-panel')->group(function () {
             Route::post('/addjalurpendaftaran', [AdmisiController::class, 'addJalur'])->name('addJalur');
@@ -106,12 +110,20 @@ Route::get('/fasilitas', [FasilitasController::class, "getviewFasilitas"])->name
 
 Route::get('/pengumuman', [PengumumanController::class, 'getviewPengumuman'])->name("pengumuman");
 
-//----
-Route::get('/mitra/mitra', [MitraController::class, 'mitra'])->name('mitra.mitra');
+// Route team 05
+Route::get('/faq', [FaqController::class, 'getviewFaq'])->name("faq.faq");
+Route::get('/beasiswa', [BeasiswaController::class, 'getviewBeasiswa'])->name("beasiswa.beasiswa");
+Route::get('/mitra', [MitraController::class, 'getviewMitra'])->name('mitra.mitra');
+Route::get('/read-mitra-slider', [AdminPanelController::class, 'readMitraSlider']);
+Route::get('/form', [formController::class, 'form'])->name('chatbot.form');
+Route::post('/submit-form', [FormController::class, 'submitForm'])->name('submitForm');
+Route::post('/admin/beasiswa/create', [AdminBeasiswaController::class, 'store'])->name('admin.beasiswa.store');
+Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
+    Route::resource('beasiswa', BeasiswaController::class);
+});
+Route::put('/admin/beasiswa/update/{id}', [BeasiswaController::class, 'update'])->name('admin.beasiswa.update');
+Route::delete('/admin/beasiswa/destroy/{id}', [BeasiswaController::class, 'destroy'])->name('admin.beasiswa.destroy');
 
-Route::get('/form', function () {
-    return view('chatbot.form');
-})->name('form');
 
 
 // ROUTE PROGRAM STUDI [TEAM 02]

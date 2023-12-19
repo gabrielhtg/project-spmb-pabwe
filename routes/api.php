@@ -59,4 +59,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/add-jadwal-ujian', [JadwalUjianController::class, 'addJadwalUjian'])->name('addJadwalUjian');
     Route::post('/edit-jadwal-ujian', [JadwalUjianController::class, 'editJadwalUjian'])->name('editJadwalUjian');
     Route::delete('/delete-jadwal-ujian', [JadwalUjianController::class, 'removeJadwalUjian'])->name('removeJadwalUjian');
+    Route::post('/add-mitra', [AdminPanelController::class, 'addMitra'])->name('addMitra');
+    Route::post('/edit-mitra', [AdminPanelController::class, 'editMitra'])->name('editMitra');
+    Route::delete('/remove-mitra', [AdminPanelController::class, 'removeMitra'])->name('removeMitra');
 });

@@ -18,6 +18,7 @@ use App\Models\Lokasi;
 use App\Models\JenisTes;
 use App\Models\Testimoni;
 use Illuminate\Http\Request;
+use App\Models\MitraModel;
 
 class DashboardController extends Controller
 {
@@ -29,6 +30,7 @@ class DashboardController extends Controller
         $akreditasiDashboard = AkreditasiSectionModel::where('id', 1)->first();
         $dataNomorTelepon = NomorTeleponModel::all();
         $dataEmail = EmailModel::all();
+        $dataMitra = MitraModel::all();
         $dataAkreditasiInstitusi = AkreditasiInstitutiModel::all()->sortByDesc('tahun_akreditasi')->first();
 
         $data = [
@@ -41,6 +43,7 @@ class DashboardController extends Controller
             'dataEmail' => $dataEmail,
             'dataAkreditasiInstitusi' => $dataAkreditasiInstitusi,
             'dataTestimoni' => Testimoni::orderBy('created_at', 'desc')->take(8)->get(),
+            'dataMitra' => $dataMitra,
         ];
 
         return view('dashboard/dashboard', $data);
