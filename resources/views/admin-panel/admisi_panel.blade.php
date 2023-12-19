@@ -63,7 +63,7 @@
                                     <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#edit_jadwal_pendaftaran_{{ $e->id }}" title="Edit Jadwal Pendaftaran">
                                         <i class="bi bi-pen"></i>
                                     </button>
-                                    <form action="{{ route('removeJadwalPendaftaran', ['jadwalPendaftaran_id' => $e->id]) }}" method="POST">
+                                    <form action="{{ route('remove_JadwalPendaftaran', $e->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data?')">
@@ -146,7 +146,7 @@
                                     <button class="btn btn-warning"
                                     onclick="showModalEditJenis({{$item->id}}, '{{ $item->gelombang }}', '{{ $item->jenisUjian}}')">
                                     <i class="bi bi-pen"></i></button>
-                                    <form action="{{ route('post.destroy.jenis', $item->id) }}" method="post">
+                                    <form action="{{ route('post.destroy.jenis', $item->id) }}" method="post" onsubmit="return confirm('Apakah anda yakin ingin menghapus data?')">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i></button>
@@ -193,7 +193,7 @@
                                                 onclick="showModalEditLokasi({{$item->id}}, '{{ $item->lokasiTes }}', '{{ $item->alamatLokasi}}')">
                                             <i class="bi bi-pen"></i>
                                         </button>
-                                        <form action="{{ route('post.destroy.lokasi', $item->id) }}" method="post">
+                                        <form action="{{ route('post.destroy.lokasi', $item->id) }}" method="post" onsubmit="return confirm('Apakah anda yakin ingin menghapus data?')">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i></button>
@@ -399,7 +399,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <form action="{{ route('removeJadwalUjian') }}" method="post">
+                                        <form action="{{ route('removeJadwalUjian') }}" method="post" onsubmit="return confirm('Apakah anda yakin ingin menghapus data?')">
                                             @csrf
                                             @method('DELETE')
                                             <input type="hidden" name="id" value="{{ $e->id }}">
@@ -457,11 +457,10 @@
                                         <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#edit_persum_modal_{{ $e->id }}" title="Edit Persyaratan Umum">
                                             <i class="bi bi-pen"></i>
                                         </button>
-                                        <form action="{{ route('removeJalur') }}" method="POST">
+                                        <form action="{{ route('removeJalur') }}" method="POST" onsubmit="return confirm('Apakah anda yakin ingin menghapus data?')">
                                             @csrf
                                             @method('DELETE')
                                             <input type="hidden" name="id" value="{{ $e->id }}">
-                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data?')">
                                                 <i class="bi bi-trash"></i>
                                             </button>
                                         </form>
@@ -628,7 +627,7 @@
                                                       </td>
                                                       <td>{{ $e->jalur }}</td>
                                                       <td>
-                                                          <form action="{{ route('removeInfografis') }}" method="post">
+                                                          <form action="{{ route('removeInfografis') }}" method="post" onsubmit="return confirm('Apakah anda yakin ingin menghapus data?')">
                                                               @csrf
                                                               @method('DELETE')
                                                               <input type="hidden" value="{{ $e->id }}" name="id">
@@ -806,7 +805,7 @@
                                                                   </div>
                                                               </div>
                                                           </div>
-                                                          <form action="{{ route('removeInfografis') }}" method="post">
+                                                          <form action="{{ route('removeInfografis') }}" method="post" onsubmit="return confirm('Apakah anda yakin ingin menghapus data?')">
                                                               @csrf
                                                               @method('DELETE')
                                                               <input type="hidden" value="{{ $e->id }}" name="id">
@@ -851,7 +850,7 @@
                     </div>
                 </form>
             </div>
-        </div>
+          </div>
 
         </div>
         <div class="tab-pane fade show active" id="tab3" role="tabpanel" aria-labelledby="tab3-tab">
@@ -865,7 +864,6 @@
 
                   <div class="card-body">
                       @include('admin-panel.sub_admisi_panel.add_biaya_pendaftaran')
-                      
                           <table class="table table-striped">
                               <thead>
                               <tr>
@@ -898,6 +896,7 @@
                                             </button>
                                         </form>
                                       </div>
+
 
                                   <!-- Modal -->
                                   <div class="modal fade" id="editjlr_Pen{{ $e->id }}" tabindex="-1" aria-labelledby="edit_biaya_pendaftaran_label" aria-hidden="true">
@@ -975,7 +974,7 @@
                                 <td>{{ $e->potongan_spp }}</td>
                                 <td style="width: 180px; max-width: 180px">
                                     <div class="d-flex justify-content-center w-100 gap-2">
-                                        <form action="{{ route('removeMbkm') }}" method="post">
+                                        <form action="{{ route('removeMbkm') }}" method="post" onsubmit="return confirm('Apakah anda yakin ingin menghapus data?')">
                                             @csrf
                                             @method('DELETE')
                                             <input type="hidden" name="id" value="{{ $e->id }}">
@@ -1023,7 +1022,7 @@
                                 <td>{{ $e->potongan_spp }}</td>
                                 <td style="width: 180px; max-width: 180px">
                                     <div class="d-flex justify-content-center w-100 gap-2">
-                                        <form action="{{ route('removeMbkm') }}" method="post">
+                                        <form action="{{ route('removeMbkm') }}" method="post" onsubmit="return confirm('Apakah anda yakin ingin menghapus data?')">
                                             @csrf
                                             @method('DELETE')
                                             <input type="hidden" name="id" value="{{ $e->id }}">
@@ -1158,7 +1157,7 @@
                         <!-- Button untuk menampilkan modal edit -->
                         <div class="d-flex justify-content-center w-100 gap-2">
                         <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#edit_biaya_studi"><i class="bi bi-pen"></i></button>
-                                <form method="POST" action="{{ route('remove_biaya_studi') }}" onsubmit="return confirm('Yakin menghapus data?')">
+                                <form method="POST" action="{{ route('remove_biaya_studi') }}">
                                     @csrf
                                     @method('DELETE')
                                     <input type="hidden" name="id" value="{{ $biayaStudi->id }}">
