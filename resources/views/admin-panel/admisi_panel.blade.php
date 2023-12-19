@@ -360,7 +360,7 @@
                                 <td>
                                     <div class="d-flex justify-content-center gap-1">
                                         <!-- Button trigger modal -->
-                                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#editJadwalUjianModal">
+                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editJadwalUjianModal">
                                             <i class="bi bi-pen"></i>
                                         </button>
 
@@ -403,7 +403,7 @@
                                             @csrf
                                             @method('DELETE')
                                             <input type="hidden" name="id" value="{{ $e->id }}">
-                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data?')>
+                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data?')">
                                                 <i class="bi bi-trash"></i>
                                             </button>
                                         </form>
@@ -461,7 +461,8 @@
                                             @csrf
                                             @method('DELETE')
                                             <input type="hidden" name="id" value="{{ $e->id }}">
-                                                <i class="bi bi-trash"></i>
+                                            <button type="submit" class="btn btn-danger" >
+                                            <i class="bi bi-trash"></i>
                                             </button>
                                         </form>
                                     </div>
@@ -627,11 +628,11 @@
                                                       </td>
                                                       <td>{{ $e->jalur }}</td>
                                                       <td>
-                                                          <form action="{{ route('removeInfografis') }}" method="post" onsubmit="return confirm('Apakah anda yakin ingin menghapus data?')">
+                                                          <form action="{{ route('removeInfografis') }}" method="post">
                                                               @csrf
                                                               @method('DELETE')
                                                               <input type="hidden" value="{{ $e->id }}" name="id">
-                                                              <button class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data?')>
+                                                              <button class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data?')">
                                                                   <i class="bi bi-trash"></i>
                                                               </button>
                                                           </form>
@@ -809,7 +810,7 @@
                                                               @csrf
                                                               @method('DELETE')
                                                               <input type="hidden" value="{{ $e->id }}" name="id">
-                                                              <button class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data?')>
+                                                              <button class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data?')">
                                                                   <i class="bi bi-trash"></i>
                                                               </button>
                                                           </form>
@@ -891,7 +892,7 @@
                                             @csrf
                                             @method('DELETE')
                                             <input type="hidden" name="id" value="{{ $e->id }}">
-                                            <button class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data?')>
+                                            <button class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data?')">
                                                 <i class="bi bi-trash"></i>
                                             </button>
                                         </form>
@@ -974,11 +975,11 @@
                                 <td>{{ $e->potongan_spp }}</td>
                                 <td style="width: 180px; max-width: 180px">
                                     <div class="d-flex justify-content-center w-100 gap-2">
-                                        <form action="{{ route('removeMbkm') }}" method="post" onsubmit="return confirm('Apakah anda yakin ingin menghapus data?')">
+                                        <form action="{{ route('removeMbkm') }}" method="post">
                                             @csrf
                                             @method('DELETE')
                                             <input type="hidden" name="id" value="{{ $e->id }}">
-                                            <button class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data?')>
+                                            <button class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data?')">
                                                 <i class="bi bi-trash"></i>
                                             </button>
                                         </form>
@@ -1022,11 +1023,11 @@
                                 <td>{{ $e->potongan_spp }}</td>
                                 <td style="width: 180px; max-width: 180px">
                                     <div class="d-flex justify-content-center w-100 gap-2">
-                                        <form action="{{ route('removeMbkm') }}" method="post" onsubmit="return confirm('Apakah anda yakin ingin menghapus data?')">
+                                        <form action="{{ route('removeMbkm') }}" method="post">
                                             @csrf
                                             @method('DELETE')
                                             <input type="hidden" name="id" value="{{ $e->id }}">
-                                            <button class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data?')>
+                                            <button class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data?')">
                                                 <i class="bi bi-trash"></i>
                                             </button>
                                         </form>
@@ -1161,7 +1162,9 @@
                                     @csrf
                                     @method('DELETE')
                                     <input type="hidden" name="id" value="{{ $biayaStudi->id }}">
-                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data?')><i class="bi bi-trash"></i></button>
+                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data?')">
+                                    <i class="bi bi-trash"></i>
+                                </button>
                                 </form>
                         </div>
                                 
