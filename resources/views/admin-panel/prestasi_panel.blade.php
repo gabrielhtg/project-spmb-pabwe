@@ -63,7 +63,7 @@
                             <div class="p-3 border mb-2 border-1 w-100 d-flex justify-content-center">
                                 <img src="{{  asset($headerPrestasi['foto'])  }}" alt="bg image" style="width: 80%">
                             </div>
-                            <input type="file" class="form-control" id="input_bg_hero" name="foto">
+                            <input type="file" class="form-control" id="input_bg_hero" name="foto" accept="image/png, image/gif, image/jpeg">
                         </div>
                         <div class="mb-3">
                             <button type="submit" class="btn btn-primary">Save</button>
