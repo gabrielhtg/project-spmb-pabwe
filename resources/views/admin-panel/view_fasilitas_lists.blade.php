@@ -166,7 +166,9 @@
 
                                     <div class="mb-3">
                                         <label for="inputNamaFile" class="form-label">Nama File</label>
-                                        <input type="text" class="form-control" id="inputNamaFile" name="nama_file">
+                                        <br>
+                                        <small class="text-muted">*Tidak untuk di-edit (Not for edit).</small>
+                                        <input type="text" class="form-control" id="inputNamaFile" name="nama_file" readonly>
                                     </div>
 
                                     <div class="mb-3">
