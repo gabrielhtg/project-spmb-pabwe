@@ -126,6 +126,12 @@ class PrestasiController extends Controller
             'deskripsi' => 'required|string',
         ]);
 
+        if ($validator->fails()) {
+            return redirect()
+                ->route('prestasi.panel')
+                ->withErrors($validator)
+                ->withInput();
+        }
         $photo = $request->file('gambar');
 
         if ($photo) {
