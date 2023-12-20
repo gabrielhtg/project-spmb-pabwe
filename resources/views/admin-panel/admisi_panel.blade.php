@@ -30,6 +30,36 @@
                 {{ session('error') }}
             </div>
         @endif
+
+        <div class="mt-3">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <span class="fs-3">Foto Header Admisi</span>
+                </div>
+
+                <form method="post" action="{{ route('set-header-admisi') }}" enctype="multipart/form-data">
+                    @csrf
+                    <div class="p-3">
+                        <div class="w-100 border border-1 mb-2 p-3 d-flex justify-content-center rounded-2">
+                            <img
+                                src="{{ asset($dataHeaderAdmisi->letak_foto ? $dataHeaderAdmisi->letak_foto : 'assets/img/default.jpg') }}"
+                                alt="gambar-header-admisi"
+                                style="width: 500px">
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <label for="header-admisi" class="form-label">Image Admisi</label>
+                        <input class="form-control" type="file" id="header-admisi" name="header_admisi">
+                        @error('header_admisi')
+                        <span class="text-danger fs-7">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
         <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
         <div class="mt-3">
             <div class="card card-success">

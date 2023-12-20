@@ -332,6 +332,7 @@ public function addInfografisPmdk(Request $request)
         'gambar.required' => 'Jumlah SKS harus diisi.',
         'gambar.image' => 'gambar harus dalam jpeg, png, dan jpg dengan ukuran maks 1MB.',
         'nomor_urut.required' => 'Nomor Urut harus diisi.',
+        'gambar.max'=>'Gambar tidak boleh lebih dari 1MB'
     ]);
 
     if ($validator->fails()) {
@@ -404,6 +405,7 @@ public function addInfografisPmdk(Request $request)
         'gambar.required' => 'Jumlah SKS harus diisi.',
         'gambar.image' => 'gambar harus dalam jpeg, png, dan jpg dengan ukuran maks 1MB.',
         'nomor_urut.required' => 'Nomor Urut harus diisi.',
+        'gambar.max'=>'Gambar tidak boleh lebih dari 1MB'
     ]);
 
     if ($validator->fails()) {
@@ -441,6 +443,7 @@ public function addInfografisUtbk(Request $request)
     ],[
         'gambar.required' => 'Jumlah SKS harus diisi.',
         'gambar.image' => 'gambar harus dalam jpeg, png, dan jpg dengan ukuran maks 1MB.',
+        'gambar.max'=>'Gambar tidak boleh lebih dari 1MB',
         'nomor_urut.required' => 'Nomor Urut harus diisi.',
     ]);
 
@@ -564,7 +567,8 @@ public function addInfografis(Request $request)
         'gambar.required' => 'Jumlah SKS harus diisi.',
         'gambar.image' => 'gambar harus dalam jpeg, png, dan jpg dengan ukuran maks 1MB.',
         'nomor_urut.required' => 'Nomor Urut harus diisi.',
-        'jalur.required'=>'Jalur pendaftaran harus diisi'
+        'gambar.max'=>'Gambar tidak boleh lebih dari 1MB',
+        'jalur.required'=>'Jalur pendaftaran harus diisi',
     ]);
 
     if ($validator->fails()) {
@@ -945,11 +949,11 @@ public function editBiayaPendaftaran(Request $request)
     public function addPedomanPendaftaran(Request $request)
 {
     $validator = Validator::make($request->all(),[
-        'PedomanPendaftaran' => 'required|mimes:pdf,doc,docx|max:2048',
+        'PedomanPendaftaran' => 'required|mimes:pdf,doc,docx|max:10240',
     ], [
         'PedomanPendaftaran.required' => 'Harap isi Pedoman Pendaftaran.',
         'PedomanPendaftaran.mimes' => 'Tipe file harus berupa PDF, DOC, atau DOCX.',
-        'PedomanPendaftaran.max' => 'Ukuran file tidak boleh lebih dari 2MB.',
+        'PedomanPendaftaran.max' => 'Ukuran file tidak boleh lebih dari 10MB.',
     ]);
 
     if ($validator->fails()) {
@@ -1011,11 +1015,11 @@ public function downloadPedoman()
 public function addPdfbiaya(Request $request)
 {
     $validator = Validator::make($request->all(),[
-        'PdfbiayaPendaftaran' => 'required|mimes:pdf,doc,docx|max:2048',
+        'PdfbiayaPendaftaran' => 'required|mimes:pdf,doc,docx|max:10240',
     ], [
         'PdfbiayaPendaftaran.required' => 'Harap isi Pedoman Pendaftaran.',
         'PdfbiayaPendaftaran.mimes' => 'Tipe file harus berupa PDF, DOC, atau DOCX.',
-        'PdfbiayaPendaftaran.max' => 'Ukuran file tidak boleh lebih dari 2MB.',
+        'PdfbiayaPendaftaran.max' => 'Ukuran file tidak boleh lebih dari 10MB.',
     ]);
 
     if ($validator->fails()) {

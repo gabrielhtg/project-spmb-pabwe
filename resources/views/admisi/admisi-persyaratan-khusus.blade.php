@@ -5,7 +5,7 @@
         <div id="carouselExample" class="carousel slide">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="{{ asset($dataHeaderAdmisi->letak_foto ?  : 'assets/img/default.jpg') }}"
+                    <img style="weight:100wh; height: 70vh;" src="{{ asset($dataHeaderAdmisi->letak_foto ?  : 'assets/img/default.jpg') }}"
                          class="img-fluid d-block w-100" alt="header-fasilitas">
                     <div class="carousel-caption d-none d-md-block text-center"> <!-- Center the text -->
                         <div class="d-flex flex-column text-center h-100 pb-3"> <!-- Center the content vertically -->
