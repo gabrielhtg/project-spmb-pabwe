@@ -60,7 +60,7 @@
             <table class="table text-start align-middle table-striped table-bordered">
                 <thead class="align-middle">
                     <tr class="text-center">
-                        <th scope="col">#</th>
+                        <th scope="col">No</th>
                         <th scope="col">Nama</th>
                         <th scope="col">Kode</th>
                         <th scope="col">Deskripsi</th>
@@ -445,7 +445,7 @@
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="input_sertifikat_akreditasi" class="form-label">Gambar</label>
-                                                        <input class="form-control" type="file" id="editGambarProdi" name="gambar" value="{{ $major->gambar }}" multiple required>
+                                                        <input class="form-control" type="file" id="editGambarProdi" name="gambar" value="{{ $major->gambar }}" multiple>
                                                         <img src="{{ asset('img/program/major/'. $major->gambar) }}" alt="Gambar Fakultas" style="max-width: 100px;">
                                                     </div>
                                                     <div class="mb-3">
