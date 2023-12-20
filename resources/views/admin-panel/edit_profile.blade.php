@@ -40,6 +40,14 @@
             </div>
         @endif
 
+        @if(Session::get('success'))
+            <div class="w-100 d-flex justify-content-center">
+                <div class="alert alert-success" role="alert" style="width: 18rem">
+                    {{ Session::get('success') }}
+                </div>
+            </div>
+        @endif
+
         <div class="d-flex justify-content-center gap-3 mt-4">
             <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editProfileModal">
                 Edit Profile
