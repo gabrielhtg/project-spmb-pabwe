@@ -25,9 +25,16 @@
             <h1 class="display-5 fw-bold">Institut Teknologi Del</h1>
             <div class="mt-4">
                 <p class="lead mb-4">{!! nl2br($dataHeroSection->paragraph) !!}</p>
+
+{{--                ini adalah button daftar--}}
                 <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mt-5">
-                    <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Daftar Sekarang</button>
+                    <a class="w-100" href="http://spmb.app.del.ac.id/">
+                        <button class="btn w-100 btn-primary btn-lg px-4 gap-3"
+                        >Daftar Sekarang
+                        </button>
+                    </a>
                 </div>
+{{--                button daftar end--}}
             </div>
         </div>
         {{--    tampilan hp end--}}
