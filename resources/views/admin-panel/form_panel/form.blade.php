@@ -32,8 +32,8 @@
                     <th scope="col">Nama</th>
                     <th scope="col">No WhatsApp</th>
                     <th scope="col">Pesan</th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
+                    <th scope="col">Jawab</th>
+                    <th scope="col">Sudah Dibaca</th>
                 </tr>
             </thead>
             <tbody>
@@ -49,8 +49,9 @@
                             </a>
                         </td>
                         <td data-id="{{ $form->id }}" data-read="unread" class="check-status">
-                            <i class="fas fa-check-circle text-muted"></i>
+                            <i class="fas fa-check-circle text-muted" style="font-size: 24px;"></i>
                         </td>
+
                     </tr>
                 @endforeach
             </tbody>
@@ -103,11 +104,23 @@
             // Fungsi untuk memperbarui ikon ceklis
             function updateCheckIcon(element, status) {
                 if (status === 'read') {
-                    element.innerHTML = '<i class="fas fa-check-circle text-success"></i>';
+                    element.innerHTML = '<i class="fas fa-check-circle text-success" style="font-size: 24px;"></i>';
                 } else {
-                    element.innerHTML = '<i class="fas fa-check-circle text-muted"></i>';
+                    element.innerHTML = '<i class="fas fa-check-circle text-muted" style="font-size: 24px;"></i>';
                 }
             }
         });
+
+
+        function redirectToWhatsApp(nama, nomor) {
+            // Format nomor telepon sesuai aturan WhatsApp
+            var formattedNomor = nomor.replace(/[^0-9]/g, ''); // Hapus karakter non-angka
+
+            // Template jawaban
+            var jawabanTemplate = "Terimakasih telah bertanya saudara " + nama + ". Jawaban pertanyaan Anda adalah: ";
+
+            // Redirect ke URL WhatsApp dengan nomor telepon yang diformat dan template pesan
+            window.location.href = 'https://wa.me/' + formattedNomor + '?text=' + encodeURIComponent(jawabanTemplate);
+        }
     </script>
 @endsection

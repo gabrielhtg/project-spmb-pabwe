@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('kategori');
             $table->string('pertanyaan');
-            $table->string('jawaban');
+            $table->text('jawaban');
             $table->timestamps();
         });
     }

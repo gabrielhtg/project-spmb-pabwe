@@ -23,9 +23,9 @@
                     <a class="nav-link fw-bold text-black" id="tab3" data-bs-toggle="tab" href="#content3">Jalur
                         Seleksi</a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link fw-bold text-black" id="tab4" data-bs-toggle="tab" href="#content4">Ujian</a>
-                </li>
+                </li> --}}
                 <li class="nav-item">
                     <a class="nav-link fw-bold text-black" id="tab5" data-bs-toggle="tab"
                         href="#content5">Pengumuman</a>
@@ -134,7 +134,7 @@
             </div>
 
 
-            <div class="tab-content mt-2">
+            {{-- <div class="tab-content mt-2">
                 <div class="tab-pane fade" id="content4">
                     <div class="accordion" id="accordion4">
                         <div class="accordion accordion-flush" id="accordionFlush4">
@@ -163,7 +163,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
 
             <div class="tab-content mt-2">
