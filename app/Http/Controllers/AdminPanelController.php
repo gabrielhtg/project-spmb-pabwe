@@ -855,7 +855,7 @@ class AdminPanelController extends Controller
         $faqs = Faq::where('id', 1)->first();
 
         $data = [
-            'indexActive' => 1,
+            'indexActive' => 7,
             'admin' => $admin,
             'faqs' => $faqs,
         ];
@@ -869,7 +869,7 @@ class AdminPanelController extends Controller
         $admin = Auth::user();
         $faq = Faq::orderBy('created_at', 'desc')->get();
         $data = [
-            'indexActive' => 2,
+            'indexActive' => 7,
             'admin' => $admin,
             'faq' => $faq,
         ];
@@ -880,7 +880,7 @@ class AdminPanelController extends Controller
     {
         $admin = Auth::user();
         $data = [
-            'indexActive' => 2,
+            'indexActive' => 7,
             'admin' => $admin
         ];
         return view('admin-panel.sub_admin_panel.faqAdminpanel', $data);
@@ -947,7 +947,7 @@ class AdminPanelController extends Controller
         }
     
         $data = [
-            'indexActive' => 2,
+            'indexActive' => 7,
             'admin' => $admin,
             'faq' => $faq,
         ];
@@ -967,7 +967,7 @@ class AdminPanelController extends Controller
         $forms = Form::orderBy("created_at", "desc")->get();
         
         $data = [
-            'indexActive' => 4,
+            'indexActive' => 9,
             'admin' => $admin,
             'forms' => $forms
         ];
@@ -979,7 +979,7 @@ class AdminPanelController extends Controller
         $beasiswa = Beasiswa::all();
     
         $data = [
-            'indexActive' => 3,
+            'indexActive' => 8,
             'admin' => $admin,
             'beasiswa' => $beasiswa
         ];
