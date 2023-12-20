@@ -1,40 +1,33 @@
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary mt-3 mb-2" data-bs-toggle="modal" data-bs-target="#addPersyaratanUmum">
-    Tambah Tombol
+<button type="button" class="btn btn-primary mt-3 mb-2" data-bs-toggle="modal" data-bs-target="#addpersyaratanumum">
+    Tambah
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="addPersyaratanUmum" tabindex="-1" aria-labelledby="addPersyaratanUmumLabel" aria-hidden="true">
+<div class="modal fade" id="addpersyaratanumum" tabindex="-1" aria-labelledby="addpersyaratanumum" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="addPersyaratanUmumLabel">Tambah Jalur Pendaftaran</h5>
+                <h1 class="modal-title fs-5">Tambah Jalur Pendaftaran</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <form action="{{ route('addJalur') }}" method="post" enctype="multipart/form-data">
-                    @csrf
+            <form action="{{ route('addJalur') }}" method="POST">
+                @csrf
+                <div class="modal-body">
                     <div class="mb-3">
-                        <input type="hidden" name="id" value="">
-                        <label for="inputJalurPendaftaran" class="form-label">Jalur Pendaftaran</label>
-                        <input type="text" class="form-control" id="inputJalurPendaftaran" name="inputJalurPendaftaran">
-                        @error('inputJalurPendaftaran')
-                            <span class="text-danger fs-7">{{ $message }}</span>
-                        @enderror
+                        <label class="form-label">Jalur Pendaftaran</label>
+                        <input type="text" class="form-control" name="jalurPendaftaran" required>
                     </div>
                     <div class="mb-3">
-                        <label for="inputPersyaratanUmum" class="form-label">Deskripsi Persyaratan Umum</label>
-                        <input type="text" class="form-control" id="inputPersyaratanUmum" name="inputPersyaratanUmum">
-                        @error('inputPersyaratanUmum')
-                            <span class="text-danger fs-7">{{ $message }}</span>
-                        @enderror
+                        <label class="form-label">Deskripsi Persyaratan Umum</label>
+                        <textarea class="form-control" name="desk_pers_umum" rows="4" required></textarea>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-primary">Tambah</button>
-                    </div>
-                </form>
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Tambah</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

@@ -4,7 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminPanelController;
 use App\Http\Controllers\AdmisiController;
 use App\Http\Controllers\JadwalUjianController;
-use App\Models\JalurPendaftaranModel;
+use App\Http\Controllers\SubJalurPendaftaranController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\Route;
 //});
 
 
-Route::middleware('auth:sanctum')->group(function () {
+//Route::middleware('auth:sanctum')->group(function () {
     Route::post('/add-infografis-pmdk', [AdmisiController::class, 'addInfografisPmdk'])->name('addInfografisPmdk');
     Route::post('/add-infografis-usm', [AdmisiController::class, 'addInfografisUsm'])->name('addInfografisUsm');
     Route::post('/add-infografis-utbk', [AdmisiController::class, 'addInfografisUtbk'])->name('addInfografisUtbk');
@@ -59,4 +59,20 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/add-jadwal-ujian', [JadwalUjianController::class, 'addJadwalUjian'])->name('addJadwalUjian');
     Route::post('/edit-jadwal-ujian', [JadwalUjianController::class, 'editJadwalUjian'])->name('editJadwalUjian');
     Route::delete('/delete-jadwal-ujian', [JadwalUjianController::class, 'removeJadwalUjian'])->name('removeJadwalUjian');
-});
+    Route::post('/addjalurpendaftaran', [AdmisiController::class,'addJalur'])->name('addJalur');
+    Route::delete('/delete-jalur-pendaftaran/{jalur_id}', [AdmisiController::class, 'removeJalur'])->name('removeJalur');
+    Route::post('/addjadwalpendaftaran', [AdmisiController::class,'addJadwalPendaftaran'])->name('addJadwalPendaftaran');
+    Route::post('/editJadwalPendaftaran', [AdmisiController::class,'editJadwalPendaftaran'])->name('editJadwalPendaftaran');
+    Route::delete('/removeJadwalPendaftaran/{jadwalPendaftaran_id}', [AdmisiController::class, 'removeJadwalPendaftaran'])->name('removeJadwalPendaftaran');
+    Route::post('/set-biaya-umum', [AdmisiController::class, 'setbiayaadmin'])->name('set-biaya-umum');
+    Route::post('/add-sub-jalur-pendaftaran', [SubJalurPendaftaranController::class, 'addSubJalurPendaftaran'])->name('addSubJalurPendaftaran');
+    Route::post('/edit-jalur-pendaftaran', [SubJalurPendaftaranController::class, 'editSubJalurPendaftaran'])->name('editSubJalurPendaftaran');
+    Route::delete('/delete-jalur-pendaftaran', [SubJalurPendaftaranController::class, 'removeSubJalurPendaftaran'])->name('removeSubJalurPendaftaran');
+    Route::post('/editbiayaPendaftaran', [AdmisiController::class,'editBiayaPendaftaran'])->name('editBiayaPendaftaran');
+    Route::delete('/removeBiayaPendaftaran/{biayaPendaftaran_id}', [AdmisiController::class, 'removeBiayaPendaftaran'])->name('removeBiayaPendaftaran');
+    Route::post('/pedoman-pendaftaran', [AdmisiController::class, 'addPedomanPendaftaran'])->name('pedoman-pendaftaran');
+    Route::post('/pdf-biaya', [AdmisiController::class, 'addPdfbiaya'])->name('pdf_biaya');
+    Route::post('/add-mitra', [AdminPanelController::class, 'addMitra'])->name('addMitra');
+    Route::post('/edit-mitra', [AdminPanelController::class, 'editMitra'])->name('editMitra');
+    Route::delete('/remove-mitra', [AdminPanelController::class, 'removeMitra'])->name('removeMitra');
+//});
