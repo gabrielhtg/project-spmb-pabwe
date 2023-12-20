@@ -61,7 +61,6 @@
                             <th scope="col">Angkatan</th>
                             <th scope="col">Deskripsi</th>
                             <th scope="col">Jenis Testimoni</th>
-                            <th scope="col">Created at</th>
                             <th scope="col">Action</th>
                         </tr>
                         </thead>
@@ -84,7 +83,6 @@
                                             @break
                                     @endswitch
                                 </td>
-                                <td>{{ $item->created_at }}</td>
                                 <td style="min-width: 120px; width: 120px">
                                     <button onclick="showModalUpdate({{$item->id}}, '{{ $item->nama_mahasiswa }}', '{{ $item->prodi }}', '{{ $item->angkatan }}', '{{ $item->deskripsi }}', '{{ $item->kategori_mahasiswa }}')" class="btn btn-success">
                                         <i class="bi bi-pen"></i>

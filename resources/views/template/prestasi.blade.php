@@ -6,8 +6,8 @@
             <div class="carousel-inner">
                 <div class="carousel-item active">
 {{--                    {{dd($headerPrestasi)}}--}}
-                    <img src="{{  asset($headerPrestasi['headerPrestasi']['foto'])  }}" class="img-fluid d-block w-60" alt="header-fasilitas">
-                    <div class="carousel-caption d-none d-md-block text-center"> <!-- Center the text -->
+                    <img src="{{  asset($headerPrestasi['headerPrestasi']['foto'])  }}" class="img-fluid d-block" alt="header-fasilitas" style="width: 100%; height: 80%">
+                    <div class="carousel-caption d-none d-md-block text-center" style=""> <!-- Center the text -->
                         <div class="d-flex flex-column text-center h-100 pb-3"> <!-- Center the content vertically -->
                             <h2 class="fw-bold text-uppercase">{{ $headerPrestasi['headerPrestasi']['judul'] }}</h2>
                             <h4 class="fw-italic">{{ $headerPrestasi['headerPrestasi']['deskripsi'] }}</h4>

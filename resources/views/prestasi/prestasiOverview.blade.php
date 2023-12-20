@@ -17,6 +17,10 @@
         width:100%;
         height:250px;
     }
+    .preview{
+        position: relative;
+        left: 50%;
+    }
 </style>
 
     <section class="container">
@@ -34,7 +38,7 @@
                 @foreach($dataPrestasiInstitutOverview as $item)
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="card">
-                            <img src="{{asset($item->photo)}}" class="card-img-top" alt="pict1"/>
+                            <img src="{{asset($item->photo)}}" class="card-img-top preview" alt="pict1" style="width: 80%"/>
                             <div class="card-body">
                                 <h5 class="card-title">{{$item->judul_prestasi}}</h5>
                                 <p class="card-text">
@@ -58,9 +62,6 @@
                                                 <p>
                                                     {{$item->deskripsi}}
                                                 </p>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <p style="font-size: 14px; margin: 0;">{{$item->created_at}}</p>
                                             </div>
                                         </div>
                                     </div>

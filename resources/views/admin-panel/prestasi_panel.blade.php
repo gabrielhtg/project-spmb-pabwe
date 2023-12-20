@@ -47,7 +47,6 @@
                 <div class="card-body">
                     <form action="{{ route('prestasiheader.add') }}" method="post" enctype="multipart/form-data">
                         @csrf
-
                         <div class="mb-3">
                             <label for="input_judul_header" class="form-label">Judul Header</label>
                             <input type="text" class="form-control" id="input_judul_header" name="judul"
@@ -97,7 +96,6 @@
                             <th scope="col">Deskripsi</th>
                             <th scope="col">Foto</th>
                             <th scope="col">Jenis Prestasi</th>
-                            <th scope="col">Created at</th>
                             <th scope="col">Action</th>
                         </tr>
                         </thead>
@@ -121,7 +119,6 @@
                                             @break
                                     @endswitch
                                 </td>
-                                <td>{{ $item->created_at }}</td>
                                 <td style="min-width: 120px; width: 120px">
                                     <button
                                         onclick="showModalUpdate({{ $item->id }}, '{{ htmlentities($item->judul_prestasi, ENT_QUOTES) }}', '{{ htmlentities($item->deskripsi,ENT_QUOTES) }}', '{{ $item->jenis_prestasi }}')"
