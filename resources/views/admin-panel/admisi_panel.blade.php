@@ -519,7 +519,7 @@
                                                           <div class="mb-3">
                                                               <label class="form-control w-100">Deskripsi Persyaratan
                                                                   Umum
-                                                                  <textarea name="desk_pers_umum" id="edit_desk_pers_umum" >
+                                                                  <textarea name="desk_pers_umum" class="edit_desk_pers_umum" >
                                                                       {{ $e->desk_pers_umum }}
                                                                   </textarea>
                                                               </label>
@@ -1498,7 +1498,7 @@
 
     <script>
         $(document).ready(function() {
-            $('#edit_desk_pers_umum').summernote({
+            $('.edit_desk_pers_umum').summernote({
                 maxHeight: 250,
             });
         });
