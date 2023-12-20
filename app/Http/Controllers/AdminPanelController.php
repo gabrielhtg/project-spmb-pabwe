@@ -124,7 +124,7 @@ class AdminPanelController extends Controller
 
             return redirect()->route('admin-panel')->with('success', 'Berhasil mengubah Data Institusi!');
         } catch (\Exception $e) {
-            return redirect()->route('admin-panel')->with('error', 'Gaga mengubah Data Institusi!');
+            return redirect()->route('admin-panel')->with('error', 'Gagal mengubah Data Institusi!');
         }
     }
 
@@ -357,24 +357,28 @@ class AdminPanelController extends Controller
     }
 
     public function updateSocialMedia (Request $request) {
+        try {
+            $socialMedia = SocalMediaModel::where('id', $request->id)->first();
 
-        $socialMedia = SocalMediaModel::where('id', $request->id)->first();
+            $request->validate([
+                'input_nama_socialmedia' => 'required|string|max:50',
+                'input_link' => 'required|string|max:150',
+                'input_icon' => 'required|string|max:100',
+            ]);
 
-        $request->validate([
-            'input_nama_socialmedia' => 'required|string|max:50',
-            'input_link' => 'required|string|max:150',
-            'input_icon' => 'required|string|max:100',
-        ]);
+            $socialMedia->nama = $request->input_nama_socialmedia;
+            $socialMedia->link = $request->input_link;
+            $socialMedia->icon = $request->input_icon;
 
-        $socialMedia->nama = $request->input_nama_socialmedia;
-        $socialMedia->link = $request->input_link;
-        $socialMedia->icon = $request->input_icon;
+            $socialMedia->updated_by = Auth::user()->username;
 
-        $socialMedia->updated_by = Auth::user()->username;
+            $socialMedia->update();
 
-        $socialMedia->update();
+            return redirect()->route('admin-panel')->with('success', 'Berhasil mengupdate Social Media!');
+        } catch (\Exception $e) {
+            return redirect()->route('admin-panel')->with('error', 'Gagal mengupdate Social Media!');
+        }
 
-        return redirect()->route('admin-panel')->with('success', 'Berhasil mengupdate Social Media!');
     }
 
     public function removeSocialMedia(Request $request)
