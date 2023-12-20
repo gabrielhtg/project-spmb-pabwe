@@ -165,62 +165,78 @@ class AdminController extends Controller
     }
 
     public function editNomorTelepon (Request $request) {
-        $request->validate([
-            'nama' => 'required|string|max:20',
-            'nomor_telepon' => 'required|max:15'
-        ]);
+       try {
+           $request->validate([
+               'nama' => 'required|string|max:20',
+               'nomor_telepon' => 'required|max:15'
+           ]);
 
-        $data = NomorTeleponModel::where("id", $request->id)->first();
+           $data = NomorTeleponModel::where("id", $request->id)->first();
 
-        $data->nama = $request->nama;
-        $data->nomor_telepon = $request->nomor_telepon;
-        $data->updated_by = Auth::user()->username;
-        $data->updated_at = now();
+           $data->nama = $request->nama;
+           $data->nomor_telepon = $request->nomor_telepon;
+           $data->updated_by = Auth::user()->username;
+           $data->updated_at = now();
 
-        $data->update();
+           $data->update();
 
-        return redirect()->route('admin-panel');
+           return redirect()->route('admin-panel')->with('success', 'Berhasil edit nomor telepon');
+       } catch (\Exception $e) {
+           return redirect()->route('admin-panel')->with('error', 'Gagal edit nomor telepon');
+       }
     }
 
     public function addEmail (Request $request) {
-        $request->validate([
-            'namaEmail' => 'required|max:20',
-            'email' => 'required|max:50'
-        ]);
+        try {
+            $request->validate([
+                'namaEmail' => 'required|max:20',
+                'email' => 'required|max:50'
+            ]);
 
-        EmailModel::create([
-            'nama' => $request->namaEmail,
-            'email' => $request->email,
-            'created_at' => now(),
-            'updated_at' => now(),
-            'created_by' => Auth::user()->username,
-            'updated_by' => Auth::user()->username,
-        ]);
+            EmailModel::create([
+                'nama' => $request->namaEmail,
+                'email' => $request->email,
+                'created_at' => now(),
+                'updated_at' => now(),
+                'created_by' => Auth::user()->username,
+                'updated_by' => Auth::user()->username,
+            ]);
 
-        return redirect()->route('admin-panel');
+            return redirect()->route('admin-panel')->with('success', 'Berhasil menambah email baru');
+        } catch (\Exception $e) {
+            return redirect()->route('admin-panel')->with('error', 'Gagal menambah email baru');
+        }
     }
 
     public function removeEmail (Request $request) {
-        EmailModel::where('id', $request->id)->first()->delete();
+        try {
+            EmailModel::where('id', $request->id)->first()->delete();
 
-        return redirect()->route('admin-panel');
+            return redirect()->route('admin-panel')->with('success', 'Berhasil remove email.');
+        } catch (\Exception $e) {
+            return redirect()->route('admin-panel')->with('error', 'Gagal remove email.');
+        }
     }
 
     public function editEmail (Request $request) {
-        $request->validate([
-            'inputNamaEmail' => 'required|max:20',
-            'email' => 'required|max:50'
-        ]);
+        try {
+            $request->validate([
+                'inputNamaEmail' => 'required|max:20',
+                'email' => 'required|max:50'
+            ]);
 
-        $data = EmailModel::where("id", $request->id)->first();
+            $data = EmailModel::where("id", $request->id)->first();
 
-        $data->nama = $request->inputNamaEmail;
-        $data->email = $request->email;
-        $data->updated_by = Auth::user()->username;
-        $data->updated_at = now();
+            $data->nama = $request->inputNamaEmail;
+            $data->email = $request->email;
+            $data->updated_by = Auth::user()->username;
+            $data->updated_at = now();
 
-        $data->update();
+            $data->update();
 
-        return redirect()->route('admin-panel');
+            return redirect()->route('admin-panel')->with('success', 'Berhasil edit email');
+        } catch (\Exception $e) {
+            return redirect()->route('admin-panel')->with('error', 'Gagal edit email');
+        }
     }
 }
