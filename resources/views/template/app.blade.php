@@ -15,6 +15,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
     <style>
+        body {
+            padding-top: 10px;
+            /* Adjust this value according to your navbar height */
+        }
+
         /* Your existing styles for the chat form */
         #chat-form {
             display: none;
@@ -117,193 +122,200 @@
     </nav>
     {{--    navbar end --}}
     <main>
-        @yield('isi-halaman')
-        <div id="chat-container" style="position: fixed; bottom: 20px; right: 20px; z-index: 100000;">
-            <div id="chat-button"
-                style="width: 100px; height: 105px; border-radius: 0; color: #fff; text-align: center; line-height: 70px; cursor: pointer; position: relative; overflow: hidden; transition: transform 0.5s ease-in-out;"
-                onclick="toggleChatForm()" onmouseover="this.style.transform='scale(1.1)'"
-                onmouseout="this.style.transform='scale(1)'">
-                <img src="{{ asset('/assets/img/icon2.png') }}"
-                    style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; transition: transform 0.5s ease-in-out;"
-                    class="d-block w-100" alt="gambar-1">
+        <main style="margin-top: 80px; padding-bottom: 50px;">
+            <!-- Add some margin-top and padding-bottom to provide space for the navbar and footer -->
+
+            @yield('isi-halaman')
+            <div id="chat-container" style="position: fixed; bottom: 20px; right: 20px; z-index: 100000;">
+                <div id="chat-button"
+                    style="width: 100px; height: 105px; border-radius: 0; color: #fff; text-align: center; line-height: 70px; cursor: pointer; position: relative; overflow: hidden; transition: transform 0.5s ease-in-out;"
+                    onclick="toggleChatForm()" onmouseover="this.style.transform='scale(1.1)'"
+                    onmouseout="this.style.transform='scale(1)'">
+                    <img src="{{ asset('/assets/img/icon2.png') }}"
+                        style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; transition: transform 0.5s ease-in-out;"
+                        class="d-block w-100" alt="gambar-1">
+                </div>
+                <div id="chat-form"
+                    style="display: none; position: fixed; bottom: 20px; right: 80px; z-index: 1000; max-width: 300px; transition: all 0.5s ease-in-out;">
+                    <div id="additional-buttons"
+                        style="display: flex; justify-content: space-between; margin-top: 10px;">
+                        <div class="additional-button d-flex justify-content-center align-items-center"
+                            style="width: 70px; height: 65px; border-radius: 50%; background-color: rgb(11,94,215); color: #fff; text-align: center; line-height: 50px; cursor: pointer; margin-right: 25px; font-size: 25px;"
+                            onclick="openWhatsApp()" onmouseover="this.style.backgroundColor='#0056b3'"
+                            onmouseout="this.style.backgroundColor='rgb(11,94,215)'">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div class="additional-button d-flex justify-content-center align-items-center"
+                            style="width: 70px; height: 65px; border-radius: 50%; background-color: rgb(11,94,215); color: #fff; text-align: center; line-height: 50px; cursor: pointer; margin-right: 25px; font-size: 25px;"
+                            onclick="openTelegram()" onmouseover="this.style.backgroundColor='#0056b3'"
+                            onmouseout="this.style.backgroundColor='rgb(11,94,215)'">
+                            <i class="fab fa-telegram"></i>
+                        </div>
+                        <div class="additional-button d-flex justify-content-center align-items-center"
+                            style="width: 70px; height: 65px; border-radius: 50%; background-color: rgb(11,94,215); color: #fff; text-align: center; line-height: 50px; cursor: pointer; margin-right: 55px; font-size: 25px;"
+                            onclick="openFormQuestion()" onmouseover="this.style.backgroundColor='#0056b3'"
+                            onmouseout="this.style.backgroundColor='rgb(11,94,215)'">
+                            <i class="fa-regular fa-comment-dots"></i>
+                        </div>
+
+                    </div>
+                </div>
             </div>
-            <div id="chat-form"
-                style="display: none; position: fixed; bottom: 20px; right: 80px; z-index: 1000; max-width: 300px; transition: all 0.5s ease-in-out;">
-                <div id="additional-buttons" style="display: flex; justify-content: space-between; margin-top: 10px;">
-                    <div class="additional-button d-flex justify-content-center align-items-center"
-                        style="width: 70px; height: 65px; border-radius: 50%; background-color: rgb(11,94,215); color: #fff; text-align: center; line-height: 50px; cursor: pointer; margin-right: 25px; font-size: 25px;"
-                        onclick="openWhatsApp()" onmouseover="this.style.backgroundColor='#0056b3'"
-                        onmouseout="this.style.backgroundColor='rgb(11,94,215)'">
-                        <i class="fab fa-whatsapp"></i>
-                    </div>
-                    <div class="additional-button d-flex justify-content-center align-items-center"
-                        style="width: 70px; height: 65px; border-radius: 50%; background-color: rgb(11,94,215); color: #fff; text-align: center; line-height: 50px; cursor: pointer; margin-right: 25px; font-size: 25px;"
-                        onclick="openTelegram()" onmouseover="this.style.backgroundColor='#0056b3'"
-                        onmouseout="this.style.backgroundColor='rgb(11,94,215)'">
-                        <i class="fab fa-telegram"></i>
-                    </div>
-                    <div class="additional-button d-flex justify-content-center align-items-center"
-                        style="width: 70px; height: 65px; border-radius: 50%; background-color: rgb(11,94,215); color: #fff; text-align: center; line-height: 50px; cursor: pointer; margin-right: 55px; font-size: 25px;"
-                        onclick="openFormQuestion()" onmouseover="this.style.backgroundColor='#0056b3'"
-                        onmouseout="this.style.backgroundColor='rgb(11,94,215)'">
-                        <i class="fa-regular fa-comment-dots"></i>
-                    </div>
+            <script src="{{ asset('/assets/js/chatbot.js') }}"></script>
+            <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
 
-                </div>
-            </div>
-        </div>
-        <script src="{{ asset('/assets/js/chatbot.js') }}"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
-
-    </main>
+        </main>
 
 
 
-    {{--    foooter --}}
-    <div class="container">
-        <hr>
-
-        <footer class="pt-5">
-            <div class="d-flex justify-content-evenly flex-wrap gap-3">
-
-                {{--                tampilan phone --}}
-
-                <div class="section-footer d-md-none">
-                    <h5 class="fw-bold">About Us</h5>
-                    <ul class="nav flex-column">
-                        <li class="nav-item mb-2 text-muted">{{ $dataInstitusi->nama_institusi }}</li>
-
-                        <li class="nav-item mb-2 text-muted">
-                            Jl. Sisingamangaraja, Sitoluama Laguboti, Toba Sumatera Utara, Indonesia
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="section-footer d-md-none">
-                    <h5 class="fw-bold">Contact Us</h5>
-                    <ul class="nav flex-column">
-                        <li class="nav-item mb-2 ">
-                            <span class="text-muted">Website : </span>
-                            <a href="http://www.del.ac.id">http://www.del.ac.id</a>
-                        </li>
-
-                        <li class="nav-item mb-2 ">
-                            <span class="text-muted">Email : </span>
-                            <a href="mailto:info@del.ac.id">info@del.ac.id</a>
-                        </li>
-
-                        <li class="nav-item mb-2 ">
-                            <span class="text-muted">Email : </span>
-                            <a href="mailto:karir@del.ac.id">karir@del.ac.id</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="section-footer d-md-none">
-                    <h5 class="fw-bold">Find Us On</h5>
-                    <ul class="nav flex-column">
-                        <li class="nav-item mb-2">
-                            <a href="https://www.instagram.com/it.del/?hl=id" class="nav-link p-0 text-muted">
-                                <i class='bx bxl-instagram'></i> Instagram
-                            </a>
-                        </li>
-
-                        <li class="nav-item mb-2">
-                            <a href="https://www.facebook.com/Institut.Teknologi.Del" class="nav-link p-0 text-muted">
-                                <i class='bx bxl-facebook'></i> Facebook
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="section-footer d-flex justify-content-center mt-3 d-md-none">
-                    <div class="d-flex gap-3">
-                        <img class="logo-footer-1-kecil" src="{{ asset('/assets/img/logo-yayasan-del.png') }}"
-                            alt="Logo Yayasan Del">
-                        <img class="logo-footer-2-kecil"
-                            src="{{ asset('/assets/img/Logo Institut Teknologi Del.png') }}" alt="Logo Yayasan Del">
-                    </div>
-                </div>
-
-                {{--                tampilan phone end --}}
-
-                {{--                tampilan desktop --}}
-
-                <div class="d-none d-md-inline w-25">
-                    <h5 class="fw-bold">About Us</h5>
-                    <ul class="nav flex-column">
-                        @foreach ($dataAlamat as $e)
-                            <li class="nav-item mb-2 text-muted fw-semibold">{{ $e->nama }}</li>
-
-                            <li class="nav-item mb-2 text-muted">
-                                {{ $e->alamat }}
-                            </li>
-                        @endforeach
-                    </ul>
-                </div>
-
-                <div class="d-none d-md-inline w-25">
-                    <h5 class="fw-bold">Contact Us</h5>
-                    <ul class="nav flex-column">
-                        <li class="nav-item mb-2 ">
-                            <span class="text-muted">Website : </span>
-                            <a href="http://www.del.ac.id">http://www.del.ac.id</a>
-                        </li>
-
-                        @foreach ($dataNomorTelepon as $e)
-                            <li class="nav-item mb-2 ">
-                                <span class="text-muted">{{ $e->nama . ' : ' . $e->nomor_telepon }}</span>
-                            </li>
-                        @endforeach
-
-                        @foreach ($dataEmail as $e)
-                            <li class="nav-item mb-2 ">
-                                <span class="text-muted">{{ $e->nama }} :</span>
-                                <a href="mailto:{{ $e->email }}">{{ $e->email }}</a>
-                            </li>
-                        @endforeach
-                    </ul>
-                </div>
-
-                <div class="d-none d-md-inline">
-                    <h5 class="fw-bold">Find Us On</h5>
-                    <ul class="nav flex-column">
-                        @foreach ($dataSosmed as $sosmed)
-                            <li class="nav-item mb-2">
-                                <a href="{{ $sosmed->link }}" class="nav-link p-0">
-                                    <span>{!! $sosmed->icon !!}</span> {{ $sosmed->nama }}
-                                </a>
-                            </li>
-                        @endforeach
-
-                    </ul>
-                </div>
-
-                <div class="d-none d-md-inline d-flex align-items-center">
-                    <div class="d-flex gap-3">
-                        <img class="logo-footer-1-kecil" src="{{ asset('/assets/img/logo-yayasan-del.png') }}"
-                            alt="Logo Yayasan Del">
-                        <img class="logo-footer-2-kecil"
-                            src="{{ asset('/assets/img/Logo Institut Teknologi Del.png') }}" alt="Logo Yayasan Del">
-                    </div>
-                </div>
-                {{--                tampilan desktop end --}}
-            </div>
-
+        {{--    foooter --}}
+        <div class="container" style="padding-top: 50px;">
             <hr>
 
-            <div class="d-flex justify-content-center">
-                <p>&copy; Made with ❤️ by Informatika 21 - BANDAR</p>
-            </div>
-        </footer>
-    </div>
-    {{-- footer end --}}
+            <footer class="pt-5">
+                <div class="d-flex justify-content-evenly flex-wrap gap-3">
 
-    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
-    </script>
-    <script src="https://kit.fontawesome.com/965a381e3a.js" crossorigin="anonymous"></script>
-    <script src="{{ asset('/assets/js/kel4.js') }}"></script>
+                    {{--                tampilan phone --}}
+
+                    <div class="section-footer d-md-none">
+                        <h5 class="fw-bold">About Us</h5>
+                        <ul class="nav flex-column">
+                            <li class="nav-item mb-2 text-muted">{{ $dataInstitusi->nama_institusi }}</li>
+
+                            <li class="nav-item mb-2 text-muted">
+                                Jl. Sisingamangaraja, Sitoluama Laguboti, Toba Sumatera Utara, Indonesia
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="section-footer d-md-none">
+                        <h5 class="fw-bold">Contact Us</h5>
+                        <ul class="nav flex-column">
+                            <li class="nav-item mb-2 ">
+                                <span class="text-muted">Website : </span>
+                                <a href="http://www.del.ac.id">http://www.del.ac.id</a>
+                            </li>
+
+                            <li class="nav-item mb-2 ">
+                                <span class="text-muted">Email : </span>
+                                <a href="mailto:info@del.ac.id">info@del.ac.id</a>
+                            </li>
+
+                            <li class="nav-item mb-2 ">
+                                <span class="text-muted">Email : </span>
+                                <a href="mailto:karir@del.ac.id">karir@del.ac.id</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="section-footer d-md-none">
+                        <h5 class="fw-bold">Find Us On</h5>
+                        <ul class="nav flex-column">
+                            <li class="nav-item mb-2">
+                                <a href="https://www.instagram.com/it.del/?hl=id" class="nav-link p-0 text-muted">
+                                    <i class='bx bxl-instagram'></i> Instagram
+                                </a>
+                            </li>
+
+                            <li class="nav-item mb-2">
+                                <a href="https://www.facebook.com/Institut.Teknologi.Del"
+                                    class="nav-link p-0 text-muted">
+                                    <i class='bx bxl-facebook'></i> Facebook
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="section-footer d-flex justify-content-center mt-3 d-md-none">
+                        <div class="d-flex gap-3">
+                            <img class="logo-footer-1-kecil" src="{{ asset('/assets/img/logo-yayasan-del.png') }}"
+                                alt="Logo Yayasan Del">
+                            <img class="logo-footer-2-kecil"
+                                src="{{ asset('/assets/img/Logo Institut Teknologi Del.png') }}"
+                                alt="Logo Yayasan Del">
+                        </div>
+                    </div>
+
+                    {{--                tampilan phone end --}}
+
+                    {{--                tampilan desktop --}}
+
+                    <div class="d-none d-md-inline w-25">
+                        <h5 class="fw-bold">About Us</h5>
+                        <ul class="nav flex-column">
+                            @foreach ($dataAlamat as $e)
+                                <li class="nav-item mb-2 text-muted fw-semibold">{{ $e->nama }}</li>
+
+                                <li class="nav-item mb-2 text-muted">
+                                    {{ $e->alamat }}
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+
+                    <div class="d-none d-md-inline w-25">
+                        <h5 class="fw-bold">Contact Us</h5>
+                        <ul class="nav flex-column">
+                            <li class="nav-item mb-2 ">
+                                <span class="text-muted">Website : </span>
+                                <a href="http://www.del.ac.id">http://www.del.ac.id</a>
+                            </li>
+
+                            @foreach ($dataNomorTelepon as $e)
+                                <li class="nav-item mb-2 ">
+                                    <span class="text-muted">{{ $e->nama . ' : ' . $e->nomor_telepon }}</span>
+                                </li>
+                            @endforeach
+
+                            @foreach ($dataEmail as $e)
+                                <li class="nav-item mb-2 ">
+                                    <span class="text-muted">{{ $e->nama }} :</span>
+                                    <a href="mailto:{{ $e->email }}">{{ $e->email }}</a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+
+                    <div class="d-none d-md-inline">
+                        <h5 class="fw-bold">Find Us On</h5>
+                        <ul class="nav flex-column">
+                            @foreach ($dataSosmed as $sosmed)
+                                <li class="nav-item mb-2">
+                                    <a href="{{ $sosmed->link }}" class="nav-link p-0">
+                                        <span>{!! $sosmed->icon !!}</span> {{ $sosmed->nama }}
+                                    </a>
+                                </li>
+                            @endforeach
+
+                        </ul>
+                    </div>
+
+                    <div class="d-none d-md-inline d-flex align-items-center">
+                        <div class="d-flex gap-3">
+                            <img class="logo-footer-1-kecil" src="{{ asset('/assets/img/logo-yayasan-del.png') }}"
+                                alt="Logo Yayasan Del">
+                            <img class="logo-footer-2-kecil"
+                                src="{{ asset('/assets/img/Logo Institut Teknologi Del.png') }}"
+                                alt="Logo Yayasan Del">
+                        </div>
+                    </div>
+                    {{--                tampilan desktop end --}}
+                </div>
+
+                <hr>
+
+                <div class="d-flex justify-content-center">
+                    <p>&copy; Made with ❤ by Informatika 21 - BANDAR</p>
+                </div>
+            </footer>
+        </div>
+        {{-- footer end --}}
+
+        <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
+        </script>
+        <script src="https://kit.fontawesome.com/965a381e3a.js" crossorigin="anonymous"></script>
+        <script src="{{ asset('/assets/js/kel4.js') }}"></script>
 
 </body>
 
