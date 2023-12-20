@@ -88,22 +88,17 @@
                 <div class="card">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item fw-bold list-group-item-secondary">Ketua Program Studi</li>
-                        @php
-                            $kaprodiFound = false;
-                        @endphp
+                        @php $kaprodiFound = false; @endphp
+                            @foreach($employees as $employee)
+                                @if ($employee->jabatan == "Kaprodi" AND $employee->major->kode_prodi == $majors->first()->kode_prodi)
+                                    <li class="list-group-item">{{ $employee->nama }}</li>
+                                    @php $kaprodiFound = true; @endphp
+                                @endif
+                            @endforeach
 
-                        @foreach($employees->where('jabatan', 'Kaprodi') as $employee)
-                            @if($employee->major->kode_prodi == $majors->first()->kode_prodi)
-                                <li class="list-group-item">{{ $employee->first()->nama }}</li>
-                                @php
-                                    $kaprodiFound = true;
-                                @endphp
+                            @if (!$kaprodiFound)
+                                <li class="list-group-item">Kaprodi tidak ada</li>
                             @endif
-                        @endforeach
-
-                        @if(!$kaprodiFound)
-                            <li class="list-group-item">Tidak ada Kaprodi</li>
-                        @endif
                         <li class="list-group-item fw-bold list-group-item-secondary">Akreditasi</li>
                         <li class="list-group-item">{{ $majors->first()->akreditasi }}</li>
                         <li class="list-group-item fw-bold list-group-item-secondary">Gelar</li>
@@ -148,7 +143,7 @@
         @foreach ($sortedEmployees as $employee)
             <div class="col-md-3 col-12">
                 <div class="card text-bg-dark" onmouseover="showOverlay({{ $employee->id }})" onmouseout="hideOverlay({{ $employee->id }})">
-                    <img src="{{ asset('img/program/employee/' . $employee->gambar) }}" class="card-img img-fluid" alt="">
+                    <img src="{{ asset('img/program/employee/' . $employee->gambar) }}" class="d-block object-fit-cover card-img img-fluid" alt="" style="height: 310px; width: fit">
 
                     <div id="backOverlay-{{ $employee->id }}" class="card-img-overlay " style="opacity: 1; transition: opacity 0.2s ease;">
                         <div class="d-flex justify-content-start">
@@ -202,9 +197,9 @@
         </div>
         @forelse ($majors as $major)
     @for ($i = 0; $i < $major->lama; $i++)
-        <div class="accordion" id="accordionExample{{ $i }}">
+        <div class="accordion accordion-flush" id="accordionExample{{ $i }}">
             <div class="accordion-item">
-                <h2 class="accordion-header">
+                <h2 class=" accordion-header">
                     <button class="accordion-button fs-5 text-light text-decoration-none fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ $major->id }}_{{ $i }}" aria-expanded="true" aria-controls="collapse{{ $major->id }}_{{ $i }}" style="background-color: #0477BF;">
                         Tahun ke-{{ $i + 1 }}
                     </button>

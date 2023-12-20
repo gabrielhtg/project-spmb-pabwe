@@ -24,20 +24,22 @@
 <section id="fakultas-subpage" class="m-3">
         @if($errors->any())
             <div class="pt-3">
-                <div class="alert alert-danger">
+                <div class="alert alert-danger alert-dismissible fade show text-align-center" role="alert">
                     <ul>
                         @foreach($errors->all() as $error)
                             <li>{{ $error }}</li>
                         @endforeach
                     </ul>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             </div>
         @endif
     
         @if(session('success'))
             <div class="pt-3">
-                <div class="alert alert-success">
+                <div class="alert alert-success alert-dismissible fade show align-center" role="alert">
                     <h6>{{ session('success') }}</h6>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             </div>
         @endif
@@ -193,7 +195,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="input_deskripsi_fakultas" class="form-label">Deskripsi</label>
-                                                <textarea class="form-control" name="deskripsi" disabled readonly>{{ old('deskripsi', $faculty->deskripsi) }}</textarea>
+                                                <textarea class="form-control" name="deskripsi" disabled readonly>{!! old('deskripsi', $faculty->deskripsi) !!}</textarea>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="input_lokasi_fakultas" class="form-label">Lokasi</label>
@@ -201,11 +203,11 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="input_visi_fakultas" class="form-label">Visi</label>
-                                                <textarea class="form-control"name="visi" disabled readonly>{{ old('visi', $faculty->visi) }}</textarea>
+                                                <textarea class="form-control"name="visi" disabled readonly>{!! old('visi', $faculty->visi) !!}</textarea>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="input_misi_fakultas" class="form-label">Misi</label>
-                                                <textarea class="form-control" name="misi" disabled readonly>{{ old('misi', $faculty->misi) }}</textarea>
+                                                <textarea class="form-control" name="misi" disabled readonly>{!! old('misi', $faculty->misi) !!}</textarea>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="input_sertifikat_akreditasi" class="form-label">Gambar</label><br>
@@ -540,7 +542,7 @@
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="input_deskripsi_fakultas" class="form-label">Deskripsi</label>
-                                                    <textarea class="form-control" name="deskripsi" disabled readonly>{{ old('deskripsi', $major->deskripsi) }}</textarea>
+                                                    <textarea class="form-control" name="deskripsi" disabled readonly>{!! old('deskripsi', $major->deskripsi) !!}</textarea>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="input_sertifikat_akreditasi" class="form-label">Gambar</label><br>
@@ -548,15 +550,15 @@
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="input_lokasi_fakultas" class="form-label">Visi</label>
-                                                    <textarea class="form-control" name="visi" disabled readonly>{{ old('deskripsi', $major->visi) }}</textarea>
+                                                    <textarea class="form-control" name="visi" disabled readonly>{!! old('deskripsi', $major->visi) !!}</textarea>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="input_visi_fakultas" class="form-label">Misi</label>
-                                                    <textarea class="form-control" name="misi" disabled readonly>{{ old('deskripsi', $major->misi) }}</textarea>
+                                                    <textarea class="form-control" name="misi" disabled readonly>{!! old('deskripsi', $major->misi) !!}</textarea>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="input_misi_fakultas" class="form-label">Prospek</label>
-                                                    <textarea class="form-control" name="prospek" disabled readonly>{{ old('deskripsi', $major->prospek) }}</textarea>
+                                                    <textarea class="form-control" name="prospek" disabled readonly>{!! old('deskripsi', $major->prospek) !!}</textarea>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="input_misi_fakultas" class="form-label">Gelar</label>
@@ -579,7 +581,7 @@
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="input_misi_fakultas" class="form-label">Syarat Masuk</label>
-                                                    <textarea class="form-control" name="syarat" disabled readonly>{{ old('deskripsi', $major->syarat) }}</textarea>
+                                                    <textarea class="form-control" name="syarat" disabled readonly>{!! old('deskripsi', $major->syarat) !!}</textarea>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="input_misi_fakultas" class="form-label">Lokasi</label>

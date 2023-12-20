@@ -7,24 +7,25 @@
     <div style="margin: -10px;"></div>
     <section id="hero-section">
         <div id="carouselExampleCaptions" class="carousel slide">
-            <!-- Indikator Carousel -->
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
-            </div>
             <!-- Gambar Carousel -->
             <div class="carousel-inner">
                 <!-- Item Carousel 1 -->
                 @foreach($faculties as $faculty)
-                <div class="carousel-item active bg-dark-subtle">
-                    <img src="{{ asset('img/program/faculty/' . $faculty->gambar) }}" class="d-block w-100 img-fluid" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>{{$faculty->first()->nama}}</h5>
+                    <div class="carousel-item active bg-dark-subtle">
+                        <img src="{{ asset('img/program/faculty/' . $faculty->gambar) }}" class="d-block w-100 img-fluid object-fit-cover" alt="..." style="height:500px; object-position: center;" >
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>{{$faculty->nama}}</h5>
+                        </div>
                     </div>
-                </div>
-                <!-- Item Carousel 2 -->
+                @endforeach
+
+                @foreach ($faculties->first()->major as $major)
+                    <div class="carousel-item active bg-dark-subtle">
+                        <img src="{{ asset('img/program/major/' . $major->gambar) }}" class="d-block w-100 img-fluid object-fit-cover" alt="..." style="height:500px; object-position: center;" >
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>{{$major->nama}}</h5>
+                        </div>
+                    </div>
                 @endforeach
                 
             </div>
@@ -57,13 +58,24 @@
                 <p>{!! $faculties->first()->misi !!}</p>
                 
                 <h2 class="fw-bold fs-4">Program Studi</h2>
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-0">
                     @foreach ($faculties->first()->major as $major)    
-                        <div class="col">
-                            <div class="card">
-                                <div class="card-body d-flex justify-content-center">
-                                    <a href="{{ route('prodi', $major->id)}}" class="fw-semibold text-dark text-decoration-none text-center py-5">{{ $major->nama }}</a>           
+                        {{-- <div class="card text-bg-dark">
+                            <img src="{{ asset('img/program/major/' . $major->gambar) }}" class="card-img object-fit-cover" alt="" style="height: 200px; width:500px;">
+                            <div class="card-img-overlay">
+                                <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                                    <a href="{{ route('prodi', $major->id)}}" class="fw-semibold text-bg-dark text-decoration-none text-center py-5">{{ $major->nama }}</a>           
                                 </div>
+                            </div>
+                        </div> --}}
+
+                        <div class="card text-bg-dark m-1">
+                            <img src="{{ asset('img/program/major/' . $major->gambar) }}" class="card-img object-fit-cover" alt="" style="height: 200px;">
+                            <div class="card-img-overlay">
+                                <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                                    <a href="{{ route('prodi', $major->id)}}" class="fw-semibold text-light text-decoration-none text-center">{!! $major->nama !!}</a>
+                                </div>
+                                
                             </div>
                         </div>
                     @endforeach

@@ -52,46 +52,44 @@ class FacultyController extends Controller
     }
 
     public function store(Request $request)
-{
-    $request->validate([
-        'nama' => 'required|max:255|unique:faculties',
-        'deskripsi' => 'required',
-        'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120',
-        'lokasi' => 'required|max:255',
-        'visi' => 'required',
-        'misi' => 'required',
-    ], [
-        'nama.required' => 'Nama Fakultas tidak boleh kosong',
-        'nama.unique' => 'Nama Fakultas sudah ada',
-        'deskripsi.required' => 'Deskripsi tidak boleh kosong',
-        'gambar.required' => 'Gambar tidak boleh kosong',
-        'gambar.image' => 'File harus berupa gambar',
-        'gambar.mimes' => 'Format gambar harus jpeg, png, jpg, atau gif',
-        'gambar.max' => 'Ukuran gambar tidak boleh lebih dari 5 MB',
-        'lokasi.required' => 'Lokasi tidak boleh kosong',
-        'visi.required' => 'Visi tidak boleh kosong',
-        'misi.required' => 'Misi tidak boleh kosong',
-    ]);
+    {
+        $request->validate([
+            'nama' => 'required|max:255|unique:faculties',
+            'deskripsi' => 'required',
+            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120',
+            'lokasi' => 'required|max:255',
+            'visi' => 'required',
+            'misi' => 'required',
+        ], [
+            'nama.required' => 'Nama Fakultas tidak boleh kosong',
+            'nama.unique' => 'Nama Fakultas sudah ada',
+            'deskripsi.required' => 'Deskripsi tidak boleh kosong',
+            'gambar.required' => 'Gambar tidak boleh kosong',
+            'gambar.image' => 'File harus berupa gambar',
+            'gambar.mimes' => 'Format gambar harus jpeg, png, jpg, atau gif',
+            'gambar.max' => 'Ukuran gambar tidak boleh lebih dari 5 MB',
+            'lokasi.required' => 'Lokasi tidak boleh kosong',
+            'visi.required' => 'Visi tidak boleh kosong',
+            'misi.required' => 'Misi tidak boleh kosong',
+        ]);
 
-    $extension = $request->file('gambar')->getClientOriginalExtension();
-    $gambarPath = $request->nama.'-'.now()->timestamp.'.'.$extension;
-    $request->file('gambar')->move(public_path('img/program/faculty/'), $gambarPath);
+        $extension = $request->file('gambar')->getClientOriginalExtension();
+        $gambarPath = $request->nama.'-'.now()->timestamp.'.'.$extension;
+        $request->file('gambar')->move(public_path('img/program/faculty/'), $gambarPath);
 
-    $faculty = new Faculty([
-        'nama' => $request->get('nama'),
-        'deskripsi' => $request->get('deskripsi'),
-        'gambar' => $gambarPath,
-        'lokasi' => $request->get('lokasi'),
-        'visi' => $request->get('visi'),
-        'misi' => $request->get('misi'),
-    ]);
+        $faculty = new Faculty([
+            'nama' => $request->get('nama'),
+            'deskripsi' => $request->get('deskripsi'),
+            'gambar' => $gambarPath,
+            'lokasi' => $request->get('lokasi'),
+            'visi' => $request->get('visi'),
+            'misi' => $request->get('misi'),
+        ]);
 
-    $faculty->save();
+        $faculty->save();
 
-
-
-    return redirect('admin-panel/program')->with('success', 'Faculty created successfully!');
-}
+        return redirect('admin-panel/program')->with('success', 'Fakultas berhasil ditambahkan!');
+    }
 
     public function edit($id)
     {
@@ -172,39 +170,39 @@ class FacultyController extends Controller
             $faculty->update(['gambar' => $gambarPath]);
         }
     
-        return redirect('admin-panel/program')->with('success', 'Faculty updated successfully!');
+        return redirect('admin-panel/program')->with('success', 'Fakultas berhasil diperbaharui!');
     }
     
     public function destroy(string $id)
-            {
-                $faculty = Faculty::find($id);
+    {
+        $faculty = Faculty::find($id);
 
-                if (!$faculty) {
-                    return redirect('admin-panel/program')->with('error', 'Faculty not found!');
-                }
+        if (!$faculty) {
+            return redirect('admin-panel/program')->with('error', 'Faculty not found!');
+        }
 
-                // Check if the faculty is used as a foreign key in the 'majors' table
-                $isUsedAsForeignKey = DB::table('majors')->where('kode_fakultas', $faculty->kode_fakultas)->exists();
+        // Check if the faculty is used as a foreign key in the 'majors' table
+        $isUsedAsForeignKey = DB::table('majors')->where('kode_fakultas', $faculty->kode_fakultas)->exists();
 
-                if ($isUsedAsForeignKey) {
-                    return redirect('admin-panel/program')->withErrors(['Kode Fakultas' => 'Kode Fakultas dipakai sebagai foreign key. Tidak dapat menghapus fakultas ini.']);
-                }
+        if ($isUsedAsForeignKey) {
+            return redirect('admin-panel/program')->withErrors(['Kode Fakultas' => 'Kode Fakultas dipakai sebagai foreign key. Tidak dapat menghapus fakultas ini.']);
+        }
 
-                // Additional logic (e.g., delete related records) if needed
+        // Additional logic (e.g., delete related records) if needed
 
-                // Simpan nama gambar sebelum dihapus
-                $gambarPath = public_path('img/program/faculty/') . $faculty->gambar;
+        // Simpan nama gambar sebelum dihapus
+        $gambarPath = public_path('img/program/faculty/') . $faculty->gambar;
 
-                // Hapus fakultas
-                $faculty->delete();
+        // Hapus fakultas
+        $faculty->delete();
 
-                // Hapus gambar dari direktori jika ada
-                if (file_exists($gambarPath)) {
-                    unlink($gambarPath);
-                }
+        // Hapus gambar dari direktori jika ada
+        if (file_exists($gambarPath)) {
+            unlink($gambarPath);
+        }
 
-                return redirect('admin-panel/program')->with('success', 'Faculty deleted successfully!');
-            }
+        return redirect('admin-panel/program')->with('success', 'Fakultas berhasil dihapus!');
+    }
 
 
 }

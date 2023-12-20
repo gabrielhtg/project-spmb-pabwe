@@ -21,12 +21,12 @@ return new class extends Migration
             $table->string('gambar');
             $table->text('visi');
             $table->text('misi');
-            $table->string('prospek');
+            $table->text('prospek');
             $table->string('gelar');
             $table->string('lama');
             $table->string('biaya');
             $table->text('syarat');
-            $table->text('lokasi');
+            $table->string('lokasi');
             $table->string('akreditasi');
             $table->timestamps();
         });

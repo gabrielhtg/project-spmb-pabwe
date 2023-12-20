@@ -108,7 +108,7 @@ class MajorController extends Controller
 
     $major->save();
 
-    return redirect('admin-panel/program')->with('success', 'Major created successfully!');
+    return redirect('admin-panel/program')->with('success', 'Program Studi berhasil ditambahkan!');
 }
 public function update(Request $request, String $id)
 {
@@ -150,7 +150,7 @@ public function update(Request $request, String $id)
     $major = Major::findOrFail($id);
 
     if (!$major) {
-        return redirect('admin-panel/program')->with('error', 'Major not found!');
+        return redirect('admin-panel/program')->with('error', 'Program Studi tidak ditemukan!');
     }
 
     try {
@@ -187,7 +187,7 @@ public function update(Request $request, String $id)
             'gambar' => $request->hasFile('gambar') ? $gambarPath : $major->gambar,
         ]);
 
-        return redirect('admin-panel/program')->with('success', 'Major updated successfully!');
+        return redirect('admin-panel/program')->with('success', 'Program Studi berhasil diperbaharui!');
     } catch (\Exception $e) {
         return redirect('admin-panel/program')->with('error', 'Error updating major: ' . $e->getMessage());
     }
@@ -205,6 +205,6 @@ public function update(Request $request, String $id)
         
         $major->delete();
 
-        return redirect('admin-panel/program')->with('success', 'Major deleted successfully!');
+        return redirect('admin-panel/program')->with('success', 'Program Studi berhasil dihapus!');
     }
 }
