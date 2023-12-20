@@ -71,8 +71,8 @@ class AdminPanelController extends Controller
 
     public function ubahDataInstitut(Request $request)
     {
-        $dataInstitusi = data_institusi::where('id', 1)->first();
         try {
+            $dataInstitusi = data_institusi::where('id', 1)->first();
             if ($request->input_logo_institusi) {
                 $request->validate([
                     'input_logo_institusi' => 'required|image|mimes:jpeg,png,jpg|max:1024',
@@ -336,24 +336,28 @@ class AdminPanelController extends Controller
 
     public function addSocialMedia(Request $request)
     {
-        $request->validate([
-            'input_nama_social_media' => 'required|string|max:50',
-            'input_link_social_media' => 'required|string|max:150',
-            'input_logo_social_media' => 'required|string|max:100',
-        ]);
+        try {
+            $request->validate([
+                'input_nama_social_media' => 'required|string|max:50',
+                'input_link_social_media' => 'required|string|max:150',
+                'input_logo_social_media' => 'required|string|max:100',
+            ]);
 
-        $username = Auth::user()->username;
+            $username = Auth::user()->username;
 
-        SocalMediaModel::create([
-            'nama' => $request->input_nama_social_media,
-            'link' => $request->input_link_social_media,
-            'icon' => $request->input_logo_social_media,
-            'created_by' => $username,
-            'updated_by' => $username,
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-        return redirect('admin-panel')->with('success', 'Berhasil menambahkan Social Media Baru');
+            SocalMediaModel::create([
+                'nama' => $request->input_nama_social_media,
+                'link' => $request->input_link_social_media,
+                'icon' => $request->input_logo_social_media,
+                'created_by' => $username,
+                'updated_by' => $username,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+            return redirect('admin-panel')->with('success', 'Berhasil menambahkan Social Media Baru');
+        } catch (\Exception $e) {
+            return redirect('admin-panel')->with('error', 'Gagal menambahkan Social Media Baru');
+        }
     }
 
     public function updateSocialMedia (Request $request) {
@@ -393,44 +397,48 @@ class AdminPanelController extends Controller
 
     public function updateHeroSection(Request $request)
     {
-        $request->validate([
-            'input_judul_header' => 'required|string|max:50',
-            'input_deskripsi_header' => 'required|string|max:300'
-        ]);
-
-        $dataHero = HeroSectionModel::where('id', 1)->first();
-
-        $dataHero->header = $request->input_judul_header;
-        $dataHero->paragraph = $request->input_deskripsi_header;
-
-        if ($request->input_bg_hero) {
+        try {
             $request->validate([
-                'input_bg_hero' => 'image|mimes:jpeg,png,jpg|max:1024',
+                'input_judul_header' => 'required|string|max:50',
+                'input_deskripsi_header' => 'required|string|max:300'
             ]);
 
-            // Mengambil file yang sudah divalidasi dari request
-            $photo = $request->file('input_bg_hero');
+            $dataHero = HeroSectionModel::where('id', 1)->first();
 
-            // Membuat nama unik untuk file yang diunggah
-            $filename = time() . '_hero.' . $photo->getClientOriginalExtension();
+            $dataHero->header = $request->input_judul_header;
+            $dataHero->paragraph = $request->input_deskripsi_header;
 
-            // Menentukan direktori tempat penyimpanan file di dalam direktori 'public'
-            $directory = public_path('assets/img/dashboard/');
+            if ($request->input_bg_hero) {
+                $request->validate([
+                    'input_bg_hero' => 'image|mimes:jpeg,png,jpg|max:1024',
+                ]);
 
-            //Pindahkan file ke direktori yang diinginkan
-            $photo->move($directory, $filename);
+                // Mengambil file yang sudah divalidasi dari request
+                $photo = $request->file('input_bg_hero');
 
-            // Menghapus photo lama jika ada
-            if ($dataHero->bg_image && file_exists($dataHero->bg_image)) {
-                unlink($dataHero->bg_image);
+                // Membuat nama unik untuk file yang diunggah
+                $filename = time() . '_hero.' . $photo->getClientOriginalExtension();
+
+                // Menentukan direktori tempat penyimpanan file di dalam direktori 'public'
+                $directory = public_path('assets/img/dashboard/');
+
+                //Pindahkan file ke direktori yang diinginkan
+                $photo->move($directory, $filename);
+
+                // Menghapus photo lama jika ada
+                if ($dataHero->bg_image && file_exists($dataHero->bg_image)) {
+                    unlink($dataHero->bg_image);
+                }
+
+                $dataHero->bg_image = 'assets/img/dashboard/' . $filename;
             }
 
-            $dataHero->bg_image = 'assets/img/dashboard/' . $filename;
+            $dataHero->update();
+
+            return redirect()->back()->with('success', 'Berhasil update hero Section');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Gagal update hero Section');
         }
-
-        $dataHero->update();
-
-        return redirect()->back()->with('success', 'Berhasil update hero Section');
     }
 
     public function getAddAdminView() {
@@ -446,37 +454,46 @@ class AdminPanelController extends Controller
     }
 
     public function addAlamat (Request $request) {
-        $request->validate([
-            'input_nama_alamat' => 'required|max:50',
-            'input_alamat' => 'required|max:150',
-        ]);
+        try {
+            $request->validate([
+                'input_nama_alamat' => 'required|max:50',
+                'input_alamat' => 'required|max:150',
+            ]);
 
-        AlamatInstitusiModel::create([
-            'nama' => $request->input_nama_alamat,
-            'alamat' => $request->input_alamat,
-            'created_by' => Auth::user()->username
-        ]);
+            AlamatInstitusiModel::create([
+                'nama' => $request->input_nama_alamat,
+                'alamat' => $request->input_alamat,
+                'created_by' => Auth::user()->username
+            ]);
 
-        return redirect()->route('admin-panel');
+            return redirect()->route('admin-panel')->with('success', 'Berhasil menambahkan alamat baru!');
+        } catch (\Exception $e) {
+            return redirect()->route('admin-panel')->with('error', 'Gagal menambahkan alamat baru!');
+        }
     }
 
     public function editAlamat (Request $request) {
-        $request->validate([
-            'input_nama_alamat' => 'required|string|max:50',
-            'input_alamat' => 'required|string|max:150'
-        ]);
+        try {
+            $request->validate([
+                'input_nama_alamat' => 'required|string|max:50',
+                'input_alamat' => 'required|string|max:150'
+            ]);
 
-        $username = Auth::user()->username;
-        $alamat = AlamatInstitusiModel::where('id', $request->id)->first();
+            $username = Auth::user()->username;
+            $alamat = AlamatInstitusiModel::where('id', $request->id)->first();
 
-        $alamat-> nama = $request->input_nama_alamat;
-        $alamat-> alamat = $request->input_alamat;
-        $alamat->updated_at = now();
-        $alamat->updated_by = $username;
+            $alamat-> nama = $request->input_nama_alamat;
+            $alamat-> alamat = $request->input_alamat;
+            $alamat->updated_at = now();
+            $alamat->updated_by = $username;
 
-        $alamat->update();
+            $alamat->update();
 
-        return redirect()->back()->with('success', 'Berhasil Edit Alamat Institusi');
+            return redirect()->back()->with('success', 'Berhasil Edit Alamat Institusi');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Gagal Edit Alamat Institusi');
+        }
+
     }
 
     public function removeAlamat(Request $request)
@@ -583,9 +600,9 @@ class AdminPanelController extends Controller
     public function removeNomorTelepon (Request $request) {
         try {
             NomorTeleponModel::where('id', $request->id)->first()->delete();
-            return redirect(null, 200)->route('admin-panel');
+            return redirect()->route('admin-panel')->with('success', 'Berhasil remove nomor telepon!');
         } catch (\Exception $e) {
-            abort(404, 'ID nomor telepon tidak ditemukan');
+            return redirect()->route('admin-panel')->with('error', 'Gagal remove nomor telepon!');
         }
     }
 
