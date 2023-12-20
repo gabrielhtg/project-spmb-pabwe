@@ -72,57 +72,60 @@ class AdminPanelController extends Controller
     public function ubahDataInstitut(Request $request)
     {
         $dataInstitusi = data_institusi::where('id', 1)->first();
-
-        if ($request->input_logo_institusi) {
-            $request->validate([
-                'input_logo_institusi' => 'required|image|mimes:jpeg,png,jpg|max:1024',
-                'nama_institusi' => 'required|max:30|string',
-                'input_singkatan_nama_institusi' => 'required|max:10|string',
-                'input_jargon_institusi' => 'required|string|max:50',
-                'input_jumlah_dosen' => 'required|numeric',
-                'input_jumlah_mahasiswa' => 'required|numeric',
-                'input_jumlah_alumni' => 'required|numeric'
-            ]);
-        }
-
-        else {
-            $request->validate([
-                'nama_institusi' => 'required|max:30|string',
-                'input_singkatan_nama_institusi' => 'required|max:10|string',
-                'input_jargon_institusi' => 'required|string|max:50',
-                'input_jumlah_dosen' => 'required|numeric',
-                'input_jumlah_mahasiswa' => 'required|numeric',
-                'input_jumlah_alumni' => 'required|numeric',
-            ]);
-        }
-
-        if ($request->input_logo_institusi) {
-            $photo = $request->file('input_logo_institusi');
-
-            $filename = 'logo_institusi.' . $photo->getClientOriginalExtension();
-
-            $directory = public_path('assets/img/dashboard/');
-
-            if ($dataInstitusi->logo_institusi && file_exists($dataInstitusi->logo_institusi)) {
-                unlink($dataInstitusi->logo_institusi);
+        try {
+            if ($request->input_logo_institusi) {
+                $request->validate([
+                    'input_logo_institusi' => 'required|image|mimes:jpeg,png,jpg|max:1024',
+                    'nama_institusi' => 'required|max:30|string',
+                    'input_singkatan_nama_institusi' => 'required|max:10|string',
+                    'input_jargon_institusi' => 'required|string|max:50',
+                    'input_jumlah_dosen' => 'required|numeric',
+                    'input_jumlah_mahasiswa' => 'required|numeric',
+                    'input_jumlah_alumni' => 'required|numeric'
+                ]);
             }
 
-            $photo->move($directory, $filename);
+            else {
+                $request->validate([
+                    'nama_institusi' => 'required|max:30|string',
+                    'input_singkatan_nama_institusi' => 'required|max:10|string',
+                    'input_jargon_institusi' => 'required|string|max:50',
+                    'input_jumlah_dosen' => 'required|numeric',
+                    'input_jumlah_mahasiswa' => 'required|numeric',
+                    'input_jumlah_alumni' => 'required|numeric',
+                ]);
+            }
 
-            $dataInstitusi->logo_institusi = 'assets/img/dashboard/' . $filename;
+            if ($request->input_logo_institusi) {
+                $photo = $request->file('input_logo_institusi');
+
+                $filename = 'logo_institusi.' . $photo->getClientOriginalExtension();
+
+                $directory = public_path('assets/img/dashboard/');
+
+                if ($dataInstitusi->logo_institusi && file_exists($dataInstitusi->logo_institusi)) {
+                    unlink($dataInstitusi->logo_institusi);
+                }
+
+                $photo->move($directory, $filename);
+
+                $dataInstitusi->logo_institusi = 'assets/img/dashboard/' . $filename;
+            }
+
+            $dataInstitusi->nama_institusi = $request->nama_institusi;
+            $dataInstitusi->singkatan_nama_institusi = $request->input_singkatan_nama_institusi;
+            $dataInstitusi->akreditasi = $request->input_akreditasi;
+            $dataInstitusi->jargon = $request->input_jargon_institusi;
+            $dataInstitusi->jumlah_dosen = $request->input_jumlah_dosen;
+            $dataInstitusi->jumlah_mahasiswa = $request->input_jumlah_mahasiswa;
+            $dataInstitusi->jumlah_alumni = $request->input_jumlah_alumni;
+
+            $dataInstitusi->update();
+
+            return redirect()->route('admin-panel')->with('success', 'Berhasil mengubah Data Institusi!');
+        } catch (\Exception $e) {
+            return redirect()->route('admin-panel')->with('error', 'Gaga mengubah Data Institusi!');
         }
-
-        $dataInstitusi->nama_institusi = $request->nama_institusi;
-        $dataInstitusi->singkatan_nama_institusi = $request->input_singkatan_nama_institusi;
-        $dataInstitusi->akreditasi = $request->input_akreditasi;
-        $dataInstitusi->jargon = $request->input_jargon_institusi;
-        $dataInstitusi->jumlah_dosen = $request->input_jumlah_dosen;
-        $dataInstitusi->jumlah_mahasiswa = $request->input_jumlah_mahasiswa;
-        $dataInstitusi->jumlah_alumni = $request->input_jumlah_alumni;
-
-        $dataInstitusi->update();
-
-        return redirect()->route('admin-panel')->with('success', 'Berhasil mengubah Data Institusi!');
     }
 
     public function getEditProfile()
