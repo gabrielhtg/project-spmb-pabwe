@@ -12,8 +12,6 @@
             </div>
         @endif
 
-
-
         <form class="p-4 p-md-5 rounded-3 w-100" action="{{ route('post.login') }}" method="post" >
             @csrf
             <div class="form-floating mb-3">
