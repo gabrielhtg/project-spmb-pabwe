@@ -39,7 +39,7 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h1 class="modal-title fs-5 fw-semibold"
-                                                id="info-social-media-label{{ $e->id }}">Edit Social Media</h1>
+                                                id="info-social-media-label{{ $e->id }}">Info Social Media</h1>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                         </div>
@@ -78,13 +78,13 @@
                                                 <div class="mb-3">
                                                     <label class="form-label w-100">
                                                         Created At
-                                                        <input value="{{ date("d-m-Y", strtotime($e->created_at)) }}" class="form-control" disabled>
+                                                        <input value="{{ $e->created_at }}" class="form-control" disabled>
                                                     </label>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label class="form-label w-100">
                                                         Updated At
-                                                        <input value="{{ date("d-m-Y", strtotime($e->updated_at)) }}" class="form-control" disabled>
+                                                        <input value="{{ $e->updated_at }}" class="form-control" disabled>
                                                     </label>
                                                 </div>
                                             </div>
@@ -92,7 +92,6 @@
                                                 <button type="button" class="btn btn-secondary"
                                                         data-bs-dismiss="modal">Cancel
                                                 </button>
-                                                <button type="submit" class="btn btn-primary">Save</button>
                                             </div>
                                     </div>
                                 </div>
@@ -121,9 +120,10 @@
                                                 <div class="mb-3">
                                                     <label class="form-label"
                                                            for="input_edit_nama_socialmedia{{$e->id}}">Nama</label>
+                                                    <a tabindex="0" class="border-0 bg-white" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-content="Max length 50 characters."><i class="bi bi-info-circle"></i></a>
                                                     <input type="text" class="form-control"
                                                            id="input_edit_nama_socialmedia{{$e->id}}"
-                                                           name="input_nama_socialmedia" value="{{ $e->nama }}">
+                                                           name="input_nama_socialmedia" value="{{ $e->nama }}" required>
                                                     @error('input_nama_socialmedia')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
@@ -131,9 +131,10 @@
                                                 <div class="mb-3">
                                                     <label for="input_edit_link_socialmedia{{$e->id}}"
                                                            class="form-label">Link</label>
+                                                    <a tabindex="0" class="border-0 bg-white" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-content="Max length 150 characters."><i class="bi bi-info-circle"></i></a>
                                                     <input type="text" class="form-control"
                                                            id="input_edit_link_socialmedia{{$e->id}}" name="input_link"
-                                                           value="{{ $e->link }}">
+                                                           value="{{ $e->link }}" required>
                                                     @error('input_link')
                                                     <span class="text-danger">{{ $message }}</span>
                                                     @enderror
@@ -147,7 +148,7 @@
                                                     </label>
                                                     <input type="text" class="form-control"
                                                            id="input_edit_icon_socialmedia{{$e->id}}" name="input_icon"
-                                                           value="{{ $e->icon }}">
+                                                           value="{{ $e->icon }}" required>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">

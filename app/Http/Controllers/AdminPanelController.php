@@ -6,6 +6,7 @@ use App\Models\AdminModel;
 use App\Models\AkreditasiInstitutiModel;
 use App\Models\AkreditasiSectionModel;
 use App\Models\AlamatInstitusiModel;
+use App\Models\BiayaStudi;
 use App\Models\data_institusi;
 use App\Models\Fasilitas;
 use App\Models\Pengumuman;
@@ -16,12 +17,19 @@ use App\Models\JadwalUjianModel;
 use App\Models\MbkmModel;
 use App\Models\ModelHeaderAdmisi;
 use App\Models\NomorTeleponModel;
+use App\Models\PdfBiayaModel;
 use App\Models\Prestasi;
 use App\Models\SocalMediaModel;
 use App\Models\JalurPendaftaranModel;
+use App\Models\BiayaAdminModel;
+use App\Models\SubJalurPendaftaran;
+use App\Models\JadwalPendaftaranModel;
+use App\Models\BiayaPendaftaranModel;
+use App\Models\PedomanPendaftaranModel;
 use App\Models\Lokasi;
 use App\Models\JenisTes;
 use App\Models\Major;
+use App\Models\prodi;
 use App\Models\Course;
 use App\Models\Faculty;
 use App\Models\Employee;
@@ -104,11 +112,11 @@ class AdminPanelController extends Controller
 
             $directory = public_path('assets/img/dashboard/');
 
-            $photo->move($directory, $filename);
-
             if ($dataInstitusi->logo_institusi && file_exists($dataInstitusi->logo_institusi)) {
                 unlink($dataInstitusi->logo_institusi);
             }
+
+            $photo->move($directory, $filename);
 
             $dataInstitusi->logo_institusi = 'assets/img/dashboard/' . $filename;
         }
@@ -359,9 +367,9 @@ class AdminPanelController extends Controller
         $socialMedia = SocalMediaModel::where('id', $request->id)->first();
 
         $request->validate([
-            'input_nama_socialmedia' => 'required',
-            'input_link' => 'required',
-            'input_icon' => 'required',
+            'input_nama_socialmedia' => 'required|string|max:50',
+            'input_link' => 'required|string|max:150',
+            'input_icon' => 'required|string|max:100',
         ]);
 
         $socialMedia->nama = $request->input_nama_socialmedia;
@@ -383,6 +391,11 @@ class AdminPanelController extends Controller
 
     public function updateHeroSection(Request $request)
     {
+        $request->validate([
+            'input_judul_header' => 'required|string|max:50',
+            'input_deskripsi_header' => 'required|string|max:300'
+        ]);
+
         $dataHero = HeroSectionModel::where('id', 1)->first();
 
         $dataHero->header = $request->input_judul_header;
@@ -432,6 +445,11 @@ class AdminPanelController extends Controller
     }
 
     public function addAlamat (Request $request) {
+        $request->validate([
+            'input_nama_alamat' => 'required|max:50',
+            'input_alamat' => 'required|max:150',
+        ]);
+
         AlamatInstitusiModel::create([
             'nama' => $request->input_nama_alamat,
             'alamat' => $request->input_alamat,
@@ -442,6 +460,11 @@ class AdminPanelController extends Controller
     }
 
     public function editAlamat (Request $request) {
+        $request->validate([
+            'input_nama_alamat' => 'required|string|max:50',
+            'input_alamat' => 'required|string|max:150'
+        ]);
+
         $username = Auth::user()->username;
         $alamat = AlamatInstitusiModel::where('id', $request->id)->first();
 
@@ -450,16 +473,9 @@ class AdminPanelController extends Controller
         $alamat->updated_at = now();
         $alamat->updated_by = $username;
 
-        dump([
-            $alamat-> nama,
-            $alamat-> alamat,
-            $alamat->updated_at,
-            $alamat->updated_by,
-        ]);
-
         $alamat->update();
 
-        return redirect(null, 200)->back();
+        return redirect()->back();
     }
 
     public function removeAlamat(Request $request)
@@ -476,10 +492,22 @@ class AdminPanelController extends Controller
         $dataHeaderAdmisi = ModelHeaderAdmisi::where('id', 1)->first();
         $dataNonKompetisi  = MbkmModel::where('jenis_kegiatan', 'Non Kompetisi')->get();
         $dataKompetisi =  MbkmModel::where('jenis_kegiatan', 'Kompetisi')->get();
+        $jalur = JalurPendaftaranModel::all();
+        $jadwalPendaftaran = JadwalPendaftaranModel::all();
+        $dataBiaya = BiayaAdminModel::all();
+        $dataInfografis = InfografisModel::all();
         $jalurMasuk = [];
         $lokasi = Lokasi::orderBy('lokasiTes', 'asc')->get();
         $jenis = JenisTes::orderBy('gelombang', 'asc')->get();
         $dataJadwalUjian = JadwalUjianModel::all();
+        $dataSubJalurPendaftaran = SubJalurPendaftaran::all();
+        $biayaPen = BiayaPendaftaranModel::all();
+        $pedomanpendaftaran = PedomanPendaftaranModel::all();
+        $PdfbiayaPendaftaran = PdfBiayaModel::all();
+        $prodis = prodi::orderBy("created_at", "desc")->get();
+        $biayaStudis = BiayaStudi::all();
+
+
 
         foreach (InfografisModel::all() as $e) {
             if (!in_array($e->jalur, $jalurMasuk)) {
@@ -502,7 +530,16 @@ class AdminPanelController extends Controller
             'dataInfografis' => $dataInfografisJalurMasuk,
             'lokasi' => $lokasi,
             'jenis' => $jenis,
-            'dataJadwalUjian' => $dataJadwalUjian
+            'jalur'=>$jalur,
+            'dataBiaya' => $dataBiaya,
+            'dataJadwalUjian' => $dataJadwalUjian,
+            'jadwalPendaftaran'=>$jadwalPendaftaran,
+            'dataSubJalurPendaftaran'=>$dataSubJalurPendaftaran,
+            'biayaPen'=>$biayaPen,
+            'pedomanpendaftaran' => $pedomanpendaftaran,
+            'PdfbiayaPendaftaran'=>$PdfbiayaPendaftaran,
+            'prodis' => $prodis,
+            'biayaStudis'=>$biayaStudis
         ];
         return view('admin-panel.admisi_panel', $data);
     }
@@ -549,6 +586,11 @@ class AdminPanelController extends Controller
     }
 
     public function addNomorTelepon (Request $request) {
+        $request->validate([
+            'namaNomorTelepon' => 'required|string|max:20',
+            'nomorTelepon' => 'required|string|max:15'
+        ]);
+
         try {
             $username = Auth::user()->username;
 

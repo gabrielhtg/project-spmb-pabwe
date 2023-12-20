@@ -162,7 +162,7 @@
                         <i class="fa-solid fa-chalkboard-user card-img-top" style="font-size: 80px"></i>
                     </div>
                     <div class="card-body">
-                        <span id="jumlah-dosen" class="fs-2 text-primary fw-bold">0</span>
+                        <span id="jumlah-dosen" class="fs-2 text-primary fw-bold">{{ $dataInstitusi -> jumlah_dosen }}</span>
                         <br>
                         <span class="fs-5"><strong>Dosen</strong></span>
                     </div>
@@ -175,7 +175,7 @@
                         <i class="fa-solid fa-child-reaching card-img-top" style="font-size: 80px"></i>
                     </div>
                     <div class="card-body">
-                        <span id="jumlah-mahasiswa" class="fs-2 text-primary fw-bold">0</span>
+                        <span id="jumlah-mahasiswa" class="fs-2 text-primary fw-bold">{{ $dataInstitusi -> jumlah_mahasiswa }}</span>
                         <br>
                         <span class="fs-5"><strong>Mahasiswa</strong></span>
                     </div>
@@ -188,7 +188,7 @@
                         <i class="fa-solid fa-user-graduate" style="font-size: 80px"></i>
                     </div>
                     <div class="card-body">
-                        <span id="jumlah-alumni" class="fs-2 text-primary fw-bold">0</span>
+                        <span id="jumlah-alumni" class="fs-2 text-primary fw-bold">{{ $dataInstitusi -> jumlah_alumni }}</span>
                         <br>
                         <span class="fs-5"><strong>Alumni</strong></span>
                     </div>
@@ -220,6 +220,7 @@
         animateCount('jumlah-alumni', 0, {{ $dataInstitusi->jumlah_alumni }}, 100);
     </script>
 
+{{--    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>--}}
     @php
         $lebarCardMitra = 'width: 10rem;';
     @endphp

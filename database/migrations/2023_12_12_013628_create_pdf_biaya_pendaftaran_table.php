@@ -11,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jalur_pendaftaran', function (Blueprint $table) {
+        Schema::create('pdf_biaya_pendaftaran', function (Blueprint $table) {
             $table->id();
-            $table->string('jalurPendaftaran');
-            $table->text('desk_pers_umum');
-            $table->string('created_by');
-            $table->string('updated_by');
+            $table->string('PdfbiayaPendaftaran'); 
             $table->timestamps();
         });
     }
@@ -26,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jalur_pendaftaran');
+        Schema::dropIfExists('pdf_biaya_pendaftaran');
     }
 };

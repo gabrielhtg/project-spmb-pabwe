@@ -14,7 +14,6 @@ class AdminController extends Controller
 {
     public function addAdmin(Request $request)
     {
-        $activeAdmin = Auth::user();
         $profile_pict = '';
 
         if ($request->profile_pict) {
@@ -63,22 +62,28 @@ class AdminController extends Controller
                 'password' => Hash::make($request->password),
                 'firstname' => $request->firstname,
                 'lastname' => $request->lastname,
-                'created_by' => $activeAdmin->username,
+                'created_by' => $request->id,
                 'username' => $request->username,
                 'profile_pict' => $profile_pict,
                 'created_at' => now(),
                 'udpated_at' => now()
             ]);
         } catch (\Exception $e) {
-            return redirect()->route('admins');
+//            return redirect()->route('admins');
         }
 
-        return redirect()->route('admins');
+        return redirect()->back()->with('success', 'Admin berhasil ditambahkan!');
     }
 
     public function editAdmin(Request $request)
     {
-        $admin = AdminModel::where('id', Auth::user()->id)->first();
+        $admin = AdminModel::where('id', $request->id)->first();
+
+        $request->validate([
+            'username' => 'required|max:20',
+            'firstname' => 'required|max:25',
+            'lastname' => 'required|max:25',
+        ]);
 
         if ($request->profile_pict) {
             $request->validate([
@@ -99,7 +104,6 @@ class AdminController extends Controller
 
             $profile_pict = 'assets/img/admin/' . $filename;
             $admin->profile_pict = $profile_pict;
-
         }
 
         $admin->username = $request->username;
@@ -145,7 +149,7 @@ class AdminController extends Controller
             'newRePassword' => "max:80|required|min:5",
         ]);
 
-        $admin = AdminModel::where('id', Auth::user()->id)->first();
+        $admin = AdminModel::where('id', $request->id)->first();
 
         if (Hash::check($request->oldPassword, $admin->password)) {
             if ($request->newPassword === $request->newRePassword) {
@@ -161,6 +165,11 @@ class AdminController extends Controller
     }
 
     public function editNomorTelepon (Request $request) {
+        $request->validate([
+            'nama' => 'required|string|max:20',
+            'nomor_telepon' => 'required|max:15'
+        ]);
+
         $data = NomorTeleponModel::where("id", $request->id)->first();
 
         $data->nama = $request->nama;
@@ -174,6 +183,11 @@ class AdminController extends Controller
     }
 
     public function addEmail (Request $request) {
+        $request->validate([
+            'namaEmail' => 'required|max:20',
+            'email' => 'required|max:50'
+        ]);
+
         EmailModel::create([
             'nama' => $request->namaEmail,
             'email' => $request->email,
@@ -193,6 +207,11 @@ class AdminController extends Controller
     }
 
     public function editEmail (Request $request) {
+        $request->validate([
+            'inputNamaEmail' => 'required|max:20',
+            'email' => 'required|max:50'
+        ]);
+
         $data = EmailModel::where("id", $request->id)->first();
 
         $data->nama = $request->inputNamaEmail;

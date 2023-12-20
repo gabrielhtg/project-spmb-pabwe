@@ -49,25 +49,41 @@
                                 <th scope="col">#</th>
                                 <th scope="col">Program Studi</th>
                                 <th scope="col">Deskripsi Persyaratan</th>
+                                <th scope="col">Cover</th>
                                 <th scope="col">Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Test</td>
-                                <td>Test</td>
-                                <td>
-                                    <button type="button" class="btn btn-warning">Ubah</button>
-                                    <button type="button" class="btn btn-danger">Hapus</button>
-                                </td>
-                            </tr>
+                            @php
+                                $i = 1;
+                            @endphp
+                            @foreach($prodis as $prodi)
+                                <tr>
+                                    <td>{{ $i++ }}</td>
+                                    <td>{{$prodi->program_studi}}</td>
+                                    <td>{{$prodi->deskripsi_persyaratan}}</td>
+                                    <td><img src="{{asset($prodi->cover)}}" style="height: 64px;" alt="Cover"></td>
+                                    <td>
+                                        <form action="{{ route('post.delete.prodi', ['id' => $prodi->id]) }}">
+                                        </form>
+                                        @include('admin-panel.sub_admisi_panel.edit_pers_khusus')
+                                        <form action="{{ route('post.delete.prodi', ['id' => $prodi->id]) }}" method="POST" onsubmit="return confirm('Yakin menghapus data?')">
+                                            @csrf
+                                            @method('DELETE')
+                                            <input type="hidden" name="id" value="{{ $prodi->id }}">
+                                            <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                                        </form>
+
+                                    </td>
+                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </form>
                 </div>
             </div>
         </div>
+
 
         <div class="mt-3">
             <div class="card card-success">
@@ -89,15 +105,66 @@
                             </tr>
                             </thead>
                             <tbody>
+                                @php
+                                    $i = 1;
+                                @endphp
+                                @foreach($biayaPen as $e)
                             <tr>
-                                <td>1</td>
-                                <td>USM</td>
-                                <td>10.000</td>
+                                <td>{{$i++}}</td>
+                                <td>{{$e->jlr_Pen}}</td>
+                                <td>{{$e->biayaPen}}</td>
                                 <td>
-                                    <button type="button" class="btn btn-warning">Ubah</button>
-                                    <button type="button" class="btn btn-danger">Hapus</button>
-                                </td>
+                                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editjlr_Pen{{ $e->id }}" title="Edit Jalur Pendaftaran">
+                                        <i class="bi bi-pen"></i>
+                                    </button>
+                                    <form action="{{ route('removeBiayaPendaftaran', ['biayaPendaftaran_id' => $e->id]) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this?')">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </form>
+                                    
+                                <!-- Modal -->
+                                <div class="modal fade" id="editjlr_Pen{{ $e->id }}" tabindex="-1" aria-labelledby="edit_biaya_pendaftaran_label" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5 fw-semibold"
+                                                        id="edit_biaya_pendaftaran_label{{ $e->id }}">Edit </h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                </div>
+                                                <form action="{{ route('editBiayaPendaftaran') }}" method="post">
+                                                    @csrf
+                                                    <div class="modal-body text-start">
+                                                        <input type="hidden" name="id" value="{{ $e->id }}">
+                                                        <div class="mb-3">
+                                                            <label class="form-label">Jalur Pendaftaran</label>
+                                                            <input type="text" class="form-control"
+                                                                name="jlr_Pen" value="{{ $e->jlr_Pen }}">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="biayaPen"
+                                                                class="form-label">Biaya Pendaftaran</label>
+                                                            <input type="text" class="form-control" name="biayaPen"
+                                                                value="{{ $e->biayaPen}}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Cancel
+                                                        </button>
+                                                        <input type="hidden" value="{{ $e->id }}" name="id">
+                                                        <button type="submit" class="btn btn-primary">Save</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>    
                             </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </form>
@@ -508,29 +575,64 @@
                     <span class="fs-3">Data Biaya Umum</span>
                 </div>
 
-                <form>
+                <form method="post" action="{{ route('set-biaya-umum') }}">
+                    @csrf
                     <div class="card-body">
                         <div class="mb-3">
-                            <label for="inputbiayaAsrama" class="form-label">Biaya Asrama dan Kemahasiswaan (Rp)</label>
-                            <input type="text" class="form-control" id="inputbiayaAsrama" name="inputbiayaAsrama">
+                            <label for="biayaasrama" class="form-label">Biaya Asrama dan Kemahasiswaan (Rp)</label>
+                            <input type="text" class="form-control" id="biayaasrama" name="biayaasrama" >
+                            @error('biayaasrama')
+                                <div class="alert alert-danger"{{$message}}></div>
+                            @enderror
                         </div>
                         <div class="mb-3">
-                            <label for="inputBiayaMakan" class="form-label">Biaya Makan /hari (Rp)</label>
-                            <input type="text" class="form-control" id="inputBiayaMakan" name="inputBiayaMakan">
+                            <label for="biayamakan" class="form-label">Biaya Makan /hari (Rp)</label>
+                            <input type="text" class="form-control" id="biayamakan" name="biayamakan" > 
+                            @error('biayamakan')
+                                <div class="alert alert-danger"{{$message}}></div>
+                            @enderror
                         </div>
                         <div class="mb-3">
-                            <label for="inputBiayaWisuda" class="form-label">Biaya Wisuda (Rp)</label>
-                            <input type="text" class="form-control" id="inputBiayaWisuda" name="inputBiayaWisuda">
+                            <label for="biayawisuda" class="form-label">Biaya Wisuda (Rp)</label>
+                            <input type="text" class="form-control" id="biayawisuda" name="biayawisuda">
+                            @error('biayawisuda')
+                                <div class="alert alert-danger"{{$message}}></div>
+                            @enderror
                         </div>
                         <div class="mb-3">
-                            <label for="inputDepositToga" class="form-label">Biaya Deposit Toga (Rp)</label>
-                            <input type="text" class="form-control" id="inputDepositToga" name="inputDepositToga">
+                            <label for="biayadeposit" class="form-label">Biaya Deposit Toga (Rp)</label>
+                            <input type="text" class="form-control" id="biayadeposit" name="biayadeposit" >
+                            @error('biayadeposit')
+                                <div class="alert alert-danger"{{$message}}></div>
+                            @enderror
                         </div>
                         <div class="mb-3">
-                            <label for="inputBiayaTingkatAkhir" class="form-label">Biaya Khusus Mahasiswa Tingkat Akhir
-                                (Rp)</label>
-                            <input type="text" class="form-control" id="inputBiayaTingkatAkhir"
-                                   name="inputBiayaTingkatAkhir">
+                            <label for="biayatingkatakhir" class="form-label">Biaya Khusus Mahasiswa Tingkat Akhir (Rp) </label>
+                            <input type="text" class="form-control" id="biayatingkatakhir" name="biayatingkatakhir"  >
+                            @error('biayatingkatakhir')
+                                <div class="alert alert-danger"{{$message}}></div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Biaya Uang Pangkal (Rp) </label>
+                            <input type="text" class="form-control" name="biayaUangPangkal"  >
+                            @error('biayaUangPangkal')
+                                <div class="alert alert-danger"{{$message}}></div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Biaya Perlengkapan Mahasiswa (Rp) </label>
+                            <input type="text" class="form-control" name="biayaPerlengkapanMahasiswa"  >
+                            @error('biayaPerlengkapanMahasiswa')
+                                <div class="alert alert-danger"{{$message}}></div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Biaya Perlengkapan Makan (Rp) </label>
+                            <input type="text" class="form-control"  name="biayaPerlengkapanMakan"  >
+                            @error('biayaPerlengakapanMakan')
+                                <div class="alert alert-danger"{{$message}}></div>
+                            @enderror
                         </div>
                     </div>
                     <div class="card-footer">
@@ -540,43 +642,7 @@
             </div>
         </div>
 
-        <div class="mt-3">
-            <div class="card card-success">
-                <div class="card-header bg-primary text-white">
-                    <span class="fs-3">Data Biaya Studi</span>
-
-                </div>
-
-                <div class="card-body">
-                    @include('admin-panel.sub_admisi_panel.add_biaya_studi')
-                    <form action="">
-                        <table class="table table-striped">
-                            <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Program Studi</th>
-                                <th scope="col">Biaya SPP (Rp)</th>
-                                <th scope="col">Uang Pengembangan (Rp)</th>
-                                <th scope="col">Action</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Test</td>
-                                <td>Test</td>
-                                <td>Test</td>
-                                <td>
-                                    <button type="button" class="btn btn-warning">Ubah</button>
-                                    <button type="button" class="btn btn-danger">Hapus</button>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </form>
-                </div>
-            </div>
-        </div>
+        
 
         <div class="mt-3">
             <div class="card">
@@ -584,10 +650,14 @@
                     <span class="fs-3">Data PDF Biaya Studi</span>
                 </div>
 
-                <form>
+                <form method="post" action="{{route('pdf_biaya')}}" enctype="multipart/form-data">
+                    @csrf
                     <div class="card-body">
-                        <label for="inputbiayaAsrama" class="form-label">File Biaya Studi</label>
-                        <input class="form-control" type="file" id="formFile">
+                        <label class="form-label">Unggah File Biaya Studi</label>
+                        <input class="form-control" type="file" name="PdfbiayaPendaftaran">
+                        @error('PdfbiayaPendaftaran')
+                                <div class="alert alert-danger">{{$message}}</div>
+                            @enderror
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">Submit</button>
@@ -606,7 +676,7 @@
                 <div class="card-body">
                     @include('admin-panel.sub_admisi_panel.add_persyaratan_umum')
                     <form action="">
-                        <table class="table table-striped">
+                        <table class="table table-bordered text-center table-striped align-middle">
                             <thead>
                             <tr>
                                 <th scope="col">#</th>
@@ -619,74 +689,147 @@
                             @php
                                 $i = 1;
                             @endphp
-                            {{--                            @foreach($jalur as $e)--}}
+                            @foreach($jalur as $e)
                             <tr>
                                 <td>{{$i++}}</td>
                                 <td>{{$e->jalurPendaftaran}}</td>
-                                <td>{{$e->desk_pers_umum}}t</td>
+                                <td>{{$e->desk_pers_umum}}</td>
                                 <td>
-                                    <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                                            data-bs-target="#edit_persum_modal{{ $e->id }}"
-                                            title="Edit Persyaratan Umum"><i class="bi bi-pen"></i></button>
+                                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#edit_persum_modal_{{ $e->id }}" title="Edit Persyaratan Umum">
+                                        <i class="bi bi-pen"></i>
+                                    </button>
+                                    <form action="{{ route('removeJalur', ['jalur_id' => $e->id]) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this?')">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </form>                                 
 
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="edit_persum_modal{{ $e->id }}" tabindex="-1"
-                                         aria-labelledby="edit_persum_modal_label{{ $e->id }}" aria-hidden="true">
+                                            <!-- Modal -->
+                                        <div class="modal fade" id="edit_persum_modal_{{ $e->id }}" tabindex="-1" aria-labelledby="edit_persum_modal_label" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h1 class="modal-title fs-5 fw-semibold"
-                                                        id="edit_persum_modal_label{{ $e->id }}">Edit Social Media</h1>
+                                                        id="edit_persum_modal_label{{ $e->id }}">Edit Persyaratan Umum</h1>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                             aria-label="Close"></button>
                                                 </div>
-{{--                                                <form action="{{ route('editJalur') }}" method="post"--}}
-                                                      enctype="multipart/form-data">
+                                                <form action="{{ route('editJalur') }}" method="post">
                                                     @csrf
                                                     <div class="modal-body text-start">
-                                                        <input type="hidden" name="id" value="{{ $e -> id }}">
+                                                        <input type="hidden" name="id" value="{{ $e->id }}">
                                                         <div class="mb-3">
-                                                            <label class="form-label"
-                                                                   for="input_edit_JalurPendaftaran{{$e->id}}">Jalur
-                                                                Pendaftaran</label>
+                                                            <label class="form-label" for="jalurPendaftaran">Jalur Pendaftaran</label>
                                                             <input type="text" class="form-control"
-                                                                   id="input_edit_JalurPendaftaran{{$e->id}}"
-                                                                   name="input_Jalur"
-                                                                   value="{{ $e->jalurPendaftaran }}">
+                                                                name="jalurPendaftaran" value="{{ $e->jalurPendaftaran }}">
                                                         </div>
                                                         <div class="mb-3">
-                                                            <label for="input_edit_deskUmum{{$e->id}}"
-                                                                   class="form-label">Link</label>
-                                                            <input type="text" class="form-control"
-                                                                   id="input_edit_deskUmum{{$e->id}}"
-                                                                   name="input_deskUmum"
-                                                                   value="{{ $e->desk_pers_umum }}">
+                                                            <label for="desk_pers_umum"
+                                                                class="form-label">Deskripsi Persyaratan
+                                                                Umum</label>
+                                                            <input type="text" class="form-control" name="desk_pers_umum"
+                                                                value="{{ $e->desk_pers_umum }}">
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary"
-                                                                data-bs-dismiss="modal">Cancel
+                                                            data-bs-dismiss="modal">Cancel
                                                         </button>
                                                         <input type="hidden" value="{{ $e->id }}" name="id">
                                                         <button type="submit" class="btn btn-primary">Save</button>
                                                     </div>
-{{--                                                </form>--}}
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
-
-{{--                                    <form action="{{ route('removeJalur') }}" class="d-inline" method="post"--}}
-                                          enctype="multipart/form-data">
-                                        @csrf
-                                        @method('DELETE')
-                                        <input type="hidden" name="id" value="{{ $e->id }}">
-                                        <button class="btn btn-danger" title="Remove Jalur Pendaftaran">
-                                            <i class="bi bi-trash"></i>
-                                        </button>
-{{--                                    </form>--}}
                                 </td>
                             </tr>
-                            {{--                            @endforeach--}}
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="mt-3">
+            <div class="card card-success">
+                <div class="card-header bg-primary text-white">
+                    <span class="fs-3">Jadwal Pendaftaran</span>
+
+                </div>
+
+                <div class="card-body">
+                    @include('admin-panel.sub_admisi_panel.add_jadwal_pendaftaran')
+                    <form action="">
+                        <table class="table table-bordered text-center table-striped align-middle">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Jenis Jalur Pendaftaran</th>
+                                <th scope="col">Tanggal Pendaftaran</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @php
+                                $i = 1;
+                            @endphp
+                            @foreach($jadwalPendaftaran as $e)
+                            <tr>
+                                <td>{{$i++}}</td>
+                                <td>{{$e->jenis_jalur}}</td>
+                                <td>{{$e->tanggal_pendaftaran}}</td>
+                                <td>
+                                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#edit_jadwal_pendaftaran_{{ $e->id }}" title="Edit Jadwal Pendaftaran">
+                                        <i class="bi bi-pen"></i>
+                                    </button>
+                                    <form action="{{ route('removeJadwalPendaftaran', ['jadwalPendaftaran_id' => $e->id]) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this?')">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </form>                                 
+
+                                            <!-- Modal -->
+                                        <div class="modal fade" id="edit_jadwal_pendaftaran_{{ $e->id }}" tabindex="-1" aria-labelledby="edit_jadwal_pendaftaran_label" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5 fw-semibold"
+                                                        id="edit_jadwal_pendaftaran_label{{ $e->id }}">Edit Jadwal Pendaftaran</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                </div>
+                                                <form action="{{ route('editJadwalPendaftaran') }}" method="post">
+                                                    @csrf
+                                                    <div class="modal-body text-start">
+                                                        <input type="hidden" name="id" value="{{ $e->id }}">
+                                                        <div class="mb-3">
+                                                            <label class="form-label" for="jenis_jalur">Jenis Jalur Pendaftaran</label>
+                                                            <input type="text" class="form-control" name="jenis_jalur" value="{{ old('jenis_jalur', $e->jenis_jalur) }}">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="tanggal_pendaftaran" class="form-label">Tanggal Pendaftaran Umum</label>
+                                                            <input type="text" class="form-control" name="tanggal_pendaftaran" value="{{ old('tanggal_pendaftaran', $e->tanggal_pendaftaran) }}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Cancel
+                                                        </button>
+                                                        <input type="hidden" value="{{ $e->id }}" name="id">
+                                                        <button type="submit" class="btn btn-primary">Save</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </form>
@@ -1002,6 +1145,169 @@
                 </div>
             </div>
         </div>
+
+        <div class="mt-3">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <span class="fs-3">Sub Jalur Pendaftaran</span>
+            </div>
+
+            <div class="card-body">
+                <div class="d-flex justify-content-end mb-3">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahSubJalurPendaftaran">
+                        Tambah
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="tambahSubJalurPendaftaran" tabindex="-1" aria-labelledby="tambahSubJalurPendaftaran" aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5 fw-semibold" id="exampleModalLabel">Tambah </h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <form action="{{ route('addSubJalurPendaftaran') }}" method="post">
+                                    @csrf
+                                    <div class="modal-body">
+                                        <label class="form-label w-100">
+                                            Jalur Pendaftaran
+                                            <input type="text" class="form-control" name="jalurPen">
+                                        </label>
+                                        <label class="form-label w-100">
+                                            Title
+                                            <input type="text" class="form-control" name="title">
+                                        </label>
+                                        <label class="form-label w-100">
+                                            Deskripsi Jalur
+                                            <textarea id="summernote" class="form-control" rows="6" name="deskripsi_jalur"></textarea>
+                                        </label>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <table class="table table-striped table-bordered align-middle text-center">
+                    <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Title</th>
+                        <th>Jalur Pendaftaran</th>
+                        <th>Deskripsi Jalur</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @php
+                        $i = 1;
+                    @endphp
+                    @forelse($dataSubJalurPendaftaran as $e)
+                        <tr>
+                            <td>{{ $i++ }}</td>
+                            <td>{{ $e->jalurPen }}</td>
+                            <td>{{ $e->title }}</td>
+                            <td>
+                                <div class="text-start">
+                                    {!! $e->deskripsi_jalur !!}
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex justify-content-center gap-1">
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#editSubJalurPendaftaranModal">
+                                        <i class="bi bi-pen"></i>
+                                    </button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="editSubJalurPendaftaranModal" tabindex="-1" aria-labelledby="ediSubJalurPendaftaranModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Sub Jalur Pendaftaran</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <form action="{{ route('editSubJalurPendaftaran') }}" method="post">
+                                                    @csrf
+                                                    <div class="modal-body">
+                                                        <label class="form-label w-100 text-start mb-3">
+                                                            Jalur Pendaftaran
+                                                            <input type="text" name="jalurPen" class="form-control" value="{{ $e->jalurPen }}">
+                                                        </label>
+
+                                                        <label class="form-label w-100 text-start mb-3">
+                                                            Title
+                                                            <input type="text" name="title" class="form-control" value="{{ $e->title }}">
+                                                        </label>
+
+                                                        <label class="form-label w-100 text-start mb-3">
+                                                            Deskripsi Jalur
+                                                            <textarea name="deskripsiJalur"> {{ $e->deskripsi_jalur }} </textarea>
+                                                        </label>
+                                                        <input type="hidden" name="id" value="{{ $e->id }}">
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <form action="{{ route('removeSubJalurPendaftaran') }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <input type="hidden" name="id" value="{{ $e->id }}">
+                                        <button type="submit" class="btn btn-danger">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="5">
+                                <span class="fs-2">Tidak ada data</span>
+                            </td>
+                        </tr>
+                    @endforelse
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="mt-3">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <span class="fs-3">Upload file Pedoman pendaftaran</span>
+                </div>
+        
+                <form method="post" action="{{ route('pedoman-pendaftaran') }}" enctype="multipart/form-data">
+                    @csrf
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="PedomanPendaftaran" class="form-label">Unggah Dokumen</label>
+                            <input type="file" class="form-control" id="PedomanPendaftaran" name="PedomanPendaftaran">
+                            @error('PedomanPendaftaran')
+                                <div class="alert alert-danger">{{$message}}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 
     <script>

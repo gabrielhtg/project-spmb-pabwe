@@ -15,16 +15,24 @@
                 @csrf
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label class="form-label w-100">
+                        <label class="form-label">
                             Nama
-                            <input type="text" class="form-control" name="namaNomorTelepon">
                         </label>
+                        <a tabindex="0" class="border-0 bg-white" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-content="Max length 20 characters."><i class="bi bi-info-circle"></i></a>
+                        <input type="text" class="form-control" name="namaNomorTelepon" required>
+                        @error('namaNomorTelepon')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="mb-3">
-                        <label class="form-label w-100">
+                        <label class="form-label">
                             Phone Number
-                            <input type="text" class="form-control" name="nomorTelepon">
                         </label>
+                        <a tabindex="0" class="border-0 bg-white" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-content="Max length 15 characters."><i class="bi bi-info-circle"></i></a>
+                        <input type="text" class="form-control" name="nomorTelepon" required>
+                        @error('nomorTelepon')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
                 <div class="modal-footer">
