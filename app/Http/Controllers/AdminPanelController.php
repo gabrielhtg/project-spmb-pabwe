@@ -624,9 +624,9 @@ class AdminPanelController extends Controller
                 'updated_by' => $username,
             ]);
 
-            return redirect(null, 200)->route('admin-panel');
+            return redirect()->route('admin-panel')->with('success', 'Berhasil menambah nomor telepon!');
         } catch (Exception $e) {
-            abort(403, 'Gagal Menambah Nomor Telepon');
+            return redirect()->route('admin-panel')->with('error', 'Gagal menambah nomor telepon!');
         }
     }
 
@@ -636,7 +636,7 @@ class AdminPanelController extends Controller
 
             return redirect(null, 200)->route('admin-panel')->with('success', 'Berhasil remove akreditasi!');
         } catch (\Exception $e) {
-            abort(404, 'ID tidak ditemukan');
+            return redirect(null, 200)->route('admin-panel')->with('error', 'Gagal remove akreditasi!');
         }
     }
 
