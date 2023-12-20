@@ -371,13 +371,17 @@ class AdminPanelController extends Controller
 
         $socialMedia->update();
 
-        return redirect()->route('admin-panel');
+        return redirect()->route('admin-panel')->with('success', 'Berhasil mengupdate Social Media!');
     }
 
     public function removeSocialMedia(Request $request)
     {
-        SocalMediaModel::where('id', $request->id)->first()->delete();
-        return redirect()->back();
+        try {
+            SocalMediaModel::where('id', $request->id)->first()->delete();
+            return redirect()->back()->with('success', 'Berhasil remove Social Media!');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Gagal remove Social Media!');
+        }
     }
 
     public function updateHeroSection(Request $request)
@@ -419,8 +423,7 @@ class AdminPanelController extends Controller
 
         $dataHero->update();
 
-        return redirect()->back();
-
+        return redirect()->back()->with('success', 'Berhasil update hero Section');
     }
 
     public function getAddAdminView() {
@@ -466,16 +469,16 @@ class AdminPanelController extends Controller
 
         $alamat->update();
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Berhasil Edit Alamat Institusi');
     }
 
     public function removeAlamat(Request $request)
     {
         try {
             AlamatInstitusiModel::where('id', $request->id)->first()->delete();
-            return redirect(null, 200)->back();
+            return redirect()->back()->with('success', 'Berhasil Remove Alamat');
         } catch (Exception $e) {
-            return redirect(null, 404)->back();
+            return redirect()->back()->with('error', 'Gagal Remove Alamat');
         }
     }
     public function getAdmisiPanel () {
