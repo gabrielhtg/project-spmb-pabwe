@@ -17,80 +17,80 @@ class add_mitra extends Seeder
         DB::table('mitras')->insert
         ([
             [
-                'nama' => '',
-                'logo' => '',
+                'nama' => 'Yayasan Tanoto Foundation',
+                'logo' => 'assets/img/dashboard/mitra/tanoto.png',
                 'created_by' => 'admin',
                 'updated_by' => 'admin',
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
-                'nama' => '',
-                'logo' => '',
+                'nama' => 'PT. Mayora Indah, TBK',
+                'logo' => 'assets/img/dashboard/mitra/mayora.png',
                 'created_by' => 'admin',
                 'updated_by' => 'admin',
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
-                'nama' => '',
-                'logo' => '',
+                'nama' => 'Kampus Merdeka',
+                'logo' => 'assets/img/dashboard/mitra/kampusmerdeka.png',
                 'created_by' => 'admin',
                 'updated_by' => 'admin',
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
-                'nama' => '',
-                'logo' => '',
+                'nama' => 'PT Huawei Tech Investment ',
+                'logo' => 'assets/img/dashboard/mitra/huawei.png',
                 'created_by' => 'admin',
                 'updated_by' => 'admin',
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
-                'nama' => '',
-                'logo' => '',
+                'nama' => 'PT Bank Rakyat Indonesia',
+                'logo' => 'assets/img/dashboard/mitra/bri.png',
                 'created_by' => 'admin',
                 'updated_by' => 'admin',
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
-                'nama' => '',
-                'logo' => '',
+                'nama' => 'Universitas Telkom',
+                'logo' => 'assets/img/dashboard/mitra/telkom.jpg',
                 'created_by' => 'admin',
                 'updated_by' => 'admin',
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
-                'nama' => '',
-                'logo' => '',
+                'nama' => 'PT Bank Mandiri (Persero) Tbk',
+                'logo' => 'assets/img/dashboard/mitra/MANDIRI.png',
                 'created_by' => 'admin',
                 'updated_by' => 'admin',
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
-                'nama' => '',
-                'logo' => '',
+                'nama' => 'PT Jasa Raharja',
+                'logo' => 'assets/img/dashboard/mitra/jasaraharja.jpg',
                 'created_by' => 'admin',
                 'updated_by' => 'admin',
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
-                'nama' => '',
-                'logo' => '',
+                'nama' => 'PT Indonesia AirAsia',
+                'logo' => 'assets/img/dashboard/mitra/airasia.png',
                 'created_by' => 'admin',
                 'updated_by' => 'admin',
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
-                'nama' => '',
-                'logo' => '',
+                'nama' => 'BGI Collage',
+                'logo' => 'assets/img/dashboard/mitra/bgi.png',
                 'created_by' => 'admin',
                 'updated_by' => 'admin',
                 'created_at' => now(),
