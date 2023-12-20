@@ -311,6 +311,7 @@
                             </div>
                         </li>
                     @empty
+                        <span class="fs-1 text-center">Data Testimoni Belum Ada!</span>
                     @endforelse
                 </ul>
             </div>
