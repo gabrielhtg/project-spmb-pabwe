@@ -20,7 +20,7 @@
                 @php
                     $i = 1;
                 @endphp
-                @foreach($socialMedia as $e)
+                @forelse($socialMedia as $e)
                     <tr>
                         <td>{{ $i++ }}</td>
                         <td>{{ $e->nama }}</td>
@@ -39,61 +39,60 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h1 class="modal-title fs-5 fw-semibold"
-                                                id="info-social-media-label{{ $e->id }}">Edit Social Media</h1>
+                                                id="info-social-media-label{{ $e->id }}">Info Social Media</h1>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                         </div>
-                                            <div class="modal-body text-start">
-                                                <input type="hidden" name="id" value="{{ $e -> id }}">
-                                                <div class="mb-3">
-                                                    <label class="form-label w-100">
-                                                        Nama
-                                                        <input type="text" class="form-control" value="{{ $e->nama }}" disabled>
-                                                    </label>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label w-100">
-                                                        Link
-                                                        <input type="text" class="form-control" value="{{ $e->link }}" disabled>
-                                                    </label>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label w-100">
-                                                        Icon
-                                                        <input type="text" class="form-control" value="{{ $e->icon }}" disabled>
-                                                    </label>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label w-100">
-                                                        Created By
-                                                        <input type="text" class="form-control" value="{{ $e->created_by }}" disabled>
-                                                    </label>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label w-100">
-                                                        Updated By
-                                                        <input type="text" class="form-control" value="{{ $e->updated_by }}" disabled>
-                                                    </label>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label w-100">
-                                                        Created At
-                                                        <input value="{{ date("d-m-Y", strtotime($e->created_at)) }}" class="form-control" disabled>
-                                                    </label>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label w-100">
-                                                        Updated At
-                                                        <input value="{{ date("d-m-Y", strtotime($e->updated_at)) }}" class="form-control" disabled>
-                                                    </label>
-                                                </div>
+                                        <div class="modal-body text-start">
+                                            <input type="hidden" name="id" value="{{ $e -> id }}">
+                                            <div class="mb-3">
+                                                <label class="form-label w-100">
+                                                    Nama
+                                                    <input type="text" class="form-control" value="{{ $e->nama }}" disabled>
+                                                </label>
                                             </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                        data-bs-dismiss="modal">Cancel
-                                                </button>
-                                                <button type="submit" class="btn btn-primary">Save</button>
+                                            <div class="mb-3">
+                                                <label class="form-label w-100">
+                                                    Link
+                                                    <input type="text" class="form-control" value="{{ $e->link }}" disabled>
+                                                </label>
                                             </div>
+                                            <div class="mb-3">
+                                                <label class="form-label w-100">
+                                                    Icon
+                                                    <input type="text" class="form-control" value="{{ $e->icon }}" disabled>
+                                                </label>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label w-100">
+                                                    Created By
+                                                    <input type="text" class="form-control" value="{{ $e->created_by }}" disabled>
+                                                </label>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label w-100">
+                                                    Updated By
+                                                    <input type="text" class="form-control" value="{{ $e->updated_by }}" disabled>
+                                                </label>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label w-100">
+                                                    Created At
+                                                    <input value="{{ $e->created_at }}" class="form-control" disabled>
+                                                </label>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label w-100">
+                                                    Updated At
+                                                    <input value="{{ $e->updated_at }}" class="form-control" disabled>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Cancel
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -121,19 +120,21 @@
                                                 <div class="mb-3">
                                                     <label class="form-label"
                                                            for="input_edit_nama_socialmedia{{$e->id}}">Nama</label>
+                                                    <a tabindex="0" class="border-0 bg-white" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-content="Max length 50 characters."><i class="bi bi-info-circle"></i></a>
                                                     <input type="text" class="form-control"
                                                            id="input_edit_nama_socialmedia{{$e->id}}"
-                                                           name="input_nama_socialmedia" value="{{ $e->nama }}">
+                                                           name="input_nama_socialmedia" value="{{ $e->nama }}" required>
                                                     @error('input_nama_socialmedia')
-                                                        <span class="text-danger">{{ $message }}</span>
+                                                    <span class="text-danger">{{ $message }}</span>
                                                     @enderror
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="input_edit_link_socialmedia{{$e->id}}"
                                                            class="form-label">Link</label>
+                                                    <a tabindex="0" class="border-0 bg-white" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-content="Max length 150 characters."><i class="bi bi-info-circle"></i></a>
                                                     <input type="text" class="form-control"
                                                            id="input_edit_link_socialmedia{{$e->id}}" name="input_link"
-                                                           value="{{ $e->link }}">
+                                                           value="{{ $e->link }}" required>
                                                     @error('input_link')
                                                     <span class="text-danger">{{ $message }}</span>
                                                     @enderror
@@ -147,7 +148,7 @@
                                                     </label>
                                                     <input type="text" class="form-control"
                                                            id="input_edit_icon_socialmedia{{$e->id}}" name="input_icon"
-                                                           value="{{ $e->icon }}">
+                                                           value="{{ $e->icon }}" required>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
@@ -172,7 +173,13 @@
                             </form>
                         </td>
                     </tr>
-                @endforeach
+                @empty
+                    <tr>
+                        <td colspan="5">
+                            <span class="fs-2">Tidak ada data!</span>
+                        </td>
+                    </tr>
+                @endforelse
                 </tbody>
             </table>
         </div>

@@ -35,6 +35,10 @@ Route::get('/admisi', [DashboardController::class, 'getAdmisi'])->name('admisi')
 Route::get('/admisi/jalur-pendaftaran', [DashboardController::class, 'getJalurPendaftaran'])->name('jalur-pendaftaran');
 Route::get('/admisi/biaya-studi', [DashboardController::class, 'getBiayaStudi'])->name('biaya-studi');
 Route::get('/admisi/persyaratan-khusus', [DashboardController::class, 'getPersyaratanKhusus'])->name('persyaratan-khusus');
+Route::get('/download-pedoman', [AdmisiController::class, 'downloadPedoman'])->name('download-pedoman');
+Route::get('/download-pdfbiaya', [AdmisiController::class, 'downloadPdfBiaya'])->name('download-pdfbiaya');
+
+
 
 
 Route::get('/faqs', function () {
@@ -59,15 +63,20 @@ Route::middleware('auth')->group(function () {
         Route::get('/program', [AdminPanelController::class, 'getProgramPanel'])->name('program-panel');
 
         Route::prefix('/admisi-panel')->group(function () {
-            Route::post('/addjalurpendaftaran', [AdmisiController::class, 'addJalur'])->name('addJalur');
-            Route::post('/edit-jalur-pendaftaran', [AdmisiController::class, 'editJalur'])->name('editJalur');
-            Route::post('/delete-jalur-pendaftaran', [AdmisiController::class, 'removeJalur'])->name('removeJalur');
+            Route::post('/addbiayapendaftaran', [AdmisiController::class, 'addBiayaPendaftaran'])->name('addBiayaPendaftaran');
+            Route::post('/edit-jalur-pendaftaran', [AdmisiController::class,'editJalur'])->name('editJalur');
             Route::delete('/delete-lokasi/{id}', [AdminPanelController::class, 'destroyLokasi'])->name('post.destroy.lokasi');
             Route::delete('/delete-jenis/{id}', [AdminPanelController::class, 'destroyJenisTes'])->name('post.destroy.jenis');
             Route::post('/edit-lokasi', [AdminPanelController::class, 'postEditLokasi'])->name('post.lokasi.edit');
             Route::post('/edit-jenis', [AdminPanelController::class, 'postEditJenis'])->name('post.jenis.edit');
             Route::post('/add-lokasi', [AdmisiController::class, 'postLokasiTes'])->name('post.lokasi');
             Route::post('/add-jenis', [AdmisiController::class, 'postJenistes'])->name('post.jenis');
+            Route::post('/add-prodi', [AdmisiController::class, "postAddProdi"])->name("post.prodi.add.admisi");
+            Route::post('/edit-prodi', [AdmisiController::class, "postEditProdi"])->name("post.prodi.edit.prodi");
+            Route::delete('/delete-prodi/{id}', [AdmisiController::class, 'deleteprodi'])->name('post.delete.prodi');
+            Route::post('/add-biaya-studi', [AdmisiController::class, 'addBiayaStudi'])->name('add-biaya-studi');
+            Route::post('/edit-biaya-studi', [AdmisiController::class, 'editBiayaStudi'])->name('edit_biaya_studi');
+            Route::delete('/remove-biaya-studi', [AdmisiController::class, 'removeBiayaStudi'])->name('remove-biaya-studi');
         });
 
         Route::prefix('fasilitas-panel')->group(function () {
