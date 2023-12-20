@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('biaya_admin', function (Blueprint $table) {
             $table->id();
-            $table->integer('biayaasrama');
-            $table->integer('biayamakan');
-            $table->integer('biayawisuda');
-            $table->integer('biayadeposit');
-            $table->integer('biayatingkatakhir');
+            $table->string('biayaasrama');
+            $table->string('biayamakan');
+            $table->string('biayawisuda');
+            $table->string('biayadeposit');
+            $table->string('biayatingkatakhir');
             $table->timestamps();
         });
     }

@@ -658,17 +658,71 @@
                                                       </td>
                                                       <td>{{ $e->jalur }}</td>
                                                       <td>
-                                                          <form action="{{ route('removeInfografis') }}" method="post">
-                                                              @csrf
-                                                              @method('DELETE')
-                                                              <input type="hidden" value="{{ $e->id }}" name="id">
-                                                              <button class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data?')">
-                                                                  <i class="bi bi-trash"></i>
+                                                          <div class="d-flex gap-2 justify-content-center">
+                                                              <!-- Button trigger modal -->
+                                                              <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editInfografis{{ $e->id }}">
+                                                                  <i class="bi bi-pencil"></i>
                                                               </button>
+                                                              <form action="{{ route('removeInfografis') }}" method="post">
+                                                                  @csrf
+                                                                  @method('DELETE')
+                                                                  <input type="hidden" value="{{ $e->id }}" name="id">
+                                                                  <button class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data?')">
+                                                                      <i class="bi bi-trash"></i>
+                                                                  </button>
+                                                              </form>
+
+                                                          </div>
+                                                          <form action="{{ route('edit_infografis') }}" method="post" enctype="multipart/form-data">
+                                                              @csrf
+                                                              @method('POST')
+                                                              <input type="hidden" value="{{ $e->id }}" name="id">
+                                                              <!-- Modal -->
+                                                              <div class="modal fade" id="editInfografis{{ $e->id }}" tabindex="-1" aria-labelledby="editInfografis{{ $e->id }}Label" aria-hidden="true">
+                                                                  <div class="modal-dialog modal-dialog-centered">
+                                                                      <div class="modal-content">
+                                                                          <div class="modal-header">
+                                                                              <h1 class="modal-title fs-5 fw-semibold" id="editInfografis{{ $e->id }}Label">Edit Infografis</h1>
+                                                                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                          </div>
+                                                                          <div class="modal-body">
+                                                                              <div class="mb-3">
+                                                                                  <label class="form-label w-100">
+                                                                                      Nomor Urut
+                                                                                      <input class="form-control" type="number" name="nomor_urut" value="{{ $e->nomor_urut }}">
+                                                                                  </label>
+                                                                              </div>
+                                                                              <div class="mb-3">
+                                                                                  <label class="form-label w-100">
+                                                                                      Jalur Pendaftaran
+                                                                                      <select name="jalur" class="form-control">
+                                                                                          @foreach($jalurPendaftaran as $jalur)
+                                                                                              <option value="{{ $jalur->jalurPendaftaran }}" {{ $e->jalur == $jalur->jalurPendaftaran ? 'selected' : '' }}>
+                                                                                                  {{ $jalur->jalurPendaftaran }}
+                                                                                              </option>
+                                                                                          @endforeach
+                                                                                      </select>
+                                                                                  </label>
+                                                                              </div>
+                                                                              <div class="mb-3">
+                                                                                  <label class="form-label w-100">
+                                                                                      File Gambar
+                                                                                      <input class="form-control" type="file" name="gambar">
+                                                                                  </label>
+                                                                              </div>
+                                                                          </div>
+                                                                          <div class="modal-footer">
+                                                                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                              <button type="submit" class="btn btn-primary">Save changes</button>
+                                                                          </div>
+                                                                      </div>
+                                                                  </div>
+                                                              </div>
                                                           </form>
                                                       </td>
                                                   </tr>
-                                              @endforeach
+                                            @endforeach
+
 
                                               </tbody>
                                           </table>
@@ -912,7 +966,7 @@
                               <tr>
                                   <td>{{$i++}}</td>
                                   <td>{{$e->jlr_Pen}}</td>
-                                  <td>{{$e->biayaPen}}</td>
+                                  <td>{{ number_format($e->biayaPen, 0, ',','.')}}</td>
                                   <td>
                                       <div class="d-flex justify-content-center w-100 gap-2">
                                       <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editjlr_Pen{{ $e->id }}" title="Edit Jalur Pendaftaran">
@@ -1238,12 +1292,13 @@
                         <thead>
                         <tr>
                             <th scope="col">No</th>
+                            <th scope="col">Fakultas</th>
                             <th scope="col">Program Studi</th>
                             <th scope="col">Biaya SPP (Rp)</th>
                             <th scope="col">Uang Pengembangan (Rp)</th>
-                            <th scope="col">Uang Pangkal</th>
-                            <th scope="col">Perlengkapan Mahasiswa</th>
-                            <th scope="col">Perlengkapan Makan</th>
+                            <th scope="col">Uang Pangkal (Rp)</th>
+                            <th scope="col">Perlengkapan Mahasiswa (Rp)</th>
+                            <th scope="col">Perlengkapan Makan (Rp)</th>
                             <th scope="col">Action</th>
                         </tr>
                         </thead>
@@ -1258,9 +1313,9 @@
                         <td>{{ $biayaStudi->pro_stud }}</td>
                         <td>{{ $biayaStudi->biaya_spp }}</td>
                         <td>{{ $biayaStudi->uang_pengembangan }}</td>
-                        <td>{{ $biayaStudi->uang_pangkal }}</td>
-                        <td>{{ $biayaStudi->perlengkapan_mahasiswa }}</td>
-                        <td>{{ $biayaStudi->perlengkapan_makan }}</td>
+                        <td>{{ number_format($biayaStudi->uang_pangkal, 0, ',', '.') }}</td>
+                        <td>{{ number_format($biayaStudi->perlengkapan_mahasiswa, 0, ',', '.') }}</td>
+                        <td>{{ number_format($biayaStudi->perlengkapan_makan, 0, ',', '.') }}</td>
                         <td>
                         <!-- Button untuk menampilkan modal edit -->
                         <div class="d-flex justify-content-center w-100 gap-2">

@@ -1192,5 +1192,45 @@ public function removeBiayaStudi(Request $request)
     }
 }
 
+public function editInfografis(Request $request) {
+    // Validation
+    $this->validate($request, [
+        'id' => 'required|exists:infografis_admisi,id',
+        'nomor_urut' => 'required|integer',
+        'gambar' => 'image|max:2048|nullable',
+    ]);
+
+    try {
+        $auth = Auth::user();
+        $infografis = InfografisModel::findOrFail($request->id);
+
+        if (!$infografis) {
+            return redirect()->route("admisi-panel")->with('error', 'Data tidak ditemukan.');
+        }
+
+        $file_gambar = $request->file('gambar');
+
+        if ($file_gambar) {
+            $filename = $auth->id . "_" . time() . '.' . $file_gambar->getClientOriginalExtension();
+            $directory = public_path('assets/img/');
+            $file_gambar->move($directory, $filename);
+
+            if ($infografis->gambar && file_exists($infografis->gambar)) {
+                unlink($infografis->gambar);
+            }
+
+            $infografis->gambar = "assets/img/" . $filename;
+        }
+
+        $infografis->nomor_urut = $request->nomor_urut;
+        $infografis->save();
+
+        return redirect()->route("admisi-panel")->with('success', 'Data berhasil diubah.');
+    } catch (\Exception $e) {
+        // Handle any exceptions, log or redirect with an error message
+        return redirect()->route("admisi-panel")->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+    }
+}
+
 
 }

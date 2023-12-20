@@ -81,4 +81,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/add-biaya-studi', [AdmisiController::class, 'addBiayaStudi'])->name('add_biaya_studi');
     Route::post('/edit-biaya-studi', [AdmisiController::class, 'editBiayaStudi'])->name('edit_biaya_studi');
     Route::delete('/remove-biaya-studi', [AdmisiController::class, 'removeBiayaStudi'])->name('remove_biaya_studi');
+    Route::post('/editinfografis', [AdmisiController::class, 'editInfografis'])->name('edit_infografis');
 });

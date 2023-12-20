@@ -5,7 +5,7 @@
         <div id="carouselExample" class="carousel slide">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img style="weight:100wh; height: 70vh;" src="{{ asset($dataHeaderAdmisi->letak_foto ? $dataHeaderAdmisi->letak_foto : 'assets/img/default.jpg') }}" class="img-fluid d-block w-100" alt="header-fasilitas">
+                    <img src="{{ asset($dataHeaderAdmisi->letak_foto ? $dataHeaderAdmisi->letak_foto : 'assets/img/default.jpg') }}" class="img-fluid d-block w-100" alt="header-fasilitas">
                     <div class="carousel-caption d-none d-md-block text-center"> <!-- Center the text -->
                         <div class="d-flex flex-column text-center h-100 pb-3"> <!-- Center the content vertically -->
                             <h2 class="fw-bold text-uppercase">ADMISI</h2>
@@ -42,26 +42,34 @@
             <table class="table align-middle">
                 <thead>
                 <tr>
-                    <th>Fakultas</th>
-                    <th>Program Studi</th>
-                    <th>Biaya SPP (Rp)</th>
-                    <th>Uang Pengembangan</th>
-                    <th>Uang Pangkal</th>
-                    <th>Perlengkapan Mahasiswa</th>
-                    <th>Perlengkapan Makan</th>
+                    <th scope="col" class="text-white fw-semibold" style="background-color: #47A5D4">Fakultas</th>
+                    <th scope="col" class="text-white fw-semibold" style="background-color: #47A5D4">Program Studi</th>
+                    <th scope="col" class="text-white fw-semibold" style="background-color: #47A5D4">Biaya SPP (Rp)</th>
+                    <th scope="col" class="text-white fw-semibold" style="background-color: #47A5D4">Uang Pengembangan (Rp)</th>
+                    <th scope="col" class="text-white fw-semibold" style="background-color: #47A5D4">Uang Pangkal (Rp)</th>
+                    <th scope="col" class="text-white fw-semibold" style="background-color: #47A5D4">Perlengkapan Mahasiswa (Rp)</th>
+                    <th scope="col" class="text-white fw-semibold" style="background-color: #47A5D4">Perlengkapan Makan (Rp)</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($biayaStudis as $biaya)
-                    <tr>
-                        <td>{{ $biaya->fakultas }}</td>
-                        <td>{{ $biaya->pro_stud }}</td>
-                        <td>{{ $biaya->biaya_spp }}</td>
-                        <td>{{ $biaya->uang_pengembangan }}</td>
-                        <td>{{ $biaya->uang_pangkal }}</td>
-                        <td>{{ $biaya->perlengkapan_mahasiswa }}</td>
-                        <td>{{ $biaya->perlengkapan_makan }}</td>
-                    </tr>
+                @foreach($biayaStudis->groupBy('fakultas') as $fakultas => $groupedBiaya)
+                    @php
+                        $rowSpan = count($groupedBiaya);
+                    @endphp
+
+                    @foreach($groupedBiaya as $index => $biaya)
+                        <tr>
+                            @if ($index === 0)
+                                <td rowspan="{{ $rowSpan }}" style="font-size: 13px;">{{ $fakultas }}</td>
+                            @endif
+                            <td style="font-size: 13px;">{{ $biaya->pro_stud }}</td>
+                            <td style="font-size: 13px;">{{ $biaya->biaya_spp }}</td>
+                            <td style="font-size: 13px;">{{ $biaya->uang_pengembangan }}</td>
+                            <td style="font-size: 13px;">{{ number_format($biaya->uang_pangkal, 0, ',','.') }}</td>
+                            <td style="font-size: 13px;">{{ number_format($biaya->perlengkapan_mahasiswa, 0, ',','.') }}</td>
+                            <td style="font-size: 13px;">{{ number_format($biaya->perlengkapan_makan, 0, ',','.') }}</td>
+                        </tr>
+                    @endforeach
                 @endforeach
                 </tbody>
             </table>
@@ -81,7 +89,7 @@
                 @foreach($biayaPen as $e)
                     <tr>
                         <td>{{ $e -> jlr_Pen }}</td>
-                        <td>{{$e -> biayaPen}}</td>
+                        <td>{{ number_format($e->biayaPen, 0, ',','.')}}</td>
                     </tr>
                 @endforeach
                 </tbody>
@@ -100,7 +108,7 @@
                 <tbody>
                 @foreach($dataBiaya as $biaya)
                     <tr>
-                        <td>Biaya Asrama dan Kemahasiswaan</td>
+                        <td>Biaya Asrama dan Kemahasiswaan (Rp)</td>
                         <td>{{ number_format($biaya->biayaasrama, 0, ',', '.') }}</td>
                     </tr>
                     <tr>
@@ -108,11 +116,11 @@
                         <td>{{ number_format($biaya->biayamakan, 0, ',', '.') }}</td>
                     </tr>
                     <tr>
-                        <td>Biaya Wisuda</td>
+                        <td>Biaya Wisuda (Rp)</td>
                         <td>{{ number_format($biaya->biayawisuda, 0, ',', '.') }}</td>
                     </tr>
                     <tr>
-                        <td>Biaya Deposit Toga</td>
+                        <td>Biaya Deposit Toga (Rp)</td>
                         <td>{{ number_format($biaya->biayadeposit, 0, ',', '.') }}</td>
                     </tr>
                     <!-- Add similar code for other input fields -->
@@ -126,7 +134,7 @@
 
             <p>
                 Besaran biaya pendidikan bagi mahasiswa yang tidak mengikuti kegiatan perkuliahan selain tugas akhir di
-                suatu semester adalah Rp{{ number_format($biaya->biayatingkatakhir, 0, ',', '.') }}.
+                suatu semester adalah Rp {{ number_format($biaya->biayatingkatakhir, 0, ',', '.') }}.
             </p>
         </div>
         @endforeach
