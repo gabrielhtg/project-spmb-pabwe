@@ -28,7 +28,7 @@
             <div class="collapse navbar-collapse justify-content-md-center" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a href="#" id="asrama-hyperlink" class="py-3 nav-link active" aria-current="page" onclick="showAsramaSubPage()">Asrama</a>
+                        <a href="#" id="asrama-hyperlink" class="py-3 nav-link" aria-current="page" onclick="showAsramaSubPage()">Asrama</a>
                     </li>
                     <li class="nav-item">
                         <a href="#" id="kesehatan-hyperlink" class="py-3 nav-link" onclick="showKesehatanSubPage()">Kesehatan & Olahraga</a>

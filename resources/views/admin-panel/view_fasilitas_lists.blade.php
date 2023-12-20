@@ -134,7 +134,7 @@
                                 <h5 class="modal-title" id="editFasilitasLabel">Ubah Data Fasilitas</h5>
                                 <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <form action="{{ route('post.fasilitas.edit') }}" method="POST">
+                            <form action="{{ route('post.fasilitas.edit') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <input name="id" type="hidden" id="inputEditFasilitas">
 
@@ -147,7 +147,8 @@
                                             <option value="Area Mahasiswa">Area Mahasiswa</option>
                                             <option value="Laboratorium">Laboratorium</option>
                                             <option value="Layanan Makanan">Layanan Makanan</option>
-                                        </select> 
+                                        </select>
+
                                     </div>
 
                                     <div class="mb-3">
@@ -157,14 +158,17 @@
 
                                     <div class="mb-3">
                                         <label for="inputDeskripsiFasilitas" class="form-label">Deskripsi Fasilitas</label>
-                                        <input type="text" class="form-control" id="inputDeskripsiFasilitas" name="deskripsi_fasilitas" rows="5">
+                                        <textarea class="form-control" id="inputDeskripsiFasilitas" name="deskripsi_fasilitas" rows="5"></textarea>
                                     </div>
+                                        
 
                                     <p class="fw-bold">Edit Gambar Fasilitas</p>
 
                                     <div class="mb-3">
                                         <label for="inputNamaFile" class="form-label">Nama File</label>
-                                        <input type="text" class="form-control" id="inputNamaFile" name="nama_file">
+                                        <br>
+                                        <small class="text-muted">*Tidak untuk di-edit (Not for edit).</small>
+                                        <input type="text" class="form-control" id="inputNamaFile" name="nama_file" readonly>
                                     </div>
 
                                     <div class="mb-3">
@@ -190,28 +194,28 @@
 @endsection
 
     @section('other-js')
-        <script>
-            function showModalEdit(id, kategori, nama_fasilitas, deskripsi_fasilitas, nama_file, file_gambar)
-            {
-                const modalEditFasilitas = document.getElementById("editFasilitas");
-                const inputId = document.getElementById("inputEditFasilitas");
-                const inputKategori = document.getElementById("inputEditKategori")
-                const inputNamaFasilitas = document.getElementById("inputNamaFasilitas");
-                const inputDeskripsiFasilitas = document.getElementById("inputDeskripsiFasilitas");                                          
-                const inputNamaFile = document.getElementById("inputNamaFile");
-                const inputFileGambar = document.getElementById("inputFileGambar");
+    <script>
+    function showModalEdit(id, kategori, nama_fasilitas, deskripsi_fasilitas, nama_file, file_gambar) {
+        const modalEditFasilitas = document.getElementById("editFasilitas");
+        const inputId = document.getElementById("inputEditFasilitas");
+        const inputKategori = document.getElementById("inputEditKategori");
+        const inputNamaFasilitas = document.getElementById("inputNamaFasilitas");
+        const inputDeskripsiFasilitas = document.getElementById("inputDeskripsiFasilitas");
+        const inputNamaFile = document.getElementById("inputNamaFile");
+        const inputFileGambar = document.getElementById("inputFileGambar");
 
-                inputKategori.value = kategori;
-                inputId.value = id;
-                inputNamaFasilitas.value = nama_fasilitas;
-                inputDeskripsiFasilitas.value = deskripsi_fasilitas;
-                inputNamaFile.value = nama_file;
-                inputFileGambar.value = '';
+        inputKategori.value = kategori;
+        inputId.value = id;
+        inputNamaFasilitas.value = nama_fasilitas;
+        inputDeskripsiFasilitas.value = deskripsi_fasilitas;
+        inputNamaFile.value = nama_file;
+        inputFileGambar.value = '';
 
-                var myModal = new bootstrap.Modal(modalEditFasilitas)
-                myModal.show();
-            }
-        </script>
+        var myModal = new bootstrap.Modal(modalEditFasilitas);
+        myModal.show();
+    }
+</script>
+
         <script>
             ClassicEditor
                 .create( document.querySelector( '#inputDeskripsiFasilitas' ) )
