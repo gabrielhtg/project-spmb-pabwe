@@ -1,7 +1,6 @@
 @extends('template.app')
 
 @section('isi-halaman')
-
     <section id="hero" class="container-fluid">
 
         <div class="gambar-hero">
@@ -12,8 +11,7 @@
                 <p class="lead mb-4">{!! nl2br($dataHeroSection->paragraph) !!}</p>
                 <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mt-5">
                     <a class="d-none d-xl-inline" href="http://spmb.app.del.ac.id/">
-                        <button class="btn btn-primary btn-lg px-4 gap-3"
-                        >Daftar Sekarang
+                        <button class="btn btn-primary btn-lg px-4 gap-3">Daftar Sekarang
                         </button>
                     </a>
                 </div>
@@ -34,14 +32,13 @@
                 </div>
             </div>
         </div>
-        {{--    tampilan hp end--}}
+        {{--    tampilan hp end --}}
     </section>
 
     <div class="container col-xxl-8 px-4 py-5">
         <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
             <div class="col-10 col-sm-8 col-lg-6">
-                <img
-                    src="{{ $dataAkreditasiInstitusi->sertifikat_akreditasi ? asset($dataAkreditasiInstitusi->sertifikat_akreditasi) : asset("assets/img/default.jpg") }}"
+                <img src="{{ $dataAkreditasiInstitusi->sertifikat_akreditasi ? asset($dataAkreditasiInstitusi->sertifikat_akreditasi) : asset('assets/img/default.jpg') }}"
                     class="d-block n shadow-lg mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500"
                     loading="lazy">
             </div>
@@ -51,8 +48,8 @@
                     {!! $akreditasiDashboard->description !!}
                 </p>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                    <a href="{{ asset($dataAkreditasiInstitusi->sertifikat_akreditasi ? : 'assets/img/default.jpg') }}"
-                       class="btn btn-primary btn-lg px-4 me-md-2">Download Sertifikat</a>
+                    <a href="{{ asset($dataAkreditasiInstitusi->sertifikat_akreditasi ?: 'assets/img/default.jpg') }}"
+                        class="btn btn-primary btn-lg px-4 me-md-2">Download Sertifikat</a>
                 </div>
             </div>
         </div>
@@ -62,16 +59,16 @@
         <div id="carouselExampleCaptions" class="carousel slide">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-                        aria-current="true" aria-label="Slide 1"></button>
+                    aria-current="true" aria-label="Slide 1"></button>
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-                        aria-label="Slide 2"></button>
+                    aria-label="Slide 2"></button>
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-                        aria-label="Slide 3"></button>
+                    aria-label="Slide 3"></button>
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="{{ asset("/assets/img/beasiswa-tolikara.jpeg") }}" class="d-block w-100"
-                         alt="beasiswa-tolikara">
+                    <img src="{{ asset('/assets/img/beasiswa-tolikara.jpeg') }}" class="d-block w-100"
+                        alt="beasiswa-tolikara">
                     <div class="carousel-caption d-none d-md-block">
                         <div class="ukuran-div-beasiswa p-5">
                             <div class="text-start">
@@ -93,8 +90,8 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ asset("/assets/img/beasiswa-tolikara.jpeg") }}" class="d-block w-100"
-                         alt="beasiswa-tolikara">
+                    <img src="{{ asset('/assets/img/beasiswa-tolikara.jpeg') }}" class="d-block w-100"
+                        alt="beasiswa-tolikara">
                     <div class="carousel-caption d-none d-md-block">
                         <div class="ukuran-div-beasiswa p-5">
                             <div class="text-start">
@@ -116,8 +113,8 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ asset("/assets/img/beasiswa-tolikara.jpeg") }}" class="d-block w-100"
-                         alt="beasiswa-tolikara">
+                    <img src="{{ asset('/assets/img/beasiswa-tolikara.jpeg') }}" class="d-block w-100"
+                        alt="beasiswa-tolikara">
                     <div class="carousel-caption d-none d-md-block">
                         <div class="ukuran-div-beasiswa p-5">
                             <div class="text-start">
@@ -140,12 +137,12 @@
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
-                    data-bs-slide="prev">
+                data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
-                    data-bs-slide="next">
+                data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>
@@ -200,9 +197,32 @@
         </div>
     </section>
 
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        // Fungsi untuk membuat animasi iterasi angka
+        function animateCount(elementId, startValue, endValue, duration) {
+            let currentVal = startValue;
+            const increment = (endValue - startValue) / duration;
+
+            const interval = setInterval(function() {
+                currentVal += increment;
+                document.getElementById(elementId).innerText = Math.round(currentVal);
+
+                if (currentVal >= endValue) {
+                    clearInterval(interval);
+                }
+            }, 10);
+        }
+
+        // Panggil fungsi untuk masing-masing kategori (dosen, mahasiswa, alumni)
+        animateCount('jumlah-dosen', 0, {{ $dataInstitusi->jumlah_dosen }}, 100);
+        animateCount('jumlah-mahasiswa', 0, {{ $dataInstitusi->jumlah_mahasiswa }}, 100);
+        animateCount('jumlah-alumni', 0, {{ $dataInstitusi->jumlah_alumni }}, 100);
+    </script>
+
 {{--    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>--}}
     @php
-        $lebarCardMitra = 'width: 10rem;'
+        $lebarCardMitra = 'width: 10rem;';
     @endphp
 
     <section id="mitra-kampus" class="splide container p-5" aria-label="Beautiful Images">
@@ -215,44 +235,14 @@
         <div class="splide__slider">
             <div class="splide__track">
                 <ul class="splide__list">
-                    <li class="splide__slide d-flex justify-content-center" data-splide-interval="2000">
-                        <div class="card border-0 p-2 d-flex align-items-center justify-content-center"
-                             style="{{ $lebarCardMitra }}">
-                            <img src="{{ asset("/assets/img/logo-huawei.png") }}" class="card-img-top"
-                                 alt="logo-huawei">
-                        </div>
-                    </li>
-
-                    <li class="splide__slide d-flex justify-content-center" data-splide-interval="2000">
-                        <div class="card border-0 p-2 d-flex align-items-center justify-content-center"
-                             style="{{ $lebarCardMitra }}">
-                            <img src="{{ asset("/assets/img/logo-apple.png") }}" class="card-img-top" alt="logo-huawei">
-                        </div>
-                    </li>
-
-                    <li class="splide__slide d-flex justify-content-center" data-splide-interval="2000">
-                        <div class="card border-0 p-2 d-flex align-items-center justify-content-center"
-                             style="{{ $lebarCardMitra }}">
-                            <img src="{{ asset("/assets/img/logo-samsung.png") }}" class="card-img-top"
-                                 alt="logo-huawei">
-                        </div>
-                    </li>
-
-                    <li class="splide__slide d-flex justify-content-center" data-splide-interval="2000">
-                        <div class="card border-0 p-2 d-flex align-items-center justify-content-center"
-                             style="{{ $lebarCardMitra }}">
-                            <img src="{{ asset("/assets/img/bank_mandiri.png") }}" class="card-img-top"
-                                 alt="logo-huawei">
-                        </div>
-                    </li>
-
-                    <li class="splide__slide d-flex justify-content-center" data-splide-interval="2000">
-                        <div class="card border-0 p-2 d-flex align-items-center justify-content-center"
-                             style="{{ $lebarCardMitra }}">
-                            <img src="{{ asset("/assets/img/bank_jenius.png") }}" class="card-img-top"
-                                 alt="logo-huawei">
-                        </div>
-                    </li>
+                    @foreach ($dataMitra as $mitra)
+                        <li class="splide__slide d-flex justify-content-center" data-splide-interval="2000">
+                            <div class="card border-0 p-2 d-flex align-items-center justify-content-center"
+                                style="{{ $lebarCardMitra }}">
+                                <img src="{{ asset($mitra->logo) }}" class="card-img-top" alt="logo-huawei">
+                            </div>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
         </div>
@@ -263,7 +253,7 @@
     </section>
 
     @php
-        $lebarCard = 'width: 17rem;'
+        $lebarCard = 'width: 17rem;';
     @endphp
 
     <section id="testimoni" class="splide container bg-informasi-umum p-5" aria-label="Beautiful Images">
@@ -279,26 +269,25 @@
                                 <div class="d-flex justify-content-center">
                                     <div class="image-container">
                                         <img src="{{ asset($itemTestimoni->photo) }}" class="cropped-image"
-                                             alt="foto-profil">
+                                            alt="foto-profil">
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <h5 class="card-title fw-bold">{{ $itemTestimoni->nama_mahasiswa  }}</h5>
+                                    <h5 class="card-title fw-bold">{{ $itemTestimoni->nama_mahasiswa }}</h5>
                                     <div id="tempat-pill" class="d-flex gap-1 mb-4">
                                         <div class="pill d-inline text-muted">
-                                            {{ $itemTestimoni->kategori_mahasiswa  }}
+                                            {{ $itemTestimoni->kategori_mahasiswa }}
                                         </div>
 
                                         <div class="pill d-inline text-muted">
-                                            {{ $itemTestimoni->angkatan  }}
+                                            {{ $itemTestimoni->angkatan }}
                                         </div>
 
                                         <div class="pill d-inline text-muted">
                                             {{ $itemTestimoni->prodi }}
                                         </div>
                                     </div>
-                                    <div
-                                        class="d-flex justify-content-center align-items-center border border-1 rounded p-3"
+                                    <div class="d-flex justify-content-center align-items-center border border-1 rounded p-3"
                                         style="height: 200px;">
                                         <p class="card-text fs-7">
                                             {{ $itemTestimoni->deskripsi }}
@@ -316,7 +305,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             new Splide('#testimoni', {
                 perPage: 4,
                 type: 'loop',
@@ -338,7 +327,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             new Splide('#testimoni', {
                 perPage: 4,
                 type: 'loop',
