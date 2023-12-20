@@ -20,7 +20,7 @@
                 @php
                     $i = 1;
                 @endphp
-                @foreach($socialMedia as $e)
+                @forelse($socialMedia as $e)
                     <tr>
                         <td>{{ $i++ }}</td>
                         <td>{{ $e->nama }}</td>
@@ -43,56 +43,56 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                         </div>
-                                            <div class="modal-body text-start">
-                                                <input type="hidden" name="id" value="{{ $e -> id }}">
-                                                <div class="mb-3">
-                                                    <label class="form-label w-100">
-                                                        Nama
-                                                        <input type="text" class="form-control" value="{{ $e->nama }}" disabled>
-                                                    </label>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label w-100">
-                                                        Link
-                                                        <input type="text" class="form-control" value="{{ $e->link }}" disabled>
-                                                    </label>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label w-100">
-                                                        Icon
-                                                        <input type="text" class="form-control" value="{{ $e->icon }}" disabled>
-                                                    </label>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label w-100">
-                                                        Created By
-                                                        <input type="text" class="form-control" value="{{ $e->created_by }}" disabled>
-                                                    </label>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label w-100">
-                                                        Updated By
-                                                        <input type="text" class="form-control" value="{{ $e->updated_by }}" disabled>
-                                                    </label>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label w-100">
-                                                        Created At
-                                                        <input value="{{ $e->created_at }}" class="form-control" disabled>
-                                                    </label>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label w-100">
-                                                        Updated At
-                                                        <input value="{{ $e->updated_at }}" class="form-control" disabled>
-                                                    </label>
-                                                </div>
+                                        <div class="modal-body text-start">
+                                            <input type="hidden" name="id" value="{{ $e -> id }}">
+                                            <div class="mb-3">
+                                                <label class="form-label w-100">
+                                                    Nama
+                                                    <input type="text" class="form-control" value="{{ $e->nama }}" disabled>
+                                                </label>
                                             </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                        data-bs-dismiss="modal">Cancel
-                                                </button>
+                                            <div class="mb-3">
+                                                <label class="form-label w-100">
+                                                    Link
+                                                    <input type="text" class="form-control" value="{{ $e->link }}" disabled>
+                                                </label>
                                             </div>
+                                            <div class="mb-3">
+                                                <label class="form-label w-100">
+                                                    Icon
+                                                    <input type="text" class="form-control" value="{{ $e->icon }}" disabled>
+                                                </label>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label w-100">
+                                                    Created By
+                                                    <input type="text" class="form-control" value="{{ $e->created_by }}" disabled>
+                                                </label>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label w-100">
+                                                    Updated By
+                                                    <input type="text" class="form-control" value="{{ $e->updated_by }}" disabled>
+                                                </label>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label w-100">
+                                                    Created At
+                                                    <input value="{{ $e->created_at }}" class="form-control" disabled>
+                                                </label>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label w-100">
+                                                    Updated At
+                                                    <input value="{{ $e->updated_at }}" class="form-control" disabled>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Cancel
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -125,7 +125,7 @@
                                                            id="input_edit_nama_socialmedia{{$e->id}}"
                                                            name="input_nama_socialmedia" value="{{ $e->nama }}" required>
                                                     @error('input_nama_socialmedia')
-                                                        <span class="text-danger">{{ $message }}</span>
+                                                    <span class="text-danger">{{ $message }}</span>
                                                     @enderror
                                                 </div>
                                                 <div class="mb-3">
@@ -173,7 +173,13 @@
                             </form>
                         </td>
                     </tr>
-                @endforeach
+                @empty
+                    <tr>
+                        <td colspan="5">
+                            <span class="fs-2">Tidak ada data!</span>
+                        </td>
+                    </tr>
+                @endforelse
                 </tbody>
             </table>
         </div>

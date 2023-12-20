@@ -18,7 +18,8 @@
                 @php
                     $i = 1;
                 @endphp
-                @foreach($dataAlamat as $e)
+
+                @forelse($dataAlamat as $e)
                     <tr>
                         <td>{{ $i++ }}</td>
                         <td>{{ $e -> nama }}</td>
@@ -58,25 +59,25 @@
                                             <div class="mb-3">
                                                 <label class="form-label w-100">
                                                     Created By
-                                                <input value="{{ $e->created_by }}" class="form-control" disabled>
+                                                    <input value="{{ $e->created_by }}" class="form-control" disabled>
                                                 </label>
                                             </div>
                                             <div class="mb-3">
                                                 <label class="form-label w-100">
                                                     Updated By
-                                                <input value="{{ $e->updated_by }}" class="form-control" disabled>
+                                                    <input value="{{ $e->updated_by }}" class="form-control" disabled>
                                                 </label>
                                             </div>
                                             <div class="mb-3">
                                                 <label class="form-label w-100">
                                                     Created At
-                                                <input value="{{ $e->created_at }}" class="form-control" disabled>
+                                                    <input value="{{ $e->created_at }}" class="form-control" disabled>
                                                 </label>
                                             </div>
                                             <div class="mb-3">
                                                 <label class="form-label w-100">
                                                     Updated At
-                                                <input value="{{ $e->updated_at }}" class="form-control" disabled>
+                                                    <input value="{{ $e->updated_at }}" class="form-control" disabled>
                                                 </label>
                                             </div>
                                         </div>
@@ -151,7 +152,13 @@
                             </form>
                         </td>
                     </tr>
-                @endforeach
+                @empty
+                    <tr>
+                        <td colspan="4">
+                            <span class="fs-2">Tidak ada data!</span>
+                        </td>
+                    </tr>
+                @endforelse
                 </tbody>
             </table>
         </div>
