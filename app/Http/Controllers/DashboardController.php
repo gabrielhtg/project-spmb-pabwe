@@ -7,6 +7,7 @@ use App\Models\AkreditasiSectionModel;
 use App\Models\AlamatInstitusiModel;
 use App\Models\data_institusi;
 use App\Models\EmailModel;
+use App\Models\DropdownAdmisiModel;
 use App\Models\HeroSectionModel;
 use App\Models\InfografisModel;
 use App\Models\JadwalPendaftaranModel;
@@ -23,8 +24,10 @@ use App\Models\BiayaAdminModel;
 use App\Models\BiayaPendaftaranModel;
 use App\Models\PedomanPendaftaranModel;
 use App\Models\Testimoni;
+use App\Models\BiayaStudi;
 use Illuminate\Http\Request;
 use App\Models\MitraModel;
+use App\Models\alurPendaftaranModel;
 
 class DashboardController extends Controller
 {
@@ -92,20 +95,15 @@ class DashboardController extends Controller
         $dataNomorTelepon = NomorTeleponModel::all();
         $dataEmail = EmailModel::all();
         $pedomanpendaftaran = PedomanPendaftaranModel::all();
-        $jalurMasuk = [];
-
-        foreach (InfografisModel::all() as $e) {
-            if (!in_array($e->jalur, $jalurMasuk)) {
-                $jalurMasuk[] = $e->jalur;
-            }
-        }
+        $dataJalurMasuk = JalurPendaftaranModel::all();
 
         $dataInfografisJalurMasuk = [];
+        $dataDropdown = [];
 
-        foreach ($jalurMasuk as $e) {
-            $dataInfografisJalurMasuk[] = InfografisModel::where('jalur', $e)->get();
+        foreach ($dataJalurMasuk as $e) {
+            $dataInfografisJalurMasuk[] = InfografisModel::where('jalur', $e->jalurPendaftaran)->get();
+            $dataDropdown[] = DropdownAdmisiModel::where('jalur', $e->jalurPendaftaran)->get();
         }
-
 
 
         $data = [
@@ -117,6 +115,8 @@ class DashboardController extends Controller
             'dataEmail' => $dataEmail,
             'dataInfografis' => $dataInfografisJalurMasuk,
             'pedomanpendaftaran' => $pedomanpendaftaran,
+            'jalurPendaftaran' => $dataJalurMasuk,
+            'dataDropdown' => $dataDropdown
         ];
 
         return view('admisi.admisi-jalur-pendaftaran', $data);
@@ -134,6 +134,7 @@ class DashboardController extends Controller
         $dataBiaya = BiayaAdminModel::all();
         $biayaPen = BiayaPendaftaranModel::all();
         $PdfbiayaPendaftaran = PdfBiayaModel::all();
+        $biayaStudis = BiayaStudi::all();
 
         $data = [
             'dataInstitusi' => $dataInstitusi,
@@ -146,7 +147,9 @@ class DashboardController extends Controller
             'dataKompetisi'=>$dataKompetisi,
             'dataBiaya' => $dataBiaya,
             'biayaPen'=> $biayaPen,
-            'PdfbiayaPendaftaran'=>$PdfbiayaPendaftaran
+            'PdfbiayaPendaftaran'=>$PdfbiayaPendaftaran,
+            'biayaStudis'=>$biayaStudis,
+
         ];
 
         return view('admisi.admisi-biaya-studi', $data);

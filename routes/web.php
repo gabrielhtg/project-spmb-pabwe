@@ -84,9 +84,9 @@ Route::middleware('auth')->group(function () {
             Route::post('/add-prodi', [AdmisiController::class, "postAddProdi"])->name("post.prodi.add.admisi");
             Route::post('/edit-prodi', [AdmisiController::class, "postEditProdi"])->name("post.prodi.edit.prodi");
             Route::delete('/delete-prodi/{id}', [AdmisiController::class, 'deleteprodi'])->name('post.delete.prodi');
-            Route::post('/add-biaya-studi', [AdmisiController::class, 'addBiayaStudi'])->name('add-biaya-studi');
-            Route::post('/edit-biaya-studi', [AdmisiController::class, 'editBiayaStudi'])->name('edit_biaya_studi');
-            Route::delete('/remove-biaya-studi', [AdmisiController::class, 'removeBiayaStudi'])->name('remove-biaya-studi');
+            // Route::post('/add-biaya-studi', [AdmisiController::class, 'addBiayaStudi'])->name('add-biaya-studi');
+            // Route::post('/edit-biaya-studi', [AdmisiController::class, 'editBiayaStudi'])->name('edit_biaya_studi');
+            // Route::delete('/remove-biaya-studi', [AdmisiController::class, 'removeBiayaStudi'])->name('remove-biaya-studi');
         });
 
         Route::prefix('fasilitas-panel')->group(function () {

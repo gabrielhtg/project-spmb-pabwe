@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('biaya_admin', function (Blueprint $table) {
+        Schema::create('dropdown_admisi', function (Blueprint $table) {
             $table->id();
-            $table->string('biayaasrama');
-            $table->string('biayamakan');
-            $table->string('biayawisuda');
-            $table->string('biayadeposit');
-            $table->string('biayatingkatakhir');
+            $table->string('judul', 500)->nullable(true);
+            $table->text('isi')->nullable(true);
+            $table->string('jalur')->nullable(true);
+            $table->string('created_by', 20)->nullable(true);
+            $table->string('updated_by', 20)->nullable(true);
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('biaya_admin');
+        Schema::dropIfExists('dropdown_admisi');
     }
 };

@@ -7,6 +7,7 @@ use App\Models\AkreditasiInstitutiModel;
 use App\Models\AkreditasiSectionModel;
 use App\Models\AlamatInstitusiModel;
 use App\Models\BiayaStudi;
+use App\Models\DropdownAdmisiModel;
 use App\Models\data_institusi;
 use App\Models\Fasilitas;
 use App\Models\Pengumuman;
@@ -505,11 +506,8 @@ class AdminPanelController extends Controller
         $dataHeaderAdmisi = ModelHeaderAdmisi::where('id', 1)->first();
         $dataNonKompetisi  = MbkmModel::where('jenis_kegiatan', 'Non Kompetisi')->get();
         $dataKompetisi =  MbkmModel::where('jenis_kegiatan', 'Kompetisi')->get();
-        $jalur = JalurPendaftaranModel::all();
         $jadwalPendaftaran = JadwalPendaftaranModel::all();
         $dataBiaya = BiayaAdminModel::all();
-        $dataInfografis = InfografisModel::all();
-        $jalurMasuk = [];
         $lokasi = Lokasi::orderBy('lokasiTes', 'asc')->get();
         $jenis = JenisTes::orderBy('gelombang', 'asc')->get();
         $dataJadwalUjian = JadwalUjianModel::all();
@@ -519,19 +517,14 @@ class AdminPanelController extends Controller
         $PdfbiayaPendaftaran = PdfBiayaModel::all();
         $prodis = prodi::orderBy("created_at", "desc")->get();
         $biayaStudis = BiayaStudi::all();
-
-
-
-        foreach (InfografisModel::all() as $e) {
-            if (!in_array($e->jalur, $jalurMasuk)) {
-                $jalurMasuk[] = $e->jalur;
-            }
-        }
+        $dataJalurMasuk = JalurPendaftaranModel::all();
 
         $dataInfografisJalurMasuk = [];
+        $dataDropdown = [];
 
-        foreach ($jalurMasuk as $e) {
-            $dataInfografisJalurMasuk[] = InfografisModel::where('jalur', $e)->get();
+        foreach ($dataJalurMasuk as $e) {
+            $dataInfografisJalurMasuk[] = InfografisModel::where('jalur', $e->jalurPendaftaran)->get();
+            $dataDropdown[] = DropdownAdmisiModel::where('jalur', $e->jalurPendaftaran)->get();
         }
 
         $data = [
@@ -543,7 +536,6 @@ class AdminPanelController extends Controller
             'dataInfografis' => $dataInfografisJalurMasuk,
             'lokasi' => $lokasi,
             'jenis' => $jenis,
-            'jalur'=>$jalur,
             'dataBiaya' => $dataBiaya,
             'dataJadwalUjian' => $dataJadwalUjian,
             'jadwalPendaftaran'=>$jadwalPendaftaran,
@@ -552,11 +544,12 @@ class AdminPanelController extends Controller
             'pedomanpendaftaran' => $pedomanpendaftaran,
             'PdfbiayaPendaftaran'=>$PdfbiayaPendaftaran,
             'prodis' => $prodis,
-            'biayaStudis'=>$biayaStudis
+            'biayaStudis'=>$biayaStudis,
+            'jalurPendaftaran' => $dataJalurMasuk,
+            'dataDropdown' => $dataDropdown
         ];
         return view('admin-panel.admisi_panel', $data);
     }
-
     public function addAkreditasiInstitusi (Request $request) {
         if ($request->sertifikat_akreditasi) {
             $request->validate([
