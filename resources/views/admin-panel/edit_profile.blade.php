@@ -37,7 +37,6 @@
                 <div class="alert alert-danger" role="alert" style="width: 18rem">
                     {{ Session::get('error') }}
                 </div>
-
             </div>
         @endif
 

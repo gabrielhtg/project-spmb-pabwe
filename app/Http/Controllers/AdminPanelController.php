@@ -122,7 +122,7 @@ class AdminPanelController extends Controller
 
         $dataInstitusi->update();
 
-        return redirect()->route('admin-panel');
+        return redirect()->route('admin-panel')->with('success', 'Berhasil mengubah Data Institusi!');
     }
 
     public function getEditProfile()
@@ -350,7 +350,7 @@ class AdminPanelController extends Controller
             'created_at' => now(),
             'updated_at' => now(),
         ]);
-        return redirect('admin-panel');
+        return redirect('admin-panel')->with('success', 'Berhasil menambahkan Social Media Baru');
     }
 
     public function updateSocialMedia (Request $request) {
@@ -539,7 +539,7 @@ class AdminPanelController extends Controller
         if ($request->sertifikat_akreditasi) {
             $request->validate([
                 'akreditasi' => 'required',
-                'lembaga_akreditasi' => 'required|string',
+                'lembaga_akreditasi' => 'required|string|max:10',
                 'sertifikat_akreditasi' => 'required|image|mimes:jpeg,png,jpg|max:1024',
                 'tahun_akreditasi' => 'required',
             ]);
@@ -562,9 +562,12 @@ class AdminPanelController extends Controller
                 'sertifikat_akreditasi' => 'assets/img/dashboard/' . $filename,
                 'tahun_akreditasi' => $request->tahun_akreditasi,
             ]);
+
+            return redirect()->route('admin-panel')->with('success', 'Berhasil menambah riwayat akreditasi!');
         }
 
-        return redirect()->route('admin-panel');
+        return redirect()->route('admin-panel')->with('error', 'Gagal menambah riwayat akreditasi!');
+
     }
 
     public function removeNomorTelepon (Request $request) {
@@ -604,7 +607,7 @@ class AdminPanelController extends Controller
         try {
             AkreditasiInstitutiModel::where('id', $request->id)->first()->delete();
 
-            return redirect(null, 200)->route('admin-panel');
+            return redirect(null, 200)->route('admin-panel')->with('success', 'Berhasil remove akreditasi!');
         } catch (\Exception $e) {
             abort(404, 'ID tidak ditemukan');
         }
@@ -699,20 +702,24 @@ class AdminPanelController extends Controller
     }
 
     public function updateAkreditasiSection(Request $request) {
-        $request->validate([
-            'input_header' => 'required|string|max:20',
-            'input_deskripsi' => 'required|string|max:250',
-        ]);
+        try {
+            $request->validate([
+                'input_header' => 'required|string|max:20',
+                'input_deskripsi' => 'required|string|max:250',
+            ]);
 
-        $akreditasiSection = AkreditasiSectionModel::where('id', 1)->first();
+            $akreditasiSection = AkreditasiSectionModel::where('id', 1)->first();
 
-        $akreditasiSection->header = $request->input_header;
-        $akreditasiSection->description = $request->input_deskripsi;
-        $akreditasiSection->updated_at = now();
+            $akreditasiSection->header = $request->input_header;
+            $akreditasiSection->description = $request->input_deskripsi;
+            $akreditasiSection->updated_at = now();
 
-        $akreditasiSection->update();
+            $akreditasiSection->update();
 
-        return redirect()->back();
+            return redirect()->route('admin-panel')->with('success', 'Berhasil mengubah Akreditasi Section!');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Gagal mengubah Akreditasi Section!');
+        }
     }
 
 
