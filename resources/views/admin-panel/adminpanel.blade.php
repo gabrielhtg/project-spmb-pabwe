@@ -3,21 +3,7 @@
 @section('isi-admin-panel')
 
     <div class="container-fluid bg-light p-3">
-        @if(Session::get('error'))
-            <div class="w-100 d-flex justify-content-center">
-                <div class="alert alert-danger w-100" role="alert">
-                    {{ Session::get('error') }}
-                </div>
-            </div>
-        @endif
 
-        @if(Session::get('success'))
-            <div class="w-100 d-flex justify-content-center">
-                <div class="alert alert-success w-100" role="alert">
-                    {{ Session::get('success') }}
-                </div>
-            </div>
-        @endif
 
         <div class="d-flex w-100">
             <div class="w-100">
@@ -47,6 +33,24 @@
                         <a class="nav-link" href="#item-5"><i class="bi bi-telephone-plus me-2"></i> Contact Institusi</a>
                     </nav>
                 </nav>
+
+                <div class="mt-3">
+                    @if(Session::get('error'))
+                        <div class="w-100 d-flex justify-content-center">
+                            <div class="alert alert-danger w-100" role="alert">
+                                {{ Session::get('error') }}
+                            </div>
+                        </div>
+                    @endif
+
+                    @if(Session::get('success'))
+                        <div class="w-100 d-flex justify-content-center">
+                            <div class="alert alert-success w-100" role="alert">
+                                {{ Session::get('success') }}
+                            </div>
+                        </div>
+                    @endif
+                </div>
             </div>
         </div>
     </div>
