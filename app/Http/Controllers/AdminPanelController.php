@@ -389,9 +389,9 @@ class AdminPanelController extends Controller
     {
         try {
             SocalMediaModel::where('id', $request->id)->first()->delete();
-            return redirect()->back()->with('success', 'Berhasil remove Social Media!');
+            return redirect()->back()->with('success', 'Berhasil hapus Social Media!');
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Gagal remove Social Media!');
+            return redirect()->back()->with('error', 'Gagal hapus Social Media!');
         }
     }
 
@@ -500,9 +500,9 @@ class AdminPanelController extends Controller
     {
         try {
             AlamatInstitusiModel::where('id', $request->id)->first()->delete();
-            return redirect()->back()->with('success', 'Berhasil Remove Alamat');
+            return redirect()->back()->with('success', 'Berhasil hapus Alamat');
         } catch (Exception $e) {
-            return redirect()->back()->with('error', 'Gagal Remove Alamat');
+            return redirect()->back()->with('error', 'Gagal hapus Alamat');
         }
     }
     public function getAdmisiPanel () {
@@ -600,9 +600,9 @@ class AdminPanelController extends Controller
     public function removeNomorTelepon (Request $request) {
         try {
             NomorTeleponModel::where('id', $request->id)->first()->delete();
-            return redirect()->route('admin-panel')->with('success', 'Berhasil remove nomor telepon!');
+            return redirect()->route('admin-panel')->with('success', 'Berhasil hapus nomor telepon!');
         } catch (\Exception $e) {
-            return redirect()->route('admin-panel')->with('error', 'Gagal remove nomor telepon!');
+            return redirect()->route('admin-panel')->with('error', 'Gagal hapus nomor telepon!');
         }
     }
 
@@ -634,9 +634,9 @@ class AdminPanelController extends Controller
         try {
             AkreditasiInstitutiModel::where('id', $request->id)->first()->delete();
 
-            return redirect(null, 200)->route('admin-panel')->with('success', 'Berhasil remove akreditasi!');
+            return redirect(null, 200)->route('admin-panel')->with('success', 'Berhasil hapus akreditasi!');
         } catch (\Exception $e) {
-            return redirect(null, 200)->route('admin-panel')->with('error', 'Gagal remove akreditasi!');
+            return redirect(null, 200)->route('admin-panel')->with('error', 'Gagal hapus akreditasi!');
         }
     }
 

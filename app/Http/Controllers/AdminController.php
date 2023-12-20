@@ -212,9 +212,9 @@ class AdminController extends Controller
         try {
             EmailModel::where('id', $request->id)->first()->delete();
 
-            return redirect()->route('admin-panel')->with('success', 'Berhasil remove email.');
+            return redirect()->route('admin-panel')->with('success', 'Berhasil hapus email.');
         } catch (\Exception $e) {
-            return redirect()->route('admin-panel')->with('error', 'Gagal remove email.');
+            return redirect()->route('admin-panel')->with('error', 'Gagal hapus email.');
         }
     }
 
