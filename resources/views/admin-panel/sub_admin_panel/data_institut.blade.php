@@ -108,7 +108,7 @@
                         @php
                         $i = 1;
                         @endphp
-                        @foreach($dataAkreditasiInstitusi as $e)
+                        @forelse($dataAkreditasiInstitusi as $e)
                             <tr>
                                 <td>{{ $i++ }}</td>
                                 <td>{{ $e->akreditasi }}</td>
@@ -128,7 +128,13 @@
                                     </form>
                                 </td>
                             </tr>
-                        @endforeach
+                        @empty
+                            <tr>
+                                <td colspan="6">
+                                    <span class="fs-2">Tidak ada data!</span>
+                                </td>
+                            </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>
