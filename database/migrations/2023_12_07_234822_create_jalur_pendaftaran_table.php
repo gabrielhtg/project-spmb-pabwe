@@ -15,10 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('jalurPendaftaran');
             $table->text('desk_pers_umum');
-            $table->string('created by');
-            $table->string('created at');
-            $table->string('updated by');
-            $table->string('updated at');
+            $table->string('created_by');
+            $table->string('updated_by');
             $table->timestamps();
         });
     }

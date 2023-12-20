@@ -38,9 +38,8 @@
     </div>
 
     <div class="d-flex pt-5 flex-column align-items-center">
-        <div style="width: 100%" class="justify-content-center d-flex gap-5 mt-5 mb-5">
-            <button class="btn btn-primary">Pedoman Pendaftaran</button>
-            <button class="btn btn-primary">Pedoman Upload Dokumen</button>
+        <div style="width: 100%" class="justify-content-center d-flex gap-5 mt-5 mb-5 button-1">
+            <a href="{{ route('download-pedoman') }}">Download Pedoman Pendaftaran</a>
         </div>
 
         <div class="w-100">

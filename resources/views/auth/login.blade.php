@@ -15,11 +15,11 @@
         <form class="p-4 p-md-5 rounded-3 w-100" action="{{ route('post.login') }}" method="post" >
             @csrf
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="input_username_mobile" name="input_username">
+                <input type="text" class="form-control" id="input_username_mobile" name="input_username" required>
                 <label for="input_username_mobile">Username</label>
             </div>
             <div class="form-floating mb-3">
-                <input type="password" class="form-control" id="input_password_mobile" name="input_password">
+                <input type="password" class="form-control" id="input_password_mobile" name="input_password" required>
                 <label for="input_password_mobile">Password</label>
             </div>
 {{--            <div class="checkbox mb-3">--}}

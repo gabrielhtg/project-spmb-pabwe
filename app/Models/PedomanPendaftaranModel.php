@@ -5,8 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Mitra extends Model
+class PedomanPendaftaranModel extends Model
 {
     use HasFactory;
-    protected $fillable = ['nama', 'logo'];
+    protected $table = 'pedoman_pendaftaran';
+    protected $fillable = ['PedomanPendaftaran'];
+
 }
