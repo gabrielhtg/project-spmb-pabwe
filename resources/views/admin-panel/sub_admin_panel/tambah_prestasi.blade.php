@@ -19,7 +19,7 @@
                     <div class="mb-3">
                         <label for="judul" class="form-label">Judul Prestasi</label>
                         <input type="text" class="form-control" id="judul"
-                               name="judul">
+                               name="judul_prestasi">
                     </div>
 
                     <div class="mb-3">

@@ -120,7 +120,7 @@ class PrestasiController extends Controller
     public function postAddPrestasi(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'judul-prestasi' => 'required|string|max:255',
+            'judul_prestasi' => 'required|string|max:255',
             'gambar' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'input_jenis_prestasi' => 'required',
             'deskripsi' => 'required|string',
@@ -145,7 +145,7 @@ class PrestasiController extends Controller
                 "jenis_prestasi" => $request->input_jenis_prestasi,
                 "photo" => "assets/img/prestasi/" . $filename,
                 "deskripsi" => $request->deskripsi,
-                "judul_prestasi" => $request->judul,
+                "judul_prestasi" => $request->judul_prestasi,
             ]);
 
             return redirect()->route("prestasi.panel")->with("success", "Prestasi berhasil ditambahkan");
