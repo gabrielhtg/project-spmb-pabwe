@@ -11,7 +11,7 @@ class TestimoniController extends Controller
     public function postAddTestimoni(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'nama' => 'required|alpha|max:255',
+            'nama' => 'required|regex:/^[a-zA-Z\s]+$/|max:255',
             'prodi' => 'required|string|max:255',
             'angkatan' => 'required|numeric|digits:4',
             'deskripsi' => 'required|string',
@@ -83,7 +83,7 @@ class TestimoniController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'id' => 'required|exists:testimoni',
-            'namaUpdate' => 'required|alpha|max:255',
+            'namaUpdate' => 'required|regex:/^[a-zA-Z\s]+$/|max:255',
             'prodiUpdate' => 'required|string|max:255',
             'angkatanUpdate' => 'required|numeric|digits:4',
             'deskripsiUpdate' => 'required|string',
