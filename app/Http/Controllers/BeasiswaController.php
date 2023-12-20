@@ -48,7 +48,7 @@ class BeasiswaController extends Controller
     // dd($dataNomorTelepon);
 
     $data = [
-        'indexActive' => 2,
+        'indexActive' => 8,
         'admin' => $admin,
         'dataAkreditasiDashboard' => $dataAkreditasiDashboard,
         'dataMitra' => $dataMitra,
@@ -85,7 +85,7 @@ public function getviewBeasiswa()
     $beasiswa = Beasiswa::all();
 
     $data = [
-        'indexActive' => 2,
+        'indexActive' => 8,
         'admin' => $admin,
         'dataInstitusi' => $dataInstitusi,
         'socialMedia' => $dataSocialMedia,
