@@ -136,7 +136,7 @@ class AdmisiController extends Controller
 
     if ($request->header_admisi) {
         $this->validate($request, [
-            'header_admisi' => 'image|mimes:jpeg,png,jpg|max:1024',
+            'header_admisi' => 'image|mimes:jpeg,png,jpg|max:2048',
         ], [
             'header_admisi.image' => 'File harus berupa gambar.',
             'header_admisi.mimes' => 'File harus memiliki format jpeg, png, atau jpg.',
@@ -326,13 +326,13 @@ public function removeMbkm(Request $request) {
 public function addInfografisPmdk(Request $request)
 {
     $validator = Validator::make($request->all(), [
-        'gambar' => 'required|image|mimes:jpeg,png,jpg|max:1024',
+        'gambar' => 'required|image|mimes:jpeg,png,jpg|max:2048',
         'nomor_urut' => 'required|min:0'
     ],[
         'gambar.required' => 'Jumlah SKS harus diisi.',
-        'gambar.image' => 'gambar harus dalam jpeg, png, dan jpg dengan ukuran maks 1MB.',
+        'gambar.image' => 'gambar harus dalam jpeg, png, dan jpg dengan ukuran maks 2MB.',
         'nomor_urut.required' => 'Nomor Urut harus diisi.',
-        'gambar.max'=>'Gambar tidak boleh lebih dari 1MB'
+        'gambar.max'=>'Gambar tidak boleh lebih dari 2MB'
     ]);
 
     if ($validator->fails()) {
@@ -352,6 +352,44 @@ public function addInfografisPmdk(Request $request)
         InfografisModel::create([
             'gambar' => 'assets/img/' . $filename,
             'jalur' => 'PMDK',
+            'nomor_urut' => $request->nomor_urut
+        ]);
+
+        return redirect()->route('admisi-panel')->with('success', 'Infografis berhasil ditambahkan.');
+    }
+
+    return redirect()->route('admisi-panel')->with('error', 'Gagal menambahkan infografis.');
+}
+
+public function addInfografisJPS(Request $request)
+{
+    $validator = Validator::make($request->all(), [
+        'gambar' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+        'nomor_urut' => 'required|min:0'
+    ],[
+        'gambar.required' => 'Jumlah SKS harus diisi.',
+        'gambar.image' => 'gambar harus dalam jpeg, png, dan jpg dengan ukuran maks 2MB.',
+        'nomor_urut.required' => 'Nomor Urut harus diisi.',
+        'gambar.max'=>'Gambar tidak boleh lebih dari 2MB'
+    ]);
+
+    if ($validator->fails()) {
+        return redirect()->route('admisi-panel')
+            ->withErrors($validator)
+            ->withInput()
+            ->with('error', 'Terjadi kesalahan: ' . $validator->errors()->first());
+    }
+
+    if ($request->hasFile('gambar')) {
+        $photo = $request->file('gambar');
+        $filename = time() . '_infografis.' . $photo->getClientOriginalExtension();
+        $directory = public_path('assets/img/');
+
+        $photo->move($directory, $filename);
+
+        InfografisModel::create([
+            'gambar' => 'assets/img/' . $filename,
+            'jalur' => 'JPS',
             'nomor_urut' => $request->nomor_urut
         ]);
 
@@ -399,12 +437,12 @@ public function addInfografisPmdk(Request $request)
     public function addInfografisUsm(Request $request)
 {
     $validator = Validator::make($request->all(), [
-        'gambar' => 'required|image|mimes:jpeg,png,jpg|max:1024',
+        'gambar' => 'required|image|mimes:jpeg,png,jpg|max:2048',
         'nomor_urut' => 'required|min:0'
     ],[
         'gambar.required' => 'Jumlah SKS harus diisi.',
         'gambar.image' => 'gambar harus dalam jpeg, png, dan jpg dengan ukuran maks 1MB.',
-        'nomor_urut.required' => 'Nomor Urut harus diisi.',
+        'nomor_urut.required' => 'Nomor Urut harus diisi.Mulai dari 0',
         'gambar.max'=>'Gambar tidak boleh lebih dari 1MB'
     ]);
 
@@ -438,13 +476,13 @@ public function addInfografisPmdk(Request $request)
 public function addInfografisUtbk(Request $request)
 {
     $validator = Validator::make($request->all(), [
-        'gambar' => 'required|image|mimes:jpeg,png,jpg|max:1024',
+        'gambar' => 'required|image|mimes:jpeg,png,jpg|max:2048',
         'nomor_urut' => 'required|min:0'
     ],[
         'gambar.required' => 'Jumlah SKS harus diisi.',
-        'gambar.image' => 'gambar harus dalam jpeg, png, dan jpg dengan ukuran maks 1MB.',
-        'gambar.max'=>'Gambar tidak boleh lebih dari 1MB',
-        'nomor_urut.required' => 'Nomor Urut harus diisi.',
+        'gambar.image' => 'gambar harus dalam jpeg, png, dan jpg dengan ukuran maks 2MB.',
+        'gambar.max'=>'Gambar tidak boleh lebih dari 2MB',
+        'nomor_urut.required' => 'Nomor Urut harus diisi.Mulai dari 0',
     ]);
 
     if ($validator->fails()) {
@@ -949,11 +987,11 @@ public function editBiayaPendaftaran(Request $request)
     public function addPedomanPendaftaran(Request $request)
 {
     $validator = Validator::make($request->all(),[
-        'PedomanPendaftaran' => 'required|mimes:pdf,doc,docx|max:10240',
+        'PedomanPendaftaran' => 'required|mimes:pdf,doc,docx|max:2048',
     ], [
         'PedomanPendaftaran.required' => 'Harap isi Pedoman Pendaftaran.',
         'PedomanPendaftaran.mimes' => 'Tipe file harus berupa PDF, DOC, atau DOCX.',
-        'PedomanPendaftaran.max' => 'Ukuran file tidak boleh lebih dari 10MB.',
+        'PedomanPendaftaran.max' => 'Ukuran file tidak boleh lebih dari 2MB.',
     ]);
 
     if ($validator->fails()) {
@@ -1015,11 +1053,11 @@ public function downloadPedoman()
 public function addPdfbiaya(Request $request)
 {
     $validator = Validator::make($request->all(),[
-        'PdfbiayaPendaftaran' => 'required|mimes:pdf,doc,docx|max:10240',
+        'PdfbiayaPendaftaran' => 'required|mimes:pdf,doc,docx|max:2048',
     ], [
-        'PdfbiayaPendaftaran.required' => 'Harap isi Pedoman Pendaftaran.',
+        'PdfbiayaPendaftaran.required' => 'Harap isi Dokumen Biaya Pendaftaran.',
         'PdfbiayaPendaftaran.mimes' => 'Tipe file harus berupa PDF, DOC, atau DOCX.',
-        'PdfbiayaPendaftaran.max' => 'Ukuran file tidak boleh lebih dari 10MB.',
+        'PdfbiayaPendaftaran.max' => 'Ukuran file tidak boleh lebih dari 2MB.',
     ]);
 
     if ($validator->fails()) {
