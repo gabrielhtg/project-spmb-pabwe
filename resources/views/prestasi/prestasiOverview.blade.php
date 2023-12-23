@@ -17,10 +17,6 @@
         width:100%;
         height:250px;
     }
-    .preview{
-        position: relative;
-        left: 50%;
-    }
 </style>
 
     <section class="container">
@@ -38,7 +34,7 @@
                 @foreach($dataPrestasiInstitutOverview as $item)
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="card">
-                            <img src="{{asset($item->photo)}}" class="card-img-top preview" alt="pict1" style="width: 80%"/>
+                            <img src="{{asset($item->photo)}}" class="card-img-top preview" alt="pict1" style="width: 100%; height:30%"/>
                             <div class="card-body">
                                 <h5 class="card-title">{{$item->judul_prestasi}}</h5>
                                 <p class="card-text">
@@ -88,7 +84,7 @@
                 @foreach($dataPrestasiDosenOverview as $item)
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="card">
-                            <img src="{{asset($item->photo)}}" class="card-img-top" alt="pict1"/>
+                            <img src="{{asset($item->photo)}}" class="card-img-top" alt="pict1" style="width: 100%; height:30%"/>
                             <div class="card-body">
                                 <h5 class="card-title">{{$item->judul_prestasi}}</h5>
                                 <p class="card-text">
@@ -139,7 +135,7 @@
                 @foreach($dataPrestasiMahasiswaOverview as $item)
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="card">
-                            <img src="{{asset($item->photo)}}" class="card-img-top" alt="pict1"/>
+                            <img src="{{asset($item->photo)}}" class="card-img-top" alt="pict1" style="width: 100%; height:30%"/>
                             <div class="card-body">
                                 <h5 class="card-title">{{$item->judul_prestasi}}</h5>
                                 <p class="card-text">

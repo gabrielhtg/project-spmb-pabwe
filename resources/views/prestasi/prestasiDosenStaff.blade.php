@@ -8,7 +8,7 @@
             height:450px */
             height:95%;
         }
-    
+
     .mx-auto{
         margin-bottom: 30px;
         margin-top: 20px;
@@ -30,7 +30,7 @@
                     @foreach($dataPrestasi as $item)
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="card">
-                                <img src="{{asset($item->photo)}}" class="card-img-top" alt="..."/>
+                                <img src="{{asset($item->photo)}}" class="card-img-top" alt="..." style="width: 100%; height:30%"/>
                                 <div class="card-body">
                                     <h5 class="card-title">{{$item->judul_prestasi}}</h5>
                                     <p class="card-text">
