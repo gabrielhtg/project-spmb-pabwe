@@ -1,14 +1,15 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset("/assets/css/global.css") }}">
-    <link rel="stylesheet" href="{{ asset("/assets/css/kel1.css") }}">
-    <link rel="stylesheet" href="{{ asset("/assets/css/admin_panel.css") }}">
+    <link rel="stylesheet" href="{{ asset('/assets/css/global.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/css/kel1.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/css/admin_panel.css') }}">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="{{ asset("/assets/css/admisi.css") }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
@@ -19,56 +20,60 @@
 
     <title>Admin Panel</title>
 </head>
+
 <body>
-{{--    Disini adalah bagian dari navbar--}}
+    {{--    Disini adalah bagian dari navbar --}}
     <div class="d-flex w-100">
 
-    {{--        Ini adalah sidebar besar mulai--}}
-        <div class="d-none ps-3 pe-3 fixed-top bg-sidebar d-flex flex-column align-items-center" id="sidebar_besar" style="width: 18rem; height: 300vh">
-            <div class="d-flex justify-content-center align-items-center mb-3 w-100" style="height: 60px; border: 0 solid white;border-bottom-width: 1px;">
+        {{--        Ini adalah sidebar besar mulai --}}
+        <div class="d-none ps-3 pe-3 fixed-top bg-sidebar d-flex flex-column align-items-center" id="sidebar_besar"
+            style="width: 18rem; height: 100%; overflow-y: scroll; margin-top: 60px; padding-bottom: 200px;">
+            <div class="d-flex justify-content-center align-items-center mb-3 w-100"
+                style="height: 60px; border: 0 solid white;border-bottom-width: 1px;">
                 <span class="text-white fw-semibold fs-4" style="font-size: 1rem">SPMB Admin</span>
             </div>
 
             <div class="d-flex flex-column row-gap-3 w-100">
-                <a href="{{ route("admin-panel") }}">
+                <a href="{{ route('admin-panel') }}">
                     <button id="btn_dashboard" class="btn_sidebar w-100 btn_sidebar_active text-start">
                         <i class="bi bi-speedometer me-2"></i>
                         Dashboard
                     </button>
                 </a>
-                <a href="{{ route("admisi-panel") }}">
+                <a href="{{ route('admisi-panel') }}">
                     <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start">
                         <i class="fa-regular fa-note-sticky"></i>
                         Admisi
                     </button>
                 </a>
-                <a href="{{ route("fasilitas-admin") }}">
+                <a href="{{ route('fasilitas-admin') }}">
                     <button id="btn_fasilitas_panel" class="btn_sidebar w-100 text-start">
                         <i class="fas fa-university"></i>
                         Fasilitas
                     </button>
                 </a>
-                <a href="{{ route("pengumuman-panel") }}">
+                <a href="{{ route('pengumuman-panel') }}">
                     <button id="btn_pengumuman_panel" class="btn_sidebar w-100 text-start">
                         <i class="fas fa-bullhorn"></i>
                         Pengumuman
                     </button>
                 </a>
 
-                <a href="{{ route("program-panel") }}">
+                <a href="{{ route('program-panel') }}">
                     <button id="btn_program" class="btn_sidebar w-100 text-start">
                         <i class="bi bi-book-half me-2"></i>
                         Program
                     </button>
                 </a>
 
-                <a href="{{ route("prestasi.panel") }}">
+                <a href="{{ route('prestasi.panel') }}">
                     <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start"><i class="fas fa-trophy"></i>
                         Prestasi</button>
                 </a>
 
-                <a href="{{ route("testimoni.panel") }}">
-                    <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start"><i class="fas fa-comment-dots"></i>
+                <a href="{{ route('testimoni.panel') }}">
+                    <button id="btn_dashboard_panel" class="btn_sidebar w-100 text-start"><i
+                            class="fas fa-comment-dots"></i>
                         Testimoni</button>
                 </a>
             </div>
@@ -111,7 +116,7 @@
             </div>
         </div>
         <div id="geser_kecil" style="min-width: 4rem; width: 4rem; height: 100vh"></div>
-        {{--        ini adalah sidebar kecil selesai--}}
+        {{--        ini adalah sidebar kecil selesai --}}
 
         <div class="w-100">
             <nav class="navbar shadow-sm fixed-top navbar-expand-lg bg-body-tertiary border border-bottom-1">
@@ -167,7 +172,8 @@
         } catch (e) {
 
         }
-
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
     </script>
 
     <script>
@@ -188,6 +194,9 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
     <script src="https://kit.fontawesome.com/965a381e3a.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>
+    <script src="{{ asset('/assets/js/kel4.js') }}"></script>
+    <script src="{{ asset('/assets/js/admin-panel.js') }}"></script>
     <script src="{{ asset("/assets/js/kel4.js") }}"></script>
     <script src="{{ asset("/assets/js/admin-panel.js") }}"></script>
     @yield('other-js')

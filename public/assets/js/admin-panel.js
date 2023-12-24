@@ -1,4 +1,3 @@
-// const tombolSidebar = document.querySelector("#tombol_sidebar");
 const sidebarBesar = document.querySelector("#sidebar_besar");
 const sidebarKecil = document.querySelector("#sidebar_kecil");
 const geserKecil = document.querySelector("#geser_kecil");
