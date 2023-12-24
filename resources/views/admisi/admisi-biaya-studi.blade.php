@@ -57,16 +57,16 @@
                         Fakultas Informatika dan Teknik Elektro
                     </td>
                 </tr>
-
+                @foreach($dataBiaya as $biaya)
                 <tr>
                     <td>Informatika</td>
                     <td>6.500.000</td>
                     <td>9.500.000 + N x 1.000.000 (min N=1)</td>
-                    <td>4.500.000</td>
-                    <td>850.000</td>
-                    <td>250.000</td>
+                    <td>{{ number_format($biaya->biayaUangPangkal, 0, ',', '.') }}</td>
+                    <td>{{ number_format($biaya->biayaPerlengkapanMahasiswa, 0, ',', '.') }}</td>
+                    <td>{{ number_format($biaya->biayaPerlengkapanMakan, 0, ',', '.') }}</td>
                 </tr>
-
+                @endforeach
                 <tr>
                     <td>Teknik Elektro</td>
                     <td>6.500.000</td>
@@ -156,6 +156,26 @@
             </table>
         </div>
 
+        <div class="d-flex justify-content-center flex-column pt-5 ">
+            <h3 class="fw-semibold text-start pb-3">Biaya Pendaftaran</h3>
+
+            <table class="table align-middle table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col" style="background-color: #47A5D4" class="text-white fw-semibold">Jalur Pendaftaran</th>
+                    <th scope="col" style="background-color: #47A5D4" class="text-white fw-semibold">Biaya (Rp)</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($biayaPen as $e)
+                    <tr>
+                        <td>{{ $e -> jlr_Pen }}</td>
+                        <td>{{$e -> biayaPen}}</td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+        </div>
         <div class="d-flex justify-content-center flex-column pt-5">
             <h3 class="fw-semibold text-start pb-3">Biaya Lainnya</h3>
 
@@ -167,22 +187,25 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>Biaya Asrama dan Kemahasiswaan</td>
-                    <td>300.000</td>
-                </tr>
-                <tr>
-                    <td>Biaya Makan/hari (Rp)</td>
-                    <td>30.000</td>
-                </tr>
-                <tr>
-                    <td>Biaya Wisuda</td>
-                    <td>1.100.000</td>
-                </tr>
-                <tr>
-                    <td>Biaya Deposit Toga (*</td>
-                    <td>1000.000</td>
-                </tr>
+                @foreach($dataBiaya as $biaya)
+                    <tr>
+                        <td>Biaya Asrama dan Kemahasiswaan</td>
+                        <td>{{ number_format($biaya->biayaasrama, 0, ',', '.') }}</td>
+                    </tr>
+                    <tr>
+                        <td>Biaya Makan/hari (Rp)</td>
+                        <td>{{ number_format($biaya->biayamakan, 0, ',', '.') }}</td>
+                    </tr>
+                    <tr>
+                        <td>Biaya Wisuda</td>
+                        <td>{{ number_format($biaya->biayawisuda, 0, ',', '.') }}</td>
+                    </tr>
+                    <tr>
+                        <td>Biaya Deposit Toga</td>
+                        <td>{{ number_format($biaya->biayadeposit, 0, ',', '.') }}</td>
+                    </tr>
+                    <!-- Add similar code for other input fields -->
+                
                 </tbody>
             </table>
         </div>
@@ -192,9 +215,11 @@
 
             <p>
                 Besaran biaya pendidikan bagi mahasiswa yang tidak mengikuti kegiatan perkuliahan selain tugas akhir di
-                suatu semester adalah Rp500.000,- (Lima Ratus Ribu Rupiah).
+                suatu semester adalah Rp{{ number_format($biaya->biayatingkatakhir, 0, ',', '.') }}.
             </p>
         </div>
+        @endforeach
+
 
         <div class="d-flex justify-content-center flex-column pt-5 ">
             <h3 class="fw-semibold text-start pb-3">Biaya Pendidikan Peserta Merdeka Belajar Kampus Merdeka (MBKM)</h3>
@@ -232,7 +257,7 @@
 
         <div class="d-flex justify-content-center flex-column pt-5">
             <div class="d-flex align-items-center pb-3 justify-content-center">
-                <button class="btn btn-primary ms-3">Unduh di sini</button>
+            <a href="{{ route('download-pdfbiaya') }}" class="btn btn-primary ms-3">Unduh di sini</a>
             </div>
         </div>
     </section>

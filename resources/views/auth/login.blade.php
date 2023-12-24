@@ -12,22 +12,34 @@
             </div>
         @endif
 
+        @if(Session::get('success'))
+            <div class="alert alert-success" role="alert">
+                {{ Session::get('success') }}
+            </div>
+        @endif
+
         <form class="p-4 p-md-5 rounded-3 w-100" action="{{ route('post.login') }}" method="post" >
             @csrf
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="input_username_mobile" name="input_username">
+                <input type="text" class="form-control w-100" id="input_username_mobile" name="input_username">
                 <label for="input_username_mobile">Username</label>
+                @error('input_username')
+                <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
             <div class="form-floating mb-3">
-                <input type="password" class="form-control" id="input_password_mobile" name="input_password">
+                <input type="password" class="form-control w-100" id="input_password_mobile" name="input_password">
                 <label for="input_password_mobile">Password</label>
+                @error('input_password')
+                <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
 {{--            <div class="checkbox mb-3">--}}
 {{--                <label>--}}
 {{--                    <input type="checkbox" value="remember-me" name="input_remember"> Remember me--}}
 {{--                </label>--}}
 {{--            </div>--}}
-            <button class="w-100 btn btn-lg btn-primary" type="submit">Sign up</button>
+            <button class="w-100 btn btn-lg btn-primary" type="submit">LOGIN</button>
         </form>
     </div>
 
@@ -46,7 +58,7 @@
             <div class="form-floating mb-3">
                 <input type="text" class="form-control w-100" id="input_username_dekstop" name="input_username">
                 <label for="input_username_dekstop">Username</label>
-                @error('input_email')
+                @error('input_username')
                     <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>

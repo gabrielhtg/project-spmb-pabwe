@@ -18,7 +18,7 @@
                 @php
                     $i = 1;
                 @endphp
-                @foreach($dataNomorTelepon as $e)
+                @forelse($dataNomorTelepon as $e)
                     <tr>
                         <td>{{ $i++ }}</td>
                         <td>{{ $e -> nama }}</td>
@@ -108,21 +108,28 @@
                                             <div class="modal-body text-start">
                                                 <input type="hidden" name="id" value="{{ $e -> id }}">
                                                 <div class="mb-3">
-                                                    <label class="form-label w-100">
+                                                    <label class="form-label">
                                                         Nama
-                                                        <input type="text" class="form-control"
-                                                               id="editNamaNomorTelepon{{$e->id}}"
-                                                               name="nama" value="{{ $e->nama }}">
                                                     </label>
+                                                    <a tabindex="0" class="border-0 bg-white" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-content="Max length 20 characters."><i class="bi bi-info-circle"></i></a>
+                                                    <input type="text" class="form-control"
+                                                           id="editNamaNomorTelepon{{$e->id}}"
+                                                           name="nama" value="{{ $e->nama }}" required>
+                                                    @error('nama')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label class="form-label w-100">
+                                                    <label class="form-label">
                                                         Nomor Telepon
-                                                        <input type="text" class="form-control"
-                                                               id="editNomorTelepon{{$e->id}}" name="nomor_telepon"
-                                                               value="{{ $e->nomor_telepon }}">
                                                     </label>
-
+                                                    <a tabindex="0" class="border-0 bg-white" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-content="Max length 15 characters."><i class="bi bi-info-circle"></i></a>
+                                                    <input type="text" class="form-control"
+                                                           id="editNomorTelepon{{$e->id}}" name="nomor_telepon"
+                                                           value="{{ $e->nomor_telepon }}" required>
+                                                    @error('nomor_telepon')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
@@ -147,7 +154,13 @@
                             </form>
                         </td>
                     </tr>
-                @endforeach
+                @empty
+                    <tr>
+                        <td colspan="4">
+                            <span class="fs-2">Tidak ada data!</span>
+                        </td>
+                    </tr>
+                @endforelse
                 </tbody>
             </table>
         </div>
@@ -169,63 +182,63 @@
                 @php
                     $i = 1;
                 @endphp
-                @foreach($dataEmail as $e)
+                @forelse($dataEmail as $el)
                     <tr>
                         <td>{{ $i++ }}</td>
-                        <td>{{ $e -> nama }}</td>
-                        <td>{{ $e -> email }}</td>
+                        <td>{{ $el -> nama }}</td>
+                        <td>{{ $el -> email }}</td>
                         <td style="min-width: 180px; width: 180px">
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                    data-bs-target="#info-email{{ $e->id }}">
+                                    data-bs-target="#info-email{{ $el->id }}">
                                 <i class="bi bi-info-circle"></i>
                             </button>
 
-                            <div class="modal fade" id="info-email{{ $e->id }}" tabindex="-1"
-                                 aria-labelledby="info-email-label{{ $e->id }}" aria-hidden="true">
+                            <div class="modal fade" id="info-email{{ $el->id }}" tabindex="-1"
+                                 aria-labelledby="info-email-label{{ $el->id }}" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h1 class="modal-title fs-5 fw-semibold" id="info-sosmed-label{{ $e->id }}">
+                                            <h1 class="modal-title fs-5 fw-semibold" id="info-sosmed-label{{ $el->id }}">
                                                 Info Email</h1>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body text-start">
-                                            <input type="hidden" name="id" value="{{ $e -> id }}">
+                                            <input type="hidden" name="id" value="{{ $el -> id }}">
                                             <div class="mb-3">
                                                 <label class="form-label w-100">
                                                     Nama
-                                                    <input type="text" class="form-control" value="{{$e->nama}}" disabled>
+                                                    <input type="text" class="form-control" value="{{$el->nama}}" disabled>
                                                 </label>
                                             </div>
                                             <div class="mb-3">
                                                 <label class="form-label w-100">
                                                     Email
-                                                    <input type="text" class="form-control" value="{{$e->email}}" disabled>
+                                                    <input type="text" class="form-control" value="{{$el->email}}" disabled>
                                                 </label>
                                             </div>
                                             <div class="mb-3">
                                                 <label class="form-label w-100">
                                                     Created By
-                                                    <input type="text" class="form-control" value="{{$e->created_by}}" disabled>
+                                                    <input type="text" class="form-control" value="{{$el->created_by}}" disabled>
                                                 </label>
                                             </div>
                                             <div class="mb-3">
                                                 <label class="form-label w-100">
                                                     Updated By
-                                                    <input type="text" class="form-control" value="{{$e->updated_by}}" disabled>
+                                                    <input type="text" class="form-control" value="{{$el->updated_by}}" disabled>
                                                 </label>
                                             </div>
                                             <div class="mb-3">
                                                 <label class="form-label w-100">
                                                     Created At
-                                                    <input type="text" class="form-control" value="{{$e->created_at}}" disabled>
+                                                    <input type="text" class="form-control" value="{{$el->created_at}}" disabled>
                                                 </label>
                                             </div>
                                             <div class="mb-3">
                                                 <label class="form-label w-100">
                                                     Updated At
-                                                    <input value="{{ $e->updated_at }}" class="form-control" disabled>
+                                                    <input value="{{ $el->updated_at }}" class="form-control" disabled>
                                                 </label>
                                             </div>
                                         </div>
@@ -238,37 +251,44 @@
                                 </div>
                             </div>
                             <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                                    data-bs-target="#edit-email{{ $e->id }}" title="Edit Email">
+                                    data-bs-target="#edit-email{{ $el->id }}" title="Edit Email">
                                 <i class="bi bi-pen"></i>
                             </button>
 
-                            <div class="modal fade" id="edit-email{{ $e->id }}" tabindex="-1"
-                                 aria-labelledby="edit-email-label{{ $e->id }}" aria-hidden="true">
+                            <div class="modal fade" id="edit-email{{ $el->id }}" tabindex="-1"
+                                 aria-labelledby="edit-email-label{{ $el->id }}" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h1 class="modal-title fs-5 fw-semibold"
-                                                id="edit_alamat_modal_label{{ $e->id }}">Edit Email</h1>
+                                                id="edit_alamat_modal_label{{ $el->id }}">Edit Email</h1>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                         </div>
                                         <form action="{{ route('editEmail') }}" method="post">
                                             @csrf
                                             <div class="modal-body text-start">
-                                                <input type="hidden" name="id" value="{{ $e -> id }}">
+                                                <input type="hidden" name="id" value="{{ $el -> id }}">
                                                 <div class="mb-3">
-                                                    <label class="form-label w-100">
+                                                    <label class="form-label">
                                                         Nama
-                                                        <input type="text" class="form-control" name="inputNamaEmail" value="{{ $e->nama }}">
                                                     </label>
+                                                    <a tabindex="0" class="border-0 bg-white" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-content="Max length 20 characters."><i class="bi bi-info-circle"></i></a>
+                                                    <input type="text" class="form-control" name="inputNamaEmail" value="{{ $el->nama }}">
+                                                    @error('inputNamaEmail')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label class="form-label w-100">
+                                                    <label class="form-label">
                                                         Email
-                                                        <input type="text" class="form-control" name="email"
-                                                               value="{{ $e->email }}">
                                                     </label>
-
+                                                    <a tabindex="0" class="border-0 bg-white" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-content="Max length 50 characters."><i class="bi bi-info-circle"></i></a>
+                                                    <input type="email" class="form-control" name="email"
+                                                           value="{{ $el->email }}">
+                                                    @error('email')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
@@ -285,14 +305,20 @@
                             <form action="{{ route('removeEmail') }}" class="d-inline" method="post">
                                 @csrf
                                 @method('DELETE')
-                                <input type="hidden" name="id" value="{{ $e -> id }}">
+                                <input type="hidden" name="id" value="{{ $el -> id }}">
                                 <button class="btn btn-danger">
                                     <i class="bi bi-trash"></i>
                                 </button>
                             </form>
                         </td>
                     </tr>
-                @endforeach
+                    @empty
+                    <tr>
+                        <td colspan="4">
+                            <span class="fs-2">Tidak ada data!</span>
+                        </td>
+                    </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>

@@ -1,21 +1,35 @@
 @extends('template.admin-panel-template')
 
 @section('isi-admin-panel')
-    <div class="toast-container position-fixed bottom-0 end-0 p-3">
-        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header">
-                <img src="..." class="rounded me-2" alt="...">
-                <strong class="me-auto">Bootstrap</strong>
-                <small>11 mins ago</small>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-            <div class="toast-body">
-                Hello, world! This is a toast message.
-            </div>
-        </div>
-    </div>
+{{--    <div class="toast-container position-fixed bottom-0 end-0 p-3">--}}
+{{--        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">--}}
+{{--            <div class="toast-header bg-success text-white">--}}
+{{--                <i class="bi bi-check2-circle me-2"></i>--}}
+{{--                <strong class="me-auto">Bootstrap</strong>--}}
+{{--                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>--}}
+{{--            </div>--}}
+{{--            <div class="toast-body">--}}
+{{--                Hello, world! This is a toast message.--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 
     <section id="tambah-admin" class="container-fluid p-3">
+        @if(Session::get('error'))
+            <div class="w-100 d-flex justify-content-center">
+                <div class="alert alert-danger" role="alert" style="width: 18rem">
+                    {{ Session::get('error') }}
+                </div>
+            </div>
+        @endif
+
+        @if(Session::get('success'))
+            <div class="w-100 d-flex justify-content-center">
+                <div class="alert alert-success" role="alert" style="width: 18rem">
+                    {{ Session::get('success') }}
+                </div>
+            </div>
+        @endif
 
         <!-- Button trigger modal -->
         <div class="d-flex justify-content-end w-100 mb-3">
@@ -35,6 +49,7 @@
                         <div class="modal-body">
                             <form id="myForm" action="{{ route('add-admin') }}" method="post" enctype="multipart/form-data">
                                 @csrf
+                                <input type="hidden" name="id" value="{{ $admin->id }}">
                                 <label class="form-label w-100 mb-3 ">
                                     Username
                                     <input type="text" class="form-control" name="username" required>
@@ -87,6 +102,7 @@
                 <th>Nama</th>
                 <th>Username</th>
                 <th>Created At</th>
+                <th>Master Admin</th>
                 <th>Action</th>
             </tr>
             </thead>
@@ -99,7 +115,17 @@
                     <td>{{ $i++ }}</td>
                     <td>{{ $e->firstname . " " . $e->lastname }}</td>
                     <td>{{ $e->username }}</td>
-                    <td>{{ date("d-m-Y", strtotime($e->created_at)) }}</td>
+                    <td>{{ $e->created_at }}</td>
+                    <td>
+                        @if($e->master_admin === 1)
+                            <span class="text-success ">
+                                <i class="bi bi-check-circle-fill"></i>
+{{--                                <i class="bi bi-check-circle"></i>--}}
+                            </span>
+                        @else
+                            -
+                        @endif
+                    </td>
                     <td style="min-width: 120px; width: 120px">
                         <div class="d-flex justify-content-center gap-2">
                             <!-- Button trigger modal -->
@@ -176,14 +202,16 @@
                                 </div>
                             </div>
 
-                            <form action="{{ route('remove-admin') }}" class="d-inline" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <input type="hidden" name="id" value="{{ $e -> id }}">
-                                <button class="btn btn-danger">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-                            </form>
+                            @if($admin->master_admin === 1)
+                                <form action="{{ route('remove-admin') }}" class="d-inline" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input type="hidden" name="id" value="{{ $e -> id }}">
+                                    <button class="btn btn-danger">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </form>
+                            @endif
                         </div>
                     </td>
                 </tr>
@@ -192,8 +220,10 @@
         </table>
     </section>
 
-    <script>
-
-    </script>
+{{--    <script>--}}
+{{--        const toastLiveExample = document.getElementById('liveToast')--}}
+{{--        const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)--}}
+{{--        toastBootstrap.show()--}}
+{{--    </script>--}}
 @endsection
 

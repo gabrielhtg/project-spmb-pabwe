@@ -24,14 +24,17 @@
         <div class="d-flex d-md-none flex-column justify-content-center text-start pb-5 pt-5">
             <h1 class="display-5 fw-bold">Institut Teknologi Del</h1>
             <div class="mt-4">
-                <p class="lead mb-4">"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam beatae
-                    deserunt dicta distinctio est eveniet id impedit inventore iure maxime necessitatibus obcaecati odit
-                    perferendis quaerat, totam vero voluptates? Amet, animi aut autem delectus dolores eos est expedita,
-                    incidunt libero minus nulla obcaecati pariatur possimus quia reprehenderit repudiandae ut
-                    voluptates?"</p>
+                <p class="lead mb-4">{!! nl2br($dataHeroSection->paragraph) !!}</p>
+
+{{--                ini adalah button daftar--}}
                 <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mt-5">
-                    <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Daftar Sekarang</button>
+                    <a class="w-100" href="http://spmb.app.del.ac.id/">
+                        <button class="btn w-100 btn-primary btn-lg px-4 gap-3"
+                        >Daftar Sekarang
+                        </button>
+                    </a>
                 </div>
+{{--                button daftar end--}}
             </div>
         </div>
         {{--    tampilan hp end--}}
@@ -165,7 +168,7 @@
                         <i class="fa-solid fa-chalkboard-user card-img-top" style="font-size: 80px"></i>
                     </div>
                     <div class="card-body">
-                        <span id="jumlah-dosen" class="fs-2 text-primary fw-bold">0</span>
+                        <span id="jumlah-dosen" class="fs-2 text-primary fw-bold">{{ $dataInstitusi -> jumlah_dosen }}</span>
                         <br>
                         <span class="fs-5"><strong>Dosen</strong></span>
                     </div>
@@ -178,7 +181,7 @@
                         <i class="fa-solid fa-child-reaching card-img-top" style="font-size: 80px"></i>
                     </div>
                     <div class="card-body">
-                        <span id="jumlah-mahasiswa" class="fs-2 text-primary fw-bold">0</span>
+                        <span id="jumlah-mahasiswa" class="fs-2 text-primary fw-bold">{{ $dataInstitusi -> jumlah_mahasiswa }}</span>
                         <br>
                         <span class="fs-5"><strong>Mahasiswa</strong></span>
                     </div>
@@ -191,7 +194,7 @@
                         <i class="fa-solid fa-user-graduate" style="font-size: 80px"></i>
                     </div>
                     <div class="card-body">
-                        <span id="jumlah-alumni" class="fs-2 text-primary fw-bold">0</span>
+                        <span id="jumlah-alumni" class="fs-2 text-primary fw-bold">{{ $dataInstitusi -> jumlah_alumni }}</span>
                         <br>
                         <span class="fs-5"><strong>Alumni</strong></span>
                     </div>
@@ -200,29 +203,7 @@
         </div>
     </section>
 
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script>
-        // Fungsi untuk membuat animasi iterasi angka
-        function animateCount(elementId, startValue, endValue, duration) {
-            let currentVal = startValue;
-            const increment = (endValue - startValue) / duration;
-
-            const interval = setInterval(function () {
-                currentVal += increment;
-                document.getElementById(elementId).innerText = Math.round(currentVal);
-
-                if (currentVal >= endValue) {
-                    clearInterval(interval);
-                }
-            }, 10);
-        }
-
-        // Panggil fungsi untuk masing-masing kategori (dosen, mahasiswa, alumni)
-        animateCount('jumlah-dosen', 0, {{ $dataInstitusi->jumlah_dosen }}, 100);
-        animateCount('jumlah-mahasiswa', 0, {{ $dataInstitusi->jumlah_mahasiswa }}, 100);
-        animateCount('jumlah-alumni', 0, {{ $dataInstitusi->jumlah_alumni }}, 100);
-    </script>
-
+{{--    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>--}}
     @php
         $lebarCardMitra = 'width: 10rem;'
     @endphp
@@ -330,6 +311,7 @@
                             </div>
                         </li>
                     @empty
+                        <span class="fs-1 text-center">Data Testimoni Belum Ada!</span>
                     @endforelse
                 </ul>
             </div>
