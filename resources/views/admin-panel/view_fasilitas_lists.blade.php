@@ -174,6 +174,7 @@
                                     <div class="mb-3">
                                         <label for="inputFileGambar" class="form-label">Tambahkan File (JPG, JPEG, PNG)</label>
                                         <input type="file" class="form-control" id="inputFileGambar" name="file_gambar" accept="image/jpeg, image/png">
+                                        <small class="text-muted">*Dokumen harus dalam format .jpg, .jpeg, atau .png, dengan batasan ukuran file tidak melebihi 2 MB.</small>
                                     </div>
                                 </div>
 
