@@ -1,0 +1,472 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\AdminModel;
+use App\Models\AkreditasiInstitutiModel;
+use App\Models\AkreditasiSectionModel;
+use App\Models\AlamatInstitusiModel;
+use App\Models\data_institusi;
+use App\Models\EmailModel;
+use App\Models\HeroSectionModel;
+use App\Models\InfografisModel;
+use App\Models\JadwalUjianModel;
+use App\Models\MbkmModel;
+use App\Models\ModelHeaderAdmisi;
+use App\Models\NomorTeleponModel;
+use App\Models\SocalMediaModel;
+use App\Models\JalurPendaftaranModel;
+use App\Models\Lokasi;
+use App\Models\JenisTes;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use Mockery\Exception;
+
+class AdminPanelController extends Controller
+{
+    public function getAdminPanel()
+    {
+        $admin = Auth::user();
+        $dataInstitusi = data_institusi::where('id', 1)->first();
+        $dataSocialMedia = SocalMediaModel::all();
+        $dataHeroSection = HeroSectionModel::where('id', 1)->first();
+        $dataAlamat = AlamatInstitusiModel::all();
+        $dataAkreditasiDashboard = AkreditasiSectionModel::where('id', 1)->first();
+        $dataNomorTelepon = NomorTeleponModel::all();
+        $dataEmail = EmailModel::all();
+        $dataAkreditasiInstitusi = AkreditasiInstitutiModel::all()->sortByDesc('tahun_akreditasi');
+
+        $data = [
+            'indexActive' => 0,
+            'admin' => $admin,
+            'dataInstitusi' => $dataInstitusi,
+            'socialMedia' => $dataSocialMedia,
+            'dataHeroSection' => $dataHeroSection,
+            'dataAlamat' => $dataAlamat,
+            'dataAkreditasiDashboard' => $dataAkreditasiDashboard,
+            'dataNomorTelepon' => $dataNomorTelepon,
+            'dataEmail' => $dataEmail,
+            'dataAkreditasiInstitusi' => $dataAkreditasiInstitusi
+        ];
+
+        return view('admin-panel.adminpanel', $data);
+    }
+
+    public function ubahDataInstitut(Request $request)
+    {
+        $dataInstitusi = data_institusi::where('id', 1)->first();
+
+        if ($request->input_logo_institusi) {
+            $request->validate([
+                'input_logo_institusi' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+                'nama_institusi' => 'required|max:30|string',
+                'input_singkatan_nama_institusi' => 'required|max:10|string',
+                'input_jargon_institusi' => 'required|string|max:50',
+                'input_jumlah_dosen' => 'required|numeric',
+                'input_jumlah_mahasiswa' => 'required|numeric',
+                'input_jumlah_alumni' => 'required|numeric'
+            ]);
+        }
+
+        else {
+            $request->validate([
+                'nama_institusi' => 'required|max:30|string',
+                'input_singkatan_nama_institusi' => 'required|max:10|string',
+                'input_jargon_institusi' => 'required|string|max:50',
+                'input_jumlah_dosen' => 'required|numeric',
+                'input_jumlah_mahasiswa' => 'required|numeric',
+                'input_jumlah_alumni' => 'required|numeric',
+            ]);
+        }
+
+        if ($request->input_logo_institusi) {
+            $photo = $request->file('input_logo_institusi');
+
+            $filename = 'logo_institusi.' . $photo->getClientOriginalExtension();
+
+            $directory = public_path('assets/img/dashboard/');
+
+            $photo->move($directory, $filename);
+
+            if ($dataInstitusi->logo_institusi && file_exists($dataInstitusi->logo_institusi)) {
+                unlink($dataInstitusi->logo_institusi);
+            }
+
+            $dataInstitusi->logo_institusi = 'assets/img/dashboard/' . $filename;
+        }
+
+        $dataInstitusi->nama_institusi = $request->nama_institusi;
+        $dataInstitusi->singkatan_nama_institusi = $request->input_singkatan_nama_institusi;
+        $dataInstitusi->akreditasi = $request->input_akreditasi;
+        $dataInstitusi->jargon = $request->input_jargon_institusi;
+        $dataInstitusi->jumlah_dosen = $request->input_jumlah_dosen;
+        $dataInstitusi->jumlah_mahasiswa = $request->input_jumlah_mahasiswa;
+        $dataInstitusi->jumlah_alumni = $request->input_jumlah_alumni;
+
+        $dataInstitusi->update();
+
+        return redirect()->route('admin-panel');
+    }
+
+    public function getEditProfile()
+    {
+        $admin = Auth::user();
+
+        $data = [
+            'admin' => $admin,
+        ];
+
+        return view('admin-panel.edit_profile', $data);
+    }
+
+    public function addSocialMedia(Request $request)
+    {
+        $request->validate([
+            'input_nama_social_media' => 'required|string|max:50',
+            'input_link_social_media' => 'required|string|max:150',
+            'input_logo_social_media' => 'required|string|max:100',
+        ]);
+
+        $username = Auth::user()->username;
+
+        SocalMediaModel::create([
+            'nama' => $request->input_nama_social_media,
+            'link' => $request->input_link_social_media,
+            'icon' => $request->input_logo_social_media,
+            'created_by' => $username,
+            'updated_by' => $username,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        return redirect('admin-panel');
+    }
+
+    public function updateSocialMedia (Request $request) {
+
+        $socialMedia = SocalMediaModel::where('id', $request->id)->first();
+
+        $request->validate([
+            'input_nama_socialmedia' => 'required',
+            'input_link' => 'required',
+            'input_icon' => 'required',
+        ]);
+
+        $socialMedia->nama = $request->input_nama_socialmedia;
+        $socialMedia->link = $request->input_link;
+        $socialMedia->icon = $request->input_icon;
+
+        $socialMedia->updated_by = Auth::user()->username;
+
+        $socialMedia->update();
+
+        return redirect()->route('admin-panel');
+    }
+
+    public function removeSocialMedia(Request $request)
+    {
+        SocalMediaModel::where('id', $request->id)->first()->delete();
+        return redirect()->back();
+    }
+
+    public function updateHeroSection(Request $request)
+    {
+        $dataHero = HeroSectionModel::where('id', 1)->first();
+
+        $dataHero->header = $request->input_judul_header;
+        $dataHero->paragraph = $request->input_deskripsi_header;
+
+        if ($request->input_bg_hero) {
+            $request->validate([
+                'input_bg_hero' => 'image|mimes:jpeg,png,jpg|max:2048',
+            ]);
+
+            // Mengambil file yang sudah divalidasi dari request
+            $photo = $request->file('input_bg_hero');
+
+            // Membuat nama unik untuk file yang diunggah
+            $filename = time() . '_hero.' . $photo->getClientOriginalExtension();
+
+            // Menentukan direktori tempat penyimpanan file di dalam direktori 'public'
+            $directory = public_path('assets/img/dashboard/');
+
+            //Pindahkan file ke direktori yang diinginkan
+            $photo->move($directory, $filename);
+
+            // Menghapus photo lama jika ada
+            if ($dataHero->bg_image && file_exists($dataHero->bg_image)) {
+                unlink($dataHero->bg_image);
+            }
+
+            $dataHero->bg_image = 'assets/img/dashboard/' . $filename;
+        }
+
+        $dataHero->update();
+
+        return redirect()->back();
+
+    }
+
+    public function getAddAdminView() {
+        $admin = Auth::user();
+        $admins = AdminModel::all();
+
+        $data = [
+            'admin' => $admin,
+            'admins' => $admins,
+        ];
+
+        return view('admin-panel.add_admin', $data);
+    }
+
+    public function addAlamat (Request $request) {
+        AlamatInstitusiModel::create([
+            'nama' => $request->input_nama_alamat,
+            'alamat' => $request->input_alamat,
+            'created_by' => Auth::user()->username
+        ]);
+
+        return redirect()->route('admin-panel');
+    }
+
+    public function editAlamat (Request $request) {
+        $username = Auth::user()->username;
+        $alamat = AlamatInstitusiModel::where('id', $request->id)->first();
+
+        $alamat-> nama = $request->input_nama_alamat;
+        $alamat-> alamat = $request->input_alamat;
+        $alamat->updated_at = now();
+        $alamat->updated_by = $username;
+
+        dump([
+            $alamat-> nama,
+            $alamat-> alamat,
+            $alamat->updated_at,
+            $alamat->updated_by,
+        ]);
+
+        $alamat->update();
+
+        return redirect(null, 200)->back();
+    }
+
+    public function removeAlamat(Request $request)
+    {
+        try {
+            AlamatInstitusiModel::where('id', $request->id)->first()->delete();
+            return redirect(null, 200)->back();
+        } catch (Exception $e) {
+            return redirect(null, 404)->back();
+        }
+    }
+    public function getAdmisiPanel () {
+        $admin = Auth::user();
+        $dataHeaderAdmisi = ModelHeaderAdmisi::where('id', 1)->first();
+        $dataNonKompetisi  = MbkmModel::where('jenis_kegiatan', 'Non Kompetisi')->get();
+        $dataKompetisi =  MbkmModel::where('jenis_kegiatan', 'Kompetisi')->get();
+        $jalurMasuk = [];
+        $lokasi = Lokasi::orderBy('lokasiTes', 'asc')->get();
+        $jenis = JenisTes::orderBy('gelombang', 'asc')->get();
+        $dataJadwalUjian = JadwalUjianModel::all();
+
+        foreach (InfografisModel::all() as $e) {
+            if (!in_array($e->jalur, $jalurMasuk)) {
+                $jalurMasuk[] = $e->jalur;
+            }
+        }
+
+        $dataInfografisJalurMasuk = [];
+
+        foreach ($jalurMasuk as $e) {
+            $dataInfografisJalurMasuk[] = InfografisModel::where('jalur', $e)->get();
+        }
+
+        $data = [
+            'indexActive' => 1,
+            'admin' => $admin,
+            'dataHeaderAdmisi' => $dataHeaderAdmisi,
+            'dataNonKompetisi' => $dataNonKompetisi,
+            'dataKompetisi'=>$dataKompetisi,
+            'dataInfografis' => $dataInfografisJalurMasuk,
+            'lokasi' => $lokasi,
+            'jenis' => $jenis,
+            'dataJadwalUjian' => $dataJadwalUjian
+        ];
+        return view('admin-panel.admisi_panel', $data);
+    }
+
+    public function addAkreditasiInstitusi (Request $request) {
+        if ($request->sertifikat_akreditasi) {
+            $request->validate([
+                'akreditasi' => 'required',
+                'lembaga_akreditasi' => 'required|string',
+                'sertifikat_akreditasi' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+                'tahun_akreditasi' => 'required',
+            ]);
+
+            // Mengambil file yang sudah divalidasi dari request
+            $photo = $request->file('sertifikat_akreditasi');
+
+            // Membuat nama unik untuk file yang diunggah
+            $filename = time() . '_sertifikat_institusi.' . $photo->getClientOriginalExtension();
+
+            // Menentukan direktori tempat penyimpanan file di dalam direktori 'public'
+            $directory = public_path('assets/img/dashboard/');
+
+            //Pindahkan file ke direktori yang diinginkan
+            $photo->move($directory, $filename);
+
+            AkreditasiInstitutiModel::create([
+                'akreditasi' => $request->akreditasi,
+                'lembaga_akreditasi' => $request->lembaga_akreditasi,
+                'sertifikat_akreditasi' => 'assets/img/dashboard/' . $filename,
+                'tahun_akreditasi' => $request->tahun_akreditasi,
+            ]);
+        }
+
+        return redirect()->route('admin-panel');
+    }
+
+    public function removeNomorTelepon (Request $request) {
+        try {
+            NomorTeleponModel::where('id', $request->id)->first()->delete();
+            return redirect(null, 200)->route('admin-panel');
+        } catch (\Exception $e) {
+            abort(404, 'ID nomor telepon tidak ditemukan');
+        }
+    }
+
+    public function addNomorTelepon (Request $request) {
+        try {
+            $username = Auth::user()->username;
+
+            NomorTeleponModel::create([
+                'nama' => $request->namaNomorTelepon,
+                'nomor_telepon' => $request->nomorTelepon,
+                'updated_at' => now(),
+                'created_at' => now(),
+                'created_by' => $username,
+                'updated_by' => $username,
+            ]);
+
+            return redirect(null, 200)->route('admin-panel');
+        } catch (Exception $e) {
+            abort(403, 'Gagal Menambah Nomor Telepon');
+        }
+    }
+
+    public function removeAkreditasi (Request $request) {
+        try {
+            AkreditasiInstitutiModel::where('id', $request->id)->first()->delete();
+
+            return redirect(null, 200)->route('admin-panel');
+        } catch (\Exception $e) {
+            abort(404, 'ID tidak ditemukan');
+        }
+    }
+
+    public function destroyLokasi($id)
+    {
+        $admin = Auth::user();
+        $lokasi = Lokasi::find($id);
+
+        if ($lokasi) {
+            $lokasi->delete();
+        }
+
+        $data = [
+            'indexActive' => 2,
+            'admin' => $admin,
+            'lokasi' => $lokasi,
+        ];
+
+        return $this->getAdmisiPanel();
+    }
+
+    public function destroyJenisTes($id)
+    {
+        $admin = Auth::user();
+        $jenis = JenisTes::find($id);
+
+        if($jenis){
+            $jenis->delete();
+        }
+
+        $data = [
+            'indexActive' => 2,
+            'admin' => $admin,
+            'jenis' => $jenis,
+        ];
+
+        return $this->getAdmisiPanel();
+    }
+
+    public function postEditlokasi(Request $request)
+    {
+        // Mendapatkan user yang sedang login
+        $admin = Auth::user();
+
+        $request->validate([
+            'id' => 'required|exists:lokasi',
+            'lokasiTes' => 'required',
+            'alamatLokasi' => 'required',
+        ]);
+
+        // Mengambil data fasilitas berdasarkan ID
+        $lokasi = Lokasi::where("id", $request->id)->first();
+
+        if ($lokasi) {
+            // Mengupdate data fasilitas
+            $lokasi->lokasiTes = $request->lokasiTes;
+            $lokasi->alamatLokasi = $request->alamatLokasi;
+
+            // Menyimpan perubahan
+            $lokasi->save();
+    }
+    // Redirect dengan pesan sukses
+    return $this->getAdmisiPanel();
+    }
+
+    public function postEditJenis(Request $request)
+    {
+        // Mendapatkan user yang sedang login
+        $admin = Auth::user();
+
+        $request->validate([
+            'id' => 'required|exists:jenis',
+            'gelombang' => 'required',
+            'jenisUjian' => 'required',
+        ]);
+
+        // Mengambil data fasilitas berdasarkan ID
+        $jenis = JenisTes::where("id", $request->id)->first();
+
+        if ($jenis) {
+            // Mengupdate data fasilitas
+            $jenis->gelombang = $request->gelombang;
+            $jenis->jenisUjian = $request->jenisUjian;
+
+            // Menyimpan perubahan
+            $jenis->save();
+    }
+    // Redirect dengan pesan sukses
+    return $this->getAdmisiPanel();
+    }
+
+    public function updateAkreditasiSection(Request $request) {
+        $request->validate([
+            'input_header' => 'required|string|max:20',
+            'input_deskripsi' => 'required|string|max:250',
+        ]);
+
+        $akreditasiSection = AkreditasiSectionModel::where('id', 1)->first();
+
+        $akreditasiSection->header = $request->input_header;
+        $akreditasiSection->description = $request->input_deskripsi;
+        $akreditasiSection->updated_at = now();
+
+        $akreditasiSection->update();
+
+        return redirect()->back();
+    }
+}
