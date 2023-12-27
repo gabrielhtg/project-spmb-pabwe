@@ -41,13 +41,13 @@
                     </div>
                     <div class="mb-3">
                         <label for="gambar" class="form-label">Foto</label>
-                        <input type="file" class="form-control" id="gambar" name="gambar">
+                        <input type="file" class="form-control" id="gambar" name="gambar" accept="image/png, image/gif, image/jpeg">
                     </div>
                 </div>
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Ubah</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
                 </div>
             </form>
         </div>

@@ -11,13 +11,20 @@ class TestimoniController extends Controller
     public function postAddTestimoni(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'nama' => 'required|string|max:255',
+            'nama' => 'required|regex:/^[a-zA-Z\s]+$/|max:255',
             'prodi' => 'required|string|max:255',
-            'angkatan' => 'required|string|max:255',
+            'angkatan' => 'required|numeric|digits:4',
             'deskripsi' => 'required|string',
             'jenis' => 'required',
             'gambar' => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
+
+        if ($validator->fails()) {
+            return redirect()
+                ->route('testimoni.panel')
+                ->withErrors($validator)
+                ->withInput();
+        }
 
         $photo = $request->file('gambar');
 
@@ -38,7 +45,7 @@ class TestimoniController extends Controller
                "kategori_mahasiswa" => $request->jenis,
             ]);
 
-            return redirect()->route("testimoni.panel");
+            return redirect()->route("testimoni.panel")->with("success", "Testimoni berhasil ditambahkan");
         } else {
             if ($validator->fails()) {
                 return redirect()
@@ -69,69 +76,16 @@ class TestimoniController extends Controller
             $delete->delete();
         }
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Testimoni berhasil di hapus');
     }
-
-//    public function postEditTestimoni(Request $request)
-//    {
-//
-//        $validator = Validator::make($request->all(), [
-//            'id' => 'required|exists:testimoni',
-//            'namaUpdate' => 'required|string|max:255',
-//            'prodiUpdate' => 'required|string|max:255',
-//            'angkatanUpdate' => 'required|string|max:255',
-//            'deskripsiUpdate' => 'required|string',
-//            'jenisUpdate' => 'required',
-//            'gambarUpdate' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-//        ]);
-//
-////        if ($validator->fails()) {
-////            return redirect()
-////                ->route('testimoni.panel')
-////                ->withErrors($validator)
-////                ->withInput();
-////        }
-//
-//        $data = Testimoni::where('id', $request->id)->first();
-//
-//        if ($data == null) {
-//            return redirect()->back();
-//        } else {
-//            if (!empty($request->gambarUpdate)) {
-//                $photo = $request->file('gambarUpdate');
-//
-//                $fileName = "testimoni" . time() . '.' . $photo->getClientOriginalExtension();
-//
-//                $dir = public_path('assets/img/testimoni');
-//
-//                $photo->move($dir, $fileName);
-//
-//                if ($data->photo && file_exists($data->photo)) {
-//                    unlink($data->photo);
-//                }
-//
-//                $data->photo = $fileName;
-//            }
-//
-//            $data->nama_mahasiswa = $request->namaUpdate;
-//            $data->prodi = $request->prodiUpdate;
-//            $data->angkatan = $request->angkatanUpdate;
-//            $data->deskripsi = $request->deskripsiUpdate;
-//            $data->kategori_mahasiswa = $request->jenisUpdate;
-//
-//            $data->save();
-//
-//            return redirect()->back();
-//        }
-//    }
 
     public function postEditTestimoni(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'id' => 'required|exists:testimoni',
-            'namaUpdate' => 'required|string|max:255',
+            'namaUpdate' => 'required|regex:/^[a-zA-Z\s]+$/|max:255',
             'prodiUpdate' => 'required|string|max:255',
-            'angkatanUpdate' => 'required|string|max:255',
+            'angkatanUpdate' => 'required|numeric|digits:4',
             'deskripsiUpdate' => 'required|string',
             'jenisUpdate' => 'required',
             'gambarUpdate' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
@@ -147,7 +101,7 @@ class TestimoniController extends Controller
         $data = Testimoni::where('id', $request->id)->first();
 
         if ($data == null) {
-            return redirect()->back();
+            return redirect()->back()->with('error', 'Testimoni tidak ditemukan');
         } else {
             if ($request->hasFile('gambarUpdate')) {
                 $photo = $request->file('gambarUpdate');
@@ -173,7 +127,7 @@ class TestimoniController extends Controller
 
             $data->save();
 
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Testimoni berhasil di ubah');
         }
     }
 }
