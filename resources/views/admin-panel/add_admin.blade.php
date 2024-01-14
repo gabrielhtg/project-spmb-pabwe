@@ -15,6 +15,21 @@
 {{--    </div>--}}
 
     <section id="tambah-admin" class="container-fluid p-3">
+        @if(Session::get('error'))
+            <div class="w-100 d-flex justify-content-center">
+                <div class="alert alert-danger" role="alert" style="width: 18rem">
+                    {{ Session::get('error') }}
+                </div>
+            </div>
+        @endif
+
+        @if(Session::get('success'))
+            <div class="w-100 d-flex justify-content-center">
+                <div class="alert alert-success" role="alert" style="width: 18rem">
+                    {{ Session::get('success') }}
+                </div>
+            </div>
+        @endif
 
         <!-- Button trigger modal -->
         <div class="d-flex justify-content-end w-100 mb-3">
