@@ -37,7 +37,14 @@
                 <div class="alert alert-danger" role="alert" style="width: 18rem">
                     {{ Session::get('error') }}
                 </div>
+            </div>
+        @endif
 
+        @if(Session::get('success'))
+            <div class="w-100 d-flex justify-content-center">
+                <div class="alert alert-success" role="alert" style="width: 18rem">
+                    {{ Session::get('success') }}
+                </div>
             </div>
         @endif
 

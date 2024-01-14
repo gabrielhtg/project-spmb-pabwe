@@ -22,14 +22,17 @@
         <div class="d-flex d-md-none flex-column justify-content-center text-start pb-5 pt-5">
             <h1 class="display-5 fw-bold">Institut Teknologi Del</h1>
             <div class="mt-4">
-                <p class="lead mb-4">"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam beatae
-                    deserunt dicta distinctio est eveniet id impedit inventore iure maxime necessitatibus obcaecati odit
-                    perferendis quaerat, totam vero voluptates? Amet, animi aut autem delectus dolores eos est expedita,
-                    incidunt libero minus nulla obcaecati pariatur possimus quia reprehenderit repudiandae ut
-                    voluptates?"</p>
+                <p class="lead mb-4">{!! nl2br($dataHeroSection->paragraph) !!}</p>
+
+{{--                ini adalah button daftar--}}
                 <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mt-5">
-                    <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Daftar Sekarang</button>
+                    <a class="w-100" href="http://spmb.app.del.ac.id/">
+                        <button class="btn w-100 btn-primary btn-lg px-4 gap-3"
+                        >Daftar Sekarang
+                        </button>
+                    </a>
                 </div>
+{{--                button daftar end--}}
             </div>
         </div>
         {{--    tampilan hp end --}}
@@ -297,6 +300,7 @@
                             </div>
                         </li>
                     @empty
+                        <span class="fs-1 text-center">Data Testimoni Belum Ada!</span>
                     @endforelse
                 </ul>
             </div>
