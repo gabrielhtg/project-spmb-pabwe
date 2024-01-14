@@ -2,6 +2,8 @@
 
 @section('isi-admin-panel')
     <div class="container-fluid bg-light p-3">
+
+
         <div class="d-flex w-100">
             <div class="w-100">
                 <div data-bs-spy="scroll" data-bs-target="#sidebar-kanan" data-bs-smooth-scroll="true"
@@ -34,6 +36,24 @@
                         <a class="nav-link" href="#item-7"><i class="bi bi-geo-alt me-2"></i> Data Mitra Institusi</a>
                     </nav>
                 </nav>
+
+                <div class="mt-3">
+                    @if(Session::get('error'))
+                        <div class="w-100 d-flex justify-content-center">
+                            <div class="alert alert-danger w-100" role="alert">
+                                {{ Session::get('error') }}
+                            </div>
+                        </div>
+                    @endif
+
+                    @if(Session::get('success'))
+                        <div class="w-100 d-flex justify-content-center">
+                            <div class="alert alert-success w-100" role="alert">
+                                {{ Session::get('success') }}
+                            </div>
+                        </div>
+                    @endif
+                </div>
             </div>
         </div>
     </div>

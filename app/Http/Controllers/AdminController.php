@@ -77,43 +77,47 @@ class AdminController extends Controller
 
     public function editAdmin(Request $request)
     {
-        $admin = AdminModel::where('id', $request->id)->first();
+        try {
+            $admin = AdminModel::where('id', $request->id)->first();
 
-        $request->validate([
-            'username' => 'required|max:20',
-            'firstname' => 'required|max:25',
-            'lastname' => 'required|max:25',
-        ]);
-
-        if ($request->profile_pict) {
             $request->validate([
-                'profile_pict' => 'image|mimes:jpeg,png,jpg|max:1024',
+                'username' => 'required|max:20',
+                'firstname' => 'required|max:25',
+                'lastname' => 'required|max:25',
             ]);
 
-            // Mengambil file yang sudah divalidasi dari request
-            $photo = $request->file('profile_pict');
+            if ($request->profile_pict) {
+                $request->validate([
+                    'profile_pict' => 'image|mimes:jpeg,png,jpg|max:1024',
+                ]);
 
-            // Membuat nama unik untuk file yang diunggah
-            $filename = $request->username . '_profile_pict.' . $photo->getClientOriginalExtension();
+                // Mengambil file yang sudah divalidasi dari request
+                $photo = $request->file('profile_pict');
 
-            // Menentukan direktori tempat penyimpanan file di dalam direktori 'public'
-            $directory = public_path('assets/img/admin/');
+                // Membuat nama unik untuk file yang diunggah
+                $filename = $request->username . '_profile_pict.' . $photo->getClientOriginalExtension();
 
-            //Pindahkan file ke direktori yang diinginkan
-            $photo->move($directory, $filename);
+                // Menentukan direktori tempat penyimpanan file di dalam direktori 'public'
+                $directory = public_path('assets/img/admin/');
 
-            $profile_pict = 'assets/img/admin/' . $filename;
-            $admin->profile_pict = $profile_pict;
+                //Pindahkan file ke direktori yang diinginkan
+                $photo->move($directory, $filename);
+
+                $profile_pict = 'assets/img/admin/' . $filename;
+                $admin->profile_pict = $profile_pict;
+            }
+
+            $admin->username = $request->username;
+            $admin->firstname = $request->firstname;
+            $admin->lastname = $request->lastname;
+            $admin->updated_at = now();
+
+            $admin->save();
+
+            return redirect()->back()->with('success', 'Berhasil edit data Admin');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Gagal edit data Admin');
         }
-
-        $admin->username = $request->username;
-        $admin->firstname = $request->firstname;
-        $admin->lastname = $request->lastname;
-        $admin->updated_at = now();
-
-        $admin->save();
-
-        return redirect()->back();
     }
 
     public function removeAdmin(Request $request)
@@ -157,7 +161,7 @@ class AdminController extends Controller
 
                 $admin->update();
 
-                return redirect()->route('logout');
+                return redirect()->route('logout')->with('success', 'Berhasil Ganti Password');
             }
         }
 
@@ -165,63 +169,79 @@ class AdminController extends Controller
     }
 
     public function editNomorTelepon (Request $request) {
-        $request->validate([
-            'nama' => 'required|string|max:20',
-            'nomor_telepon' => 'required|max:15'
-        ]);
+       try {
+           $request->validate([
+               'nama' => 'required|string|max:20',
+               'nomor_telepon' => 'required|max:15'
+           ]);
 
-        $data = NomorTeleponModel::where("id", $request->id)->first();
+           $data = NomorTeleponModel::where("id", $request->id)->first();
 
-        $data->nama = $request->nama;
-        $data->nomor_telepon = $request->nomor_telepon;
-        $data->updated_by = Auth::user()->username;
-        $data->updated_at = now();
+           $data->nama = $request->nama;
+           $data->nomor_telepon = $request->nomor_telepon;
+           $data->updated_by = Auth::user()->username;
+           $data->updated_at = now();
 
-        $data->update();
+           $data->update();
 
-        return redirect()->route('admin-panel');
+           return redirect()->route('admin-panel')->with('success', 'Berhasil edit nomor telepon');
+       } catch (\Exception $e) {
+           return redirect()->route('admin-panel')->with('error', 'Gagal edit nomor telepon');
+       }
     }
 
     public function addEmail (Request $request) {
-        $request->validate([
-            'namaEmail' => 'required|max:20',
-            'email' => 'required|max:50'
-        ]);
+        try {
+            $request->validate([
+                'namaEmail' => 'required|max:20',
+                'email' => 'required|max:50'
+            ]);
 
-        EmailModel::create([
-            'nama' => $request->namaEmail,
-            'email' => $request->email,
-            'created_at' => now(),
-            'updated_at' => now(),
-            'created_by' => Auth::user()->username,
-            'updated_by' => Auth::user()->username,
-        ]);
+            EmailModel::create([
+                'nama' => $request->namaEmail,
+                'email' => $request->email,
+                'created_at' => now(),
+                'updated_at' => now(),
+                'created_by' => Auth::user()->username,
+                'updated_by' => Auth::user()->username,
+            ]);
 
-        return redirect()->route('admin-panel');
+            return redirect()->route('admin-panel')->with('success', 'Berhasil menambah email baru');
+        } catch (\Exception $e) {
+            return redirect()->route('admin-panel')->with('error', 'Gagal menambah email baru');
+        }
     }
 
     public function removeEmail (Request $request) {
-        EmailModel::where('id', $request->id)->first()->delete();
+        try {
+            EmailModel::where('id', $request->id)->first()->delete();
 
-        return redirect()->route('admin-panel');
+            return redirect()->route('admin-panel')->with('success', 'Berhasil hapus email.');
+        } catch (\Exception $e) {
+            return redirect()->route('admin-panel')->with('error', 'Gagal hapus email.');
+        }
     }
 
     public function editEmail (Request $request) {
-        $request->validate([
-            'inputNamaEmail' => 'required|max:20',
-            'email' => 'required|max:50'
-        ]);
+        try {
+            $request->validate([
+                'inputNamaEmail' => 'required|max:20',
+                'email' => 'required|max:50'
+            ]);
 
-        $data = EmailModel::where("id", $request->id)->first();
+            $data = EmailModel::where("id", $request->id)->first();
 
-        $data->nama = $request->inputNamaEmail;
-        $data->email = $request->email;
-        $data->updated_by = Auth::user()->username;
-        $data->updated_at = now();
+            $data->nama = $request->inputNamaEmail;
+            $data->email = $request->email;
+            $data->updated_by = Auth::user()->username;
+            $data->updated_at = now();
 
-        $data->update();
+            $data->update();
 
-        return redirect()->route('admin-panel');
+            return redirect()->route('admin-panel')->with('success', 'Berhasil edit email');
+        } catch (\Exception $e) {
+            return redirect()->route('admin-panel')->with('error', 'Gagal edit email');
+        }
     }
     
 }
