@@ -28,7 +28,10 @@ class DatabaseSeeder extends Seeder
             add_infografis_admisi::class,
             insert_data_akreditasi_institusi::class,
             PengumumanSeeder::class,
-            PrestasiSeeder::class
+            PrestasiSeeder::class,
+            add_beasiswa::class,
+            add_faq::class,
+            add_mitra::class
         ]);
     }
 }
