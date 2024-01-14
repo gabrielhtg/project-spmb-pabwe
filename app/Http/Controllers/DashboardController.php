@@ -46,7 +46,7 @@ class DashboardController extends Controller
             'dataNomorTelepon' => $dataNomorTelepon,
             'dataEmail' => $dataEmail,
             'dataAkreditasiInstitusi' => $dataAkreditasiInstitusi,
-            'dataTestimoni' => Testimoni::orderBy('created_at', 'desc')->take(8)->get(),
+            'dataTestimoni' => Testimoni::orderBy('created_at', 'desc')->take(8)->with('major')->get(),
         ];
 
         return view('dashboard/dashboard', $data);

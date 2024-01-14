@@ -19,4 +19,9 @@ class Testimoni extends Model
         'deskripsi',
         'kategori_mahasiswa'
     ];
+
+    public function major()
+    {
+        return $this->belongsTo(Major::class, 'prodi', 'kode_prodi');
+    }
 }

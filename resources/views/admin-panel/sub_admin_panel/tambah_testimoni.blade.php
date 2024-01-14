@@ -22,7 +22,12 @@
                     </div>
                     <div class="mb-3">
                         <label for="prodi" class="form-label">Prodi</label>
-                        <input type="text" class="form-control" id="prodi" name="prodi">
+                        <select class="form-select" id="prodi" name="prodi">
+                            <option value="">-- Pilih Prodi --</option>
+                            @foreach($dataProdi as $itemProdi)
+                                <option value="{{ $itemProdi->kode_prodi }}">{{ $itemProdi->nama }}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label for="angkatan" class="form-label">Angkatan</label>

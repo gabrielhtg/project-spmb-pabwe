@@ -9,9 +9,8 @@
             height:95%;
         }
 
-    .mx-auto{
+    .mx-auto h2{
         margin-bottom: 30px;
-        margin-top: 20px;
     }
 
     .modal-content .modal-body img {

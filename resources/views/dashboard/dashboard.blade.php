@@ -297,7 +297,7 @@
                                         </div>
 
                                         <div class="pill d-inline text-muted">
-                                            {{ $itemTestimoni->prodi }}
+                                            {{ $itemTestimoni->major->nama }}
                                         </div>
                                     </div>
                                     <div

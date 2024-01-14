@@ -803,6 +803,7 @@ class AdminPanelController extends Controller
         $data = [
             'indexActive' => 6,
             'admin' => $admin,
+            'dataProdi' => Major::all(),
             'dataTestimoni' => Testimoni::orderBy('created_at', 'desc')->get(),
         ];
 
