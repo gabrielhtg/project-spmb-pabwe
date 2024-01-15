@@ -79,21 +79,13 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link" href="/admisi">Admisi</a>
                         </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Kontak</a>
-                        </li>
-
+                        
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('prestasi.prestasiOverview') }}">Prestasi</a>
                         </li>
 
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('beasiswa.beasiswa') }}">Beasiswa</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Akreditasi</a>
                         </li>
 
                         <li class="nav-item">
@@ -316,7 +308,7 @@
         </script>
         <script src="https://kit.fontawesome.com/965a381e3a.js" crossorigin="anonymous"></script>
         <script src="{{ asset('/assets/js/kel4.js') }}"></script>
-
+    </main>
 </body>
 
 </html>
