@@ -1031,7 +1031,7 @@
             <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#myModalkur">
                 Tambah Matkul
             </button>
-            <a href="#" class="btn btn-danger" id="deleteAllSelectedRecord">Hapus Yang Dipilih</a>
+            <a class="btn btn-danger" id="deleteAllSelectedRecord" href="{{ route('program-panel') }}">Hapus Yang Dipilih</a>
             
         </div>
 
@@ -1446,46 +1446,8 @@
                 });
         @endforeach
  
-        $(function() {
-            $("#select_all_ids").click(function() {
-                $('.checkbox_ids').prop('checked', $(this).prop('checked'));
-            });
 
-            $('#deleteAllSelectedRecord').click(function(e) {
-                e.preventDefault();
-                var all_ids = [];
 
-                $('input:checkbox[name=ids]:checked').each(function() {
-                    all_ids.push($(this).val());
-                });
-
-                if (all_ids.length > 0) {
-                    deleteCourses(all_ids);
-                } else {
-                    alert('Pilih setidaknya satu mata kuliah untuk dihapus.');
-                }
-            });
-
-            function deleteCourses(ids) {
-                $.ajax({
-                    url: "{{ route('course.delete') }}",
-                    type: "DELETE",
-                    data: {
-                        ids: ids,
-                        _token: '{{ csrf_token() }}'
-                    },
-                    success: function(response) {
-                        // Tangani sukses
-                        console.log(response);
-                        location.reload(); // Perbarui halaman
-                    },
-                    error: function(xhr, status, error) {
-                        // Tangani kesalahan
-                        console.error(xhr.responseText);
-                    }
-                });
-            }
-        });
 
 
 </script>

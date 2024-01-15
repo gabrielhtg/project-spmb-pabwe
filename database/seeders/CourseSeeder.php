@@ -17,7 +17,683 @@ class CourseSeeder extends Seeder
     public function run(): void
     {   
             
-
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => 'KUS1102',
+            'nama' => 'Pembentukan Karakter Del',
+            'sks' => 2,
+            'semester' => 1,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => 'MAS1101',
+            'nama' => 'Matematika Dasar I',
+            'sks' => 4,
+            'semester' => 1,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => 'TIS1101',
+            'nama' => 'Inovasi Digital',
+            'sks' => 2,
+            'semester' => 1,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => 'KUS1101',
+            'nama' => 'Bahasa Inggris I',
+            'sks' => 2,
+            'semester' => 1,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => 'KUS1001',
+            'nama' => 'Penulisan Karya Ilmiah',
+            'sks' => 2,
+            'semester' => 1,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '10S1001',
+            'nama' => 'Matematika Diskrit',
+            'sks' => 3,
+            'semester' => 1,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => 'FIS1102',
+            'nama' => 'Fisika Dasar IB',
+            'sks' => 3,
+            'semester' => 1,
+        ]);
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => 'MAS1201',
+            'nama' => 'Matematika Dasar II',
+            'sks' => 4,
+            'semester' => 2,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => 'KUS1201',
+            'nama' => 'Bahasa Inggris II',
+            'sks' => 2,
+            'semester' => 2,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => 'KUS1202',
+            'nama' => 'Pengantar Rekayasa dan Desain',
+            'sks' => 2,
+            'semester' => 2,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => 'FIS1202',
+            'nama' => 'Fisika Dasar IIB',
+            'sks' => 3,
+            'semester' => 2,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '11S1213',
+            'nama' => 'Rekayasa Perangkat Lunak',
+            'sks' => 3,
+            'semester' => 2,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '10S1201',
+            'nama' => 'Dasar Pemrograman',
+            'sks' => 4,
+            'semester' => 2,
+        ]);
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => 'KUS3002',
+            'nama' => 'Agama dan Etika',
+            'sks' => 2,
+            'semester' => 3,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => 'MAS2001',
+            'nama' => 'Probabilitas dan Statistika',
+            'sks' => 3,
+            'semester' => 3,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '12S2102',
+            'nama' => 'Basis Data',
+            'sks' => 4,
+            'semester' => 3,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '11S2110',
+            'nama' => 'Pemrograman Berorientasi Objek',
+            'sks' => 4,
+            'semester' => 3,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '14S2106',
+            'nama' => 'Sistem Digital',
+            'sks' => 3,
+            'semester' => 3,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '10S2001',
+            'nama' => 'Arsitektur dan Organisasi Komputer',
+            'sks' => 3,
+            'semester' => 3,
+        ]);
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '10S2201',
+            'nama' => 'Aljabar Linier',
+            'sks' => 3,
+            'semester' => 4,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '10S2202',
+            'nama' => 'Jaringan Komputer',
+            'sks' => 3,
+            'semester' => 4,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '10S2203',
+            'nama' => 'Sistem Operasi',
+            'sks' => 3,
+            'semester' => 4,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '10S2102',
+            'nama' => 'Algoritma dan Struktur Data',
+            'sks' => 4,
+            'semester' => 4,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '11S2206',
+            'nama' => 'Logika Informatika',
+            'sks' => 3,
+            'semester' => 4,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '11S2203',
+            'nama' => 'Interaksi Manusia Komputer',
+            'sks' => 3,
+            'semester' => 4,
+        ]);
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '11S3109',
+            'nama' => 'Pengembangan Aplikasi Berbasis Web',
+            'sks' => 4,
+            'semester' => 5,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '11S3101',
+            'nama' => 'Analisis dan Perancangan Perangkat Lunak',
+            'sks' => 3,
+            'semester' => 5,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '10S3109',
+            'nama' => 'Kecerdasan Buatan',
+            'sks' => 3,
+            'semester' => 5,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '11S3116',
+            'nama' => 'Teori Bahasa Formal dan Automata',
+            'sks' => 3,
+            'semester' => 5,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '11S3112',
+            'nama' => 'Pengujian dan Penjaminan Mutu Perangkat Lunak',
+            'sks' => 3,
+            'semester' => 5,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '11S3105',
+            'nama' => 'Kriptografi dan Keamanan Informasi',
+            'sks' => 3,
+            'semester' => 5,
+        ]);
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => 'KUS2001',
+            'nama' => 'Bahasa Inggris III',
+            'sks' => 2,
+            'semester' => 6,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '11S3204',
+            'nama' => 'Keamanan Perangkat Lunak',
+            'sks' => 3,
+            'semester' => 6,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '11S3211',
+            'nama' => 'Pengembangan Aplikasi Mobile',
+            'sks' => 4,
+            'semester' => 6,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '11S3207',
+            'nama' => 'Pembelajaran Mesin',
+            'sks' => 3,
+            'semester' => 6,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '11S3208',
+            'nama' => 'Manajemen Proyek Perangkat Lunak',
+            'sks' => 4,
+            'semester' => 6,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '13S3215',
+            'nama' => 'Sistem Paralel dan Terdistribusi',
+            'sks' => 3,
+            'semester' => 6,
+        ]);
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '11S4190',
+            'nama' => 'Kerja Praktik',
+            'sks' => 3,
+            'semester' => 7,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '11S4093',
+            'nama' => 'Tugas Akhir 1',
+            'sks' => 4,
+            'semester' => 7,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '11S4028',
+            'nama' => 'Rekayasa Perangkat Lunak Berbasis Komponen',
+            'sks' => 3,
+            'semester' => 7,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '11S4031',
+            'nama' => 'Ethical Hacking and Penetration Testing',
+            'sks' => 3,
+            'semester' => 7,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '11S4037',
+            'nama' => 'Pemrosesan Bahasa Alami',
+            'sks' => 3,
+            'semester' => 7,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '11S4026',
+            'nama' => 'Pengembangan Aplikasi Platform Khusus',
+            'sks' => 3,
+            'semester' => 7,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => 'KUS3051',
+            'nama' => 'Studi/Proyek Independen 1',
+            'sks' => 1,
+            'semester' => 7,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => 'KUS3052',
+            'nama' => 'Studi/Proyek Independen 2',
+            'sks' => 2,
+            'semester' => 7,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => 'KUS3053',
+            'nama' => 'Studi/Proyek Independen 3',
+            'sks' => 3,
+            'semester' => 7,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => 'KUS3054',
+            'nama' => 'Studi/Proyek Independen 4',
+            'sks' => 4,
+            'semester' => 7,
+        ]);
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => 'KUS3055',
+            'nama' => 'Studi/Proyek Independen 5',
+            'sks' => 5,
+            'semester' => 7,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => 'KUS3056',
+            'nama' => 'Studi/Proyek Independen 6',
+            'sks' => 6,
+            'semester' => 7,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '12S4056',
+            'nama' => 'Visualisasi Data',
+            'sks' => 3,
+            'semester' => 7,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '11S4081',
+            'nama' => 'Magang 1',
+            'sks' => 1,
+            'semester' => 7,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '11S4086',
+            'nama' => 'Magang 6',
+            'sks' => 6,
+            'semester' => 7,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '11S4082',
+            'nama' => 'Magang 2',
+            'sks' => 2,
+            'semester' => 7,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '11S4083',
+            'nama' => 'Magang 3',
+            'sks' => 3,
+            'semester' => 7,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '11S4084',
+            'nama' => 'Magang 4',
+            'sks' => 4,
+            'semester' => 7,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '11S4085',
+            'nama' => 'Magang 5',
+            'sks' => 5,
+            'semester' => 7,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => 'KUS3071',
+            'nama' => 'Penelitian 1',
+            'sks' => 1,
+            'semester' => 7,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => 'KUS3072',
+            'nama' => 'Penelitian 2',
+            'sks' => 2,
+            'semester' => 7,
+        ]);
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => 'KUS3073',
+            'nama' => 'Penelitian 3',
+            'sks' => 3,
+            'semester' => 7,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => 'KUS3074',
+            'nama' => 'Penelitian 4',
+            'sks' => 4,
+            'semester' => 7,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => 'KUS3075',
+            'nama' => 'Penelitian 5',
+            'sks' => 5,
+            'semester' => 7,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => 'KUS3076',
+            'nama' => 'Penelitian 6',
+            'sks' => 6,
+            'semester' => 7,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '11S4096',
+            'nama' => 'International Student Program',
+            'sks' => 15,
+            'semester' => 7,
+        ]);
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => 'KUS4101',
+            'nama' => 'Pancasila dan Kewarganegaraan',
+            'sks' => 2,
+            'semester' => 8,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => 'TIS3001',
+            'nama' => 'Keteknowiraan',
+            'sks' => 3,
+            'semester' => 8,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => 'KUS3001',
+            'nama' => 'Analisis Dampak Lingkungan',
+            'sks' => 2,
+            'semester' => 8,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '11S4094',
+            'nama' => 'Tugas Akhir 2',
+            'sks' => 4,
+            'semester' => 8,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '11S4095',
+            'nama' => 'Kapita Selekta',
+            'sks' => 1,
+            'semester' => 8,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '11S4030',
+            'nama' => 'UI/UX Design',
+            'sks' => 3,
+            'semester' => 8,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '11S4025',
+            'nama' => 'Pembangunan Aplikasi Berbasis Service',
+            'sks' => 3,
+            'semester' => 8,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '31S4201',
+            'nama' => 'Etika Keprofesian',
+            'sks' => 2,
+            'semester' => 8,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '12S4005',
+            'nama' => 'Hukum dan Etika Siber',
+            'sks' => 2,
+            'semester' => 8,
+        ]);
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '11S4032',
+            'nama' => 'Information Security Governance and Risk Management',
+            'sks' => 3,
+            'semester' => 8,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '11S4035',
+            'nama' => 'Interpretasi dan Pengolahan Citra',
+            'sks' => 3,
+            'semester' => 8,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '13S4033',
+            'nama' => 'Keamanan Jaringan',
+            'sks' => 3,
+            'semester' => 8,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '11S4036',
+            'nama' => 'Pembelajaran Mesin Lanjut',
+            'sks' => 3,
+            'semester' => 8,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '11S4040',
+            'nama' => 'Pemodelan dan Simulasi',
+            'sks' => 3,
+            'semester' => 8,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '11S4027',
+            'nama' => 'Rekayasa Perangkat Lunak Spesifik Domain',
+            'sks' => 3,
+            'semester' => 8,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '11S4038',
+            'nama' => 'Representasi Pengetahuan dan Penalaran',
+            'sks' => 3,
+            'semester' => 8,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '11S4029',
+            'nama' => 'Strategi Algoritma',
+            'sks' => 3,
+            'semester' => 8,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '11S4071',
+            'nama' => 'Studi/Proyek Mandiri 1',
+            'sks' => 1,
+            'semester' => 8,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '11S4072',
+            'nama' => 'Studi/Proyek Mandiri 2',
+            'sks' => 2,
+            'semester' => 8,
+        ]);
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '11S4073',
+            'nama' => 'Studi/Proyek Mandiri 3',
+            'sks' => 3,
+            'semester' => 8,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '12S4059',
+            'nama' => 'Publikasi Ilmiah',
+            'sks' => 3,
+            'semester' => 8,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '14S4023',
+            'nama' => 'Keamanan Siber',
+            'sks' => 3,
+            'semester' => 8,
+        ]);
+        
+        DB::table('courses')->insert([
+            'kode_prodi' => 'ifs',
+            'kode_mk' => '11S4041',
+            'nama' => 'Pembangunan Aplikasi Multi Platform',
+            'sks' => 3,
+            'semester' => 8,
+        ]);
+                                                                                   
             DB::table('courses')->insert([
                 'kode_prodi' => 'iss',
                 'kode_mk' => 'KUS1102',

@@ -20,7 +20,7 @@ class EmployeeSeeder extends Seeder
             'nidn' => '117027901',
             'jabatan' => 'Dosen',
             'pendidikan' => 'S2 -  University of Wollongong, Australia',
-            'gambar' => 'acb.jpeg',
+            'gambar' => 'acb.jpg',
             
         ]);
 
@@ -107,39 +107,6 @@ class EmployeeSeeder extends Seeder
             'nama' => 'Albert Sagala, S.T, M.T',
             'nidn' => '104027801',
             'jabatan' => 'Dosen',
-            'pendidikan' => 'S2 - Institut Teknologi Bandung',
-            'gambar' => 'fv-carousel.jpg',
-            
-        ]);
-
-        DB::table('employees')->insert([
-            'kode_prodi' => 'els',
-            'kode_fakultas' => 1, // Ganti dengan kode fakultas yang sesuai
-            'nama' => 'I Gde Eka Dirgayussa, S.Pd,M.Si',
-            'nidn' => '103058901',
-            'jabatan' => 'Dosen',
-            'pendidikan' => 'S2 - Institut Teknologi Bandung',
-            'gambar' => 'fv-carousel.jpg',
-            
-        ]);
-
-        DB::table('employees')->insert([
-            'kode_prodi' => 'els',
-            'kode_fakultas' => 1, // Ganti dengan kode fakultas yang sesuai
-            'nama' => 'Indra Hartarto Tambunan, Ph.D.',
-            'nidn' => '128048403',
-            'jabatan' => 'Dekan',
-            'pendidikan' => 'S3 - Konkuk University',
-            'gambar' => 'fv-carousel.jpg',
-            
-        ]);
-
-        DB::table('employees')->insert([
-            'kode_prodi' => 'els',
-            'kode_fakultas' => 1, // Ganti dengan kode fakultas yang sesuai
-            'nama' => 'Guntur Petrus Boy Knight, S.T.,M.T.',
-            'nidn' => '126078702',
-            'jabatan' => 'Kaprodi',
             'pendidikan' => 'S2 - Institut Teknologi Bandung',
             'gambar' => 'fv-carousel.jpg',
             
@@ -288,18 +255,6 @@ class EmployeeSeeder extends Seeder
             
         ]);
 
-
-        DB::table('employees')->insert([
-            'kode_prodi' => 'mrs',
-            'kode_fakultas' => 2, // Ganti dengan kode fakultas yang sesuai
-            'nama' => 'Samuel Hasudungan Tampubolon, S.T., MSc.',
-            'nidn' => '115019701',
-            'jabatan' => 'Dosen',
-            'pendidikan' => 'S2 - Universitas Gadjah Mada',
-            'gambar' => 'fv-carousel.jpg',
-            
-        ]);
-
         DB::table('employees')->insert([
             'kode_prodi' => 'mrs',
             'kode_fakultas' => 2, // Ganti dengan kode fakultas yang sesuai
@@ -345,137 +300,175 @@ class EmployeeSeeder extends Seeder
             
         ]);
 
+        // S1 MANAJEMEN REKAYASA
 
         DB::table('employees')->insert([
-            'kode_prodi' => 'bps',
-            'kode_fakultas' => 3, // Ganti dengan kode fakultas yang sesuai
-            'nama' => 'Dr. Merry Meryam Martgrita, S.Si., M.Si.',
-            'nidn' => '112037001',
-            'jabatan' => 'Dekan',
-            'pendidikan' => 'S3 - Institut Teknologi Bandung',
-            'gambar' => 'fv-carousel.jpg',
-
-        ]);
-
-        DB::table('employees')->insert([
-            'kode_prodi' => 'bps',
-            'kode_fakultas' => 3, // Ganti dengan kode fakultas yang sesuai
-            'nama' => 'Meiyer Marthen Kinda, S.T.M.T',
-            'nidn' => '0128058902',
-            'jabatan' => 'Kaprodi',
+            'kode_prodi' => 'mrs',
+            'kode_fakultas' => 2,
+            'nama' => 'Niko Saripson P. Simamora, S.T.,MAB',
+            'nidn' => '0116028903',
+            'jabatan' => 'Dosen',
             'pendidikan' => 'S2 - Institut Teknologi Bandung',
-            'gambar' => 'fv-carousel.jpg',
-
+            'gambar' => '_0007_NSS.jpg',
         ]);
 
+        
         DB::table('employees')->insert([
-            'kode_prodi' => 'bps',
-            'kode_fakultas' => 3, // Ganti dengan kode fakultas yang sesuai
-            'nama' => 'Ellyas Alga Nainggolan S.TP.,M.Sc',
-            'nidn' => '110079001',
+            'kode_prodi' => 'mrs',
+            'kode_fakultas' => 2,
+            'nama' => 'Iswanti Sihaloho, S.Si., M.Si',
+            'nidn' => '0123089302',
+            'jabatan' => 'Dosen',
+            'pendidikan' => 'S2 - Institut Teknologi Bandung',
+            'gambar' => '_0006_ISW.jpg',
+        ]);
+
+        
+        DB::table('employees')->insert([
+            'kode_prodi' => 'mrs',
+            'kode_fakultas' => 2,
+            'nama' => 'Hadi Sutanto Saragi, S.T, M.Eng',
+            'nidn' => '0109099101',
             'jabatan' => 'Dosen',
             'pendidikan' => 'S2 - Universitas Gadjah Mada',
-            'gambar' => 'fv-carousel.jpg',
-
+            'gambar' => '_0005_HSS.jpg',
         ]);
 
+        
         DB::table('employees')->insert([
-            'kode_prodi' => 'bps',
-            'kode_fakultas' => 3, // Ganti dengan kode fakultas yang sesuai
-            'nama' => 'Adrianto Prihartantyo, S.Si., M.T.',
-            'nidn' => '0109108702',
+            'kode_prodi' => 'mrs',
+            'kode_fakultas' => 2,
+            'nama' => 'Mariana Simanjuntak, S.S., M.Sc',
+            'nidn' => '0120077401',
             'jabatan' => 'Dosen',
-            'pendidikan' => 'S2 - Institut Teknologi Sepuluh Nopember',
-            'gambar' => 'fv-carousel.jpg',
-
+            'pendidikan' => 'S2 - Universitas Gadjah Mada',
+            'gambar' => '_0003_ANA.jpg',
         ]);
 
+        
         DB::table('employees')->insert([
-            'kode_prodi' => 'bps',
-            'kode_fakultas' => 3, // Ganti dengan kode fakultas yang sesuai
-            'nama' => 'Yoli Agnesia, S.Pd., M.Si.',
-            'nidn' => '0125089302',
+            'kode_prodi' => 'mrs',
+            'kode_fakultas' => 2,
+            'nama' => 'Josua Boyke William Jawak, ST., M.Ds',
+            'nidn' => '0115069701',
             'jabatan' => 'Dosen',
-            'pendidikan' => 'S2 - Institut Teknologi Bandung',
-            'gambar' => 'fv-carousel.jpg',
-
+            'pendidikan' => 'S2 - Telkom University',
+            'gambar' => '_0002_JBJ.jpg',
         ]);
 
+        
         DB::table('employees')->insert([
-            'kode_prodi' => 'bps',
-            'kode_fakultas' => 3, // Ganti dengan kode fakultas yang sesuai
-            'nama' => 'Dedy Anwar, ST., MT',
-            'nidn' => '0108089002',
+            'kode_prodi' => 'mrs',
+            'kode_fakultas' => 2,
+            'nama' => 'Samuel Hasudungan Tampubolon, S.T., MSc.',
+            'nidn' => '0115019701',
             'jabatan' => 'Dosen',
-            'pendidikan' => 'S2 - Universitas Sumatera Utara',
-            'gambar' => 'fv-carousel.jpg',
-
+            'pendidikan' => 'S2 - University of Amsterdam',
+            'gambar' => '_0001_SHT.jpg',
         ]);
 
+        
         DB::table('employees')->insert([
-            'kode_prodi' => 'if4',
-            'kode_fakultas' => 4, // Ganti dengan kode fakultas yang sesuai
-            'nama' => 'Riyanthi Angrainy Sianturi, S.Sos, M.Ds',
-            'nidn' => '121058503',
-            'jabatan' => 'Dekan',
-            'pendidikan' => 'S2 - Institut Teknologi Bandung',
-            'gambar' => 'fv-carousel.jpg',
-
+            'kode_prodi' => 'mrs',
+            'kode_fakultas' => 2,
+            'nama' => 'Ivo Sibarani, S.T.',
+            'nidn' => '-',
+            'jabatan' => 'Teaching Assistant',
+            'pendidikan' => 'S1 - Institut Teknologi Del',
+            'gambar' => '_0000_IVO.jpg',
         ]);
+        
+        // S1 TEKNIK ELEKTRO
 
         DB::table('employees')->insert([
-            'kode_prodi' => 'if4',
-            'kode_fakultas' => 4, // Ganti dengan kode fakultas yang sesuai
-            'nama' => 'Ardiles Sinaga, S.T., M.T.',
-            'nidn' => '420098501',
+            'kode_prodi' => 'els',
+            'kode_fakultas' => 1,
+            'nama' => 'Guntur Petrus Boy Knight, S.T.,M.T',
+            'nidn' => '0126078702',
             'jabatan' => 'Kaprodi',
-            'pendidikan' => 'S2 - Universitas Telkom',
-            'gambar' => 'fv-carousel.jpg',
-
+            'pendidikan' => 'S2 - Insitut Teknologi Bandung',
+            'gambar' => '_0000_GPS.jpg',
         ]);
 
         DB::table('employees')->insert([
-            'kode_prodi' => 'if4',
-            'kode_fakultas' => 4, // Ganti dengan kode fakultas yang sesuai
-            'nama' => 'Regina Ayunita Tarigan, S.Si., M.Sc',
-            'nidn' => '0125109101',
+            'kode_prodi' => 'els',
+            'kode_fakultas' => 1,
+            'nama' => 'I Gde Eka Dirgayussa, S.Pd,M.Si',
+            'nidn' => '0103058901',
             'jabatan' => 'Dosen',
-            'pendidikan' => 'S2 - Universitas Telkom',
-            'gambar' => 'fv-carousel.jpg',
+            'pendidikan' => 'S2 - Insitut Teknologi Bandung',
+            'gambar' => '_0001_GDE.jpg',
+        ]);
 
+        
+        DB::table('employees')->insert([
+            'kode_prodi' => 'els',
+            'kode_fakultas' => 1,
+            'nama' => 'Asido Saragih, S.Pd., M.Sc.',
+            'nidn' => '0624109301',
+            'jabatan' => 'Dosen',
+            'pendidikan' => 'S2 - National Chung Cheng University',
+            'gambar' => '_0002_ASH.jpg',
         ]);
 
         DB::table('employees')->insert([
-            'kode_prodi' => 'if4',
-            'kode_fakultas' => 4, // Ganti dengan kode fakultas yang sesuai
-            'nama' => 'Oppir Hutapea, S.Tr.Kom, M.Kom',
-            'nidn' => '',
-            'jabatan' => 'Dosen',
-            'pendidikan' => 'S2 - Universitas Bina Nusantara',
-            'gambar' => 'fv-carousel.jpg',
-
+            'kode_prodi' => 'els',
+            'kode_fakultas' => 1,
+            'nama' => 'Febrian Cornellius Sidabutar, S.T.',
+            'nidn' => '-',
+            'jabatan' => 'Teaching Assistant',
+            'pendidikan' => 'S1 - Institut Teknologi Del',
+            'gambar' => '_0003_FCS.jpg',
         ]);
 
         DB::table('employees')->insert([
-            'kode_prodi' => 'if4',
-            'kode_fakultas' => 4, // Ganti dengan kode fakultas yang sesuai
-            'nama' => 'Ana Muliyana, M.Pd.',
-            'nidn' => '',
+            'kode_prodi' => 'els',
+            'kode_fakultas' => 1,
+            'nama' => 'Philippians Manurung, S.T., M.T.',
+            'nidn' => '-',
             'jabatan' => 'Dosen',
-            'pendidikan' => 'S2 - Universitas Negeri Yogyakarta',
-            'gambar' => 'fv-carousel.jpg',
-
+            'pendidikan' => 'S2- Institut Teknologi Del',
+            'gambar' => '_0004_PHI.jpg',
         ]);
 
         DB::table('employees')->insert([
-            'kode_prodi' => 'if4',
-            'kode_fakultas' => 4, // Ganti dengan kode fakultas yang sesuai
-            'nama' => 'Dr. Batara Parada Siahaan, S.Kom., M.S.M., M.I.M',
-            'nidn' => '0122069202',
+            'kode_prodi' => 'els',
+            'kode_fakultas' => 1,
+            'nama' => 'Alfriska Oktarina Silalahi, S.Pd., M.Si.',
+            'nidn' => '0107109002',
             'jabatan' => 'Dosen',
-            'pendidikan' => 'S3 - Institut Teknologi Bandung',
-            'gambar' => 'fv-carousel.jpg',
+            'pendidikan' => 'S2 - Insitut Teknologi Bandung',
+            'gambar' => '_0005_AFS.jpg',
+        ]);
 
+        DB::table('employees')->insert([
+            'kode_prodi' => 'els',
+            'kode_fakultas' => 1,
+            'nama' => 'Indra Hartarto Tambunan, Ph.D.',
+            'nidn' => '0128048403',
+            'jabatan' => 'Dekan',
+            'pendidikan' => 'S3 - Konkuk University',
+            'gambar' => '_0006_IHT.jpg',
+        ]);
+
+        DB::table('employees')->insert([
+            'kode_prodi' => 'els',
+            'kode_fakultas' => 1,
+            'nama' => 'Basry Sihotang, S.T.',
+            'nidn' => '0128048403',
+            'jabatan' => 'Teaching Assistant',
+            'pendidikan' => 'S1 - Institut Teknologi Del',
+            'gambar' => '_0007_BHT.jpg',
+        ]);
+
+        DB::table('employees')->insert([
+            'kode_prodi' => 'els',
+            'kode_fakultas' => 1,
+            'nama' => 'Kevin Siahaan, S.T.',
+            'nidn' => '0128048403',
+            'jabatan' => 'Teaching Assistant',
+            'pendidikan' => 'S1 - Institut Teknologi Del',
+            'gambar' => '_0008_KVN.jpg',
         ]);
 
 
