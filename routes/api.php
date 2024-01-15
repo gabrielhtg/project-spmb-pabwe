@@ -72,4 +72,7 @@ use Illuminate\Support\Facades\Route;
     Route::delete('/removeBiayaPendaftaran/{biayaPendaftaran_id}', [AdmisiController::class, 'removeBiayaPendaftaran'])->name('removeBiayaPendaftaran');
     Route::post('/pedoman-pendaftaran', [AdmisiController::class, 'addPedomanPendaftaran'])->name('pedoman-pendaftaran');
     Route::post('/pdf-biaya', [AdmisiController::class, 'addPdfbiaya'])->name('pdf_biaya');
+    Route::post('/add-mitra', [AdminPanelController::class, 'addMitra'])->name('addMitra');
+    Route::post('/edit-mitra', [AdminPanelController::class, 'editMitra'])->name('editMitra');
+    Route::delete('/remove-mitra', [AdminPanelController::class, 'removeMitra'])->name('removeMitra');
 //});
