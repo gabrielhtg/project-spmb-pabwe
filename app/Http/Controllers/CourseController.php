@@ -24,30 +24,33 @@ class CourseController extends Controller
     }
 
     public function store(Request $request)
-    {
-        $request->validate([
-            'kode_prodi' => 'required',
-            'kode_mk' => 'required',
-            'nama' => 'required',
-            'sks' => 'required|integer|between:1,4',
-            'semester' => 'required|integer|between:1,8',
-            Rule::unique('courses')->where(function ($query) use ($request) {
-                return $query->where('kode_prodi', $request->kode_prodi);
-            }),
-        ]);
+        {
+            $request->validate([
+                'kode_prodi' => 'required|array', // Memastikan input kode_prodi adalah array
+                'kode_mk' => 'required',
+                'nama' => 'required',
+                'sks' => 'required|integer|between:1,4',
+                'semester' => 'required|integer|between:1,8',
+                Rule::unique('courses')->where(function ($query) use ($request) {
+                    return $query->whereIn('kode_prodi', $request->kode_prodi); // Menggunakan whereIn untuk multiple kode_prodi
+                }),
+            ]);
 
-        $course = new Course([
-            'kode_prodi' => $request->get('kode_prodi'),
-            'kode_mk' => $request->get('kode_mk'),
-            'nama' => $request->get('nama'),
-            'sks' => $request->get('sks'),
-            'semester' => $request->get('semester'),
-        ]);
+            foreach ($request->kode_prodi as $kode_prodi) {
+                $course = new Course([
+                    'kode_prodi' => $kode_prodi,
+                    'kode_mk' => $request->get('kode_mk'),
+                    'nama' => $request->get('nama'),
+                    'sks' => $request->get('sks'),
+                    'semester' => $request->get('semester'),
+                ]);
 
-        $course->save();
+                $course->save();
+            }
 
-        return redirect('admin-panel/program')->with('success', 'Course added successfully!');
-    }
+            return redirect('admin-panel/program')->with('success', 'Course added successfully!');
+        }
+
 
     public function update(Request $request, String $id)
     {
@@ -92,7 +95,19 @@ public function destroy(string $id)
 }
 
 
-    
+public function deleteAll(Request $request)
+{
+    $ids = $request->ids;
+
+    if (count($ids) > 0) {
+        Course::whereIn('id', $ids)->delete();
+        return redirect('admin-panel/program')->with('success', 'Courses deleted successfully!');
+    } else {
+        return redirect('admin-panel/program')->with('error', 'No courses selected for deletion.');
+    }
+}
+
+
     
 
 }

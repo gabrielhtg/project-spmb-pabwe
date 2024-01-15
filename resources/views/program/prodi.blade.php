@@ -221,18 +221,20 @@
                                                     </tr>
                                                 </thead>
                                                 @foreach($courses as $course)
-                                            @if ($course->semester == $i * 2 + $j)
-                                                
-                                                <tbody>
-                                                    
+                                                    @if ($course->semester == $i * 2 + $j)
+                                                        @if ($course->major->id == $major->id)
                                                         
-                                                        <tr>
-                                                            <td>{{ $course->kode_mk }}</td>
-                                                            <td>{{ $course->nama }}</td>
-                                                            <td>{{ $course->sks }}</td>
-                                                        </tr>
+                                                        <tbody>
+                                                            
+                                                                
+                                                                <tr>
+                                                                    <td>{{ $course->kode_mk }}</td>
+                                                                    <td>{{ $course->nama }}</td>
+                                                                    <td>{{ $course->sks }}</td>
+                                                                </tr>
                                                         @endif
-                                                    @endforeach
+                                                    @endif
+                                                @endforeach
                                                 </tbody>
                                             </table>
                                         </div>

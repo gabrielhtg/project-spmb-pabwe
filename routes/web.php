@@ -157,7 +157,9 @@ Route::put('/course/{id}/update', [CourseController::class, 'update'])->name('co
 Route::delete('/admin-panel/program_panel/faculty/{id}/delete', [FacultyController::class, 'destroy'])->name('admin.program.faculty.destroy');
 Route::delete('/admin-panel/program_panel/major/{id}/delete', [MajorController::class, 'destroy'])->name('admin.program.major.destroy');
 Route::delete('/admin-panel/program_panel/employee/{id}/delete', [EmployeeController::class, 'destroy'])->name('admin.program.employee.destroy');
-Route::delete('/admin-panel/program_panel/course/{id}/delete', [CourseController::class, 'destroy'])->name('admin.program.course.destroy');
+Route::delete('/admin-panel/program_panel/course/{id}/deleted', [CourseController::class, 'destroy'])->name('admin.program.course.destroy');
+Route::delete('//admin-panel/program_panel/courses/delete',[CourseController::class,'deleteAll'])->name('course.delete');
+
 
 
 // End of ROUTE PROGRAM STUDI [TEAM 02]

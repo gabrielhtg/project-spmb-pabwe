@@ -26,16 +26,11 @@ class FacultySeeder extends Seeder
         
         DB::table('faculties')->insert([
             'nama' => 'Fakultas Teknologi Industri',
-            'deskripsi' => 'Manajemen Rekayasa (Engineering Management) adalah penggabungan dari keilmuan teknik/rekayasa (engineering) dengan ilmu manajemen yang diaplikasikan untuk menyelesaikan persoalan-persoalan dalam suatu sistem kompleks.  Aspek keilmuan teknik (engineering) dari Manajemen Rekayasa terlihat melalui  penerapan matematika dan ilmu pengetahuan alam yang diperoleh melalui pembelajaran, pengalaman, dan praktek empiris untuk menemukan cara-cara yang optimal dalam memanfaatkan material dan sumber daya lain dalam mengembangkan teknologi. Aspek keilmuan manajemen dari Manajemen Rekayasa muncul dalam penerapan ilmu-ilmu pendukung keputusan yang dapat diaplikasikan dalam aktivitas-aktivitas pengembangan organisasi dalam mencapai tujuannya, yang diperoleh melalui pembelajaran dan praktek empiris dalam ilmu perilaku organisasi, analisa finansial, manajemen sumber daya manusia, dan analisa keputusan.',
-            'visi' => 'Menjadi Fakultas Pembelajar yang unggul di bidang Informatika dan Teknik  Elektro pada tahun 2018 di tingkat nasional.',
-            'misi' =>   ' <ol>
-                            <li>Melaksanakan pendidikan di bidang Informatika dan Teknik Elektro yang unggul, berkesinambungan, dan bermanfaat bagi masyarakat.</li>
-                            <li>Menciptakan dan menyebarkan ilmu pengetahuan dan teknologi khusus di bidang Informatika dan Teknik Elektro.</li>
-                            <li>Meningkatkan peranan Fakultas untuk menjadi pembaru kemampuan, keterampilan pilihan rujukan, dan pengembangan rekayasa karya masyarakat, terutama dalam bidang Informatika dan Teknik Elektro.</li>
-                            <li>Memperkuat peran Fakultas dalam memberikan kontribusi nyata kepada masyarakat melalui penerapan Tridarma Perguruan Tinggi, terutama di bidang Informatika dan Teknik Elektro.</li>
-                        </ol>',
+            'deskripsi' => 'Fakultas Teknologi Industri (FTI) adalah salah satu Fakultas yang ada di IT Del. Fakultas ini sudah ada sejak  tahun 2013. Program studi yang ada di Fakultas ini yakni Sarjana Manajemen Rekayasa. Dekan dari Fakultas ini adalah Bapak Dr. Yosef Barita Sar Manik, S.T, M.Sc, beliau adalah lulusan dari Harvard University.',
             'gambar' => 'fti-carousel.jpg',
-            'lokasi' => 'Jl. PI.Del, Gedung IX, Laguboti, Toba, Sumatera Utara'
+            'lokasi' => 'Jl. PI.Del, Gedung IX, Laguboti, Toba, Sumatera Utara',
+            'visi' => 'Belum ada Visi Fakultas',
+            'misi' =>   'Belum ada Misi Fakultas',
         ]);
 
         DB::table('faculties')->insert([
@@ -55,15 +50,20 @@ class FacultySeeder extends Seeder
 
         DB::table('faculties')->insert([
             'nama' => 'Fakultas Vokasi',
-            'deskripsi' => 'Pendidikan vokasi merupakan jenjang pendidikan pertama di Institut Teknologi Del sejak berdiri pada tahun 2001 (dahulu bernama Politeknik Informatika Del). Vokasi merupakan pendidikan tinggi dengan fokus pada praktik kerja yang dapat menunjang keahlian di bidang studi tertentu. Program vokasi bertujuan mempersiapkan lulusannya menjadi tenaga yang siap kerja dan mampu bersaing secara global di Dunia Usaha dan Dunia Industri (DUDI).',
-            'visi' => 'Menjadi Fakultas Pembelajar yang unggul di bidang Informatika dan Teknik  Elektro pada tahun 2018 di tingkat nasional.',
-            'misi' =>   '<ol>
-                        <li>Menyelenggarakan dan mengembangkan proses pendidikan yang unggul, berkesinambungan, dan bermanfaat bagi masyarakat.</li>
-                        <li>Mengembangkan, menciptakan, dan menyebarkan ilmu pengetahuan dan teknologi khususnya Teknik Bioproses.</li>
-                        <li>Meningkatkan peranan program studi agar mampu menjadi pembaharu dalam kemampuan, keterampilan pilihan rujukan, dan pengembangan rekayasa karya masyarakat, khususnya dalam bidang ilmu pengetahuan dan teknologi khususnya Teknik Bioproses.</li>
-                        <li>Meningkatkan peran nyata kepada masyarakat melalui penerapan tridarma perguruan tinggi.</li>
-                        <li>Menjadikan program studi Teknik Bioproses sebagai program studi yang memiliki sistem pengelolaan yang baik, efisien, dan produktif.</li>
-                    </ol>',
+            'deskripsi' => 'Pendidikan vokasi merupakan jenjang pendidikan pertama di Institut Teknologi Del sejak berdiri pada tahun 2001 (dahulu bernama Politeknik Informatika Del). Vokasi merupakan pendidikan tinggi dengan fokus pada praktik kerja yang dapat menunjang keahlian di bidang studi tertentu. Program vokasi bertujuan mempersiapkan lulusannya menjadi tenaga yang siap kerja dan mampu bersaing secara global di Dunia Usaha dan Dunia Industri (DUDI).
+
+            Fakultas Vokasi Institut Teknologi Del Di Institut Teknologi Del memiliki 3 program studi pada jenjang Diploma 3 (D3) dan Diploma 4 (D4):
+            1. D4 (Sarjana Terapan) Teknologi Rekayasa Perangkat Lunak
+            2. D3 Teknologi Informasi
+            3. D3 Teknologi Komputer
+            
+            Ketiga program studi vokasi di IT Del telah terakreditasi B dari BAN-PT.
+            
+            Beberapa keunggulan dari pendidikan vokasi adalah: belajar di program studi yang spesifik, belajar sesuai minat dan profesi yang diinginkan, siap kerja karena dibekali kemampuan praktik yang tinggi, sehingga lulusan pendidikan vokasi banyak dibutuhkan perusahaan.',
+            'visi' => 'Menjadi lembaga pendidikan vokasi yang unggul dan berperan dalam pengembangan dan pemanfaatan teknologi yang mengintegrasikan dunia pendidikan dengan kebutuhan dunia usaha dan dunia industri akan tenaga profesional informatika dan komputer yang mampu bersaing secara global.',
+            'misi' =>   '• Menyelenggarakan proses pendidikan vokasi yang unggul, berkesinambungan dan bermanfaat bagi masyarakat dalam lingkungan pendidikan yang kondusif, didukung dengan tenaga pendidik yang memiliki kompetensi pada bidang informatika dan komputer, serta melibatkan dunia usaha dan dunia industri dalam pengembangan kemampuan peserta didik.
+                        • Melaksanakan kegiatan penelitian untuk mengembangkan, menciptakan dan menyebarkan ilmu pengetahuan dan teknologi terapan pada bidang informatika dan komputer.
+                        • Melaksanakan kegiatan penelitian untuk mengembangkan, menciptakan dan menyebarkan ilmu pengetahuan dan teknologi terapan pada bidang informatika dan komputer.',
             'gambar' => 'fv-carousel.jpg',
             'lokasi' => 'Jl. PI.Del, Gedung V, Laguboti, Toba, Sumatera Utara'
         ]);

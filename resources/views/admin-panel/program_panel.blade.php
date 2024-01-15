@@ -1027,9 +1027,15 @@
 <section id="kurikulum-subpage" class="m-3 d-none">
 
     {{-- Button Add MK --}}
-    <button type="button" class="btn btn-success mb-2" data-bs-toggle="modal" data-bs-target="#myModalkur">
-        Tambah Matkul
-    </button>
+            <div class="d-flex justify-content-between align-items-center mb-2">
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#myModalkur">
+                Tambah Matkul
+            </button>
+            <a href="#" class="btn btn-danger" id="deleteAllSelectedRecord">Hapus Yang Dipilih</a>
+            
+        </div>
+
+   
 
     {{-- Read MK --}}
     <div id="item-2" class="card">
@@ -1041,6 +1047,7 @@
                 <table class="table text-center align-middle table-striped table-bordered">
                     <thead class="align-middle">
                     <tr>
+                        <th><input type="checkbox" name="" id="select_all_ids"></th>
                         <th scope="col">No</th>
                         <th scope="col">Nama Mata Kuliah</th>
                         <th scope="col">Kode Mata Kuliah</th>
@@ -1052,7 +1059,8 @@
                     </thead>
                     <tbody>
                     @foreach($courses as $course)
-                    <tr>
+                    <tr id="employee_ids{{$course->id}}">
+                        <td><input type="checkbox" name="ids" id="" class="checkbox_ids" value="{{$course->id}}"></td>
                         <td class="text-center">{{ $loop->iteration }}</td>
                         <td class="text-break" style="max-width: 200px;">{{ $course->nama }}</td>
                         <td class="text-break" style="max-width: 200px;">{{ $course->kode_mk }}</td>
@@ -1193,14 +1201,18 @@
                 <div class="card-body">
                     <form action="{{ route('course.store') }}" method="post">
                         @csrf
+                       
                         <div class="mb-3">
-                        <label for="select_kode_prodi" class="form-label">Prodi</label>
-                        <select class="form-select" id="kode_prodi" name="kode_prodi" aria-label="Default select example">
-                                <option selected>Pilih Prodi</option>
+                            <label for="select_kode_prodi" class="form-label">Prodi</label><br>
+                            <div class="checkbox-group">
                                 @foreach ($majors as $major)
-                                    <option value="{{ $major->kode_prodi }}">{{ $major->nama }}</option>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="kode_prodi[]" value="{{ $major->kode_prodi }}">
+                                        <label class="form-check-label">{{ $major->nama }}</label>
+                                    </div>
                                 @endforeach
-                            </select>        
+                            </div>
+                        </div>    
                         </div>
                         <div class="mb-3">
                             <label for="input_kode_mk" class="form-label">Kode Mata Kuliah</label>
@@ -1434,6 +1446,46 @@
                 });
         @endforeach
  
+        $(function() {
+            $("#select_all_ids").click(function() {
+                $('.checkbox_ids').prop('checked', $(this).prop('checked'));
+            });
+
+            $('#deleteAllSelectedRecord').click(function(e) {
+                e.preventDefault();
+                var all_ids = [];
+
+                $('input:checkbox[name=ids]:checked').each(function() {
+                    all_ids.push($(this).val());
+                });
+
+                if (all_ids.length > 0) {
+                    deleteCourses(all_ids);
+                } else {
+                    alert('Pilih setidaknya satu mata kuliah untuk dihapus.');
+                }
+            });
+
+            function deleteCourses(ids) {
+                $.ajax({
+                    url: "{{ route('course.delete') }}",
+                    type: "DELETE",
+                    data: {
+                        ids: ids,
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        // Tangani sukses
+                        console.log(response);
+                        location.reload(); // Perbarui halaman
+                    },
+                    error: function(xhr, status, error) {
+                        // Tangani kesalahan
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
 
 
 </script>
