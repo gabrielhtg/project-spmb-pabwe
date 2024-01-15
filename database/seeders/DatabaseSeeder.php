@@ -31,6 +31,11 @@ class DatabaseSeeder extends Seeder
             MajorSeeder::class,
             CourseSeeder::class,
             EmployeeSeeder::class,
+            PengumumanSeeder::class,
+            PrestasiSeeder::class,
+            add_beasiswa::class,
+            add_faq::class,
+            add_mitra::class
         ]);
     }
 }
