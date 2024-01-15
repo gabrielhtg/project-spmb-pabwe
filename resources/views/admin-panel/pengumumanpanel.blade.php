@@ -97,8 +97,7 @@
                                 <h5 class="modal-title" id="editPengumumanLabel">Ubah Data Pengumuman</h5>
                                 <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <form action=" {{ route('post.edit.pengumuman') }}"
-                                  method="POST">
+                            <form action=" {{ route('post.edit.pengumuman') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <input name="id" type="hidden" id="inputEditPengumuman">
 
@@ -125,6 +124,7 @@
                                     <div class="mb-3">
                                         <label for="inputfilePengumuman" class="form-label">File</label>
                                         <input type="file" class="form-control" name="filePengumuman" id="inputfilePengumuman">
+                                        <small class="text-muted">*Dokumen harus dalam format .jpg, .jpeg, atau .png, dengan batasan ukuran file tidak melebihi 2 MB.</small>
                                     </div>
 
                                     <div class="mb-3">
