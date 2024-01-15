@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AlamatInstitusiModel;
 use App\Models\EmailModel;
+use App\Models\Header_Prestasi;
 use App\Models\NomorTeleponModel;
 use App\Models\Prestasi;
 use App\Models\SocalMediaModel;
@@ -20,8 +21,33 @@ class PrestasiController extends Controller
             ->paginate($amount);
     }
 
+    private function getPrestasiHeader()
+    {
+        if (Header_Prestasi::first())
+        {
+            $judulPrestasi = Header_Prestasi::first()->judul;
+            $deskripsiPrestasi = Header_Prestasi::first()->deskripsi;
+            $fotoPrestasi = Header_Prestasi::first()->foto;
+        } else {
+            $judulPrestasi = "Prestasi";
+            $deskripsiPrestasi = "Prestasi";
+            $fotoPrestasi = "assets/img/prestasi/prestasi-header.JPG";
+        }
+
+        $data = [
+            'headerPrestasi' => [
+                'judul' => $judulPrestasi,
+                'deskripsi' => $deskripsiPrestasi,
+                'foto' => $fotoPrestasi,
+            ]
+        ];
+
+        return $data;
+    }
+
     public function getviewPrestasi()
     {
+
         $dataInstitusi = data_institusi::where('id', 1)->first();
 
         $data = [
@@ -34,6 +60,8 @@ class PrestasiController extends Controller
             'dataPrestasiInstitutOverview' => $this->getPrestasiByType('Institut', 4),
             'dataPrestasiDosenOverview' => $this->getPrestasiByType('Dosen', 4),
             'dataPrestasiMahasiswaOverview' => $this->getPrestasiByType('Mahasiswa', 4),
+
+            'headerPrestasi' => self::getPrestasiHeader(),
         ];
         return view("prestasi.prestasiOverview", $data);
     }
@@ -43,6 +71,7 @@ class PrestasiController extends Controller
         $dataInstitusi = data_institusi::where('id', 1)->first();
 
         $data = [
+            'headerPrestasi' => self::getPrestasiHeader(),
             'dataInstitusi'=> $dataInstitusi,
             'dataAlamat' => AlamatInstitusiModel::all(),
             'dataNomorTelepon' => NomorTeleponModel::all(),
@@ -59,6 +88,7 @@ class PrestasiController extends Controller
         $dataInstitusi = data_institusi::where('id', 1)->first();
 
         $data = [
+            'headerPrestasi' => self::getPrestasiHeader(),
             'dataInstitusi'=> $dataInstitusi,
             'dataAlamat' => AlamatInstitusiModel::all(),
             'dataNomorTelepon' => NomorTeleponModel::all(),
@@ -74,6 +104,7 @@ class PrestasiController extends Controller
         $dataInstitusi = data_institusi::where('id', 1)->first();
 
         $data = [
+            'headerPrestasi' => self::getPrestasiHeader(),
             'dataInstitusi'=> $dataInstitusi,
             'dataAlamat' => AlamatInstitusiModel::all(),
             'dataNomorTelepon' => NomorTeleponModel::all(),
@@ -89,12 +120,18 @@ class PrestasiController extends Controller
     public function postAddPrestasi(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'judul-prestasi' => 'required|string|max:255',
+            'judul_prestasi' => 'required|string|max:255',
             'gambar' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'input_jenis_prestasi' => 'required',
             'deskripsi' => 'required|string',
         ]);
 
+        if ($validator->fails()) {
+            return redirect()
+                ->route('prestasi.panel')
+                ->withErrors($validator)
+                ->withInput();
+        }
         $photo = $request->file('gambar');
 
         if ($photo) {
@@ -108,10 +145,10 @@ class PrestasiController extends Controller
                 "jenis_prestasi" => $request->input_jenis_prestasi,
                 "photo" => "assets/img/prestasi/" . $filename,
                 "deskripsi" => $request->deskripsi,
-                "judul_prestasi" => $request->judul,
+                "judul_prestasi" => $request->judul_prestasi,
             ]);
 
-            return redirect()->route("prestasi.panel");
+            return redirect()->route("prestasi.panel")->with("success", "Prestasi berhasil ditambahkan");
         } else {
             if ($validator->fails()) {
                 return redirect()
@@ -142,7 +179,7 @@ class PrestasiController extends Controller
             $delete->delete();
         }
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Prestasi berhasil di hapus');
     }
 
     public function postEditPrestasi(Request $request)
@@ -165,7 +202,7 @@ class PrestasiController extends Controller
         $data = Prestasi::where('id', $request->id)->first();
 
         if ($data == null) {
-            return redirect()->back();
+            return redirect()->back()->with('error', 'Prestasi tidak ditemukan');
         } else {
             if (!empty($request->gambarUpdate)) {
                 $photo = $request->file('gambarUpdate');
@@ -189,7 +226,7 @@ class PrestasiController extends Controller
 
             $data->save();
 
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Prestasi berhasil diubah');
         }
     }
 }

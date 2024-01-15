@@ -19,6 +19,7 @@ use App\Models\MbkmModel;
 use App\Models\ModelHeaderAdmisi;
 use App\Models\NomorTeleponModel;
 use App\Models\PdfBiayaModel;
+use App\Models\Header_Prestasi;
 use App\Models\Prestasi;
 use App\Models\SocalMediaModel;
 use App\Models\JalurPendaftaranModel;
@@ -793,10 +794,27 @@ class AdminPanelController extends Controller
     public function getPrestasiPanel()
     {
         $admin = Auth::user();
+
+        if (Header_Prestasi::first())
+        {
+            $judulPrestasi = Header_Prestasi::first()->judul;
+            $deskripsiPrestasi = Header_Prestasi::first()->deskripsi;
+            $fotoPrestasi = Header_Prestasi::first()->foto;
+        } else {
+            $judulPrestasi = "Prestasi";
+            $deskripsiPrestasi = "Prestasi";
+            $fotoPrestasi = "assets/img/prestasi/prestasi-header.JPG";
+        }
+
         $data = [
-            'indexActive' => 2,
+            'indexActive' => 5,
             'admin' => $admin,
             'dataPrestasi' => Prestasi::orderBy('created_at', 'desc')->get(),
+            'headerPrestasi' => [
+                'judul' => $judulPrestasi,
+                'deskripsi' => $deskripsiPrestasi,
+                'foto' => $fotoPrestasi,
+            ],
         ];
         return view('admin-panel.prestasi_panel', $data);
     }
@@ -808,6 +826,7 @@ class AdminPanelController extends Controller
         $data = [
             'indexActive' => 2,
             'admin' => $admin,
+            'dataProdi' => Major::all(),
             'dataTestimoni' => Testimoni::orderBy('created_at', 'desc')->get(),
         ];
 

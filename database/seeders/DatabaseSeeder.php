@@ -36,6 +36,7 @@ class DatabaseSeeder extends Seeder
             add_beasiswa::class,
             add_faq::class,
             add_mitra::class,
+            TestimoniSeeder::class,
             add_biaya_studi::class,
             add_biaya_pendaftaran::class,
             add_data_biaya_admin::class,
@@ -46,6 +47,7 @@ class DatabaseSeeder extends Seeder
             add_pedoman_pendaftaran::class,
             add_sub_jalur_pendaftaran::class,
             add_data_jadwal_ujian::class,
+            TestimoniSeeder::class,
         ]);
     }
 }

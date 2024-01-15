@@ -23,7 +23,7 @@ class add_beasiswa extends Seeder
                 studinya (semester 6 pada prodi DIII dan semester 8 pada prodi DIV dan S1).
                 b. Mahasiswa penerima Beasiswa Prestasi harus memiliki perilaku terpuji dan dibuktikan dengan Nilai Perilaku minimal AB. ',
                 'gambar' => 'assets/img/beasiswa/img/beasiswa.jpg',
-                'file' => 'assets/img/beasiswa/pdf/beasiswa.pdf',
+                'file' => '/assets/img/beasiwa/pdf/beasiswa.pdf',
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -36,7 +36,7 @@ class add_beasiswa extends Seeder
                 b. Penghargaan “Best Performance” diberikan kepada satu orang mahasiswa pada
                 setiap angkatan (tingkat).',
                 'gambar' => 'assets/img/beasiswa/img/beasiswa.jpg',
-                'file' => 'assets/img/beasiswa/pdf/beasiswa.pdf',
+                'file' => 'assets/beasiwa/pdf/beasiswa.pdf',
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -48,7 +48,7 @@ class add_beasiswa extends Seeder
                 oleh bagian kemahasiswaan). Bagi mahasiswa yang sedang menerima beasiswa dari
                 pihak lain tidak dapat menerima beasiswa Potensi Cum Laude',
                 'gambar' => 'assets/img/beasiswa/img/beasiswa.jpg',
-                'file' => 'assets/img/beasiswa/pdf/beasiswa.pdf',
+                'file' => 'assets/beasiwa/pdf/beasiswa.pdf',
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -59,7 +59,7 @@ class add_beasiswa extends Seeder
                 harus memiliki perilaku terpuji dan dibuktikan dengan Nilai Perilaku minimal AB
                 (aturan mengenai nilai perilaku akan dikeluarkan oleh bagian kemahasiswaan).',
                 'gambar' => 'assets/img/beasiswa/img/beasiswa.jpg',
-                'file' => 'assets/img/beasiswa/pdf/beasiswa.pdf',
+                'file' => 'assets/beasiwa/pdf/beasiswa.pdf',
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -72,7 +72,7 @@ class add_beasiswa extends Seeder
                 memiliki perilaku terpuji dan dibuktikan dengan Nilai Perilaku minimal AB (aturan
                 mengenai nilai perilaku akan dikeluarkan oleh bagian kemahasiswaan).',
                 'gambar' => 'assets/img/beasiswa/img/beasiswa.jpg',
-                'file' => 'assets/img/beasiswa/pdf/beasiswa.pdf',
+                'file' => 'assets/beasiwa/pdf/beasiswa.pdf',
                 'created_at' => now(),
                 'updated_at' => now()
             ],
