@@ -5,7 +5,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="addpersyaratanumum" tabindex="-1" aria-labelledby="addpersyaratanumum" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5">Tambah Jalur Pendaftaran</h1>
@@ -15,12 +15,16 @@
                 @csrf
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label class="form-label">Jalur Pendaftaran</label>
-                        <input type="text" class="form-control" name="jalurPendaftaran" required>
+                        <label class="form-label w-100">
+                            Jalur Pendaftaran
+                            <input type="text" class="form-control" name="jalurPendaftaran" required>
+                        </label>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Deskripsi Persyaratan Umum</label>
-                        <textarea class="form-control" name="desk_pers_umum" rows="4" required></textarea>
+                        <label class="form-label w-100">
+                            Deskripsi Persyaratan Umum
+                            <textarea class="form-control" id="desk_pers_umum" name="desk_pers_umum" required></textarea>
+                        </label>
                     </div>
                 </div>
                 <div class="modal-footer">

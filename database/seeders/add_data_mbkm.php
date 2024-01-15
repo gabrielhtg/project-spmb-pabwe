@@ -14,13 +14,33 @@ class add_data_mbkm extends Seeder
     public function run(): void
     {
         DB::table('mbkm')->insert([
-            'jenis_kegiatan' => 'Non Kompetisi',
-            'jumlah_sks' => '2 - 10 SKS',
-            'potongan_spp' => '10%',
-            'created_by' => 'admin',
-            'updated_by' => 'admin',
-            'created_at' => now(),
-            'updated_at' => now()
+            [
+                'jenis_kegiatan' => 'Non Kompetisi',
+                'jumlah_sks' => '2 - 10 SKS',
+                'potongan_spp' => '10%',
+                'created_by' => 'admin',
+                'updated_by' => 'admin',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'jenis_kegiatan' => 'Non Kompetisi',
+                'jumlah_sks' => '>10 SKS',
+                'potongan_spp' => '20%',
+                'created_by' => 'admin',
+                'updated_by' => 'admin',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'jenis_kegiatan' => 'Kompetisi',
+                'jumlah_sks' => 'tidak ada batasan SKS',
+                'potongan_spp' => '25%',
+                'created_by' => 'admin',
+                'updated_by' => 'admin',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
         ]);
     }
 }
