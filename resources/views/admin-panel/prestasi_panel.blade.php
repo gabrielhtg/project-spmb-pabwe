@@ -80,7 +80,7 @@
                 <div class="card-header bg-primary text-white">
                     <span class="fs-5">Data Prestasi</span>
                 </div>
-                <div class="card-body d-flex flex-column">
+                <div class="card-body d-flex justify-content-center flex-column pt-3 overflow-x-auto w-100">
 
                     @include('admin-panel.sub_admin_panel.tambah_prestasi')
 
@@ -156,7 +156,7 @@
     <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
 
     <script>
-        function showModalUpdate(upId, upJudul, upDesc, upJenis) {
+            function showModalUpdate(upId, upJudul, upDesc, upJenis) {
             const modalUpdate = document.getElementById("modal-edit");
 
             const inputId = document.getElementById("inputId");
