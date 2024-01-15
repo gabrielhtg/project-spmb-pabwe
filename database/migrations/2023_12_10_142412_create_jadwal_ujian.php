@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('jadwal_ujian', function (Blueprint $table) {
             $table->id();
-            $table->string('jalur_ujian', 10)->nullable(true);
-            $table->string('tahun_akademik', 10)->nullable(true);
+            $table->string('jalur_ujian', 20)->nullable(true);
+            $table->string('tahun_akademik', 200)->nullable(true);
             $table->string('deskripsi', 1500)->nullable(true);
             $table->string('created_by', 20)->nullable(true);
             $table->string('updated_by', 20)->nullable(true);

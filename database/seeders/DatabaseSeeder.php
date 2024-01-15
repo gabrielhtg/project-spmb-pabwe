@@ -35,7 +35,17 @@ class DatabaseSeeder extends Seeder
             PrestasiSeeder::class,
             add_beasiswa::class,
             add_faq::class,
-            add_mitra::class
+            add_mitra::class,
+            add_biaya_studi::class,
+            add_biaya_pendaftaran::class,
+            add_data_biaya_admin::class,
+            add_dropdown_admisi::class,
+            add_jadwal_pendaftaran::class,
+            add_persyaratan_prodi::class,
+            add_pdf_biaya::class,
+            add_pedoman_pendaftaran::class,
+            add_sub_jalur_pendaftaran::class,
+            add_data_jadwal_ujian::class,
         ]);
     }
 }
