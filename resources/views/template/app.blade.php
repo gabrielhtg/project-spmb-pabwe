@@ -303,9 +303,9 @@
                 </div>
 
                 <hr>
-
+                
                 <div class="d-flex justify-content-center">
-                    <p>&copy; Made with ❤ by Informatika 21 - BANDAR</p>
+                    <p>&copy; SPMB Institut Teknologi Del-IF 21</p>
                 </div>
             </footer>
         </div>
