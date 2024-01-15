@@ -3,16 +3,20 @@
 namespace Database\Seeders;
 
 use App\Models\Prestasi;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class PrestasiSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        Prestasi::factory()->count(300)->create();
+        DB::table('prestasi')->insert([
+            'jenis_prestasi' => 'Mahasiswa',
+            'photo' => '1.jpg',
+            'deskripsi' => 'Tiga mahasiswa Program Studi Manajemen Rekayasa berhasil lolos seleksi Magang Non Riset Merdeka Belajar Kampus Merdeka (MBKM) di Badan Riset dan Inovasi Nasional (BRIN) dengan topik Preferensi Harga Produk Dalam Negeri.',
+            'judul_prestasi' =>   'Tiga mahasiswa Program Studi Manajemen Rekayasa berhasil lolos seleksi Magang Non Riset Merdeka Belajar Kampus Merdeka (MBKM) di Badan Riset dan Inovasi Nasional (BRIN) dengan topik Preferensi Harga Produk Dalam Negeri.',
+        ]);
     }
 }
