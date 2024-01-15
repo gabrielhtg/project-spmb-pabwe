@@ -34,7 +34,7 @@
                 @foreach($dataPrestasiInstitutOverview as $item)
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="card">
-                            <img src="{{asset($item->photo)}}" class="card-img-top preview" alt="pict1" style="width: 100%; height:30%"/>
+                            <img src="{{asset("assets/img/prestasi/$item->photo")}}" class="card-img-top preview" alt="pict1" style="width: 100%; height:30%"/>
                             <div class="card-body">
                                 <h5 class="card-title">{{$item->judul_prestasi}}</h5>
                                 <p class="card-text">
@@ -53,7 +53,7 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <img src="{{ asset($item->photo) }}" class="card-img-top" alt="pict1"/>
+                                                <img src="{{asset("assets/img/prestasi/$item->photo")}}" class="card-img-top" alt="pict1"/>
                                                 <h5 class="card-title">{{$item->judul_prestasi}}</h5>
                                                 <p>
                                                     {{$item->deskripsi}}
@@ -84,7 +84,7 @@
                 @foreach($dataPrestasiDosenOverview as $item)
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="card">
-                            <img src="{{asset($item->photo)}}" class="card-img-top" alt="pict1" style="width: 100%; height:30%"/>
+                            <img src="{{asset("assets/img/prestasi/$item->photo")}}" class="card-img-top" alt="pict1" style="width: 100%; height:30%"/>
                             <div class="card-body">
                                 <h5 class="card-title">{{$item->judul_prestasi}}</h5>
                                 <p class="card-text">
@@ -103,7 +103,7 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <img src="{{ asset($item->photo) }}" class="card-img-top" alt="pict1"/>
+                                                <img src="{{asset("assets/img/prestasi/$item->photo")}}" class="card-img-top" alt="pict1"/>
                                                 <h5 class="card-title">{{$item->judul_prestasi}}</h5>
                                                 <p>
                                                     {{$item->deskripsi}}
@@ -135,7 +135,7 @@
                 @foreach($dataPrestasiMahasiswaOverview as $item)
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="card">
-                            <img src="{{asset($item->photo)}}" class="card-img-top" alt="pict1" style="width: 100%; height:30%"/>
+                            <img src="{{asset("assets/img/prestasi/$item->photo")}}" class="card-img-top" alt="pict1" style="width: 100%; height:30%"/>
                             <div class="card-body">
                                 <h5 class="card-title">{{$item->judul_prestasi}}</h5>
                                 <p class="card-text">
@@ -154,7 +154,7 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <img src="{{ asset($item->photo) }}" class="card-img-top" alt="pict1"/>
+                                                <img src="{{asset("assets/img/prestasi/$item->photo")}}" class="card-img-top" alt="pict1"/>
                                                 <h5 class="card-title">{{$item->judul_prestasi}}</h5>
                                                 <p>
                                                     {{$item->deskripsi}}
@@ -214,8 +214,7 @@
                 popupButton.addEventListener("click", function () {
                     let popupId = popupButton.getAttribute("data-popup");
                     let popup = createPopUp(popupId);
-                    popup();
-                });
+                    popup();                });
             });
         });
     </script>
