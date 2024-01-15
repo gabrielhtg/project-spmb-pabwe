@@ -15,18 +15,18 @@ return new class extends Migration
             $table->id();
             $table->string('kode_prodi')->unique();
             $table->string('nama');
-            $table->string('kode_fakultas'); // Sesuaikan dengan nama kolom di tabel 'faculties'
-            $table->foreign('kode_fakultas')->references('kode_fakultas')->on('faculties');
+            $table->unsignedBigInteger('kode_fakultas');
+            $table->foreign('kode_fakultas')->references('id')->on('faculties')->onDelete('cascade');
             $table->text('deskripsi');
             $table->string('gambar');
             $table->text('visi');
             $table->text('misi');
-            $table->string('prospek');
+            $table->text('prospek');
             $table->string('gelar');
             $table->string('lama');
             $table->string('biaya');
             $table->text('syarat');
-            $table->text('lokasi');
+            $table->string('lokasi');
             $table->string('akreditasi');
             $table->timestamps();
         });

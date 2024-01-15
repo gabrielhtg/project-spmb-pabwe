@@ -26,7 +26,26 @@ class DatabaseSeeder extends Seeder
             add_email::class,
             add_data_mbkm::class,
             add_infografis_admisi::class,
-            insert_data_akreditasi_institusi::class
+            insert_data_akreditasi_institusi::class,
+            FacultySeeder::class,
+            MajorSeeder::class,
+            CourseSeeder::class,
+            EmployeeSeeder::class,
+            PengumumanSeeder::class,
+            PrestasiSeeder::class,
+            add_beasiswa::class,
+            add_faq::class,
+            add_mitra::class,
+            add_biaya_studi::class,
+            add_biaya_pendaftaran::class,
+            add_data_biaya_admin::class,
+            add_dropdown_admisi::class,
+            add_jadwal_pendaftaran::class,
+            add_persyaratan_prodi::class,
+            add_pdf_biaya::class,
+            add_pedoman_pendaftaran::class,
+            add_sub_jalur_pendaftaran::class,
+            add_data_jadwal_ujian::class,
         ]);
     }
 }

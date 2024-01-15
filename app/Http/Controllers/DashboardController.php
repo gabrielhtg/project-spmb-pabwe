@@ -6,13 +6,11 @@ use App\Models\AkreditasiInstitutiModel;
 use App\Models\AkreditasiSectionModel;
 use App\Models\AlamatInstitusiModel;
 use App\Models\data_institusi;
-use App\Models\DropdownAdmisiModel;
 use App\Models\EmailModel;
 use App\Models\HeroSectionModel;
 use App\Models\InfografisModel;
 use App\Models\JadwalPendaftaranModel;
 use App\Models\JadwalUjianModel;
-use App\Models\JalurPendaftaranModel;
 use App\Models\MbkmModel;
 use App\Models\ModelHeaderAdmisi;
 use App\Models\NomorTeleponModel;
@@ -24,12 +22,17 @@ use App\Models\JenisTes;
 use App\Models\BiayaAdminModel;
 use App\Models\BiayaPendaftaranModel;
 use App\Models\PedomanPendaftaranModel;
+use App\Models\Testimoni;
 use App\Models\BiayaStudi;
+use App\Models\JalurPendaftaranModel;
+use App\Models\DropdownAdmisiModel;
 use Illuminate\Http\Request;
+use App\Models\MitraModel;
 
 class DashboardController extends Controller
 {
-    public function getDashboard () {
+    public function getDashboard()
+    {
         $dataInstitusi = data_institusi::where('id', 1)->first();
         $dataHeroSection = HeroSectionModel::where('id', 1)->first();
         $dataSosmed = SocalMediaModel::all();
@@ -37,6 +40,7 @@ class DashboardController extends Controller
         $akreditasiDashboard = AkreditasiSectionModel::where('id', 1)->first();
         $dataNomorTelepon = NomorTeleponModel::all();
         $dataEmail = EmailModel::all();
+        $dataMitra = MitraModel::all();
         $dataAkreditasiInstitusi = AkreditasiInstitutiModel::all()->sortByDesc('tahun_akreditasi')->first();
 
         $data = [
@@ -48,12 +52,15 @@ class DashboardController extends Controller
             'dataNomorTelepon' => $dataNomorTelepon,
             'dataEmail' => $dataEmail,
             'dataAkreditasiInstitusi' => $dataAkreditasiInstitusi,
+            'dataTestimoni' => Testimoni::orderBy('created_at', 'desc')->take(8)->get(),
+            'dataMitra' => $dataMitra,
         ];
 
         return view('dashboard/dashboard', $data);
     }
 
-    public function getAdmisi () {
+    public function getAdmisi()
+    {
         $dataInstitusi = data_institusi::where('id', 1)->first();
         $dataAlamat = AlamatInstitusiModel::all();
         $dataSosmed = SocalMediaModel::all();
@@ -76,13 +83,14 @@ class DashboardController extends Controller
             'lokasi' => $lokasi,
             'jenis' => $jenis,
             'dataJadwalUjian' => $dataJadwalUjian,
-            'jadwalPendaftaran' =>$jadwalPendaftaran,
+            'jadwalPendaftaran' => $jadwalPendaftaran,
         ];
 
         return view('admisi.admisi-tanggal-penting', $data);
     }
 
-    public function getJalurPendaftaran () {
+    public function getJalurPendaftaran()
+    {
         $dataInstitusi = data_institusi::where('id', 1)->first();
         $dataAlamat = AlamatInstitusiModel::all();
         $dataSosmed = SocalMediaModel::all();
@@ -117,7 +125,8 @@ class DashboardController extends Controller
         return view('admisi.admisi-jalur-pendaftaran', $data);
     }
 
-    public function getBiayaStudi () {
+    public function getBiayaStudi()
+    {
         $dataInstitusi = data_institusi::where('id', 1)->first();
         $dataAlamat = AlamatInstitusiModel::all();
         $dataSosmed = SocalMediaModel::all();
@@ -139,18 +148,19 @@ class DashboardController extends Controller
             'dataNomorTelepon' => $dataNomorTelepon,
             'dataEmail' => $dataEmail,
             'dataNonKompetisi' => $dataNonKompetisi,
-            'dataKompetisi'=>$dataKompetisi,
+            'dataKompetisi' => $dataKompetisi,
             'dataBiaya' => $dataBiaya,
-            'biayaPen'=> $biayaPen,
-            'PdfbiayaPendaftaran'=>$PdfbiayaPendaftaran,
-            'biayaStudis'=>$biayaStudis,
+            'biayaPen' => $biayaPen,
+            'PdfbiayaPendaftaran' => $PdfbiayaPendaftaran,
+            'biayaStudis' => $biayaStudis,
 
         ];
 
         return view('admisi.admisi-biaya-studi', $data);
     }
 
-    public function getPersyaratanKhusus () {
+    public function getPersyaratanKhusus()
+    {
         $dataInstitusi = data_institusi::where('id', 1)->first();
         $dataAlamat = AlamatInstitusiModel::all();
         $dataSosmed = SocalMediaModel::all();
@@ -172,5 +182,4 @@ class DashboardController extends Controller
 
         return view('admisi.admisi-persyaratan-khusus', $data);
     }
-
 }

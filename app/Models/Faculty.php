@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -24,5 +23,10 @@ class Faculty extends Model
     public function major()
     {
         return $this->hasMany(Major::class, 'kode_fakultas', 'id');
+    }
+
+    public function employee()
+    {
+        return $this->hasMany(Employee::class, 'kode_fakultas', 'id');
     }
 }

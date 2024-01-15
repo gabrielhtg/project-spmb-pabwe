@@ -18,7 +18,8 @@
                 @php
                     $i = 1;
                 @endphp
-                @foreach($dataAlamat as $e)
+
+                @forelse($dataAlamat as $e)
                     <tr>
                         <td>{{ $i++ }}</td>
                         <td>{{ $e -> nama }}</td>
@@ -43,40 +44,47 @@
                                         <div class="modal-body text-start">
                                             <input type="hidden" name="id" value="{{ $e -> id }}">
                                             <div class="mb-3">
-                                                <label  class="form-label">
+                                                <label  class="form-label w-100">
                                                     Nama
                                                     <input type="text" class="form-control"
                                                            value="{{ $e->nama }}" disabled>
                                                 </label>
                                             </div>
                                             <div class="mb-3">
-                                                <label class="form-label">
+                                                <label class="form-label w-100">
                                                     Alamat
                                                     <input value="{{ $e->alamat }}" class="form-control" disabled>
                                                 </label>
                                             </div>
                                             <div class="mb-3">
-                                                <label class="form-label">Created By</label>
-                                                <input value="{{ $e->created_by }}" class="form-control" disabled>
+                                                <label class="form-label w-100">
+                                                    Created By
+                                                    <input value="{{ $e->created_by }}" class="form-control" disabled>
+                                                </label>
                                             </div>
                                             <div class="mb-3">
-                                                <label class="form-label">Updated By</label>
-                                                <input value="{{ $e->updated_by }}" class="form-control" disabled>
+                                                <label class="form-label w-100">
+                                                    Updated By
+                                                    <input value="{{ $e->updated_by }}" class="form-control" disabled>
+                                                </label>
                                             </div>
                                             <div class="mb-3">
-                                                <label class="form-label">Created At</label>
-                                                <input value="{{ date("d-m-Y", strtotime($e->created_at)) }}" class="form-control" disabled>
+                                                <label class="form-label w-100">
+                                                    Created At
+                                                    <input value="{{ $e->created_at }}" class="form-control" disabled>
+                                                </label>
                                             </div>
                                             <div class="mb-3">
-                                                <label class="form-label">Updated At</label>
-                                                <input value="{{ date("d-m-Y", strtotime($e->updated_at)) }}" class="form-control" disabled>
+                                                <label class="form-label w-100">
+                                                    Updated At
+                                                    <input value="{{ $e->updated_at }}" class="form-control" disabled>
+                                                </label>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
                                                     data-bs-dismiss="modal">Cancel
                                             </button>
-                                            <button type="submit" class="btn btn-primary">Save</button>
                                         </div>
                                     </div>
                                 </div>
@@ -96,23 +104,31 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                         </div>
-                                        <form action="{{ url('/api/edit-alamat') }}" method="post">
+                                        <form action="{{ route('editAlamat') }}" method="post">
                                             @csrf
                                             <div class="modal-body text-start">
                                                 <input type="hidden" name="id" value="{{ $e -> id }}">
                                                 <div class="mb-3">
                                                     <label for="input_edit_nama_alamat{{$e->id}}"
                                                            class="form-label">Nama</label>
+                                                    <a tabindex="0" class="border-0 bg-white" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-content="Max length 50 characters."><i class="bi bi-info-circle"></i></a>
                                                     <input type="text" class="form-control"
                                                            id="input_edit_nama_alamat{{$e->id}}"
-                                                           name="input_nama_alamat" value="{{ $e->nama }}">
+                                                           name="input_nama_alamat" value="{{ $e->nama }}" required>
+                                                    @error('input_nama_alamat')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="input_edit_alamat{{$e->id}}"
                                                            class="form-label">Alamat</label>
+                                                    <a tabindex="0" class="border-0 bg-white" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-content="Max length 150 characters."><i class="bi bi-info-circle"></i></a>
                                                     <input type="text" class="form-control"
                                                            id="input_edit_alamat{{$e->id}}" name="input_alamat"
-                                                           value="{{ $e->alamat }}">
+                                                           value="{{ $e->alamat }}" required>
+                                                    @error('input_alamat')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
@@ -136,7 +152,13 @@
                             </form>
                         </td>
                     </tr>
-                @endforeach
+                @empty
+                    <tr>
+                        <td colspan="4">
+                            <span class="fs-2">Tidak ada data!</span>
+                        </td>
+                    </tr>
+                @endforelse
                 </tbody>
             </table>
         </div>

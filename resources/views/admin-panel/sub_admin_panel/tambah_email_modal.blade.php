@@ -15,16 +15,24 @@
                 @csrf
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label class="form-label w-100">
+                        <label class="form-label">
                             Nama
-                            <input type="text" class="form-control" name="namaEmail">
                         </label>
+                        <a tabindex="0" class="border-0 bg-white" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-content="Max length 20 characters."><i class="bi bi-info-circle"></i></a>
+                        <input type="text" class="form-control" name="namaEmail" required>
+                        @error('namaEmail')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="mb-3">
-                        <label class="form-label w-100">
+                        <label class="form-label">
                             Email
-                            <input type="text" class="form-control" name="email">
                         </label>
+                        <a tabindex="0" class="border-0 bg-white" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-content="Max length 50 characters."><i class="bi bi-info-circle"></i></a>
+                        <input type="email" class="form-control" name="email" required>
+                        @error('email')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
                 <div class="modal-footer">

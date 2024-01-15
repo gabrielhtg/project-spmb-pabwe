@@ -59,6 +59,21 @@ class add_infografis_admisi extends Seeder
                 'jalur' => 'UTBK',
                 'nomor_urut' => 3
             ],
+            [
+                'gambar' => 'assets/img/flow-pendaftaran-pmdk.jpg',
+                'jalur' => 'JPS',
+                'nomor_urut' => 1
+            ],
+            [
+                'gambar' => 'assets/img/panduan-daftar-ulang.jpg',
+                'jalur' => 'JPS',
+                'nomor_urut' => 2
+            ],
+            [
+                'gambar' => 'assets/img/jalur-seleksi-penerimaan.jpg',
+                'jalur' => 'JPS',
+                'nomor_urut' => 3
+            ],
         ]);
     }
 }

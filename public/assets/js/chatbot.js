@@ -17,7 +17,7 @@ function openTelegram() {
 }
 
 function openWhatsApp() {
-  var phoneNumber = '6285960880625';  
+  var phoneNumber = '6281360758968';  
   var whatsappLink = 'https://api.whatsapp.com/send?phone=' + phoneNumber;
   window.open(whatsappLink, '_blank');
 }

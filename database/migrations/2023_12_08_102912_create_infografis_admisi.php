@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('infografis_admisi', function (Blueprint $table) {
             $table->id();
             $table->string('gambar', 100)->nullable(true);
-            $table->string('jalur', 10)->nullable(true);
+            $table->string('jalur', 5)->nullable(true);
             $table->integer('nomor_urut')->nullable(true);
             $table->string('created_by', 20)->nullable(true);
             $table->string('updated_by', 20)->nullable(true);

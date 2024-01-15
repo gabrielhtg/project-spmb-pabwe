@@ -5,7 +5,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="edit_pers_khusus" tabindex="-1" aria-labelledby="edit_pers_khusus" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5">Edit Data Persyaratan Khusus</h1>
@@ -20,8 +20,9 @@
                         <input type="text" class="form-control" id="inputEditProdi" name="program_studi">
                     </div>
                     <div class="mb-3">
-                        <label for="inputEditDeskripsi" class="form-label">Deskripsi Persyaratan</label>
-                        <textarea class="form-control" id="inputEditDeskripsi" name="deskripsi_persyaratan" rows="4"></textarea>
+                        <label for="inputEditDeskripsi" class="form-label w-100">Deskripsi Persyaratan
+                        <textarea class="inputEditDeskripsi" id="inputEditDeskripsi" name="deskripsi_persyaratan" rows="4" required></textarea>
+                        </label>
                     </div>
                     <div class="mb-3">
                         <img src="" style="height: 120px;" id="previewEditCover" alt="Cover">

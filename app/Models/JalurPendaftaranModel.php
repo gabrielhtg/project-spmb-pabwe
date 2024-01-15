@@ -16,5 +16,6 @@ class JalurPendaftaranModel extends Model
         'desk_pers_umum',
         'created_by',
         'updated_by',
+
     ];
 }

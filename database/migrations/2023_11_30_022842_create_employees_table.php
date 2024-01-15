@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
             $table->string('kode_prodi');
-            $table->foreign('kode_prodi')->references('kode_prodi')->on('majors');
-            // $table->string('fakultas'); 
-            // $table->foreign('fakultas')->references('kode_fakultas')->on('faculties');
+            $table->foreign('kode_prodi')->references('kode_prodi')->on('majors')->onDelete('cascade');
+            $table->unsignedBigInteger('kode_fakultas');
+            $table->foreign('kode_fakultas')->references('kode_fakultas')->on('majors')->onDelete('cascade');
             $table->string('nama');
             $table->string('nidn');
             $table->string('jabatan');

@@ -14,7 +14,6 @@ class AdminController extends Controller
 {
     public function addAdmin(Request $request)
     {
-        $activeAdmin = Auth::user();
         $profile_pict = '';
 
         if ($request->profile_pict) {
@@ -63,53 +62,62 @@ class AdminController extends Controller
                 'password' => Hash::make($request->password),
                 'firstname' => $request->firstname,
                 'lastname' => $request->lastname,
-                'created_by' => $activeAdmin->username,
+                'created_by' => $request->id,
                 'username' => $request->username,
                 'profile_pict' => $profile_pict,
                 'created_at' => now(),
                 'udpated_at' => now()
             ]);
         } catch (\Exception $e) {
-            return redirect()->route('admins');
+//            return redirect()->route('admins');
         }
 
-        return redirect()->route('admins');
+        return redirect()->back()->with('success', 'Admin berhasil ditambahkan!');
     }
 
     public function editAdmin(Request $request)
     {
-        $admin = AdminModel::where('id', Auth::user()->id)->first();
+        try {
+            $admin = AdminModel::where('id', $request->id)->first();
 
-        if ($request->profile_pict) {
             $request->validate([
-                'profile_pict' => 'image|mimes:jpeg,png,jpg|max:1024',
+                'username' => 'required|max:20',
+                'firstname' => 'required|max:25',
+                'lastname' => 'required|max:25',
             ]);
 
-            // Mengambil file yang sudah divalidasi dari request
-            $photo = $request->file('profile_pict');
+            if ($request->profile_pict) {
+                $request->validate([
+                    'profile_pict' => 'image|mimes:jpeg,png,jpg|max:1024',
+                ]);
 
-            // Membuat nama unik untuk file yang diunggah
-            $filename = $request->username . '_profile_pict.' . $photo->getClientOriginalExtension();
+                // Mengambil file yang sudah divalidasi dari request
+                $photo = $request->file('profile_pict');
 
-            // Menentukan direktori tempat penyimpanan file di dalam direktori 'public'
-            $directory = public_path('assets/img/admin/');
+                // Membuat nama unik untuk file yang diunggah
+                $filename = $request->username . '_profile_pict.' . $photo->getClientOriginalExtension();
 
-            //Pindahkan file ke direktori yang diinginkan
-            $photo->move($directory, $filename);
+                // Menentukan direktori tempat penyimpanan file di dalam direktori 'public'
+                $directory = public_path('assets/img/admin/');
 
-            $profile_pict = 'assets/img/admin/' . $filename;
-            $admin->profile_pict = $profile_pict;
+                //Pindahkan file ke direktori yang diinginkan
+                $photo->move($directory, $filename);
 
+                $profile_pict = 'assets/img/admin/' . $filename;
+                $admin->profile_pict = $profile_pict;
+            }
+
+            $admin->username = $request->username;
+            $admin->firstname = $request->firstname;
+            $admin->lastname = $request->lastname;
+            $admin->updated_at = now();
+
+            $admin->save();
+
+            return redirect()->back()->with('success', 'Berhasil edit data Admin');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Gagal edit data Admin');
         }
-
-        $admin->username = $request->username;
-        $admin->firstname = $request->firstname;
-        $admin->lastname = $request->lastname;
-        $admin->updated_at = now();
-
-        $admin->save();
-
-        return redirect()->back();
     }
 
     public function removeAdmin(Request $request)
@@ -145,7 +153,7 @@ class AdminController extends Controller
             'newRePassword' => "max:80|required|min:5",
         ]);
 
-        $admin = AdminModel::where('id', Auth::user()->id)->first();
+        $admin = AdminModel::where('id', $request->id)->first();
 
         if (Hash::check($request->oldPassword, $admin->password)) {
             if ($request->newPassword === $request->newRePassword) {
@@ -153,7 +161,7 @@ class AdminController extends Controller
 
                 $admin->update();
 
-                return redirect()->route('logout');
+                return redirect()->route('logout')->with('success', 'Berhasil Ganti Password');
             }
         }
 
@@ -161,47 +169,79 @@ class AdminController extends Controller
     }
 
     public function editNomorTelepon (Request $request) {
-        $data = NomorTeleponModel::where("id", $request->id)->first();
+       try {
+           $request->validate([
+               'nama' => 'required|string|max:20',
+               'nomor_telepon' => 'required|max:15'
+           ]);
 
-        $data->nama = $request->nama;
-        $data->nomor_telepon = $request->nomor_telepon;
-        $data->updated_by = Auth::user()->username;
-        $data->updated_at = now();
+           $data = NomorTeleponModel::where("id", $request->id)->first();
 
-        $data->update();
+           $data->nama = $request->nama;
+           $data->nomor_telepon = $request->nomor_telepon;
+           $data->updated_by = Auth::user()->username;
+           $data->updated_at = now();
 
-        return redirect()->route('admin-panel');
+           $data->update();
+
+           return redirect()->route('admin-panel')->with('success', 'Berhasil edit nomor telepon');
+       } catch (\Exception $e) {
+           return redirect()->route('admin-panel')->with('error', 'Gagal edit nomor telepon');
+       }
     }
 
     public function addEmail (Request $request) {
-        EmailModel::create([
-            'nama' => $request->namaEmail,
-            'email' => $request->email,
-            'created_at' => now(),
-            'updated_at' => now(),
-            'created_by' => Auth::user()->username,
-            'updated_by' => Auth::user()->username,
-        ]);
+        try {
+            $request->validate([
+                'namaEmail' => 'required|max:20',
+                'email' => 'required|max:50'
+            ]);
 
-        return redirect()->route('admin-panel');
+            EmailModel::create([
+                'nama' => $request->namaEmail,
+                'email' => $request->email,
+                'created_at' => now(),
+                'updated_at' => now(),
+                'created_by' => Auth::user()->username,
+                'updated_by' => Auth::user()->username,
+            ]);
+
+            return redirect()->route('admin-panel')->with('success', 'Berhasil menambah email baru');
+        } catch (\Exception $e) {
+            return redirect()->route('admin-panel')->with('error', 'Gagal menambah email baru');
+        }
     }
 
     public function removeEmail (Request $request) {
-        EmailModel::where('id', $request->id)->first()->delete();
+        try {
+            EmailModel::where('id', $request->id)->first()->delete();
 
-        return redirect()->route('admin-panel');
+            return redirect()->route('admin-panel')->with('success', 'Berhasil hapus email.');
+        } catch (\Exception $e) {
+            return redirect()->route('admin-panel')->with('error', 'Gagal hapus email.');
+        }
     }
 
     public function editEmail (Request $request) {
-        $data = EmailModel::where("id", $request->id)->first();
+        try {
+            $request->validate([
+                'inputNamaEmail' => 'required|max:20',
+                'email' => 'required|max:50'
+            ]);
 
-        $data->nama = $request->inputNamaEmail;
-        $data->email = $request->email;
-        $data->updated_by = Auth::user()->username;
-        $data->updated_at = now();
+            $data = EmailModel::where("id", $request->id)->first();
 
-        $data->update();
+            $data->nama = $request->inputNamaEmail;
+            $data->email = $request->email;
+            $data->updated_by = Auth::user()->username;
+            $data->updated_at = now();
 
-        return redirect()->route('admin-panel');
+            $data->update();
+
+            return redirect()->route('admin-panel')->with('success', 'Berhasil edit email');
+        } catch (\Exception $e) {
+            return redirect()->route('admin-panel')->with('error', 'Gagal edit email');
+        }
     }
+    
 }

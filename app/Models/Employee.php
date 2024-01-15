@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -13,6 +12,7 @@ class Employee extends Model
 
     protected $fillable = [
         'kode_prodi',
+        'kode_fakultas',
         'nama',
         'nidn',
         'jabatan',
@@ -23,5 +23,10 @@ class Employee extends Model
     public function major()
     {
         return $this->belongsTo(Major::class, 'kode_prodi', 'kode_prodi');
+    }
+
+    public function faculty()
+    {
+        return $this->belongsTo(Faculty::class, 'kode_fakultas', 'kode_fakultas');
     }
 }
