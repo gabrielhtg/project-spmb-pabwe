@@ -22,7 +22,12 @@
                     </div>
                     <div class="mb-3">
                         <label for="prodi" class="form-label">Prodi</label>
-                        <input type="text" class="form-control" id="prodi" name="prodi">
+                        <select class="form-select" id="prodi" name="prodi">
+                            <option value="">-- Pilih Prodi --</option>
+                            @foreach($dataProdi as $itemProdi)
+                                <option value="{{ $itemProdi->kode_prodi }}">{{ $itemProdi->nama }}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label for="angkatan" class="form-label">Angkatan</label>
@@ -41,13 +46,13 @@
                     </div>
                     <div class="mb-3">
                         <label for="gambar" class="form-label">Foto</label>
-                        <input type="file" class="form-control" id="gambar" name="gambar">
+                        <input type="file" class="form-control" id="gambar" name="gambar" accept="image/png, image/gif, image/jpeg">
                     </div>
                 </div>
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Ubah</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
                 </div>
             </form>
         </div>

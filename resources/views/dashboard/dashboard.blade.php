@@ -287,13 +287,13 @@
                                         </div>
 
                                         <div class="pill d-inline text-muted">
-                                            {{ $itemTestimoni->prodi }}
+                                            {{ $itemTestimoni->major->nama }}
                                         </div>
                                     </div>
                                     <div class="d-flex justify-content-center align-items-center border border-1 rounded p-3"
                                         style="height: 200px;">
                                         <p class="card-text fs-7">
-                                            {{ $itemTestimoni->deskripsi }}
+                                            {{ substr($itemTestimoni->deskripsi, 0, 236) }}
                                         </p>
                                     </div>
                                 </div>

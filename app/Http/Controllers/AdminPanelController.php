@@ -9,6 +9,7 @@ use App\Models\AlamatInstitusiModel;
 use App\Models\BiayaStudi;
 use App\Models\data_institusi;
 use App\Models\Fasilitas;
+use App\Models\Header_Prestasi;
 use App\Models\Pengumuman;
 use App\Models\EmailModel;
 use App\Models\HeroSectionModel;
@@ -297,7 +298,7 @@ class AdminPanelController extends Controller
     {
         $admin = Auth::user();
         $data = [
-            'indexActive' => 2,
+            'indexActive' => 3,
             'admin' => $admin
         ];
         return view('admin-panel.sub_admin_panel.pengumumanAddpanel', $data);
@@ -767,7 +768,7 @@ class AdminPanelController extends Controller
         $courses = Course::all();
 
         $data = [
-            'indexActive' => 2,
+            'indexActive' => 4,
             'admin' => $admin,
             'faculties'=>$faculties,
             'majors'=>$majors,
@@ -779,10 +780,27 @@ class AdminPanelController extends Controller
 
     public function getPrestasiPanel () {
         $admin = Auth::user();
+
+        if (Header_Prestasi::first())
+        {
+            $judulPrestasi = Header_Prestasi::first()->judul;
+            $deskripsiPrestasi = Header_Prestasi::first()->deskripsi;
+            $fotoPrestasi = Header_Prestasi::first()->foto;
+        } else {
+            $judulPrestasi = "Prestasi";
+            $deskripsiPrestasi = "Prestasi";
+            $fotoPrestasi = "assets/img/prestasi/prestasi-header.JPG";
+        }
+
         $data = [
-            'indexActive' => 2,
+            'indexActive' => 5,
             'admin' => $admin,
             'dataPrestasi' => Prestasi::orderBy('created_at', 'desc')->get(),
+            'headerPrestasi' => [
+                'judul' => $judulPrestasi,
+                'deskripsi' => $deskripsiPrestasi,
+                'foto' => $fotoPrestasi,
+            ],
         ];
         return view('admin-panel.prestasi_panel', $data);
     }
@@ -792,8 +810,9 @@ class AdminPanelController extends Controller
         $admin = Auth::user();
 
         $data = [
-            'indexActive' => 2,
+            'indexActive' => 6,
             'admin' => $admin,
+            'dataProdi' => Major::all(),
             'dataTestimoni' => Testimoni::orderBy('created_at', 'desc')->get(),
         ];
 
