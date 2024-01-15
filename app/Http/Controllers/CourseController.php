@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Course;
-use App\Models\Employee;
 use App\Models\data_institusi;
+use Illuminate\Validation\Rule;
+
 
 class CourseController extends Controller
 {
@@ -23,55 +24,61 @@ class CourseController extends Controller
     }
 
     public function store(Request $request)
+        {
+            $request->validate([
+                'kode_prodi' => 'required|array', // Memastikan input kode_prodi adalah array
+                'kode_mk' => 'required',
+                'nama' => 'required',
+                'sks' => 'required|integer|between:1,4',
+                'semester' => 'required|integer|between:1,8',
+                Rule::unique('courses')->where(function ($query) use ($request) {
+                    return $query->whereIn('kode_prodi', $request->kode_prodi); // Menggunakan whereIn untuk multiple kode_prodi
+                }),
+            ]);
+
+            foreach ($request->kode_prodi as $kode_prodi) {
+                $course = new Course([
+                    'kode_prodi' => $kode_prodi,
+                    'kode_mk' => $request->get('kode_mk'),
+                    'nama' => $request->get('nama'),
+                    'sks' => $request->get('sks'),
+                    'semester' => $request->get('semester'),
+                ]);
+
+                $course->save();
+            }
+
+            return redirect('admin-panel/program')->with('success', 'Course added successfully!');
+        }
+
+
+    public function update(Request $request, String $id)
     {
         $request->validate([
-            'kode_prodi' => 'required', // Sesuaikan dengan nama atribut yang benar
+            'kode_prodi' => 'required',
             'kode_mk' => 'required',
             'nama' => 'required',
-            'sks' => 'required',
-            'semester' => 'required',
+            'sks' => 'required|integer|between:1,4',
+            'semester' => 'required|integer|between:1,8',
+            Rule::unique('courses')->where(function ($query) use ($request) {
+                return $query->where('kode_prodi', $request->kode_prodi);
+            })->ignore($id),
         ]);
 
-        $course = new Course([
+        $course = Course::findOrFail($id);
+
+        $updatedCourse = [
             'kode_prodi' => $request->get('kode_prodi'),
             'kode_mk' => $request->get('kode_mk'),
             'nama' => $request->get('nama'),
             'sks' => $request->get('sks'),
             'semester' => $request->get('semester'),
-        ]);
+        ];
 
-        $course->save();
+        $course->update($updatedCourse);
 
-        return redirect('admin-panel/program')->with('success', 'Course added successfully!');
+        return redirect('admin-panel/program')->with('success', 'Course updated successfully!');
     }
-
-    public function update(Request $request, String $id)
-{
-    $request->validate([
-        'kode_prodi' => 'required', // Sesuaikan dengan nama atribut yang benar
-        'kode_mk' => 'required',
-        'nama' => 'required',
-        'sks' => 'required',
-        'semester' => 'required',
-    ]);
-
-    // dd($request);
-
-    $course = Course::findOrFail($id);
-
-    $updatedCourse = [
-        'kode_prodi' => $request->get('kode_prodi'),
-        'kode_mk' => $request->get('kode_mk'),
-        'nama' => $request->get('nama'),
-        'sks' => $request->get('sks'),
-        'semester' => $request->get('semester'),
-    ];
-
-    $course->update($updatedCourse);
-
-    return redirect('admin-panel/program')->with('success', 'Course updated successfully!');
-}
-
 public function destroy(string $id)
 {
     $course = Course::find($id);
@@ -88,7 +95,19 @@ public function destroy(string $id)
 }
 
 
-    
+public function deleteAll(Request $request)
+{
+    $ids = $request->ids;
+
+    if (count($ids) > 0) {
+        Course::whereIn('id', $ids)->delete();
+        return redirect('admin-panel/program')->with('success', 'Courses deleted successfully!');
+    } else {
+        return redirect('admin-panel/program')->with('error', 'No courses selected for deletion.');
+    }
+}
+
+
     
 
 }

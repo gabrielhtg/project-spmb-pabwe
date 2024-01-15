@@ -243,4 +243,5 @@ class AdminController extends Controller
             return redirect()->route('admin-panel')->with('error', 'Gagal edit email');
         }
     }
+    
 }
