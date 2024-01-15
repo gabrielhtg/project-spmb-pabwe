@@ -1,0 +1,90 @@
+.mt-6 {
+    margin-top: 300px;
+}
+
+.pt-6 {
+    padding-top: 150px;
+}
+
+.card-admisi {
+    width: 100%;
+}
+
+.tombol-admisi {
+    padding: 5px 30px;
+    background-color: #47a5d4;
+    border-style: none;
+}
+
+.persyaratan-khusus-line {
+    background-color: black;
+    height: 1px;
+    width: 230px;
+    transition: all 0.3s ease;
+}
+
+.persyaratan-khusus-line-mobile {
+    background-color: black;
+    height: 1px;
+    width: 160px;
+    transition: all 0.3s ease;
+}
+
+.biaya-studi-line {
+    background-color: black;
+    height: 1px;
+    width: 140px;
+    transition: all 0.3s ease;
+}
+
+.biaya-studi-line-mobile {
+    background-color: black;
+    height: 1px;
+    width: 100px;
+    transition: all 0.3s ease;
+}
+
+.gambar {
+    width: 500px;
+    height: 280px;
+    background-color: #148ce4;
+}
+
+.garis-biaya {
+    width: 70px;
+    height: 1px;
+    background-color: #47a5d4;
+}
+.button-1 a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3490dc;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.button-1 a:hover {
+    background-color: #2779bd;
+}
+
+/* .custom-btn {
+    background-color: #ffffff;
+    color: #0d6efd;
+    border: 0.5px solid #0d6efd;
+}
+
+.custom-btn:hover {
+    background-color: white;
+    font-weight: 700;
+    box-shadow: 0 6px 12px #22a9fe;
+} */
+
+/* .custom-btn-1:hover {
+    background-color: white;
+    color: #0d6efd;
+    font-weight: 700;
+    border: 2px solid #0d6efd;
+    box-shadow: 0 3px 6px #22a9fe;
+} */
