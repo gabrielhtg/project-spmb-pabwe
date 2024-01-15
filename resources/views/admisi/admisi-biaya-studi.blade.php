@@ -45,7 +45,7 @@
                     <th scope="col" class="text-white fw-semibold" style="background-color: #47A5D4">Fakultas</th>
                     <th scope="col" class="text-white fw-semibold" style="background-color: #47A5D4">Program Studi</th>
                     <th scope="col" class="text-white fw-semibold" style="background-color: #47A5D4">Biaya SPP (Rp)</th>
-                    <th scope="col" class="text-white fw-semibold" style="background-color: #47A5D4">Uang Pengembangan (Rp)</th>
+                    <th scope="col" class="text-white fw-semibold" style="background-color: #47A5D4">Uang Pengembangan (Rp) + N X 1000000 (min N = 1)</th>
                     <th scope="col" class="text-white fw-semibold" style="background-color: #47A5D4">Uang Pangkal (Rp)</th>
                     <th scope="col" class="text-white fw-semibold" style="background-color: #47A5D4">Perlengkapan Mahasiswa (Rp)</th>
                     <th scope="col" class="text-white fw-semibold" style="background-color: #47A5D4">Perlengkapan Makan (Rp)</th>
@@ -63,8 +63,8 @@
                                 <td rowspan="{{ $rowSpan }}" style="font-size: 13px;">{{ $fakultas }}</td>
                             @endif
                             <td style="font-size: 13px;">{{ $biaya->pro_stud }}</td>
-                            <td style="font-size: 13px;">{{ $biaya->biaya_spp }}</td>
-                            <td style="font-size: 13px;">{{ $biaya->uang_pengembangan }}</td>
+                            <td style="font-size: 13px;">{{ number_format($biaya->biaya_spp, 0, ',','.') }}</td>
+                            <td style="font-size: 13px;">{{ number_format($biaya->uang_pengembangan, 0, ',','.') }}</td>
                             <td style="font-size: 13px;">{{ number_format($biaya->uang_pangkal, 0, ',','.') }}</td>
                             <td style="font-size: 13px;">{{ number_format($biaya->perlengkapan_mahasiswa, 0, ',','.') }}</td>
                             <td style="font-size: 13px;">{{ number_format($biaya->perlengkapan_makan, 0, ',','.') }}</td>
@@ -120,7 +120,7 @@
                         <td>{{ number_format($biaya->biayawisuda, 0, ',', '.') }}</td>
                     </tr>
                     <tr>
-                        <td>Biaya Deposit Toga (Rp)</td>
+                        <td>Biaya Deposit Toga (Rp) yang akan dikembalikan bila toga dikembalikan ke IT Del dalam keadaan baik</td>
                         <td>{{ number_format($biaya->biayadeposit, 0, ',', '.') }}</td>
                     </tr>
                     <!-- Add similar code for other input fields -->

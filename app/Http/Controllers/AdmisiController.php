@@ -37,18 +37,18 @@ class AdmisiController extends Controller
             'tahun_akademik.required' => 'Tahun akademik harus diisi',
             'deskripsi.required' => 'Deskripsi harus diisi',
         ]);
-    
+
         if ($validator->fails()) {
             return redirect()->route('admisi-panel')
                 ->withErrors($validator)
                 ->withInput()
                 ->with('error', 'Terjadi kesalahan: ' . $validator->errors()->first());
         }
-    
+
         try {
             // Dapatkan username dari pengguna yang sedang login
             $username = Auth::user()->username;
-    
+
             // Buat JadwalUjianModel jika validasi sukses
             JadwalUjianModel::create([
                 'jalur_ujian' => $request->jalur_ujian,
@@ -59,7 +59,7 @@ class AdmisiController extends Controller
                 'created_by' => $username,
                 'updated_by' => $username,
             ]);
-    
+
             // Jika berhasil, tambahkan pesan sukses ke dalam session
             return redirect()->route('admisi-panel')->with('success', 'Jadwal ujian berhasil ditambahkan');
         } catch (\Exception $e) {
@@ -67,25 +67,25 @@ class AdmisiController extends Controller
             return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage())->withInput();
         }
     }
-    
-    
+
+
 
     public function removeJadwalUjian(Request $request) {
         try {
             $jadwalUjian = JadwalUjianModel::find($request->id);
-    
+
             if (!$jadwalUjian) {
                 return redirect()->back()->with('error', 'Data tidak ditemukan');
             }
-    
+
             $jadwalUjian->delete();
-    
+
             return redirect()->back()->with('success', 'Data jadwal ujian berhasil dihapus');
         } catch (\Exception $e) {
             return redirect()->back()->withErrors('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
     }
-    
+
     public function editJadwalUjian(Request $request) {
         // Validasi input
         $validator = Validator::make($request->all(), [
@@ -97,23 +97,23 @@ class AdmisiController extends Controller
             'tahunAkademik.required' => 'Tahun akademik harus diisi',
             'deskripsi.required' => 'Deskripsi harus diisi',
         ]);
-    
+
         if ($validator->fails()) {
             return redirect()->route('admisi-panel')
                 ->withErrors($validator)
                 ->withInput()
                 ->with('error', 'Terjadi kesalahan: ' . $validator->errors()->first());
         }
-    
+
         try {
             $username = Auth::user()->username;
-    
+
             $dataJadwalUjian = JadwalUjianModel::find($request->id);
-    
+
             if (!$dataJadwalUjian) {
                 return redirect()->back()->with('error', 'Data tidak ditemukan');
             }
-    
+
             // Update data jika validasi sukses
             $dataJadwalUjian->jalur_ujian = $request->jalurUjian;
             $dataJadwalUjian->tahun_akademik = $request->tahunAkademik;
@@ -121,7 +121,7 @@ class AdmisiController extends Controller
             $dataJadwalUjian->updated_by = $username;
             $dataJadwalUjian->updated_at = now();
             $dataJadwalUjian->save();
-    
+
             // Jika berhasil, tambahkan pesan sukses ke dalam session
             return redirect()->back()->with('success', 'Data jadwal ujian berhasil diperbarui');
         } catch (\Exception $e) {
@@ -129,7 +129,7 @@ class AdmisiController extends Controller
             return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage())->withInput();
         }
     }
-    
+
     public function setHeader(Request $request)
 {
     $modelAdmisi = ModelHeaderAdmisi::where('id', 1)->first();
@@ -670,7 +670,7 @@ public function addInfografis(Request $request)
             ->withErrors($validator)
             ->withInput()
             ->with('error', 'Terjadi kesalahan: ' . $validator->errors()->first());
-    }    
+    }
 
     try{
         $dataBiaya = BiayaAdminModel::first();
@@ -716,7 +716,7 @@ public function addInfografis(Request $request)
                 ->withInput()
                 ->with('error', 'Terjadi kesalahan: ' . $validator->errors()->first());
         }
-    
+
         try {
             JadwalPendaftaranModel::create([
                 'jenis_jalur' => $request->jenis_jalur,
@@ -724,13 +724,13 @@ public function addInfografis(Request $request)
                 'created_by' => Auth::user()->username,
                 'updated_by' => Auth::user()->username,
             ]);
-    
+
             return redirect()->route('admisi-panel')->with('success', 'Jadwal pendaftaran berhasil ditambahkan.');
         } catch (\Exception $e) {
             return back()->withInput()->withErrors(['error' => 'Terjadi kesalahan: Semua kolom harus diisi.']);
         }
     }
-    
+
     public function editJadwalPendaftaran(Request $request)
     {
         $validator = Validator::make($request->all(),[
@@ -747,26 +747,26 @@ public function addInfografis(Request $request)
                 ->withInput()
                 ->with('error', 'Terjadi kesalahan: ' . $validator->errors()->first());
         }
-    
+
         try {
             $jadwal = JadwalPendaftaranModel::find($request->id);
-    
+
             if (!$jadwal) {
                 return redirect()->route('admisi-panel')->with('error', 'Data Jadwal Pendaftaran tidak ditemukan.');
             }
-    
+
             $jadwal->update([
                 'jenis_jalur' => $request->jenis_jalur,
                 'tanggal_pendaftaran' => $request->tanggal_pendaftaran,
                 'updated_by' => Auth::user()->username
             ]);
-    
+
             return redirect()->route('admisi-panel')->with('success', 'Jadwal Pendaftaran berhasil diubah.');
         } catch (\Exception $e) {
             return back()->withInput()->withErrors(['error' => 'Terjadi kesalahan saat mengubah jadwal pendaftaran.']);
         }
     }
-    
+
 
     public function removeJadwalPendaftaran(Request $request, $jadwalPendaftaran_id)
 {
@@ -789,7 +789,7 @@ public function addInfografis(Request $request)
     $validator = Validator::make($request->all(), [
         'program_studi' => 'required|string',
         'deskripsi_persyaratan' => 'required|string',
-        'cover' => 'required|image|max:2048',
+        'cover' => 'required',
     ], [
         'program_studi.required' => 'Kolom Program Studi harus diisi.',
         'deskripsi_persyaratan.required' => 'Kolom Deskripsi Persyaratan harus diisi.',
@@ -983,7 +983,7 @@ public function editBiayaPendaftaran(Request $request)
         }
     }
 
-    
+
     public function addPedomanPendaftaran(Request $request)
 {
     $validator = Validator::make($request->all(),[
@@ -1205,7 +1205,7 @@ public function editBiayaStudi(Request $request)
             'perlengkapan_mahasiswa' => $request->perlengkapan_mahasiswa,
             'perlengkapan_makan' => $request->perlengkapan_makan,
         ]);
-        
+
         return redirect()->route('admisi-panel')->with('success', 'Data berhasil diperbarui!');
     } catch(\Exception $e) {
         return back()->withInput()->withErrors(['error' => 'Terjadi kesalahan saat memperbarui data.']);
@@ -1218,7 +1218,7 @@ public function removeBiayaStudi(Request $request)
 {
     try {
         $biayaStudi = BiayaStudi::find($request->id);
-        
+
         if (!$biayaStudi) {
             return redirect()->route('admisi-panel')->with('error', 'Data tidak ditemukan.');
         }

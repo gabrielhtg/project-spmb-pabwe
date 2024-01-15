@@ -70,8 +70,8 @@
                                     {{$prodi->program_studi}}</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <div class="modal-body d-flex align-items-center text-center" style="padding:0 80px;">
-                                {{$prodi->deskripsi_persyaratan}}
+                            <div class="modal-body d-flex align-items-center " style="padding:0 80px;">
+                                {!! $prodi->deskripsi_persyaratan !!}
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>

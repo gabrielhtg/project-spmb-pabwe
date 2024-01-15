@@ -1295,7 +1295,7 @@
                             <th scope="col">Fakultas</th>
                             <th scope="col">Program Studi</th>
                             <th scope="col">Biaya SPP (Rp)</th>
-                            <th scope="col">Uang Pengembangan (Rp)</th>
+                            <th scope="col">Uang Pengembangan (Rp) +  N X 1000000 (min N = 1)</th>
                             <th scope="col">Uang Pangkal (Rp)</th>
                             <th scope="col">Perlengkapan Mahasiswa (Rp)</th>
                             <th scope="col">Perlengkapan Makan (Rp)</th>
@@ -1311,8 +1311,8 @@
                         <td>{{ $i++}}</td>
                         <td>{{ $biayaStudi->fakultas }}</td>
                         <td>{{ $biayaStudi->pro_stud }}</td>
-                        <td>{{ $biayaStudi->biaya_spp }}</td>
-                        <td>{{ $biayaStudi->uang_pengembangan }}</td>
+                        <td>{{ number_format($biayaStudi->biaya_spp, 0, ',', '.') }}</td>
+                        <td>{{ number_format($biayaStudi->uang_pengembangan, 0, ',', '.') }}</td>
                         <td>{{ number_format($biayaStudi->uang_pangkal, 0, ',', '.') }}</td>
                         <td>{{ number_format($biayaStudi->perlengkapan_mahasiswa, 0, ',', '.') }}</td>
                         <td>{{ number_format($biayaStudi->perlengkapan_makan, 0, ',', '.') }}</td>
@@ -1329,7 +1329,7 @@
                                 </button>
                                 </form>
                         </div>
-                                
+
                                 <!-- Modal -->
                                 <div class="modal fade" id="edit_biaya_studi" tabindex="-1" aria-labelledby="edit_biaya_studi" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered">
@@ -1391,7 +1391,6 @@
 
                   <div class="card-body">
                       @include('admin-panel.sub_admisi_panel.add_pers_khusus')
-                      <form action="">
                           <table class="table table-striped">
                               <thead>
                               <tr>
@@ -1410,12 +1409,10 @@
                                   <tr>
                                       <td>{{ $i++ }}</td>
                                       <td>{{$prodi->program_studi}}</td>
-                                      <td>{{$prodi->deskripsi_persyaratan}}</td>
+                                      <td>{!! $prodi->deskripsi_persyaratan !!}</td>
                                       <td><img src="{{asset($prodi->cover)}}" style="height: 64px;" alt="Cover"></td>
                                       <td>
                                         <div class="d-flex justify-content-center w-100 gap-2">
-                                        <form action="{{ route('post.delete.prodi', ['id' => $prodi->id]) }}">
-                                          </form>
                                           @include('admin-panel.sub_admisi_panel.edit_pers_khusus')
                                           <form action="{{ route('post.delete.prodi', ['id' => $prodi->id]) }}" method="POST" onsubmit="return confirm('Apakah anda yakin ingin menghapus data?')">
                                               @csrf
@@ -1423,18 +1420,17 @@
                                               <input type="hidden" name="id" value="{{ $prodi->id }}">
                                               <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i></button>
                                           </form>
-                                        </div> 
+                                        </div>
                                       </td>
                                   </tr>
                               @endforeach
                               </tbody>
                           </table>
-                      </form>
                   </div>
               </div>
           </div>
 
-          
+
 
         </div>
     </div>
@@ -1514,6 +1510,20 @@
 
         $(document).ready(function() {
             $('.isi-dropdown-edit').summernote({
+                maxHeight: 250,
+            });
+        });
+    </script>
+
+<script>
+        $(document).ready(function() {
+            $('#inputEditDeskripsi').summernote({
+                maxHeight: 250,
+            });
+        });
+
+        $(document).ready(function() {
+            $('#deskripsi_khusus').summernote({
                 maxHeight: 250,
             });
         });
