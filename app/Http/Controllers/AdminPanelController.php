@@ -39,6 +39,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Mockery\Exception;
+use App\Models\CoverFaq;
+use App\Models\Faq;
+use App\Models\MitraModel;
+use Illuminate\Http\Response;
+use Symfony\Component\HttpFoundation\Response as ResponseAlias;
+use App\Models\Form;
+use App\Models\Beasiswa;
 
 class AdminPanelController extends Controller
 {
@@ -53,6 +60,7 @@ class AdminPanelController extends Controller
         $dataNomorTelepon = NomorTeleponModel::all();
         $dataEmail = EmailModel::all();
         $dataAkreditasiInstitusi = AkreditasiInstitutiModel::all()->sortByDesc('tahun_akreditasi');
+        $dataMitra = MitraModel::all();
 
         $data = [
             'indexActive' => 0,
@@ -64,7 +72,8 @@ class AdminPanelController extends Controller
             'dataAkreditasiDashboard' => $dataAkreditasiDashboard,
             'dataNomorTelepon' => $dataNomorTelepon,
             'dataEmail' => $dataEmail,
-            'dataAkreditasiInstitusi' => $dataAkreditasiInstitusi
+            'dataAkreditasiInstitusi' => $dataAkreditasiInstitusi,
+            'dataMitra' => $dataMitra,
         ];
 
         return view('admin-panel.adminpanel', $data);
@@ -809,4 +818,226 @@ class AdminPanelController extends Controller
 
         return view('admin-panel.testimoni_panel', $data);
     }
+
+    public function addMitra (Request $request) {
+        $request->validate([
+            'input_logo' => 'image|mimes:jpeg,png,jpg|max:1024',
+        ]);
+
+        // Mengambil file yang sudah divalidasi dari request
+        $photo = $request->file('input_logo');
+
+        // Membuat nama unik untuk file yang diunggah
+        $filename = time() . '_mitra.' . $photo->getClientOriginalExtension();
+
+        // Menentukan direktori tempat penyimpanan file di dalam direktori 'public'
+        $directory = public_path('assets/img/dashboard/mitra');
+
+        //Pindahkan file ke direktori yang diinginkan
+        $photo->move($directory, $filename);
+
+        MitraModel::create([
+            'nama' => $request->input_nama_mitra,
+            'logo' => 'assets/img/dashboard/mitra/' . $filename,
+            'created_by' => Auth::user()->username
+        ]);
+
+        return redirect()->route('admin-panel');
+    }
+
+    public function editMitra(Request $request)
+    {
+        $username = Auth::user()->username;
+        $mitra = MitraModel::where('id', $request->id)->first();
+    
+        if (!$mitra) {
+            // Handle the case where MitraModel with the given ID is not found
+            return redirect()->back()->with('error', 'Mitra not found');
+        }
+    
+        $mitra->nama = $request->input_nama_mitra;
+        
+        if ($request->input_logo) {
+            $request->validate([
+                'input_logo' => 'image|mimes:jpeg,png,jpg|max:1024',
+            ]);
+    
+            // Mengambil file yang sudah divalidasi dari request
+            $photo = $request->file('input_logo');
+    
+            // Membuat nama unik untuk file yang diunggah
+            $filename = time() . '_logo_mitra.' . $photo->getClientOriginalExtension();
+    
+            // Menentukan direktori tempat penyimpanan file di dalam direktori 'public'
+            $directory = public_path('assets/img/dashboard/mitra/');
+    
+            // Pindahkan file ke direktori yang diinginkan
+            $photo->move($directory, $filename);
+    
+            // Menghapus photo lama jika ada
+            if ($mitra->logo && file_exists($mitra->logo)) {
+                unlink($mitra->logo);
+            }
+    
+            $mitra->logo = 'assets/img/dashboard/mitra/' . $filename;
+        }
+    
+        $mitra->updated_at = now();
+        $mitra->updated_by = $username;
+    
+        $mitra->save();
+    
+        return redirect()->back()->with('success', 'Mitra updated successfully');
+    }
+    
+
+    public function removeMitra(Request $request)
+    {
+        MitraModel::where('id', $request->id)->first()->delete();
+        return redirect()->back();
+    }
+
+    public function getviewMitra(){
+        $mitra = MitraModel::all();
+        $data['mitra'] = $mitra;
+        return view('mitra.mitra', $data);
+    }
+
+    public function getFaqPanel () {
+        $admin = Auth::user();
+        $faqs = Faq::where('id', 1)->first();
+
+        $data = [
+            'indexActive' => 7,
+            'admin' => $admin,
+            'faqs' => $faqs,
+        ];
+
+        dd($faqs);
+        return view('admin-panel.faq_admin', $data);
+    }
+
+    public function getFaqAdmin()
+    {
+        $admin = Auth::user();
+        $faq = Faq::orderBy('created_at', 'desc')->get();
+        $data = [
+            'indexActive' => 7,
+            'admin' => $admin,
+            'faq' => $faq,
+        ];
+        return view('admin-panel.faq_admin', $data);
+    }
+
+    public function getAddFaq()
+    {
+        $admin = Auth::user();
+        $data = [
+            'indexActive' => 7,
+            'admin' => $admin
+        ];
+        return view('admin-panel.sub_admin_panel.faqAdminpanel', $data);
+    }
+
+    public function postFaq(Request $request)
+    {
+        $request->validate([
+            'kategori' => 'required',
+            'pertanyaan' => 'required',
+            'jawaban' => 'required'
+        ]);
+    
+    // Buat instance Faq
+    $faq = new Faq;
+
+    // Set nilai atribut faq
+    $faq->kategori = $request->kategori;
+    $faq->pertanyaan = $request->pertanyaan;
+    $faq->jawaban = $request->jawaban;
+
+    // Simpan data ke database
+    $faq->save();
+
+    // Redirect atau berikan respons sesuai kebutuhan
+    return redirect()->route('faq-admin');
+    }
+
+    public function postEditFaq(Request $request)
+    {
+        // Mendapatkan user yang sedang login
+        $admin = Auth::user();
+
+        $request->validate([
+            'id' => 'required|exists:faq',
+            'kategori' => 'required',
+            'pertanyaan' => 'required',
+            'jawaban' => 'required'
+        ]);
+
+        // Mengambil data fasilitas berdasarkan ID
+        $faq = Faq::where("id", $request->id)->first();
+
+        if ($faq) {
+            // Mengupdate data fasilitas
+            $faq->kategori = $request->kategori;
+            $faq->pertanyaan = $request->pertanyaan;
+            $faq->jawaban = $request->jawaban;
+        
+            // Menyimpan perubahan
+            $faq->save();
+    }
+    // Redirect dengan pesan sukses
+    return redirect()->route('faq-admin')->with('success', 'FAQ berhasil diperbarui.');
+    }
+
+    public function destroyFaq($id)
+    {
+        $admin = Auth::user();
+        $faq = Faq::find($id);
+
+        if ($faq) {
+            $faq->delete();
+        }
+    
+        $data = [
+            'indexActive' => 7,
+            'admin' => $admin,
+            'faq' => $faq,
+        ];
+
+        return $this->getFaqAdmin();
+    }
+
+    public function showAdminView()
+    {
+        $formData = Form::all(); // Ambil semua data dari tabel forms
+
+        return view('admin.view', compact('formData'));
+    }
+
+    public function getFormPanel () {
+        $admin = Auth::user();
+        $forms = Form::orderBy("created_at", "desc")->get();
+        
+        $data = [
+            'indexActive' => 9,
+            'admin' => $admin,
+            'forms' => $forms
+        ];
+        return view('admin-panel.form_panel.form', $data);
+    }
+
+    public function beasiswa() {
+        $admin = Auth::user();
+        $beasiswa = Beasiswa::all();
+    
+        $data = [
+            'indexActive' => 8,
+            'admin' => $admin,
+            'beasiswa' => $beasiswa
+        ];
+    
+        return view('admin-panel.sub_beasiswa_panel.index', $data);
+    }
+
 }

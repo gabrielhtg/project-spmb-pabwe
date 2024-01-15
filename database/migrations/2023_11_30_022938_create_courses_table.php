@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
             $table->string('kode_prodi');
-            $table->foreign('kode_prodi')->references('kode_prodi')->on('majors');
+            $table->foreign('kode_prodi')->references('kode_prodi')->on('majors')->onDelete('cascade');
             $table->string('kode_mk');
             $table->string('nama');
             $table->string('sks');

@@ -8,5 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Faq extends Model
 {
     use HasFactory;
-    protected $fillable = ['kategori', 'pertanyaan', 'jawaban'];
+    protected $table = "faq";
+    protected $fillable = ['user_id', 'kategori', 'pertanyaan', 'jawaban'];
 }

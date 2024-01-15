@@ -53,8 +53,8 @@ class MajorController extends Controller
 {
     $request->validate([
         'kode_prodi' => 'required|unique:majors',
-        'nama' => 'required',
-        'kode_fakultas' => 'required|max:255',
+        'nama' => 'required|max:255|unique:majors',
+        'kode_fakultas' => 'required',
         'deskripsi' => 'required',
         'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120', 
         'misi' => 'required',
@@ -66,6 +66,22 @@ class MajorController extends Controller
         'syarat' => 'required',
         'lokasi' => 'required',
         'akreditasi' => 'required',
+    ],[
+        'kode_prodi.unique'=>'Kode Prodi Sudah Ada',
+        'nama.required'=>'Nama Prodi tidak boleh kosong',
+        'nama.unique'=>'Nama Prodi tidak boleh sama',
+        'deskripsi.required' => 'Deskripsi tidak boleh kosong',
+        'gambar.required' => 'Gambar tidak boleh kosong',
+        'visi.required' => 'Visi tidak boleh kosong',
+        'misi.required' => 'Misi tidak boleh kosong',
+        'prospek.required' => 'Prospek tidak boleh kosong',
+        'gelar.required' => 'Gelar tidak boleh kosong',
+        'lama.required' => 'Lama tidak boleh kosong',
+        'biaya.required' => 'Biaya tidak boleh kosong',
+        'syarat.required' => 'Syarat tidak boleh kosong',
+        'lokasi.required' => 'Lokasi tidak boleh kosong',
+        'akreditasi.required' => 'Akreditasi tidak boleh kosong',
+
     ]);
 
     $extension = $request->file('gambar')->getClientOriginalExtension();
@@ -92,14 +108,14 @@ class MajorController extends Controller
 
     $major->save();
 
-    return redirect('admin-panel/program')->with('success', 'Major created successfully!');
+    return redirect('admin-panel/program')->with('success', 'Program Studi berhasil ditambahkan!');
 }
 public function update(Request $request, String $id)
 {
     $request->validate([
         'kode_prodi' => 'required|unique:majors,kode_prodi,' . $id,
         'nama' => 'required',
-        'kode_fakultas' => 'required|max:255',
+        'kode_fakultas' => 'required',
         'deskripsi' => 'required',
         'gambar' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         'misi' => 'required',
@@ -111,12 +127,30 @@ public function update(Request $request, String $id)
         'syarat' => 'required',
         'lokasi' => 'required',
         'akreditasi' => 'required',
+    ], [
+        'kode_prodi.required' => 'Kode Prodi wajib diisi.',
+        'kode_prodi.unique' => 'Kode Prodi sudah digunakan.',
+        'nama.required' => 'Nama wajib diisi.',
+        'kode_fakultas.required' => 'Kode Fakultas wajib diisi.',
+        'deskripsi.required' => 'Deskripsi wajib diisi.',
+        'gambar.image' => 'File harus berupa gambar.',
+        'gambar.mimes' => 'Format gambar tidak valid. Gunakan format jpeg, png, jpg, atau gif.',
+        'gambar.max' => 'Ukuran gambar tidak boleh lebih dari 2 MB.',
+        'misi.required' => 'Misi wajib diisi.',
+        'visi.required' => 'Visi wajib diisi.',
+        'prospek.required' => 'Prospek wajib diisi.',
+        'gelar.required' => 'Gelar wajib diisi.',
+        'lama.required' => 'Lama studi wajib diisi.',
+        'biaya.required' => 'Biaya studi wajib diisi.',
+        'syarat.required' => 'Syarat pendaftaran wajib diisi.',
+        'lokasi.required' => 'Lokasi kampus wajib diisi.',
+        'akreditasi.required' => 'Akreditasi wajib diisi.',
     ]);
 
     $major = Major::findOrFail($id);
 
     if (!$major) {
-        return redirect('admin-panel/program')->with('error', 'Major not found!');
+        return redirect('admin-panel/program')->with('error', 'Program Studi tidak ditemukan!');
     }
 
     try {
@@ -153,12 +187,11 @@ public function update(Request $request, String $id)
             'gambar' => $request->hasFile('gambar') ? $gambarPath : $major->gambar,
         ]);
 
-        return redirect('admin-panel/program')->with('success', 'Major updated successfully!');
+        return redirect('admin-panel/program')->with('success', 'Program Studi berhasil diperbaharui!');
     } catch (\Exception $e) {
         return redirect('admin-panel/program')->with('error', 'Error updating major: ' . $e->getMessage());
     }
 }
-
 
 
     public function destroy(string $id)
@@ -169,10 +202,9 @@ public function update(Request $request, String $id)
             return redirect('admin-panel/program')->with('error', 'Major not found!');
         }
 
-        // Additional logic (e.g., delete related records) if needed
-
+        
         $major->delete();
 
-        return redirect('admin-panel/program')->with('success', 'Major deleted successfully!');
+        return redirect('admin-panel/program')->with('success', 'Program Studi berhasil dihapus!');
     }
 }

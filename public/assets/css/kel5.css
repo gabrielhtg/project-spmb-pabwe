@@ -1,5 +1,7 @@
 .masthead {
     background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     min-height: 100vh;
     position: relative;
     color: #ffff;
@@ -7,6 +9,18 @@
 }
 
 .faq-text {
+    font-size: 3rem;
+    font-weight: 600;
+    line-height: 1.2em;
+    position: absolute;
+    top: 20px;
+    left: 50px;
+    margin: 0;
+    padding: 20px;
+    border-bottom: 2px solid white;
+}
+
+.beasiswa-text {
     font-size: 3rem;
     font-weight: 600;
     line-height: 1.2em;
