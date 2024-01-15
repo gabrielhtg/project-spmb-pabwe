@@ -9,6 +9,7 @@ use App\Models\AlamatInstitusiModel;
 use App\Models\BiayaStudi;
 use App\Models\data_institusi;
 use App\Models\Fasilitas;
+use App\Models\Header_Prestasi;
 use App\Models\Pengumuman;
 use App\Models\EmailModel;
 use App\Models\HeroSectionModel;
@@ -789,13 +790,29 @@ class AdminPanelController extends Controller
         ];
         return view('admin-panel.program_panel', $data);
     }
-
     public function getPrestasiPanel () {
         $admin = Auth::user();
+
+        if (Header_Prestasi::first())
+        {
+            $judulPrestasi = Header_Prestasi::first()->judul;
+            $deskripsiPrestasi = Header_Prestasi::first()->deskripsi;
+            $fotoPrestasi = Header_Prestasi::first()->foto;
+        } else {
+            $judulPrestasi = "Prestasi";
+            $deskripsiPrestasi = "Prestasi";
+            $fotoPrestasi = "assets/img/prestasi/prestasi-header.JPG";
+        }
+
         $data = [
-            'indexActive' => 2,
+            'indexActive' => 5,
             'admin' => $admin,
             'dataPrestasi' => Prestasi::orderBy('created_at', 'desc')->get(),
+            'headerPrestasi' => [
+                'judul' => $judulPrestasi,
+                'deskripsi' => $deskripsiPrestasi,
+                'foto' => $fotoPrestasi,
+            ],
         ];
         return view('admin-panel.prestasi_panel', $data);
     }
@@ -807,6 +824,7 @@ class AdminPanelController extends Controller
         $data = [
             'indexActive' => 2,
             'admin' => $admin,
+            'dataProdi' => Major::all(),
             'dataTestimoni' => Testimoni::orderBy('created_at', 'desc')->get(),
         ];
 
@@ -843,47 +861,47 @@ class AdminPanelController extends Controller
     {
         $username = Auth::user()->username;
         $mitra = MitraModel::where('id', $request->id)->first();
-    
+
         if (!$mitra) {
             // Handle the case where MitraModel with the given ID is not found
             return redirect()->back()->with('error', 'Mitra not found');
         }
-    
+
         $mitra->nama = $request->input_nama_mitra;
-        
+
         if ($request->input_logo) {
             $request->validate([
                 'input_logo' => 'image|mimes:jpeg,png,jpg|max:1024',
             ]);
-    
+
             // Mengambil file yang sudah divalidasi dari request
             $photo = $request->file('input_logo');
-    
+
             // Membuat nama unik untuk file yang diunggah
             $filename = time() . '_logo_mitra.' . $photo->getClientOriginalExtension();
-    
+
             // Menentukan direktori tempat penyimpanan file di dalam direktori 'public'
             $directory = public_path('assets/img/dashboard/mitra/');
-    
+
             // Pindahkan file ke direktori yang diinginkan
             $photo->move($directory, $filename);
-    
+
             // Menghapus photo lama jika ada
             if ($mitra->logo && file_exists($mitra->logo)) {
                 unlink($mitra->logo);
             }
-    
+
             $mitra->logo = 'assets/img/dashboard/mitra/' . $filename;
         }
-    
+
         $mitra->updated_at = now();
         $mitra->updated_by = $username;
-    
+
         $mitra->save();
-    
+
         return redirect()->back()->with('success', 'Mitra updated successfully');
     }
-    
+
 
     public function removeMitra(Request $request)
     {
@@ -940,7 +958,7 @@ class AdminPanelController extends Controller
             'pertanyaan' => 'required',
             'jawaban' => 'required'
         ]);
-    
+
     // Buat instance Faq
     $faq = new Faq;
 
@@ -976,7 +994,7 @@ class AdminPanelController extends Controller
             $faq->kategori = $request->kategori;
             $faq->pertanyaan = $request->pertanyaan;
             $faq->jawaban = $request->jawaban;
-        
+
             // Menyimpan perubahan
             $faq->save();
     }
@@ -992,7 +1010,7 @@ class AdminPanelController extends Controller
         if ($faq) {
             $faq->delete();
         }
-    
+
         $data = [
             'indexActive' => 7,
             'admin' => $admin,
@@ -1012,7 +1030,7 @@ class AdminPanelController extends Controller
     public function getFormPanel () {
         $admin = Auth::user();
         $forms = Form::orderBy("created_at", "desc")->get();
-        
+
         $data = [
             'indexActive' => 9,
             'admin' => $admin,
@@ -1024,13 +1042,13 @@ class AdminPanelController extends Controller
     public function beasiswa() {
         $admin = Auth::user();
         $beasiswa = Beasiswa::all();
-    
+
         $data = [
             'indexActive' => 8,
             'admin' => $admin,
             'beasiswa' => $beasiswa
         ];
-    
+
         return view('admin-panel.sub_beasiswa_panel.index', $data);
     }
 

@@ -111,6 +111,8 @@ Route::middleware('auth')->group(function () {
             Route::post('/add', [PrestasiController::class, 'postAddPrestasi'])->name('prestasi.add');
             Route::post('/edit', [PrestasiController::class, 'postEditPrestasi'])->name('prestasi.edit');
             Route::post('/delete', [PrestasiController::class, 'postDeletePrestasi'])->name('prestasi.delete');
+
+            Route::post('/header-add', [\App\Http\Controllers\HeaderPrestasiController::class, 'store'])->name('prestasiheader.add');
         });
 
         Route::prefix('testimoni-panel')->group(function () {
