@@ -35,7 +35,8 @@ class DatabaseSeeder extends Seeder
             PrestasiSeeder::class,
             add_beasiswa::class,
             add_faq::class,
-            add_mitra::class
+            add_mitra::class,
+            TestimoniSeeder::class
         ]);
     }
 }
