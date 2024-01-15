@@ -308,7 +308,7 @@
         </script>
         <script src="https://kit.fontawesome.com/965a381e3a.js" crossorigin="anonymous"></script>
         <script src="{{ asset('/assets/js/kel4.js') }}"></script>
-
+    </main>
 </body>
 
 </html>
