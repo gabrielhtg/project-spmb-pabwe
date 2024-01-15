@@ -108,7 +108,7 @@ class EmployeeSeeder extends Seeder
             'nidn' => '104027801',
             'jabatan' => 'Dosen',
             'pendidikan' => 'S2 - Institut Teknologi Bandung',
-            'gambar' => 'fv-carousel.jpg',
+            'gambar' => 'no-pict.jpg',
             
         ]);
 
@@ -119,7 +119,7 @@ class EmployeeSeeder extends Seeder
             'nidn' => '128058805',
             'jabatan' => 'Dosen',
             'pendidikan' => 'S2 - University of Amsterdam',
-            'gambar' => 'fv-carousel.jpg',
+            'gambar' => 'no-pict.jpg',
             
         ]);
 
@@ -130,7 +130,7 @@ class EmployeeSeeder extends Seeder
             'nidn' => '110029201',
             'jabatan' => 'Kaprodi',
             'pendidikan' => 'S2 - NATIONAL CHUNG CHENG UNIVERSITY',
-            'gambar' => 'fv-carousel.jpg',
+            'gambar' => 'no-pict.jpg',
             
         ]);
 
@@ -141,7 +141,7 @@ class EmployeeSeeder extends Seeder
             'nidn' => '130058501',
             'jabatan' => 'Dosen',
             'pendidikan' => 'S2 - Universitas Indonesia',
-            'gambar' => 'fv-carousel.jpg',
+            'gambar' => 'no-pict.jpg',
             
         ]);
 
@@ -152,7 +152,7 @@ class EmployeeSeeder extends Seeder
             'nidn' => '117069202',
             'jabatan' => 'Dosen',
             'pendidikan' => 'S2 - ITS Surabaya',
-            'gambar' => 'fv-carousel.jpg',
+            'gambar' => 'no-pict.jpg',
             
         ]);
 
@@ -163,7 +163,7 @@ class EmployeeSeeder extends Seeder
             'nidn' => '113118602',
             'jabatan' => 'Dosen',
             'pendidikan' => 'S2 -Universitas of Wollongong',
-            'gambar' => 'fv-carousel.jpg',
+            'gambar' => 'no-pict.jpg',
             
         ]);
 
@@ -174,7 +174,7 @@ class EmployeeSeeder extends Seeder
             'nidn' => '113118602',
             'jabatan' => 'Dosen',
             'pendidikan' => 'S2 -Universitas of Wollongong',
-            'gambar' => 'fv-carousel.jpg',
+            'gambar' => 'no-pict.jpg',
             
         ]);
 
@@ -185,7 +185,7 @@ class EmployeeSeeder extends Seeder
             'nidn' => '117089103',
             'jabatan' => 'Kaprodi',
             'pendidikan' => 'S2 - Institut Teknologi Bandung',
-            'gambar' => 'fv-carousel.jpg',
+            'gambar' => 'no-pict.jpg',
             
         ]);
 
@@ -196,7 +196,7 @@ class EmployeeSeeder extends Seeder
             'nidn' => '117078706',
             'jabatan' => 'Kaprodi',
             'pendidikan' => 'S2 - VU University of Amsterdam',
-            'gambar' => 'fv-carousel.jpg',
+            'gambar' => 'no-pict.jpg',
             
         ]);
 
@@ -207,7 +207,7 @@ class EmployeeSeeder extends Seeder
             'nidn' => '104088902',
             'jabatan' => 'Dosen',
             'pendidikan' => 'S2 - Chang Gung University ',
-            'gambar' => 'fv-carousel.jpg',
+            'gambar' => 'no-pict.jpg',
             
         ]);
 
@@ -218,7 +218,7 @@ class EmployeeSeeder extends Seeder
             'nidn' => '420098501',
             'jabatan' => 'Kaprodi',
             'pendidikan' => 'S2 - Universitas Telkom',
-            'gambar' => 'fv-carousel.jpg',
+            'gambar' => 'no-pict.jpg',
             
         ]);
 
@@ -229,7 +229,7 @@ class EmployeeSeeder extends Seeder
             'nidn' => '121058503',
             'jabatan' => 'Dekan',
             'pendidikan' => 'S2 - Institut Teknologi Bandung',
-            'gambar' => 'fv-carousel.jpg',
+            'gambar' => 'no-pict.jpg',
             
         ]);
 
@@ -240,7 +240,7 @@ class EmployeeSeeder extends Seeder
             'nidn' => '112037001',
             'jabatan' => 'Dekan',
             'pendidikan' => 'S3 - Institut Teknologi Bandung',
-            'gambar' => 'fv-carousel.jpg',
+            'gambar' => '_0001_MMM.jpg',
             
         ]);
 
@@ -249,9 +249,20 @@ class EmployeeSeeder extends Seeder
             'kode_fakultas' => 3, // Ganti dengan kode fakultas yang sesuai
             'nama' => 'Ellyas Alga Nainggolan S.TP.,M.Sc',
             'nidn' => '110079001',
-            'jabatan' => 'Dekan',
+            'jabatan' => 'Dosen',
             'pendidikan' => 'S2 - Universitas Gadjah Mada',
-            'gambar' => 'fv-carousel.jpg',
+            'gambar' => 'no-pict.jpg',
+            
+        ]);
+
+        DB::table('employees')->insert([
+            'kode_prodi' => 'bps',
+            'kode_fakultas' => 3, // Ganti dengan kode fakultas yang sesuai
+            'nama' => 'Meiyer Marthen Kinda, S.T.M.T',
+            'nidn' => '0128058902',
+            'jabatan' => 'Kaprodi',
+            'pendidikan' => 'S2 - Institut Teknologi Bandung',
+            'gambar' => '_0000_MKM.jpg',
             
         ]);
 
@@ -262,7 +273,7 @@ class EmployeeSeeder extends Seeder
             'nidn' => '112039001',
             'jabatan' => 'Dekan',
             'pendidikan' => 'S3 - Institut Teknologi Bandung',
-            'gambar' => 'fv-carousel.jpg',
+            'gambar' => 'no-pict.jpg',
             
         ]);
 
@@ -273,7 +284,7 @@ class EmployeeSeeder extends Seeder
             'nidn' => '116059002',
             'jabatan' => 'Kaprodi',
             'pendidikan' => 'S2 - Institut Pertanian Bogor',
-            'gambar' => 'fv-carousel.jpg',
+            'gambar' => 'no-pict.jpg',
             
         ]);
 
@@ -285,7 +296,7 @@ class EmployeeSeeder extends Seeder
             'nidn' => '104028502',
             'jabatan' => 'Kaprodi',
             'pendidikan' => 'S2 - Institut Pertanian Bogor',
-            'gambar' => 'fv-carousel.jpg',
+            'gambar' => 'no-pict.jpg',
             
         ]);
 
@@ -296,7 +307,7 @@ class EmployeeSeeder extends Seeder
             'nidn' => '-',
             'jabatan' => 'Dosen',
             'pendidikan' => 'S2 - Universitas Sumatera Utara',
-            'gambar' => 'fv-carousel.jpg',
+            'gambar' => 'no-pict.jpg',
             
         ]);
 

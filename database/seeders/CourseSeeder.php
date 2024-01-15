@@ -4129,29 +4129,6 @@ DB::table('courses')->insert([
 ]);
 
 // Semester II
-DB::table('courses')->insert([
-    'kode_prodi' => 'mrs',
-    'kode_mk' => 'MAS1201',
-    'nama' => 'Matematika Dasar II',
-    'sks' => 4,
-    'semester' => 2,
-]);
-
-DB::table('courses')->insert([
-    'kode_prodi' => 'mrs',
-    'kode_mk' => 'KUS1201',
-    'nama' => 'Bahasa Inggris II',
-    'sks' => 2,
-    'semester' => 2,
-]);
-
-DB::table('courses')->insert([
-    'kode_prodi' => 'mrs',
-    'kode_mk' => 'KUS1001',
-    'nama' => 'Penulisan Karya Ilmiah',
-    'sks' => 2,
-    'semester' => 2,
-]);
 
 DB::table('courses')->insert([
     'kode_prodi' => 'mrs',
@@ -4228,22 +4205,6 @@ DB::table('courses')->insert([
 
 DB::table('courses')->insert([
     'kode_prodi' => 'mrs',
-    'kode_mk' => 'MAS2001',
-    'nama' => 'Probabilitas dan Statistika',
-    'sks' => 3,
-    'semester' => 3,
-]);
-
-DB::table('courses')->insert([
-    'kode_prodi' => 'mrs',
-    'kode_mk' => 'KUS2001',
-    'nama' => 'Bahasa Inggris III',
-    'sks' => 2,
-    'semester' => 3,
-]);
-
-DB::table('courses')->insert([
-    'kode_prodi' => 'mrs',
     'kode_mk' => '21S2101',
     'nama' => 'Termodinamika Teknik',
     'sks' => 3,
@@ -4291,21 +4252,6 @@ DB::table('courses')->insert([
 ]);
 
  // Semester IV
-DB::table('courses')->insert([
-    'kode_prodi' => 'mrs',
-    'kode_mk' => '21S2201',
-    'nama' => 'Matematika Lanjut',
-    'sks' => 3,
-    'semester' => 4,
-]);
-
- DB::table('courses')->insert([
-    'kode_prodi' => 'mrs',
-    'kode_mk' => '21S2202',
-    'nama' => 'Statistika Inferensi',
-    'sks' => 3,
-     'semester' => 4,
-            ]);
 
             DB::table('courses')->insert([
                 'kode_prodi' => 'mrs',
@@ -4382,22 +4328,6 @@ DB::table('courses')->insert([
 
 DB::table('courses')->insert([
     'kode_prodi' => 'mrs',
-    'kode_mk' => '21S3101',
-    'nama' => 'Ekonomika Teknik',
-    'sks' => 3,
-    'semester' => 5,
-]);
-
-DB::table('courses')->insert([
-    'kode_prodi' => 'mrs',
-    'kode_mk' => '21S3102',
-    'nama' => 'Penelitian Operasional 2',
-    'sks' => 3,
-    'semester' => 5,
-]);
-
-DB::table('courses')->insert([
-    'kode_prodi' => 'mrs',
     'kode_mk' => '21S3103',
     'nama' => 'Perancangan Model Bisnis',
     'sks' => 3,
@@ -4437,22 +4367,6 @@ DB::table('courses')->insert([
 ]);
 
 // Semester VI
-DB::table('courses')->insert([
-    'kode_prodi' => 'mrs',
-    'kode_mk' => '21S3201',
-    'nama' => 'Manajemen Proyek Rekayasa',
-    'sks' => 3,
-    'semester' => 6,
-]);
-
-DB::table('courses')->insert([
-    'kode_prodi' => 'mrs',
-    'kode_mk' => '12S4081',
-    'nama' => 'Pengenalan Basis Data dan Sistem Informasi',
-    'sks' => 3,
-    'semester' => 6,
-]);
-
 DB::table('courses')->insert([
     'kode_prodi' => 'mrs',
     'kode_mk' => '21S3201',
@@ -4518,21 +4432,6 @@ DB::table('courses')->insert([
 ]);
 
 // Semester VII
-DB::table('courses')->insert([
-    'kode_prodi' => 'mrs',
-    'kode_mk' => '21S4090',
-    'nama' => 'Desain Proyek Rekayasa (Capstone)',
-    'sks' => 5,
-    'semester' => 7,
-]);
-
-DB::table('courses')->insert([
-    'kode_prodi' => 'mrs',
-    'kode_mk' => '21S4091',
-    'nama' => 'Kerja Praktek',
-    'sks' => 2,
-    'semester' => 7,
-]);
 
 DB::table('courses')->insert([
     'kode_prodi' => 'mrs',

@@ -1031,7 +1031,7 @@
             <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#myModalkur">
                 Tambah Matkul
             </button>
-            <a class="btn btn-danger" id="deleteAllSelectedRecord" href="{{ route('program-panel') }}">Hapus Yang Dipilih</a>
+            {{-- <a class="btn btn-danger" id="deleteAllSelectedRecord" href="{{ route('program-panel') }}">Hapus Yang Dipilih</a> --}}
             
         </div>
 
@@ -1047,7 +1047,7 @@
                 <table class="table text-center align-middle table-striped table-bordered">
                     <thead class="align-middle">
                     <tr>
-                        <th><input type="checkbox" name="" id="select_all_ids"></th>
+                        {{-- <th><input type="checkbox" name="" id="select_all_ids"></th> --}}
                         <th scope="col">No</th>
                         <th scope="col">Nama Mata Kuliah</th>
                         <th scope="col">Kode Mata Kuliah</th>
@@ -1059,8 +1059,8 @@
                     </thead>
                     <tbody>
                     @foreach($courses as $course)
-                    <tr id="employee_ids{{$course->id}}">
-                        <td><input type="checkbox" name="ids" id="" class="checkbox_ids" value="{{$course->id}}"></td>
+                    <tr>
+                        {{-- <td><input type="checkbox" name="ids" id="" class="checkbox_ids" value="{{$course->id}}"></td> --}}
                         <td class="text-center">{{ $loop->iteration }}</td>
                         <td class="text-break" style="max-width: 200px;">{{ $course->nama }}</td>
                         <td class="text-break" style="max-width: 200px;">{{ $course->kode_mk }}</td>
@@ -1445,7 +1445,7 @@
                     console.error(error);
                 });
         @endforeach
- 
+
 
 
 

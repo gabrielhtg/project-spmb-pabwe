@@ -55,18 +55,18 @@ class MajorSeeder extends Seeder
             'akreditasi' => 'Unggul',
             'prospek' => ' 
             <ol>
-              <li>Business Intelligence Solution</li>
-              <li>Business/Systems Analyst</li>
-              <li>Information System Development Project Manager</li>
-              <li>Database Administrator</li>
-              <li>System Design</li>
-              <li>IT Manager</li>
-              <li>Programmer/Software Engineer</li>
-              <li>IT Auditor</li>
-              <li>Konsultan IT/IS</li>
-              <li>Web Developer/Web Designer</li>
-              <li>Wirausaha di bidang IT</li>
-              <li>Pengajar dan Peneliti</li>
+                <li>Business Intelligence Solution</li>
+                <li>Business/Systems Analyst</li>
+                <li>Information System Development Project Manager</li>
+                <li>Database Administrator</li>
+                <li>System Design</li>
+                <li>IT Manager</li>
+                <li>Programmer/Software Engineer</li>
+                <li>IT Auditor</li>
+                <li>Konsultan IT/IS</li>
+                <li>Web Developer/Web Designer</li>
+                <li>Wirausaha di bidang IT</li>
+                <li>Pengajar dan Peneliti</li>
             </ol>',
             'lokasi' => 'Jl. PI.Del, Gedung VII, Laguboti, Toba, Sumatera Utara'
         ]);
@@ -137,7 +137,7 @@ class MajorSeeder extends Seeder
             'lama' => '4',
             'biaya' => '6.500.000',
             'syarat' => 'Syarat syarat Pendaftaran',
-            'akreditasi' => 'Unggul',
+            'akreditasi' => 'Belum Terakreditasi',
             'prospek' => 'Software Engineering, Artificial Intelligence, Cyber Security',
             'lokasi' => 'Jl. PI.Del, Gedung IX, Laguboti, Toba, Sumatera Utara'
         ]);
@@ -160,7 +160,7 @@ class MajorSeeder extends Seeder
             'lama' => '4',
             'biaya' => '7.500.000',
             'syarat' => 'Syarat syarat Pendaftaran',
-            'akreditasi' => 'Unggul',
+            'akreditasi' => 'Baik Sekali',
             'prospek' => 'Software Engineering, Artificial Intelligence, Cyber Security',
             'lokasi' => 'Jl. PI.Del, Gedung VIII, Laguboti, Toba, Sumatera Utara'
         ]);
@@ -182,7 +182,7 @@ class MajorSeeder extends Seeder
             'lama' => '4',
             'biaya' => '6.500.000',
             'syarat' => 'Syarat syarat Pendaftaran',
-            'akreditasi' => 'Unggul',
+            'akreditasi' => 'Baik Sekali',
             'prospek' => 'Software Developer, Software Quality Assurance, IT Researcher, ITpreneur',
             'lokasi' => 'Jl. PI.Del, Gedung V, Laguboti, Toba, Sumatera Utara'
         ]);
@@ -193,16 +193,17 @@ class MajorSeeder extends Seeder
             'kode_fakultas' => 4,
             'deskripsi' => 'Program Studi Teknologi Informasi Diploma Tiga  mempunyai sasaran untuk menyelenggarakan proses pembelajaran yang dapat menumbuhkan-kembangkan daya nalar, daya cipta, daya kreasi dan keterampilan yang tinggi, yang dapat dikomunikasikan dan diaplikasikan pada bidang kehidupan. Prodi ini memperoleh perpanjangan ijin penyelenggaraan Program Studi Teknologi Informasi Diploma Tiga  (10802) sesuai dengan SK Direktur Jenderal Pendidikan Tinggi Nomor 3649/D/T/2004 tertanggal 9 September 2004. Kemudian pada tanggal 11 Oktober 2007 memperoleh SK perpanjangan ulang No. 3169/D/T/2007 dengan sebutan nama program studi adalah Program Studi Teknologi Informasi Diploma Tiga. Kemudian pada tanggal 3 Mei 2010 memperoleh SK perpanjangan ulang No. 1854/D/T/K-I/2010 dengan sebutan nama program studi kembali menjadi Program Studi Teknologi Informasi Diploma Tiga .',
             'visi' => 'Menjadi program studi unggulan pada program pendidikan dan penelitian terapan di bidang pengembangan teknologi informasi yang bertaraf nasional dan internasional pada tahun 2024.',
-            'misi' =>   '• Menyelenggarakan pendidikan vokasi yang unggul untuk menghasilkan sumber daya manusia yang profesional di bidang teknologi informasi dan komunikasi,
-                        • Meningkatkan program penelitian terapan yang inovatif dan bertaraf nasional maupun
-                        internasional di bidang teknologi informasi dan komunikasi
-                        • Meningkatkan program pengabdian masyarakat melalui kerjasama dengan berbagai institusi pemerintahan dan industri di tingkat regional maupun nasional.',
+            'misi' =>   '<ul>
+                            <li>Menyelenggarakan pendidikan vokasi yang unggul untuk menghasilkan sumber daya manusia yang profesional di bidang teknologi informasi dan komunikasi,</li>
+                            <li>Meningkatkan program penelitian terapan yang inovatif dan bertaraf nasional maupun internasional di bidang teknologi informasi dan komunikasi</li>
+                            <li>Meningkatkan program pengabdian masyarakat melalui kerjasama dengan berbagai institusi pemerintahan dan industri di tingkat regional maupun nasional.</li>
+                        </ul>',
             'gambar' => 'fv-carousel.jpg',
             'gelar' => 'A.Md.Kom',
-            'lama' => '3 tahun',
-            'biaya' => 'Rp.5.500.000,-',
+            'lama' => '3',
+            'biaya' => '5.500.000',
             'syarat' => '-',
-            'akreditasi' => 'Unggul',
+            'akreditasi' => 'Baik Sekali',
             'prospek' => 'Software Engineer, Analyst Programmer, Web Application Developer, IT Support Personnel, dan Mobile Application Developer.',
             'lokasi' => 'Jl. PI.Del, Gedung V, Laguboti, Toba, Sumatera Utara'
         ]);
@@ -213,16 +214,17 @@ class MajorSeeder extends Seeder
             'kode_fakultas' => 4,
             'deskripsi' => 'Program Studi Teknik Komputer adalah salah satu program studi yang diselenggarakan Institut Teknologi Del yang terletak di daerah pedesaan Tobasa, yang membuka peluang bagi siswa berprestasi untuk mengenyam pendidikan dengan mutu yang tidak kalah dengan pendidikan bermutu bagus yang diselenggarakan di kota besar.',
             'visi' => 'Menjadi program studi unggulan pada program pendidikan dan penelitian terapan di bidang pengembangan teknologi informasi yang bertaraf nasional dan internasional pada tahun 2024.',
-            'misi' =>   '• Menyelenggarakan pendidikan vokasi yang unggul untuk menghasilkan sumber daya manusia yang profesional di bidang teknologi informasi dan komunikasi.
-                        • Meningkatkan program penelitian terapan yang inovatif dan bertaraf nasional maupun
-                        internasional di bidang teknologi informasi dan komunikasi,
-                        • Meningkatkan program pengabdian masyarakat melalui kerjasama dengan berbagai institusi pemerintahan dan industri di tingkat regional maupun nasional.',
+            'misi' =>   '<ul>
+                            <li>Menyelenggarakan pendidikan vokasi yang unggul untuk menghasilkan sumber daya manusia yang profesional di bidang teknologi informasi dan komunikasi.</li>
+                            <li>Meningkatkan program penelitian terapan yang inovatif dan bertaraf nasional maupun internasional di bidang teknologi informasi dan komunikasi,</li>
+                            <li>Meningkatkan program pengabdian masyarakat melalui kerjasama dengan berbagai institusi pemerintahan dan industri di tingkat regional maupun nasional.</li>
+                        </ul>',
             'gambar' => 'fv-carousel.jpg',
             'gelar' => 'A.Md.T',
-            'lama' => '3 tahun',
-            'biaya' => 'Rp.5.500.000,-',
+            'lama' => '3',
+            'biaya' => '5.500.000',
             'syarat' => '-',
-            'akreditasi' => 'Unggul',
+            'akreditasi' => 'Baik Sekali',
             'prospek' => 'Full Stack Developer, Programmer atau Software Engineer, Network Engineer, System Administrator, IT Security Specialist, Digital Entrepreneur/IT Preneur',
             'lokasi' => 'Jl. PI.Del, Gedung V, Laguboti, Toba, Sumatera Utara'
         ]);
