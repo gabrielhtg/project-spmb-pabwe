@@ -28,14 +28,9 @@
 
         {{--        Ini adalah sidebar besar mulai --}}
         <div class="d-none ps-3 pe-3 fixed-top bg-sidebar d-flex flex-column align-items-center" id="sidebar_besar"
-            style="width: 18rem; height: 300vh">
-            <div class="d-flex justify-content-center align-items-center mb-3 w-100"
-                style="height: 60px; border: 0 solid white;border-bottom-width: 1px;">
-                <span class="text-white fw-semibold fs-4" style="font-size: 1rem">SPMB Admin</span>
-            </div>
+            style="width: 18rem; height: 100%; overflow-y: scroll; margin-top: 0;">
 
-
-            <div class="d-flex flex-column row-gap-3 w-100">
+            <div class="d-flex flex-column row-gap-3 w-100" style="margin-top: 70px">
                 <a href="{{ route('admin-panel') }}">
                     <button id="btn_dashboard" class="btn_sidebar w-100 btn_sidebar_active text-start">
                         <i class="bi bi-speedometer me-2"></i>
