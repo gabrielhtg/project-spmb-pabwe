@@ -1637,7 +1637,56 @@
                                                         alt="Cover"></td>
                                                 <td>
                                                     <div class="d-flex justify-content-center w-100 gap-2">
-                                                        @include('admin-panel.sub_admisi_panel.edit_pers_khusus')
+                                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                                                  data-bs-target="#editProdi{{ $prodi->id }}">
+                                                              <i class="bi bi-pen"></i>
+                                                          </button>
+
+                                                          <!-- Modal -->
+                                                          <div class="modal fade" id="editProdi{{ $prodi->id }}" tabindex="-1"
+                                                              aria-labelledby="editProdi{{ $prodi->id }}Label" aria-hidden="true">
+                                                              <div class="modal-dialog modal-dialog-centered modal-xl">
+                                                                  <div class="modal-content">
+                                                                      <div class="modal-header">
+                                                                          <h1 class="modal-title fs-5 fw-semibold">Edit Persyaratan Khusus</h1>
+                                                                          <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                                                  aria-label="Close"></button>
+                                                                      </div>
+                                                                      <form method="post" enctype="multipart/form-data" action="{{ route('post.prodi.edit.prodi') }}" >
+                                                                          @csrf
+                                                                          <div class="modal-body text-start">
+                                                                              <div class="mb-3">
+                                                                                  <label class="form-label w-100">
+                                                                                      Program Studi
+                                                                                      <input class="form-control" type="text" name="program_studi" value="{{$prodi->program_studi}}" required>
+                                                                                  </label>
+                                                                              </div>
+
+                                                                              <div class="mb-3">
+                                                                                  <label class="form-label w-100">
+                                                                                      Deskripsi Persyaratan Khusus
+                                                                                  </label>
+                                                                                  <textarea name="deskripsi_persyaratan" class="inputEditDeskripsi" rows="4" required>{{ $prodi->deskripsi_persyaratan }}</textarea>
+                                                                              </div>
+                                                                              <div class="mb-3">
+                                                                                    <img src="{{asset($prodi->cover)}}" style="height: 120px;" id="previewEditCover" alt="Cover" value="{{asset($prodi->cover)}}" required>
+                                                                                    <label for="inputEditCover" class="form-label">Preview Cover
+                                                                                        <input class="form-control" type="file" id="inputEditCover" name="cover">
+                                                                                    </label>
+                                                                                </div>
+                                                                              <input type="hidden" name="id" value="{{$prodi->id}}">
+                                                                          </div>
+                                                                          <div class="modal-footer">
+                                                                              <button type="button" class="btn btn-secondary"
+                                                                                      data-bs-dismiss="modal">Close
+                                                                              </button>
+                                                                              <button type="submit" class="btn btn-primary">Save changes
+                                                                              </button>
+                                                                          </div>
+                                                                      </form>
+                                                                  </div>
+                                                              </div>
+                                                          </div>
                                                         <form
                                                             action="{{ route('post.delete.prodi', ['id' => $prodi->id]) }}"
                                                             method="POST"
@@ -1744,7 +1793,7 @@
 
         <script>
             $(document).ready(function() {
-                $('#inputEditDeskripsi').summernote({
+                $('.inputEditDeskripsi').summernote({
                     maxHeight: 250,
                 });
             });
