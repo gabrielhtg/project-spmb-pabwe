@@ -25,7 +25,7 @@ class Major extends Model
         'lama',
         'biaya',
         'syarat',
-        'lokasi',       
+        'lokasi',
         'akreditasi',
     ];
     public function faculty()

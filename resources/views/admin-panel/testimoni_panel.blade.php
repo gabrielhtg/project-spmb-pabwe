@@ -69,7 +69,7 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->nama_mahasiswa }}</td>
-                                <td>{{ $item->prodi }}</td>
+                                <td>{{ $item->major->nama }}</td>
                                 <td><img src="{{ asset($item->photo) }}" alt="" width="50" height="50"></td>
                                 <td>{{ $item->angkatan }}</td>
                                 <td>{{ $item->deskripsi }}</td>
