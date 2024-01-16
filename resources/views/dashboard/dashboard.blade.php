@@ -291,7 +291,7 @@
                                         </div>
                                     </div>
                                     <div class="d-flex justify-content-center align-items-center border border-1 rounded p-3"
-                                        style="height: 200px;">
+                                        style="height: 200px; overflow-y: auto;">
                                         <p class="card-text fs-7">
                                             {{ $itemTestimoni->deskripsi }}
                                         </p>
