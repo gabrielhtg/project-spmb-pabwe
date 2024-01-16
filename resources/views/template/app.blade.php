@@ -101,7 +101,7 @@
                         </li>
                     </ul>
                 </div>
-                <a class="d-none d-xl-inline" href="http://spmb.app.del.ac.id/">
+                <a class="d-none d-xl-inline" href="http://spmbapp.del.ac.id/">
                     <button class="btn btn-primary">Daftar Sekarang
                     </button>
                 </a>
