@@ -81,19 +81,11 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Kontak</a>
-                        </li>
-
-                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('prestasi.prestasiOverview') }}">Prestasi</a>
                         </li>
 
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('beasiswa.beasiswa') }}">Beasiswa</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Akreditasi</a>
                         </li>
 
                         <li class="nav-item">
