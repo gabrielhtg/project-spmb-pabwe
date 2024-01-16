@@ -29,7 +29,7 @@ class MajorSeeder extends Seeder
             'lama' => '4 ',
             'biaya' => '6.500.000',
             'syarat' => 'Syarat syarat Pendaftaran',
-            'akreditasi' => 'Unggul',
+            'akreditasi' => 'Baik Sekali',
                 'prospek' => 'Terdapat 10 profil lulusan PSSTI yang dapat dikelompokkan ke dalam tiga kelompok. Kelompok pertama adalah Software Engineer mencakup profil lulusan: Mobile Application Developer, Web Developer (front-end, back-end, service), Full-Stack Developer, User Interface Designer, User Experience Designer, Software Analyst, Database Engineer, Software Quality Assurance dan Software Tester. Kelompok kedua adalah Cybersecurity Practitioner, dan kelompok ketiga adalah AI (Artificial Intelligent) Engineer.',
             'lokasi' => 'Jl. PI.Del, Gedung VII, Laguboti, Toba, Sumatera Utara'
         ]);

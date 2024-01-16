@@ -11,7 +11,7 @@
               <div class="container pt-5" id="perpustakaan">
                 <div class="row">
                     <div class="col-md-6">
-                    <img src="{{ asset('/assets/img/fasilitas/' . $item->file_gambar) }}" class="img-fluid custom-image" alt="{{ $item->nama_file }}">
+                    <img src="{{ asset('/assets/img/fasilitas/' . $item->file_gambar) }}" class="img-fluid custom-image" alt="{{ $item->nama_file }}" style="height:400px">
                     </div>
 
                     <div class="col-md-6 mx-auto d-flex flex-column my-auto">

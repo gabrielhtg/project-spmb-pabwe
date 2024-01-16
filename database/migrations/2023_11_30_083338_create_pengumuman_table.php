@@ -11,7 +11,7 @@ class CreatePengumumanTable extends Migration
         Schema::create('pengumuman', function (Blueprint $table) {
             $table->id();
             $table->string('kategoriPengumuman');
-            $table->string('judulPengumuman');
+            $table->string('judulPengumuman', 150);
             $table->string('filePengumuman');
             $table->date('tanggalPengumuman');
             $table->timestamps();
