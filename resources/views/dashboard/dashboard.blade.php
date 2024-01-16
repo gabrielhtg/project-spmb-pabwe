@@ -13,7 +13,7 @@
                     <a class="d-none d-xl-inline" href="http://spmb.app.del.ac.id/">
                         <button class="btn btn-primary btn-lg px-4 gap-3">Daftar Sekarang
                         </button>
-                    </a>s
+                    </a>
                 </div>
             </div>
         </div>
