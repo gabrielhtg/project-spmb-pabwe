@@ -16,8 +16,7 @@
                 <div class="container pt-5" id="layanan-koperasi">
                     <div class="row">
                         <div class="col-md-6">
-                        <img src="{{ asset('/assets/img/fasilitas/' . $item->file_gambar) }}" style="height:400px, width : 700px" class="img-fluid custom-imag 
-                                alt="{{ $item->nama_file }}">
+                        <img src="{{ asset('/assets/img/fasilitas/' . $item->file_gambar) }}" style="height:400px" class="img-fluid custom-image" alt="{{ $item->nama_file }}">
                         </div>
 
                         <div class="col-md-6 mx-auto d-flex flex-column my-auto">

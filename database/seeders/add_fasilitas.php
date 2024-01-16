@@ -14,7 +14,7 @@ class add_fasilitas extends Seeder
           [
             'kategori' => 'Asrama',
             'nama_fasilitas' => 'Asrama Pniel',
-            'deskripsi_fasilitas' => 'merupakan salah satu gedung asrama yang dikhususkan untuk mahasiswa-mahasiswa Institut Teknologi Del. Pembina Asrama: 1. Irianto Sitorus 2. Josua Panggabean',
+            'deskripsi_fasilitas' => 'merupakan salah satu gedung asrama yang dikhususkan untuk mahasiswa-mahasiswa Institut Teknologi Del.',
             'nama_file' => 'asrama_pniel',
             'file_gambar' => 'asrama-pniel.jpeg',
             'created_at' => now(),
@@ -23,7 +23,7 @@ class add_fasilitas extends Seeder
           [
             'kategori' => 'Asrama',
             'nama_fasilitas' => 'Asrama Jati',
-            'deskripsi_fasilitas' => 'juga merupakan salah satu gedung asrama yang dikhususkan untuk mahasiswa-mahasiswa Institut Teknologi Del. Pembina Asrama:1. Leonal Purban 2. Albert Simorangkir',
+            'deskripsi_fasilitas' => 'juga merupakan salah satu gedung asrama yang dikhususkan untuk mahasiswa-mahasiswa Institut Teknologi Del.',
             'nama_file' => 'asrama_jati',
             'file_gambar' => 'asrama-jati.jpeg',
             'created_at' => now(),
@@ -32,7 +32,7 @@ class add_fasilitas extends Seeder
           [
             'kategori' => 'Asrama',
             'nama_fasilitas' => 'Asrama Rusun 2',
-            'deskripsi_fasilitas' => 'merupakan salah satu gedung asrama yang dikhususkan untuk mahasiswi-mahasiswi Institut Teknologi Del. Pembina Asrama: 1. Lamtaruli Simanjuntak 2. Elsa Panggabean',
+            'deskripsi_fasilitas' => 'merupakan salah satu gedung asrama yang dikhususkan untuk mahasiswi-mahasiswi Institut Teknologi Del.',
             'nama_file' => 'rusun_2',
             'file_gambar' => 'rusun-2.jpeg',
             'created_at' => now(),
