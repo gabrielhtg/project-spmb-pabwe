@@ -429,12 +429,12 @@
                                                 <div class="d-flex justify-content-center gap-1">
                                                     <!-- Button trigger modal -->
                                                     <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                                                        data-bs-target="#editJadwalUjianModal">
+                                                        data-bs-target="#editJadwalUjianModal{{ $e->id }}">
                                                         <i class="bi bi-pen"></i>
                                                     </button>
 
                                                     <!-- Modal -->
-                                                    <div class="modal fade" id="editJadwalUjianModal" tabindex="-1"
+                                                    <div class="modal fade" id="editJadwalUjianModal{{ $e->id }}" tabindex="-1"
                                                         aria-labelledby="editJadwalUjianModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog modal-dialog-centered modal-lg">
                                                             <div class="modal-content">
@@ -465,7 +465,7 @@
 
                                                                         <label class="form-label w-100 text-start mb-3">
                                                                             Deskripsi
-                                                                            <textarea name="deskripsi" id="summernoteEditJadwalUjian"> {{ $e->deskripsi }} </textarea>
+                                                                            <textarea name="deskripsi" id="summernoteEditJadwalUjian" class="editJadwalUjian"> {{ $e->deskripsi }} </textarea>
                                                                         </label>
                                                                         <input type="hidden" name="id"
                                                                             value="{{ $e->id }}">
@@ -1515,7 +1515,7 @@
                                                 <!-- Button untuk menampilkan modal edit -->
                                                 <div class="d-flex justify-content-center w-100 gap-2">
                                                     <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                                                        data-bs-target="#edit_biaya_studi"><i
+                                                        data-bs-target="#edit_biaya_studi{{ $biayaStudi->id }}"><i
                                                             class="bi bi-pen"></i></button>
                                                     <form method="POST" action="{{ route('remove_biaya_studi') }}">
                                                         @csrf
@@ -1530,7 +1530,7 @@
                                                 </div>
 
                                                 <!-- Modal -->
-                                                <div class="modal fade" id="edit_biaya_studi" tabindex="-1"
+                                                <div class="modal fade" id="edit_biaya_studi{{ $biayaStudi->id }}" tabindex="-1"
                                                     aria-labelledby="edit_biaya_studi" aria-hidden="true">
                                                     <div class="modal-dialog modal-dialog-centered">
                                                         <div class="modal-content">
@@ -1754,7 +1754,7 @@
 
         <script>
             $(document).ready(function() {
-                $('#summernoteEditJadwalUjian').summernote({
+                $('.editJadwalUjian').summernote({
                     maxHeight: 250,
                 });
             });
