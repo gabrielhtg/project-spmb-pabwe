@@ -13,7 +13,7 @@
                     <a class="d-none d-xl-inline" href="http://spmb.app.del.ac.id/">
                         <button class="btn btn-primary btn-lg px-4 gap-3">Daftar Sekarang
                         </button>
-                    </a>
+                    </a>s
                 </div>
             </div>
         </div>
@@ -287,7 +287,7 @@
                                         </div>
 
                                         <div class="pill d-inline text-muted">
-                                            {{ $itemTestimoni->major->nama }}
+                                            {{ $itemTestimoni->prodi }}
                                         </div>
                                     </div>
                                     <div class="d-flex justify-content-center align-items-center border border-1 rounded p-3"

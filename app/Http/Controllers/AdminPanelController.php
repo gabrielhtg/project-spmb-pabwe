@@ -824,7 +824,7 @@ class AdminPanelController extends Controller
         $admin = Auth::user();
 
         $data = [
-            'indexActive' => 2,
+            'indexActive' => 6,
             'admin' => $admin,
             'dataProdi' => Major::all(),
             'dataTestimoni' => Testimoni::orderBy('created_at', 'desc')->get(),

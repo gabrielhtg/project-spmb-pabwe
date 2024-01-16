@@ -80,7 +80,7 @@
                 <div class="card-header bg-primary text-white">
                     <span class="fs-5">Data Prestasi</span>
                 </div>
-                <div class="card-body d-flex justify-content-center flex-column pt-3 overflow-x-auto w-100">
+                <div class="card-body d-flex flex-column">
 
                     @include('admin-panel.sub_admin_panel.tambah_prestasi')
 
@@ -105,7 +105,7 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ htmlentities($item->judul_prestasi, ENT_QUOTES) }}</td>
                                 <td>{{ htmlentities($item->deskripsi,ENT_QUOTES) }}</td>
-                                <td><img src="{{asset("assets/img/prestasi/$item->photo")}}" alt="" width="50" height="50"></td>
+                                <td><img src="{{asset("$item->photo")}}" alt="" width="50" height="50"></td>
                                 <td>
                                     @switch($item->jenis_prestasi)
                                         @case('Institut')
@@ -156,7 +156,7 @@
     <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
 
     <script>
-            function showModalUpdate(upId, upJudul, upDesc, upJenis) {
+        function showModalUpdate(upId, upJudul, upDesc, upJenis) {
             const modalUpdate = document.getElementById("modal-edit");
 
             const inputId = document.getElementById("inputId");

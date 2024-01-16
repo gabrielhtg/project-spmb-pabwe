@@ -15,9 +15,10 @@
             <div class="modal-footer justify-content-between">
                 <form action="{{ route('prestasi.delete') }}" method="POST">
                     @csrf
+                    {{-- @method('DELETE') --}}
                     <input name="id" type="hidden" id="inputIdDelete">
 
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                     <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
                 </form>
             </div>

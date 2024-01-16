@@ -2,29 +2,20 @@
 
 @section('isi-admin-panel')
 
-    <script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>
-
-    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-
-    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
-
     <div class="container-fluid p-3">
         <div class="card">
             <div id="item-2" class="card">
                 <div class="card-header bg-primary text-white">
                     <span class="fs-5">Testimoni</span>
                 </div>
-                <div class="card-body d-flex justify-content-center flex-column pt-3 overflow-x-auto w-100">
+                <div class="card-body d-flex flex-column">
 
                     <div class="row">
                         <div class="col">
                             @if ($errors->any())
                                 <div class="alert alert-danger  alert-dismissible fade show">
-                                    <strong class="alert-heading strong"><i class="fa-solid fa-exclamation-circle"></i>
-                                        Terjadi Kesalahan!</strong>
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                            aria-label="Close"></button>
+                                    <strong class="alert-heading strong"><i class="fa-solid fa-exclamation-circle"></i> Terjadi Kesalahan!</strong>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 
                                     <ul>
                                         @foreach ($errors->all() as $error)
@@ -36,10 +27,8 @@
 
                             @if(session('success'))
                                 <div class="alert alert-success  alert-dismissible fade show">
-                                    <strong class="alert-heading strong"><i class="fa-solid fa-check-circle"></i>
-                                        Sukses!</strong>
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                            aria-label="Close"></button>
+                                    <strong class="alert-heading strong"><i class="fa-solid fa-check-circle"></i> Sukses!</strong>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 
                                     {{ session('success') }}
                                 </div>
@@ -47,10 +36,8 @@
 
                             @if(session('error'))
                                 <div class="alert alert-danger alert-dismissible fade show">
-                                    <strong class="alert-heading strong"><i class="fa-solid fa-exclamation-circle"></i>
-                                        Terjadi Kesalahan!</strong>
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                            aria-label="Close"></button>
+                                    <strong class="alert-heading strong"><i class="fa-solid fa-exclamation-circle"></i> Terjadi Kesalahan!</strong>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 
                                     {{ session('error') }}
                                 </div>
@@ -97,9 +84,7 @@
                                     @endswitch
                                 </td>
                                 <td style="min-width: 120px; width: 120px">
-                                    <button
-                                        onclick="showModalUpdate({{$item->id}}, '{{ $item->nama_mahasiswa }}', '{{ $item->prodi }}', '{{ $item->angkatan }}', '{{ $item->deskripsi }}', '{{ $item->kategori_mahasiswa }}')"
-                                        class="btn btn-success">
+                                    <button onclick="showModalUpdate({{$item->id}}, '{{ $item->nama_mahasiswa }}', '{{ $item->prodi }}', '{{ $item->angkatan }}', '{{ $item->deskripsi }}', '{{ $item->kategori_mahasiswa }}')" class="btn btn-success">
                                         <i class="bi bi-pen"></i>
                                     </button>
                                     <button onclick="showModalDelete({{$item->id}})" class="btn btn-danger">
@@ -120,17 +105,6 @@
     </div>
 
     <script>
-        ClassicEditor
-            .create(document.querySelector('#deskripsi'))
-            .then(
-                editor => {
-                    editor.setData(upDeskripsi);
-                }
-            )
-            .catch(error => {
-                console.error(error);
-            });
-
         function showModalUpdate(upId, upNama, upProdi, upAngkatan, upDeskripsi, upJenis) {
             const modalUpdate = document.getElementById("modal-edit");
 
@@ -145,19 +119,7 @@
             inputNama.value = upNama;
             inputProdi.value = upProdi;
             inputAngkatan.value = upAngkatan;
-
-            ClassicEditor
-                .create(document.querySelector('#deskripsiUpdate'))
-                .then(
-                    editor => {
-                        editor.setData(upDeskripsi);
-                    }
-                )
-                .catch(error => {
-                    console.error(error);
-                });
-
-            // CKEDITOR.instances['inputDesc'].setData(upDeskripsi);
+            inputDesc.value = upDeskripsi;
             inputJenis.value = upJenis;
 
             var myModal = new bootstrap.Modal(modalUpdate)

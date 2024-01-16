@@ -14,7 +14,7 @@ class TestimoniController extends Controller
             'nama' => 'required|regex:/^[a-zA-Z\s]+$/|max:255',
             'prodi' => 'required|string|max:255',
             'angkatan' => 'required|numeric|digits:4',
-            'deskripsi' => 'required|string',
+            'deskripsi' => 'required|string|max:240',
             'jenis' => 'required',
             'gambar' => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
@@ -86,7 +86,7 @@ class TestimoniController extends Controller
             'namaUpdate' => 'required|regex:/^[a-zA-Z\s]+$/|max:255',
             'prodiUpdate' => 'required|string|max:255',
             'angkatanUpdate' => 'required|numeric|digits:4',
-            'deskripsiUpdate' => 'required|string',
+            'deskripsiUpdate' => 'required|string|max:240',
             'jenisUpdate' => 'required',
             'gambarUpdate' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);

@@ -144,6 +144,7 @@ class PrestasiController extends Controller
             Prestasi::create([
                 "jenis_prestasi" => $request->input_jenis_prestasi,
                 "photo" => "assets/img/prestasi/" . $filename,
+                // "photo" => $filename,
                 "deskripsi" => $request->deskripsi,
                 "judul_prestasi" => $request->judul_prestasi,
             ]);
@@ -160,27 +161,28 @@ class PrestasiController extends Controller
     }
 
     public function postDeletePrestasi(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'id' => 'required|exists:prestasi',
-        ]);
+{
+    $validator = Validator::make($request->all(), [
+        'id' => 'required|exists:prestasi',
+    ]);
 
-        if ($validator->fails()) {
-            return redirect()
-                ->route('prestasi.panel')
-                ->withErrors($validator)
-                ->withInput();
-        }
-
-        $delete = Prestasi::where("id", $request->id)->first();
-
-        if ($delete->photo && file_exists($delete->photo) && $delete) {
-            unlink($delete->photo);
-            $delete->delete();
-        }
-
-        return redirect()->back()->with('success', 'Prestasi berhasil di hapus');
+    if ($validator->fails()) {
+        return redirect()
+            ->route('prestasi.panel')
+            ->withErrors($validator)
+            ->withInput();
     }
+
+    $delete = Prestasi::where("id", $request->id)->first();
+
+    if ($delete->photo && file_exists($delete->photo) && $delete) {
+        unlink($delete->photo);
+        $delete->delete();
+    }
+
+    return redirect()->back()->with('success', 'Prestasi berhasil dihapus');
+}
+
 
     public function postEditPrestasi(Request $request)
     {
@@ -218,6 +220,7 @@ class PrestasiController extends Controller
                 }
 
                 $data->photo = 'assets/img/prestasi/'.$fileName;
+                // $data->photo = $fileName;
             }
 
             $data->jenis_prestasi = $request->input_jenis_prestasi_update;
