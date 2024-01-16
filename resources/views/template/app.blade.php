@@ -81,19 +81,11 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Kontak</a>
-                        </li>
-
-                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('prestasi.prestasiOverview') }}">Prestasi</a>
                         </li>
 
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('beasiswa.beasiswa') }}">Beasiswa</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Akreditasi</a>
                         </li>
 
                         <li class="nav-item">
@@ -303,9 +295,9 @@
                 </div>
 
                 <hr>
-
+                
                 <div class="d-flex justify-content-center">
-                    <p>&copy; Made with ❤ by Informatika 21 - BANDAR</p>
+                    <p>&copy; SPMB Institut Teknologi Del-IF 21</p>
                 </div>
             </footer>
         </div>

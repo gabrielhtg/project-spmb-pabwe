@@ -9,6 +9,7 @@ use App\Models\AlamatInstitusiModel;
 use App\Models\BiayaStudi;
 use App\Models\data_institusi;
 use App\Models\Fasilitas;
+use App\Models\DropdownAdmisiModel;
 use App\Models\Pengumuman;
 use App\Models\EmailModel;
 use App\Models\HeroSectionModel;
@@ -18,6 +19,7 @@ use App\Models\MbkmModel;
 use App\Models\ModelHeaderAdmisi;
 use App\Models\NomorTeleponModel;
 use App\Models\PdfBiayaModel;
+use App\Models\Header_Prestasi;
 use App\Models\Prestasi;
 use App\Models\SocalMediaModel;
 use App\Models\JalurPendaftaranModel;
@@ -92,9 +94,7 @@ class AdminPanelController extends Controller
                     'input_jumlah_mahasiswa' => 'required|numeric',
                     'input_jumlah_alumni' => 'required|numeric'
                 ]);
-            }
-
-            else {
+            } else {
                 $request->validate([
                     'nama_institusi' => 'required|max:30|string',
                     'input_singkatan_nama_institusi' => 'required|max:10|string',
@@ -222,9 +222,10 @@ class AdminPanelController extends Controller
         $request->validate([
             'id' => 'required|exists:fasilitas',
             'kategori' => 'required',
-            'nama_fasilitas' => 'required',
-            'deskripsi_fasilitas' => 'required',
-            'nama_file' => 'required',
+            // Tambahkan validasi untuk setiap kolom yang bisa diubah
+            'nama_fasilitas' => 'nullable', // Ubah menjadi nullable agar bisa dikosongkan
+            'deskripsi_fasilitas' => 'nullable', // Ubah menjadi nullable agar bisa dikosongkan
+            'nama_file' => 'nullable', // Ubah menjadi nullable agar bisa dikosongkan
             'file_gambar' => 'nullable|image|mimes:jpeg,jpg,png|max:2048',
         ], [
             'required' => 'Kolom :attribute wajib diisi.',
@@ -239,15 +240,26 @@ class AdminPanelController extends Controller
         if ($fasilitas) {
             // Mengupdate data fasilitas
             $fasilitas->kategori = $request->kategori;
-            $fasilitas->nama_fasilitas = $request->nama_fasilitas;
-            $fasilitas->deskripsi_fasilitas = $request->deskripsi_fasilitas;
-            $fasilitas->nama_file = $request->nama_file;
+
+            // Hanya mengupdate kolom yang ada di dalam form
+            if ($request->filled('nama_fasilitas')) {
+                $fasilitas->nama_fasilitas = $request->nama_fasilitas;
+            }
+
+            if ($request->filled('deskripsi_fasilitas')) {
+                $fasilitas->deskripsi_fasilitas = $request->deskripsi_fasilitas;
+            }
+
+            if ($request->filled('nama_file')) {
+                $fasilitas->nama_file = $request->nama_file;
+            }
+
             // Mengupload gambar baru jika ada
             if ($request->hasFile('file_gambar')) {
                 $gambar = $request->file('file_gambar');
                 $fileExtension = $request->file_gambar->extension();
                 $nama_gambar = $request->nama_file . '.' . $fileExtension;
-                $gambar->move(public_path('path_ke_folder_upload'), $nama_gambar);
+                $gambar->move(public_path('assets/img/fasilitas'), $nama_gambar);
 
                 // Update both nama_file and file_gambar
                 $fasilitas->nama_file = $request->nama_file;
@@ -261,6 +273,7 @@ class AdminPanelController extends Controller
         // Redirect dengan pesan sukses
         return redirect()->route('fasilitas-admin')->with('success', 'Fasilitas berhasil diperbarui.');
     }
+
 
 
     public function destroy($id)
@@ -297,7 +310,7 @@ class AdminPanelController extends Controller
     {
         $admin = Auth::user();
         $data = [
-            'indexActive' => 2,
+            'indexActive' => 3,
             'admin' => $admin
         ];
         return view('admin-panel.sub_admin_panel.pengumumanAddpanel', $data);
@@ -308,7 +321,7 @@ class AdminPanelController extends Controller
         $admin = Auth::user();
 
         $request->validate([
-            'id' =>'required|exists:pengumuman',
+            'id' => 'required|exists:pengumuman',
             'kategoriPengumuman' => 'required',
             'judulPengumuman' => 'required',
             'filePengumuman' => 'nullable|mimes:pdf',
@@ -322,12 +335,12 @@ class AdminPanelController extends Controller
 
         $pengumuman = Pengumuman::where("id", $request->id)->first();
 
-        if ($pengumuman){
+        if ($pengumuman) {
             $pengumuman->kategoriPengumuman = $request->kategoriPengumuman;
             $pengumuman->judulPengumuman = $request->judulPengumuman;
             $pengumuman->tanggalPengumuman = $request->tanggalPengumuman;
 
-            if($request->hasFile('filePengumuman')){
+            if ($request->hasFile('filePengumuman')) {
                 $file = $request->file('filePengumuman');
                 $fileExtension = $request->filePengumuman->extension();
                 $namaFile = $request->judulPengumuman . '.' . $fileExtension;
@@ -369,7 +382,8 @@ class AdminPanelController extends Controller
         }
     }
 
-    public function updateSocialMedia (Request $request) {
+    public function updateSocialMedia(Request $request)
+    {
         try {
             $socialMedia = SocalMediaModel::where('id', $request->id)->first();
 
@@ -391,7 +405,6 @@ class AdminPanelController extends Controller
         } catch (\Exception $e) {
             return redirect()->route('admin-panel')->with('error', 'Gagal mengupdate Social Media!');
         }
-
     }
 
     public function removeSocialMedia(Request $request)
@@ -450,7 +463,8 @@ class AdminPanelController extends Controller
         }
     }
 
-    public function getAddAdminView() {
+    public function getAddAdminView()
+    {
         $admin = Auth::user();
         $admins = AdminModel::all();
 
@@ -462,7 +476,8 @@ class AdminPanelController extends Controller
         return view('admin-panel.add_admin', $data);
     }
 
-    public function addAlamat (Request $request) {
+    public function addAlamat(Request $request)
+    {
         try {
             $request->validate([
                 'input_nama_alamat' => 'required|max:50',
@@ -481,7 +496,8 @@ class AdminPanelController extends Controller
         }
     }
 
-    public function editAlamat (Request $request) {
+    public function editAlamat(Request $request)
+    {
         try {
             $request->validate([
                 'input_nama_alamat' => 'required|string|max:50',
@@ -491,8 +507,8 @@ class AdminPanelController extends Controller
             $username = Auth::user()->username;
             $alamat = AlamatInstitusiModel::where('id', $request->id)->first();
 
-            $alamat-> nama = $request->input_nama_alamat;
-            $alamat-> alamat = $request->input_alamat;
+            $alamat->nama = $request->input_nama_alamat;
+            $alamat->alamat = $request->input_alamat;
             $alamat->updated_at = now();
             $alamat->updated_by = $username;
 
@@ -502,7 +518,6 @@ class AdminPanelController extends Controller
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Gagal Edit Alamat Institusi');
         }
-
     }
 
     public function removeAlamat(Request $request)
@@ -514,16 +529,14 @@ class AdminPanelController extends Controller
             return redirect()->back()->with('error', 'Gagal hapus Alamat');
         }
     }
-    public function getAdmisiPanel () {
+    public function getAdmisiPanel()
+    {
         $admin = Auth::user();
         $dataHeaderAdmisi = ModelHeaderAdmisi::where('id', 1)->first();
         $dataNonKompetisi  = MbkmModel::where('jenis_kegiatan', 'Non Kompetisi')->get();
         $dataKompetisi =  MbkmModel::where('jenis_kegiatan', 'Kompetisi')->get();
-        $jalur = JalurPendaftaranModel::all();
         $jadwalPendaftaran = JadwalPendaftaranModel::all();
         $dataBiaya = BiayaAdminModel::all();
-        $dataInfografis = InfografisModel::all();
-        $jalurMasuk = [];
         $lokasi = Lokasi::orderBy('lokasiTes', 'asc')->get();
         $jenis = JenisTes::orderBy('gelombang', 'asc')->get();
         $dataJadwalUjian = JadwalUjianModel::all();
@@ -533,19 +546,14 @@ class AdminPanelController extends Controller
         $PdfbiayaPendaftaran = PdfBiayaModel::all();
         $prodis = prodi::orderBy("created_at", "desc")->get();
         $biayaStudis = BiayaStudi::all();
-
-
-
-        foreach (InfografisModel::all() as $e) {
-            if (!in_array($e->jalur, $jalurMasuk)) {
-                $jalurMasuk[] = $e->jalur;
-            }
-        }
+        $dataJalurMasuk = JalurPendaftaranModel::all();
 
         $dataInfografisJalurMasuk = [];
+        $dataDropdown = [];
 
-        foreach ($jalurMasuk as $e) {
-            $dataInfografisJalurMasuk[] = InfografisModel::where('jalur', $e)->get();
+        foreach ($dataJalurMasuk as $e) {
+            $dataInfografisJalurMasuk[] = InfografisModel::where('jalur', $e->jalurPendaftaran)->get();
+            $dataDropdown[] = DropdownAdmisiModel::where('jalur', $e->jalurPendaftaran)->get();
         }
 
         $data = [
@@ -553,25 +561,27 @@ class AdminPanelController extends Controller
             'admin' => $admin,
             'dataHeaderAdmisi' => $dataHeaderAdmisi,
             'dataNonKompetisi' => $dataNonKompetisi,
-            'dataKompetisi'=>$dataKompetisi,
+            'dataKompetisi' => $dataKompetisi,
             'dataInfografis' => $dataInfografisJalurMasuk,
             'lokasi' => $lokasi,
             'jenis' => $jenis,
-            'jalur'=>$jalur,
             'dataBiaya' => $dataBiaya,
             'dataJadwalUjian' => $dataJadwalUjian,
-            'jadwalPendaftaran'=>$jadwalPendaftaran,
-            'dataSubJalurPendaftaran'=>$dataSubJalurPendaftaran,
-            'biayaPen'=>$biayaPen,
+            'jadwalPendaftaran' => $jadwalPendaftaran,
+            'dataSubJalurPendaftaran' => $dataSubJalurPendaftaran,
+            'biayaPen' => $biayaPen,
             'pedomanpendaftaran' => $pedomanpendaftaran,
-            'PdfbiayaPendaftaran'=>$PdfbiayaPendaftaran,
+            'PdfbiayaPendaftaran' => $PdfbiayaPendaftaran,
             'prodis' => $prodis,
-            'biayaStudis'=>$biayaStudis
+            'biayaStudis' => $biayaStudis,
+            'jalurPendaftaran' => $dataJalurMasuk,
+            'dataDropdown' => $dataDropdown
         ];
         return view('admin-panel.admisi_panel', $data);
     }
 
-    public function addAkreditasiInstitusi (Request $request) {
+    public function addAkreditasiInstitusi(Request $request)
+    {
         if ($request->sertifikat_akreditasi) {
             $request->validate([
                 'akreditasi' => 'required',
@@ -603,10 +613,10 @@ class AdminPanelController extends Controller
         }
 
         return redirect()->route('admin-panel')->with('error', 'Gagal menambah riwayat akreditasi!');
-
     }
 
-    public function removeNomorTelepon (Request $request) {
+    public function removeNomorTelepon(Request $request)
+    {
         try {
             NomorTeleponModel::where('id', $request->id)->first()->delete();
             return redirect()->route('admin-panel')->with('success', 'Berhasil hapus nomor telepon!');
@@ -615,7 +625,8 @@ class AdminPanelController extends Controller
         }
     }
 
-    public function addNomorTelepon (Request $request) {
+    public function addNomorTelepon(Request $request)
+    {
         $request->validate([
             'namaNomorTelepon' => 'required|string|max:20',
             'nomorTelepon' => 'required|string|max:15'
@@ -639,7 +650,8 @@ class AdminPanelController extends Controller
         }
     }
 
-    public function removeAkreditasi (Request $request) {
+    public function removeAkreditasi(Request $request)
+    {
         try {
             AkreditasiInstitutiModel::where('id', $request->id)->first()->delete();
 
@@ -672,7 +684,7 @@ class AdminPanelController extends Controller
         $admin = Auth::user();
         $jenis = JenisTes::find($id);
 
-        if($jenis){
+        if ($jenis) {
             $jenis->delete();
         }
 
@@ -706,9 +718,9 @@ class AdminPanelController extends Controller
 
             // Menyimpan perubahan
             $lokasi->save();
-    }
-    // Redirect dengan pesan sukses
-    return $this->getAdmisiPanel();
+        }
+        // Redirect dengan pesan sukses
+        return $this->getAdmisiPanel();
     }
 
     public function postEditJenis(Request $request)
@@ -732,12 +744,13 @@ class AdminPanelController extends Controller
 
             // Menyimpan perubahan
             $jenis->save();
-    }
-    // Redirect dengan pesan sukses
-    return $this->getAdmisiPanel();
+        }
+        // Redirect dengan pesan sukses
+        return $this->getAdmisiPanel();
     }
 
-    public function updateAkreditasiSection(Request $request) {
+    public function updateAkreditasiSection(Request $request)
+    {
         try {
             $request->validate([
                 'input_header' => 'required|string|max:20',
@@ -759,7 +772,8 @@ class AdminPanelController extends Controller
     }
 
 
-    public function getProgramPanel () {
+    public function getProgramPanel()
+    {
         $admin = Auth::user();
         $faculties = Faculty::all();
         $majors = Major::all();
@@ -769,20 +783,38 @@ class AdminPanelController extends Controller
         $data = [
             'indexActive' => 2,
             'admin' => $admin,
-            'faculties'=>$faculties,
-            'majors'=>$majors,
-            'employees'=>$employees,
-            'courses'=>$courses,
+            'faculties' => $faculties,
+            'majors' => $majors,
+            'employees' => $employees,
+            'courses' => $courses,
         ];
         return view('admin-panel.program_panel', $data);
     }
 
-    public function getPrestasiPanel () {
+    public function getPrestasiPanel()
+    {
         $admin = Auth::user();
+
+        if (Header_Prestasi::first())
+        {
+            $judulPrestasi = Header_Prestasi::first()->judul;
+            $deskripsiPrestasi = Header_Prestasi::first()->deskripsi;
+            $fotoPrestasi = Header_Prestasi::first()->foto;
+        } else {
+            $judulPrestasi = "Prestasi";
+            $deskripsiPrestasi = "Prestasi";
+            $fotoPrestasi = "assets/img/prestasi/prestasi-header.JPG";
+        }
+
         $data = [
-            'indexActive' => 2,
+            'indexActive' => 5,
             'admin' => $admin,
             'dataPrestasi' => Prestasi::orderBy('created_at', 'desc')->get(),
+            'headerPrestasi' => [
+                'judul' => $judulPrestasi,
+                'deskripsi' => $deskripsiPrestasi,
+                'foto' => $fotoPrestasi,
+            ],
         ];
         return view('admin-panel.prestasi_panel', $data);
     }
@@ -794,13 +826,15 @@ class AdminPanelController extends Controller
         $data = [
             'indexActive' => 2,
             'admin' => $admin,
+            'dataProdi' => Major::all(),
             'dataTestimoni' => Testimoni::orderBy('created_at', 'desc')->get(),
         ];
 
         return view('admin-panel.testimoni_panel', $data);
     }
 
-    public function addMitra (Request $request) {
+    public function addMitra(Request $request)
+    {
         $request->validate([
             'input_logo' => 'image|mimes:jpeg,png,jpg|max:1024',
         ]);
@@ -830,47 +864,47 @@ class AdminPanelController extends Controller
     {
         $username = Auth::user()->username;
         $mitra = MitraModel::where('id', $request->id)->first();
-    
+
         if (!$mitra) {
             // Handle the case where MitraModel with the given ID is not found
             return redirect()->back()->with('error', 'Mitra not found');
         }
-    
+
         $mitra->nama = $request->input_nama_mitra;
-        
+
         if ($request->input_logo) {
             $request->validate([
                 'input_logo' => 'image|mimes:jpeg,png,jpg|max:1024',
             ]);
-    
+
             // Mengambil file yang sudah divalidasi dari request
             $photo = $request->file('input_logo');
-    
+
             // Membuat nama unik untuk file yang diunggah
             $filename = time() . '_logo_mitra.' . $photo->getClientOriginalExtension();
-    
+
             // Menentukan direktori tempat penyimpanan file di dalam direktori 'public'
             $directory = public_path('assets/img/dashboard/mitra/');
-    
+
             // Pindahkan file ke direktori yang diinginkan
             $photo->move($directory, $filename);
-    
+
             // Menghapus photo lama jika ada
             if ($mitra->logo && file_exists($mitra->logo)) {
                 unlink($mitra->logo);
             }
-    
+
             $mitra->logo = 'assets/img/dashboard/mitra/' . $filename;
         }
-    
+
         $mitra->updated_at = now();
         $mitra->updated_by = $username;
-    
+
         $mitra->save();
-    
+
         return redirect()->back()->with('success', 'Mitra updated successfully');
     }
-    
+
 
     public function removeMitra(Request $request)
     {
@@ -878,13 +912,15 @@ class AdminPanelController extends Controller
         return redirect()->back();
     }
 
-    public function getviewMitra(){
+    public function getviewMitra()
+    {
         $mitra = MitraModel::all();
         $data['mitra'] = $mitra;
         return view('mitra.mitra', $data);
     }
 
-    public function getFaqPanel () {
+    public function getFaqPanel()
+    {
         $admin = Auth::user();
         $faqs = Faq::where('id', 1)->first();
 
@@ -927,20 +963,20 @@ class AdminPanelController extends Controller
             'pertanyaan' => 'required',
             'jawaban' => 'required'
         ]);
-    
-    // Buat instance Faq
-    $faq = new Faq;
 
-    // Set nilai atribut faq
-    $faq->kategori = $request->kategori;
-    $faq->pertanyaan = $request->pertanyaan;
-    $faq->jawaban = $request->jawaban;
+        // Buat instance Faq
+        $faq = new Faq;
 
-    // Simpan data ke database
-    $faq->save();
+        // Set nilai atribut faq
+        $faq->kategori = $request->kategori;
+        $faq->pertanyaan = $request->pertanyaan;
+        $faq->jawaban = $request->jawaban;
 
-    // Redirect atau berikan respons sesuai kebutuhan
-    return redirect()->route('faq-admin');
+        // Simpan data ke database
+        $faq->save();
+
+        // Redirect atau berikan respons sesuai kebutuhan
+        return redirect()->route('faq-admin');
     }
 
     public function postEditFaq(Request $request)
@@ -963,12 +999,12 @@ class AdminPanelController extends Controller
             $faq->kategori = $request->kategori;
             $faq->pertanyaan = $request->pertanyaan;
             $faq->jawaban = $request->jawaban;
-        
+
             // Menyimpan perubahan
             $faq->save();
-    }
-    // Redirect dengan pesan sukses
-    return redirect()->route('faq-admin')->with('success', 'FAQ berhasil diperbarui.');
+        }
+        // Redirect dengan pesan sukses
+        return redirect()->route('faq-admin')->with('success', 'FAQ berhasil diperbarui.');
     }
 
     public function destroyFaq($id)
@@ -979,7 +1015,7 @@ class AdminPanelController extends Controller
         if ($faq) {
             $faq->delete();
         }
-    
+
         $data = [
             'indexActive' => 7,
             'admin' => $admin,
@@ -996,10 +1032,11 @@ class AdminPanelController extends Controller
         return view('admin.view', compact('formData'));
     }
 
-    public function getFormPanel () {
+    public function getFormPanel()
+    {
         $admin = Auth::user();
         $forms = Form::orderBy("created_at", "desc")->get();
-        
+
         $data = [
             'indexActive' => 9,
             'admin' => $admin,
@@ -1008,17 +1045,17 @@ class AdminPanelController extends Controller
         return view('admin-panel.form_panel.form', $data);
     }
 
-    public function beasiswa() {
+    public function beasiswa()
+    {
         $admin = Auth::user();
         $beasiswa = Beasiswa::all();
-    
+
         $data = [
             'indexActive' => 8,
             'admin' => $admin,
             'beasiswa' => $beasiswa
         ];
-    
+
         return view('admin-panel.sub_beasiswa_panel.index', $data);
     }
-
 }

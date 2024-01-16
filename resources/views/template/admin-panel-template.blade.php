@@ -14,14 +14,8 @@
     <link rel="stylesheet" href="{{ asset('/assets/css/admisi.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.6.0.min.js"></script>
-<<<<<<< HEAD
-    {{--    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" /> --}}
-    {{--    <script type="text/javascript" src="cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script> --}}
-
-    <!-- include summernote css/js -->
-=======
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
->>>>>>> dev
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
+    </script>
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
@@ -34,11 +28,12 @@
 
         {{--        Ini adalah sidebar besar mulai --}}
         <div class="d-none ps-3 pe-3 fixed-top bg-sidebar d-flex flex-column align-items-center" id="sidebar_besar"
-            style="width: 18rem; height: 100%; overflow-y: scroll; margin-top: 60px; padding-bottom: 200px;">
+            style="width: 18rem; height: 300vh">
             <div class="d-flex justify-content-center align-items-center mb-3 w-100"
                 style="height: 60px; border: 0 solid white;border-bottom-width: 1px;">
                 <span class="text-white fw-semibold fs-4" style="font-size: 1rem">SPMB Admin</span>
             </div>
+
 
             <div class="d-flex flex-column row-gap-3 w-100">
                 <a href="{{ route('admin-panel') }}">
@@ -231,8 +226,6 @@
 
         }
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
-    </script>
 
     <script>
         const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
@@ -252,11 +245,8 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
     <script src="https://kit.fontawesome.com/965a381e3a.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>
     <script src="{{ asset('/assets/js/kel4.js') }}"></script>
     <script src="{{ asset('/assets/js/admin-panel.js') }}"></script>
-    <script src="{{ asset("/assets/js/kel4.js") }}"></script>
-    <script src="{{ asset("/assets/js/admin-panel.js") }}"></script>
     @yield('other-js')
 </body>
 

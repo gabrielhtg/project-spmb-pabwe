@@ -3,7 +3,7 @@
   <h1 class="display-5 fw-bold">Area Mahasiswa</h1>
   </div>
   <div class="costum-justified-text align items-center pt-3">
-    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi quae quibusdam nemo a corrupti, amet maxime earum esse sint animi? Minus accusantium magnam deleniti reprehenderit, iure voluptates quod commodi vitae.</p>
+    <p>Fasilitas Area Mahasiswa ini berisikan pengenalan fasilitas-fasilitas di Institut Teknologi Del yang dapat digunakan oleh mahasiswa IT Del. Fasilitas area mahasiswa kerap digunakan selama jam akademik dalam proses pembelajaran maupun diluar jam akademik untuk kepentingan pribadi dan belajar mandiri.</p>
   </div>
       
           @foreach($fasilitas as $item)

@@ -23,12 +23,16 @@ use App\Models\BiayaAdminModel;
 use App\Models\BiayaPendaftaranModel;
 use App\Models\PedomanPendaftaranModel;
 use App\Models\Testimoni;
+use App\Models\BiayaStudi;
+use App\Models\JalurPendaftaranModel;
+use App\Models\DropdownAdmisiModel;
 use Illuminate\Http\Request;
 use App\Models\MitraModel;
 
 class DashboardController extends Controller
 {
-    public function getDashboard () {
+    public function getDashboard()
+    {
         $dataInstitusi = data_institusi::where('id', 1)->first();
         $dataHeroSection = HeroSectionModel::where('id', 1)->first();
         $dataSosmed = SocalMediaModel::all();
@@ -48,14 +52,15 @@ class DashboardController extends Controller
             'dataNomorTelepon' => $dataNomorTelepon,
             'dataEmail' => $dataEmail,
             'dataAkreditasiInstitusi' => $dataAkreditasiInstitusi,
-            'dataTestimoni' => Testimoni::orderBy('created_at', 'desc')->take(8)->get(),
+            'dataTestimoni' => Testimoni::orderBy('created_at', 'desc')->take(8)->with('major')->get(),
             'dataMitra' => $dataMitra,
         ];
 
         return view('dashboard/dashboard', $data);
     }
 
-    public function getAdmisi () {
+    public function getAdmisi()
+    {
         $dataInstitusi = data_institusi::where('id', 1)->first();
         $dataAlamat = AlamatInstitusiModel::all();
         $dataSosmed = SocalMediaModel::all();
@@ -78,13 +83,14 @@ class DashboardController extends Controller
             'lokasi' => $lokasi,
             'jenis' => $jenis,
             'dataJadwalUjian' => $dataJadwalUjian,
-            'jadwalPendaftaran' =>$jadwalPendaftaran,
+            'jadwalPendaftaran' => $jadwalPendaftaran,
         ];
 
         return view('admisi.admisi-tanggal-penting', $data);
     }
 
-    public function getJalurPendaftaran () {
+    public function getJalurPendaftaran()
+    {
         $dataInstitusi = data_institusi::where('id', 1)->first();
         $dataAlamat = AlamatInstitusiModel::all();
         $dataSosmed = SocalMediaModel::all();
@@ -92,20 +98,15 @@ class DashboardController extends Controller
         $dataNomorTelepon = NomorTeleponModel::all();
         $dataEmail = EmailModel::all();
         $pedomanpendaftaran = PedomanPendaftaranModel::all();
-        $jalurMasuk = [];
-
-        foreach (InfografisModel::all() as $e) {
-            if (!in_array($e->jalur, $jalurMasuk)) {
-                $jalurMasuk[] = $e->jalur;
-            }
-        }
+        $dataJalurMasuk = JalurPendaftaranModel::all();
 
         $dataInfografisJalurMasuk = [];
+        $dataDropdown = [];
 
-        foreach ($jalurMasuk as $e) {
-            $dataInfografisJalurMasuk[] = InfografisModel::where('jalur', $e)->get();
+        foreach ($dataJalurMasuk as $e) {
+            $dataInfografisJalurMasuk[] = InfografisModel::where('jalur', $e->jalurPendaftaran)->get();
+            $dataDropdown[] = DropdownAdmisiModel::where('jalur', $e->jalurPendaftaran)->get();
         }
-
 
 
         $data = [
@@ -117,12 +118,15 @@ class DashboardController extends Controller
             'dataEmail' => $dataEmail,
             'dataInfografis' => $dataInfografisJalurMasuk,
             'pedomanpendaftaran' => $pedomanpendaftaran,
+            'jalurPendaftaran' => $dataJalurMasuk,
+            'dataDropdown' => $dataDropdown
         ];
 
         return view('admisi.admisi-jalur-pendaftaran', $data);
     }
 
-    public function getBiayaStudi () {
+    public function getBiayaStudi()
+    {
         $dataInstitusi = data_institusi::where('id', 1)->first();
         $dataAlamat = AlamatInstitusiModel::all();
         $dataSosmed = SocalMediaModel::all();
@@ -134,6 +138,7 @@ class DashboardController extends Controller
         $dataBiaya = BiayaAdminModel::all();
         $biayaPen = BiayaPendaftaranModel::all();
         $PdfbiayaPendaftaran = PdfBiayaModel::all();
+        $biayaStudis = BiayaStudi::all();
 
         $data = [
             'dataInstitusi' => $dataInstitusi,
@@ -143,16 +148,19 @@ class DashboardController extends Controller
             'dataNomorTelepon' => $dataNomorTelepon,
             'dataEmail' => $dataEmail,
             'dataNonKompetisi' => $dataNonKompetisi,
-            'dataKompetisi'=>$dataKompetisi,
+            'dataKompetisi' => $dataKompetisi,
             'dataBiaya' => $dataBiaya,
-            'biayaPen'=> $biayaPen,
-            'PdfbiayaPendaftaran'=>$PdfbiayaPendaftaran
+            'biayaPen' => $biayaPen,
+            'PdfbiayaPendaftaran' => $PdfbiayaPendaftaran,
+            'biayaStudis' => $biayaStudis,
+
         ];
 
         return view('admisi.admisi-biaya-studi', $data);
     }
 
-    public function getPersyaratanKhusus () {
+    public function getPersyaratanKhusus()
+    {
         $dataInstitusi = data_institusi::where('id', 1)->first();
         $dataAlamat = AlamatInstitusiModel::all();
         $dataSosmed = SocalMediaModel::all();
@@ -174,5 +182,4 @@ class DashboardController extends Controller
 
         return view('admisi.admisi-persyaratan-khusus', $data);
     }
-
 }

@@ -111,6 +111,8 @@ Route::middleware('auth')->group(function () {
             Route::post('/add', [PrestasiController::class, 'postAddPrestasi'])->name('prestasi.add');
             Route::post('/edit', [PrestasiController::class, 'postEditPrestasi'])->name('prestasi.edit');
             Route::post('/delete', [PrestasiController::class, 'postDeletePrestasi'])->name('prestasi.delete');
+
+            Route::post('/header-add', [\App\Http\Controllers\HeaderPrestasiController::class, 'store'])->name('prestasiheader.add');
         });
 
         Route::prefix('testimoni-panel')->group(function () {
@@ -157,9 +159,13 @@ Route::put('/course/{id}/update', [CourseController::class, 'update'])->name('co
 Route::delete('/admin-panel/program_panel/faculty/{id}/delete', [FacultyController::class, 'destroy'])->name('admin.program.faculty.destroy');
 Route::delete('/admin-panel/program_panel/major/{id}/delete', [MajorController::class, 'destroy'])->name('admin.program.major.destroy');
 Route::delete('/admin-panel/program_panel/employee/{id}/delete', [EmployeeController::class, 'destroy'])->name('admin.program.employee.destroy');
-Route::delete('/admin-panel/program_panel/course/{id}/delete', [CourseController::class, 'destroy'])->name('admin.program.course.destroy');
+Route::delete('/admin-panel/program_panel/course/{id}/deleted', [CourseController::class, 'destroy'])->name('admin.program.course.destroy');
+Route::delete('//admin-panel/program_panel/courses/delete',[CourseController::class,'deleteAll'])->name('course.delete');
 
-// End of ROUTE PROGRAM STUDI [TEAM 03]
+
+
+// End of ROUTE PROGRAM STUDI [TEAM 02]
+
 Route::get('/prestasi', [PrestasiController::class, 'getviewPrestasi'])->name('prestasi.prestasiOverview');
 Route::get('/prestasi-institut', [PrestasiController::class, 'getviewPrestasiInstitut'])->name('prestasi.prestasiInstitut');
 Route::get('/prestasi-dosen-staff', [PrestasiController::class, 'getviewPrestasiDosenStaff'])->name('prestasi.prestasiDosenStaff');
