@@ -15,7 +15,7 @@
             <div class="container pt-5" id="lapangan hijau">
                 <div class="row">
                     <div class="col-md-6">
-                    <img src="{{ asset('/assets/img/fasilitas/' . $item->file_gambar) }}" class="img-fluid custom-image" alt="{{$item->nama_file}}" style="height:400px">
+                    <img src="{{ asset('/assets/img/fasilitas/' . $item->file_gambar) }}" class="img-fluid custom-image" alt="{{$item->nama_file}}" style="height:400px, width : 700px">
                     </div>
 
                     <div class="col-md-6 mx-auto d-flex flex-column my-auto">
