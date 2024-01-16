@@ -52,7 +52,7 @@ class MajorSeeder extends Seeder
             'lama' => '4 ',
             'biaya' => '6.500.000',
             'syarat' => 'Syarat syarat Pendaftaran',
-            'akreditasi' => 'Unggul',
+            'akreditasi' => 'Baik Sekali',
             'prospek' => ' 
             <ol>
                 <li>Business Intelligence Solution</li>

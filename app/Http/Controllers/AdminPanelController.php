@@ -781,7 +781,7 @@ class AdminPanelController extends Controller
         $courses = Course::all();
 
         $data = [
-            'indexActive' => 2,
+            'indexActive' => 4,
             'admin' => $admin,
             'faculties' => $faculties,
             'majors' => $majors,
