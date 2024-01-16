@@ -36,6 +36,7 @@ class DatabaseSeeder extends Seeder
             PengumumanSeeder::class,
             PrestasiSeeder::class,
             add_beasiswa::class,
+            add_fasilitas::class,
             add_faq::class,
             add_mitra::class,
             TestimoniSeeder::class,
