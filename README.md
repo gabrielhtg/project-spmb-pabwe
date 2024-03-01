@@ -1,7 +1,7 @@
 
 ## Tentang SPMB Institut Teknologi Del
 
-[SPMB (Seleksi Penerimaan Mahasiwa Baru) Institut Teknologi Del](https://semat.del.ac.id) adalah website yang dibuat oleh mahasiswa Prodi Informatika Institut Teknologi Del Angkatan 2021 sebagai proyek Mata Kuliah pemrograman web mereka. 
+[SPMB (Seleksi Penerimaan Mahasiwa Baru) Institut Teknologi Del](https://semat.del.ac.id) adalah website yang dibuat oleh mahasiswa Prodi Informatika Institut Teknologi Del Angkatan 2021 sebagai proyek Mata Kuliah pemrograman web mereka. Web ini digunakan sebagai sarana promosi dan sarana untuk memperkenalkan Institut Teknologi Del kepada calon mahasiswa baru.
 
 Adapun web ini terdiri atas :
 - [Dashboard](https://semat.del.ac.id/)
